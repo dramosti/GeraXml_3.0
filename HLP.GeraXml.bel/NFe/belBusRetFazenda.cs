@@ -130,7 +130,21 @@ namespace HLP.GeraXml.bel.NFe
                                 {
                                     int icount = nodesxMotivo[i + 1].InnerText.Count() - (nodesxMotivo[i + 1].InnerText.IndexOf("nRec") + 6);
                                     string sRet = nodesxMotivo[i + 1].InnerText.Substring((nodesxMotivo[i + 1].InnerText.IndexOf("nRec") + 5), icount);
-                                    SalvaRetornoNotaDuplicada(sRet, nota.sCD_NFSEQ);
+
+                                    if (sRet.Count() != 15)
+                                    {
+                                        AlteraStatusNotaDuplicada(nota.sCD_NFSEQ);
+                                        string sPathEnvio = Util.BuscaCaminhoArquivoXml(nota.sCHAVENFE, 1);
+                                        string sPathEnviados = Util.BuscaCaminhoArquivoXml(nota.sCHAVENFE, 2);
+                                        if (!File.Exists(sPathEnviados))
+                                        {
+                                            File.Copy(sPathEnvio, sPathEnviados);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        SalvaRetornoNotaDuplicada(sRet, nota.sCD_NFSEQ);
+                                    }
                                 }
                                 else if ((nodecStat[i + 1].InnerText == "110") || (nodecStat[i + 1].InnerText == "302") || (nodecStat[i + 1].InnerText == "302"))
                                 {
@@ -363,7 +377,7 @@ namespace HLP.GeraXml.bel.NFe
                                 #endregion
                             }
                             break;
-                       
+
                     }
                     //fazer Ret Recepcao para MS E RS
                 }

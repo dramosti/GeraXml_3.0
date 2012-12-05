@@ -107,6 +107,29 @@ namespace HLP.GeraXml.dao.NFe
             }
         }
 
+        public void AlteraStatusNotaDuplicada(string sSeq)
+        {
+            StringBuilder sSql = new StringBuilder();
+            try
+            {
+                sSql.Append("UPDATE NF ");
+                sSql.Append("set st_nfe = 'S' ");
+                sSql.Append("where ");
+                sSql.Append("cd_empresa ='");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("cd_nfseq ='");
+                sSql.Append(sSeq);
+                sSql.Append("'");
+                HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void AlteraStatusNotaParaEnviada(string seqNF)
         {
             try

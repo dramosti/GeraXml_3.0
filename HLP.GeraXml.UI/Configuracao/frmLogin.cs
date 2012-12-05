@@ -209,5 +209,10 @@ namespace HLP.GeraXml.UI.Configuracao
             }
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

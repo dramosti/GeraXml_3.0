@@ -59,7 +59,6 @@ namespace HLP.GeraXml.UI.Configuracao
             // 
             this.btnSair.Location = new System.Drawing.Point(132, 121);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(90, 25);
             this.btnSair.TabIndex = 4;
             this.btnSair.Values.Text = "Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -68,7 +67,6 @@ namespace HLP.GeraXml.UI.Configuracao
             // 
             this.btnEntrar.Location = new System.Drawing.Point(36, 121);
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(90, 25);
             this.btnEntrar.TabIndex = 3;
             this.btnEntrar.Values.Text = "&Entrar";
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
@@ -147,6 +145,7 @@ namespace HLP.GeraXml.UI.Configuracao
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
             this.kryptonPanel.ResumeLayout(false);
