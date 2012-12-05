@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCCe" targetNamespace="http://tempuri.org/dsCCe.xsd" xmlns:mstns="http://tempuri.org/dsCCe.xsd" xmlns="http://tempuri.org/dsCCe.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCCe" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCCe" msprop:Generator_UserDSName="dsCCe">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CCe" msprop:Generator_TableClassName="CCeDataTable" msprop:Generator_TableVarName="tableCCe" msprop:Generator_TablePropName="CCe" msprop:Generator_RowDeletingName="CCeRowDeleting" msprop:Generator_RowChangingName="CCeRowChanging" msprop:Generator_RowEvHandlerName="CCeRowChangeEventHandler" msprop:Generator_RowDeletedName="CCeRowDeleted" msprop:Generator_UserTableName="CCe" msprop:Generator_RowChangedName="CCeRowChanged" msprop:Generator_RowEvArgName="CCeRowChangeEvent" msprop:Generator_RowClassName="CCeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="CHAVE" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnCHAVE" msprop:Generator_ColumnPropNameInRow="CHAVE" msprop:Generator_ColumnPropNameInTable="CHAVEColumn" msprop:Generator_UserColumnName="CHAVE" type="xs:string" minOccurs="0" />
+              <xs:element name="NFE" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnNFE" msprop:Generator_ColumnPropNameInRow="NFE" msprop:Generator_ColumnPropNameInTable="NFEColumn" msprop:Generator_UserColumnName="NFE" type="xs:string" minOccurs="0" />
+              <xs:element name="DT_EMISSAO" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDT_EMISSAO" msprop:Generator_ColumnPropNameInRow="DT_EMISSAO" msprop:Generator_ColumnPropNameInTable="DT_EMISSAOColumn" msprop:Generator_UserColumnName="DT_EMISSAO" type="xs:string" minOccurs="0" />
+              <xs:element name="DADOS_EMPRESA" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDADOS_EMPRESA" msprop:Generator_ColumnPropNameInRow="DADOS_EMPRESA" msprop:Generator_ColumnPropNameInTable="DADOS_EMPRESAColumn" msprop:Generator_UserColumnName="DADOS_EMPRESA" type="xs:string" minOccurs="0" />
+              <xs:element name="DADOS_CLIENTE" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDADOS_CLIENTE" msprop:Generator_ColumnPropNameInRow="DADOS_CLIENTE" msprop:Generator_ColumnPropNameInTable="DADOS_CLIENTEColumn" msprop:Generator_UserColumnName="DADOS_CLIENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="RETIFICACAO" msprop:Generator_ColumnVarNameInTable="columnRETIFICACAO" msprop:Generator_ColumnPropNameInRow="RETIFICACAO" msprop:Generator_ColumnPropNameInTable="RETIFICACAOColumn" msprop:Generator_UserColumnName="RETIFICACAO" type="xs:string" minOccurs="0" />
+              <xs:element name="BARRAS" msdata:Caption="LOGO" msprop:Generator_ColumnVarNameInTable="columnBARRAS" msprop:Generator_ColumnPropNameInRow="BARRAS" msprop:Generator_ColumnPropNameInTable="BARRASColumn" msprop:Generator_UserColumnName="BARRAS" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="LOGO" msprop:Generator_ColumnVarNameInTable="columnLOGO" msprop:Generator_ColumnPropNameInRow="LOGO" msprop:Generator_ColumnPropNameInTable="LOGOColumn" msprop:Generator_UserColumnName="LOGO" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="CCeKey1">
+      <xs:selector xpath=".//mstns:CCe" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

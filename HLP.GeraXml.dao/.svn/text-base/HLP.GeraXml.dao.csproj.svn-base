@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FD1EA646-5421-469C-ADF2-6CA5BD7F51B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HLP.GeraXml.dao</RootNamespace>
+    <AssemblyName>HLP.GeraXml.dao</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADO\HlpDbFuncoes.cs" />
+    <Compile Include="ADO\HlpDbFuncoesGeral.cs" />
+    <Compile Include="CCe\daoCarregaDataSet.cs" />
+    <Compile Include="CCe\daoGeraCCe.cs" />
+    <Compile Include="CCe\daoPesquisaCCe.cs" />
+    <Compile Include="CTe\daoBuscaDadosGerais.cs" />
+    <Compile Include="CTe\daoCancelaCte.cs" />
+    <Compile Include="CTe\daoDadosDest.cs" />
+    <Compile Include="CTe\daoDadosEmit.cs" />
+    <Compile Include="CTe\daoDadosExped.cs" />
+    <Compile Include="CTe\daoDadosImp.cs" />
+    <Compile Include="CTe\daoDadosinfCarga.cs" />
+    <Compile Include="CTe\daoDadosinfQ.cs" />
+    <Compile Include="CTe\daoDadosNf.cs" />
+    <Compile Include="CTe\daoDadosReceb.cs" />
+    <Compile Include="CTe\daoDadosRem.cs" />
+    <Compile Include="CTe\daoDadosrodo.cs" />
+    <Compile Include="CTe\daoDadosVPrest.cs" />
+    <Compile Include="CTe\daoGeraNumero.cs" />
+    <Compile Include="daoGenerator.cs" />
+    <Compile Include="CTe\daoGravaDadosRetorno.cs" />
+    <Compile Include="CTe\daoDadosIde.cs" />
+    <Compile Include="CTe\daoPopulaCte.cs" />
+    <Compile Include="CTe\daoInutilizaFaixaCte.cs" />
+    <Compile Include="CTe\daoNumeroCte.cs" />
+    <Compile Include="daoEmail.cs" />
+    <Compile Include="daoEmailContador.cs" />
+    <Compile Include="daoConfiguracao.cs" />
+    <Compile Include="daoEnvio.cs" />
+    <Compile Include="daoUtil.cs" />
+    <Compile Include="NFes\daoBuscaDados.cs" />
+    <Compile Include="NFes\daoCancelamentoNFse.cs" />
+    <Compile Include="NFes\daoConstrucaoCivil.cs" />
+    <Compile Include="NFes\daoImpressao.cs" />
+    <Compile Include="NFes\daoLoteRps.cs" />
+    <Compile Include="NFes\daoPrestador.cs" />
+    <Compile Include="NFes\daoRecepcao.cs" />
+    <Compile Include="NFes\daoServico.cs" />
+    <Compile Include="NFes\daotcIdentificacaoRps.cs" />
+    <Compile Include="NFes\daoTomador.cs" />
+    <Compile Include="NFes\Susesu\daoNFesSusesu.cs" />
+    <Compile Include="NFe\daoBusRetFazenda.cs" />
+    <Compile Include="NFe\daoCancelamento.cs" />
+    <Compile Include="NFe\daoConsultaStatusCliente.cs" />
+    <Compile Include="NFe\daoDuplicata.cs" />
+    <Compile Include="NFe\daoInutilizacao.cs" />
+    <Compile Include="NFe\daoLorenzon.cs" />
+    <Compile Include="NFe\daoNumeroNF.cs" />
+    <Compile Include="NFe\daoPesquisaNFeRef.cs" />
+    <Compile Include="NFe\daoPesquisaNotas.cs" />
+    <Compile Include="NFe\daoRecepcao.cs" />
+    <Compile Include="NFe\daoRegras.cs" />
+    <Compile Include="NFe\Especifico\daoEspecifico.cs" />
+    <Compile Include="NFe\Estrutura\daoCobr.cs" />
+    <Compile Include="NFe\Estrutura\daoDest.cs" />
+    <Compile Include="NFe\Estrutura\daoDet.cs" />
+    <Compile Include="NFe\Estrutura\daoDI.cs" />
+    <Compile Include="NFe\Estrutura\daoEmit.cs" />
+    <Compile Include="NFe\Estrutura\daoEndEnt.cs" />
+    <Compile Include="NFe\Estrutura\daoInfAdic.cs" />
+    <Compile Include="NFe\Estrutura\daoTransp.cs" />
+    <Compile Include="NFe\Estrutura\daoIde.cs" />
+    <Compile Include="NFe\Estrutura\daoTotal.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HLP.GeraXml.Comum\HLP.GeraXml.Comum.csproj">
+      <Project>{EC6A843B-7B8D-4E7E-B63A-8DA001B39EF5}</Project>
+      <Name>HLP.GeraXml.Comum</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

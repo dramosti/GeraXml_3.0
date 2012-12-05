@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="VerificaVersaoLiberadaParaCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sNomeCliente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificaVersaoLiberadaParaClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerificaVersaoLiberadaParaClienteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscaInforcoesSobreAtualizacao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sVersao" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscaInforcoesSobreAtualizacaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscaInforcoesSobreAtualizacaoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuscaUltimaVersaoDisponivel">
+        <s:complexType />
+      </s:element>
+      <s:element name="BuscaUltimaVersaoDisponivelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BuscaUltimaVersaoDisponivelResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="VerificaVersaoLiberadaParaClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificaVersaoLiberadaParaCliente" />
+  </wsdl:message>
+  <wsdl:message name="VerificaVersaoLiberadaParaClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificaVersaoLiberadaParaClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscaInforcoesSobreAtualizacaoSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscaInforcoesSobreAtualizacao" />
+  </wsdl:message>
+  <wsdl:message name="BuscaInforcoesSobreAtualizacaoSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscaInforcoesSobreAtualizacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuscaUltimaVersaoDisponivelSoapIn">
+    <wsdl:part name="parameters" element="tns:BuscaUltimaVersaoDisponivel" />
+  </wsdl:message>
+  <wsdl:message name="BuscaUltimaVersaoDisponivelSoapOut">
+    <wsdl:part name="parameters" element="tns:BuscaUltimaVersaoDisponivelResponse" />
+  </wsdl:message>
+  <wsdl:portType name="VerisionamentoSoap">
+    <wsdl:operation name="VerificaVersaoLiberadaParaCliente">
+      <wsdl:input message="tns:VerificaVersaoLiberadaParaClienteSoapIn" />
+      <wsdl:output message="tns:VerificaVersaoLiberadaParaClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscaInforcoesSobreAtualizacao">
+      <wsdl:input message="tns:BuscaInforcoesSobreAtualizacaoSoapIn" />
+      <wsdl:output message="tns:BuscaInforcoesSobreAtualizacaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuscaUltimaVersaoDisponivel">
+      <wsdl:input message="tns:BuscaUltimaVersaoDisponivelSoapIn" />
+      <wsdl:output message="tns:BuscaUltimaVersaoDisponivelSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VerisionamentoSoap" type="tns:VerisionamentoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerificaVersaoLiberadaParaCliente">
+      <soap:operation soapAction="http://tempuri.org/VerificaVersaoLiberadaParaCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscaInforcoesSobreAtualizacao">
+      <soap:operation soapAction="http://tempuri.org/BuscaInforcoesSobreAtualizacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscaUltimaVersaoDisponivel">
+      <soap:operation soapAction="http://tempuri.org/BuscaUltimaVersaoDisponivel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VerisionamentoSoap12" type="tns:VerisionamentoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VerificaVersaoLiberadaParaCliente">
+      <soap12:operation soapAction="http://tempuri.org/VerificaVersaoLiberadaParaCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscaInforcoesSobreAtualizacao">
+      <soap12:operation soapAction="http://tempuri.org/BuscaInforcoesSobreAtualizacao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuscaUltimaVersaoDisponivel">
+      <soap12:operation soapAction="http://tempuri.org/BuscaUltimaVersaoDisponivel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Verisionamento">
+    <wsdl:port name="VerisionamentoSoap" binding="tns:VerisionamentoSoap">
+      <soap:address location="http://187.75.170.94/Versionamento/Verisionamento.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VerisionamentoSoap12" binding="tns:VerisionamentoSoap12">
+      <soap12:address location="http://187.75.170.94/Versionamento/Verisionamento.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

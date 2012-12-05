@@ -1,0 +1,318 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HLP.GeraXml.WebService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Producao_cteConsulta_CteConsulta" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/cteWEB/services/cteConsulta.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Homologacao_cteCancelamento_CteCancelamento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/cteCancelamento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Homologacao_cteConsulta_CteConsulta" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/cteConsulta.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Homologacao_cteInutilizacao_CteInutilizacao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/cteInutilizacao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_br_gov_sp_fazenda_nfe_homologacao_CteRecepcao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/cteRecepcao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Homologacao_cteRetRecepcao_CteRetRecepcao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/cteRetRecepcao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Homologacao_cteStatusServico_CteStatusServico" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/cteWEB/services/cteStatusServico.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Producao_cteCancelamento_CteCancelamento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/cteWEB/services/cteCancelamento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Producao_cteInutilizacao_CteInutilizacao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/cteWEB/services/cteInutilizacao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Producao_cteRecepcao_CteRecepcao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/cteWEB/services/cteRecepcao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Producao_cteRetRecepcao_CteRetRecepcao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/cteWEB/services/cteRetRecepcao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_CTe_Producao_cteStatusServico_CteStatusServico" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/cteWEB/services/cteStatusServico.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_Itu_servicos_Homologacao_ServiceGinfesImplService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.ginfes.com.br//ServiceGinfesImpl</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_Itu_servicos_Producao_ServiceGinfesImplService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://producao.ginfes.com.br//ServiceGinfesImpl</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeCancelamento_MS_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.ms.gov.br/homologacao/services2/NfeCancelamento2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeCancelamento_RS_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefaz.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeCancelamento_SP_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/nfeweb/services/NfeCancelamento2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeConsulta_MS_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.ms.gov.br/homologacao/services2/NfeConsulta2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeConsulta_RS_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefaz.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeConsulta_SP_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/nfeweb/services/NfeConsulta2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeConsultaCadastro_MS_CadConsultaCadastro2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.ms.gov.br/homologacao/services2/CadConsultaCadastro2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeInutilizacao_MS_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.ms.gov.br/homologacao/services2/NfeInutilizacao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeInutilizacao_RS_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefaz.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_br_gov_sp_fazenda_nfe_homologacao_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/nfeweb/services/NfeInutilizacao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeRecepcao_MS_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.ms.gov.br/homologacao/services2/NfeRecepcao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeRecepcao_RS_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefaz.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeRecepcao_SP_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/nfeweb/services/NfeRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeRecepcaoEvento_RS_RecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefaz.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeRecepcaoEvento_SP_RecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/eventosWEB/services/RecepcaoEvento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeRetRecepacao_RS_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefaz.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeRetRecepcao_MS_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.ms.gov.br/homologacao/services2/NfeRetRecepcao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NfeRetRecepcao_SP_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/nfeweb/services/NfeRetRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeStatusServico_MS_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.ms.gov.br/homologacao/services2/NfeStatusServico2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeStatusServico_RS_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefaz.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NFeStatusServico_SP_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.fazenda.sp.gov.br/nfeweb/services/NfeStatusServico2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeCancelamento_MS_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.ms.gov.br/producao/services2/NfeCancelamento2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeCancelamento_RS_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefaz.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeCancelamento_SP_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/nfeweb/services/nfecancelamento2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeConsulta_MS_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.ms.gov.br/producao/services2/NfeConsulta2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeConsulta_RS_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefaz.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeConsulta_SP_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/nfeweb/services/nfeconsulta2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_br_gov_ms_fazenda_nfe_CadConsultaCadastro2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.ms.gov.br/producao/services2/CadConsultaCadastro2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_RS_CadConsultaCadastro2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://sef.sefaz.rs.gov.br/ws/cadconsultacadastro/cadconsultacadastro2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_SP_CadConsultaCadastro2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/nfeweb/services/cadconsultacadastro2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeInutilizacao_MS_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.ms.gov.br/producao/services2/NfeInutilizacao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeInutilizacao_RS_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefaz.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeInutilizacao_SP_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/nfeweb/services/nfeinutilizacao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRecepcao_MS_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.ms.gov.br/producao/services2/NfeRecepcao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRecepcao_RS_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefaz.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRecepcao_SP_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/nfeweb/services/nferecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRecepcaoEvento_MS_NfeRecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.ms.gov.br/producao/services2/RecepcaoEvento</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRecepcaoEvento_RS_RecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefaz.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRetRecepcao_SP_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/nfeweb/services/nferetrecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_br_gov_ms_fazenda_nfe_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.ms.gov.br/producao/services2/NfeStatusServico2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeStatusServico_RS_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefaz.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeStatusServico_SP_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/nfeweb/services/nfestatusservico2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Homologacao_NFeCancelamento_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hom.nfe.fazenda.gov.br/SCAN/NfeCancelamento2/NfeCancelamento2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Homologacao_NFeConsulta_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hom.nfe.fazenda.gov.br/SCAN/NfeConsulta2/NfeConsulta2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Homologacao_NFeInutilizacao_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hom.nfe.fazenda.gov.br/SCAN/NfeInutilizacao2/NfeInutilizacao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Homologacao_NFeRecepcao_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hom.nfe.fazenda.gov.br/SCAN/NfeRecepcao2/NfeRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Homologacao_NFeRetRecepcao_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hom.nfe.fazenda.gov.br/SCAN/NfeRetRecepcao2/NfeRetRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Homologacao_NFeStatusServico_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hom.nfe.fazenda.gov.br/SCAN/NfeStatusServico2/NfeStatusServico2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Producao_NFeCancelamento_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.scan.fazenda.gov.br/NfeCancelamento2/NfeCancelamento2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Producao_NFeConsulta_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.scan.fazenda.gov.br/NfeConsulta2/NfeConsulta2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Producao_NFeInutilizacao_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.scan.fazenda.gov.br/NfeInutilizacao2/NfeInutilizacao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Producao_NFeRecepcao_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.scan.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Producao_NFeRetRecepcao_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.scan.fazenda.gov.br/NfeRetRecepcao2/NfeRetRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_SCAN_Producao_NFeStatusServico_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.scan.fazenda.gov.br/NFeStatusServico2/NFeStatusServico2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_Ws_versionamento_Cliente_Verisionamento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://187.75.170.94/Versionamento/Verisionamento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRecepcaoEvento_SP_RecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/eventosWEB/services/RecepcaoEvento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRecepcao_SVRS_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Producao_RetRecepcao_SVRS_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Producao_Cancelamento_SVRS_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Producao_Inutilizacao_SVRS_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Producao_Consulta_SVRS_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Producao_StatusServico_SVRS_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Producao_RecepcaoEvento_SVRS_RecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Homologacao_Recepcao_SVRS_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefazvirtual.rs.gov.br/ws/Nferecepcao/NFeRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Homologacao_RetRecepcao_SVRS_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefazvirtual.rs.gov.br/ws/NfeRetRecepcao/NfeRetRecepcao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Homologacao_Cancelamento_SVRS_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefazvirtual.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Homologacao_Inutilizacao_SVRS_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefazvirtual.rs.gov.br/ws/nfeinutilizacao/nfeinutilizacao2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Homologacao_Consulta_SVRS_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefazvirtual.rs.gov.br/ws/NfeConsulta/NfeConsulta2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Homologacao_StatusServico_SVRS_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefazvirtual.rs.gov.br/ws/NfeStatusServico/NfeStatusServico2.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_V2_Homologacao_RecepcaoEvento_SVRS_RecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://homologacao.nfe.sefazvirtual.rs.gov.br/ws/recepcaoevento/recepcaoevento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NfeStatusServico_MG_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.mg.gov.br/nfe2/services/NfeStatusServico2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NfeRecepcao_MG_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.mg.gov.br/nfe2/services/NfeRecepcao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NfeRetRecepcao_MG_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.mg.gov.br/nfe2/services/NfeRetRecepcao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NfeCancelamento_MG_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.mg.gov.br/nfe2/services/NfeCancelamento2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NfeInutilizacao_MG_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.mg.gov.br/nfe2/services/NfeInutilizacao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NfeConsultaProtocolo_MG_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.mg.gov.br/nfe2/services/NfeConsulta2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NfeConsultaCadastro_MG_CadConsultaCadastro2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.mg.gov.br/nfe2/services/cadconsultacadastro2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NfeRecepcao_MG_NfeRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hnfe.fazenda.mg.gov.br/nfe2/services/NfeRecepcao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NfeRetRecepcao_MG_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hnfe.fazenda.mg.gov.br/nfe2/services/NfeRetRecepcao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NfeCancelamento_MG_NfeCancelamento2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hnfe.fazenda.mg.gov.br/nfe2/services/NfeCancelamento2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NfeInutilizacao_MG_NfeInutilizacao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hnfe.fazenda.mg.gov.br/nfe2/services/NfeInutilizacao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NfeConsultaProtocolo_MG_NfeConsulta2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hnfe.fazenda.mg.gov.br/nfe2/services/NfeConsulta2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NfeStatusServico_MG_NfeStatusServico2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hnfe.fazenda.mg.gov.br/nfe2/services/NfeStatusServico2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_NfeConsultaCadastro_MG_CadConsultaCadastro2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hnfe.fazenda.mg.gov.br/nfe2/services/cadconsultacadastro2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_RecepcaoEvento_MG_RecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.mg.gov.br/nfe2/services/RecepcaoEvento</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Homologacao_RecepcaoEvento_MG_RecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://hnfe.fazenda.mg.gov.br/nfe2/services/RecepcaoEvento</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_Susessu_Producao_Servico_ServicoNfd" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.susesu.com.br/wsnfd/serviconfd.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_Susesu_Homologacao_Servico_ServicoNfd" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://pira.comunix.net/gestaopublica/wsnfd/ServicoNfd.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_v2_Producao_NFeRetRecepcao_MS_NfeRetRecepcao2" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://nfe.fazenda.ms.gov.br/producao/services2/NfeRetRecepcao2</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_riodasostras_Producao_Nfse" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://spe.riodasostras.rj.gov.br/nfse/WSNacional/nfse.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

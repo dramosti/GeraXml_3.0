@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://www.portalfiscal.inf.br/nfe/wsdl/NfeInutilizacao2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="NfeInutilizacao2" targetNamespace="http://www.portalfiscal.inf.br/nfe/wsdl/NfeInutilizacao2" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.portalfiscal.inf.br/nfe/wsdl/NfeInutilizacao2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="nfeDadosMsg">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="nfeInutilizacaoNF2Result">
+        <xs:complexType mixed="true">
+          <xs:sequence>
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="nfeCabecMsg" type="tns:nfeCabecMsg" />
+      <xs:complexType name="nfeCabecMsg">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="cUF" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="versaoDados" type="xs:string" />
+        </xs:sequence>
+        <xs:anyAttribute />
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="NfeInutilizacaoNF2Request">
+    <part name="nfeDadosMsg" element="tns:nfeDadosMsg" />
+    <part name="nfeCabecMsg" element="tns:nfeCabecMsg" />
+  </message>
+  <message name="NfeInutilizacaoNF2Response">
+    <part name="nfeInutilizacaoNF2Result" element="tns:nfeInutilizacaoNF2Result" />
+    <part name="nfeCabecMsg" element="tns:nfeCabecMsg" />
+  </message>
+  <portType name="NfeInutilizacao2Soap">
+    <operation name="nfeInutilizacaoNF2">
+      <input message="tns:NfeInutilizacaoNF2Request" />
+      <output message="tns:NfeInutilizacaoNF2Response" />
+    </operation>
+  </portType>
+  <binding name="NfeInutilizacao2Soap12" type="tns:NfeInutilizacao2Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="nfeInutilizacaoNF2">
+      <soap12:operation soapAction="http://www.portalfiscal.inf.br/nfe/wsdl/NfeInutilizacao2/nfeInutilizacaoNF2" style="document" />
+      <input>
+        <soap12:body use="literal" parts="nfeDadosMsg" />
+        <soap12:header message="tns:NfeInutilizacaoNF2Request" part="nfeCabecMsg" use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" parts="nfeInutilizacaoNF2Result" />
+        <soap12:header message="tns:NfeInutilizacaoNF2Response" part="nfeCabecMsg" use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="NfeInutilizacao2">
+    <port name="NfeInutilizacao2Soap12" binding="tns:NfeInutilizacao2Soap12">
+      <soap12:address location="https://nfe.fazenda.ms.gov.br/producao/services2/NfeInutilizacao2" />
+    </port>
+  </service>
+</definitions>
