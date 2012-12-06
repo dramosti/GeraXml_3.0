@@ -52,8 +52,30 @@ namespace HLP.GeraXml.bel
             this.sNotaFis = sCD_NOTAFIS;
             this.sChaveNFe = sChaveNFe;
             this.sCodigoVerificacaoNFservico = sCodigoVerificacaoNFservico;
-            this.sDestinatario = Acesso.NM_RAMO == Acesso.BancoDados.TRANSPORTE ? RetornaEmailDestinatarioCte(sCD_NFSEQ) : RetornaEmailDestinatarioNfe(sCD_NFSEQ);
-            this.sOutros = Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE ? RetornaEmailTransportador(sCD_NFSEQ) : "";
+
+            string[] aux = RetornaEmailDestinatarioNfe(sCD_NFSEQ);
+            this.sDestinatario = Acesso.NM_RAMO == Acesso.BancoDados.TRANSPORTE ? RetornaEmailDestinatarioCte(sCD_NFSEQ) : aux[0];
+            if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
+            {
+                this.sOutros = RetornaEmailTransportador(sCD_NFSEQ) != "" ? RetornaEmailTransportador(sCD_NFSEQ) + "; " : "";
+
+                for (int i = 1; i < aux.Length; i++)
+                {
+                    if ((i + 1) < aux.Length)
+                    {
+                        this.sOutros += aux[i].Trim() + "; ";
+                    }
+                    else
+                    {
+                        this.sOutros += aux[i].Trim();
+                    }
+                }
+            }
+            else
+            {
+                this.sOutros = "";
+            }
+            //this.sOutros = Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE ? RetornaEmailTransportador(sCD_NFSEQ) : "";
 
         }
 

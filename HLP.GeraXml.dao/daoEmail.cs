@@ -41,11 +41,11 @@ namespace HLP.GeraXml.dao
 
         }
 
-        public string RetornaEmailDestinatarioNfe(string sSeq)
+        public string[] RetornaEmailDestinatarioNfe(string sSeq)
         {
             try
             {
-                string email = "";
+                string[] email = null;
                 StringBuilder sSql = new StringBuilder();
                 sSql.Append("select ");
                 sSql.Append("clifor.cd_email ");
@@ -68,13 +68,13 @@ namespace HLP.GeraXml.dao
                 DataTable dt = HlpDbFuncoes.qrySeekRet(sSql.ToString());
                 foreach (DataRow dr in dt.Rows)
                 {
-                    string[] split = dt.Rows[0]["cd_email"].ToString().Split(';');
-                    foreach (var i in split)
-                    {
-                        email = i;
-                        break;
-                    }
+                    email = dt.Rows[0]["cd_email"].ToString().Split(';');
                 }
+                if (email == null)
+                {
+                    email[0] = "";
+                }
+
                 return email;
 
             }
