@@ -69,6 +69,7 @@ namespace HLP.GeraXml.bel
                     {
                         this.sOutros += aux[i].Trim();
                     }
+
                 }
             }
             else
