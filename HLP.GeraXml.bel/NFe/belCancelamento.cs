@@ -268,7 +268,7 @@ namespace HLP.GeraXml.bel.NFe
             objRetorno.nNF = objPesquisa.sCD_NOTAFIS;
             objRetorno.seqNF = objPesquisa.sCD_NFSEQ;
 
-            if (objRetorno.cstat != "101")
+            if (objRetorno.cstat != "101" && objRetorno.cstat != "151" && objRetorno.cstat != "155")
             {
                 objRetorno.nprot = "inexistente";
             }
