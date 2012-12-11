@@ -53,7 +53,8 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(opereve.st_servico,'')", sAlias = "st_servico" });
                 lCampos.Add(new CamposSelect { sCampo = "movitem.cd_oper", sAlias = "cd_oper" });
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(nf.st_soma_dev_tot_nf,'N')", sAlias = "st_soma_dev_tot_nf" });
-                lCampos.Add(new CamposSelect { sCampo = "coalesce(produto.cd_orig_sittrib,0)", sAlias = "Orig" }); //os_26467
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(produto.cd_orig_sittrib,0)", sAlias = "Orig" }); //os_26467 - CST_NOVAS
+                lCampos.Add(new CamposSelect { sCampo = "movitem.cd_sittrib", sAlias = "CST" }); //CST Antiga
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(EMPRESA.ST_SUPERSIMPLES,'N')", sAlias = "ST_SUPERSIMPLES" }); //os_26817
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.VL_BASEIPI,0)", sAlias = "VL_BASEIPI" }); //os_26467
 
@@ -194,8 +195,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     // lCampos.Add(new CamposSelect { sCampo = "movitem.vl_uniprod_ii", sAlias = "vUnTrib" });
                     lCampos.Add(new CamposSelect { sCampo = "(case when movitem.vl_uniprod_ii = 0 then movitem.vl_uniprod else movitem.vl_uniprod_ii end)", sAlias = "vUnTrib", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
                 }
-                lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_ii,0)", sAlias = "vl_ii" });
-                lCampos.Add(new CamposSelect { sCampo = "movitem.cd_sittrib", sAlias = "CST" });
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_ii,0)", sAlias = "vl_ii" });                
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(nf.st_ipi,'S')", sAlias = "st_ipi" }); //OS_25673
                 lCampos.Add(new CamposSelect { sCampo = "movitem.vl_alicredicms", sAlias = "pCredSN" });//NFe_2.0
                 lCampos.Add(new CamposSelect { sCampo = "movitem.vl_credicms", sAlias = "vCredICMSSN", bAgrupa = Acesso.bAGRUPA_ITENS_NFE }); // **

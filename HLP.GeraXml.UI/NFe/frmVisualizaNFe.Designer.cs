@@ -2766,7 +2766,7 @@
             this.cbxOrigICMSitens._LabelText = "Origem da Mercadoria";
             this.cbxOrigICMSitens._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.NÃO;
             this.cbxOrigICMSitens._situacao = false;
-            this.cbxOrigICMSitens._TamanhoComboBox = 129;
+            this.cbxOrigICMSitens._TamanhoComboBox = 422;
             this.cbxOrigICMSitens._TamanhoMaiorLabel = 200;
             this.cbxOrigICMSitens._Visible = true;
             this.cbxOrigICMSitens.AutoSize = true;
@@ -2779,7 +2779,7 @@
             this.cbxOrigICMSitens.Name = "cbxOrigICMSitens";
             this.cbxOrigICMSitens.SelectedIndex = -1;
             this.cbxOrigICMSitens.SelectedValue = 0;
-            this.cbxOrigICMSitens.Size = new System.Drawing.Size(270, 22);
+            this.cbxOrigICMSitens.Size = new System.Drawing.Size(563, 22);
             this.cbxOrigICMSitens.TabIndex = 8;
             this.cbxOrigICMSitens.ValueMember = "ValueMember";
             // 

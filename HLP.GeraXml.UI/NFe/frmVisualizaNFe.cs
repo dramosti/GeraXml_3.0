@@ -2538,16 +2538,20 @@ namespace HLP.GeraXml.UI.NFe
         #endregion
         private void bsDI_CurrentItemChanged(object sender, EventArgs e)
         {
-            //  if (dgvDI.Focused)
+           // if (dgvDI.Focused)
             {
-                if ((bsDI.Current as belDI).adi != null)
+                if (bsDI.Count > 0)
                 {
-                    bsAdi.DataSource = (bsDI.Current as belDI).adi;
-                }
-                else
-                {
-                    (bsDI.Current as belDI).adi = new List<beladi>();
-                    bsAdi.DataSource = (bsDI.Current as belDI).adi;
+
+                    if ((bsDI.Current as belDI).adi != null)
+                    {
+                        bsAdi.DataSource = (bsDI.Current as belDI).adi;
+                    }
+                    else
+                    {
+                        (bsDI.Current as belDI).adi = new List<beladi>();
+                        bsAdi.DataSource = (bsDI.Current as belDI).adi;
+                    }
                 }
             }
 
