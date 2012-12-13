@@ -166,13 +166,13 @@
         "Entry"
         {
         "MsmKey" = "8:_2456D5F0110332D819805D72B4075E2F"
-        "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
+        "OwnerKey" = "8:_5D50A991F36320F2CEFE996A7AE9B793"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2456D5F0110332D819805D72B4075E2F"
-        "OwnerKey" = "8:_F9BC816A6CD8A7F5172C6CFF7A4BA194"
+        "OwnerKey" = "8:_3D8733E0E6404420AC3D3A12983EA62E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -184,7 +184,13 @@
         "Entry"
         {
         "MsmKey" = "8:_2456D5F0110332D819805D72B4075E2F"
-        "OwnerKey" = "8:_3D8733E0E6404420AC3D3A12983EA62E"
+        "OwnerKey" = "8:_F9BC816A6CD8A7F5172C6CFF7A4BA194"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2456D5F0110332D819805D72B4075E2F"
+        "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -233,18 +239,6 @@
         {
         "MsmKey" = "8:_3846E048C20742C5870F105F28BD9350"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_38B5C89AECC1318797666E273FE85597"
-        "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_38B5C89AECC1318797666E273FE85597"
-        "OwnerKey" = "8:_5D50A991F36320F2CEFE996A7AE9B793"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -808,12 +802,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_38B5C89AECC1318797666E273FE85597"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3D8733E0E6404420AC3D3A12983EA62E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -862,13 +850,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2456D5F0110332D819805D72B4075E2F"
+        "OwnerKey" = "8:_5D50A991F36320F2CEFE996A7AE9B793"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5D50A991F36320F2CEFE996A7AE9B793"
+        "OwnerKey" = "8:_2456D5F0110332D819805D72B4075E2F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1418,7 +1406,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1584,37 +1572,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_38B5C89AECC1318797666E273FE85597"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ComponentFactory.Krypton.Toolkit, Version=4.3.2.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_38B5C89AECC1318797666E273FE85597"
-                    {
-                    "Name" = "8:ComponentFactory.Krypton.Toolkit.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ComponentFactory.Krypton.Toolkit.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_687B1883591C40798B77B7B93F1A5C2F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3A7C8DB27AA64E96B640AF9AEECF7FD4"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\xmldsig-core-schema_v1.01.xsd"
@@ -1670,7 +1627,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HLP.GeraXml.UI, Version=3.0.0.72, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:HLP.GeraXml.UI, Version=3.0.0.73, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_3D8733E0E6404420AC3D3A12983EA62E"
@@ -3576,15 +3533,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GeraXml 3.0"
-        "ProductCode" = "8:{9127E0EE-4A5B-43F2-8C66-73F37C50641D}"
-        "PackageCode" = "8:{835C79E6-BE14-443D-B0E9-8B1A0FB17687}"
+        "ProductCode" = "8:{8168A677-A26E-4111-A325-90B64E6671DC}"
+        "PackageCode" = "8:{C9B9251B-7276-48F5-8D9E-8D09A092ECB9}"
         "UpgradeCode" = "8:{27898E47-F665-4982-BD1F-A648DABCB4A3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:3.0.73"
+        "ProductVersion" = "8:3.0.74"
         "Manufacturer" = "8:HLP"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

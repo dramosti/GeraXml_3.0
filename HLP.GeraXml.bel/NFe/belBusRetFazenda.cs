@@ -10,6 +10,7 @@ using System.IO;
 using ComponentFactory.Krypton.Toolkit;
 using System.Threading;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace HLP.GeraXml.bel.NFe
 {
@@ -161,7 +162,6 @@ namespace HLP.GeraXml.bel.NFe
                             }
                         }
                         bStopRetorno = true;
-
                         foreach (DadosRetorno nota in lDadosRetorno)
                         {
                             if (nota.cStat.Equals("100"))
@@ -227,7 +227,6 @@ namespace HLP.GeraXml.bel.NFe
                         XmlDocument xmlNfeDadosMsg = new XmlDocument();
                         xmlNfeDadosMsg.LoadXml(snfeDadosMsg);
                         XmlNode xNodeRet = xmlNfeDadosMsg.DocumentElement;
-
                         sXmlRetorno = ws2.nfeRetRecepcao2(xNodeRet).OuterXml;
                     }
                     else if (Acesso.TP_AMB == 2)

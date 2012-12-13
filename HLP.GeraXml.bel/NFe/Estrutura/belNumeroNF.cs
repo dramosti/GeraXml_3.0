@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using HLP.GeraXml.dao.NFe;
 using HLP.GeraXml.Comum.Static;
+using System.Windows.Forms;
 
 namespace HLP.GeraXml.bel.NFe.Estrutura
 {
@@ -17,7 +18,34 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         {
             this.lobjPesquisa = _lobjPesquisa;
             ValidaGruposFaturamento();
-            sGrupoNF = lobjPesquisa.FirstOrDefault().sCD_GRUPONF;
+            if (Acesso.TP_EMIS == 3)
+            {
+                if (string.IsNullOrEmpty(Acesso.GRUPO_SCAN))
+                {
+                    throw new Exception("Favor configurar o Grupo de SCAN na configuração do GeraXml");
+                }
+
+                if (lobjPesquisa.FirstOrDefault().sCD_GRUPONF != Acesso.GRUPO_SCAN)
+                {
+                    if (MessageBox.Show(null, "Deseja que o Sistema altere o Grupo de faturamento da Nota ?", "A V I S O", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        sGrupoNF = Acesso.GRUPO_SCAN;
+                        AlteraGrupoFaturamentoToSCAN(this.lobjPesquisa.Select(c => c.sCD_NFSEQ).ToArray());
+                    }
+                    else
+                    {
+                        throw new Exception("Sistema em modo SCAN e grupo de faturamento configurado no Gera não bate com grupo de faturameto da nota.");
+                    }
+                }
+                else
+                {
+                    sGrupoNF = lobjPesquisa.FirstOrDefault().sCD_GRUPONF;
+                }
+            }
+            else
+            {
+                sGrupoNF = lobjPesquisa.FirstOrDefault().sCD_GRUPONF;
+            }
             foreach (belPesquisaNotas item in lobjPesquisa)
             {
                 lsNotas.Add(item.sCD_NFSEQ);
@@ -34,7 +62,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         }
 
 
-       
+
         public void AlteraDuplicatas(bool bNotaServico)
         {
             try

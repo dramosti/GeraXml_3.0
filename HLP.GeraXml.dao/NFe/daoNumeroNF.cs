@@ -52,7 +52,7 @@ namespace HLP.GeraXml.dao.NFe
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    lDadosGerar.Add(new DadosGerar { seqNF = dr["cd_nfseq"].ToString(), nNF = iProximoNumero.ToString().PadLeft(6,'0') });
+                    lDadosGerar.Add(new DadosGerar { seqNF = dr["cd_nfseq"].ToString(), nNF = iProximoNumero.ToString().PadLeft(6, '0') });
                     iProximoNumero++;
                 }
 
@@ -95,7 +95,7 @@ namespace HLP.GeraXml.dao.NFe
             }
         }
 
-        public void AtualizaMovitem(daoNumeroNF.DadosGerar nota) 
+        public void AtualizaMovitem(daoNumeroNF.DadosGerar nota)
         {
             string sFiltro = string.Empty;
             string sSqlAtualizaMovitem = string.Empty;
@@ -128,6 +128,26 @@ namespace HLP.GeraXml.dao.NFe
             }
 
             HlpDbFuncoes.qrySeekUpdate(sSqlAtualizaMovitem);
+        }
+
+        public void AlteraGrupoFaturamentoToSCAN(string[] scd_nfseq)
+        {
+            try
+            {
+                List<string> lseq = new List<string>();
+                foreach (string item in scd_nfseq)
+                {
+                    lseq.Add("'" + item + "'");
+                }
+
+                string sQuery = "update nf set cd_gruponf = '{0}' where cd_nfseq in ({1}) and cd_empresa = '{2}'";
+                sQuery = string.Format(sQuery, Acesso.GRUPO_SCAN, string.Join(",", lseq), Acesso.CD_EMPRESA);
+                HlpDbFuncoes.qrySeekUpdate(sQuery);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }

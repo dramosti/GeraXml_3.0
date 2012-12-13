@@ -7,6 +7,7 @@ using System.Xml;
 using HLP.GeraXml.dao.NFe;
 using HLP.GeraXml.bel.NFe.Estrutura;
 using System.IO;
+using System.Windows.Forms;
 
 namespace HLP.GeraXml.bel.NFe
 {
@@ -231,7 +232,7 @@ namespace HLP.GeraXml.bel.NFe
                         ws2.ClientCertificates.Add(Acesso.cert_NFe);
                         XmlDocument _xmlxelem = new XmlDocument();
                         _xmlxelem.PreserveWhitespace = true;
-                        _xmlxelem.LoadXml(sPathLote);
+                        _xmlxelem.Load(sPathLote);
                         XmlNode xNelem = null;
                         xNelem = _xmlxelem.DocumentElement;
                         sRet = ws2.nfeRecepcaoLote2(xNelem).OuterXml;
@@ -247,10 +248,10 @@ namespace HLP.GeraXml.bel.NFe
                         ws2.ClientCertificates.Add(Acesso.cert_NFe);
                         XmlDocument _xmlxelem = new XmlDocument();
                         _xmlxelem.PreserveWhitespace = true;
-                        _xmlxelem.LoadXml(sPathLote);
+                        _xmlxelem.Load(sPathLote);
                         XmlNode xNelem = null;
                         xNelem = _xmlxelem.DocumentElement;
-                        sRet = ws2.nfeRecepcaoLote2(xNelem).ToString();
+                        sRet = ws2.nfeRecepcaoLote2(xNelem).OuterXml;
                     }
                     #endregion
                 }
