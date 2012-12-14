@@ -72,6 +72,7 @@ namespace HLP.GeraXml.dao
                 }
                 if (email == null)
                 {
+                    email = new string[1];
                     email[0] = "";
                 }
 
