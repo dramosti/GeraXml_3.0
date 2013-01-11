@@ -69,6 +69,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0E60F1C8FCF0FE99E8326E76B02E95E0"
+        "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0F1BCECCAF5D4CBFB6393B0E1E00251A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -245,12 +251,6 @@
         {
         "MsmKey" = "8:_3A7C8DB27AA64E96B640AF9AEECF7FD4"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3B555877D70ECAE5EEE2A93180CE2072"
-        "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -808,6 +808,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0E60F1C8FCF0FE99E8326E76B02E95E0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -857,12 +863,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_2456D5F0110332D819805D72B4075E2F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3B555877D70ECAE5EEE2A93180CE2072"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1135,6 +1135,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0E60F1C8FCF0FE99E8326E76B02E95E0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_0E60F1C8FCF0FE99E8326E76B02E95E0"
+                    {
+                    "Name" = "8:log4net.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:log4net.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_687B1883591C40798B77B7B93F1A5C2F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0F1BCECCAF5D4CBFB6393B0E1E00251A"
@@ -1592,42 +1623,11 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3B555877D70ECAE5EEE2A93180CE2072"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:TRUE"
-            "AssemblyAsmDisplayName" = "8:log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                    "_3B555877D70ECAE5EEE2A93180CE2072"
-                    {
-                    "Name" = "8:log4net.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:log4net.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_687B1883591C40798B77B7B93F1A5C2F"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3D8733E0E6404420AC3D3A12983EA62E"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HLP.GeraXml.UI, Version=3.0.0.73, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:HLP.GeraXml.UI, Version=3.0.0.75, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_3D8733E0E6404420AC3D3A12983EA62E"
@@ -3533,15 +3533,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GeraXml 3.0"
-        "ProductCode" = "8:{8168A677-A26E-4111-A325-90B64E6671DC}"
-        "PackageCode" = "8:{C9B9251B-7276-48F5-8D9E-8D09A092ECB9}"
+        "ProductCode" = "8:{7EAB6527-4C3B-4437-8C5B-37FCF98BE4F2}"
+        "PackageCode" = "8:{9EEA766D-CE23-4592-A86E-6B0090246D60}"
         "UpgradeCode" = "8:{27898E47-F665-4982-BD1F-A648DABCB4A3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:3.0.74"
+        "ProductVersion" = "8:3.0.76"
         "Manufacturer" = "8:HLP"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

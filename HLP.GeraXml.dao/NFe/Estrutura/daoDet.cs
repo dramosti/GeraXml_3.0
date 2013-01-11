@@ -262,7 +262,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
 
                 lCampos.Add(new CamposSelect
                 {
-                    sCampo = "case when tpdoc.st_nfcompl = 'N' then "
+                    sCampo = "case when coalesce(tpdoc.st_nfcompl,'N') = 'N' then "
                         + "coalesce(movitem.vl_icmretsubst, 0) "
                         + "else "
                         + "nf.VL_ICMSSUB "
@@ -376,7 +376,8 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 lCampos.Add(new CamposSelect { sCampo = "tpdoc.cd_operval", sAlias = "cd_operval" });
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(Empresa.st_imp_cdpedcli, 'N')", sAlias = "st_imp_cdpedcli" });
                 lCampos.Add(new CamposSelect { sCampo = "transpor.nm_trans", sAlias = "Redespacho" });
-                lCampos.Add(new CamposSelect { sCampo = "transpor.ds_endnor", sAlias = "xLgrRedes" });
+                lCampos.Add(new CamposSelect { sCampo = "transpor.ds_endnor", sAlias = "xLgrRedes" }); 
+                lCampos.Add(new CamposSelect { sCampo = "transpor.cd_cgc", sAlias = "Transpcd_cgc" }); 
                 lCampos.Add(new CamposSelect { sCampo = "transpor.nr_endnor", sAlias = "nroRedes" });
                 lCampos.Add(new CamposSelect { sCampo = "transpor.ds_bairronor", sAlias = "xBairroRedes" });
                 lCampos.Add(new CamposSelect { sCampo = "transpor.nm_cidnor", sAlias = "cmunRedes" });

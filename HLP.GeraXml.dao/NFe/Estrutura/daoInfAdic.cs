@@ -234,7 +234,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Clear();
 
-                    Int32 iSaldoTer = Convert.ToInt32(cmd.ExecuteScalar());
+                    decimal dSaldoTer = Convert.ToDecimal(cmd.ExecuteScalar());
                     cmd.Connection.Close();
                     strucDevolucoes Devolucao = new strucDevolucoes();
                     if (drDevolucoes["cd_doc"].ToString() != "")
@@ -245,7 +245,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                             Devolucao.dDtEmi = Convert.ToDateTime(drDevolucoes["EmissaoEntrada"]);
                         }
                         Devolucao.dValorNF = dvlTotBruto.ToString("#0.00");
-                        Devolucao.sSaldo = (iSaldoTer > 0 ? "Parcial" : "Total");
+                        Devolucao.sSaldo = (dSaldoTer > 0 ? "Parcial" : "Total");
                         if (!Devolucoes.Exists(c => c.scdNotafis == Devolucao.scdNotafis))
                         {
                             Devolucoes.Add(Devolucao);

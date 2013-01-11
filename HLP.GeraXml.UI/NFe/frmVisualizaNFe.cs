@@ -1223,7 +1223,7 @@ namespace HLP.GeraXml.UI.NFe
                 if (txtInfAdic.Text != "")
                 {
                     nota.infAdic.Infcpl = null;
-                    nota.infAdic.Infcpl = txtInfAdic.Text.Trim().Replace(Environment.NewLine, "");
+                    nota.infAdic.Infcpl = txtInfAdic.Text.Replace(Environment.NewLine, "").Trim().TrimEnd();
                 }
                 #endregion
 
