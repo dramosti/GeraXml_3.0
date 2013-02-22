@@ -194,6 +194,17 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 {
                     // lCampos.Add(new CamposSelect { sCampo = "movitem.vl_uniprod_ii", sAlias = "vUnTrib" });
                     lCampos.Add(new CamposSelect { sCampo = "(case when movitem.vl_uniprod_ii = 0 then movitem.vl_uniprod else movitem.vl_uniprod_ii end)", sAlias = "vUnTrib", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
+
+                    if (HlpDbFuncoes.fExisteCampo("vl_base_ii", "movitem"))
+                    {
+                        lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_base_ii,0)", sAlias = "bii", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
+                    }
+                    else
+                    {
+                        lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "bii"});
+                    }
+
+                    lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_base_ii,0)", sAlias = "bii", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
                 }
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_ii,0)", sAlias = "vl_ii" });                
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(nf.st_ipi,'S')", sAlias = "st_ipi" }); //OS_25673
@@ -206,6 +217,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     List<string> lClientesLiberados = new List<string>();
                     lClientesLiberados.Add("CALDLASER");
                     lClientesLiberados.Add("ALPHAFLEX");
+                    lClientesLiberados.Add("BENGALAS");
 
 
                     if (lClientesLiberados.Contains(Acesso.NM_EMPRESA))
@@ -213,7 +225,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                         lCampos.Add(new CamposSelect
                         {
                             sCampo = "coalesce(MOVITEM.vl_baseicm,0)",
-                            sAlias = " vBC",
+                            sAlias = "vBC",
                             bAgrupa = Acesso.bAGRUPA_ITENS_NFE
                         });
                     }
@@ -222,7 +234,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                         lCampos.Add(new CamposSelect
                         {
                             sCampo = GetSelectVbc(),
-                            sAlias = " vBC",
+                            sAlias = "vBC",
                             bAgrupa = Acesso.bAGRUPA_ITENS_NFE
                         });
                     }
@@ -315,8 +327,8 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 }
                 else
                 {
-                    lCampos.Add(new CamposSelect { sCampo = "coalesce(empresa.vl_aliqcofins_suframa, 0)", sAlias = "vl_aliqcofins_suframa", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
-                    lCampos.Add(new CamposSelect { sCampo = "coalesce(empresa.vl_aliqpis_suframa, 0)", sAlias = "vl_aliqpis_suframa", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
+                    lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_percofins, 0)", sAlias = "vl_aliqcofins_suframa", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
+                    lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_perpis, 0)", sAlias = "vl_aliqpis_suframa", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
                 }
                 lCampos.Add(new CamposSelect { sCampo = "endentr.ds_endent", sAlias = "xLgr" });
                 lCampos.Add(new CamposSelect { sCampo = "endentr.ds_endent", sAlias = "xLgr" });

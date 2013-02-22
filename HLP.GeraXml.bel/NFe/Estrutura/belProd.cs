@@ -257,18 +257,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         }
 
         public belcomb belcomb { get; set; }
-
-        public belComp belComp
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
+                
         private string _ceantrib;
 
         public string Ceantrib

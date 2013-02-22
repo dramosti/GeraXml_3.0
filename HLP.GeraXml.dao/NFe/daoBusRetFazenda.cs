@@ -47,6 +47,7 @@ namespace HLP.GeraXml.dao.NFe
                 string sSql = string.Format("UPDATE NF SET " +
                                                     "cd_recibonfe = 'denegada', " +
                                                     "st_nfe = 'S' " +
+                                                    ", cd_stdoc = '04' " +
                                                     (HlpDbFuncoes.fExisteCampo("ST_DENEGADA", "NF") ? " ,ST_DENEGADA = 'S' " : "") +
                                                     (HlpDbFuncoes.fExisteCampo("CD_STDOC", "NF") ? " ,CD_STDOC = '04' " : "") +
                                                     "WHERE CD_NFSEQ = '{0}' AND CD_EMPRESA = '{1}'",

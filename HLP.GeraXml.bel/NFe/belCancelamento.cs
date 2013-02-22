@@ -11,6 +11,8 @@ using System.Xml.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.IO;
 using HLP.GeraXml.dao;
+using System.Xml.Serialization;
+using HLP.GeraXml.Comum;
 
 namespace HLP.GeraXml.bel.NFe
 {
@@ -31,7 +33,7 @@ namespace HLP.GeraXml.bel.NFe
         public DadosRetorno EfetuaCancelamento(belPesquisaNotas _objPesquisa, string sJust)
         {
             this.objPesquisa = _objPesquisa;
-            string sDados = NfeDadosMsg(sJust);
+            string sDados = NFeDadosMsg2(_objPesquisa, sJust);
             XmlDocument xRet = new XmlDocument();
 
             if (Acesso.TP_EMIS == 1)
@@ -43,32 +45,34 @@ namespace HLP.GeraXml.bel.NFe
                             #region Regiao_SP
                             if (Acesso.TP_AMB == 1)
                             {
-                                HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_SP.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_SP.NfeCancelamento2();
-                                HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_SP.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_SP.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_SP.RecepcaoEvento ws2 = new WebService.v2_Producao_NFeRecepcaoEvento_SP.RecepcaoEvento();
+                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_SP.nfeCabecMsg cabec = new WebService.v2_Producao_NFeRecepcaoEvento_SP.nfeCabecMsg();
 
-                                cabec.versaoDados = Acesso.versaoNFe;
+                                cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();
                                 ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                 ws2.nfeCabecMsgValue = cabec;
                                 XmlDocument xmlCanc = new XmlDocument();
                                 xmlCanc.LoadXml(sDados);
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                                xRet.LoadXml(sRet);
 
                             }
                             if (Acesso.TP_AMB == 2)
                             {
-                                HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_SP.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_SP.NfeCancelamento2();
-                                HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_SP.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_SP.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcaoEvento_SP.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcaoEvento_SP.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcaoEvento_SP.RecepcaoEvento ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcaoEvento_SP.RecepcaoEvento();
 
-                                cabec.versaoDados = Acesso.versaoNFe;
+                                cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();
                                 ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                 ws2.nfeCabecMsgValue = cabec;
                                 XmlDocument xmlCanc = new XmlDocument();
                                 xmlCanc.LoadXml(sDados);
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                                xRet.LoadXml(sRet);
 
                             }
                             #endregion
@@ -79,32 +83,34 @@ namespace HLP.GeraXml.bel.NFe
                             #region Regiao_RS
                             if (Acesso.TP_AMB == 1)
                             {
-                                HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_RS.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_RS.NfeCancelamento2();
-                                HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_RS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_RS.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_MS.RecepcaoEvento ws2 = new WebService.v2_Producao_NFeRecepcaoEvento_MS.RecepcaoEvento();
+                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_MS.nfeCabecMsg cabec = new WebService.v2_Producao_NFeRecepcaoEvento_MS.nfeCabecMsg();
 
-                                cabec.versaoDados = Acesso.versaoNFe;
+                                cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();
                                 ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                 ws2.nfeCabecMsgValue = cabec;
                                 XmlDocument xmlCanc = new XmlDocument();
                                 xmlCanc.LoadXml(sDados);
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                                xRet.LoadXml(sRet);
 
                             }
                             if (Acesso.TP_AMB == 2)
                             {
-                                HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_RS.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_RS.NfeCancelamento2();
-                                HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_RS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_RS.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcaoEvento_RS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcaoEvento_RS.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcaoEvento_RS.RecepcaoEvento ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcaoEvento_RS.RecepcaoEvento();
 
-                                cabec.versaoDados = Acesso.versaoNFe;
+                                cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();
                                 ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                 ws2.nfeCabecMsgValue = cabec;
                                 XmlDocument xmlCanc = new XmlDocument();
                                 xmlCanc.LoadXml(sDados);
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                                xRet.LoadXml(sRet);
 
                             }
                             #endregion
@@ -115,32 +121,23 @@ namespace HLP.GeraXml.bel.NFe
                             #region Regiao_SP
                             if (Acesso.TP_AMB == 1)
                             {
-                                HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_MS.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_MS.NfeCancelamento2();
-                                HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_MS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeCancelamento_MS.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_MS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_MS.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_MS.RecepcaoEvento ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_MS.RecepcaoEvento();
 
-                                cabec.versaoDados = Acesso.versaoNFe;
+                                cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();
                                 ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                 ws2.nfeCabecMsgValue = cabec;
                                 XmlDocument xmlCanc = new XmlDocument();
                                 xmlCanc.LoadXml(sDados);
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                                xRet.LoadXml(sRet);
 
                             }
                             if (Acesso.TP_AMB == 2)
                             {
-                                HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_SP.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_SP.NfeCancelamento2();
-                                HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_SP.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NFeCancelamento_SP.nfeCabecMsg();
-
-                                cabec.versaoDados = Acesso.versaoNFe;
-                                cabec.cUF = Acesso.cUF.ToString();
-                                ws2.ClientCertificates.Add(Acesso.cert_NFe);
-                                ws2.nfeCabecMsgValue = cabec;
-                                XmlDocument xmlCanc = new XmlDocument();
-                                xmlCanc.LoadXml(sDados);
-                                XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                throw new Exception("Não implementado");
 
                             }
                             #endregion
@@ -151,33 +148,23 @@ namespace HLP.GeraXml.bel.NFe
                             #region Regiao_SP
                             if (Acesso.TP_AMB == 1)
                             {
-                                HLP.GeraXml.WebService.V2_Producao_Cancelamento_SVRS.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.V2_Producao_Cancelamento_SVRS.NfeCancelamento2();
-                                HLP.GeraXml.WebService.V2_Producao_Cancelamento_SVRS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.V2_Producao_Cancelamento_SVRS.nfeCabecMsg();
+                                HLP.GeraXml.WebService.V2_Producao_RecepcaoEvento_SVRS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.V2_Producao_RecepcaoEvento_SVRS.nfeCabecMsg();
+                                HLP.GeraXml.WebService.V2_Producao_RecepcaoEvento_SVRS.RecepcaoEvento ws2 = new HLP.GeraXml.WebService.V2_Producao_RecepcaoEvento_SVRS.RecepcaoEvento();
 
-                                cabec.versaoDados = Acesso.versaoNFe;
+                                cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();
                                 ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                 ws2.nfeCabecMsgValue = cabec;
                                 XmlDocument xmlCanc = new XmlDocument();
                                 xmlCanc.LoadXml(sDados);
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                                xRet.LoadXml(sRet);
 
                             }
                             if (Acesso.TP_AMB == 2)
                             {
-                                HLP.GeraXml.WebService.V2_Homologacao_Cancelamento_SVRS.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.V2_Homologacao_Cancelamento_SVRS.NfeCancelamento2();
-                                HLP.GeraXml.WebService.V2_Homologacao_Cancelamento_SVRS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.V2_Homologacao_Cancelamento_SVRS.nfeCabecMsg();
-
-                                cabec.versaoDados = Acesso.versaoNFe;
-                                cabec.cUF = Acesso.cUF.ToString();
-                                ws2.ClientCertificates.Add(Acesso.cert_NFe);
-                                ws2.nfeCabecMsgValue = cabec;
-                                XmlDocument xmlCanc = new XmlDocument();
-                                xmlCanc.LoadXml(sDados);
-                                XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
-
+                                throw new Exception("Não implementado");
                             }
                             #endregion
                         }
@@ -187,32 +174,34 @@ namespace HLP.GeraXml.bel.NFe
                             #region Regiao_MG
                             if (Acesso.TP_AMB == 1)
                             {
-                                HLP.GeraXml.WebService.v2_Producao_NfeCancelamento_MG.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NfeCancelamento_MG.NfeCancelamento2();
-                                HLP.GeraXml.WebService.v2_Producao_NfeCancelamento_MG.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NfeCancelamento_MG.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Producao_RecepcaoEvento_MG.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_RecepcaoEvento_MG.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Producao_RecepcaoEvento_MG.RecepcaoEvento ws2 = new HLP.GeraXml.WebService.v2_Producao_RecepcaoEvento_MG.RecepcaoEvento();
 
-                                cabec.versaoDados = Acesso.versaoNFe;
+                                cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();
                                 ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                 ws2.nfeCabecMsgValue = cabec;
                                 XmlDocument xmlCanc = new XmlDocument();
                                 xmlCanc.LoadXml(sDados);
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                                xRet.LoadXml(sRet);
 
                             }
                             if (Acesso.TP_AMB == 2)
                             {
-                                HLP.GeraXml.WebService.v2_Homologacao_NfeCancelamento_MG.NfeCancelamento2 ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NfeCancelamento_MG.NfeCancelamento2();
-                                HLP.GeraXml.WebService.v2_Homologacao_NfeCancelamento_MG.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NfeCancelamento_MG.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Homologacao_RecepcaoEvento_MG.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_RecepcaoEvento_MG.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Homologacao_RecepcaoEvento_MG.RecepcaoEvento ws2 = new HLP.GeraXml.WebService.v2_Homologacao_RecepcaoEvento_MG.RecepcaoEvento();
 
-                                cabec.versaoDados = Acesso.versaoNFe;
+                                cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();
                                 ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                 ws2.nfeCabecMsgValue = cabec;
                                 XmlDocument xmlCanc = new XmlDocument();
                                 xmlCanc.LoadXml(sDados);
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
-                                xRet.LoadXml(ws2.nfeCancelamentoNF2(xNodeCanc).OuterXml);
+                                string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                                xRet.LoadXml(sRet);
 
                             }
                             #endregion
@@ -256,25 +245,32 @@ namespace HLP.GeraXml.bel.NFe
                 #endregion
             }
 
-            return CarregaDadosRetorno(xRet);
+            string sPath = Pastas.PROTOCOLOS + "\\" + objPesquisa.sCD_NFSEQ + "_Ret_Pedcan.xml";
+            xRet.Save(sPath);
+
+            belRetEventoCancelamento objRet = SerializeClassToXml.DeserializeClasse<belRetEventoCancelamento>(sPath);
+
+            return CarregaDadosRetorno(objRet);
         }
 
-        private DadosRetorno CarregaDadosRetorno(XmlDocument xmlret)
+        private DadosRetorno CarregaDadosRetorno(belRetEventoCancelamento objret)
         {
             DadosRetorno objRetorno = new DadosRetorno();
-            objRetorno.cstat = xmlret.GetElementsByTagName("cStat")[0].InnerText;
-            objRetorno.xMotivo = xmlret.GetElementsByTagName("xMotivo")[0].InnerText;
-            objRetorno.chnfe = objPesquisa.sCHAVENFE;
+
+            objRetorno.cstat = objret.retEvento.infEvento.cStat.ToString();
+            objRetorno.xMotivo = objret.retEvento.infEvento.xMotivo;
+            objRetorno.chnfe = objret.retEvento.infEvento.chNFe;
             objRetorno.nNF = objPesquisa.sCD_NOTAFIS;
             objRetorno.seqNF = objPesquisa.sCD_NFSEQ;
 
-            if (objRetorno.cstat != "101" && objRetorno.cstat != "151" && objRetorno.cstat != "155")
+            //if (objRetorno.cstat != "101" && objRetorno.cstat != "151" && objRetorno.cstat != "155")
+            if (objRetorno.cstat != "135" && objRetorno.cstat != "136")
             {
                 objRetorno.nprot = "inexistente";
             }
             else
             {
-                string nprot = xmlret.GetElementsByTagName("nProt")[0].InnerText;
+                string nprot = objret.retEvento.infEvento.nProt.ToString();
                 AlteraNotaParaCancelada(nprot, objPesquisa.sCD_NFSEQ);
                 MoveArquivoParaPastaCancelada();
             }
@@ -320,6 +316,123 @@ namespace HLP.GeraXml.bel.NFe
                 while (reader.Read())
                 { }
                 return sArquivoAssinado;
+            }
+            catch (Exception x)
+            {
+                throw new Exception(x.Message);
+            }
+        }
+
+
+        private string NFeDadosMsg2(belPesquisaNotas nota, string sJust)
+        {
+            string sVersao = "1.00";
+            belCancelamento2 objcanc = new belCancelamento2();
+            objcanc.idLote = nota.sCD_NFSEQ.PadLeft(15, '0');
+            objcanc.versao = sVersao;
+            Evento evento = new Evento();
+            evento.versao = sVersao;
+            evento.infEvento = new eventoInfEvento();
+            evento.infEvento.Id = "ID" + evento.infEvento.tpEvento + nota.sCHAVENFE + evento.infEvento.nSeqEvento.PadLeft(2, '0');
+            evento.infEvento.cOrgao = 35;
+            evento.infEvento.tpAmb = Convert.ToByte(Acesso.TP_AMB);
+            evento.infEvento.CNPJ = Util.RetiraCaracterCNPJ(Acesso.CNPJ_EMPRESA);
+            evento.infEvento.chNFe = nota.sCHAVENFE;
+            evento.infEvento.dhEvento = daoUtil.GetDateServidor().ToString("yyyy-MM-ddTHH:mm:ss" + Acesso.FUSO);
+            evento.infEvento.verEvento = sVersao;
+            evento.infEvento.detEvento = new eventoInfEventoDetEvento();
+            evento.infEvento.detEvento.versao = sVersao;
+            evento.infEvento.detEvento.descEvento = "Cancelamento";
+            evento.infEvento.detEvento.nProt = nota.cd_nprotnfe;
+            evento.infEvento.detEvento.xJust = sJust;
+
+            string sEvento = "";
+
+            XmlSerializerNamespaces nameSpaces = new XmlSerializerNamespaces();
+            nameSpaces.Add("", "");
+            nameSpaces.Add("", "http://www.portalfiscal.inf.br/nfe");
+
+
+            XmlSerializer xs = new XmlSerializer(typeof(Evento));
+            MemoryStream memory = new MemoryStream();
+            XmlTextWriter xmltext = new XmlTextWriter(memory, Encoding.UTF8);
+            xs.Serialize(xmltext, evento, nameSpaces);
+            UTF8Encoding encoding = new UTF8Encoding();
+            sEvento = encoding.GetString(memory.ToArray());
+            sEvento = sEvento.Substring(1);
+
+
+            belAssinaXml Assinatura = new belAssinaXml();
+            sEvento = Assinatura.ConfigurarArquivo(sEvento, "infEvento", Acesso.cert_NFe);
+
+            string sXMLfinal = "<?xml version=\"1.0\" encoding=\"utf-8\"?><envEvento xmlns=\"http://www.portalfiscal.inf.br/nfe\" versao=\"1.00\"><idLote>" + nota.sCD_NFSEQ.PadLeft(15, '0')
+                                + "</idLote>" + sEvento.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "") + "</envEvento>";
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.LoadXml(sXMLfinal);
+            string sPath = Pastas.PROTOCOLOS + "\\" + objPesquisa.sCD_NFSEQ + "_ped-can.xml";
+            if (File.Exists(sPath))
+            {
+                File.Delete(sPath);
+            }
+            xDoc.Save(sPath);
+            try
+            {
+                belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/nfe", Pastas.SCHEMA_CANC + "\\envEventoCancNFe_v1.00.xsd", sPath);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return sXMLfinal;
+        }
+
+
+        private string NfeDadosMsg3(string sJust)
+        {
+            XmlSchemaCollection myschema = new XmlSchemaCollection();
+            XmlValidatingReader reader;
+            try
+            {
+                DataTable dt = BuscaProtocoloNFe(objPesquisa.sCD_NFSEQ);
+
+
+                XNamespace xname = "http://www.portalfiscal.inf.br/nfe";
+                XDocument xdoc = new XDocument(new XElement(xname + "cancNFe", new XAttribute("versao", Acesso.versaoNFe),
+                                                   new XElement(xname + "infCanc", new XAttribute("Id", "ID" + objPesquisa.sCHAVENFE),
+                                                       new XElement(xname + "tpAmb", Acesso.TP_AMB),
+                                                       new XElement(xname + "xServ", "CANCELAR"),
+                                                       new XElement(xname + "chNFe", objPesquisa.sCHAVENFE),
+                                                       new XElement(xname + "nProt", dt.Rows[0]["cd_nprotnfe"].ToString()),
+                                                       new XElement(xname + "xJust", sJust))));
+                string sPath = Pastas.PROTOCOLOS + "\\" + objPesquisa.sCD_NFSEQ + "_ped-can.xml";
+                xdoc.Save(sPath);
+
+                belAssinaXml assinaCanc = new belAssinaXml();
+                string sArquivoAssinado = assinaCanc.ConfigurarArquivo(sPath, "infCanc", Acesso.cert_NFe);
+
+
+                string sXMLfinal = "<?xml version=\"1.0\" encoding=\"utf-8\"?><procCancNFe xmlns=\"http://www.portalfiscal.inf.br/nfe\" versao=\"2.00\">"
+                    + sArquivoAssinado.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "") + "</procCancNFe>";
+
+                XmlDocument xDoc = new XmlDocument();
+                xDoc.LoadXml(sXMLfinal);
+                if (File.Exists(sPath))
+                {
+                    File.Delete(sPath);
+                }
+                xDoc.Save(sPath);
+                try
+                {
+                    belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/nfe", Pastas.SCHEMA_CANC + "\\procEventoCancNFe_v1.00.xsd", sPath);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                return sXMLfinal;
             }
             catch (Exception x)
             {

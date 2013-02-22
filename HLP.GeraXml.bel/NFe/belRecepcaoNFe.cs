@@ -111,21 +111,6 @@ namespace HLP.GeraXml.bel.NFe
                                 {
                                     HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcao_MS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcao_MS.nfeCabecMsg();
                                     HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcao_MS.NfeRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NFeRecepcao_MS.NfeRecepcao2();
-                                    cabec.cUF = Acesso.cUF.ToString();
-                                    cabec.versaoDados = Acesso.versaoNFe;
-                                    ws2.nfeCabecMsgValue = cabec;
-                                    ws2.ClientCertificates.Add(Acesso.cert_NFe);
-                                    XmlDocument _xmlxelem = new XmlDocument();
-                                    _xmlxelem.PreserveWhitespace = true;
-                                    _xmlxelem.Load(sPathLote);
-                                    XmlNode xNelem = null;
-                                    xNelem = _xmlxelem.DocumentElement;
-                                    sRet = ws2.nfeRecepcaoLote2(xNelem).OuterXml;
-                                }
-                                else
-                                {
-                                    HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.nfeCabecMsg();
-                                    HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.NfeRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.NfeRecepcao2();
                                     belUF objbelUf = new belUF();
                                     cabec.cUF = Acesso.cUF.ToString();
                                     cabec.versaoDados = Acesso.versaoNFe;
@@ -133,7 +118,23 @@ namespace HLP.GeraXml.bel.NFe
                                     ws2.ClientCertificates.Add(Acesso.cert_NFe);
                                     XmlDocument _xmlxelem = new XmlDocument();
                                     _xmlxelem.PreserveWhitespace = true;
-                                    _xmlxelem.Load(sPathLote);
+                                    _xmlxelem.LoadXml(sXmlLote);
+                                    XmlNode xNelem = null;
+                                    xNelem = _xmlxelem.DocumentElement;
+                                    sRet = ws2.nfeRecepcaoLote2(xNelem).OuterXml;
+                                }
+                                else
+                                {
+                                    HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.nfeCabecMsg();
+                                    HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.NfeRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.NfeRecepcao2();                                  
+                                    belUF objbelUf = new belUF();
+                                    cabec.cUF = Acesso.cUF.ToString();
+                                    cabec.versaoDados = Acesso.versaoNFe;
+                                    ws2.nfeCabecMsgValue = cabec;
+                                    ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                                    XmlDocument _xmlxelem = new XmlDocument();
+                                    _xmlxelem.PreserveWhitespace = true;
+                                    _xmlxelem.LoadXml(sXmlLote);
                                     XmlNode xNelem = null;
                                     xNelem = _xmlxelem.DocumentElement;
                                     sRet = ws2.nfeRecepcaoLote2(xNelem).OuterXml;

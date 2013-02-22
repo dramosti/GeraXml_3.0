@@ -1694,7 +1694,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(936, 540);
+            this.tabPage4.Size = new System.Drawing.Size(733, 247);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Tag = false;
             this.tabPage4.Text = "Destinatário";
@@ -1705,7 +1705,7 @@
             this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel4.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel4.Name = "kryptonPanel4";
-            this.kryptonPanel4.Size = new System.Drawing.Size(936, 540);
+            this.kryptonPanel4.Size = new System.Drawing.Size(733, 247);
             this.kryptonPanel4.TabIndex = 1;
             // 
             // kryptonTabControl3
@@ -1729,7 +1729,7 @@
             this.kryptonTabControl3.Name = "kryptonTabControl3";
             this.kryptonTabControl3.PreserveTabColor = false;
             this.kryptonTabControl3.SelectedIndex = 0;
-            this.kryptonTabControl3.Size = new System.Drawing.Size(936, 540);
+            this.kryptonTabControl3.Size = new System.Drawing.Size(733, 247);
             this.kryptonTabControl3.TabIndex = 109;
             this.kryptonTabControl3.UseExtendedLayout = false;
             // 
@@ -1739,7 +1739,7 @@
             this.tabPage19.Location = new System.Drawing.Point(4, 25);
             this.tabPage19.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage19.Name = "tabPage19";
-            this.tabPage19.Size = new System.Drawing.Size(928, 511);
+            this.tabPage19.Size = new System.Drawing.Size(725, 218);
             this.tabPage19.TabIndex = 0;
             this.tabPage19.Tag = false;
             this.tabPage19.Text = "Dados Destinatário";
@@ -1750,7 +1750,7 @@
             this.kryptonPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel19.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel19.Name = "kryptonPanel19";
-            this.kryptonPanel19.Size = new System.Drawing.Size(928, 511);
+            this.kryptonPanel19.Size = new System.Drawing.Size(725, 218);
             this.kryptonPanel19.TabIndex = 0;
             // 
             // flpDadosDest
@@ -1768,7 +1768,7 @@
             this.flpDadosDest.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpDadosDest.Location = new System.Drawing.Point(0, 0);
             this.flpDadosDest.Name = "flpDadosDest";
-            this.flpDadosDest.Size = new System.Drawing.Size(928, 511);
+            this.flpDadosDest.Size = new System.Drawing.Size(725, 218);
             this.flpDadosDest.TabIndex = 0;
             this.flpDadosDest.Tag = "Dados Remetente";
             // 
@@ -6750,7 +6750,7 @@
             this.tabPage21.Location = new System.Drawing.Point(4, 25);
             this.tabPage21.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage21.Name = "tabPage21";
-            this.tabPage21.Size = new System.Drawing.Size(733, 247);
+            this.tabPage21.Size = new System.Drawing.Size(936, 540);
             this.tabPage21.TabIndex = 10;
             this.tabPage21.Tag = false;
             this.tabPage21.Text = "Ref. NF";
@@ -6763,7 +6763,7 @@
             this.kryptonPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel10.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel10.Name = "kryptonPanel10";
-            this.kryptonPanel10.Size = new System.Drawing.Size(733, 247);
+            this.kryptonPanel10.Size = new System.Drawing.Size(936, 540);
             this.kryptonPanel10.TabIndex = 1;
             // 
             // tabControl1
@@ -6786,7 +6786,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.PreserveTabColor = false;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(733, 16);
+            this.tabControl1.Size = new System.Drawing.Size(936, 309);
             this.tabControl1.TabIndex = 221;
             this.tabControl1.UseExtendedLayout = false;
             // 
@@ -6797,7 +6797,7 @@
             this.tabPageRefNotaA1.Location = new System.Drawing.Point(4, 25);
             this.tabPageRefNotaA1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageRefNotaA1.Name = "tabPageRefNotaA1";
-            this.tabPageRefNotaA1.Size = new System.Drawing.Size(725, 0);
+            this.tabPageRefNotaA1.Size = new System.Drawing.Size(928, 280);
             this.tabPageRefNotaA1.TabIndex = 1;
             this.tabPageRefNotaA1.Tag = false;
             this.tabPageRefNotaA1.Text = "NF modelo 1/1A";
@@ -6808,7 +6808,7 @@
             this.kryptonPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel24.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel24.Name = "kryptonPanel24";
-            this.kryptonPanel24.Size = new System.Drawing.Size(725, 0);
+            this.kryptonPanel24.Size = new System.Drawing.Size(928, 280);
             this.kryptonPanel24.TabIndex = 206;
             // 
             // flowLayoutPanel5
@@ -6826,7 +6826,7 @@
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(725, 0);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(928, 280);
             this.flowLayoutPanel5.TabIndex = 0;
             // 
             // txtnNFref
@@ -6867,7 +6867,7 @@
             this.txtserieRef.BackColor = System.Drawing.Color.Transparent;
             this.txtserieRef.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtserieRef.Color = System.Drawing.Color.White;
-            this.txtserieRef.Location = new System.Drawing.Point(370, 3);
+            this.txtserieRef.Location = new System.Drawing.Point(114, 29);
             this.txtserieRef.Margin = new System.Windows.Forms.Padding(114, 3, 15, 3);
             this.txtserieRef.MaxLength = 32767;
             this.txtserieRef.Name = "txtserieRef";
@@ -6890,7 +6890,7 @@
             this.txtcUF.BackColor = System.Drawing.Color.Transparent;
             this.txtcUF.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtcUF.Color = System.Drawing.Color.White;
-            this.txtcUF.Location = new System.Drawing.Point(639, 3);
+            this.txtcUF.Location = new System.Drawing.Point(127, 55);
             this.txtcUF.Margin = new System.Windows.Forms.Padding(127, 3, 15, 3);
             this.txtcUF.MaxLength = 32767;
             this.txtcUF.Name = "txtcUF";
@@ -6913,7 +6913,7 @@
             this.txtAAMM.BackColor = System.Drawing.Color.Transparent;
             this.txtAAMM.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtAAMM.Color = System.Drawing.Color.White;
-            this.txtAAMM.Location = new System.Drawing.Point(816, 3);
+            this.txtAAMM.Location = new System.Drawing.Point(48, 81);
             this.txtAAMM.Margin = new System.Windows.Forms.Padding(48, 3, 15, 3);
             this.txtAAMM.MaxLength = 32767;
             this.txtAAMM.Name = "txtAAMM";
@@ -6936,7 +6936,7 @@
             this.txtClifor.BackColor = System.Drawing.Color.Transparent;
             this.txtClifor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtClifor.Color = System.Drawing.Color.White;
-            this.txtClifor.Location = new System.Drawing.Point(1048, 3);
+            this.txtClifor.Location = new System.Drawing.Point(24, 107);
             this.txtClifor.Margin = new System.Windows.Forms.Padding(24, 3, 15, 3);
             this.txtClifor.MaxLength = 32767;
             this.txtClifor.Name = "txtClifor";
@@ -6959,7 +6959,7 @@
             this.txtCNPJ.BackColor = System.Drawing.Color.Transparent;
             this.txtCNPJ.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtCNPJ.Color = System.Drawing.Color.White;
-            this.txtCNPJ.Location = new System.Drawing.Point(1563, 3);
+            this.txtCNPJ.Location = new System.Drawing.Point(112, 133);
             this.txtCNPJ.Margin = new System.Windows.Forms.Padding(112, 3, 15, 3);
             this.txtCNPJ.MaxLength = 32767;
             this.txtCNPJ.Name = "txtCNPJ";
@@ -6982,7 +6982,7 @@
             this.textBoxmod.BackColor = System.Drawing.Color.Transparent;
             this.textBoxmod.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.textBoxmod.Color = System.Drawing.Color.White;
-            this.textBoxmod.Location = new System.Drawing.Point(1838, 3);
+            this.textBoxmod.Location = new System.Drawing.Point(98, 159);
             this.textBoxmod.Margin = new System.Windows.Forms.Padding(98, 3, 15, 3);
             this.textBoxmod.MaxLength = 32767;
             this.textBoxmod.Name = "textBoxmod";
@@ -7063,11 +7063,11 @@
             this.nNFDataGridViewTextBoxColumn});
             this.dgvRefNFe.DataSource = this.bsNFreferenciadas;
             this.dgvRefNFe.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvRefNFe.Location = new System.Drawing.Point(0, 62);
+            this.dgvRefNFe.Location = new System.Drawing.Point(0, 355);
             this.dgvRefNFe.Name = "dgvRefNFe";
             this.dgvRefNFe.ReadOnly = true;
             this.dgvRefNFe.RowTemplate.Height = 19;
-            this.dgvRefNFe.Size = new System.Drawing.Size(733, 185);
+            this.dgvRefNFe.Size = new System.Drawing.Size(936, 185);
             this.dgvRefNFe.TabIndex = 220;
             // 
             // refNFeDataGridViewTextBoxColumn
@@ -7133,7 +7133,7 @@
             this.kryptonPanel107.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel107.Margin = new System.Windows.Forms.Padding(1);
             this.kryptonPanel107.Name = "kryptonPanel107";
-            this.kryptonPanel107.Size = new System.Drawing.Size(733, 46);
+            this.kryptonPanel107.Size = new System.Drawing.Size(936, 46);
             this.kryptonPanel107.TabIndex = 218;
             // 
             // btnPesquisarNF

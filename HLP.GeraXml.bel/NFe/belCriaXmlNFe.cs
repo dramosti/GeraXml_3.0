@@ -30,6 +30,7 @@ namespace HLP.GeraXml.bel.NFe
                 string sNomeArquivo = daoUtil.RetornaNomeArqNFe();
                 this.sPathLote = (Acesso.TP_EMIS == 2 ? Pastas.CONTINGENCIA + sNomeArquivo : Pastas.ENVIO + sNomeArquivo);
                 List<string> nfes = new List<string>();
+                belIde objide;
                 int iCount = 0;
 
                 if (File.Exists(sPathLote))
@@ -55,7 +56,7 @@ namespace HLP.GeraXml.bel.NFe
                     XContainer conide;
                     try
                     {
-                        belIde objide = nota.ide;
+                        objide = nota.ide;
                         #region XML_ide
                         conide = (new XElement(pf + "ide", new XElement(pf + "cUF", objide.Cuf.ToString()),
                                                                     new XElement(pf + "cNF", objide.Cnf.ToString()),
@@ -184,6 +185,14 @@ namespace HLP.GeraXml.bel.NFe
                     {
                         List<belDet> objdet = nota.det;
                         #region XML_Detalhes
+
+                        List<string> lCfopNotTagII = new List<string>();
+                        lCfopNotTagII.Add("3201");
+                        lCfopNotTagII.Add("3202");
+                        lCfopNotTagII.Add("3211");
+                        lCfopNotTagII.Add("3503");
+                        lCfopNotTagII.Add("3553");
+
 
                         foreach (belDet det in objdet)
                         {
@@ -470,7 +479,7 @@ namespace HLP.GeraXml.bel.NFe
 
 
                                        //--------------II--------------//             
-                                       (det.imposto.belIi.Vii > 0 ?
+                                       ((!lCfopNotTagII.Contains(det.prod.Cfop)) ?
                                        new XElement(pf + "II",
                                            (det.imposto.belIi.Vbc != null ? new XElement(pf + "vBC", det.imposto.belIi.Vbc.ToString("#0.00").Replace(',', '.')) : null),
                                            (det.imposto.belIi.Vdespadu != null ? new XElement(pf + "vDespAdu", det.imposto.belIi.Vdespadu.ToString("#0.00").Replace(',', '.')) : null),

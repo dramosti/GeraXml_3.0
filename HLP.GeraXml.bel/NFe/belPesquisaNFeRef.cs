@@ -14,7 +14,6 @@ namespace HLP.GeraXml.bel.NFe
         public List<belCampoPesquisa> PesquisaNotasRef(int iOperador, int iModelo, string _campoPesquisa, string sfiltro)
         {
             List<belCampoPesquisa> lCampoPesquisa = new List<belCampoPesquisa>();
-
             foreach (DataRow dr in BuscaNotas(iOperador, iModelo, _campoPesquisa, sfiltro).Rows)
             {
                 belCampoPesquisa objCampo = new belCampoPesquisa();

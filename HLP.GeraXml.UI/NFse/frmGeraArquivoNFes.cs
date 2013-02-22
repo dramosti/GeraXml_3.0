@@ -16,6 +16,7 @@ using HLP.GeraXml.dao;
 using HLP.GeraXml.bel;
 using HLP.GeraXml.bel.NFes.Susesu;
 using CrystalDecisions.CrystalReports.Engine;
+using HLP.GeraXml.bel.NFes.DSF;
 
 namespace HLP.GeraXml.UI.NFse
 {
@@ -207,8 +208,16 @@ namespace HLP.GeraXml.UI.NFse
                             frmGeraNumeracaoNFe objfrmGeraNumeracao = new frmGeraNumeracaoNFe(objbelNumeracao, true);
                             objfrmGeraNumeracao.ShowDialog();
                         }
+                        if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.DSF)
+                        {
+                            belCarregaDadosRPS objCarregaDados = new belCarregaDadosRPS(objSelect);
+                            belEnviarNFSeWS objEnvio = new belEnviarNFSeWS(objCarregaDados);
 
-                        if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.SUSESU) // arrumar o retorno das TELAS...
+                            KryptonMessageBox.Show(objEnvio.Enviar(), Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        }
+                        else if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.SUSESU) // arrumar o retorno das TELAS...
                         {
                             if (objSelect.Count > 1)
                             {
@@ -332,43 +341,55 @@ namespace HLP.GeraXml.UI.NFse
                     }
                     if (objSelect.Count == 1)
                     {
-                        belPrestador objbelPrestador = new belPrestador();
-                        belRecepcao objBelRecepcao = new belRecepcao();
-                        objBelRecepcao.Protocolo = objBelRecepcao.BuscaNumProtocolo(objSelect[0].sCD_NFSEQ);
-
-                        objfrmStatus = new frmStatusEnvioNfs();
-                        objfrmStatus.Show();
-                        objfrmStatus.Refresh();
-
-                        string sMsgErro = objBelRecepcao.BuscaRetorno(objbelPrestador.RettcIdentificacaoPrestador(objSelect[0].sCD_NFSEQ), objfrmStatus.lblMsg, objfrmStatus.progressBarStatus);
-
-                        if (objBelRecepcao.sCodigoRetorno.Equals("E4"))
+                        if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.DSF)
                         {
-                            objfrmStatus.Close();
-                            KryptonMessageBox.Show(null, sMsgErro + Environment.NewLine + Environment.NewLine + "IMPORTANTE: Tente Buscar Retorno da NFs-e, pois o serviço do WebService está demorando para responder. ", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else if (objBelRecepcao.objListaNfseRetorno.Count > 0)
-                        {
-                            objfrmStatus.lblMsg.Text = "Alterando Status da Nota...";
-                            objfrmStatus.lblMsg.Refresh();
-                            objBelRecepcao.AlteraStatusDaNota(objBelRecepcao.objListaNfseRetorno);
-                            objfrmStatus.Close();
-                            objBelRecepcao.VerificaNotasParaCancelar(objBelRecepcao.objListaNfseRetorno);
-
-                            KryptonMessageBox.Show(null, objBelRecepcao.MontaMsgDeRetornoParaCliente(), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            //EnviaEmail(objBelRecepcao.objListaNfseRetorno);
+                            belPesquisaNotas belPesq = new belPesquisaNotas(objSelect.FirstOrDefault().sRECIBO_NF);
+                            belPesquisaNotasBindingSource.DataSource = belPesq.lResultPesquisa;
+                            belCarregaDadosRPS objCarregarNotasLote = new belCarregaDadosRPS(belPesq.lResultPesquisa, belPesq.lResultPesquisa.FirstOrDefault().sRECIBO_NF);
+                            belEnviarNFSeWS objEnvio = new belEnviarNFSeWS(objCarregarNotasLote);
+                            string sNumeroLote = objCarregarNotasLote.objLoteEnvio.cabec.NumeroLote.ToString();
+                            KryptonMessageBox.Show(objEnvio.BuscaRetorno(sNumeroLote), Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            objBelRecepcao.LimpaRecibo();
-                            objfrmStatus.Close();
-                            KryptonMessageBox.Show(null, sMsgErro + Environment.NewLine, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            belPrestador objbelPrestador = new belPrestador();
+                            belRecepcao objBelRecepcao = new belRecepcao();
+                            objBelRecepcao.Protocolo = objBelRecepcao.BuscaNumProtocolo(objSelect[0].sCD_NFSEQ);
 
+                            objfrmStatus = new frmStatusEnvioNfs();
+                            objfrmStatus.Show();
+                            objfrmStatus.Refresh();
+
+                            string sMsgErro = objBelRecepcao.BuscaRetorno(objbelPrestador.RettcIdentificacaoPrestador(objSelect[0].sCD_NFSEQ), objfrmStatus.lblMsg, objfrmStatus.progressBarStatus);
+
+                            if (objBelRecepcao.sCodigoRetorno.Equals("E4"))
+                            {
+                                objfrmStatus.Close();
+                                KryptonMessageBox.Show(null, sMsgErro + Environment.NewLine + Environment.NewLine + "IMPORTANTE: Tente Buscar Retorno da NFs-e, pois o serviço do WebService está demorando para responder. ", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else if (objBelRecepcao.objListaNfseRetorno.Count > 0)
+                            {
+                                objfrmStatus.lblMsg.Text = "Alterando Status da Nota...";
+                                objfrmStatus.lblMsg.Refresh();
+                                objBelRecepcao.AlteraStatusDaNota(objBelRecepcao.objListaNfseRetorno);
+                                objfrmStatus.Close();
+                                objBelRecepcao.VerificaNotasParaCancelar(objBelRecepcao.objListaNfseRetorno);
+
+                                KryptonMessageBox.Show(null, objBelRecepcao.MontaMsgDeRetornoParaCliente(), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //EnviaEmail(objBelRecepcao.objListaNfseRetorno);
+                            }
+                            else
+                            {
+                                objBelRecepcao.LimpaRecibo();
+                                objfrmStatus.Close();
+                                KryptonMessageBox.Show(null, sMsgErro + Environment.NewLine, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+
+
+                            PesquisaNotas();
+                            VerificaGeneratorLote();
                         }
-
-
-                        PesquisaNotas();
-                        VerificaGeneratorLote();
                     }
                     else
                     {
@@ -480,7 +501,7 @@ namespace HLP.GeraXml.UI.NFse
                                 string sCHAVE = nota.sCHAVENFE;
                                 objNfe.DATA_EMISSAO = objSelect.FirstOrDefault().dDT_EMI.ToString();
                                 objNfe.NUMERO_NOTA = Convert.ToInt32(nota.sCD_NOTAFIS);
-                                objNfe = belSerializeToXml.DeserializeClasse<belNFesSusesu>(objNfe.GetsFilePath(true));
+                                objNfe = belSerializeToXml.DeserializeClasse<belNFesSusesu>(objNfe.GetsFilePathServico(true));
                                 objNfe.sCHAVE = sCHAVE;
                                 lNfe.Add(objNfe);
                             }

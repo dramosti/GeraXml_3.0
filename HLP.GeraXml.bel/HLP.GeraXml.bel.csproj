@@ -168,6 +168,13 @@
     <Compile Include="NFes\belServico.cs" />
     <Compile Include="NFes\beltcIdentificacaoRps.cs" />
     <Compile Include="NFes\belTomador.cs" />
+    <Compile Include="NFes\DSF\belCarregaDadosRPS.cs" />
+    <Compile Include="NFes\DSF\belEnviarNFSeWS.cs" />
+    <Compile Include="NFes\DSF\belLoteRPS.cs" />
+    <Compile Include="NFes\DSF\ReqConsultaLote.cs" />
+    <Compile Include="NFes\DSF\RetornoConsultaLote.cs" />
+    <Compile Include="NFes\DSF\RetornoEnvioLoteRPS.cs" />
+    <Compile Include="NFes\DSF\Principal.cs" />
     <Compile Include="NFes\Susesu\belNFesSusesu.cs" />
     <Compile Include="NFes\TcContato.cs" />
     <Compile Include="NFes\TcCpfCnpj.cs" />
@@ -192,6 +199,7 @@
     <Compile Include="NFes\TcValores.cs" />
     <Compile Include="NFe\belBusRetFazenda.cs" />
     <Compile Include="NFe\belCancelamento.cs" />
+    <Compile Include="NFe\belCancelamento2.cs" />
     <Compile Include="NFe\belCarregaDados.cs" />
     <Compile Include="NFe\belConsultaStatusCliente.cs" />
     <Compile Include="NFe\belConsultaStatusNota.cs" />
@@ -203,6 +211,7 @@
     <Compile Include="NFe\belPesquisaNotas.cs" />
     <Compile Include="NFe\belPopulaDataSetNfe.cs" />
     <Compile Include="NFe\belRecepcaoNFe.cs" />
+    <Compile Include="NFe\belRetEventoCancelamento.cs" />
     <Compile Include="NFe\belStatusServicoNFe.cs" />
     <Compile Include="NFe\belTrataMensagemNFe.cs" />
     <Compile Include="NFe\Estrutura\avulsa.cs" />
@@ -337,6 +346,7 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

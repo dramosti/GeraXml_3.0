@@ -48,6 +48,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Web References\NFSE_Campinas\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\riodasostras_Producao\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -740,6 +745,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>HLP_GeraXml_WebService_Ws_versionamento_Cliente_Verisionamento</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NFSE_Campinas\</RelPath>
+      <UpdateFromURL>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_NFSE_Campinas_LoteRpsService</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://pira.comunix.net/gestaopublica/wsnfd/ServicoNfd.asmx%3fWSDL">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -1728,6 +1744,11 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\NFSE_Campinas\LoteRps.wsdl" />
+    <None Include="Web References\NFSE_Campinas\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\riodasostras_Producao\nfse.wsdl" />
     <None Include="Web References\riodasostras_Producao\Reference.map">

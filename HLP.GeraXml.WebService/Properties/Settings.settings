@@ -314,5 +314,8 @@
     <Setting Name="HLP_GeraXml_WebService_riodasostras_Producao_Nfse" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://spe.riodasostras.rj.gov.br/nfse/WSNacional/nfse.asmx</Value>
     </Setting>
+    <Setting Name="HLP_GeraXml_WebService_NFSE_Campinas_LoteRpsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

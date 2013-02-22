@@ -295,14 +295,14 @@ namespace HLP.GeraXml.bel.NFes.Susesu
             try
             {
 
-                if (File.Exists(this.GetsFilePath(false)))
+                if (File.Exists(this.GetsFilePathServico(false)))
                 {
-                    File.Delete(this.GetsFilePath(false));
+                    File.Delete(this.GetsFilePathServico(false));
                 }
-                belSerializeToXml.SerializeClasse<belNFesSusesu>(this, this.GetsFilePath(false));
+                belSerializeToXml.SerializeClasse<belNFesSusesu>(this, this.GetsFilePathServico(false));
 
                 XmlDocument xml = new XmlDocument();
-                xml.Load(this.GetsFilePath(false));
+                xml.Load(this.GetsFilePathServico(false));
 
                 string sRetorno = "";
                 if (Acesso.SENHA_WEB_NFES == "" || Acesso.COD_PREFEITURA == "")
@@ -330,9 +330,9 @@ namespace HLP.GeraXml.bel.NFes.Susesu
                 {
                     base.AlteraStatusNota(this.CD_NFSEQ, sRetorno);
 
-                    FileInfo f = new FileInfo(this.GetsFilePath(true));
+                    FileInfo f = new FileInfo(this.GetsFilePathServico(true));
 
-                    File.Copy(this.GetsFilePath(false), this.GetsFilePath(true));
+                    File.Copy(this.GetsFilePathServico(false), this.GetsFilePathServico(true));
 
                     KryptonMessageBox.Show(null, string.Format("Nota de serviço enviada com sucesso!{0}Chave de Retorno: {1}", Environment.NewLine, sRetorno), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -354,7 +354,7 @@ namespace HLP.GeraXml.bel.NFes.Susesu
         /// </summary>
         /// <param name="bEnvio">"False" = Envio || "True" = Enviados</param>
         /// <returns>Caminho</returns>
-        public string GetsFilePath(bool bStatus)
+        public string GetsFilePathServico(bool bStatus)
         {
 
             string sDirectory = (bStatus ? Pastas.ENVIADOS : Pastas.ENVIO) + "\\Servicos\\" + Convert.ToDateTime(_DATA_EMISSAO).Date.Month.ToString().PadLeft(2, '0') + Convert.ToDateTime(_DATA_EMISSAO).Date.Year.ToString().Substring(2, 2) + "\\";

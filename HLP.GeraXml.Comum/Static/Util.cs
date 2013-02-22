@@ -9,6 +9,7 @@ using CrystalDecisions.Shared;
 using CrystalDecisions.Windows.Forms;
 using System.Drawing;
 using ICSharpCode.SharpZipLib.Zip;
+using System.Security.Cryptography;
 
 namespace HLP.GeraXml.Comum.Static
 {
@@ -439,6 +440,7 @@ namespace HLP.GeraXml.Comum.Static
             sString = sString.Replace("\\c9", "E");
             sString = sString.Replace("\\fs52", "");
             sString = sString.Replace("\\fs16", "");
+            sString = sString.Replace("  }", "");
 
             while (sString.Contains("  "))
             {
@@ -773,5 +775,18 @@ namespace HLP.GeraXml.Comum.Static
             return lista;
         }
 
+        public static string StringToHashSHA1(string input)
+        {
+            SHA1 sha = new SHA1CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(input);
+            byte[] hash = sha.ComputeHash(data);
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString().ToLower();
+        }
     }
 }

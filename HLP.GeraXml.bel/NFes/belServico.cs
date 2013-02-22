@@ -170,14 +170,22 @@ namespace HLP.GeraXml.bel.NFes
                     sQueryLorenzon.Append("where nf.cd_nfseq = '" + sNF + "' ");
                     sQueryLorenzon.Append("and nf.cd_empresa = '" + Acesso.CD_EMPRESA + "' ");
 
-                    FbDataReader drLorenzon = HlpDbFuncoes.qrySeekReader(sQueryLorenzon.ToString());
+                    DataTable dtLorenzon = HlpDbFuncoes.qrySeekRet(sQueryLorenzon.ToString());
                     string sMsgLorenzon = "";
 
-
-                    while (drLorenzon.Read())
+                    if (dtLorenzon != null)
                     {
-                        sMsgLorenzon = "COND.PGTO = " + drLorenzon["ds_prazo"].ToString() + " | VENDEDOR = " + drLorenzon["nm_vend"].ToString() + " | COD. CLIENTE = " + drLorenzon["cd_clifor"].ToString();
+                        foreach (DataRow row in dtLorenzon.Rows)
+                        {
+                            sMsgLorenzon = "COND.PGTO = " + row["ds_prazo"].ToString() + " | VENDEDOR = " + row["nm_vend"].ToString() + " | COD. CLIENTE = " + row["cd_clifor"].ToString();
+                        }
+                        
                     }
+
+                    //while (dtLorenzon.Read())
+                    //{
+                    //    sMsgLorenzon = "COND.PGTO = " + dtLorenzon["ds_prazo"].ToString() + " | VENDEDOR = " + dtLorenzon["nm_vend"].ToString() + " | COD. CLIENTE = " + dtLorenzon["cd_clifor"].ToString();
+                    //}
 
                     sMsgLorenzon = sMsgLorenzon + Environment.NewLine + Environment.NewLine;
                     if (sMsgLorenzon != "")

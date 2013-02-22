@@ -9,13 +9,13 @@ namespace HLP.GeraXml.bel
 {
     public class SerializeClassToXml
     {
-        public static void SerializeClasse<T>(T classe, string sPathSave) where T : class
+        public static void SerializeClasse<T>(T classe, string sPathSave, XmlSerializerNamespaces namespac = null) where T : class
         {
             try
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(T));
                 TextWriter textWriter = new StreamWriter(sPathSave);
-                serializer.Serialize(textWriter, classe);
+                serializer.Serialize(textWriter, classe, namespac);
                 textWriter.Close();
                 textWriter.Dispose();
             }

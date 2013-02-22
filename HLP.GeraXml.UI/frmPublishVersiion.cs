@@ -134,14 +134,6 @@ namespace HLP.GeraXml.UI
             File.Move(sFileZip, sPathSave);
         }
 
-
-
-        private void txtPastaToPublish_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void WriteZipFile(List<string> filesToZip, string path, int compression)
         {
             if (compression < 0 || compression > 9)

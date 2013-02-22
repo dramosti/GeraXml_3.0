@@ -40,10 +40,21 @@ namespace HLP.GeraXml.Comum.Static
         /// 1-Produção / 2-Homologação
         /// </summary>
         public static int TP_AMB { get; set; }
+
+        private static int _TP_AMB_SERV;
         /// <summary>
         /// 1-Produção / 2-Homologação
         /// </summary>
-        public static int TP_AMB_SERV { get; set; }
+        public static int TP_AMB_SERV
+        {
+            get { return Acesso._TP_AMB_SERV; }
+            set
+            {
+                Acesso._TP_AMB_SERV = value;
+                Acesso.URL_WEBSERVICE_DSF = "http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws";
+            }
+        }
+        public static string URL_WEBSERVICE_DSF { get; set; }
         /// <summary>
         /// 1 - NORMAL / 2 - EXEÇÃO
         /// </summary>
@@ -60,13 +71,17 @@ namespace HLP.GeraXml.Comum.Static
                 {
                     tipoWsNfse = TP_WS_NFSE.GINFES;
                 }
-                else if(lCidadesNFSE_SUSESU.Contains(value.ToUpper()))
+                else if (lCidadesNFSE_SUSESU.Contains(value.ToUpper()))
                 {
                     tipoWsNfse = TP_WS_NFSE.SUSESU;
                 }
                 else if (lCidadesNFSE_TIPLAN.Contains(value.ToUpper()))
                 {
                     tipoWsNfse = TP_WS_NFSE.TIPLAN;
+                }
+                else if (lCidadesNFSE_DSF.Contains(value.ToUpper()))
+                {
+                    tipoWsNfse = TP_WS_NFSE.DSF;
                 }
                 else
                 {
@@ -98,12 +113,12 @@ namespace HLP.GeraXml.Comum.Static
         public static string versaoNFe = "2.00";
         public static string versaoCTe = "1.04";
         public static TP_WS_NFSE tipoWsNfse { get; set; }
-        public enum TP_WS_NFSE { GINFES, SUSESU , TIPLAN, NENHUM }
+        public enum TP_WS_NFSE { GINFES, SUSESU, TIPLAN, DSF, NENHUM }
         public static string xUFtoWS
         {
             get
             {
-                if (Acesso.xUF == "RJ" || Acesso.xUF == "MS" || Acesso.xUF == "RS")
+                if (Acesso.xUF == "RJ" || Acesso.xUF == "RS")
                 {
                     return "SVRS";
                 }
@@ -163,6 +178,7 @@ namespace HLP.GeraXml.Comum.Static
         private static List<string> lCidadesNFSE_SUSESU = new List<string>();
         private static List<string> lCidadesNFSE_GINFES = new List<string>();
         private static List<string> lCidadesNFSE_TIPLAN = new List<string>();
+        private static List<string> lCidadesNFSE_DSF = new List<string>();
 
 
         public static void CarregaDadosBanco()
@@ -209,6 +225,9 @@ namespace HLP.GeraXml.Comum.Static
             //TIPLAN
             lCidadesNFSE_TIPLAN.Add("SAO PAULO");
             lCidadesNFSE_TIPLAN.Add("RIO DAS OSTRAS");
+            //DSF
+            lCidadesNFSE_DSF.Add("CAMPINAS");
+            lCidadesNFSE_DSF.Add("SOROCABA");
 
 
             if (File.Exists(Pastas.PASTA_XML_CONFIG + Acesso.NM_CONFIG))

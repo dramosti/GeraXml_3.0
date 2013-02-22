@@ -27,7 +27,7 @@ namespace HLP.GeraXml.Comum
             catch (Exception ex)
             {
                 reader.Close();
-                File.Delete(sPathXml);
+               // File.Delete(sPathXml);
                 throw ex;
             }
 

@@ -34,6 +34,7 @@ namespace HLP.GeraXml.bel.NFe
         public bool bContingencia { get; set; }
         public bool bDenegada { get; set; }
         public string sRECIBO_NF { get; set; }
+        public string cd_nprotnfe { get; set; }
 
         public List<belPesquisaNotas> lResultPesquisa = new List<belPesquisaNotas>();
 
@@ -47,6 +48,7 @@ namespace HLP.GeraXml.bel.NFe
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_notafis", sAlias = "sCD_NOTAFIS" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nfseq", sAlias = "sCD_NFSEQ" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NM_CLIFOR", sAlias = "sNM_CLIFOR" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "vl_totnf", sAlias = "dVL_TOTNF" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NF.cd_gruponf", sAlias = "sCD_GRUPONF", sCoalesce = "" });
@@ -101,6 +103,7 @@ namespace HLP.GeraXml.bel.NFe
                     bCancelado = dr["bCancelado"].ToString().Equals("1") ? true : false,
                     bDenegada = dr["bDenegada"].ToString().Equals("1") ? true : false,
                     bSeleciona = false,
+                    cd_nprotnfe = dr["cd_nprotnfe"].ToString(),
                     sRECIBO_NF = dr["sRECIBO_NF"].ToString()
 
                 });
@@ -116,6 +119,7 @@ namespace HLP.GeraXml.bel.NFe
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nfseq", sAlias = "sCD_NFSEQ" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "nm_guerra", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_chavenfe,'')", sAlias = "sCHAVENFE" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "vl_totnf", sAlias = "dVL_TOTNF" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NF.cd_gruponf", sAlias = "sCD_GRUPONF", sCoalesce = "" });
@@ -137,6 +141,48 @@ namespace HLP.GeraXml.bel.NFe
             {
                 sWhere.Append("(nf.cd_nfseq between '" + _sValor1 + "' and '" + _sValor2 + "')");
             }
+            sWhere.Append(" order by cd_notafis desc");
+
+            DataTable dt = HlpDbFuncoes.qrySeekRet("NF", "", sWhere.ToString(), lCampos);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                lResultPesquisa.Add(new belPesquisaNotas
+                {
+                    sCD_NFSEQ = dr["sCD_NFSEQ"].ToString(),
+                    sCD_NOTAFIS = dr["sCD_NOTAFIS"].ToString(),
+                    sNM_CLIFOR = dr["sNM_CLIFOR"].ToString(),
+                    sCD_GRUPONF = dr["sCD_GRUPONF"].ToString(),
+                    dVL_TOTNF = Convert.ToDouble(dr["dVL_TOTNF"].ToString()),
+                    dDT_EMI = Convert.ToDateTime(dr["dDT_EMI"].ToString()),
+                    bEnviado = dr["bEnviado"].ToString().Equals("0") ? false : true,
+                    bCancelado = dr["bCancelado"].ToString().Equals("1") ? true : false,
+                    bSeleciona = false,
+                    sRECIBO_NF = dr["sRECIBO_NF"].ToString(),
+                    sCHAVENFE = dr["sCHAVENFE"].ToString()
+                });
+            }
+
+        }
+
+        public belPesquisaNotas(string sNumeroLote)
+        {
+            lResultPesquisa = new List<belPesquisaNotas>();
+            List<HlpDbFuncoes.ListaCampos> lCampos = new List<HlpDbFuncoes.ListaCampos>();
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_notafis", sAlias = "sCD_NOTAFIS" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nfseq", sAlias = "sCD_NFSEQ" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "nm_guerra", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_chavenfe,'')", sAlias = "sCHAVENFE" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "vl_totnf", sAlias = "dVL_TOTNF" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NF.cd_gruponf", sAlias = "sCD_GRUPONF", sCoalesce = "" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cast(case when nf.st_nfe = 'S' then '1' else '0' end as smallint)", sAlias = "bEnviado" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "case when coalesce(nf.cd_recibocanc, '') = '' then '0' else '1' end", sAlias = "bCancelado" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_recibonfe", sAlias = "sRECIBO_NF", sCoalesce = "" });
+
+            StringBuilder sWhere = new StringBuilder();
+            sWhere.Append("cd_empresa = '" + Acesso.CD_EMPRESA + "' and  (coalesce(nf.st_nf_prod,'S') = 'N') and  cd_recibonfe = '" + sNumeroLote + "'");
             sWhere.Append(" order by cd_notafis desc");
 
             DataTable dt = HlpDbFuncoes.qrySeekRet("NF", "", sWhere.ToString(), lCampos);

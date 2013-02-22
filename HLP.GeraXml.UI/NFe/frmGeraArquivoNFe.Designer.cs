@@ -29,24 +29,11 @@ namespace HLP.GeraXml.UI.NFe
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGeraArquivoNFe));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvArquivos = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.bSelecionaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.sCDNOTAFISDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCDNFSEQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCD_GRUPONF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dDTEMIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dVLTOTNFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bContingencia = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bDenegada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sRECIBO_NF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsNotas = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -95,6 +82,20 @@ namespace HLP.GeraXml.UI.NFe
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bSelecionaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.sCDNOTAFISDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCDNFSEQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCD_GRUPONF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dDTEMIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dVLTOTNFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bContingencia = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bDenegada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sRECIBO_NF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_nprotnfe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -145,7 +146,8 @@ namespace HLP.GeraXml.UI.NFe
             this.bContingencia,
             this.bDenegada,
             this.Column1,
-            this.sRECIBO_NF});
+            this.sRECIBO_NF,
+            this.cd_nprotnfe});
             this.dgvArquivos.DataSource = this.bsNotas;
             this.dgvArquivos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvArquivos.Location = new System.Drawing.Point(0, 56);
@@ -155,112 +157,6 @@ namespace HLP.GeraXml.UI.NFe
             this.dgvArquivos.TabIndex = 232;
             this.dgvArquivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArquivos_CellClick);
             this.dgvArquivos.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvArquivos_ColumnHeaderMouseClick);
-            // 
-            // bSelecionaDataGridViewCheckBoxColumn
-            // 
-            this.bSelecionaDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
-            this.bSelecionaDataGridViewCheckBoxColumn.HeaderText = "Selecionar";
-            this.bSelecionaDataGridViewCheckBoxColumn.Name = "bSelecionaDataGridViewCheckBoxColumn";
-            this.bSelecionaDataGridViewCheckBoxColumn.Width = 71;
-            // 
-            // sCDNOTAFISDataGridViewTextBoxColumn
-            // 
-            this.sCDNOTAFISDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sCDNOTAFISDataGridViewTextBoxColumn.DataPropertyName = "sCD_NOTAFIS";
-            this.sCDNOTAFISDataGridViewTextBoxColumn.HeaderText = "NF";
-            this.sCDNOTAFISDataGridViewTextBoxColumn.Name = "sCDNOTAFISDataGridViewTextBoxColumn";
-            this.sCDNOTAFISDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sCDNOTAFISDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // sCDNFSEQDataGridViewTextBoxColumn
-            // 
-            this.sCDNFSEQDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sCDNFSEQDataGridViewTextBoxColumn.DataPropertyName = "sCD_NFSEQ";
-            this.sCDNFSEQDataGridViewTextBoxColumn.HeaderText = "Sequência";
-            this.sCDNFSEQDataGridViewTextBoxColumn.Name = "sCDNFSEQDataGridViewTextBoxColumn";
-            this.sCDNFSEQDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sCDNFSEQDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // sCD_GRUPONF
-            // 
-            this.sCD_GRUPONF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sCD_GRUPONF.DataPropertyName = "sCD_GRUPONF";
-            this.sCD_GRUPONF.HeaderText = "GF";
-            this.sCD_GRUPONF.MaxInputLength = 4;
-            this.sCD_GRUPONF.Name = "sCD_GRUPONF";
-            this.sCD_GRUPONF.ReadOnly = true;
-            this.sCD_GRUPONF.Width = 50;
-            // 
-            // dDTEMIDataGridViewTextBoxColumn
-            // 
-            this.dDTEMIDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dDTEMIDataGridViewTextBoxColumn.DataPropertyName = "dDT_EMI";
-            this.dDTEMIDataGridViewTextBoxColumn.HeaderText = "Emissão";
-            this.dDTEMIDataGridViewTextBoxColumn.Name = "dDTEMIDataGridViewTextBoxColumn";
-            this.dDTEMIDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dDTEMIDataGridViewTextBoxColumn.Width = 79;
-            // 
-            // dVLTOTNFDataGridViewTextBoxColumn
-            // 
-            this.dVLTOTNFDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dVLTOTNFDataGridViewTextBoxColumn.DataPropertyName = "dVL_TOTNF";
-            dataGridViewCellStyle1.Format = "n2";
-            this.dVLTOTNFDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dVLTOTNFDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.dVLTOTNFDataGridViewTextBoxColumn.Name = "dVLTOTNFDataGridViewTextBoxColumn";
-            this.dVLTOTNFDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dVLTOTNFDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // sNM_CLIFOR
-            // 
-            this.sNM_CLIFOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sNM_CLIFOR.DataPropertyName = "sNM_CLIFOR";
-            this.sNM_CLIFOR.HeaderText = "Cliente";
-            this.sNM_CLIFOR.Name = "sNM_CLIFOR";
-            this.sNM_CLIFOR.ReadOnly = true;
-            // 
-            // bCancelado
-            // 
-            this.bCancelado.DataPropertyName = "bCancelado";
-            this.bCancelado.HeaderText = "bCancelado";
-            this.bCancelado.Name = "bCancelado";
-            this.bCancelado.Visible = false;
-            // 
-            // bEnviado
-            // 
-            this.bEnviado.DataPropertyName = "bEnviado";
-            this.bEnviado.HeaderText = "bEnviado";
-            this.bEnviado.Name = "bEnviado";
-            this.bEnviado.Visible = false;
-            // 
-            // bContingencia
-            // 
-            this.bContingencia.DataPropertyName = "bContingencia";
-            this.bContingencia.HeaderText = "bContingencia";
-            this.bContingencia.Name = "bContingencia";
-            this.bContingencia.Visible = false;
-            // 
-            // bDenegada
-            // 
-            this.bDenegada.DataPropertyName = "bDenegada";
-            this.bDenegada.HeaderText = "bDenegada";
-            this.bDenegada.Name = "bDenegada";
-            this.bDenegada.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "sCHAVENFE";
-            this.Column1.HeaderText = "Chave NFe";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // sRECIBO_NF
-            // 
-            this.sRECIBO_NF.DataPropertyName = "sRECIBO_NF";
-            this.sRECIBO_NF.HeaderText = "sRECIBO_NF";
-            this.sRECIBO_NF.Name = "sRECIBO_NF";
-            this.sRECIBO_NF.Visible = false;
             // 
             // bsNotas
             // 
@@ -795,6 +691,119 @@ namespace HLP.GeraXml.UI.NFe
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // bSelecionaDataGridViewCheckBoxColumn
+            // 
+            this.bSelecionaDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
+            this.bSelecionaDataGridViewCheckBoxColumn.HeaderText = "Selecionar";
+            this.bSelecionaDataGridViewCheckBoxColumn.Name = "bSelecionaDataGridViewCheckBoxColumn";
+            this.bSelecionaDataGridViewCheckBoxColumn.Width = 71;
+            // 
+            // sCDNOTAFISDataGridViewTextBoxColumn
+            // 
+            this.sCDNOTAFISDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sCDNOTAFISDataGridViewTextBoxColumn.DataPropertyName = "sCD_NOTAFIS";
+            this.sCDNOTAFISDataGridViewTextBoxColumn.HeaderText = "NF";
+            this.sCDNOTAFISDataGridViewTextBoxColumn.Name = "sCDNOTAFISDataGridViewTextBoxColumn";
+            this.sCDNOTAFISDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sCDNOTAFISDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // sCDNFSEQDataGridViewTextBoxColumn
+            // 
+            this.sCDNFSEQDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sCDNFSEQDataGridViewTextBoxColumn.DataPropertyName = "sCD_NFSEQ";
+            this.sCDNFSEQDataGridViewTextBoxColumn.HeaderText = "Sequência";
+            this.sCDNFSEQDataGridViewTextBoxColumn.Name = "sCDNFSEQDataGridViewTextBoxColumn";
+            this.sCDNFSEQDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sCDNFSEQDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // sCD_GRUPONF
+            // 
+            this.sCD_GRUPONF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sCD_GRUPONF.DataPropertyName = "sCD_GRUPONF";
+            this.sCD_GRUPONF.HeaderText = "GF";
+            this.sCD_GRUPONF.MaxInputLength = 4;
+            this.sCD_GRUPONF.Name = "sCD_GRUPONF";
+            this.sCD_GRUPONF.ReadOnly = true;
+            this.sCD_GRUPONF.Width = 50;
+            // 
+            // dDTEMIDataGridViewTextBoxColumn
+            // 
+            this.dDTEMIDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dDTEMIDataGridViewTextBoxColumn.DataPropertyName = "dDT_EMI";
+            this.dDTEMIDataGridViewTextBoxColumn.HeaderText = "Emissão";
+            this.dDTEMIDataGridViewTextBoxColumn.Name = "dDTEMIDataGridViewTextBoxColumn";
+            this.dDTEMIDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dDTEMIDataGridViewTextBoxColumn.Width = 79;
+            // 
+            // dVLTOTNFDataGridViewTextBoxColumn
+            // 
+            this.dVLTOTNFDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dVLTOTNFDataGridViewTextBoxColumn.DataPropertyName = "dVL_TOTNF";
+            dataGridViewCellStyle1.Format = "n2";
+            this.dVLTOTNFDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dVLTOTNFDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.dVLTOTNFDataGridViewTextBoxColumn.Name = "dVLTOTNFDataGridViewTextBoxColumn";
+            this.dVLTOTNFDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dVLTOTNFDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // sNM_CLIFOR
+            // 
+            this.sNM_CLIFOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sNM_CLIFOR.DataPropertyName = "sNM_CLIFOR";
+            this.sNM_CLIFOR.HeaderText = "Cliente";
+            this.sNM_CLIFOR.Name = "sNM_CLIFOR";
+            this.sNM_CLIFOR.ReadOnly = true;
+            // 
+            // bCancelado
+            // 
+            this.bCancelado.DataPropertyName = "bCancelado";
+            this.bCancelado.HeaderText = "bCancelado";
+            this.bCancelado.Name = "bCancelado";
+            this.bCancelado.Visible = false;
+            // 
+            // bEnviado
+            // 
+            this.bEnviado.DataPropertyName = "bEnviado";
+            this.bEnviado.HeaderText = "bEnviado";
+            this.bEnviado.Name = "bEnviado";
+            this.bEnviado.Visible = false;
+            // 
+            // bContingencia
+            // 
+            this.bContingencia.DataPropertyName = "bContingencia";
+            this.bContingencia.HeaderText = "bContingencia";
+            this.bContingencia.Name = "bContingencia";
+            this.bContingencia.Visible = false;
+            // 
+            // bDenegada
+            // 
+            this.bDenegada.DataPropertyName = "bDenegada";
+            this.bDenegada.HeaderText = "bDenegada";
+            this.bDenegada.Name = "bDenegada";
+            this.bDenegada.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "sCHAVENFE";
+            this.Column1.HeaderText = "Chave NFe";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // sRECIBO_NF
+            // 
+            this.sRECIBO_NF.DataPropertyName = "sRECIBO_NF";
+            this.sRECIBO_NF.HeaderText = "sRECIBO_NF";
+            this.sRECIBO_NF.Name = "sRECIBO_NF";
+            this.sRECIBO_NF.Visible = false;
+            // 
+            // cd_nprotnfe
+            // 
+            this.cd_nprotnfe.DataPropertyName = "cd_nprotnfe";
+            this.cd_nprotnfe.HeaderText = "cd_nprotnfe";
+            this.cd_nprotnfe.Name = "cd_nprotnfe";
+            this.cd_nprotnfe.Visible = false;
+            // 
             // frmGeraArquivoNFe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -872,6 +881,11 @@ namespace HLP.GeraXml.UI.NFe
         private System.Windows.Forms.Panel panel4;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblTotalRegistros;
+        private Comum.Componentes.HLP_TextBox txtCliente;
+        private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ProgressBar pbMinutos;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblMinutos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bSelecionaDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sCDNOTAFISDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sCDNFSEQDataGridViewTextBoxColumn;
@@ -885,11 +899,7 @@ namespace HLP.GeraXml.UI.NFe
         private System.Windows.Forms.DataGridViewCheckBoxColumn bDenegada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn sRECIBO_NF;
-        private Comum.Componentes.HLP_TextBox txtCliente;
-        private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado1;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ProgressBar pbMinutos;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblMinutos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cd_nprotnfe;
     }
 }
 

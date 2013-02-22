@@ -786,7 +786,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                         #region II
                         //Imposto de importação
                         belIi objii = new belIi();
-                        objii.Vbc = (bEx ? Convert.ToDecimal(drIItem["vUnTrib"].ToString()) : 0);
+                        objii.Vbc = (bEx ? Convert.ToDecimal(drIItem["bii"].ToString()) : 0);
                         objii.Vdespadu = Convert.ToDecimal(drIItem["vl_siscomex"].ToString());
                         objii.Vii = (bEx ? Convert.ToDecimal(drIItem["VL_II"].ToString()) : 0); ;
                         objii.Viof = 0;
@@ -1059,14 +1059,15 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                 string sTransportadora = "";
 
                                 sTransportadora = string.Format((Acesso.NM_EMPRESA == "TORCETEX" ? "FRETE A PAGAR DESTINO - TRANSP . DE REDESPACHO.: " : "Redespacho.:")
-                                                          + "{5} - {0} {1} - Bairro.: {2} - Cidade.: {3} - UF.: {4} - CNPJ:{5} ",
+                                                          + "{5} - {0} {1} - Bairro.: {2} - Cidade.: {3} - UF.: {4} - CNPJ:{6} ",
                                                           Util.TiraSimbolo(drIItem["xLgrRedes"].ToString().Trim(), ""),
                                                           Util.TiraSimbolo(drIItem["nroRedes"].ToString().Trim(), ""),
                                                           Util.TiraSimbolo(drIItem["xBairroRedes"].ToString().Trim(), ""),
                                                           RetiraCaracterEsquerda(Util.TiraSimbolo(drIItem["cmunRedes"].ToString().Trim(), ""), '0'),
                                                           Util.TiraSimbolo(drIItem["UFRedes"].ToString().Trim(), ""),
-                                                          Util.TiraSimbolo(drIItem["Transpcd_cgc"].ToString().Trim(), ""),
-                                                          drIItem["cd_cgc"].ToString().Trim());
+                                                          drIItem["Redespacho"].ToString().Trim(),
+                                                          Util.TiraSimbolo(drIItem["Transpcd_cgc"].ToString().Trim(), "")
+                                                          );
                                 sTransportadora += ";";
                                 sObsItem = sTransportadora + sObsItem;
                                 objinf.Infadprid = Util.TiraSimbolo(sObsItem.Trim(), "-");
