@@ -117,6 +117,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDanfe.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\dsNFSeCampinas.cs">
+      <DependentUpon>dsNFSeCampinas.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet\dsNFSeCampinas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsNFSeCampinas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Expressoes.cs" />
     <Compile Include="FormException.cs">
       <SubType>Form</SubType>
@@ -136,6 +145,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="rptNFSeCamp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptNFSeCamp.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Static\Acesso.cs" />
     <Compile Include="Static\Mensagens.cs" />
@@ -172,6 +187,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="rptNFSeCamp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptNFSeCamp.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="DataSet\dsCCe.xsc">
@@ -206,6 +225,17 @@
     </None>
     <None Include="DataSet\dsDanfe.xss">
       <DependentUpon>dsDanfe.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dsNFSeCampinas.xsc">
+      <DependentUpon>dsNFSeCampinas.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dsNFSeCampinas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsNFSeCampinas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\dsNFSeCampinas.xss">
+      <DependentUpon>dsNFSeCampinas.xsd</DependentUpon>
     </None>
     <None Include="Resources\primeiro %282%29.png" />
   </ItemGroup>

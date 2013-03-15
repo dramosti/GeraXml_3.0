@@ -18,6 +18,7 @@ namespace HLP.GeraXml.bel.NFe
 {
     public class belCancelamento : daoCancelamento
     {
+        public DadosRetorno objRetorno = new DadosRetorno();
         public belPesquisaNotas objPesquisa = new belPesquisaNotas();
         public struct DadosRetorno
         {
@@ -30,10 +31,10 @@ namespace HLP.GeraXml.bel.NFe
             public string nprot { get; set; }
         }
 
-        public DadosRetorno EfetuaCancelamento(belPesquisaNotas _objPesquisa, string sJust)
+        public void EfetuaCancelamento(belPesquisaNotas _objPesquisa, string sJust, int iNumEvento)
         {
             this.objPesquisa = _objPesquisa;
-            string sDados = NFeDadosMsg2(_objPesquisa, sJust);
+            string sDados = NFeDadosMsg2(_objPesquisa, sJust, iNumEvento);
             XmlDocument xRet = new XmlDocument();
 
             if (Acesso.TP_EMIS == 1)
@@ -245,12 +246,21 @@ namespace HLP.GeraXml.bel.NFe
                 #endregion
             }
 
-            string sPath = Pastas.PROTOCOLOS + "\\" + objPesquisa.sCD_NFSEQ + "_Ret_Pedcan.xml";
+            string sPath = Pastas.PROTOCOLOS + "\\" + objPesquisa.sCD_NFSEQ + "_Ret_Pedcan" + DateTime.Now.ToString("ddMMyyHHmmss") + ".xml";
             xRet.Save(sPath);
 
             belRetEventoCancelamento objRet = SerializeClassToXml.DeserializeClasse<belRetEventoCancelamento>(sPath);
 
-            return CarregaDadosRetorno(objRet);
+            if (objRet.retEvento.infEvento.cStat == "573")
+            {
+                objRetorno = new DadosRetorno();
+                iNumEvento = iNumEvento + 1;
+                EfetuaCancelamento(_objPesquisa, sJust, iNumEvento);
+            }
+            else
+            {
+              objRetorno =  CarregaDadosRetorno(objRet);
+            }            
         }
 
         private DadosRetorno CarregaDadosRetorno(belRetEventoCancelamento objret)
@@ -324,7 +334,7 @@ namespace HLP.GeraXml.bel.NFe
         }
 
 
-        private string NFeDadosMsg2(belPesquisaNotas nota, string sJust)
+        private string NFeDadosMsg2(belPesquisaNotas nota, string sJust, int iNumEvento)
         {
             string sVersao = "1.00";
             belCancelamento2 objcanc = new belCancelamento2();
@@ -333,6 +343,8 @@ namespace HLP.GeraXml.bel.NFe
             Evento evento = new Evento();
             evento.versao = sVersao;
             evento.infEvento = new eventoInfEvento();
+
+            evento.infEvento.nSeqEvento = iNumEvento.ToString(); // numero de evento
             evento.infEvento.Id = "ID" + evento.infEvento.tpEvento + nota.sCHAVENFE + evento.infEvento.nSeqEvento.PadLeft(2, '0');
             evento.infEvento.cOrgao = 35;
             evento.infEvento.tpAmb = Convert.ToByte(Acesso.TP_AMB);

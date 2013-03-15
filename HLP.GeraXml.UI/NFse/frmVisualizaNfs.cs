@@ -197,7 +197,6 @@ namespace HLP.GeraXml.UI.NFse
                 throw ex;
             }
         }
-
         private void PopulaForm()
         {
             try
@@ -341,7 +340,6 @@ namespace HLP.GeraXml.UI.NFse
                 new HLPexception(ex);
             }
         }
-
         private bool ValidaNotas()
         {
             bsNotas.MoveFirst();
@@ -416,7 +414,6 @@ namespace HLP.GeraXml.UI.NFse
                 return false;
             }
         }
-
         private void SalvarAlteracao()
         {
             try
@@ -487,7 +484,7 @@ namespace HLP.GeraXml.UI.NFse
 
 
                 //Inicio Group Tomador
-               // if (mskCpfCnpjToma.Text != "" || txtImToma.Text != "")
+                // if (mskCpfCnpjToma.Text != "" || txtImToma.Text != "")
                 {
                     rps.InfRps.Tomador.IdentificacaoTomador = new tcIdentificacaoTomador();
                     rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj = new TcCpfCnpj();
@@ -571,7 +568,6 @@ namespace HLP.GeraXml.UI.NFse
                 new HLPexception(ex);
             }
         }
-
         private void ProcuraTabPage(Control controle)
         {
             if (controle.Parent != null)
@@ -583,6 +579,7 @@ namespace HLP.GeraXml.UI.NFse
                 ProcuraTabPage(controle.Parent);
             }
         }
+
 
         #endregion
 
@@ -706,7 +703,6 @@ namespace HLP.GeraXml.UI.NFse
                     ProcuraTabPage(ctr);
                     ctr.Focus();
                 }
-
             }
             catch (Exception ex)
             {
@@ -720,9 +716,11 @@ namespace HLP.GeraXml.UI.NFse
             if ((sender as AC.ExtendedRenderer.Navigator.KryptonTabControl).SelectedTab.Name == "tabErros")
             {
                 SalvarAlteracao();
-                ValidaNotas();                
+                ValidaNotas();
             }
         }
+
+
 
     }
 }

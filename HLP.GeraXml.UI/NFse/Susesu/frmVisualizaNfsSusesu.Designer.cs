@@ -36,7 +36,9 @@
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.flpIdentificacao = new System.Windows.Forms.FlowLayoutPanel();
             this.txtNumNota = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
+            this.txtNfseq = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtDtEmissao = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
+            this.txtCodPrefeitura = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtCodGeralAtv = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtCodAtv = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtInformacoes = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
@@ -57,8 +59,9 @@
             this.nudValorCOFINS = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.nudContrSocial = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.nudValLiquido = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
-            this.nudValDeducMat = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.nudAliquota = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
+            this.nudValorISS = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
+            this.nudValDeducMat = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.nudRegEspec = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -76,9 +79,6 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.listErros = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
             this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
-            this.txtCodPrefeitura = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
-            this.nudValorISS = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
-            this.txtNfseq = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
@@ -209,6 +209,29 @@
             this.txtNumNota.Size = new System.Drawing.Size(214, 20);
             this.txtNumNota.TabIndex = 1;
             // 
+            // txtNfseq
+            // 
+            this.txtNfseq._LabelText = "Sequencia do Sistema";
+            this.txtNfseq._Multiline = false;
+            this.txtNfseq._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
+            this.txtNfseq._Password = false;
+            this.txtNfseq._Regex = Expressoes.Não_Aplica;
+            this.txtNfseq._Regex_Expressao = null;
+            this.txtNfseq._TamanhoMaiorLabel = 200;
+            this.txtNfseq._TamanhoTextBox = 102;
+            this.txtNfseq._Visible = true;
+            this.txtNfseq.AutoSize = true;
+            this.txtNfseq.BackColor = System.Drawing.Color.Transparent;
+            this.txtNfseq.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtNfseq.Color = System.Drawing.Color.White;
+            this.txtNfseq.Location = new System.Drawing.Point(66, 29);
+            this.txtNfseq.Margin = new System.Windows.Forms.Padding(66, 3, 15, 3);
+            this.txtNfseq.MaxLength = 15;
+            this.txtNfseq.Name = "txtNfseq";
+            this.txtNfseq.ReadOnly = true;
+            this.txtNfseq.Size = new System.Drawing.Size(239, 23);
+            this.txtNfseq.TabIndex = 8;
+            // 
             // txtDtEmissao
             // 
             this.txtDtEmissao._LabelText = "Emissão";
@@ -231,6 +254,29 @@
             this.txtDtEmissao.ReadOnly = true;
             this.txtDtEmissao.Size = new System.Drawing.Size(159, 20);
             this.txtDtEmissao.TabIndex = 2;
+            // 
+            // txtCodPrefeitura
+            // 
+            this.txtCodPrefeitura._LabelText = "Cód. da Prefeitura";
+            this.txtCodPrefeitura._Multiline = false;
+            this.txtCodPrefeitura._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
+            this.txtCodPrefeitura._Password = false;
+            this.txtCodPrefeitura._Regex = Expressoes.Não_Aplica;
+            this.txtCodPrefeitura._Regex_Expressao = null;
+            this.txtCodPrefeitura._TamanhoMaiorLabel = 200;
+            this.txtCodPrefeitura._TamanhoTextBox = 102;
+            this.txtCodPrefeitura._Visible = true;
+            this.txtCodPrefeitura.AutoSize = true;
+            this.txtCodPrefeitura.BackColor = System.Drawing.Color.Transparent;
+            this.txtCodPrefeitura.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtCodPrefeitura.Color = System.Drawing.Color.White;
+            this.txtCodPrefeitura.Location = new System.Drawing.Point(87, 84);
+            this.txtCodPrefeitura.Margin = new System.Windows.Forms.Padding(87, 3, 15, 3);
+            this.txtCodPrefeitura.MaxLength = 5;
+            this.txtCodPrefeitura.Name = "txtCodPrefeitura";
+            this.txtCodPrefeitura.ReadOnly = false;
+            this.txtCodPrefeitura.Size = new System.Drawing.Size(218, 20);
+            this.txtCodPrefeitura.TabIndex = 7;
             // 
             // txtCodGeralAtv
             // 
@@ -722,40 +768,6 @@
             131072});
             this.nudValLiquido.ValueInt = 0;
             // 
-            // nudValDeducMat
-            // 
-            this.nudValDeducMat._LabelText = "Valor Dedução Material";
-            this.nudValDeducMat._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.NÃO;
-            this.nudValDeducMat._TamanhoMaiorLabel = 200;
-            this.nudValDeducMat._TamanhoNumericUpDown = 130;
-            this.nudValDeducMat._Visible = true;
-            this.nudValDeducMat.AutoSize = true;
-            this.nudValDeducMat.BackColor = System.Drawing.Color.Transparent;
-            this.nudValDeducMat.Color = System.Drawing.Color.White;
-            this.nudValDeducMat.DecimalPlaces = 2;
-            this.nudValDeducMat.Location = new System.Drawing.Point(403, 94);
-            this.nudValDeducMat.Margin = new System.Windows.Forms.Padding(55, 3, 15, 3);
-            this.nudValDeducMat.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.nudValDeducMat.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudValDeducMat.Name = "nudValDeducMat";
-            this.nudValDeducMat.ReadOnly = false;
-            this.nudValDeducMat.Size = new System.Drawing.Size(278, 23);
-            this.nudValDeducMat.TabIndex = 19;
-            this.nudValDeducMat.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.nudValDeducMat.ValueInt = 0;
-            // 
             // nudAliquota
             // 
             this.nudAliquota._LabelText = "% Aliquota";
@@ -789,6 +801,74 @@
             0,
             131072});
             this.nudAliquota.ValueInt = 0;
+            // 
+            // nudValorISS
+            // 
+            this.nudValorISS._LabelText = "Valor ISS";
+            this.nudValorISS._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.NÃO;
+            this.nudValorISS._TamanhoMaiorLabel = 200;
+            this.nudValorISS._TamanhoNumericUpDown = 129;
+            this.nudValorISS._Visible = true;
+            this.nudValorISS.AutoSize = true;
+            this.nudValorISS.BackColor = System.Drawing.Color.Transparent;
+            this.nudValorISS.Color = System.Drawing.Color.White;
+            this.nudValorISS.DecimalPlaces = 2;
+            this.nudValorISS.Location = new System.Drawing.Point(488, 61);
+            this.nudValorISS.Margin = new System.Windows.Forms.Padding(140, 3, 15, 3);
+            this.nudValorISS.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.nudValorISS.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudValorISS.Name = "nudValorISS";
+            this.nudValorISS.ReadOnly = true;
+            this.nudValorISS.Size = new System.Drawing.Size(192, 27);
+            this.nudValorISS.TabIndex = 22;
+            this.nudValorISS.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.nudValorISS.ValueInt = 0;
+            // 
+            // nudValDeducMat
+            // 
+            this.nudValDeducMat._LabelText = "Valor Dedução Material";
+            this.nudValDeducMat._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.NÃO;
+            this.nudValDeducMat._TamanhoMaiorLabel = 200;
+            this.nudValDeducMat._TamanhoNumericUpDown = 130;
+            this.nudValDeducMat._Visible = true;
+            this.nudValDeducMat.AutoSize = true;
+            this.nudValDeducMat.BackColor = System.Drawing.Color.Transparent;
+            this.nudValDeducMat.Color = System.Drawing.Color.White;
+            this.nudValDeducMat.DecimalPlaces = 2;
+            this.nudValDeducMat.Location = new System.Drawing.Point(403, 94);
+            this.nudValDeducMat.Margin = new System.Windows.Forms.Padding(55, 3, 15, 3);
+            this.nudValDeducMat.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.nudValDeducMat.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudValDeducMat.Name = "nudValDeducMat";
+            this.nudValDeducMat.ReadOnly = false;
+            this.nudValDeducMat.Size = new System.Drawing.Size(278, 23);
+            this.nudValDeducMat.TabIndex = 19;
+            this.nudValDeducMat.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.nudValDeducMat.ValueInt = 0;
             // 
             // nudRegEspec
             // 
@@ -831,7 +911,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(733, 247);
+            this.tabPage3.Size = new System.Drawing.Size(866, 475);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Tag = false;
             this.tabPage3.Text = "Tomador";
@@ -842,7 +922,7 @@
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel3.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(733, 247);
+            this.kryptonPanel3.Size = new System.Drawing.Size(866, 475);
             this.kryptonPanel3.TabIndex = 0;
             // 
             // flpTomador
@@ -864,7 +944,7 @@
             this.flpTomador.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpTomador.Location = new System.Drawing.Point(0, 0);
             this.flpTomador.Name = "flpTomador";
-            this.flpTomador.Size = new System.Drawing.Size(733, 247);
+            this.flpTomador.Size = new System.Drawing.Size(866, 475);
             this.flpTomador.TabIndex = 51;
             // 
             // mskCpfCnpjToma
@@ -1000,7 +1080,7 @@
             this.mskCepToma.MaxLength = 32767;
             this.mskCepToma.Name = "mskCepToma";
             this.mskCepToma.ReadOnly = false;
-            this.mskCepToma.Size = new System.Drawing.Size(177, 27);
+            this.mskCepToma.Size = new System.Drawing.Size(177, 22);
             this.mskCepToma.TabIndex = 20;
             // 
             // txtMunicipio
@@ -1018,7 +1098,7 @@
             this.txtMunicipio.BackColor = System.Drawing.Color.Transparent;
             this.txtMunicipio.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtMunicipio.Color = System.Drawing.Color.White;
-            this.txtMunicipio.Location = new System.Drawing.Point(786, 3);
+            this.txtMunicipio.Location = new System.Drawing.Point(134, 196);
             this.txtMunicipio.Margin = new System.Windows.Forms.Padding(134, 3, 15, 3);
             this.txtMunicipio.MaxLength = 60;
             this.txtMunicipio.Name = "txtMunicipio";
@@ -1041,7 +1121,7 @@
             this.txtLogradouro.BackColor = System.Drawing.Color.Transparent;
             this.txtLogradouro.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtLogradouro.Color = System.Drawing.Color.White;
-            this.txtLogradouro.Location = new System.Drawing.Point(776, 36);
+            this.txtLogradouro.Location = new System.Drawing.Point(124, 229);
             this.txtLogradouro.Margin = new System.Windows.Forms.Padding(124, 3, 15, 3);
             this.txtLogradouro.MaxLength = 115;
             this.txtLogradouro.Name = "txtLogradouro";
@@ -1064,7 +1144,7 @@
             this.mskFone.BackColor = System.Drawing.Color.Transparent;
             this.mskFone.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.mskFone.Color = System.Drawing.Color.White;
-            this.mskFone.Location = new System.Drawing.Point(794, 69);
+            this.mskFone.Location = new System.Drawing.Point(142, 262);
             this.mskFone.Margin = new System.Windows.Forms.Padding(142, 3, 15, 3);
             this.mskFone.MaxLength = 12;
             this.mskFone.Name = "mskFone";
@@ -1087,7 +1167,7 @@
             this.txtEmail.BackColor = System.Drawing.Color.Transparent;
             this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtEmail.Color = System.Drawing.Color.White;
-            this.txtEmail.Location = new System.Drawing.Point(808, 102);
+            this.txtEmail.Location = new System.Drawing.Point(156, 295);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(156, 3, 15, 3);
             this.txtEmail.MaxLength = 60;
             this.txtEmail.Name = "txtEmail";
@@ -1101,7 +1181,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(733, 247);
+            this.tabPage4.Size = new System.Drawing.Size(866, 475);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Tag = false;
             this.tabPage4.Text = "Erros";
@@ -1113,89 +1193,9 @@
             this.listErros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listErros.Location = new System.Drawing.Point(0, 0);
             this.listErros.Name = "listErros";
-            this.listErros.Size = new System.Drawing.Size(733, 247);
+            this.listErros.Size = new System.Drawing.Size(866, 475);
             this.listErros.TabIndex = 2;
             this.listErros.ValueMember = "controle";
-            // 
-            // txtCodPrefeitura
-            // 
-            this.txtCodPrefeitura._LabelText = "Cód. da Prefeitura";
-            this.txtCodPrefeitura._Multiline = false;
-            this.txtCodPrefeitura._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
-            this.txtCodPrefeitura._Password = false;
-            this.txtCodPrefeitura._Regex = Expressoes.Não_Aplica;
-            this.txtCodPrefeitura._Regex_Expressao = null;
-            this.txtCodPrefeitura._TamanhoMaiorLabel = 200;
-            this.txtCodPrefeitura._TamanhoTextBox = 102;
-            this.txtCodPrefeitura._Visible = true;
-            this.txtCodPrefeitura.AutoSize = true;
-            this.txtCodPrefeitura.BackColor = System.Drawing.Color.Transparent;
-            this.txtCodPrefeitura.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtCodPrefeitura.Color = System.Drawing.Color.White;
-            this.txtCodPrefeitura.Location = new System.Drawing.Point(87, 84);
-            this.txtCodPrefeitura.Margin = new System.Windows.Forms.Padding(87, 3, 15, 3);
-            this.txtCodPrefeitura.MaxLength = 5;
-            this.txtCodPrefeitura.Name = "txtCodPrefeitura";
-            this.txtCodPrefeitura.ReadOnly = false;
-            this.txtCodPrefeitura.Size = new System.Drawing.Size(218, 20);
-            this.txtCodPrefeitura.TabIndex = 7;
-            // 
-            // nudValorISS
-            // 
-            this.nudValorISS._LabelText = "Valor ISS";
-            this.nudValorISS._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.NÃO;
-            this.nudValorISS._TamanhoMaiorLabel = 200;
-            this.nudValorISS._TamanhoNumericUpDown = 129;
-            this.nudValorISS._Visible = true;
-            this.nudValorISS.AutoSize = true;
-            this.nudValorISS.BackColor = System.Drawing.Color.Transparent;
-            this.nudValorISS.Color = System.Drawing.Color.White;
-            this.nudValorISS.DecimalPlaces = 2;
-            this.nudValorISS.Location = new System.Drawing.Point(488, 61);
-            this.nudValorISS.Margin = new System.Windows.Forms.Padding(140, 3, 15, 3);
-            this.nudValorISS.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.nudValorISS.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudValorISS.Name = "nudValorISS";
-            this.nudValorISS.ReadOnly = true;
-            this.nudValorISS.Size = new System.Drawing.Size(192, 27);
-            this.nudValorISS.TabIndex = 22;
-            this.nudValorISS.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            131072});
-            this.nudValorISS.ValueInt = 0;
-            // 
-            // txtNfseq
-            // 
-            this.txtNfseq._LabelText = "Sequencia do Sistema";
-            this.txtNfseq._Multiline = false;
-            this.txtNfseq._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
-            this.txtNfseq._Password = false;
-            this.txtNfseq._Regex = Expressoes.Não_Aplica;
-            this.txtNfseq._Regex_Expressao = null;
-            this.txtNfseq._TamanhoMaiorLabel = 200;
-            this.txtNfseq._TamanhoTextBox = 102;
-            this.txtNfseq._Visible = true;
-            this.txtNfseq.AutoSize = true;
-            this.txtNfseq.BackColor = System.Drawing.Color.Transparent;
-            this.txtNfseq.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtNfseq.Color = System.Drawing.Color.White;
-            this.txtNfseq.Location = new System.Drawing.Point(66, 29);
-            this.txtNfseq.Margin = new System.Windows.Forms.Padding(66, 3, 15, 3);
-            this.txtNfseq.MaxLength = 15;
-            this.txtNfseq.Name = "txtNfseq";
-            this.txtNfseq.ReadOnly = true;
-            this.txtNfseq.Size = new System.Drawing.Size(239, 23);
-            this.txtNfseq.TabIndex = 8;
             // 
             // frmVisualizaNfsSusesu
             // 

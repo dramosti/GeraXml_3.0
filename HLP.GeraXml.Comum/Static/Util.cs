@@ -786,7 +786,21 @@ namespace HLP.GeraXml.Comum.Static
             {
                 sb.Append(hash[i].ToString("X2"));
             }
-            return sb.ToString().ToLower();
+            return sb.ToString().ToLower();                      
         }
+
+
+        public static string CalculateSHA1(string text, Encoding enc)
+        {
+            byte[] buffer = enc.GetBytes(text);
+            SHA1CryptoServiceProvider cryptoTransformSHA1 =
+            new SHA1CryptoServiceProvider();
+            string hash = BitConverter.ToString(
+                cryptoTransformSHA1.ComputeHash(buffer)).Replace("-", "");
+
+            return hash;
+
+        }
+
     }
 }

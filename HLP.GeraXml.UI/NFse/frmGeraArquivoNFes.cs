@@ -17,6 +17,8 @@ using HLP.GeraXml.bel;
 using HLP.GeraXml.bel.NFes.Susesu;
 using CrystalDecisions.CrystalReports.Engine;
 using HLP.GeraXml.bel.NFes.DSF;
+using HLP.GeraXml.UI.NFse.DSF;
+using HLP.GeraXml.Comum.DataSet;
 
 namespace HLP.GeraXml.UI.NFse
 {
@@ -211,11 +213,15 @@ namespace HLP.GeraXml.UI.NFse
                         if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.DSF)
                         {
                             belCarregaDadosRPS objCarregaDados = new belCarregaDadosRPS(objSelect);
+                            frmVisualizaNfsDSF objfrm = new frmVisualizaNfsDSF(objCarregaDados.objLoteEnvio);
+                            objfrm.ShowDialog();
+                            if (objfrm.Cancelado)
+                            {
+                                throw new Exception("Envio da(s) Nota(s) de serviço foi Cancelado.");
+                            }
+                            objCarregaDados.CriarXml();
                             belEnviarNFSeWS objEnvio = new belEnviarNFSeWS(objCarregaDados);
-
                             KryptonMessageBox.Show(objEnvio.Enviar(), Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
                         }
                         else if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.SUSESU) // arrumar o retorno das TELAS...
                         {
@@ -425,7 +431,12 @@ namespace HLP.GeraXml.UI.NFse
                         KryptonMessageBox.Show("Nenhuma nota Válida foi Selecionada", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    if (objSelect.Count == 1)
+                    if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.DSF)
+                    {
+                        FrmCancelamentoDSF objfrm = new FrmCancelamentoDSF(objSelect);
+                        objfrm.ShowDialog();
+                    }
+                    else if (objSelect.Count == 1)
                     {
                         frmCancelamentoNfs objfrmCanc = new frmCancelamentoNfs();
                         objfrmCanc.ShowDialog();
@@ -490,7 +501,46 @@ namespace HLP.GeraXml.UI.NFse
 
                     if (sListImpressao.Count > 0)
                     {
-                        if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.SUSESU)
+                        if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.DSF)
+                        {
+                            if (sListImpressao.Count > 1)
+                            {
+                                //Não pode
+                            }
+                            else
+                            {
+                                string sCD_NFSEQ = sListImpressao[0].sNfSeq;
+                                daoUtil dadosEmpresa = new daoUtil();
+                                dadosEmpresa.SetDadosEmpresa();
+
+                                string sEnderPrestador = string.Format("{0}, - BAIRRO: {1} ",
+                                    dadosEmpresa.RuaEmpresa, dadosEmpresa.BairroEmpresa);
+                                string sRPS = daoUtil.GetNumRPSbyCD_NFSEQ(sCD_NFSEQ);
+
+                                LoteRPS nota = SerializeClassToXml.DeserializeClasse<LoteRPS>(belCarregaDadosRPS.GetFilePathMonthServico(true, sRPS));
+                                foreach (LoteRPSItensItem item in nota.Itens.Item)
+                                {
+                                    item.NumeroRPS = nota.NumeroRPS;
+                                }
+                                List<LoteRPS> lNotas = new List<LoteRPS>();
+                                lNotas.Add(nota);
+
+                                //ReportDocument rpt = new ReportDocument();
+                                rptNFSeCamp rpt = new rptNFSeCamp();
+                                //rpt.Load(Application.StartupPath + "\\Relatorios\\rptNFSeDSF.rpt");
+
+                                dsNFSeCampinas ds = CarregaDataSet(sCD_NFSEQ, dadosEmpresa, sEnderPrestador, nota);
+                                rpt.SetDataSource(ds);
+                                rpt.DataDefinition.FormulaFields["F_BAIRRO_TOMADOR"].Text = "\"" + nota.BairroTomador + "\"";
+                                rpt.Refresh();
+                                //try { rpt.SetParameterValue("Path_Image", Acesso.LOGOTIPO); }
+                                //catch (System.Exception) { };
+
+                                frmRelatorio frm = new frmRelatorio(rpt, "Impressão de Relatório de Nota Fiscal Eletrônica de Serviço");
+                                frm.Show();
+                            }
+                        }
+                        else if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.SUSESU)
                         {
                             bel.NFes.Susesu.belNFesSusesu objNfe;
 
@@ -513,8 +563,10 @@ namespace HLP.GeraXml.UI.NFse
 
                             daoUtil dadosEmpresa = new daoUtil();
                             dadosEmpresa.SetDadosEmpresa();
+                            string sNomeCidade = lNfe.FirstOrDefault().BuscaNomeCidade(Util.TiraSimbolo(lNfe.FirstOrDefault().TOMADOR_MUNICIPIO.ToString()));
 
-                            rpt.DataDefinition.FormulaFields["NomeEmpresa"].Text = "\"" + Acesso.NM_EMPRESA + "\"";
+                            rpt.DataDefinition.FormulaFields["NM_MUNICIPIO_TOMADOR"].Text = "\"" + sNomeCidade + "\"";
+                            rpt.DataDefinition.FormulaFields["NomeEmpresa"].Text = "\"" + Acesso.NM_RAZAOSOCIAL + "\"";
                             rpt.DataDefinition.FormulaFields["DocEmpresa"].Text = "\"" + Acesso.CNPJ_EMPRESA + "\"";
                             rpt.DataDefinition.FormulaFields["IMEmpresa"].Text = "\"" + dadosEmpresa.ImEmpresa + "\"";
                             rpt.DataDefinition.FormulaFields["IEEmpresa"].Text = "\"" + dadosEmpresa.IeEmpresa + "\"";
@@ -592,6 +644,105 @@ namespace HLP.GeraXml.UI.NFse
             {
                 new HLPexception(ex);
             }
+        }
+
+        private static dsNFSeCampinas CarregaDataSet(string sCD_NFSEQ, daoUtil dadosEmpresa, string sEnderPrestador, LoteRPS nota)
+        {
+            dsNFSeCampinas ds = new dsNFSeCampinas();
+            dsNFSeCampinas.NotaRow row = ds.Nota.NewNotaRow();
+
+            row.RazaoSocialPrestador = nota.RazaoSocialPrestador;
+            row.NumeroRPS = nota.NumeroRPS;
+            row.DataEmissaoRPS = nota.DataEmissaoRPS;
+            row.CPFCNPJTomador = nota.CPFCNPJTomador;
+            row.RazaoSocialTomador = nota.RazaoSocialTomador;
+            row.TipoLogradouroTomador = nota.TipoLogradouroTomador.ToUpper();
+            row.LogradouroTomador = nota.LogradouroTomador;
+            row.NumeroEnderecoTomador = nota.NumeroEnderecoTomador;
+            row.TipoBairroTomador = nota.TipoBairroTomador;
+            row.CEPTomador = nota.CEPTomador;
+            row.EmailTomador = nota.EmailTomador;
+            row.CodigoAtividade = nota.CodigoAtividade;
+            row.AliquotaAtividade = nota.AliquotaAtividade.ToString();
+
+            switch (nota.TipoRecolhimento)
+            {
+                case "A": row.TipoRecolhimento = "A Recolher";
+                    break;
+                case "R": row.TipoRecolhimento = "Retido na fonte";
+                    break;
+            }
+            row.MunicipioPrestacaoDescricao = nota.MunicipioPrestacaoDescricao;
+            switch (nota.Tributacao)
+            {
+                case "C": row.Tributacao = "Isenta de ISS";
+                    break;
+                case "E": row.Tributacao = "Não Incidência no Município";
+                    break;
+                case "F": row.Tributacao = "Imune";
+                    break;
+                case "K": row.Tributacao = "Exigibilidd Susp.Dec.J/Proc.A";
+                    break;
+                case "N": row.Tributacao = "Não Tributável";
+                    break;
+                case "T": row.Tributacao = "Tributável";
+                    break;
+                case "G": row.Tributacao = "Tributável Fixo";
+                    break;
+                case "H": row.Tributacao = "Tributável S.N.";
+                    break;
+                case "M": row.Tributacao = "Micro Empreendedor Individual (MEI)";
+                    break;
+            }
+            row.AliquotaPIS = nota.AliquotaPIS;
+            row.AliquotaCOFINS = nota.AliquotaCOFINS;
+            row.AliquotaINSS = nota.AliquotaINSS;
+            row.AliquotaIR = nota.AliquotaIR;
+            row.AliquotaCSLL = nota.AliquotaCSLL;
+
+            row.ValorCOFINS = nota.ValorCOFINS;
+            row.ValorCSLL = nota.ValorCSLL;
+            row.ValorINSS = nota.ValorINSS;
+            row.ValorIR = nota.ValorIR;
+            row.ValorPIS = nota.ValorPIS;
+
+            row.DescricaoRPS = nota.DescricaoRPS;
+            row.F_ENDER_TOMADOR =
+            row.F_RECOLHIMENTO =
+            row.F_TRIBUTACAO =
+            row.F_CD_VERIFICACAO = daoUtil.GetCodVerificacaoByCD_NFSEQ(sCD_NFSEQ);
+            row.F_CNPJ_PRESTADOR = Acesso.CNPJ_EMPRESA;
+            row.F_ENDERECO_PRESTADOR = sEnderPrestador;
+            row.F_MUNICIPIO_PRESTADOR = Acesso.CIDADE_EMPRESA;
+            row.F_UF_PRESTADOR = daoUtil.GetUfByNome(nota.CidadeTomadorDescricao);
+            row.F_EMAIL_PRESTADOR = dadosEmpresa.EmailEmpresa;
+            row.F_UF_TOMADOR = daoUtil.GetUfByNome(nota.CidadeTomadorDescricao);
+            row.F_MES_RECOLHIMENTO = nota.DataEmissaoRPS.ToString("MM/yyyy");
+            if (nota.Deducoes.Deducao.Count() > 0)
+            {
+                row.F_VALOR_DECUCAO = nota.Deducoes.Deducao.Sum(c => c.ValorDeduzir);
+            }
+            else
+            {
+                row.F_VALOR_DECUCAO = 0;
+            }
+            row.CidadeTomadorDescricao = nota.CidadeTomadorDescricao;
+            row.InscricaoPrestador = nota.InscricaoMunicipalPrestador;
+
+            ds.Nota.AddNotaRow(row);
+
+            dsNFSeCampinas.ItensRow rowItem;
+            foreach (LoteRPSItensItem item in nota.Itens.Item)
+            {
+                rowItem = ds.Itens.NewItensRow();
+                rowItem.DiscriminacaoServico = item.DiscriminacaoServico;
+                rowItem.Quantidade = item.Quantidade;
+                rowItem.ValorTotal = item.ValorTotal;
+                rowItem.ValorUnitario = item.ValorUnitario;
+                rowItem.NumeroRPS = nota.NumeroRPS;
+                ds.Itens.AddItensRow(rowItem);
+            }
+            return ds;
         }
 
         #endregion

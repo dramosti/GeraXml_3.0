@@ -23,6 +23,9 @@ namespace HLP.GeraXml.UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+           
+
+
 
             frmPrincipal objFrm = new frmPrincipal();
             objFrm.SetVisualandBackColor(belRegedit.BuscaNomeSkin());

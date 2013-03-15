@@ -43,7 +43,8 @@ namespace HLP.GeraXml.UI.NFe
                 if (sValorJust != "" && sValorJust.Length >= 15 && sValorJust.Length <= 256)
                 {
                     belCancelamento objbelCanc = new belCancelamento();
-                    KryptonMessageBox.Show(belTrataMensagemNFe.RetornaMensagem(objbelCanc.EfetuaCancelamento(objbelPesquisa, sValorJust), belTrataMensagemNFe.Tipo.Cancelamento), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    objbelCanc.EfetuaCancelamento(objbelPesquisa, sValorJust, 1);
+                    KryptonMessageBox.Show(belTrataMensagemNFe.RetornaMensagem(objbelCanc.objRetorno, belTrataMensagemNFe.Tipo.Cancelamento), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else

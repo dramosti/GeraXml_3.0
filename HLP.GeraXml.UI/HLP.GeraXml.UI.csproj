@@ -333,6 +333,18 @@
     <Compile Include="NFe\frmVisualizaNFe.designer.cs">
       <DependentUpon>frmVisualizaNFe.cs</DependentUpon>
     </Compile>
+    <Compile Include="NFse\DSF\FrmCancelamentoDSF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NFse\DSF\FrmCancelamentoDSF.Designer.cs">
+      <DependentUpon>FrmCancelamentoDSF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NFse\DSF\frmVisualizaNfsDSF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NFse\DSF\frmVisualizaNfsDSF.Designer.cs">
+      <DependentUpon>frmVisualizaNfsDSF.cs</DependentUpon>
+    </Compile>
     <Compile Include="NFse\frmCancelamentoNfs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,8 +457,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rptNfesSusesu.rpt</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Relatorios\rptNFSeDSF.cs">
+      <DependentUpon>rptNFSeDSF.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Content Include="globe_glass.ico" />
     <Content Include="Relatorios\rptCteLotacao.rpt">
@@ -519,6 +538,12 @@
       <DependentUpon>frmVisualizaNFe.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="NFse\DSF\FrmCancelamentoDSF.resx">
+      <DependentUpon>FrmCancelamentoDSF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NFse\DSF\frmVisualizaNfsDSF.resx">
+      <DependentUpon>frmVisualizaNfsDSF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NFse\frmCancelamentoNfs.resx">
       <DependentUpon>frmCancelamentoNfs.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -576,6 +601,11 @@
       <LastGenOutput>rptNfesSusesu.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Relatorios\rptNFSeDSF.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptNFSeDSF.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="HLP.GeraXml.UI_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.belEmail.datasource" />
@@ -589,6 +619,9 @@
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.belNFref.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.belProd.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.belCancelamentoNFse.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.DSF.LoteNota.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.DSF.LoteRPSDeducoesDeducao.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.DSF.LoteRPSItensItem.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.Susesu.belNFesSusesu.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.PendenciaEmail.datasource" />
     <None Include="Resources\cancel %283%29.png" />

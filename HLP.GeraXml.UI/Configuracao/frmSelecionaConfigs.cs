@@ -115,6 +115,7 @@ namespace HLP.GeraXml.UI.Configuracao
                 {
                     KryptonMessageBox.Show(null, "Não existem arquivos na pasta de Configuração", Mensagens.MSG_Alerta, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+
             }
             catch (Exception ex)
             {

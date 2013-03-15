@@ -17,7 +17,8 @@ namespace HLP.GeraXml.UI
             InitializeComponent();
             this.Text = sTexto;
             crystalReportViewer1.ReportSource = rpt;
-            crystalReportViewer1.Refresh();
+
+            crystalReportViewer1.RefreshReport();
         }
     }
 }

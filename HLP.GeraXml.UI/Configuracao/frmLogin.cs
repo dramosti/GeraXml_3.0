@@ -109,6 +109,8 @@ namespace HLP.GeraXml.UI.Configuracao
                         txtUsuario.Text = "";
                     }
                 }
+
+              
             }
             catch (Exception ex)
             {

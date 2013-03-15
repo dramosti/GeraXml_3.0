@@ -157,10 +157,6 @@ namespace HLP.GeraXml.dao.ADO
         {
             HlpDbFuncoesGeral._conexao = null;
         }
-
-        //{
-        //    FbConnection cx = new FbConnection(MontaStringConexao());
-        //    return cx;
-        //}
+      
     }
 }

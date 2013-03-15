@@ -218,9 +218,11 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     lClientesLiberados.Add("CALDLASER");
                     lClientesLiberados.Add("ALPHAFLEX");
                     lClientesLiberados.Add("BENGALAS");
+                    lClientesLiberados.Add("MASTERFEW");
+                    
 
 
-                    if (lClientesLiberados.Contains(Acesso.NM_EMPRESA))
+                    if (lClientesLiberados.Contains(Acesso.NM_EMPRESA.ToUpper()))
                     {
                         lCampos.Add(new CamposSelect
                         {

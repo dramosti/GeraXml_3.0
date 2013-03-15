@@ -30,6 +30,98 @@ namespace HLP.GeraXml.dao
             }
         }
 
+
+        public static string GetNumRPSbyCD_NFSEQ(string sCD_NFSEQ)
+        {
+            try
+            {
+                string sRPS = "";
+                sRPS = HlpDbFuncoes.qrySeekValue("NF", "COALESCE(cd_numero_nfse,'')", string.Format("cd_nfseq = '{0}' AND CD_EMPRESA = '{1}'", sCD_NFSEQ, Acesso.CD_EMPRESA));
+                return sRPS;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static string GetUfByNome(string sNmMunicipio)
+        {
+            try
+            {
+                string sUF = "";
+                sUF = HlpDbFuncoes.qrySeekValue("CIDADES", "COALESCE(cd_ufnor,'')", "nm_cidnor = '" + sNmMunicipio + "'");
+                return sUF;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static string GetCodVerificacaoByCD_NFSEQ(string sCD_NFSEQ)
+        {
+            try
+            {
+                string sCD_VERIFICACAO = "";
+                sCD_VERIFICACAO = HlpDbFuncoes.qrySeekValue("NF", "COALESCE(cd_verificacao_nfse,'')", string.Format("cd_nfseq = '{0}' AND CD_EMPRESA = '{1}'", sCD_NFSEQ, Acesso.CD_EMPRESA));
+                return sCD_VERIFICACAO;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public static string GetCodigoSiafiByNome(string sNmMunicipio)
+        {
+            try
+            {
+                string sCD_SIAFI = "";
+                if (HlpDbFuncoes.fExisteCampo("CD_SIAFI", "CIDADES"))
+                {
+                    sCD_SIAFI = HlpDbFuncoes.qrySeekValue("CIDADES", "COALESCE(CD_SIAFI,'')", "nm_cidnor = '" + sNmMunicipio + "'");
+                }
+                if (sCD_SIAFI != "")
+                {
+                    sCD_SIAFI = sCD_SIAFI.Substring(2, 4);
+                }
+
+                return sCD_SIAFI;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static string GetCodigoSiafiByCodigo(string sCodigoMun)
+        {
+            try
+            {
+                string sCD_SIAFI = "";
+                if (HlpDbFuncoes.fExisteCampo("CD_SIAFI", "CIDADES"))
+                {
+                    sCD_SIAFI = HlpDbFuncoes.qrySeekValue("CIDADES", "COALESCE(CD_SIAFI,'')", "cd_municipio = '" + sCodigoMun + "'");
+                }
+
+                if (sCD_SIAFI != "")
+                {
+                    sCD_SIAFI = sCD_SIAFI.Substring(2, 4);
+                }
+
+                return sCD_SIAFI;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public static bool VerificaConexaoOk()
         {
             try
@@ -411,7 +503,7 @@ namespace HLP.GeraXml.dao
             {
                 DataTable dt = HlpDbFuncoes.qrySeekRet("EMPRESA", "coalesce(cd_cepnor, '')cd_cepnor, coalesce(cd_email,'')cd_email, coalesce(cd_inscrmu, '')cd_inscrmu, coalesce(cd_insest,'')cd_insest, coalesce(nm_bairronor,'')nm_bairronor, coalesce(ds_endnor,'')ds_endnor, coalesce(ds_endcomp,'') nro, coalesce(cd_fonenor,'')fone", "cd_empresa = '" + Acesso.CD_EMPRESA + "'");
 
-                _bairroEmpresa = dt.Rows[0]["nm_bairronor"].ToString() + " - " + dt.Rows[0]["cd_cepnor"].ToString();
+                _bairroEmpresa = dt.Rows[0]["nm_bairronor"].ToString() + " - CEP: " + dt.Rows[0]["cd_cepnor"].ToString();
                 _ruaEmpresa = dt.Rows[0]["ds_endnor"].ToString() + ", " + dt.Rows[0]["nro"].ToString();
                 _fone = dt.Rows[0]["fone"].ToString();
                 _ieEmpresa = dt.Rows[0]["cd_insest"].ToString();

@@ -24,9 +24,7 @@ namespace HLP.GeraXml.bel.NFe
         public string sNM_CLIFOR { get; set; }
         public double dVL_TOTNF { get; set; }
         public bool bCancelado { get; set; }
-        /// <summary>
-        /// ST_NFE
-        /// </summary>
+        /// <summary>cd_nprotnfe
         public bool bEnviado { get; set; }
         /// <summary>
         /// st_contingencia

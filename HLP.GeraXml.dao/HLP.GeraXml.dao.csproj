@@ -81,6 +81,7 @@
     <Compile Include="NFes\daoServico.cs" />
     <Compile Include="NFes\daotcIdentificacaoRps.cs" />
     <Compile Include="NFes\daoTomador.cs" />
+    <Compile Include="NFes\DSF\daoCancelamentoDSF.cs" />
     <Compile Include="NFes\DSF\daoEnviarNFSeWS.cs" />
     <Compile Include="NFes\DSF\daoRPS.cs" />
     <Compile Include="NFes\Susesu\daoNFesSusesu.cs" />
