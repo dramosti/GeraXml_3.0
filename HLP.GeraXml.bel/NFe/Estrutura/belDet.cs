@@ -673,6 +673,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
 
                                         // Alteração feita por motivo de NFe para a Lorenzon
 
+
                                         obj900.modBC = null;
                                         obj900.vBC = null;
                                         obj900.pRedBC = null;
