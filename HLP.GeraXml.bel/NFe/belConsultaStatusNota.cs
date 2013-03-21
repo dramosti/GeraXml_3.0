@@ -8,6 +8,7 @@ using System.Xml.Linq;
 using HLP.GeraXml.Comum.Static;
 using HLP.GeraXml.Comum;
 using System.IO;
+using HLP.GeraXml.bel.NFe.ClassesSerializadas;
 
 namespace HLP.GeraXml.bel.NFe
 {
@@ -270,8 +271,10 @@ namespace HLP.GeraXml.bel.NFe
                     }
 
                 }
-
-                return CarregaDadosRetorno(xmlConsulta);
+                string sPathCons = Pastas.PROTOCOLOS + "\\ConsultaNFe_" + objPesquisa.sCD_NFSEQ + ".xml";
+                xmlConsulta.Save(sPathCons);
+                retConsSitNFe objConsulta = SerializeClassToXml.DeserializeClasse<retConsSitNFe>(sPathCons);
+                return CarregaDadosRetorno(objConsulta);
             }
             catch (Exception)
             {
@@ -281,39 +284,44 @@ namespace HLP.GeraXml.bel.NFe
 
         }
 
-        private DadosRetorno CarregaDadosRetorno(XmlDocument xmlret)
+        private DadosRetorno CarregaDadosRetorno(retConsSitNFe objConsulta)
         {
             DadosRetorno objRetorno = new DadosRetorno();
-            objRetorno.cStat = xmlret.GetElementsByTagName("cStat")[0].InnerText;
+            objRetorno.cStat = objConsulta.cStat;
+            objRetorno.xMotivo = objConsulta.xMotivo;
+            objRetorno.dhRecbto = objConsulta.protNFe.infProt.dhRecbto.ToString("dd/MM/yyyy HH:mm");
+            objRetorno.digVal = objConsulta.protNFe.infProt.digVal;
+            objRetorno.chNFe = objConsulta.chNFe;
+
             if ((objRetorno.cStat == "100") || (objRetorno.cStat == "101") || (objRetorno.cStat == "110"))
-            {
-                string[] split = xmlret.GetElementsByTagName("dhRecbto")[0].InnerText.Split('T');
-                string datahoranfe = "";
-                int i = 0;
-                foreach (var item in split)
+            {                
+                objRetorno.nProt = "";
+                if (objConsulta.procEventoNFe.Count() > 0)
                 {
-                    i++;
-                    if (i == 1)
+                    foreach (retConsSitNFeProcEventoNFe evento in objConsulta.procEventoNFe)
                     {
-                        datahoranfe = datahoranfe + Convert.ToDateTime(item).ToString("dd-MM-yyyy") + " ";
-                    }
-                    else
-                    {
-                        datahoranfe = datahoranfe + item;
+                        if (evento.retEvento.infEvento.tpEvento == "110111")
+                        {
+                            objRetorno.nProt = evento.retEvento.infEvento.nProt;
+                            objRetorno.xMotivo = objConsulta.xMotivo;      
+                            //Altera Nota para cancelada
+                            dao.NFe.daoCancelamento objdaoCanc = new dao.NFe.daoCancelamento();
+                            objdaoCanc.AlteraNotaParaCancelada(objRetorno.nProt, objPesquisa.sCD_NFSEQ);
+                            belCancelamento.MoveArquivoParaPastaCancelada(objPesquisa);
+                        }                        
                     }
                 }
-                objRetorno.dhRecbto = datahoranfe;
-                objRetorno.nProt = xmlret.GetElementsByTagName("nProt")[0].InnerText;
-                objRetorno.digVal = (xmlret.GetElementsByTagName("digVal")[0] != null ? xmlret.GetElementsByTagName("digVal")[0].InnerText : "");
+                if (objRetorno.nProt == "")
+                {
+                    objRetorno.nProt = objConsulta.protNFe.infProt.nProt;                    
+                }
             }
             else
             {
                 objRetorno.dhRecbto = "s/data";
                 objRetorno.nProt = "inexistente";
                 objRetorno.digVal = "inexistente";
-            }
-            objRetorno.xMotivo = xmlret.GetElementsByTagName("xMotivo")[0].InnerText;
-            objRetorno.chNFe = xmlret.GetElementsByTagName("chNFe")[0].InnerText;
+            }         
             objRetorno.nNota = objPesquisa.sCD_NOTAFIS;
             objRetorno.seqNota = objPesquisa.sCD_NFSEQ;
             return objRetorno;

@@ -668,6 +668,7 @@ namespace HLP.GeraXml.UI.NFe
                         KryptonMessageBox.Show(belTrataMensagemNFe.RetornaMensagem(objConsulta.buscaRetorno(), belTrataMensagemNFe.Tipo.Situacao), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+                PesquisaNotas();
             }
             catch (Exception ex)
             {

@@ -23,8 +23,15 @@ namespace HLP.GeraXml.UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-           
-
+            //try
+            //{
+            //    string sPath = @"C:\GeraXml\Arquivos\001-LORENZON\Protocolos\ConsultaNFe_037321.xml";
+            //    HLP.GeraXml.bel.NFe.ClassesSerializadas.retConsSitNFe obj = SerializeClassToXml.DeserializeClasse<HLP.GeraXml.bel.NFe.ClassesSerializadas.retConsSitNFe>(sPath);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
 
 
             frmPrincipal objFrm = new frmPrincipal();

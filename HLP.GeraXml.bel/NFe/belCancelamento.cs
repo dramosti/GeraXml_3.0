@@ -282,7 +282,7 @@ namespace HLP.GeraXml.bel.NFe
             {
                 string nprot = objret.retEvento.infEvento.nProt.ToString();
                 AlteraNotaParaCancelada(nprot, objPesquisa.sCD_NFSEQ);
-                MoveArquivoParaPastaCancelada();
+                MoveArquivoParaPastaCancelada(objPesquisa);
             }
             return objRetorno;
         }
@@ -451,8 +451,9 @@ namespace HLP.GeraXml.bel.NFe
                 throw new Exception(x.Message);
             }
         }
+               
 
-        private void MoveArquivoParaPastaCancelada()
+        public static void MoveArquivoParaPastaCancelada(belPesquisaNotas objPesquisa)
         {
             DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\" + objPesquisa.sCHAVENFE.Substring(2, 4));
             FileInfo f;

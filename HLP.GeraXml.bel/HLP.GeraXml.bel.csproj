@@ -220,6 +220,7 @@
     <Compile Include="NFe\belRetEventoCancelamento.cs" />
     <Compile Include="NFe\belStatusServicoNFe.cs" />
     <Compile Include="NFe\belTrataMensagemNFe.cs" />
+    <Compile Include="NFe\ClassesSerializadas\retConsSitNFe.cs" />
     <Compile Include="NFe\Estrutura\avulsa.cs" />
     <Compile Include="NFe\Estrutura\beladi.cs" />
     <Compile Include="NFe\Estrutura\belArma.cs" />
