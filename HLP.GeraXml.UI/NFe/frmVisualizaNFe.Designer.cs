@@ -6696,7 +6696,7 @@
             this.tabPage16.Location = new System.Drawing.Point(4, 25);
             this.tabPage16.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage16.Name = "tabPage16";
-            this.tabPage16.Size = new System.Drawing.Size(733, 247);
+            this.tabPage16.Size = new System.Drawing.Size(936, 540);
             this.tabPage16.TabIndex = 9;
             this.tabPage16.Tag = false;
             this.tabPage16.Text = "Inf. Adicionais";
@@ -6708,7 +6708,7 @@
             this.panelInfAdic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelInfAdic.Location = new System.Drawing.Point(0, 0);
             this.panelInfAdic.Name = "panelInfAdic";
-            this.panelInfAdic.Size = new System.Drawing.Size(733, 247);
+            this.panelInfAdic.Size = new System.Drawing.Size(936, 540);
             this.panelInfAdic.TabIndex = 1;
             // 
             // lblCaracter
@@ -6729,7 +6729,7 @@
             this.txtInfAdic._Regex = Expressoes.ER32;
             this.txtInfAdic._Regex_Expressao = "^[!-ÿ]{1}[ -ÿ]{0,}[!-ÿ]{1}|[!-ÿ]{1}$";
             this.txtInfAdic._TamanhoMaiorLabel = 0;
-            this.txtInfAdic._TamanhoTextBox = 689;
+            this.txtInfAdic._TamanhoTextBox = 892;
             this.txtInfAdic._Visible = true;
             this.txtInfAdic.AutoSize = true;
             this.txtInfAdic.BackColor = System.Drawing.Color.Transparent;
@@ -6741,7 +6741,7 @@
             this.txtInfAdic.MaxLength = 5000;
             this.txtInfAdic.Name = "txtInfAdic";
             this.txtInfAdic.ReadOnly = false;
-            this.txtInfAdic.Size = new System.Drawing.Size(733, 230);
+            this.txtInfAdic.Size = new System.Drawing.Size(936, 230);
             this.txtInfAdic.TabIndex = 1;
             // 
             // tabPage21

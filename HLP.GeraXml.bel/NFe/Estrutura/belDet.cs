@@ -135,7 +135,14 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
 
                         if (drIItem["NCM"].ToString() != "")
                         {
-                            objDet.prod.Ncm = ((Util.TiraSimbolo(drIItem["NCM"].ToString(), "")).PadRight(8, '0')).Substring(0, 8);
+                            if (drIItem["NCM"].ToString().Length > 2)
+                            {
+                                objDet.prod.Ncm = ((Util.TiraSimbolo(drIItem["NCM"].ToString(), "")).PadRight(8, '0')).Substring(0, 8);
+                            }
+                            else
+                            {
+                                objDet.prod.Ncm = ((Util.TiraSimbolo(drIItem["NCM"].ToString(), "")).PadRight(2, '0')).Substring(0, 2);
+                            }
                         }
                         objDet.prod.Cean = (Util.IsNumeric(drIItem["cEAN"].ToString()) ? (Util.ValidacEAN(drIItem["cEAN"].ToString()) ? drIItem["cEAN"].ToString() : "") : "");
 
@@ -706,83 +713,85 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                         objimp.belIcms = objicms;
                         #endregion
 
-                        #region IPI
-                        belIpi objipi = new belIpi();
-                        if (drIItem["CD_SITTRIBIPI"].ToString() == "")
-                            throw new Exception("Situação Tributária do IPI está vazia na NF, O Sistema não pode continuar!");
-
-                        string sTributaIPI = drIItem["cd_sittribipi"].ToString().PadLeft(2, '0');
-                        objipi.cst = sTributaIPI;
-                        if ((sTributaIPI == "49") || (sTributaIPI == "00") || (sTributaIPI == "50") || (sTributaIPI == "99"))
+                        if (drIItem["CD_SITTRIBIPI"].ToString() != "")
                         {
-                            belIpitrib objipitrib = new belIpitrib();
-                            objipi.Cenq = "999";
-                            objipitrib.Cst = sTributaIPI;
-                            decimal ddvBC = 0;
-                            if (drIItem["ST_SUPERSIMPLES"].ToString() == "N")
-                            {
-                                if (!drIItem["vBC"].Equals(string.Empty))
-                                {
-                                    if (bEx)
-                                    {
-                                        ddvBC = Convert.ToDecimal(drIItem["VL_BASEIPI"].ToString());
-                                        objipitrib.Vbc = ddvBC;
-                                    }
-                                    else
-                                    {
-                                        if (sTributaIPI != "99") //OS_27583 
-                                        {
-                                            if (Acesso.NM_EMPRESA == "CALDLASER")
-                                            {
-                                                ddvBC = Convert.ToDecimal(drIItem["VL_BASEIPI"].ToString());
-                                            }
-                                            else
-                                            {
-                                                ddvBC = Math.Round(Convert.ToDecimal(drIItem["vBC"].ToString()), 2); //Claudinei - o.s. 24248 - 26/03/2010
+                            #region IPI
+                            belIpi objipi = new belIpi();
 
-                                                if (drIItem["st_frete_entra_ipi_s"].ToString().Equals("S") && drIItem["ST_FRETE_ENTRA_ICMS_S"].ToString().Equals("N")) //OS_26866
+
+                            string sTributaIPI = drIItem["cd_sittribipi"].ToString().PadLeft(2, '0');
+                            objipi.cst = sTributaIPI;
+                            if ((sTributaIPI == "49") || (sTributaIPI == "00") || (sTributaIPI == "50") || (sTributaIPI == "99"))
+                            {
+                                belIpitrib objipitrib = new belIpitrib();
+                                objipi.Cenq = "999";
+                                objipitrib.Cst = sTributaIPI;
+                                decimal ddvBC = 0;
+                                if (drIItem["ST_SUPERSIMPLES"].ToString() == "N")
+                                {
+                                    if (!drIItem["vBC"].Equals(string.Empty))
+                                    {
+                                        if (bEx)
+                                        {
+                                            ddvBC = Convert.ToDecimal(drIItem["VL_BASEIPI"].ToString());
+                                            objipitrib.Vbc = ddvBC;
+                                        }
+                                        else
+                                        {
+                                            if (sTributaIPI != "99") //OS_27583 
+                                            {
+                                                if (Acesso.NM_EMPRESA == "CALDLASER")
                                                 {
-                                                    ddvBC = ddvBC + objDet.prod.Vfrete;
+                                                    ddvBC = Convert.ToDecimal(drIItem["VL_BASEIPI"].ToString());
                                                 }
-                                                else if (drIItem["st_frete_entra_ipi_s"].ToString().Equals("N") && drIItem["ST_FRETE_ENTRA_ICMS_S"].ToString().Equals("S")) //OS_26866
+                                                else
                                                 {
-                                                    if (objDet.prod.Vfrete < ddvBC)
+                                                    ddvBC = Math.Round(Convert.ToDecimal(drIItem["vBC"].ToString()), 2); //Claudinei - o.s. 24248 - 26/03/2010
+
+                                                    if (drIItem["st_frete_entra_ipi_s"].ToString().Equals("S") && drIItem["ST_FRETE_ENTRA_ICMS_S"].ToString().Equals("N")) //OS_26866
                                                     {
-                                                        ddvBC = ddvBC - objDet.prod.Vfrete;
+                                                        ddvBC = ddvBC + objDet.prod.Vfrete;
+                                                    }
+                                                    else if (drIItem["st_frete_entra_ipi_s"].ToString().Equals("N") && drIItem["ST_FRETE_ENTRA_ICMS_S"].ToString().Equals("S")) //OS_26866
+                                                    {
+                                                        if (objDet.prod.Vfrete < ddvBC)
+                                                        {
+                                                            ddvBC = ddvBC - objDet.prod.Vfrete;
+                                                        }
                                                     }
                                                 }
                                             }
+                                            objipitrib.Vbc = ddvBC;
                                         }
-                                        objipitrib.Vbc = ddvBC;
+                                    }
+                                    if (!drIItem["pIPI"].Equals(string.Empty))
+                                    {
+                                        decimal dpIPI = Math.Round(Convert.ToDecimal(drIItem["pIPI"].ToString()), 2); //Claudinei - o.s. 24248 - 26/03/2010
+                                        objipitrib.Pipi = dpIPI;
+                                    }
+                                    if (!drIItem["vIPI"].Equals(string.Empty))
+                                    {
+                                        decimal dvIPI = Math.Round(Convert.ToDecimal(drIItem["vIPI"].ToString()), 2); //Claudinei - o.s. 24248 - 26/03/2010
+                                        objipitrib.Vipi = dvIPI;
+                                    }
+
+                                    if ((Acesso.NM_EMPRESA.Equals("EMBALATEC")) && (drIItem["st_ipi"].ToString().Equals("S")))//OS_25673
+                                    {
+                                        objipitrib.Vbc = objipitrib.Vbc - objipitrib.Vipi;
                                     }
                                 }
-                                if (!drIItem["pIPI"].Equals(string.Empty))
-                                {
-                                    decimal dpIPI = Math.Round(Convert.ToDecimal(drIItem["pIPI"].ToString()), 2); //Claudinei - o.s. 24248 - 26/03/2010
-                                    objipitrib.Pipi = dpIPI;
-                                }
-                                if (!drIItem["vIPI"].Equals(string.Empty))
-                                {
-                                    decimal dvIPI = Math.Round(Convert.ToDecimal(drIItem["vIPI"].ToString()), 2); //Claudinei - o.s. 24248 - 26/03/2010
-                                    objipitrib.Vipi = dvIPI;
-                                }
-
-                                if ((Acesso.NM_EMPRESA.Equals("EMBALATEC")) && (drIItem["st_ipi"].ToString().Equals("S")))//OS_25673
-                                {
-                                    objipitrib.Vbc = objipitrib.Vbc - objipitrib.Vipi;
-                                }
+                                objipi.belIpitrib = objipitrib;
                             }
-                            objipi.belIpitrib = objipitrib;
+                            else
+                            {
+                                belIpint objipint = new belIpint();
+                                objipi.Cenq = "999";
+                                objipint.Cst = sTributaIPI;
+                                objipi.belIpint = objipint;
+                            }
+                            objimp.belIpi = objipi;
+                            #endregion
                         }
-                        else
-                        {
-                            belIpint objipint = new belIpint();
-                            objipi.Cenq = "999";
-                            objipint.Cst = sTributaIPI;
-                            objipi.belIpint = objipint;
-                        }
-                        objimp.belIpi = objipi;
-                        #endregion
 
                         #region II
                         //Imposto de importação

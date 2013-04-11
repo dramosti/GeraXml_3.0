@@ -196,6 +196,7 @@ namespace HLP.GeraXml.bel.NFe
 
                         foreach (belDet det in objdet)
                         {
+                            //det.imposto.belIpi = null;
                             XElement condet = (new XElement(pf + "det", new XAttribute("nItem", det.nitem),
                                                new XElement(pf + "prod",
                                                    (!String.IsNullOrEmpty(det.prod.Cprod) ? new XElement(pf + "cProd", det.prod.Cprod.ToString()) : null),
@@ -239,11 +240,11 @@ namespace HLP.GeraXml.bel.NFe
                                                                                        new XElement(pf + "vDescDI", adic.vDescDI))) : null),
                                                  ((det.prod.XPed != "") ? new XElement(pf + "xPed", det.prod.XPed) : null),
                                                  ((det.prod.NItemPed != "") ? new XElement(pf + "nItemPed", det.prod.NItemPed) : null),
-                                                 (det.prod.belcomb != null ? 
-                                                        new XElement(pf+"comb",
-                                                                            new XElement(pf+"cProdANP",det.prod.belcomb.cProdANP),
-                                                                            new XElement(pf+"UFCons",det.prod.belcomb.UFCons)):null)),
-                                                 
+                                                 (det.prod.belcomb != null ?
+                                                        new XElement(pf + "comb",
+                                                                            new XElement(pf + "cProdANP", det.prod.belcomb.cProdANP),
+                                                                            new XElement(pf + "UFCons", det.prod.belcomb.UFCons)) : null)),
+
                                                                                           new XElement(pf + "imposto",
 
                                                    //---------------ICMS-----------------//
@@ -694,7 +695,7 @@ namespace HLP.GeraXml.bel.NFe
                     //Fim - Frete
 
                     //Duplicata
-                    XContainer concobr=null;
+                    XContainer concobr = null;
                     belCobr objcob;
                     try
                     {
@@ -702,16 +703,19 @@ namespace HLP.GeraXml.bel.NFe
                         #region XML_Cobrança
                         if (Acesso.NM_EMPRESA != "LORENZON")
                         {
-                            concobr = (new XElement(pf + "cobr",
-                                                      new XElement(pf + "fat",
-                                                          new XElement(pf + "nFat", objcob.Fat.Nfat.ToString()),
-                                                          (objcob.Fat.Vorig != 0 ? new XElement(pf + "vOrig", objcob.Fat.Vorig.ToString("#0.00").Replace(",", ".")) : null),
-                                                          (objcob.Fat.Vdesc != null && objcob.Fat.Vdesc != 0 ? new XElement(pf + "vDesc", objcob.Fat.Vdesc.ToString("#0.00").Replace(",", ".")) : null),
-                                                          (objcob.Fat.Vliq != 0 ? new XElement(pf + "vLiq", objcob.Fat.Vliq.ToString("#0.00").Replace(",", ".")) : null)),
-                                                          (objcob.Fat.belDup != null ? from dup in objcob.Fat.belDup
-                                                                                       select new XElement(pf + "dup", new XElement(pf + "nDup", dup.Ndup.ToString()),
-                                                                                              new XElement(pf + "dVenc", dup.Dvenc.ToString("yyyy-MM-dd")),
-                                                                                              (Acesso.NM_EMPRESA != "LORENZON" ? new XElement(pf + "vDup", dup.Vdup.ToString("#0.00").Replace(",", ".")) : null)) : null)));
+                            if (objcob.Fat != null)
+                            {
+                                concobr = (new XElement(pf + "cobr",
+                                                          new XElement(pf + "fat",
+                                                              new XElement(pf + "nFat", objcob.Fat.Nfat.ToString()),
+                                                              (objcob.Fat.Vorig != 0 ? new XElement(pf + "vOrig", objcob.Fat.Vorig.ToString("#0.00").Replace(",", ".")) : null),
+                                                              (objcob.Fat.Vdesc != null && objcob.Fat.Vdesc != 0 ? new XElement(pf + "vDesc", objcob.Fat.Vdesc.ToString("#0.00").Replace(",", ".")) : null),
+                                                              (objcob.Fat.Vliq != 0 ? new XElement(pf + "vLiq", objcob.Fat.Vliq.ToString("#0.00").Replace(",", ".")) : null)),
+                                                              (objcob.Fat.belDup != null ? from dup in objcob.Fat.belDup
+                                                                                           select new XElement(pf + "dup", new XElement(pf + "nDup", dup.Ndup.ToString()),
+                                                                                                  new XElement(pf + "dVenc", dup.Dvenc.ToString("yyyy-MM-dd")),
+                                                                                                  (Acesso.NM_EMPRESA != "LORENZON" ? new XElement(pf + "vDup", dup.Vdup.ToString("#0.00").Replace(",", ".")) : null)) : null)));
+                            }
                         }
 
                         #endregion

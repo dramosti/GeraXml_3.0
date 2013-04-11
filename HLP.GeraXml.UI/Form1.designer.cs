@@ -191,7 +191,7 @@
             this.txtPastaInstalador.Name = "txtPastaInstalador";
             this.txtPastaInstalador.Size = new System.Drawing.Size(420, 20);
             this.txtPastaInstalador.TabIndex = 0;
-            this.txtPastaInstalador.Text = "D:\\GIT-SVN\\Fontes\\GeraXml_3.0\\HLP.GeraXml.Setup\\HLP.GeraXml.Setup\\Debug\\";
+            this.txtPastaInstalador.Text = "D:\\GitHub\\HLP\\GeraXml_3.0\\HLP.GeraXml.Setup\\HLP.GeraXml.Setup\\Debug";
             // 
             // btnLocalInstalador
             // 

@@ -765,23 +765,25 @@ namespace HLP.GeraXml.UI.NFe
                 {
                     MessageBox.Show("caminho inexistente: " + sCaminho);
                 }
-
-                ReportDocument rpt = new ReportDocument();
-                rpt.Load(sCaminho);
-                rpt.SetDataSource(ds);
-                rpt.Refresh();
-
-                DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\PDF");
-                if (!dinfo.Exists)
-                {
-                    dinfo.Create();
-                }
-                string sNmPdfVisualizacao = Environment.MachineName + "_Grupo_Danfes";
-
                 string sCaminhoSave = Pastas.ENVIADOS + "\\PDF\\" + (ds.infNFe[0].ideRow.nNF.ToString().PadLeft(6, '0') + (tpPdf.ToString().Equals("ENVIADO") ? "_enviado" : "_cancelado")) + ".pdf";
+                if (!File.Exists(sCaminhoSave))
+                {
+                    ReportDocument rpt = new ReportDocument();
+                    rpt.Load(sCaminho);
+                    rpt.SetDataSource(ds);
+                    rpt.Refresh();
 
-                Util.ExportPDF(rpt, sCaminhoSave);
+                    DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\PDF");
+                    if (!dinfo.Exists)
+                    {
+                        dinfo.Create();
+                    }
+                    string sNmPdfVisualizacao = Environment.MachineName + "_Grupo_Danfes";
 
+
+
+                    Util.ExportPDF(rpt, sCaminhoSave);
+                }
                 objDados.sCaminhoPDF = sCaminhoSave;
 
             }

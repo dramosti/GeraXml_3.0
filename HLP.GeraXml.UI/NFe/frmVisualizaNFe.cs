@@ -353,12 +353,23 @@ namespace HLP.GeraXml.UI.NFe
                 #endregion
 
                 #region Cobrança
+                if (nota.cobr.Fat != null)
+                {
+                    txtNFat.Text = nota.cobr.Fat.Nfat;
+                    nudVOrigFat.Value = nota.cobr.Fat.Vorig;
+                    nudVDescFat.Value = nota.cobr.Fat.Vdesc;
+                    nudVLiqFat.Value = nota.cobr.Fat.Vliq;
+                    bsDuplicatas.DataSource = nota.cobr.Fat.belDup;
+                }
+                else
+                {
+                    txtNFat.Text = "";
+                    nudVOrigFat.Value = 0;
+                    nudVDescFat.Value = 0;
+                    nudVLiqFat.Value = 0;
+                    bsDuplicatas.DataSource = new List<belDup>();
 
-                txtNFat.Text = nota.cobr.Fat.Nfat;
-                nudVOrigFat.Value = nota.cobr.Fat.Vorig;
-                nudVDescFat.Value = nota.cobr.Fat.Vdesc;
-                nudVLiqFat.Value = nota.cobr.Fat.Vliq;
-                bsDuplicatas.DataSource = nota.cobr.Fat.belDup;
+                }
                 #endregion
 
                 #region Inf Adicionais
@@ -542,512 +553,6 @@ namespace HLP.GeraXml.UI.NFe
 
                 #region Detatalhes
 
-
-
-                //List<belDet> lObjDet = new List<belDet>();
-
-                //for (int i = 0; i < dgvDet.RowCount; i++)
-                //{
-                //    belDet objDet = new belDet();
-
-                //    objDet.Nitem = i + 1;
-
-                //    #region Prod
-                //    belProd objprod = new belProd();
-
-                //    objprod.Cean = Convert.ToString(dgvDet["Cean", i].Value);
-                //    objprod.Ceantrib = Convert.ToString(dgvDet["Ceantrib", i].Value);
-                //    objprod.Cfop = Convert.ToString(dgvDet["Cfop", i].Value);
-                //    objprod.Cprod = Convert.ToString(dgvDet["Cprod", i].Value);
-                //    if (dgvDet["Extipi", i].Value != null)
-                //    {
-                //        objprod.Extipi = Convert.ToString(dgvDet["Extipi", i].Value);
-                //    }
-                //    if (dgvDet["Genero", i].Value != null)
-                //    {
-                //        objprod.Genero = Convert.ToString(dgvDet["Genero", i].Value);
-                //    }
-                //    if (Convert.ToString(dgvDet["NCM", i].Value) != "")
-                //    {
-                //        objprod.Ncm = Convert.ToString(dgvDet["NCM", i].Value);
-                //    }
-                //    objprod.Qcom = Convert.ToDecimal(dgvDet["Qcom", i].Value);
-                //    objprod.Qtrib = Convert.ToDecimal(dgvDet["Qtrib", i].Value);
-                //    objprod.Ucom = Convert.ToString(dgvDet["Ucom", i].Value);
-                //    objprod.Utrib = Convert.ToString(dgvDet["Utrib", i].Value);
-                //    objprod.Vdesc = Convert.ToDecimal(dgvDet["Vdesc", i].Value);
-                //    objprod.Vfrete = Convert.ToDecimal(dgvDet["Vfrete", i].Value);
-                //    objprod.Vprod = Convert.ToDecimal(dgvDet["Vprod", i].Value);
-                //    objprod.Vseg = Convert.ToDecimal(dgvDet["Vseg", i].Value);
-                //    objprod.Vuncom = Convert.ToDecimal(dgvDet["Vuncom", i].Value);
-                //    objprod.Vuntrib = Convert.ToDecimal(dgvDet["Vuntrib", i].Value);
-                //    objprod.Xprod = Convert.ToString(dgvDet["Xprod", i].Value);
-                //    objprod.VOutro = Convert.ToDecimal(dgvDet["vOutro", i].Value);// NFe_2.0
-                //    objprod.IndTot = Convert.ToInt16(dgvDet["indTot", i].Value); // NFe_2.0
-                //    objprod.XPed = dgvDet["xPed", i].Value.ToString();
-                //    objprod.NItemPed = dgvDet["nItemPed", i].Value.ToString();
-
-                //    objDet.belProd = objprod;
-
-                //    objDet.belProd.belDI = ((List<belDet>)lObjTotNotas[notAtual - 1][4])[i].belProd.belDI;
-                //    #endregion
-
-                //    #region Imposto
-
-                //    belImposto objimposto = new belImposto();
-
-
-                //    #region ICMS
-
-                //    belIcms objicms = new belIcms();
-
-                //    if (!HLP.Util.Util.VerificaNovaST(Convert.ToString(dgvDet["CstIcms", i].Value)))
-                //    {
-                //        #region cst_antigas
-                //        switch (Convert.ToString(dgvDet["CstIcms", i].Value))
-                //        {
-
-                //            case "00":
-                //                {
-                //                    belIcms00 obj00 = new belIcms00();
-
-                //                    obj00.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj00.Modbc = Convert.ToString(dgvDet["ModbcIcms", i].Value);
-                //                    obj00.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj00.Picms = Convert.ToDecimal(dgvDet["PicmsIcms", i].Value);
-                //                    obj00.Vbc = Convert.ToDecimal(dgvDet["VbcIcms", i].Value);
-                //                    obj00.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value);
-                //                    objicms.belIcms00 = obj00;
-                //                    break;
-                //                }
-                //            case "10":
-                //                {
-                //                    belIcms10 obj10 = new belIcms10();
-
-                //                    obj10.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj10.Modbc = Convert.ToString(dgvDet["ModbcIcms", i].Value);
-                //                    obj10.Modbcst = Convert.ToDecimal(dgvDet["ModbcstIcms", i].Value);
-                //                    obj10.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj10.Picms = Convert.ToDecimal(dgvDet["PicmsIcms", i].Value);
-                //                    obj10.Picmsst = Convert.ToDecimal(dgvDet["PicmsstIcms", i].Value);
-                //                    obj10.Pmvast = Convert.ToDecimal(dgvDet["PmvastIcms", i].Value);
-                //                    obj10.Predbcst = Convert.ToDecimal(dgvDet["PredbcstIcms", i].Value);
-                //                    obj10.Vbc = Convert.ToDecimal(dgvDet["VbcIcms", i].Value);
-                //                    obj10.Vbcst = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    obj10.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value);
-                //                    obj10.Vicmsst = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-                //                    objicms.belIcms10 = obj10;
-                //                    break;
-                //                }
-                //            case "20":
-                //                {
-                //                    belIcms20 obj20 = new belIcms20();
-                //                    obj20.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj20.Modbc = Convert.ToString(dgvDet["ModbcIcms", i].Value);
-                //                    obj20.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj20.Picms = Convert.ToDecimal(dgvDet["PicmsIcms", i].Value);
-                //                    obj20.Predbc = Convert.ToDecimal(dgvDet["PredbcIcms", i].Value);
-                //                    obj20.Vbc = Convert.ToDecimal(dgvDet["VbcIcms", i].Value);
-                //                    obj20.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value);
-                //                    objicms.belIcms20 = obj20;
-                //                    break;
-                //                }
-                //            case "30":
-                //                {
-                //                    belIcms30 obj30 = new belIcms30();
-
-                //                    obj30.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj30.Modbcst = Convert.ToDecimal(dgvDet["ModbcstIcms", i].Value);
-                //                    obj30.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj30.Picmsst = Convert.ToDecimal(dgvDet["PicmsstIcms", i].Value);
-                //                    obj30.Pmvast = Convert.ToDecimal(dgvDet["PmvastIcms", i].Value);
-                //                    obj30.Predbcst = Convert.ToDecimal(dgvDet["PredbcstIcms", i].Value);
-                //                    obj30.Vbcst = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    obj30.Vicmsst = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value);
-                //                    objicms.belIcms30 = obj30;
-
-                //                    break;
-                //                }
-                //            case "40":
-                //                {
-                //                    belIcms40 obj40 = new belIcms40();
-
-                //                    obj40.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj40.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-
-                //                    obj40.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value); //NFe_2.0
-                //                    obj40.motDesICMS = Convert.ToInt16(dgvDet["motDesICMS", i].Value);//NFe_2.0
-
-                //                    objicms.belIcms40 = obj40;
-                //                    break;
-                //                }
-                //            case "41":
-                //                {
-                //                    belIcms40 obj40 = new belIcms40();
-
-                //                    obj40.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj40.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj40.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value); //NFe_2.0
-                //                    obj40.motDesICMS = Convert.ToInt16(dgvDet["motDesICMS", i].Value);//NFe_2.0
-                //                    objicms.belIcms40 = obj40;
-                //                    break;
-                //                }
-                //            case "50":
-                //                {
-                //                    belIcms40 obj40 = new belIcms40();
-
-                //                    obj40.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj40.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj40.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value); //NFe_2.0
-                //                    obj40.motDesICMS = Convert.ToInt16(dgvDet["motDesICMS", i].Value);//NFe_2.0
-                //                    objicms.belIcms40 = obj40;
-                //                    break;
-
-                //                }
-                //            case "51":
-                //                {
-                //                    belIcms51 obj51 = new belIcms51();
-
-                //                    obj51.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj51.Modbc = Convert.ToString(dgvDet["ModbcIcms", i].Value);
-                //                    obj51.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj51.Picms = Convert.ToDecimal(dgvDet["PicmsIcms", i].Value);
-                //                    obj51.Predbc = Convert.ToDecimal(dgvDet["PredbcIcms", i].Value);
-                //                    obj51.Vbc = Convert.ToDecimal(dgvDet["VbcIcms", i].Value);
-                //                    obj51.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value);
-                //                    objicms.belIcms51 = obj51;
-                //                    break;
-                //                }
-                //            //Fim - Danner - o.s. 24189 - 26/02/2010
-                //            case "60":
-                //                {
-                //                    belIcms60 obj60 = new belIcms60();
-                //                    obj60.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj60.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj60.Vbcst = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    obj60.Vicmsst = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-                //                    objicms.belIcms60 = obj60;
-                //                    break;
-                //                }
-                //            case "70":
-                //                {
-                //                    belIcms70 obj70 = new belIcms70();
-                //                    obj70.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj70.Modbc = Convert.ToString(dgvDet["ModbcIcms", i].Value);
-                //                    obj70.Modbcst = Convert.ToDecimal(dgvDet["ModbcstIcms", i].Value);
-                //                    obj70.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj70.Picms = Convert.ToDecimal(dgvDet["PicmsIcms", i].Value);
-                //                    obj70.Picmsst = Convert.ToDecimal(dgvDet["PicmsstIcms", i].Value);
-                //                    obj70.Pmvast = Convert.ToDecimal(dgvDet["PmvastIcms", i].Value);
-                //                    obj70.Predbc = Convert.ToDecimal(dgvDet["PredbcIcms", i].Value);
-                //                    obj70.Predbcst = Convert.ToDecimal(dgvDet["PredbcstIcms", i].Value);
-                //                    obj70.Vbc = Convert.ToDecimal(dgvDet["VbcIcms", i].Value);
-                //                    obj70.Vbcst = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    obj70.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value);
-                //                    obj70.Vicmsst = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-                //                    objicms.belIcms70 = obj70;
-                //                    break;
-                //                }
-                //            case "90":
-                //                {
-                //                    belIcms90 obj90 = new belIcms90();
-
-                //                    obj90.Cst = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj90.Modbc = Convert.ToString(dgvDet["ModbcIcms", i].Value);
-                //                    obj90.Modbcst = Convert.ToDecimal(dgvDet["ModbcstIcms", i].Value);
-                //                    obj90.Orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj90.Picms = Convert.ToDecimal(dgvDet["PicmsIcms", i].Value);
-                //                    obj90.Picmsst = Convert.ToDecimal(dgvDet["PicmsstIcms", i].Value);
-                //                    obj90.Pmvast = Convert.ToDecimal(dgvDet["PmvastIcms", i].Value);
-                //                    obj90.Predbc = Convert.ToDecimal(dgvDet["PredbcIcms", i].Value);
-                //                    obj90.Predbcst = Convert.ToDecimal(dgvDet["PredbcstIcms", i].Value);
-                //                    obj90.Vbc = Convert.ToDecimal(dgvDet["VbcIcms", i].Value);
-                //                    obj90.Vbcst = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    obj90.Vicms = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value);
-                //                    obj90.Vicmsst = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-
-                //                    objicms.belIcms90 = obj90;
-                //                    break;
-                //                }
-                //        }
-                //        #endregion
-                //    }
-                //    else
-                //    {
-                //        #region cst_novas
-                //        switch (HLP.Util.Util.RetornaSTnovaAserUsada(Convert.ToString(dgvDet["CstIcms", i].Value)))
-                //        {
-                //            case "101":
-                //                {
-                //                    belICMSSN101 obj101 = new belICMSSN101();
-
-                //                    obj101.CSOSN = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj101.orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj101.pCredSN = Convert.ToDecimal(dgvDet["pCredSN", i].Value);
-                //                    obj101.vCredICMSSN = Convert.ToDecimal(dgvDet["vCredICMSSN", i].Value);
-                //                    objicms.belICMSSN101 = obj101;
-                //                    break;
-                //                }
-                //            case "102":
-                //                {
-                //                    belICMSSN102 obj102 = new belICMSSN102();
-                //                    obj102.CSOSN = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj102.orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    objicms.belICMSSN102 = obj102;
-                //                    break;
-                //                }
-                //            case "201":
-                //                {
-                //                    belICMSSN201 obj201 = new belICMSSN201();
-
-                //                    obj201.CSOSN = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj201.orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj201.modBCST = Convert.ToInt32(dgvDet["ModbcstIcms", i].Value);
-                //                    obj201.pMVAST = Convert.ToDecimal(dgvDet["PmvastIcms", i].Value);
-                //                    obj201.pRedBCST = Convert.ToDecimal(dgvDet["PredbcstIcms", i].Value);
-                //                    obj201.vBCST = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    obj201.pICMSST = Convert.ToDecimal(dgvDet["PicmsstIcms", i].Value);
-                //                    obj201.vICMSST = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-
-                //                    if (Convert.ToString(dgvDet["CstIcms", i].Value).Equals("101"))
-                //                    {
-                //                        obj201.pCredSN = Convert.ToDecimal(dgvDet["pCredSN", i].Value);
-                //                        obj201.vCredICMSSN = Convert.ToDecimal(dgvDet["vCredICMSSN", i].Value);
-                //                    }
-                //                    objicms.belICMSSN201 = obj201;
-                //                    break;
-                //                }
-                //            case "500":
-                //                {
-                //                    belICMSSN500 obj500 = new belICMSSN500();
-                //                    obj500.CSOSN = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj500.orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    obj500.vBCSTRet = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    obj500.vICMSSTRet = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-                //                    objicms.belICMSSN500 = obj500;
-                //                    break;
-                //                }
-                //            case "900":
-                //                {
-                //                    belICMSSN900 obj900 = new belICMSSN900();
-                //                    obj900.CSOSN = Convert.ToString(dgvDet["CstIcms", i].Value);
-                //                    obj900.orig = Convert.ToString(dgvDet["OrigIcms", i].Value);
-                //                    //obj900.modBC = Convert.ToInt32(dgvDet["ModbcIcms", i].Value);
-                //                    //obj900.vBC = Convert.ToDecimal(dgvDet["VbcIcms", i].Value);
-                //                    //obj900.pRedBC = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-                //                    //obj900.pICMS = Convert.ToDecimal(dgvDet["PicmsIcms", i].Value);
-                //                    //obj900.vICMS = Convert.ToDecimal(dgvDet["VicmsIcms", i].Value);
-                //                    //obj900.modBCST = Convert.ToInt32(dgvDet["ModbcstIcms", i].Value);
-                //                    //obj900.pMVAST = Convert.ToDecimal(dgvDet["PmvastIcms", i].Value);
-                //                    //obj900.pRedBCST = Convert.ToDecimal(dgvDet["PredbcstIcms", i].Value);
-                //                    //obj900.vBCST = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    //obj900.pICMSST = Convert.ToDecimal(dgvDet["PicmsstIcms", i].Value);
-                //                    //obj900.vICMSST = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-                //                    //obj900.vBCSTRet = Convert.ToDecimal(dgvDet["VbcstIcms", i].Value);
-                //                    //obj900.vICMSSTRet = Convert.ToDecimal(dgvDet["VicmsstIcms", i].Value);
-                //                    //obj900.pCredSN = Convert.ToDecimal(dgvDet["pCredSN", i].Value);
-                //                    //obj900.vCredICMSSN = Convert.ToDecimal(dgvDet["vCredICMSSN", i].Value);
-                //                    objicms.belICMSSN900 = obj900;
-                //                    break;
-                //                }
-                //        }
-                //        #endregion
-                //    }
-
-
-                //    objimposto.belIcms = objicms;
-
-                //    #endregion
-
-                //    #region IPI
-
-                //    belIpi objipi = new belIpi();
-                //    objipi.Cenq = Convert.ToString(dgvDet["CenqIpi", i].Value);
-
-                //    string sCSTIPI = Convert.ToString(dgvDet["CstIpi", i].Value);
-
-
-                //    if (sCSTIPI == "00" || sCSTIPI == "49" || sCSTIPI == "50" || sCSTIPI == "99")
-                //    {
-                //        belIpitrib objipitrib = new belIpitrib();
-
-                //        objipitrib.Cst = sCSTIPI;
-                //        objipitrib.Pipi = Convert.ToDecimal(dgvDet["PipiTrib", i].Value);
-                //        if (Convert.ToDecimal(dgvDet["QunidIpiTrib", i].Value) != 0)
-                //        {
-                //            objipitrib.Qunid = Convert.ToString(dgvDet["QunidIpiTrib", i].Value);
-                //        }
-                //        objipitrib.Vbc = Convert.ToDecimal(dgvDet["VbcIpiTrib", i].Value);
-                //        objipitrib.Vipi = Convert.ToDecimal(dgvDet["VipiTrib", i].Value); //Claudinei - o.s. 24192 - 01/03/2010
-                //        objipitrib.Vunid = Convert.ToDecimal(dgvDet["VunidTrib", i].Value);
-                //        objipi.belIpitrib = objipitrib;
-                //    }
-                //    else
-                //    {
-                //        belIpint objipint = new belIpint();
-
-                //        objipint.Cst = sCSTIPI;
-                //        objipi.belIpint = objipint;
-                //    }
-                //    objimposto.belIpi = objipi;
-
-
-
-                //    #endregion
-
-                //    #region II
-
-
-
-                //    //if (Convert.ToDecimal(dgvDet["VbcIi", i].Value) != 0)
-                //    if (nota.dest.Uf.Equals("EX"))
-                //    {
-                //        belIi objii = new belIi();
-                //        objii.Vbc = Convert.ToDecimal(dgvDet["VbcIi", i].Value);
-                //        objii.Vdespadu = Convert.ToDecimal(dgvDet["VdespaduIi", i].Value);
-                //        objii.Vii = Convert.ToDecimal(dgvDet["Vii", i].Value);
-                //        objii.Viof = Convert.ToDecimal(dgvDet["ViofIi", i].Value);
-                //        objimposto.belIi = objii;
-                //    }
-                //    #endregion
-
-                //    #region PIS
-
-                //    belPis objpis = new belPis();
-                //    string sCstPis = Convert.ToString(dgvDet["CstPis", i].Value);
-
-                //    if (sCstPis == "01" || sCstPis == "02") // aqui
-                //    {
-                //        belPisaliq objpisaliq = new belPisaliq();
-
-                //        objpisaliq.Cst = sCstPis;
-                //        objpisaliq.Ppis = Convert.ToDecimal(dgvDet["Ppis", i].Value);
-                //        objpisaliq.Vbc = Convert.ToDecimal(dgvDet["VbcPis", i].Value);
-                //        objpisaliq.Vpis = Convert.ToDecimal(dgvDet["Vpis", i].Value);
-                //        objpis.belPisaliq = objpisaliq;
-                //    }
-                //    else if (sCstPis == "03")
-                //    {
-                //        belPisqtde objpisqtde = new belPisqtde();
-                //        objpisqtde.Cst = sCstPis;
-                //        objpisqtde.Valiqprod = Convert.ToDecimal(dgvDet["ValiqprodPis", i].Value);
-                //        objpisqtde.Qbcprod = Convert.ToDecimal(dgvDet["QbcprodPis", i].Value);
-                //        objpisqtde.Vpis = Convert.ToDecimal(dgvDet["Vpis", i].Value);
-                //        objpis.belPisqtde = objpisqtde;
-                //    }
-                //    else if (sCstPis == "04" || sCstPis == "06" || sCstPis == "07" || sCstPis == "08" || sCstPis == "09")
-                //    {
-                //        belPisnt objpisnt = new belPisnt();
-                //        objpisnt.Cst = sCstPis;
-                //        objpis.belPisnt = objpisnt;
-                //    }
-                //    else //if (sCstPis == "99")
-                //    {
-                //        belPisoutr objpisoutr = new belPisoutr();
-
-                //        objpisoutr.Cst = sCstPis;
-                //        objpisoutr.Ppis = Convert.ToDecimal(dgvDet["Ppis", i].Value);
-                //        objpisoutr.Vbc = Convert.ToDecimal(dgvDet["VbcPis", i].Value);
-                //        if (Convert.ToDecimal(dgvDet["ValiqprodPis", i].Value) != 0)
-                //        {
-                //            objpisoutr.Valiqprod = Convert.ToDecimal(dgvDet["ValiqprodPis", i].Value);
-                //            //Danner - o.s. 24167 - 22/01/2010
-                //            objpisoutr.Qbcprod = Convert.ToDecimal(dgvDet["QbcprodPis", i].Value);
-                //            //Fim - Danner - o.s. 24167 - 22/01/2010
-                //        }
-                //        //objpisoutr.Vbcprod = Convert.ToString(dgvDet["QbcprodPis", i].Value);//Danner - o.s. 24167 - 22/01/2010
-                //        objpisoutr.Vpis = Convert.ToDecimal(dgvDet["Vpis", i].Value);
-                //        objpis.belPisoutr = objpisoutr;
-
-                //    }
-
-                //    objimposto.belPis = objpis;
-
-
-
-                //    #endregion
-
-                //    #region COFINS
-
-                //    belCofins objcofins = new belCofins();
-                //    string sCstCofins = Convert.ToString(dgvDet["CstCofins", i].Value);
-
-                //    if (sCstCofins == "01" || sCstCofins == "02")
-                //    {
-                //        belCofinsaliq objconfinsaliq = new belCofinsaliq();
-
-                //        objconfinsaliq.Cst = sCstCofins;
-                //        objconfinsaliq.Pcofins = Convert.ToDecimal(dgvDet["Pcofins", i].Value);
-                //        objconfinsaliq.Vbc = Convert.ToDecimal(dgvDet["VbcCofins", i].Value);
-                //        objconfinsaliq.Vcofins = Convert.ToDecimal(dgvDet["Vconfins", i].Value);
-
-                //        objcofins.belCofinsaliq = objconfinsaliq;
-                //    }
-                //    else if (sCstCofins == "03")
-                //    {
-                //        belCofinsqtde objcofinsqtde = new belCofinsqtde();
-
-                //        objcofinsqtde.Cst = sCstCofins;
-                //        objcofinsqtde.Qbcprod = Convert.ToDecimal(dgvDet["QbcprodCofins", i].Value);
-                //        objcofinsqtde.Valiqprod = Convert.ToDecimal(dgvDet["ValiqprodCofins", i].Value);
-                //        objcofinsqtde.Vcofins = Convert.ToDecimal(dgvDet["Vconfins", i].Value);
-                //        objcofins.belCofinsqtde = objcofinsqtde;
-                //    }
-                //    else if (sCstCofins == "04" || sCstCofins == "06" || sCstCofins == "07" || sCstCofins == "08" || sCstCofins == "09")
-                //    {
-                //        belCofinsnt objcofinsnt = new belCofinsnt();
-                //        objcofinsnt.Cst = sCstCofins;
-                //        objcofins.belCofinsnt = objcofinsnt;
-                //    }
-                //    else //if (sCstCofins == "99")
-                //    {
-                //        belCofinsoutr objcofinsoutr = new belCofinsoutr();
-                //        objcofinsoutr.Cst = sCstCofins;
-                //        objcofinsoutr.Pcofins = Convert.ToDecimal(dgvDet["Pcofins", i].Value);
-                //        objcofinsoutr.Vbc = Convert.ToDecimal(dgvDet["VbcCofins", i].Value);
-                //        objcofinsoutr.Qbcprod = Convert.ToDecimal(dgvDet["QbcprodCofins", i].Value);
-                //        objcofinsoutr.Valiqprod = Convert.ToDecimal(dgvDet["ValiqprodCofins", i].Value);
-                //        objcofinsoutr.Vcofins = Convert.ToDecimal(dgvDet["Vconfins", i].Value);
-                //        objcofins.belCofinsoutr = objcofinsoutr;
-                //    }
-                //    objimposto.belCofins = objcofins;
-
-                //    #endregion
-
-                //    #region ISSQN
-
-                //    if (Convert.ToDecimal(dgvDet["VbcIss", i].Value) != 0)
-                //    {
-                //        belIss objiss = new belIss();
-                //        objiss.Clistserv = Convert.ToInt64(dgvDet["ClistservIss", i].Value);
-                //        objiss.Cmunfg = Convert.ToString(dgvDet["CmunfgIss", i].Value);
-                //        objiss.Valiq = Convert.ToDecimal(dgvDet["ValiqIss", i].Value);
-                //        objiss.Vbc = Convert.ToDecimal(dgvDet["VbcIss", i].Value);
-                //        objiss.Vissqn = Convert.ToDecimal(dgvDet["VissqnIss", i].Value);
-                //        objimposto.belIss = objiss;
-                //    }
-
-
-
-                //    #endregion
-
-                //    objDet.belImposto = objimposto;
-
-                //    #region InfadProd
-                //    belInfadprod objinfadprod = new belInfadprod();
-                //    if (Convert.ToString(dgvDet["Infcpl", i].Value) != "")
-                //    {
-
-                //        objinfadprod.Infadprid = Convert.ToString(dgvDet["Infcpl", i].Value);
-                //        objDet.belInfadprod = objinfadprod;
-                //    }
-
-                //    #endregion
-
-                //    #endregion
-                //    lObjDet.Add(objDet);
-                //}
-                //lObj.Add(lObjDet);
                 #endregion
 
                 #region Totais
@@ -1197,10 +702,14 @@ namespace HLP.GeraXml.UI.NFe
 
                 #region Cobrança
 
-                nota.cobr.Fat.Nfat = txtNFat.Text.Trim();
-                nota.cobr.Fat.Vorig = nudVOrigFat.Value;
-                nota.cobr.Fat.Vdesc = nudVDescFat.Value;
-                nota.cobr.Fat.Vliq = nudVLiqFat.Value;
+                if (nota.cobr.Fat != null)
+                {
+                    nota.cobr.Fat.Nfat = txtNFat.Text.Trim();
+                    nota.cobr.Fat.Vorig = nudVOrigFat.Value;
+                    nota.cobr.Fat.Vdesc = nudVDescFat.Value;
+                    nota.cobr.Fat.Vliq = nudVLiqFat.Value;
+                    nota.cobr.Fat.belDup = bsDuplicatas.List as List<belDup>;
+                }
 
                 //if (bsDuplicatas.Count > 0)
                 //{
@@ -1216,7 +725,7 @@ namespace HLP.GeraXml.UI.NFe
                 //    }
                 //    nota.cobr.Fat.belDup = lObjDup;
                 //}
-                nota.cobr.Fat.belDup = bsDuplicatas.List as List<belDup>;
+               
                 #endregion
 
                 #region Inf Adicionais
@@ -2042,13 +1551,16 @@ namespace HLP.GeraXml.UI.NFe
                 #endregion
                 #region IPI
                 belIpi ipi = imposto.belIpi;
-                if ((ipi.cst.Equals("00")) || (ipi.cst.Equals("49")) || (ipi.cst.Equals("50")) || (ipi.cst.Equals("99")))
+                if (ipi != null)
                 {
-                    ipi.belIpitrib.Vbc = nudvBCipiItens.Value;
-                    ipi.belIpitrib.Pipi = nudpIPIitens.Value;
-                    ipi.belIpitrib.Qunid = nudqUnidipi.nud.Value;
-                    ipi.belIpitrib.Vunid = nudvUnidipi.Value;
-                    ipi.belIpitrib.Vipi = nudvIPIitens.Value;
+                    if ((ipi.cst.Equals("00")) || (ipi.cst.Equals("49")) || (ipi.cst.Equals("50")) || (ipi.cst.Equals("99")))
+                    {
+                        ipi.belIpitrib.Vbc = nudvBCipiItens.Value;
+                        ipi.belIpitrib.Pipi = nudpIPIitens.Value;
+                        ipi.belIpitrib.Qunid = nudqUnidipi.nud.Value;
+                        ipi.belIpitrib.Vunid = nudvUnidipi.Value;
+                        ipi.belIpitrib.Vipi = nudvIPIitens.Value;
+                    }
                 }
                 #endregion
                 #region II
@@ -2305,7 +1817,15 @@ namespace HLP.GeraXml.UI.NFe
                     belProd objbelProd = bsProdutos.Current as belProd;
                     belImposto objbelImp = ((belInfNFe)bsNotas.Current).det.FirstOrDefault(c => c.nitem == objbelProd.nitem).imposto;
                     CarregaAbaICMSitens(objbelImp.belIcms);
-                    CarregaAbaIPIitens(objbelImp.belIpi);
+                    if (objbelImp.belIpi != null)
+                    {
+                        flIPI.Visible = true;
+                        CarregaAbaIPIitens(objbelImp.belIpi);
+                    }
+                    else
+                    {
+                        flIPI.Visible = false;
+                    }
                     CarregaAbaII(objbelImp.belIi);
                     CarregaAbaCombustivel(objbelProd.belcomb);
                     CarregaAbaPISitens(objbelImp.belPis);
@@ -2538,7 +2058,7 @@ namespace HLP.GeraXml.UI.NFe
         #endregion
         private void bsDI_CurrentItemChanged(object sender, EventArgs e)
         {
-           // if (dgvDI.Focused)
+            // if (dgvDI.Focused)
             {
                 if (bsDI.Count > 0)
                 {

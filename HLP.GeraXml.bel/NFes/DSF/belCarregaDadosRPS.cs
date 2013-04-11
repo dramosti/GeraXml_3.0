@@ -87,7 +87,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     rps.CD_NFSEQ = cd_nfseq;
 
                     #region Carrega as propriedades do RPS
-                    rps.InscricaoMunicipalPrestador = row["InscricaoMunicipalPrestador"].ToString().PadLeft(9, '0');
+                    rps.InscricaoMunicipalPrestador = Util.TiraSimbolo(row["InscricaoMunicipalPrestador"].ToString()).PadLeft(9, '0');
                     rps.TipoRPS = "RPS";
                     rps.SerieRPS = "NF";
                     rps.RazaoSocialPrestador = row["RazaoSocialPrestador"].ToString();
@@ -113,8 +113,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     rps.CidadeTomadorDescricao = row["CidadeTomadorDescricao"].ToString();
                     rps.CEPTomador = Util.TiraSimbolo(row["CEPTomador"].ToString());
                     rps.EmailTomador = row["EmailTomador"].ToString();
-                    rps.CodigoAtividade = row["CodigoAtividade"].ToString();
-                    rps.AliquotaAtividade = Convert.ToDecimal(row["AliquotaAtividade"].ToString());
+                    rps.CodigoAtividade = row["CodigoAtividade"].ToString();                   
                     rps.TipoRecolhimento = row["TipoRecolhimento"].ToString();
                     rps.MunicipioPrestacao = rps.CidadeTomador; // VERIFICAR TRATAMENTO
                     rps.MunicipioPrestacaoDescricao = rps.CidadeTomadorDescricao; // VERIFICAR TRATAMENTO
@@ -128,7 +127,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     rps.AliquotaPIS = Convert.ToDecimal(row["AliquotaPIS"].ToString());
                     rps.AliquotaCOFINS = Convert.ToDecimal(row["AliquotaCOFINS"].ToString());
                     rps.AliquotaINSS = Convert.ToDecimal(GetAliqINSS(cd_nfseq));
-                    rps.AliquotaIR = Convert.ToDecimal(GetValorIR(cd_nfseq));
+                    rps.AliquotaIR = Convert.ToDecimal(row["AliquotaIR"].ToString());    //Convert.ToDecimal(GetValorIR(cd_nfseq));
                     rps.AliquotaCSLL = Convert.ToDecimal(row["AliquotaCSLL"].ToString());
                     rps.DescricaoRPS = GetDescricaoRPS(cd_nfseq);
                     rps.TelefonePrestador = row["TelefonePrestador"].ToString();
@@ -144,6 +143,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     LoteRPSItensItem item;
                     foreach (DataRow rowItem in dtItem.Rows)
                     {
+                        rps.AliquotaAtividade = base.GetAliquotaAtividade(rowItem["cd_clifor"].ToString(), rowItem["cd_oper"].ToString());
                         item = new LoteRPSItensItem();
                         item.DiscriminacaoServico = rowItem["DiscriminacaoServico"].ToString();
                         item.Quantidade = Convert.ToByte(rowItem["Quantidade"].ToString());

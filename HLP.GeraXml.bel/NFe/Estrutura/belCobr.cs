@@ -57,7 +57,14 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                     }
                     objdups.Add(objdup);
                 }
-                this.Fat.belDup = objdups.OrderBy(C => C.Dvenc).ToList();
+                if (objdups.Count > 0)
+                {
+                    this.Fat.belDup = objdups.OrderBy(C => C.Dvenc).ToList();
+                }
+                else
+                {
+                    this.Fat = null;
+                }
             }
             catch (Exception)
             {

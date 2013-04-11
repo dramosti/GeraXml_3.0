@@ -68,7 +68,6 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     xDoc.LoadXml(sXmlRet);
                     xDoc.Save(sPath);
 
-
                     //Deserializa o retorno do webservice.
                     XmlSerializer deserializer = new XmlSerializer(typeof(RetornoEnvioLoteRPS));
                     RetornoConsultaSeqRps ret = SerializeClassToXml.DeserializeClasse<RetornoConsultaSeqRps>(sPath);
@@ -76,10 +75,9 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 }
                 return iSeqRetorno.ToString();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
     }

@@ -161,7 +161,6 @@ namespace HLP.GeraXml.bel.NFe
                                 XmlNode xNodeCanc = xmlCanc.DocumentElement;
                                 string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
                                 xRet.LoadXml(sRet);
-
                             }
                             if (Acesso.TP_AMB == 2)
                             {
@@ -346,7 +345,7 @@ namespace HLP.GeraXml.bel.NFe
 
             evento.infEvento.nSeqEvento = iNumEvento.ToString(); // numero de evento
             evento.infEvento.Id = "ID" + evento.infEvento.tpEvento + nota.sCHAVENFE + evento.infEvento.nSeqEvento.PadLeft(2, '0');
-            evento.infEvento.cOrgao = 35;
+            evento.infEvento.cOrgao = Convert.ToByte(Acesso.cUF);
             evento.infEvento.tpAmb = Convert.ToByte(Acesso.TP_AMB);
             evento.infEvento.CNPJ = Util.RetiraCaracterCNPJ(Acesso.CNPJ_EMPRESA);
             evento.infEvento.chNFe = nota.sCHAVENFE;

@@ -23,15 +23,15 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("Select emp.cd_inscrmu InscricaoMunicipalPrestador , {0}");
                 sQuery.Append("emp.nm_empresa  RazaoSocialPrestador, {0}");
                 sQuery.Append("coalesce(emp.cd_cnae,'') CodigoAtividade, {0}");
-                sQuery.Append("coalesce(emp.vl_aliqserv,0) AliquotaAtividade, {0}");
                 sQuery.Append("emp.cd_fonenor TelefonePrestador, {0}");
                 sQuery.Append("emp.vl_aliqpis_servico AliquotaPIS, {0}");
                 sQuery.Append("emp.vl_aliqcofins_servico  AliquotaCOFINS, {0}");
-                sQuery.Append("emp.vl_aliqcsll AliquotaCSLL, {0}");
+                sQuery.Append("clifor.vl_aliqcsll AliquotaCSLL, {0}");
                 sQuery.Append("nf.dt_emi  DataEmissaoRPS, {0}");
-                sQuery.Append("nf.vl_pis ValorPIS, {0}");
-                sQuery.Append("nf.vl_cofins_serv ValorCOFINS, {0}");
-                sQuery.Append("nf.vl_inss ValorINSS, {0}");
+                sQuery.Append("clifor.vl_aliqpis_servico ValorPIS, {0}");
+                sQuery.Append("clifor.vl_aliqcofins_servico ValorCOFINS, {0}");
+                sQuery.Append("clifor.vl_aliqirrf AliquotaIR, {0}");
+                sQuery.Append("clifor.vl_aliqinss ValorINSS, {0}");
                 sQuery.Append("nf.vl_csll_serv ValorCSLL, {0}");
                 sQuery.Append("nf.ds_anota DescricaoRPS, {0}");
                 sQuery.Append("coalesce(clifor.cd_inscrmu,'') InscricaoMunicipalTomador, {0}");
@@ -83,12 +83,27 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("select ");
                 sQuery.Append("'S' Tributavel, ");
                 sQuery.Append("m.ds_prod DiscriminacaoServico, ");
+                sQuery.Append("m.cd_oper, ");
+                sQuery.Append("m.cd_clifor, ");
                 sQuery.Append("m.qt_prod Quantidade, ");
                 sQuery.Append("m.vl_uniprod ValorUnitario, ");
                 sQuery.Append("m.vl_totbruto ValorTotal ");
                 sQuery.Append("from movitem m ");
                 sQuery.Append("where m.cd_nfseq = '{0}' and m.cd_empresa ='{1}'");
                 dtItem = HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), cd_nfseq, Acesso.CD_EMPRESA));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public decimal GetAliquotaAtividade(string cd_clifor, string cd_oper)
+        {
+            try
+            {
+                decimal dAliquotaAtividade = Convert.ToDecimal(HlpDbFuncoes.qrySeekValue("issclifor", "coalesce(vl_aliqiss,0)", string.Format("cd_clifor= '{0}' and cd_oper = '{1}'", cd_clifor, cd_oper)));
+                return dAliquotaAtividade;
             }
             catch (Exception ex)
             {
