@@ -23,6 +23,8 @@ namespace HLP.GeraXml.bel.NFes.DSF
         public ReqEnvioLoteRPS objLoteEnvio;
         public XmlDocument xmlLote { get; set; }
 
+        public bool bBuscaRetonro = false;
+
         /// <summary>
         /// Contrutor que já carrega as notas no RPS e gera o XML de Envio
         /// </summary>
@@ -31,6 +33,10 @@ namespace HLP.GeraXml.bel.NFes.DSF
         {
             this.lNotas = lNotas;
 
+            if (sNumeroLote != "")
+            {
+                bBuscaRetonro = true;
+            }
             objLoteEnvio = new ReqEnvioLoteRPS();
             objLoteEnvio.cabec = CarregaCabecalho();
             objLoteEnvio.cabec.NumeroLote = sNumeroLote;
@@ -48,7 +54,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
 
             objLoteEnvio.cabec.QtdRPS = objLoteEnvio.lote.RPS.Count();
             objLoteEnvio.cabec.ValorTotalDeducoes = objLoteEnvio.lote.RPS.Sum(c => c.Deducoes.Deducao.Sum(x => x.ValorDeduzir));
-            objLoteEnvio.cabec.ValorTotalServicos = objLoteEnvio.lote.RPS.Sum(c => c.Itens.Item.Sum(x => x.ValorTotal));          
+            objLoteEnvio.cabec.ValorTotalServicos = objLoteEnvio.lote.RPS.Sum(c => c.Itens.Item.Sum(x => x.ValorTotal));
         }
 
         public void CriarXml()
@@ -113,22 +119,32 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     rps.CidadeTomadorDescricao = row["CidadeTomadorDescricao"].ToString();
                     rps.CEPTomador = Util.TiraSimbolo(row["CEPTomador"].ToString());
                     rps.EmailTomador = row["EmailTomador"].ToString();
-                    rps.CodigoAtividade = row["CodigoAtividade"].ToString();                   
+                    rps.CodigoAtividade = row["CodigoAtividade"].ToString();
                     rps.TipoRecolhimento = row["TipoRecolhimento"].ToString();
                     rps.MunicipioPrestacao = rps.CidadeTomador; // VERIFICAR TRATAMENTO
                     rps.MunicipioPrestacaoDescricao = rps.CidadeTomadorDescricao; // VERIFICAR TRATAMENTO
                     rps.Operacao = row["Operacao"].ToString();
                     rps.Tributacao = row["Tributacao"].ToString();
+                    
                     rps.ValorPIS = Convert.ToDecimal(row["ValorPIS"].ToString());
                     rps.ValorCOFINS = Convert.ToDecimal(row["ValorCOFINS"].ToString());
                     rps.ValorINSS = Convert.ToDecimal(row["ValorINSS"].ToString());
-                    rps.ValorIR = Convert.ToDecimal(GetValorIR(cd_nfseq));
                     rps.ValorCSLL = Convert.ToDecimal(row["ValorCSLL"].ToString());
+
+
+                    rps.ValorIR = Convert.ToDecimal(GetValorIR(cd_nfseq));
+
+
+
                     rps.AliquotaPIS = Convert.ToDecimal(row["AliquotaPIS"].ToString());
                     rps.AliquotaCOFINS = Convert.ToDecimal(row["AliquotaCOFINS"].ToString());
-                    rps.AliquotaINSS = Convert.ToDecimal(GetAliqINSS(cd_nfseq));
+                    rps.AliquotaINSS = Convert.ToDecimal(row["AliquotaINSS"].ToString());
                     rps.AliquotaIR = Convert.ToDecimal(row["AliquotaIR"].ToString());    //Convert.ToDecimal(GetValorIR(cd_nfseq));
                     rps.AliquotaCSLL = Convert.ToDecimal(row["AliquotaCSLL"].ToString());
+
+
+
+
                     rps.DescricaoRPS = GetDescricaoRPS(cd_nfseq);
                     rps.TelefonePrestador = row["TelefonePrestador"].ToString();
                     rps.TelefoneTomador = row["TelefoneTomador"].ToString();
@@ -157,10 +173,18 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     rps.Deducoes.Deducao = new List<LoteRPSDeducoesDeducao>();
 
                     belConsultaSequencia seq = new belConsultaSequencia();
-                    rps.NumeroRPS = seq.GetSequenciaNota(rps.InscricaoMunicipalPrestador, cd_nfseq);
+                    if (!bBuscaRetonro)
+                    {
+                        rps.NumeroRPS = seq.GetSequenciaNota(rps.InscricaoMunicipalPrestador, cd_nfseq);
+                        this.SaveNumRPS(cd_nfseq, rps.NumeroRPS);
+                    }
+                    else
+                    {
+                        rps.NumeroRPS = this.GetNumeroRPSsalvo(cd_nfseq);
+                    }
 
                     rps.Assinatura = this.GetAssinatura(rps);
-                   
+
                 }
                 return rps;
             }
@@ -236,7 +260,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 foreach (LoteRPS lot in objLoteEnvio.lote.RPS)
                 {
                     sPathXml = GetFilePathMonthServico(false, lot.NumeroRPS);
-                    SerializeClassToXml.SerializeClasse<LoteRPS>(lot, sPathXml);                    
+                    SerializeClassToXml.SerializeClasse<LoteRPS>(lot, sPathXml);
                 }
 
             }
@@ -261,7 +285,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
         public string GetFilePathLoteServico()
         {
 
-            string sDirectory = Pastas.ENVIO + "\\Servicos\\";           
+            string sDirectory = Pastas.ENVIO + "\\Servicos\\";
 
             string sName = "Lote";
             foreach (LoteRPS rps in objLoteEnvio.lote.RPS)
@@ -288,7 +312,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 Directory.CreateDirectory(sDirectory);
             }
 
-            string sName = "RPS_" + sNumeroRPS;           
+            string sName = "RPS_" + sNumeroRPS;
 
             return sDirectory + sName + ".xml";
         }

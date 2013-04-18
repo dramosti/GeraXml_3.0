@@ -90,41 +90,48 @@ namespace HLP.GeraXml.bel.NFes
 
         private void ConfiguraMsgdeTransmissao(string sRet)
         {
-            XmlDocument xmlRet = new XmlDocument();
-            xmlRet.LoadXml(sRet);
-
-            XmlNodeList xNodeList = null;
-
-            if (xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "EnviarLoteRpsResposta").Count > 0)
+            try
             {
-                xNodeList = xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "EnviarLoteRpsResposta");
-            }
-            if (xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns2:" : "") + "MensagemRetorno").Count > 0)
-            {
-                xNodeList = xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "nss:" : "") + "MensagemRetorno");
-            }
+                XmlDocument xmlRet = new XmlDocument();
+                xmlRet.LoadXml(sRet);
 
-            foreach (XmlNode node in xNodeList)
-            {
-                if (node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "Protocolo"] != null)
+                XmlNodeList xNodeList = null;
+
+                if (xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "EnviarLoteRpsResposta").Count > 0)
                 {
-                    this.NumeroLote = node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "NumeroLote"].InnerText;
-                    this.Protocolo = node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "Protocolo"].InnerText;
-
-                    //Salva Protocolo do Lote
-                    DirectoryInfo dPastaData = new DirectoryInfo(Pastas.PROTOCOLOS + "\\Servicos\\");
-                    if (!dPastaData.Exists) { dPastaData.Create(); }
-                    xmlRet.Save(Pastas.PROTOCOLOS + "\\Servicos\\" + "lote_" + this.NumeroLote.PadLeft(15, '0') + "_prot_" + this.Protocolo + ".xml");
+                    xNodeList = xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "EnviarLoteRpsResposta");
                 }
-                else
+                if (xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns2:" : "") + "MensagemRetorno").Count > 0)
                 {
-                    sMsgTransmissao = "{3}Código: {0}{3}{3}Mensagem: {1}{3}{3}Correção: {2}{3}";
-                    sMsgTransmissao = string.Format(sMsgTransmissao, node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns2:" : "") + "Codigo"].InnerText,
-                                              node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns2:" : "") + "Mensagem"].InnerText,
-                                              node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns2:" : "") + "Correcao"].InnerText, Environment.NewLine);
-
+                    xNodeList = xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "nss:" : "") + "MensagemRetorno");
                 }
 
+                foreach (XmlNode node in xNodeList)
+                {
+                    if (node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "Protocolo"] != null)
+                    {
+                        this.NumeroLote = node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "NumeroLote"].InnerText;
+                        this.Protocolo = node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns3:" : "") + "Protocolo"].InnerText;
+
+                        //Salva Protocolo do Lote
+                        DirectoryInfo dPastaData = new DirectoryInfo(Pastas.PROTOCOLOS + "\\Servicos\\");
+                        if (!dPastaData.Exists) { dPastaData.Create(); }
+                        xmlRet.Save(Pastas.PROTOCOLOS + "\\Servicos\\" + "lote_" + this.NumeroLote.PadLeft(15, '0') + "_prot_" + this.Protocolo + ".xml");
+                    }
+                    else
+                    {
+                        sMsgTransmissao = "{3}Código: {0}{3}{3}Mensagem: {1}{3}{3}Correção: {2}{3}";
+                        sMsgTransmissao = string.Format(sMsgTransmissao, node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns2:" : "") + "Codigo"].InnerText,
+                                                  node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns2:" : "") + "Mensagem"].InnerText,
+                                                  node[(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns2:" : "") + "Correcao"].InnerText, Environment.NewLine);
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -152,8 +159,8 @@ namespace HLP.GeraXml.bel.NFes
                     string sRetConsulta = BuscaRetornoWebService(Prestador);
                     XmlDocument xmlRet = new XmlDocument();
                     xmlRet.LoadXml(sRetConsulta);
-                    
-                    XmlNodeList xNodeList = xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "")+"MensagemRetorno");
+
+                    XmlNodeList xNodeList = xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "") + "MensagemRetorno");
 
                     if (xNodeList.Count > 0)
                     {

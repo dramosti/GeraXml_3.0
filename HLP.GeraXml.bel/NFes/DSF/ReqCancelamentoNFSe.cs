@@ -161,7 +161,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 this.InscricaoMunicipalPrestador = row["cd_inscrmu"].ToString();
                 this.NumeroNota = row["cd_numero_nfse"].ToString();
                 break;
-            }            
+            }
         }
 
 

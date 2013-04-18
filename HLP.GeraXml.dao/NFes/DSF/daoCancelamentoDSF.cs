@@ -27,15 +27,15 @@ namespace HLP.GeraXml.dao.NFes.DSF
         }
 
 
-        public void UpdateToCancel(string sCd_numero_nfse, string sCd_verificacao_nfse)
+        public void UpdateToCancel(string sCd_numero_nfse, string sCd_verificacao_nfse, string sMotivoCanc)
         {
             try
             {
-                string sQuery = "update nf set nf.cd_recibocanc = '{0}' "
+                string sQuery = "update nf set nf.cd_recibocanc = '{0}', nf.DS_MOTIVO_CANC = '{3}' "
                 + "where nf.cd_numero_nfse = '{1}' and nf.cd_verificacao_nfse = '{0}' "
                 + " and nf.cd_empresa = '{2}'";
 
-                sQuery = string.Format(sQuery.ToString(), sCd_verificacao_nfse, sCd_numero_nfse, Acesso.CD_EMPRESA);
+                sQuery = string.Format(sQuery.ToString(), sCd_verificacao_nfse, sCd_numero_nfse, Acesso.CD_EMPRESA, sMotivoCanc);
 
                 HlpDbFuncoes.qrySeekUpdate(sQuery);
 

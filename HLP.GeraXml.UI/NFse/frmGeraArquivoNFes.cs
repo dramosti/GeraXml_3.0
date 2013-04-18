@@ -19,15 +19,19 @@ using CrystalDecisions.CrystalReports.Engine;
 using HLP.GeraXml.bel.NFes.DSF;
 using HLP.GeraXml.UI.NFse.DSF;
 using HLP.GeraXml.Comum.DataSet;
+using System.IO;
 
 namespace HLP.GeraXml.UI.NFse
 {
     public partial class frmGeraArquivoNFes : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
+        belPesquisaNotas belPesq = new belPesquisaNotas();
         belBuscaDados objbelBuscaDados = new belBuscaDados();
 
         private enum TipoFormVisualiza { frmNormal, frmSusesu };
 
+        public bool bCD_NOTAFIS { get; set; }
+        public bool bCD_NFSEQ { get; set; }
 
         public frmGeraArquivoNFes()
         {
@@ -119,14 +123,18 @@ namespace HLP.GeraXml.UI.NFse
                 st = belPesquisaNotas.status.Ambos;
             }
 
-            belPesquisaNotas belPesq = new belPesquisaNotas(st,
+            belPesq = new belPesquisaNotas(st,
                                                            (cboFiltro.cbx.SelectedIndex == 0 ? belPesquisaNotas.Filtro.Data : belPesquisaNotas.Filtro.Sequencia),
                                                            (cboFiltro.cbx.SelectedIndex == 0 ? dtpIni.Value.ToString() : txtNfIni.Text),
                                                            (cboFiltro.cbx.SelectedIndex == 0 ? dtpFim.Value.ToString() : txtNfFim.Text), true);
-            belPesquisaNotasBindingSource.DataSource = belPesq.lResultPesquisa;
+            bsNotas.DataSource = belPesq.lResultPesquisa;
 
+            ColoriGrid();
+            lblTotalRegistros.Text = belPesq.lResultPesquisa.Count + " Registro(s) encontrado(s)";
+        }
 
-
+        private void ColoriGrid()
+        {
             for (int i = 0; i < dgvNF.RowCount; i++)
             {
 
@@ -139,7 +147,6 @@ namespace HLP.GeraXml.UI.NFse
                     dgvNF.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
                 }
             }
-            lblTotalRegistros.Text = belPesq.lResultPesquisa.Count + " Registro(s) encontrado(s)";
         }
 
         private void VerificaGeneratorLote()
@@ -182,9 +189,9 @@ namespace HLP.GeraXml.UI.NFse
 
             try
             {
-                if ((belPesquisaNotasBindingSource.DataSource as List<belPesquisaNotas>) != null)
+                if (belPesq.lResultPesquisa != null)
                 {
-                    List<belPesquisaNotas> objSelecionadas = ((List<belPesquisaNotas>)belPesquisaNotasBindingSource.DataSource).Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
+                    List<belPesquisaNotas> objSelecionadas = belPesq.lResultPesquisa.Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
                     List<belPesquisaNotas> objSelect = objSelecionadas.Where(c =>
                                                                        c.bEnviado == false &&
                                                                        c.bDenegada == false &&
@@ -333,9 +340,9 @@ namespace HLP.GeraXml.UI.NFse
             frmStatusEnvioNfs objfrmStatus = null;
             try
             {
-                if ((belPesquisaNotasBindingSource.DataSource as List<belPesquisaNotas>) != null)
+                if (belPesq.lResultPesquisa != null)
                 {
-                    List<belPesquisaNotas> objSelecionadas = ((List<belPesquisaNotas>)belPesquisaNotasBindingSource.DataSource).Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
+                    List<belPesquisaNotas> objSelecionadas = belPesq.lResultPesquisa.Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
                     List<belPesquisaNotas> objSelect = objSelecionadas.Where(c =>
                                                                        c.bDenegada == false &&
                                                                        c.bCancelado == false).ToList<belPesquisaNotas>();
@@ -349,12 +356,13 @@ namespace HLP.GeraXml.UI.NFse
                     {
                         if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.DSF)
                         {
-                            belPesquisaNotas belPesq = new belPesquisaNotas(objSelect.FirstOrDefault().sRECIBO_NF);
-                            belPesquisaNotasBindingSource.DataSource = belPesq.lResultPesquisa;
-                            belCarregaDadosRPS objCarregarNotasLote = new belCarregaDadosRPS(belPesq.lResultPesquisa, belPesq.lResultPesquisa.FirstOrDefault().sRECIBO_NF);
+                            belPesquisaNotas objPesquisa = new belPesquisaNotas(objSelect.FirstOrDefault().sRECIBO_NF);
+                            bsNotas.DataSource = objPesquisa.lResultPesquisa;
+                            belCarregaDadosRPS objCarregarNotasLote = new belCarregaDadosRPS(objPesquisa.lResultPesquisa, objPesquisa.lResultPesquisa.FirstOrDefault().sRECIBO_NF);
                             belEnviarNFSeWS objEnvio = new belEnviarNFSeWS(objCarregarNotasLote);
                             string sNumeroLote = objCarregarNotasLote.objLoteEnvio.cabec.NumeroLote.ToString();
                             KryptonMessageBox.Show(objEnvio.BuscaRetorno(sNumeroLote), Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            PesquisaNotas();
                         }
                         else
                         {
@@ -419,9 +427,9 @@ namespace HLP.GeraXml.UI.NFse
         {
             try
             {
-                if ((belPesquisaNotasBindingSource.DataSource as List<belPesquisaNotas>) != null)
+                if (belPesq.lResultPesquisa != null)
                 {
-                    List<belPesquisaNotas> objSelecionadas = ((List<belPesquisaNotas>)belPesquisaNotasBindingSource.DataSource).Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
+                    List<belPesquisaNotas> objSelecionadas = belPesq.lResultPesquisa.Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
                     List<belPesquisaNotas> objSelect = objSelecionadas.Where(c =>
                                                                        c.bEnviado == true &&
                                                                        c.bDenegada == false &&
@@ -483,12 +491,12 @@ namespace HLP.GeraXml.UI.NFse
         {
             try
             {
-                if ((belPesquisaNotasBindingSource.DataSource as List<belPesquisaNotas>) != null)
+                if (belPesq.lResultPesquisa != null)
                 {
                     List<belimpressao> sListImpressao = new List<belimpressao>();
                     belimpressao obj;
 
-                    List<belPesquisaNotas> objSelecionadas = ((List<belPesquisaNotas>)belPesquisaNotasBindingSource.DataSource).Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
+                    List<belPesquisaNotas> objSelecionadas = belPesq.lResultPesquisa.Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
                     List<belPesquisaNotas> objSelect = objSelecionadas.Where(c =>
                                                                        c.bEnviado == true ||
                                                                        c.bCancelado == true).ToList<belPesquisaNotas>();
@@ -505,11 +513,12 @@ namespace HLP.GeraXml.UI.NFse
                         {
                             if (sListImpressao.Count > 1)
                             {
-                                //Não pode
+                                throw new Exception("Imprima uma nota de cada vez !");
                             }
                             else
                             {
                                 string sCD_NFSEQ = sListImpressao[0].sNfSeq;
+
                                 daoUtil dadosEmpresa = new daoUtil();
                                 dadosEmpresa.SetDadosEmpresa();
 
@@ -517,7 +526,26 @@ namespace HLP.GeraXml.UI.NFse
                                     dadosEmpresa.RuaEmpresa, dadosEmpresa.BairroEmpresa);
                                 string sRPS = daoUtil.GetNumRPSbyCD_NFSEQ(sCD_NFSEQ);
 
-                                LoteRPS nota = SerializeClassToXml.DeserializeClasse<LoteRPS>(belCarregaDadosRPS.GetFilePathMonthServico(true, sRPS));
+                                string sPathXmlEnviado = belCarregaDadosRPS.GetFilePathMonthServico(true, sRPS);
+
+                                if (!Directory.Exists(Pastas.ENVIADOS + "PDF\\"))
+                                {
+                                    Directory.CreateDirectory(Pastas.ENVIADOS + "PDF\\");
+                                }
+
+                                string sPathPDFdsf ="";
+                                if (objSelect.FirstOrDefault().bCancelado)
+                                {
+                                    sPathPDFdsf = Pastas.ENVIADOS + "PDF\\" + sRPS + "_canc.pdf";
+                                }
+                                else
+                                {
+                                    sPathPDFdsf = Pastas.ENVIADOS + "PDF\\" + sRPS + ".pdf";
+                                }
+
+                                LoteRPS nota = SerializeClassToXml.DeserializeClasse<LoteRPS>(sPathXmlEnviado);
+
+                                nota.NumeroRPS = sRPS;
                                 foreach (LoteRPSItensItem item in nota.Itens.Item)
                                 {
                                     item.NumeroRPS = nota.NumeroRPS;
@@ -526,15 +554,59 @@ namespace HLP.GeraXml.UI.NFse
                                 lNotas.Add(nota);
 
                                 //ReportDocument rpt = new ReportDocument();
-                                rptNFSeCamp rpt = new rptNFSeCamp();
+                                //rptNFSeCamp rpt = new rptNFSeCamp();
                                 //rpt.Load(Application.StartupPath + "\\Relatorios\\rptNFSeDSF.rpt");
+
+                                ReportDocument rpt = new ReportDocument();
+                                rpt.Load(Application.StartupPath + "\\Relatorios\\rptNFSeCamp.rpt");
+
 
                                 dsNFSeCampinas ds = CarregaDataSet(sCD_NFSEQ, dadosEmpresa, sEnderPrestador, nota);
                                 rpt.SetDataSource(ds);
                                 rpt.DataDefinition.FormulaFields["F_BAIRRO_TOMADOR"].Text = "\"" + nota.BairroTomador + "\"";
+                                //try { rpt.SetParameterValue("PathImage", Acesso.LOGOTIPO); }
+                                //catch (System.Exception ex) { };
+
+                                if (objSelect.FirstOrDefault().bCancelado)
+                                {
+                                    string sMotivoCanc = daoUtil.GetMOTIVO_CANC(sCD_NFSEQ);
+                                    rpt.DataDefinition.FormulaFields["F_MOTIVO_CANC"].Text = "\"" + sMotivoCanc + "\"";
+                                }
+
+
                                 rpt.Refresh();
-                                //try { rpt.SetParameterValue("Path_Image", Acesso.LOGOTIPO); }
-                                //catch (System.Exception) { };
+
+
+                                if (Convert.ToBoolean(Acesso.EMAIL_AUTOMATICO))
+                                {
+                                    if (KryptonMessageBox.Show("Deseja enviar email da Nota para o Tomador ?", Mensagens.MSG_Confirmacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        if (Acesso.VerificaDadosEmail())
+                                        {
+                                            List<belEmail> objlbelEmail = new List<belEmail>();
+                                            if (!File.Exists(sPathPDFdsf))
+                                            {
+                                                Util.ExportPDF(rpt, sPathPDFdsf);
+                                            }
+                                            for (int i = 0; i < sListImpressao.Count; i++)
+                                            {                                                
+                                                belEmail objemail = new belEmail(sPathXmlEnviado,sPathPDFdsf, sCD_NFSEQ, "", "", sListImpressao[i].sVerificacao);
+                                                objlbelEmail.Add(objemail);
+                                            }
+                                            if (objlbelEmail.Count > 0)
+                                            {
+                                                frmEmail objfrmEmail = new frmEmail(objlbelEmail, belEmail.TipoEmail.NF_ServicoDSF);
+                                                objfrmEmail.ShowDialog();
+                                            }
+                                        }
+                                        else
+                                        {
+                                            KryptonMessageBox.Show("Campos para o envio de e-mail automático não estão preenchidos corretamente!", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                    }
+                                }
+
+
 
                                 frmRelatorio frm = new frmRelatorio(rpt, "Impressão de Relatório de Nota Fiscal Eletrônica de Serviço");
                                 frm.Show();
@@ -596,7 +668,7 @@ namespace HLP.GeraXml.UI.NFse
                                 {
                                     if (Acesso.VerificaDadosEmail())
                                     {
-                                        List<belEmail> objlbelEmail = new List<belEmail>();
+                                        List<belEmail> objlbelEmail = new List<belEmail>();                                        
                                         for (int i = 0; i < sListImpressao.Count; i++)
                                         {
                                             belEmail objemail = new belEmail("", "", sListImpressao[i].sNota, "", "", sListImpressao[i].sVerificacao);
@@ -645,6 +717,7 @@ namespace HLP.GeraXml.UI.NFse
                 new HLPexception(ex);
             }
         }
+
 
         private static dsNFSeCampinas CarregaDataSet(string sCD_NFSEQ, daoUtil dadosEmpresa, string sEnderPrestador, LoteRPS nota)
         {
@@ -752,10 +825,10 @@ namespace HLP.GeraXml.UI.NFse
         {
             try
             {
-                if (e.ColumnIndex == 0 && belPesquisaNotasBindingSource.DataSource != null && Acesso.tipoWsNfse != Acesso.TP_WS_NFSE.SUSESU)
+                if (e.ColumnIndex == 0 && bsNotas.DataSource != null && Acesso.tipoWsNfse != Acesso.TP_WS_NFSE.SUSESU)
                 {
                     bMarcar = !bMarcar;
-                    foreach (belPesquisaNotas nota in belPesquisaNotasBindingSource.List)
+                    foreach (belPesquisaNotas nota in bsNotas.List)
                     {
                         nota.bSeleciona = bMarcar;
                     }
@@ -769,6 +842,26 @@ namespace HLP.GeraXml.UI.NFse
                             SendKeys.Send("{left}");
                         }
                     }
+                }
+                if (e.ColumnIndex == 1)
+                {
+                    if (!bCD_NOTAFIS)
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sCD_NOTAFIS);
+                    else
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sCD_NOTAFIS);
+
+                    ColoriGrid();
+                    bCD_NOTAFIS = !bCD_NOTAFIS;
+                }
+                else if (e.ColumnIndex == 2)
+                {
+                    if (bCD_NFSEQ)
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sCD_NFSEQ);
+                    else
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sCD_NFSEQ);
+
+                    ColoriGrid();
+                    bCD_NFSEQ = !bCD_NFSEQ;
                 }
             }
             catch (Exception ex)

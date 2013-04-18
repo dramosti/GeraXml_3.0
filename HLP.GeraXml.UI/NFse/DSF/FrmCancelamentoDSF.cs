@@ -12,6 +12,7 @@ using HLP.GeraXml.bel.NFes.DSF;
 using HLP.GeraXml.dao;
 using HLP.GeraXml.Comum.Static;
 using HLP.GeraXml.Comum;
+using HLP.GeraXml.bel.NFes.DSF;
 
 namespace HLP.GeraXml.UI.NFse.DSF
 {

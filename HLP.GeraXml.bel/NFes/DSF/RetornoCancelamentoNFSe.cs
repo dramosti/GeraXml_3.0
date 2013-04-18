@@ -16,11 +16,13 @@ namespace HLP.GeraXml.bel.NFes.DSF
     public partial class RetornoCancelamentoNFSe
     {
         [XmlElement("Cabecalho")]
-        public CabecalhoCanc cabec { get; set; }        
+        public CabecalhoCanc cabec { get; set; }
         [XmlElement("Erros")]
         public ErrosCanc erros { get; set; }
         [XmlElement("NotasCanceladas")]
         public NotasCanceladas notasCanc { get; set; }
+        [XmlElement("Alertas")]
+        public AlertasCanc alertas { get; set; }
     }
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.1")]
@@ -241,4 +243,47 @@ namespace HLP.GeraXml.bel.NFes.DSF
             }
         }
     }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
+    public partial class AlertasCanc
+    {
+        [XmlElement("Alerta")]
+        public List<AlertaCanc> Alerta { get; set; }
+    }
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(IsNullable = false)]
+    public partial class AlertaCanc
+    {
+        public string Codigo { get; set; }
+        public string Descricao { get; set; }
+        [XmlElement("ChaveNFe")]
+        public chaveNFe ChaveNFe { get; set; }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.1")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlRootAttribute(IsNullable = false)]
+    public partial class chaveNFe
+    {
+        public string InscricaoPrestador { get; set; }
+        public string NumeroNFe { get; set; }
+        public string CodigoVerificacao { get; set; }
+        public string RazaoSocialPrestador { get; set; }
+    }
+
 }

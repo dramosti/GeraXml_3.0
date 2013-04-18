@@ -29,7 +29,7 @@ namespace HLP.GeraXml.UI.NFse
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGeraArquivoNFes));
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -43,7 +43,7 @@ namespace HLP.GeraXml.UI.NFse
             this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.belPesquisaNotasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bsNotas = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -77,7 +77,7 @@ namespace HLP.GeraXml.UI.NFse
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.belPesquisaNotasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -129,7 +129,7 @@ namespace HLP.GeraXml.UI.NFse
             this.sNM_CLIFOR,
             this.bCancelado,
             this.bEnviado});
-            this.dgvNF.DataSource = this.belPesquisaNotasBindingSource;
+            this.dgvNF.DataSource = this.bsNotas;
             this.dgvNF.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNF.Location = new System.Drawing.Point(0, 57);
             this.dgvNF.Name = "dgvNF";
@@ -180,8 +180,8 @@ namespace HLP.GeraXml.UI.NFse
             // 
             this.dVL_TOTNF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dVL_TOTNF.DataPropertyName = "dVL_TOTNF";
-            dataGridViewCellStyle1.Format = "n2";
-            this.dVL_TOTNF.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "n2";
+            this.dVL_TOTNF.DefaultCellStyle = dataGridViewCellStyle2;
             this.dVL_TOTNF.HeaderText = "Valor";
             this.dVL_TOTNF.Name = "dVL_TOTNF";
             this.dVL_TOTNF.ReadOnly = true;
@@ -213,9 +213,9 @@ namespace HLP.GeraXml.UI.NFse
             this.bEnviado.ReadOnly = true;
             this.bEnviado.Visible = false;
             // 
-            // belPesquisaNotasBindingSource
+            // bsNotas
             // 
-            this.belPesquisaNotasBindingSource.DataSource = typeof(HLP.GeraXml.bel.NFe.belPesquisaNotas);
+            this.bsNotas.DataSource = typeof(HLP.GeraXml.bel.NFe.belPesquisaNotas);
             // 
             // flowLayoutPanel2
             // 
@@ -568,7 +568,7 @@ namespace HLP.GeraXml.UI.NFse
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.belPesquisaNotasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -623,7 +623,7 @@ namespace HLP.GeraXml.UI.NFse
         private System.Windows.Forms.DataGridViewCheckBoxColumn bContingenciaDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bDenegadaDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sRECIBONFDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource belPesquisaNotasBindingSource;
+        private System.Windows.Forms.BindingSource bsNotas;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bSeleciona;
         private System.Windows.Forms.DataGridViewTextBoxColumn sCD_NOTAFIS;
         private System.Windows.Forms.DataGridViewTextBoxColumn sCD_NFSEQ;

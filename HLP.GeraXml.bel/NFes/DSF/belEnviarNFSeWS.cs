@@ -101,10 +101,10 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     nameSpaces.Add("xsi", "http://www.w3.org/2001/XMLSchema-instance");
                     nameSpaces.Add("tipos", "http://localhost:8080/WsNFe2/tp");
                     nameSpaces.Add("ns1", "http://localhost:8080/WsNFe2/lote");
-                   
+
                     SerializeClassToXml.SerializeClasse<ReqConsultaLote>(consultaLote, sPath, nameSpaces);
                     sMessageRetorno = BuscaRetorno(ret.cabec.NumeroLote);
-                                     
+
                 }
                 else if (ret.erros.Erro.Count() > 0)
                 {
@@ -124,7 +124,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     foreach (Alerta_retlote alert in ret.alertas.alert)
                     {
                         sMessageRetorno += string.Format("Codigo:{0} - Descrição:{1}{2}", alert.Codigo, alert.Descricao, Environment.NewLine);
-                    }                   
+                    }
                 }
 
                 return sMessageRetorno;
@@ -215,11 +215,16 @@ namespace HLP.GeraXml.bel.NFes.DSF
 
                 foreach (ListaNFSeConsultaNFSe notas in objRetoConsultaLote.lista.ConsultaNFSe)
                 {
-                    sPathOrigem = belCarregaDadosRPS.GetFilePathMonthServico(false,notas.NumeroRPS);
+                    sPathOrigem = belCarregaDadosRPS.GetFilePathMonthServico(false, notas.NumeroRPS);
                     sPathDest = belCarregaDadosRPS.GetFilePathMonthServico(true, notas.NumeroNFe); //salvo na pasta envio com o numero do nfse.
                     string scd_nfseq = this.dadosRPS.objLoteEnvio.lote.RPS.FirstOrDefault(c => c.NumeroRPS == notas.NumeroRPS).CD_NFSEQ;
                     sMessageRetorno += string.Format("NF_SEQ:{0} - RPS:{1} - NumeroNFSe:{2}{3}", scd_nfseq, notas.NumeroRPS, notas.NumeroNFe, Environment.NewLine);
                     base.SalvaStatusDaNota(notas.NumeroNFe, notas.CodigoVerificacao, scd_nfseq);
+
+                    if (File.Exists(sPathDest))
+                    {
+                        File.Delete(sPathDest);
+                    }
 
                     //COLOCA O XML NA PASTA ENVIADOS
                     File.Copy(sPathOrigem, sPathDest);

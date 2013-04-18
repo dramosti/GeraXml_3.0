@@ -44,6 +44,19 @@ namespace HLP.GeraXml.dao
                 throw ex;
             }
         }
+        public static string GetMOTIVO_CANC(string sCD_NFSEQ)
+        {
+            try
+            {
+                string sMOTIVO_CANC = "";
+                sMOTIVO_CANC = HlpDbFuncoes.qrySeekValue("NF", "COALESCE(DS_MOTIVO_CANC,'')", string.Format("cd_nfseq = '{0}' AND CD_EMPRESA = '{1}'", sCD_NFSEQ, Acesso.CD_EMPRESA));
+                return sMOTIVO_CANC;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public static string GetUfByNome(string sNmMunicipio)
         {
@@ -120,8 +133,7 @@ namespace HLP.GeraXml.dao
                 throw ex;
             }
         }
-
-
+            
         public static bool VerificaConexaoOk()
         {
             try

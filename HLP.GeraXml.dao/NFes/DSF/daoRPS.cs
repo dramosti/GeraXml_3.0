@@ -24,15 +24,21 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("emp.nm_empresa  RazaoSocialPrestador, {0}");
                 sQuery.Append("coalesce(emp.cd_cnae,'') CodigoAtividade, {0}");
                 sQuery.Append("emp.cd_fonenor TelefonePrestador, {0}");
-                sQuery.Append("emp.vl_aliqpis_servico AliquotaPIS, {0}");
-                sQuery.Append("emp.vl_aliqcofins_servico  AliquotaCOFINS, {0}");
+                
+                sQuery.Append("nf.vl_pis_serv ValorPIS, {0}");
+                sQuery.Append("nf.vl_cofins_serv  ValorCOFINS, {0}");
+                sQuery.Append("nf.vl_csll_serv ValorCSLL, {0}");
+                sQuery.Append("nf.vl_inss ValorINSS, {0}");
+
+
                 sQuery.Append("clifor.vl_aliqcsll AliquotaCSLL, {0}");
                 sQuery.Append("nf.dt_emi  DataEmissaoRPS, {0}");
-                sQuery.Append("clifor.vl_aliqpis_servico ValorPIS, {0}");
-                sQuery.Append("clifor.vl_aliqcofins_servico ValorCOFINS, {0}");
+                sQuery.Append("clifor.vl_aliqpis_servico AliquotaPIS, {0}");
+                sQuery.Append("clifor.vl_aliqcofins_servico AliquotaCOFINS, {0}");
                 sQuery.Append("clifor.vl_aliqirrf AliquotaIR, {0}");
-                sQuery.Append("clifor.vl_aliqinss ValorINSS, {0}");
-                sQuery.Append("nf.vl_csll_serv ValorCSLL, {0}");
+                sQuery.Append("clifor.vl_aliqinss AliquotaINSS, {0}");
+
+
                 sQuery.Append("nf.ds_anota DescricaoRPS, {0}");
                 sQuery.Append("coalesce(clifor.cd_inscrmu,'') InscricaoMunicipalTomador, {0}");
                 sQuery.Append("coalesce(clifor.cd_cgc,'0') CNPJ_Tomador, {0}");
@@ -158,18 +164,54 @@ namespace HLP.GeraXml.dao.NFes.DSF
             string squery = "select ds_anota DescricaoRPS from nf where cd_nfseq = '{0}' and cd_empresa ='{1}'";
             return daoUtil.RetornaBlob(string.Format(squery, cd_nfseq, Acesso.CD_EMPRESA));
         }
-              
-        public string GetCodCidadeEmpresa() 
+
+        public string GetCodCidadeEmpresa()
         {
-            return HlpDbFuncoes.qrySeekValue("empresa e inner join cidades c on e.nm_cidnor = c.nm_cidnor", "cd_municipio", "e.CD_EMPRESA='" + Acesso.CD_EMPRESA+"'");
+            return HlpDbFuncoes.qrySeekValue("empresa e inner join cidades c on e.nm_cidnor = c.nm_cidnor", "cd_municipio", "e.CD_EMPRESA='" + Acesso.CD_EMPRESA + "'");
         }
-        
+
         public string GetInscricaoMunicipal()
         {
             return HlpDbFuncoes.qrySeekValue("EMPRESA", "cd_inscrmu", "CD_EMPRESA='" + Acesso.CD_EMPRESA + "'");
         }
 
-        
+
+        public string GetNumeroRPSsalvo(string cd_nfseq)
+        {
+            try
+            {
+                int iRPS = Convert.ToInt32(HlpDbFuncoes.qrySeekValue("nf", "coalesce(cd_rps,0)", string.Format("cd_nfseq = '{0}' and cd_empresa = '{1}'", cd_nfseq, Acesso.CD_EMPRESA)));
+
+                if (iRPS == 0)
+                {
+                    return Convert.ToInt32(cd_nfseq).ToString();
+                }
+                else
+                {
+                    return iRPS.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void SaveNumRPS(string cd_nfseq, string sCD_RPS)
+        {
+            try
+            {
+                string sQuery = string.Format("update nf set cd_rps = '{0}' where cd_nfseq = '{1}' and cd_empresa = '{2}'", sCD_RPS, cd_nfseq, Acesso.CD_EMPRESA);
+                HlpDbFuncoes.qrySeekUpdate(sQuery.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
 
 
     }

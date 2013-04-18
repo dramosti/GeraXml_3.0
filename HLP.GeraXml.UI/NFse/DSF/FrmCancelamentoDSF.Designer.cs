@@ -1,4 +1,5 @@
-﻿namespace HLP.GeraXml.UI.NFse.DSF
+﻿using HLP.GeraXml.bel.NFes.DSF;
+namespace HLP.GeraXml.UI.NFse.DSF
 {
     partial class FrmCancelamentoDSF
     {
@@ -134,7 +135,7 @@
             // 
             // bsCanc
             // 
-            this.bsCanc.DataSource = typeof(HLP.GeraXml.bel.NFes.DSF.LoteNota);
+            this.bsCanc.DataSource = typeof(LoteNota);
             // 
             // FrmCancelamentoDSF
             // 

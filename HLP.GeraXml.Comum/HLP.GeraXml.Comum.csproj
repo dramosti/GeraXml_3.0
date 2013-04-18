@@ -146,12 +146,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="rptNFSeCamp.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptNFSeCamp.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Static\Acesso.cs" />
     <Compile Include="Static\Mensagens.cs" />
     <Compile Include="Static\Pastas.cs" />
@@ -186,10 +180,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rptNFSeCamp.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptNFSeCamp.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

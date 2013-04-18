@@ -460,8 +460,8 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Relatorios\rptNFSeDSF.cs">
-      <DependentUpon>rptNFSeDSF.rpt</DependentUpon>
+    <Compile Include="Relatorios\rptNFSeCamp.cs">
+      <DependentUpon>rptNFSeCamp.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -601,9 +601,9 @@
       <LastGenOutput>rptNfesSusesu.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Relatorios\rptNFSeDSF.rpt">
+    <Content Include="Relatorios\rptNFSeCamp.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptNFSeDSF.cs</LastGenOutput>
+      <LastGenOutput>rptNFSeCamp.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="HLP.GeraXml.UI_TemporaryKey.pfx" />

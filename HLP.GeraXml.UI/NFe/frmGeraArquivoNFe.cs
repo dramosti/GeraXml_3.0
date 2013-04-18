@@ -938,8 +938,6 @@ namespace HLP.GeraXml.UI.NFe
                 sValor1 = txtCliente.Text;
             }
 
-
-
             belPesq = new belPesquisaNotas(st,
                                                            filtro,
                                                            sValor1,

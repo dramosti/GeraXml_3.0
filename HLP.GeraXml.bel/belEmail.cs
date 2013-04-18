@@ -36,7 +36,8 @@ namespace HLP.GeraXml.bel
             NFe_Normal,
             NFe_Cancelada,
             CCe,
-            NF_Servico
+            NF_Servico,
+            NF_ServicoDSF
         }
 
         public belEmail(TipoEmail tipo)
@@ -234,6 +235,9 @@ namespace HLP.GeraXml.bel
                 case TipoEmail.NF_Servico:
                     Corpo = GeraCorpoEmailNF_Servico(email);
                     break;
+                case TipoEmail.NF_ServicoDSF:
+                    Corpo = GeraCorpoEmailNF_ServicoDSF(email);
+                    break;
             }
             return Corpo;
         }
@@ -387,6 +391,31 @@ namespace HLP.GeraXml.bel
                 throw ex;
             }
         }
+
+        private string GeraCorpoEmailNF_ServicoDSF(belEmail email)
+        {
+            try
+            {                
+
+                StringBuilder sCorpo = new StringBuilder();
+                sCorpo.Append("<font face='Segoe UI' size='2'><H3>Sr. Contribuinte,</H3>");
+                sCorpo.Append("Esta mensagem refere-se à Nota Fiscal Eletrônica de Serviços N° " + email.sNotaFis + " emitida por: <br><br>");
+                sCorpo.Append("Razao Social: " + Acesso.NM_RAZAOSOCIAL + "<br>");
+                sCorpo.Append("CNPJ: " + Acesso.CNPJ_EMPRESA + "<br><br><br>");
+                sCorpo.Append("Esse é um e-mail automático gerado por nosso sistema transmissor de NF-e</font>");
+                sCorpo.Append(AssinaturaEmail());
+
+                return sCorpo.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+      
+
         private string GeraCorpoEmailContadorNfe()
         {
             try
@@ -488,3 +517,4 @@ namespace HLP.GeraXml.bel
 
     }
 }
+

@@ -110,17 +110,38 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     sRetorno += string.Format("Código:{0} - Msg:{1}.{2}", erro.Codigo, erro.Descricao, Environment.NewLine);
                 }
             }
+            if (objretorno.alertas.Alerta.Count() > 0)
+            {
+                foreach (AlertaCanc nota in objretorno.alertas.Alerta)
+                {
+                    sRetorno = "Alerta: " + nota.Descricao + Environment.NewLine;
+                    if (nota.Codigo == "1301")
+                    {
+                        sRetorno += string.Format("Nota:{0}{1}", nota.ChaveNFe.NumeroNFe, Environment.NewLine);
+                        base.UpdateToCancel(nota.ChaveNFe.NumeroNFe.ToString(), nota.ChaveNFe.CodigoVerificacao.ToString(), objCancelamento.lote.Nota.FirstOrDefault(c => c.CodigoVerificacao == nota.ChaveNFe.CodigoVerificacao).MotivoCancelamento);
+                    }
+                    else
+                    {
+                        sRetorno += string.Format("Código:{0} - Msg:{1}.{2}", nota.Codigo, nota.Descricao, Environment.NewLine);
+                    }
+
+                }
+            }
             if (objretorno.notasCanc.Nota.Count() > 0)
             {
                 sRetorno = "Notas Canceladas: " + Environment.NewLine;
                 foreach (NotasCanceladasNota nota in objretorno.notasCanc.Nota)
                 {
                     sRetorno += string.Format("Nota:{0}{1}", nota.NumeroNota, Environment.NewLine);
-                    base.UpdateToCancel(nota.NumeroNota.ToString(), nota.CodigoVerificacao.ToString());
+                    base.UpdateToCancel(nota.NumeroNota.ToString(), nota.CodigoVerificacao.ToString(), objCancelamento.lote.Nota.FirstOrDefault(c=>c.CodigoVerificacao==nota.CodigoVerificacao).MotivoCancelamento);
+                    
                 }
             }
             return sRetorno;
         }
+
+
+
 
 
 
