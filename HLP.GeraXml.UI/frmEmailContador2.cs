@@ -104,7 +104,9 @@ namespace HLP.GeraXml.UI
             try
             {
                 lpendencias = new List<PendenciaEmail>();
+                CarregaDados(Pastas.ENVIADOS + "\\Servicos", Arquivos.tpArquivo.Enviado);
                 CarregaDados(Pastas.ENVIADOS, Arquivos.tpArquivo.Enviado);
+                CarregaDados(Pastas.CANCELADOS + "\\Servicos", Arquivos.tpArquivo.Cancelado);
                 CarregaDados(Pastas.CANCELADOS, Arquivos.tpArquivo.Cancelado);
                 CarregaDados(Pastas.CCe, Arquivos.tpArquivo.CCe);
                 bsPendenciaEmail.DataSource = lpendencias;
@@ -115,9 +117,7 @@ namespace HLP.GeraXml.UI
                     {
                         dgvDados["iFaltantes", i].Style.BackColor = Color.OldLace;
                     }
-
                 }
-
             }
             catch (Exception)
             {
@@ -130,40 +130,43 @@ namespace HLP.GeraXml.UI
             {
                 DirectoryInfo dinfo = new DirectoryInfo(sPath);
 
-                foreach (DirectoryInfo item in dinfo.GetDirectories())
+                if (dinfo.Exists)
                 {
-                    if (item.Name.Length == 4)
+                    foreach (DirectoryInfo item in dinfo.GetDirectories())
                     {
-                        string sMes = item.Name.Substring(2, 2);
-                        string sAno = item.Name.Substring(0, 2);
+                        if (item.Name.Length == 4)
+                        {
+                            string sMes = item.Name.Substring(2, 2);
+                            string sAno = item.Name.Substring(0, 2);
 
-                        PendenciaEmail objPendencias = new PendenciaEmail();
-                        if (lpendencias.Where(c => c.sMes == sMes && c.sAno == sAno).Count() == 0)
-                        {
-                            objPendencias.sMes = sMes;
-                            objPendencias.sAno = sAno;
-                            objPendencias.sPathZip = Pastas.ENVIADOS + "\\Contador_xml\\" + sMes + sAno + ".zip";
-                            lpendencias.Add(objPendencias);
-                        }
-                        else
-                        {
-                            objPendencias = lpendencias.FirstOrDefault(c => c.sMes == sMes && c.sAno == sAno);
-                        }
-
-                        foreach (FileInfo xml in item.GetFiles("*.xml"))
-                        {
-                            if (dadosArquivos.arquivosTransmitidos.Where(c => c.nameXml == xml.Name && c.tipoArquivo == tipo).Count() == 0)
+                            PendenciaEmail objPendencias = new PendenciaEmail();
+                            if (lpendencias.Where(c => c.sMes == sMes && c.sAno == sAno).Count() == 0)
                             {
-                                objPendencias.larquivosPendentes.Add(new PendenciaArquivos
-                                {
-                                    sPathFull = xml.FullName,
-                                    tipoArquivo = tipo
-                                });
+                                objPendencias.sMes = sMes;
+                                objPendencias.sAno = sAno;
+                                objPendencias.sPathZip = Pastas.ENVIADOS + "\\Contador_xml\\" + sMes + sAno + ".zip";
+                                lpendencias.Add(objPendencias);
                             }
-                        }
-                        objPendencias.iFaltantes = objPendencias.larquivosPendentes.Count();
-                    }
+                            else
+                            {
+                                objPendencias = lpendencias.FirstOrDefault(c => c.sMes == sMes && c.sAno == sAno);
+                            }
 
+                            foreach (FileInfo xml in item.GetFiles("*.xml"))
+                            {
+                                if (dadosArquivos.arquivosTransmitidos.Where(c => c.nameXml == xml.Name && c.tipoArquivo == tipo).Count() == 0)
+                                {
+                                    objPendencias.larquivosPendentes.Add(new PendenciaArquivos
+                                    {
+                                        sPathFull = xml.FullName,
+                                        tipoArquivo = tipo
+                                    });
+                                }
+                            }
+                            objPendencias.iFaltantes = objPendencias.larquivosPendentes.Count();
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)

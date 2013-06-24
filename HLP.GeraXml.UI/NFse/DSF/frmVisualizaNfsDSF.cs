@@ -124,7 +124,7 @@ namespace HLP.GeraXml.UI.NFse.DSF
                 txtCEPTomador.Text = rps.CEPTomador;
                 txtEmailTomador.Text = rps.EmailTomador;
                 txtCodigoAtividade.Text = rps.CodigoAtividade;
-                nudAliquotaAtividade.Value = rps.AliquotaAtividade;
+                nudAliquotaAtividade.Text = rps.AliquotaAtividade;
 
                 cbxTipoRecolhimento.SelectedIndex = (rps.TipoRecolhimento == "A" ? 0 : 1);
                 cbxOperacao.cbx.SelectedValue = rps.Operacao;
@@ -133,11 +133,11 @@ namespace HLP.GeraXml.UI.NFse.DSF
 
                 txtMunicipioPrestacao.Text = rps.MunicipioPrestacao;
                 txtMunicipioPrestacaoDescricao.Text = rps.MunicipioPrestacaoDescricao;
-                nudValorPIS.Value = rps.ValorPIS;
-                nudValorCOFINS.Value = rps.ValorCOFINS;
-                nudValorINSS.Value = rps.ValorINSS;
-                nudValorIR.Value = rps.ValorIR;
-                nudValorCSLL.Value = rps.ValorCSLL;
+                nudValorPIS.Value = Convert.ToDecimal(rps.ValorPIS);
+                nudValorCOFINS.Value = Convert.ToDecimal(rps.ValorCOFINS.Replace(".", ","));
+                nudValorINSS.Value = Convert.ToDecimal(rps.ValorINSS);
+                nudValorIR.Value = Convert.ToDecimal(rps.ValorIR);
+                nudValorCSLL.Value = Convert.ToDecimal(rps.ValorCSLL);
                 nudAliquotaPIS.Value = rps.AliquotaPIS;
                 nudAliquotaCOFINS.Value = rps.AliquotaCOFINS;
                 nudAliquotaINSS.Value = rps.AliquotaINSS;
@@ -198,8 +198,7 @@ namespace HLP.GeraXml.UI.NFse.DSF
                 objLote.cabec.ValorTotalDeducoes = nudValorTotalDeducoes.Value;
 
                 LoteRPS rps = bsNotas.Current as LoteRPS;
-
-                rps.Assinatura = txtAssinatura.Text;
+                             
                 rps.InscricaoMunicipalPrestador = txtInscricaoMunicipalPrestador.Text;
                 rps.RazaoSocialPrestador = txtRazaoSocialPrestador.Text;
                 rps.NumeroRPS = txtNumeroRPS.Text;
@@ -220,19 +219,19 @@ namespace HLP.GeraXml.UI.NFse.DSF
                 rps.CEPTomador = txtCEPTomador.Text;
                 rps.EmailTomador = txtEmailTomador.Text;
                 rps.CodigoAtividade = txtCodigoAtividade.Text;
-                rps.AliquotaAtividade = nudAliquotaAtividade.Value;
+                rps.AliquotaAtividade = nudAliquotaAtividade.Text;
 
                 rps.TipoRecolhimento = cbxTipoRecolhimento.SelectedIndex == 0 ? "A" : "R";
                 rps.MunicipioPrestacao = txtMunicipioPrestacao.Text;
                 rps.MunicipioPrestacaoDescricao = txtMunicipioPrestacaoDescricao.Text;
                 rps.Operacao = cbxOperacao.cbx.SelectedValue.ToString();
                 rps.Tributacao = cbxTributacao.cbx.SelectedValue.ToString();
-                rps.ValorPIS = nudValorPIS.Value;
-                rps.ValorCOFINS = nudValorCOFINS.Value;
-                rps.ValorINSS = nudValorINSS.Value;
-                rps.ValorIR = nudValorIR.Value;
-                rps.ValorCSLL = nudValorCSLL.Value;
-                rps.AliquotaPIS = nudAliquotaPIS.Value;
+                rps.ValorPIS = nudValorPIS.Text;
+                rps.ValorCOFINS = nudValorCOFINS.Text;
+                rps.ValorINSS = nudValorINSS.Text;
+                rps.ValorIR = nudValorIR.Text;
+                rps.ValorCSLL = nudValorCSLL.Text;
+                rps.AliquotaPIS = Convert.ToDecimal(nudAliquotaPIS.Value);
                 rps.AliquotaCOFINS = nudAliquotaCOFINS.Value;
                 rps.AliquotaINSS = nudAliquotaINSS.Value;
                 rps.AliquotaIR = nudAliquotaIR.Value;
@@ -240,6 +239,7 @@ namespace HLP.GeraXml.UI.NFse.DSF
                 rps.DescricaoRPS = txtDescricaoRPS.Text;
                 rps.TelefonePrestador = txtTelefonePrestador.Text;
                 rps.TelefoneTomador = txtTelefoneTomador.Text;
+                rps.Assinatura = belCarregaDadosRPS.GetAssinatura(rps);
                 VerificaCampos();
             }
             catch (Exception ex)

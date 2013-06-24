@@ -288,6 +288,8 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
             set { _nItemPed = value; }
         }
 
+        public decimal vTotTrib { get; set; }
+
         public List<belDI> belDI { get; set; }
     }
 }

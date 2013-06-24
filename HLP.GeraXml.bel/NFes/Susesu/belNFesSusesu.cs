@@ -356,7 +356,6 @@ namespace HLP.GeraXml.bel.NFes.Susesu
         /// <returns>Caminho</returns>
         public string GetsFilePathServico(bool bStatus)
         {
-
             string sDirectory = (bStatus ? Pastas.ENVIADOS : Pastas.ENVIO) + "\\Servicos\\" + Convert.ToDateTime(_DATA_EMISSAO).Date.Month.ToString().PadLeft(2, '0') + Convert.ToDateTime(_DATA_EMISSAO).Date.Year.ToString().Substring(2, 2) + "\\";
             if (!Directory.Exists(sDirectory))
             {
@@ -364,6 +363,13 @@ namespace HLP.GeraXml.bel.NFes.Susesu
             }
             return sDirectory + this.NUMERO_NOTA + ".xml";
         }
+
+
+
+
+
+
+
         /// <summary>
         /// Carrega Dados da NOTA
         /// </summary>
@@ -407,6 +413,7 @@ namespace HLP.GeraXml.bel.NFes.Susesu
                     {
                         sObs = sObs.Substring((sObs.IndexOf("\\fs") + 6), sObs.Length - (sObs.IndexOf("\\fs") + 6));
                     }
+                    sObs = daoUtil.GetTotImpostosServ(sCD_NFSEQ) + sObs;
                     this.OUTRAS_INFORMACOES = sObs.Replace("}", "").Trim();
                     break;
                 }

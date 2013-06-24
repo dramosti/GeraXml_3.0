@@ -91,6 +91,9 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                         }
 
                         belImposto objimp = new belImposto();
+
+                        objDet.prod.vTotTrib = Convert.ToDecimal(drIItem["vTotTrib"].ToString());
+
                         iSeqItem++;
                         objDet.nitem = Convert.ToDecimal(iSeqItem.ToString().Trim());
                         objDet.prod.nitem = objDet.nitem;
@@ -312,8 +315,141 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             objicms.sCst = sCST;
                         }
 
-                        if (!Util.VerificaNovaST(sCST))
+                        bool bCST_SuperSimples = Util.VerificaNovaST(sCST);
+
+                        if (bCST_SuperSimples == true && sSimplesNac == "S")
                         {
+                            string sOrig = drIItem["Orig"].ToString();
+
+                            #region CTS_NOVAS
+                            switch ((Util.RetornaSTnovaAserUsada(sCST)))
+                            {
+                                case "101":
+                                    {
+                                        #region 101
+                                        belICMSSN101 obj101 = new belICMSSN101();
+                                        obj101.orig = sOrig;//(objdest.Uf.Equals("EX") ? "1" : "0");
+                                        obj101.CSOSN = sCST.ToString();
+                                        obj101.pCredSN = Math.Round(Convert.ToDecimal(drIItem["pCredSN"].ToString()), 2);//NFe_2.0
+                                        obj101.vCredICMSSN = Math.Round(Convert.ToDecimal(drIItem["vCredICMSSN"].ToString()), 2); //NFe_2.0
+                                        objicms.belICMSSN101 = obj101;
+                                        #endregion
+                                    }
+                                    break;
+
+                                case "102":
+                                    {
+                                        #region 102
+                                        belICMSSN102 obj102 = new belICMSSN102();
+                                        obj102.orig = sOrig; //(objdest.Uf.Equals("EX") ? "1" : "0");
+                                        obj102.CSOSN = sCST.ToString();
+                                        objicms.belICMSSN102 = obj102;
+                                        #endregion
+                                    }
+                                    break;
+                                case "201":
+                                    {
+                                        #region 201
+                                        belICMSSN201 obj201 = new belICMSSN201();
+                                        decimal dpRedBCST = Math.Round(Convert.ToDecimal(drIItem["pRedBCST"].ToString()), 2);
+                                        decimal dpICMSST = Math.Round(Convert.ToDecimal(drIItem["pICMSST"].ToString()), 2);
+                                        decimal dvICMSST = Math.Round(Convert.ToDecimal(drIItem["vICMSST"].ToString()), 2);
+
+                                        obj201.orig = sOrig;
+                                        obj201.CSOSN = sCST.ToString();
+                                        obj201.modBCST = 3;
+                                        obj201.pMVAST = Math.Round(Convert.ToDecimal(drIItem["pMVAST"].ToString()), 2);
+                                        obj201.vBCST = Math.Round(Convert.ToDecimal(drIItem["vBCST"].ToString()), 2);
+                                        obj201.pICMSST = dpICMSST;
+                                        obj201.vICMSST = dvICMSST;
+                                        obj201.pCredSN = Math.Round(Convert.ToDecimal(drIItem["pCredSN"].ToString()), 2);//NFe_2.0
+                                        obj201.vCredICMSSN = Math.Round(Convert.ToDecimal(drIItem["vCredICMSSN"].ToString()), 2); //NFe_2.0                                   
+                                        if (dpRedBCST != 0)
+                                        {
+                                            obj201.pRedBCST = dpRedBCST;
+                                        }
+                                        objicms.belICMSSN201 = obj201;
+                                        #endregion
+                                    }
+                                    break;
+                                case "500":
+                                    {
+                                        #region 500
+                                        belICMSSN500 obj500 = new belICMSSN500();
+                                        obj500.orig = sOrig;
+                                        obj500.CSOSN = sCST.ToString();
+                                        decimal dvBCSTRet = Math.Round(Convert.ToDecimal(drIItem["vBCST"].ToString()), 2);
+                                        decimal dvICMSSTRet = Math.Round(Convert.ToDecimal(drIItem["vICMSST"].ToString()), 2);
+                                        obj500.vBCSTRet = dvBCSTRet;
+                                        obj500.vICMSSTRet = dvICMSSTRet;
+                                        objicms.belICMSSN500 = obj500;
+                                        #endregion
+                                    }
+                                    break;
+                                case "900":
+                                    {
+                                        #region 900
+                                        belICMSSN900 obj900 = new belICMSSN900();
+                                        decimal dpRedBCST = Math.Round(Convert.ToDecimal(drIItem["pRedBCST"].ToString()), 2);
+                                        decimal dpICMSST = Math.Round(Convert.ToDecimal(drIItem["pICMSST"].ToString()), 2);
+                                        decimal dvICMSST = Math.Round(Convert.ToDecimal(drIItem["vICMSST"].ToString()), 2);
+                                        decimal dvBCSTRet = Math.Round(Convert.ToDecimal(drIItem["vBCST"].ToString()), 2);
+                                        decimal dvICMSSTRet = Math.Round(Convert.ToDecimal(drIItem["vICMSST"].ToString()), 2);
+
+                                        obj900.orig = sOrig;
+                                        obj900.CSOSN = sCST.ToString();
+                                        obj900.modBC = 3;
+                                        obj900.vBC = (bPauta ? dvBC_pauta : dvBC);
+                                        decimal dpRedBC = Math.Round(Convert.ToDecimal(drIItem["pRedBC"].ToString()), 2);
+                                        if (dpRedBC != 0)
+                                        {
+                                            obj900.pRedBC = dpRedBC;
+                                        }
+                                        obj900.vICMS = dvICMS;
+                                        obj900.modBCST = 3;
+                                        obj900.pMVAST = Math.Round(Convert.ToDecimal(drIItem["pMVAST"].ToString()), 2);
+                                        if (dpRedBCST != 0)
+                                        {
+                                            obj900.pRedBCST = dpRedBCST;
+                                        }
+                                        decimal dvBCST = Math.Round(Convert.ToDecimal(drIItem["vBCST"].ToString()), 2);
+                                        obj900.vBCST = dvBCST;
+                                        obj900.pICMSST = dpICMSST;
+                                        obj900.vICMSST = dvICMSST;
+                                        obj900.vBCSTRet = dvBCSTRet;
+                                        obj900.vICMSSTRet = dvICMSSTRet;
+                                        obj900.pCredSN = Math.Round(Convert.ToDecimal(drIItem["pCredSN"].ToString()), 2);//NFe_2.0
+                                        obj900.vCredICMSSN = Math.Round(Convert.ToDecimal(drIItem["vCredICMSSN"].ToString()), 2); //NFe_2.0                                    
+
+                                        // Alteração feita por motivo de NFe para a Lorenzon
+
+
+                                        obj900.modBC = null;
+                                        obj900.vBC = null;
+                                        obj900.pRedBC = null;
+                                        obj900.pICMS = null;
+                                        obj900.vICMS = null;
+                                        obj900.modBCST = null;
+                                        obj900.pMVAST = null;
+                                        obj900.pRedBCST = null;
+                                        obj900.vBCST = null;
+                                        obj900.pICMSST = null;
+                                        obj900.vICMSST = null;
+                                        obj900.vBCSTRet = null;
+                                        obj900.vICMSSTRet = null;
+                                        obj900.pCredSN = null;//NFe_2.0
+                                        obj900.vCredICMSSN = null; //NFe_2.0                                    
+
+                                        objicms.belICMSSN900 = obj900;
+                                        #endregion
+                                    }
+                                    break;
+                            }
+                            #endregion
+                          
+                        }
+                        else
+                        {                            
                             #region CST_ANTIGAS
                             switch (sCST.Substring(1, 2))
                             {
@@ -573,136 +709,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             }
 
                             #endregion
-                        }
-                        else
-                        {
-                            string sOrig = drIItem["Orig"].ToString();
-
-                            #region CTS_NOVAS
-                            switch ((Util.RetornaSTnovaAserUsada(sCST)))
-                            {
-                                case "101":
-                                    {
-                                        #region 101
-                                        belICMSSN101 obj101 = new belICMSSN101();
-                                        obj101.orig = sOrig;//(objdest.Uf.Equals("EX") ? "1" : "0");
-                                        obj101.CSOSN = sCST.ToString();
-                                        obj101.pCredSN = Math.Round(Convert.ToDecimal(drIItem["pCredSN"].ToString()), 2);//NFe_2.0
-                                        obj101.vCredICMSSN = Math.Round(Convert.ToDecimal(drIItem["vCredICMSSN"].ToString()), 2); //NFe_2.0
-                                        objicms.belICMSSN101 = obj101;
-                                        #endregion
-                                    }
-                                    break;
-
-                                case "102":
-                                    {
-                                        #region 102
-                                        belICMSSN102 obj102 = new belICMSSN102();
-                                        obj102.orig = sOrig; //(objdest.Uf.Equals("EX") ? "1" : "0");
-                                        obj102.CSOSN = sCST.ToString();
-                                        objicms.belICMSSN102 = obj102;
-                                        #endregion
-                                    }
-                                    break;
-                                case "201":
-                                    {
-                                        #region 201
-                                        belICMSSN201 obj201 = new belICMSSN201();
-                                        decimal dpRedBCST = Math.Round(Convert.ToDecimal(drIItem["pRedBCST"].ToString()), 2);
-                                        decimal dpICMSST = Math.Round(Convert.ToDecimal(drIItem["pICMSST"].ToString()), 2);
-                                        decimal dvICMSST = Math.Round(Convert.ToDecimal(drIItem["vICMSST"].ToString()), 2);
-
-                                        obj201.orig = sOrig;
-                                        obj201.CSOSN = sCST.ToString();
-                                        obj201.modBCST = 3;
-                                        obj201.pMVAST = Math.Round(Convert.ToDecimal(drIItem["pMVAST"].ToString()), 2);
-                                        obj201.vBCST = Math.Round(Convert.ToDecimal(drIItem["vBCST"].ToString()), 2);
-                                        obj201.pICMSST = dpICMSST;
-                                        obj201.vICMSST = dvICMSST;
-                                        obj201.pCredSN = Math.Round(Convert.ToDecimal(drIItem["pCredSN"].ToString()), 2);//NFe_2.0
-                                        obj201.vCredICMSSN = Math.Round(Convert.ToDecimal(drIItem["vCredICMSSN"].ToString()), 2); //NFe_2.0                                   
-                                        if (dpRedBCST != 0)
-                                        {
-                                            obj201.pRedBCST = dpRedBCST;
-                                        }
-                                        objicms.belICMSSN201 = obj201;
-                                        #endregion
-                                    }
-                                    break;
-                                case "500":
-                                    {
-                                        #region 500
-                                        belICMSSN500 obj500 = new belICMSSN500();
-                                        obj500.orig = sOrig;
-                                        obj500.CSOSN = sCST.ToString();
-                                        decimal dvBCSTRet = Math.Round(Convert.ToDecimal(drIItem["vBCST"].ToString()), 2);
-                                        decimal dvICMSSTRet = Math.Round(Convert.ToDecimal(drIItem["vICMSST"].ToString()), 2);
-                                        obj500.vBCSTRet = dvBCSTRet;
-                                        obj500.vICMSSTRet = dvICMSSTRet;
-                                        objicms.belICMSSN500 = obj500;
-                                        #endregion
-                                    }
-                                    break;
-                                case "900":
-                                    {
-                                        #region 900
-                                        belICMSSN900 obj900 = new belICMSSN900();
-                                        decimal dpRedBCST = Math.Round(Convert.ToDecimal(drIItem["pRedBCST"].ToString()), 2);
-                                        decimal dpICMSST = Math.Round(Convert.ToDecimal(drIItem["pICMSST"].ToString()), 2);
-                                        decimal dvICMSST = Math.Round(Convert.ToDecimal(drIItem["vICMSST"].ToString()), 2);
-                                        decimal dvBCSTRet = Math.Round(Convert.ToDecimal(drIItem["vBCST"].ToString()), 2);
-                                        decimal dvICMSSTRet = Math.Round(Convert.ToDecimal(drIItem["vICMSST"].ToString()), 2);
-
-                                        obj900.orig = sOrig;
-                                        obj900.CSOSN = sCST.ToString();
-                                        obj900.modBC = 3;
-                                        obj900.vBC = (bPauta ? dvBC_pauta : dvBC);
-                                        decimal dpRedBC = Math.Round(Convert.ToDecimal(drIItem["pRedBC"].ToString()), 2);
-                                        if (dpRedBC != 0)
-                                        {
-                                            obj900.pRedBC = dpRedBC;
-                                        }
-                                        obj900.vICMS = dvICMS;
-                                        obj900.modBCST = 3;
-                                        obj900.pMVAST = Math.Round(Convert.ToDecimal(drIItem["pMVAST"].ToString()), 2);
-                                        if (dpRedBCST != 0)
-                                        {
-                                            obj900.pRedBCST = dpRedBCST;
-                                        }
-                                        decimal dvBCST = Math.Round(Convert.ToDecimal(drIItem["vBCST"].ToString()), 2);
-                                        obj900.vBCST = dvBCST;
-                                        obj900.pICMSST = dpICMSST;
-                                        obj900.vICMSST = dvICMSST;
-                                        obj900.vBCSTRet = dvBCSTRet;
-                                        obj900.vICMSSTRet = dvICMSSTRet;
-                                        obj900.pCredSN = Math.Round(Convert.ToDecimal(drIItem["pCredSN"].ToString()), 2);//NFe_2.0
-                                        obj900.vCredICMSSN = Math.Round(Convert.ToDecimal(drIItem["vCredICMSSN"].ToString()), 2); //NFe_2.0                                    
-
-                                        // Alteração feita por motivo de NFe para a Lorenzon
-
-
-                                        obj900.modBC = null;
-                                        obj900.vBC = null;
-                                        obj900.pRedBC = null;
-                                        obj900.pICMS = null;
-                                        obj900.vICMS = null;
-                                        obj900.modBCST = null;
-                                        obj900.pMVAST = null;
-                                        obj900.pRedBCST = null;
-                                        obj900.vBCST = null;
-                                        obj900.pICMSST = null;
-                                        obj900.vICMSST = null;
-                                        obj900.vBCSTRet = null;
-                                        obj900.vICMSSTRet = null;
-                                        obj900.pCredSN = null;//NFe_2.0
-                                        obj900.vCredICMSSN = null; //NFe_2.0                                    
-
-                                        objicms.belICMSSN900 = obj900;
-                                        #endregion
-                                    }
-                                    break;
-                            }
-                            #endregion
+                           
                         }
 
                         if ((dvBC != 0) && (Convert.ToDecimal(drIItem["pICMS"].ToString()) != 0))
@@ -731,7 +738,8 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                 {
                                     if (!drIItem["vBC"].Equals(string.Empty))
                                     {
-                                        if (bEx)
+                                        //if (bEx)
+                                        if (true) //liberado para todos os clientes
                                         {
                                             ddvBC = Convert.ToDecimal(drIItem["VL_BASEIPI"].ToString());
                                             objipitrib.Vbc = ddvBC;
@@ -1083,6 +1091,11 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                 objinf.Infadprid = Util.TiraSimbolo(sObsItem.Trim(), "-");
                             }
                         }
+                        if (Acesso.TRANSPARENCIA == 1 || Acesso.TRANSPARENCIA == 2)
+                            if (!objDet.prod.vTotTrib.ToString().Equals(""))
+                                objinf.Infadprid = string.Format("TRIBUTOS(TRANSPARÊNCIA) = R$ {0}", objDet.prod.vTotTrib.ToString()) + (objinf.Infadprid == "" ? "" : " - " + objinf.Infadprid);
+
+
                         if (Acesso.IMPRIMI_NUM_NOTA_ENTRADA)
                         {
                             if (drIItem["ST_ESTTERC"].ToString().Equals("S"))

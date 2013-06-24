@@ -48,7 +48,14 @@ namespace HLP.GeraXml.Comum.Static
                 DirectoryInfo info = new DirectoryInfo(sCaminho);
                 if (!info.Exists)
                 {
-                    info.Create();
+                    try
+                    {
+                        info.Create();
+                    }
+                    catch (Exception)
+                    {
+                        return "";
+                    }
                 }
                 return sCaminho.Trim();
             }
@@ -196,6 +203,22 @@ namespace HLP.GeraXml.Comum.Static
 
             }
             set { Pastas._CCe = value; }
+        }
+
+        private static string _GINFES = "GINFES\\";
+        public static string GINFES
+        {
+            get
+            {
+                string sCaminho = Acesso.CAMINHO_PADRAO + "\\" + Pastas._GINFES;
+                DirectoryInfo info = new DirectoryInfo(sCaminho);
+                if (!info.Exists)
+                {
+                    info.Create();
+                }
+                return sCaminho.Trim();
+            }
+            set { Pastas._GINFES = value; }
         }
 
         private static string _TIMER_RETORNOS = "BuscaRetorno\\";

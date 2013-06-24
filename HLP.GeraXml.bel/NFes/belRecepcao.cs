@@ -128,10 +128,34 @@ namespace HLP.GeraXml.bel.NFes
                     }
 
                 }
+
+                if (this.Protocolo != "")
+                {
+                    string sFileVerificaProt = Pastas.GINFES + this.Protocolo + ".txt";
+                    StreamWriter sw = new StreamWriter(sFileVerificaProt);
+                    sw.Write(DateTime.Now);
+                    sw.Close();
+                }
+
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+
+        private bool ProtocoloExists()
+        {
+            try
+            {
+                List<string> larquivos = Directory.GetFiles(Pastas.GINFES).ToList();
+                return larquivos.Select(c => c.Split('_')[0].ToString()).Contains(this.Protocolo);
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -288,20 +312,98 @@ namespace HLP.GeraXml.bel.NFes
 
                 if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES)
                 {
-                    if (Acesso.TP_AMB_SERV == 2)
-                    {
-                        WebService.Itu_servicos_Homologacao.ServiceGinfesImplService objtrans = new WebService.Itu_servicos_Homologacao.ServiceGinfesImplService();
-                        objtrans.ClientCertificates.Add(Acesso.cert_NFs);
-                        objtrans.Timeout = 60000;
-                        return objtrans.ConsultarLoteRpsV3(NfeCabecMsg(), MontaXmlConsultaLote(Prestador));
+                    string sVerificacao = Pastas.GINFES + this.Protocolo + ".txt";
 
-                    }
-                    else if (Acesso.TP_AMB_SERV == 1)
+                    bool bValida = false;
+
+                    if (File.Exists(sVerificacao))
                     {
-                        WebService.Itu_servicos_Producao.ServiceGinfesImplService objtrans = new WebService.Itu_servicos_Producao.ServiceGinfesImplService();
-                        objtrans.ClientCertificates.Add(Acesso.cert_NFs);
-                        objtrans.Timeout = 60000;
-                        return objtrans.ConsultarLoteRpsV3(NfeCabecMsg(), MontaXmlConsultaLote(Prestador));
+                        StreamReader sr = new StreamReader(sVerificacao);
+                        string sdt = sr.ReadToEnd();
+                        sr.Close();
+
+                        DateTime dtEnvio = Convert.ToDateTime(sdt).AddMinutes(6);
+                        DateTime dtAtual = DateTime.Now;
+
+                        if (dtEnvio > dtAtual)
+                        {
+                            throw new Exception("Aguarde mais alguns minutos para o buscar o retorno da Nota. Aproximadamente 6 minutos após o envio.");
+                        }
+                        else
+                        {
+                            bValida = true;
+                        }
+                    }
+                    else
+                    {
+                        bValida = true;
+                    }
+
+                    string sretorno = "";
+                    if (bValida)
+                    {
+                        if (Acesso.TP_AMB_SERV == 2)
+                        {
+                            WebService.Itu_servicos_Homologacao.ServiceGinfesImplService teste = new WebService.Itu_servicos_Homologacao.ServiceGinfesImplService();
+                            teste.ClientCertificates.Add(Acesso.cert_NFs);
+                            teste.Timeout = 60000;
+                            string sret = teste.ConsultarSituacaoLoteRpsV3(NfeCabecMsg(), MontaXmlConsultarSituacaoLoteRps(Prestador));
+
+                            WebService.Itu_servicos_Homologacao.ServiceGinfesImplService objtrans = new WebService.Itu_servicos_Homologacao.ServiceGinfesImplService();
+                            objtrans.ClientCertificates.Add(Acesso.cert_NFs);
+                            objtrans.Timeout = 60000;
+                            return objtrans.ConsultarLoteRpsV3(NfeCabecMsg(), MontaXmlConsultaLote(Prestador));
+
+                        }
+                        else if (Acesso.TP_AMB_SERV == 1)
+                        {
+                            ConsultarSituacaoLoteRpsResposta objResposta;
+                            try
+                            {
+
+                                WebService.Itu_servicos_Producao.ServiceGinfesImplService teste = new WebService.Itu_servicos_Producao.ServiceGinfesImplService();
+                                teste.ClientCertificates.Add(Acesso.cert_NFs);
+                                teste.Timeout = 60000;
+                                string sret = teste.ConsultarSituacaoLoteRpsV3(NfeCabecMsg(), MontaXmlConsultarSituacaoLoteRps(Prestador));
+                                XmlDocument doc = new XmlDocument();
+                                doc.LoadXml(sret);
+                                string sNmFile = Pastas.PROTOCOLOS + "//ConsultaSitLoteRps_" + this.Protocolo + ".xml";
+                                if (File.Exists(sNmFile))
+                                    File.Delete(sNmFile);
+                                doc.Save(sNmFile);
+                                objResposta = SerializeClassToXml.DeserializeClasse<ConsultarSituacaoLoteRpsResposta>(sNmFile);
+
+                            }
+                            catch (Exception ex)
+                            {
+                                throw ex;
+                            }
+
+                            if (objResposta != null)
+                            {
+
+                                if ((objResposta.Situacao == 4) || (objResposta.Situacao == 3))
+                                {
+                                    WebService.Itu_servicos_Producao.ServiceGinfesImplService objtrans = new WebService.Itu_servicos_Producao.ServiceGinfesImplService();
+                                    objtrans.ClientCertificates.Add(Acesso.cert_NFs);
+                                    objtrans.Timeout = 60000;
+                                    sretorno = objtrans.ConsultarLoteRpsV3(NfeCabecMsg(), MontaXmlConsultaLote(Prestador));
+                                }
+                                else
+                                {
+                                    if (objResposta.Situacao == 1)
+                                    {
+                                        throw new Exception("Lote ainda não recebido.");
+                                    }
+                                    else if (objResposta.Situacao == 2)
+                                    {
+                                        throw new Exception("Lote ainda não processado.");
+                                    }
+                                }
+                            }
+                        }
+
+                        return sretorno;
                     }
                     else
                     {
@@ -372,6 +474,58 @@ namespace HLP.GeraXml.bel.NFes
                 throw ex;
             }
         }
+
+        private string MontaXmlConsultarSituacaoLoteRps(tcIdentificacaoPrestador objPrestador)
+        {
+            XmlSchemaCollection myschema = new XmlSchemaCollection();
+            XmlValidatingReader reader;
+            try
+            {
+                XNamespace tipos = "http://www.ginfes.com.br/tipos_v03.xsd";
+                XNamespace pf = "http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_envio_v03.xsd";
+                XContainer conPrestador = null;
+                XContainer conProtocolo = null;
+
+                XContainer conConsultarLoteRpsEnvio = (new XElement(pf + "ConsultarSituacaoLoteRpsEnvio", new XAttribute("xmlns", "http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_envio_v03.xsd"),
+                                                                        new XAttribute(XNamespace.Xmlns + "tipos", "http://www.ginfes.com.br/tipos_v03.xsd")));
+
+                conPrestador = (new XElement(pf + "Prestador",
+                    new XElement(tipos + "Cnpj", objPrestador.Cnpj),
+                                                                     ((objPrestador.InscricaoMunicipal != "") ? new XElement(tipos + "InscricaoMunicipal", objPrestador.InscricaoMunicipal) : null)));
+
+                conProtocolo = new XElement(pf + "Protocolo", Protocolo);
+
+
+                conConsultarLoteRpsEnvio.Add(conPrestador);
+                conConsultarLoteRpsEnvio.Add(conProtocolo);
+                belAssinaXml Assinatura = new belAssinaXml();
+                string sArquivo = Assinatura.ConfigurarArquivo(conConsultarLoteRpsEnvio.ToString(), "Protocolo", Acesso.cert_NFs);
+
+
+
+                XmlParserContext context = new XmlParserContext(null, null, "", XmlSpace.None);
+
+                reader = new XmlValidatingReader(sArquivo, XmlNodeType.Element, context);
+
+                myschema.Add("http://www.ginfes.com.br/servico_consultar_situacao_lote_rps_envio_v03.xsd", Pastas.SCHEMA_NFSE + "\\servico_consultar_situacao_lote_rps_envio_v03.xsd");
+
+                reader.ValidationType = ValidationType.Schema;
+
+                reader.Schemas.Add(myschema);
+
+                while (reader.Read())
+                { }
+
+
+                return sArquivo;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         private string MontaXmlConsultaLote2(tcIdentificacaoPrestador objPrestador)
         {

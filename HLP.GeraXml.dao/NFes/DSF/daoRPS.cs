@@ -37,7 +37,7 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("clifor.vl_aliqcofins_servico AliquotaCOFINS, {0}");
                 sQuery.Append("clifor.vl_aliqirrf AliquotaIR, {0}");
                 sQuery.Append("clifor.vl_aliqinss AliquotaINSS, {0}");
-
+                sQuery.Append("coalesce(clifor.st_substituto,'N') TipoRecolhimento, {0}");
 
                 sQuery.Append("nf.ds_anota DescricaoRPS, {0}");
                 sQuery.Append("coalesce(clifor.cd_inscrmu,'') InscricaoMunicipalTomador, {0}");
@@ -51,6 +51,7 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("'Bairro'  TipoBairroTomador, {0}");
                 sQuery.Append("coalesce(clifor.nm_bairronor,'')  BairroTomador, {0}");
                 sQuery.Append("cidades.cd_municipio CidadeTomador, {0}");
+                sQuery.Append("coalesce(nf.cd_municipio,'') cd_munPrestacao, {0}");
                 sQuery.Append("cidades.nm_cidnor CidadeTomadorDescricao, {0}");
                 sQuery.Append("coalesce(clifor.cd_cepnor,'') CEPTomador, {0}");
                 sQuery.Append("coalesce(clifor.cd_email,'') EmailTomador, {0}");
@@ -62,7 +63,7 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("'01/01/1900' DataEmissaoNFSeSubstituida, {0}");//Item a ser tratado
                 sQuery.Append("99 SeriePrestacao, {0}");//Item a ser tratado
                 sQuery.Append("'' DocTomadorEstrangeiro, {0}");//Item a ser tratado
-                sQuery.Append("'A'TipoRecolhimento, {0}");//Item a ser tratado
+                
                 sQuery.Append("'A' Operacao, {0}");//Item a ser tratado
                 sQuery.Append("'H' Tributacao ");//Item a ser tratado
                 sQuery.Append("from nf inner join empresa emp {0}");

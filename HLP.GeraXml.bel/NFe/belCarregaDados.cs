@@ -57,16 +57,30 @@ namespace HLP.GeraXml.bel.NFe
                     objInfNFe.total.Carrega(nota.sCD_NFSEQ, objbelDet.pbIndustri, bEX);
                     objInfNFe.total.belIcmstot.Vbcst = objInfNFe.total.belIcmstot.Vbcst - dVbcIcmsRt;
                     objInfNFe.total.belIcmstot.Vst = objInfNFe.total.belIcmstot.Vst - dVIcmsRt;
+                    objInfNFe.total.belIcmstot.vTotTrib = objInfNFe.det.Sum(c => c.prod.vTotTrib);
 
                     objInfNFe.transp.Carrega(nota.sCD_NFSEQ);
 
                     objInfNFe.cobr.Carrega(nota.sCD_NFSEQ);
 
+
+
+
+
                     objInfNFe.infAdic.Carrega(nota.sCD_NFSEQ, objInfNFe.det, objInfNFe.dest.Cnpj, dVbcIcmsRt, dVIcmsRt);
+
+                    if (Acesso.TRANSPARENCIA == 0 || Acesso.TRANSPARENCIA == 2)
+                    {
+                        if (objInfNFe.total.belIcmstot.vTotTrib.ToString() != "")
+                        {
+                            string sMsg = objInfNFe.infAdic.Infcpl;
+                            objInfNFe.infAdic.Infcpl = null;
+                            objInfNFe.infAdic.Infcpl = string.Format("TOTAL DE TRIBUTOS(TRANSPARÊNCIA) = R$ {0} ;", objInfNFe.total.belIcmstot.vTotTrib.ToString()) + sMsg;
+                        }
+                    }
 
                     lNotas.Add(objInfNFe);
                 }
-
 
             }
             catch (Exception ex)

@@ -12,6 +12,8 @@ namespace HLP.GeraXml.bel.NFes
         public string sNfSeq { get; set; }
         public string sVerificacao { get; set; }
         public string sNota { get; set; }
+        public bool bCanc { get; set; }
+        public DateTime dtEnvio { get; set; }
 
 
         public List<belimpressao> BuscaDadosParaImpressao(List<belimpressao> objLista)

@@ -79,12 +79,18 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 belValidaXml.ValidarXml("http://localhost:8080/WsNFe2/lote", Pastas.SCHEMA_NFSE_DSF + "\\ReqCancelamentoNFSe.xsd", sPath);
 
                 string sPathRetConsultaCanc = Pastas.PROTOCOLOS + "\\Ret_CANC_LOTE_" + objCancelamento.lote.Id.Replace("Lote:", "") + ".xml";
+
+
+
                 HLP.GeraXml.WebService.NFSE_Campinas.LoteRpsService lt = new WebService.NFSE_Campinas.LoteRpsService();
                 string sRetornoLote = lt.cancelar(xmlConsulta.InnerXml);
 
                 xmlConsulta = new XmlDocument();
                 xmlConsulta.LoadXml(sRetornoLote);
                 xmlConsulta.Save(sPathRetConsultaCanc);
+
+
+                //   sPathRetConsultaCanc = @"D:\Ret_CANC_LOTE_2805131157.xml";
 
                 RetornoCancelamentoNFSe objretorno = SerializeClassToXml.DeserializeClasse<RetornoCancelamentoNFSe>(sPathRetConsultaCanc);
 
@@ -119,6 +125,19 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     {
                         sRetorno += string.Format("Nota:{0}{1}", nota.ChaveNFe.NumeroNFe, Environment.NewLine);
                         base.UpdateToCancel(nota.ChaveNFe.NumeroNFe.ToString(), nota.ChaveNFe.CodigoVerificacao.ToString(), objCancelamento.lote.Nota.FirstOrDefault(c => c.CodigoVerificacao == nota.ChaveNFe.CodigoVerificacao).MotivoCancelamento);
+                        DateTime dDT_EMISSAO = objNotas.FirstOrDefault(c => c.scd_numero_nfse == nota.ChaveNFe.NumeroNFe.ToString()).dDT_EMI;
+
+                        if (dDT_EMISSAO != null)
+                        {
+
+
+                            string sFileOrigem = belCancelamentoDSF.GetFilePathMonthServico(true, nota.ChaveNFe.NumeroNFe.ToString(), dDT_EMISSAO);
+                            string sFileDestino = belCancelamentoDSF.GetFilePathMonthServico(false, nota.ChaveNFe.NumeroNFe.ToString(), dDT_EMISSAO); //salvo na pasta envio com o numero do nfse.
+                            if (File.Exists(sFileOrigem))
+                            {
+                                File.Move(sFileOrigem, sFileDestino);
+                            }
+                        }
                     }
                     else
                     {
@@ -133,11 +152,45 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 foreach (NotasCanceladasNota nota in objretorno.notasCanc.Nota)
                 {
                     sRetorno += string.Format("Nota:{0}{1}", nota.NumeroNota, Environment.NewLine);
-                    base.UpdateToCancel(nota.NumeroNota.ToString(), nota.CodigoVerificacao.ToString(), objCancelamento.lote.Nota.FirstOrDefault(c=>c.CodigoVerificacao==nota.CodigoVerificacao).MotivoCancelamento);
-                    
+                    base.UpdateToCancel(nota.NumeroNota.ToString(), nota.CodigoVerificacao.ToString(), objCancelamento.lote.Nota.FirstOrDefault(c => c.CodigoVerificacao == nota.CodigoVerificacao).MotivoCancelamento);
+
+                    DateTime dDT_EMISSAO = objNotas.FirstOrDefault(c => c.scd_numero_nfse == nota.NumeroNota.ToString()).dDT_EMI;
+
+                    if (dDT_EMISSAO != null)
+                    {
+
+
+                        string sFileOrigem = belCancelamentoDSF.GetFilePathMonthServico(true, nota.NumeroNota.ToString(), dDT_EMISSAO);
+                        string sFileDestino = belCancelamentoDSF.GetFilePathMonthServico(false, nota.NumeroNota.ToString(), dDT_EMISSAO); //salvo na pasta envio com o numero do nfse.
+                        if (File.Exists(sFileOrigem))
+                        {
+                            File.Move(sFileOrigem, sFileDestino);
+                        }
+                    }
                 }
             }
             return sRetorno;
+        }
+
+        /// <summary>
+        /// true- enviados
+        /// false- cancelados
+        /// </summary>
+        /// <param name="bStatus"></param>
+        /// <param name="sNumero">NUMERO DO RPS </param>
+        /// <returns></returns>
+        public static string GetFilePathMonthServico(bool bStatus, string sNumero, DateTime dt)
+        {
+
+            string sDirectory = (bStatus ? Pastas.ENVIADOS : Pastas.CANCELADOS) + "\\Servicos\\" + dt.Date.Year.ToString().Substring(2, 2) + dt.Month.ToString().PadLeft(2, '0') + "\\";
+            if (!Directory.Exists(sDirectory))
+            {
+                Directory.CreateDirectory(sDirectory);
+            }
+
+            string sName = (bStatus ? "NFSE_" : "NFSE_CANC_") + sNumero;
+
+            return sDirectory + sName + ".xml";
         }
 
 

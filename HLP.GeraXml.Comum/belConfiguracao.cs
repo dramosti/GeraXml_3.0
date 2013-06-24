@@ -23,6 +23,7 @@ namespace HLP.GeraXml.Comum
         public string GRUPO_SCAN { get; set; }
         public bool DS_DETALHE { get; set; }
         public string FUSO { get; set; }
+        public int TRANSPARENCIA { get; set; }
         public string TIPO_IMPRESSAO { get; set; }
         public string HOST_SERVIDOR { get; set; }
         public string PORTA_SERVIDOR { get; set; }

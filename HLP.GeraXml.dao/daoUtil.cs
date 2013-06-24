@@ -30,13 +30,34 @@ namespace HLP.GeraXml.dao
             }
         }
 
+        public static string GetTotImpostosServ(string sCD_NFSEQ)
+        {
+            try
+            {
+                string sTotal = "";
+                if (HlpDbFuncoes.fExisteCampo("VL_FAT_SERVICO", "MOVITEM"))
+                {
+                    sTotal = HlpDbFuncoes.qrySeekValue("MOVITEM", "SUM(COALESCE(vl_fat_servico,0))", string.Format("cd_nfseq = '{0}' AND CD_EMPRESA = '{1}'", sCD_NFSEQ, Acesso.CD_EMPRESA));
+
+                    if (sTotal != "0")
+                    {
+                        sTotal = string.Format("VALOR APROXIMADO DOS TRIBUTOS = R$ {0} - FONTE IBPT ", sTotal) + Environment.NewLine;
+                    }
+                }
+                return sTotal;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public static string GetNumRPSbyCD_NFSEQ(string sCD_NFSEQ)
         {
             try
             {
                 string sRPS = "";
-                sRPS = HlpDbFuncoes.qrySeekValue("NF", "COALESCE(cd_numero_nfse,'')", string.Format("cd_nfseq = '{0}' AND CD_EMPRESA = '{1}'", sCD_NFSEQ, Acesso.CD_EMPRESA));
+                sRPS = HlpDbFuncoes.qrySeekValue("NF", "COALESCE(cd_rps,'')", string.Format("cd_nfseq = '{0}' AND CD_EMPRESA = '{1}'", sCD_NFSEQ, Acesso.CD_EMPRESA));
                 return sRPS;
             }
             catch (Exception ex)
@@ -44,6 +65,21 @@ namespace HLP.GeraXml.dao
                 throw ex;
             }
         }
+
+        public static string GetNumRPSbyNumeroNFSE(string sNumNFSe)
+        {
+            try
+            {
+                string sRPS = "";
+                sRPS = HlpDbFuncoes.qrySeekValue("NF", "COALESCE(cd_rps,'')", string.Format("cd_numero_nfse = '{0}' AND CD_EMPRESA = '{1}'", sNumNFSe, Acesso.CD_EMPRESA));
+                return sRPS;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static string GetMOTIVO_CANC(string sCD_NFSEQ)
         {
             try
@@ -98,11 +134,35 @@ namespace HLP.GeraXml.dao
                 }
                 if (sCD_SIAFI != "")
                 {
-                    sCD_SIAFI = sCD_SIAFI.Substring(2, 4);
+                    if (sCD_SIAFI.Length == 6)
+                    {
+                        sCD_SIAFI = sCD_SIAFI.Substring(2, 4);
+                    }
                 }
 
                 return sCD_SIAFI;
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public static bool ValidaUserToCancel()
+        {
+            try
+            {
+                string sValida = "S";
+                if (HlpDbFuncoes.fExisteCampo("ST_CANCELA_NFE_GERAXML", "ACESSO"))
+                {
+                    sValida = HlpDbFuncoes.qrySeekValue("ACESSO", "COALESCE(ST_CANCELA_NFE_GERAXML,'S')", "CD_OPERADO = '" + Acesso.NM_USER + "'");
+                }
+                if (sValida == "S")
+                    return true;
+                else
+                    return false;
             }
             catch (Exception ex)
             {
@@ -122,7 +182,10 @@ namespace HLP.GeraXml.dao
 
                 if (sCD_SIAFI != "")
                 {
-                    sCD_SIAFI = sCD_SIAFI.Substring(2, 4);
+                    if (sCD_SIAFI.Length == 6)
+                    {
+                        sCD_SIAFI = sCD_SIAFI.Substring(2, 4);
+                    }
                 }
 
                 return sCD_SIAFI;
@@ -133,7 +196,20 @@ namespace HLP.GeraXml.dao
                 throw ex;
             }
         }
-            
+        public static string GetNM_MUNICIPIO(string sCodigoMun)
+        {
+            try
+            {
+                string sNM_MUN = HlpDbFuncoes.qrySeekValue("CIDADES", "nm_cidnor", "cd_municipio = '" + sCodigoMun + "'");
+                return sNM_MUN;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static bool VerificaConexaoOk()
         {
             try

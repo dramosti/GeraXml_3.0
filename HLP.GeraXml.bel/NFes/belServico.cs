@@ -23,7 +23,7 @@ namespace HLP.GeraXml.bel.NFes
 
                 DataTable dt = BuscaDadosServico(sNota);
 
-                objTcDadosServico.Discriminacao = "Serviço(s) Realizado(s): "; 
+                objTcDadosServico.Discriminacao = "Serviço(s) Realizado(s): ";
                 foreach (DataRow dr in dt.Rows)
                 {
                     if (objTcDadosServico.ItemListaServico.Equals(""))
@@ -52,6 +52,7 @@ namespace HLP.GeraXml.bel.NFes
                 }
 
                 objTcDadosServico.Discriminacao += Environment.NewLine + Environment.NewLine + "Observação:" + Environment.NewLine
+                                                + daoUtil.GetTotImpostosServ(sNota) 
                                                 + BuscaObs(sNota);
 
                 if (objTcDadosServico.Discriminacao[objTcDadosServico.Discriminacao.Length - 1].ToString().Equals("}"))
@@ -179,7 +180,7 @@ namespace HLP.GeraXml.bel.NFes
                         {
                             sMsgLorenzon = "COND.PGTO = " + row["ds_prazo"].ToString() + " | VENDEDOR = " + row["nm_vend"].ToString() + " | COD. CLIENTE = " + row["cd_clifor"].ToString();
                         }
-                        
+
                     }
 
                     //while (dtLorenzon.Read())

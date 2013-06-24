@@ -25,8 +25,39 @@ namespace HLP.GeraXml.UI
 
             //try
             //{
-            //    string sPath = @"C:\GeraXml\Arquivos\001-LORENZON\Protocolos\ConsultaNFe_037321.xml";
-            //    HLP.GeraXml.bel.NFe.ClassesSerializadas.retConsSitNFe obj = SerializeClassToXml.DeserializeClasse<HLP.GeraXml.bel.NFe.ClassesSerializadas.retConsSitNFe>(sPath);
+            //    bool bValida = false;
+            //    string Protocolo = "00111231";
+            //    string sVerificacao = @"C:\GeraXml\Arquivos\00111231.txt";
+
+
+
+            //    StreamWriter sw = new StreamWriter(sVerificacao);
+            //    sw.Write(DateTime.Now);
+            //    sw.Close();
+
+
+            //    StreamReader sr = new StreamReader(sVerificacao);
+            //    string sdt = sr.ReadToEnd();
+            //    sr.Close();
+
+            //    if (File.Exists(sVerificacao))
+            //    {                    
+            //        DateTime dtEnvio = Convert.ToDateTime(sdt).AddMinutes(6);
+            //        DateTime dtAtual = DateTime.Now;
+
+            //        if (dtEnvio > dtAtual)
+            //        {
+            //            throw new Exception("Aguarde mais alguns minutos para o buscar o retorno da Nota. Aproximadamente 6 minutos após o envio.");
+            //        }
+            //        else
+            //        {
+            //            bValida = true;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        bValida = true;
+            //    }
             //}
             //catch (Exception ex)
             //{
@@ -46,15 +77,27 @@ namespace HLP.GeraXml.UI
             }
             else
             {
-                DirectoryInfo dinfo = new DirectoryInfo(Pastas.PASTA_XML_CONFIG);
-                if (!dinfo.Exists)
+                try
                 {
-                    KryptonMessageBox.Show(null, "O caminho configurado abaixo não foi encontrado!"
-                        + Environment.NewLine
-                        + Environment.NewLine
-                        + Pastas.PASTA_XML_CONFIG, "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    frmLocalXml objfrm = new frmLocalXml(Pastas.PASTA_XML_CONFIG);
-                    objfrm.ShowDialog();
+                    bool bCaminhoValido = false;
+                    if (Pastas.PASTA_XML_CONFIG != "")
+                    {
+                        DirectoryInfo dinfo = new DirectoryInfo(Pastas.PASTA_XML_CONFIG);
+                        bCaminhoValido = true;
+                    }
+                    if (bCaminhoValido == false)
+                    {
+                        KryptonMessageBox.Show(null, "O caminho configurado abaixo não foi encontrado!"
+                            + Environment.NewLine
+                            + Environment.NewLine
+                            + Pastas.PASTA_XML_CONFIG, "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmLocalXml objfrm = new frmLocalXml(Pastas.PASTA_XML_CONFIG);
+                        objfrm.ShowDialog();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("O Sistema não conseguiu acessar o caminho hlp\\Config_xml_3 no Registro do Windows" + Environment.NewLine + ex.Message);
                 }
             }
 

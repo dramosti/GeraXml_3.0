@@ -39,6 +39,16 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 {
                     lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "CD_ANP" });//OS_28293
                 }
+
+                if (HlpDbFuncoes.fExisteCampo("vl_total_impostos", "MOVITEM"))
+                {
+                    lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_total_impostos,0)", sAlias = "vTotTrib" });//os_28878
+                }
+                else
+                {
+                    lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "vTotTrib" });//os_28878
+                }
+
                 //
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_siscomex,0)", sAlias = "vl_siscomex" });//OS_28303
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.CD_DOC,'')", sAlias = "CD_DOC" });//OS_27921
@@ -201,12 +211,12 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     }
                     else
                     {
-                        lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "bii"});
+                        lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "bii" });
                     }
 
                     lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_base_ii,0)", sAlias = "bii", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
                 }
-                lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_ii,0)", sAlias = "vl_ii" });                
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_ii,0)", sAlias = "vl_ii" });
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(nf.st_ipi,'S')", sAlias = "st_ipi" }); //OS_25673
                 lCampos.Add(new CamposSelect { sCampo = "movitem.vl_alicredicms", sAlias = "pCredSN" });//NFe_2.0
                 lCampos.Add(new CamposSelect { sCampo = "movitem.vl_credicms", sAlias = "vCredICMSSN", bAgrupa = Acesso.bAGRUPA_ITENS_NFE }); // **
@@ -219,10 +229,11 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     lClientesLiberados.Add("ALPHAFLEX");
                     lClientesLiberados.Add("BENGALAS");
                     lClientesLiberados.Add("MASTERFEW");
-                    
 
 
-                    if (lClientesLiberados.Contains(Acesso.NM_EMPRESA.ToUpper()))
+
+                    //if (lClientesLiberados.Contains(Acesso.NM_EMPRESA.ToUpper()))
+                    if (true) // liberado para todos os clientes
                     {
                         lCampos.Add(new CamposSelect
                         {
@@ -379,7 +390,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 {
 
                     lCampos.Add(new CamposSelect { sCampo = "nf.vl_desccomer ", sAlias = "Desconto_Valor" });
-                    lCampos.Add(new CamposSelect { sCampo = "((nf.vl_desccomer / nf.vl_totnf)*100)", sAlias = "Desconto_Percentual" });
+                    lCampos.Add(new CamposSelect { sCampo = "(case when coalesce(nf.vl_totnf,0) > 0 then ((nf.vl_desccomer / nf.vl_totnf)*100) else '0' end)", sAlias = "Desconto_Percentual" });
                 }
                 lCampos.Add(new CamposSelect { sCampo = "movitem.CD_SITTRIBCOF", sAlias = "CD_SITTRIBCOF" });
                 lCampos.Add(new CamposSelect { sCampo = "movitem.CD_SITTRIBIPI", sAlias = "CD_SITTRIBIPI" });
@@ -390,8 +401,8 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 lCampos.Add(new CamposSelect { sCampo = "tpdoc.cd_operval", sAlias = "cd_operval" });
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(Empresa.st_imp_cdpedcli, 'N')", sAlias = "st_imp_cdpedcli" });
                 lCampos.Add(new CamposSelect { sCampo = "transpor.nm_trans", sAlias = "Redespacho" });
-                lCampos.Add(new CamposSelect { sCampo = "transpor.ds_endnor", sAlias = "xLgrRedes" }); 
-                lCampos.Add(new CamposSelect { sCampo = "transpor.cd_cgc", sAlias = "Transpcd_cgc" }); 
+                lCampos.Add(new CamposSelect { sCampo = "transpor.ds_endnor", sAlias = "xLgrRedes" });
+                lCampos.Add(new CamposSelect { sCampo = "transpor.cd_cgc", sAlias = "Transpcd_cgc" });
                 lCampos.Add(new CamposSelect { sCampo = "transpor.nr_endnor", sAlias = "nroRedes" });
                 lCampos.Add(new CamposSelect { sCampo = "transpor.ds_bairronor", sAlias = "xBairroRedes" });
                 lCampos.Add(new CamposSelect { sCampo = "transpor.nm_cidnor", sAlias = "cmunRedes" });

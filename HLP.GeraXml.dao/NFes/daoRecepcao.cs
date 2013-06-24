@@ -164,13 +164,14 @@ namespace HLP.GeraXml.dao.NFes
                 sQuery.Append("'");
 
 
-                FbDataReader dr = HlpDbFuncoes.qrySeekReader(sQuery.ToString());
+                //FbDataReader dr = HlpDbFuncoes.qrySeekReader(sQuery.ToString());
 
-                List<string> objListaSequencias = new List<string>();
-                while (dr.Read())
-                {
-                    objListaSequencias.Add(dr["cd_nfseq"].ToString());
-                }
+                List<string> objListaSequencias = HlpDbFuncoes.qrySeekRet(sQuery.ToString()).AsEnumerable().Select(c => c["cd_nfseq"].ToString()).ToList();
+
+                //while (dr.Read())
+                //{
+                //    objListaSequencias.Add(dr["cd_nfseq"].ToString());
+                //}
                 return objListaSequencias;
 
             }

@@ -297,9 +297,9 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                     if (drDest["fone"].ToString() != "")
                     {
                         string sFone = Util.TiraSimbolo(drDest["fone"].ToString());
-                        if (sFone.Trim().Length > 10)
+                        if (sFone.Trim().Length > 12)
                         {
-                            throw new Exception("Telefone com formato inválido no Destinátário, tamanho maior que 10 caracteres!");
+                            throw new Exception("Telefone com formato inválido no Destinátário, tamanho maior que 12 caracteres!");
                         }
                         this.Fone = sFone;
                     }

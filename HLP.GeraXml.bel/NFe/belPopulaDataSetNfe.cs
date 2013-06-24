@@ -12,6 +12,7 @@ namespace HLP.GeraXml.bel.NFe
 {
     public class belPopulaDataSetNfe
     {
+
         public void PopulaDataSetXML(dsDanfe dsdanfe, string caminho, string codigo)
         {
             XmlDocument xml = new XmlDocument();

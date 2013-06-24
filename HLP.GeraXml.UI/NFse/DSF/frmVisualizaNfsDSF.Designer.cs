@@ -74,7 +74,6 @@
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.flFiscal = new System.Windows.Forms.FlowLayoutPanel();
             this.txtCodigoAtividade = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
-            this.nudAliquotaAtividade = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.cbxTipoRecolhimento = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.txtMunicipioPrestacao = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtMunicipioPrestacaoDescricao = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
@@ -117,6 +116,7 @@
             this.statusErro = new System.Windows.Forms.StatusStrip();
             this.lblErro = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblNumNota = new System.Windows.Forms.ToolStripStatusLabel();
+            this.nudAliquotaAtividade = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
@@ -1042,7 +1042,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(733, 271);
+            this.tabPage5.Size = new System.Drawing.Size(733, 425);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Tag = false;
             this.tabPage5.Text = "Fiscal";
@@ -1053,7 +1053,7 @@
             this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel4.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel4.Name = "kryptonPanel4";
-            this.kryptonPanel4.Size = new System.Drawing.Size(733, 271);
+            this.kryptonPanel4.Size = new System.Drawing.Size(733, 425);
             this.kryptonPanel4.TabIndex = 1;
             // 
             // flFiscal
@@ -1072,7 +1072,7 @@
             this.flFiscal.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flFiscal.Location = new System.Drawing.Point(0, 0);
             this.flFiscal.Name = "flFiscal";
-            this.flFiscal.Size = new System.Drawing.Size(733, 271);
+            this.flFiscal.Size = new System.Drawing.Size(733, 425);
             this.flFiscal.TabIndex = 51;
             // 
             // txtCodigoAtividade
@@ -1098,40 +1098,6 @@
             this.txtCodigoAtividade.Size = new System.Drawing.Size(239, 20);
             this.txtCodigoAtividade.TabIndex = 48;
             // 
-            // nudAliquotaAtividade
-            // 
-            this.nudAliquotaAtividade._LabelText = "Aliquota Atividade";
-            this.nudAliquotaAtividade._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.SIM;
-            this.nudAliquotaAtividade._TamanhoMaiorLabel = 160;
-            this.nudAliquotaAtividade._TamanhoNumericUpDown = 61;
-            this.nudAliquotaAtividade._Visible = true;
-            this.nudAliquotaAtividade.AutoSize = true;
-            this.nudAliquotaAtividade.BackColor = System.Drawing.Color.Transparent;
-            this.nudAliquotaAtividade.Color = System.Drawing.Color.White;
-            this.nudAliquotaAtividade.DecimalPlaces = 0;
-            this.nudAliquotaAtividade.Location = new System.Drawing.Point(43, 29);
-            this.nudAliquotaAtividade.Margin = new System.Windows.Forms.Padding(43, 3, 15, 3);
-            this.nudAliquotaAtividade.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.nudAliquotaAtividade.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudAliquotaAtividade.Name = "nudAliquotaAtividade";
-            this.nudAliquotaAtividade.ReadOnly = false;
-            this.nudAliquotaAtividade.Size = new System.Drawing.Size(181, 25);
-            this.nudAliquotaAtividade.TabIndex = 53;
-            this.nudAliquotaAtividade.Value = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nudAliquotaAtividade.ValueInt = 0;
-            // 
             // cbxTipoRecolhimento
             // 
             this.cbxTipoRecolhimento._Itens = ((System.Collections.Generic.List<string>)(resources.GetObject("cbxTipoRecolhimento._Itens")));
@@ -1146,7 +1112,7 @@
             this.cbxTipoRecolhimento.Color = System.Drawing.Color.White;
             this.cbxTipoRecolhimento.DataSource = null;
             this.cbxTipoRecolhimento.DisplayMember = "DisplayMember";
-            this.cbxTipoRecolhimento.Location = new System.Drawing.Point(43, 60);
+            this.cbxTipoRecolhimento.Location = new System.Drawing.Point(43, 55);
             this.cbxTipoRecolhimento.Margin = new System.Windows.Forms.Padding(43, 3, 15, 3);
             this.cbxTipoRecolhimento.Name = "cbxTipoRecolhimento";
             this.cbxTipoRecolhimento.SelectedIndex = -1;
@@ -1170,7 +1136,7 @@
             this.txtMunicipioPrestacao.BackColor = System.Drawing.Color.Transparent;
             this.txtMunicipioPrestacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtMunicipioPrestacao.Color = System.Drawing.Color.White;
-            this.txtMunicipioPrestacao.Location = new System.Drawing.Point(5, 87);
+            this.txtMunicipioPrestacao.Location = new System.Drawing.Point(5, 82);
             this.txtMunicipioPrestacao.Margin = new System.Windows.Forms.Padding(5, 3, 15, 3);
             this.txtMunicipioPrestacao.MaxLength = 14;
             this.txtMunicipioPrestacao.Name = "txtMunicipioPrestacao";
@@ -1193,7 +1159,7 @@
             this.txtMunicipioPrestacaoDescricao.BackColor = System.Drawing.Color.Transparent;
             this.txtMunicipioPrestacaoDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtMunicipioPrestacaoDescricao.Color = System.Drawing.Color.White;
-            this.txtMunicipioPrestacaoDescricao.Location = new System.Drawing.Point(34, 113);
+            this.txtMunicipioPrestacaoDescricao.Location = new System.Drawing.Point(34, 108);
             this.txtMunicipioPrestacaoDescricao.Margin = new System.Windows.Forms.Padding(34, 3, 15, 3);
             this.txtMunicipioPrestacaoDescricao.MaxLength = 60;
             this.txtMunicipioPrestacaoDescricao.Name = "txtMunicipioPrestacaoDescricao";
@@ -1215,7 +1181,7 @@
             this.cbxOperacao.Color = System.Drawing.Color.White;
             this.cbxOperacao.DataSource = null;
             this.cbxOperacao.DisplayMember = "DisplayMember";
-            this.cbxOperacao.Location = new System.Drawing.Point(97, 139);
+            this.cbxOperacao.Location = new System.Drawing.Point(97, 134);
             this.cbxOperacao.Margin = new System.Windows.Forms.Padding(97, 3, 15, 3);
             this.cbxOperacao.Name = "cbxOperacao";
             this.cbxOperacao.SelectedIndex = -1;
@@ -1238,7 +1204,7 @@
             this.cbxTributacao.Color = System.Drawing.Color.White;
             this.cbxTributacao.DataSource = null;
             this.cbxTributacao.DisplayMember = "DisplayMember";
-            this.cbxTributacao.Location = new System.Drawing.Point(90, 166);
+            this.cbxTributacao.Location = new System.Drawing.Point(90, 161);
             this.cbxTributacao.Margin = new System.Windows.Forms.Padding(90, 3, 15, 3);
             this.cbxTributacao.Name = "cbxTributacao";
             this.cbxTributacao.SelectedIndex = -1;
@@ -1990,6 +1956,29 @@
             this.lblNumNota.Size = new System.Drawing.Size(78, 19);
             this.lblNumNota.Text = "lblNumNota";
             // 
+            // nudAliquotaAtividade
+            // 
+            this.nudAliquotaAtividade._LabelText = "Aliquita Atividade";
+            this.nudAliquotaAtividade._Multiline = false;
+            this.nudAliquotaAtividade._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
+            this.nudAliquotaAtividade._Password = false;
+            this.nudAliquotaAtividade._Regex = Expressoes.Não_Aplica;
+            this.nudAliquotaAtividade._Regex_Expressao = "";
+            this.nudAliquotaAtividade._TamanhoMaiorLabel = 160;
+            this.nudAliquotaAtividade._TamanhoTextBox = 61;
+            this.nudAliquotaAtividade._Visible = true;
+            this.nudAliquotaAtividade.AutoSize = true;
+            this.nudAliquotaAtividade.BackColor = System.Drawing.Color.Transparent;
+            this.nudAliquotaAtividade.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.nudAliquotaAtividade.Color = System.Drawing.Color.White;
+            this.nudAliquotaAtividade.Location = new System.Drawing.Point(47, 29);
+            this.nudAliquotaAtividade.Margin = new System.Windows.Forms.Padding(47, 3, 15, 3);
+            this.nudAliquotaAtividade.MaxLength = 14;
+            this.nudAliquotaAtividade.Name = "nudAliquotaAtividade";
+            this.nudAliquotaAtividade.ReadOnly = false;
+            this.nudAliquotaAtividade.Size = new System.Drawing.Size(177, 20);
+            this.nudAliquotaAtividade.TabIndex = 54;
+            // 
             // frmVisualizaNfsDSF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2115,7 +2104,6 @@
         private Comum.Componentes.HLP_TextBox txtDescricaoRPS;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
         private System.Windows.Forms.BindingSource bsItens;
-        private Comum.Componentes.HLP_NumericUpDown nudAliquotaAtividade;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPFCNPJReferenciaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroNFReferenciaDataGridViewTextBoxColumn;
@@ -2144,5 +2132,6 @@
         private Comum.Componentes.HLP_TextBox txtCidadeTomadorDescricao;
         private Comum.Componentes.HLP_NumericUpDown nudValorINSS;
         private Comum.Componentes.HLP_TextBox txtTelefoneTomador;
+        private Comum.Componentes.HLP_TextBox nudAliquotaAtividade;
     }
 }

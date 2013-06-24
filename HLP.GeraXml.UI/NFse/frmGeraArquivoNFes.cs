@@ -57,6 +57,11 @@ namespace HLP.GeraXml.UI.NFse
             cboStatus.SelectedIndex = 1;
             dtpIni.Value = DateTime.Now;
             dtpFim.Value = DateTime.Now;
+
+            if (Acesso.NM_EMPRESA.Equals("LORENZON"))
+                sCD_NOTAFIS.HeaderText = "RPS";
+            else
+                sCD_NOTAFIS.HeaderText = "NF";
         }
 
 
@@ -286,33 +291,36 @@ namespace HLP.GeraXml.UI.NFse
                             objfrmStatus.lblMsg.Text = "Gravando recibo na base de dados...";
                             objfrmStatus.lblMsg.Refresh();
                             objBelRecepcao.GravaRecibo(objBelRecepcao.Protocolo, objFrmVisualiza.objLoteRpsAlter);
-                            string sMsgErro = objBelRecepcao.BuscaRetorno(objFrmVisualiza.objLoteRpsAlter.Rps[0].InfRps.Prestador, objfrmStatus.lblMsg, objfrmStatus.progressBarStatus);
+                            objfrmStatus.Close();
+                            KryptonMessageBox.Show(null, "Lote enviado com sucesso, aguarde aproximadamente 6 min. para buscar o Retorno.", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            if (objBelRecepcao.sCodigoRetorno.Equals("E4"))
-                            {
-                                objfrmStatus.Close();
-                                KryptonMessageBox.Show(null, sMsgErro + Environment.NewLine + Environment.NewLine + "IMPORTANTE: Tente Buscar Retorno da NFs-e, pois o serviço do WebService está demorando para responder. ", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else if (objBelRecepcao.objListaNfseRetorno.Count > 0)
-                            {
-                                objfrmStatus.lblMsg.Text = "Alterando Status da Nota...";
-                                objfrmStatus.lblMsg.Refresh();
-                                objBelRecepcao.AlteraStatusDaNota(objBelRecepcao.objListaNfseRetorno);
-                                objfrmStatus.Close();
-                                objBelRecepcao.VerificaNotasParaCancelar(objBelRecepcao.objListaNfseRetorno);
+                            //string sMsgErro = objBelRecepcao.BuscaRetorno(objFrmVisualiza.objLoteRpsAlter.Rps[0].InfRps.Prestador, objfrmStatus.lblMsg, objfrmStatus.progressBarStatus);
 
-                                KryptonMessageBox.Show(null, objBelRecepcao.MontaMsgDeRetornoParaCliente(), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                //if (Convert.ToBoolean(Acesso.EMAIL_AUTOMATICO))
-                                //{
-                                //    //EnviaEmail(objBelRecepcao.objListaNfseRetorno);
-                                //}
-                            }
-                            else
-                            {
-                                objBelRecepcao.LimpaRecibo(objFrmVisualiza.objLoteRpsAlter);
-                                objfrmStatus.Close();
-                                KryptonMessageBox.Show(null, sMsgErro + Environment.NewLine, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            //if (objBelRecepcao.sCodigoRetorno.Equals("E4"))
+                            //{
+                            //    objfrmStatus.Close();
+                            //    KryptonMessageBox.Show(null, sMsgErro + Environment.NewLine + Environment.NewLine + "IMPORTANTE: Tente Buscar Retorno da NFs-e, pois o serviço do WebService está demorando para responder. ", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //}
+                            //else if (objBelRecepcao.objListaNfseRetorno.Count > 0)
+                            //{
+                            //    objfrmStatus.lblMsg.Text = "Alterando Status da Nota...";
+                            //    objfrmStatus.lblMsg.Refresh();
+                            //    objBelRecepcao.AlteraStatusDaNota(objBelRecepcao.objListaNfseRetorno);
+                            //    objfrmStatus.Close();
+                            //    objBelRecepcao.VerificaNotasParaCancelar(objBelRecepcao.objListaNfseRetorno);
+
+                            //    KryptonMessageBox.Show(null, objBelRecepcao.MontaMsgDeRetornoParaCliente(), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //    //if (Convert.ToBoolean(Acesso.EMAIL_AUTOMATICO))
+                            //    //{
+                            //    //    //EnviaEmail(objBelRecepcao.objListaNfseRetorno);
+                            //    //}
+                            //}
+                            //else
+                            //{
+                            //    objBelRecepcao.LimpaRecibo(objFrmVisualiza.objLoteRpsAlter);
+                            //    objfrmStatus.Close();
+                            //    KryptonMessageBox.Show(null, sMsgErro + Environment.NewLine, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //}
                         }
                     }
                     else
@@ -439,6 +447,13 @@ namespace HLP.GeraXml.UI.NFse
                         KryptonMessageBox.Show("Nenhuma nota Válida foi Selecionada", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
+
+                    if (!daoUtil.ValidaUserToCancel())
+                    {
+                        KryptonMessageBox.Show("Usuário sem Acesso para cancelar Notas Fiscais.", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
                     if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.DSF)
                     {
                         FrmCancelamentoDSF objfrm = new FrmCancelamentoDSF(objSelect);
@@ -504,6 +519,9 @@ namespace HLP.GeraXml.UI.NFse
                     {
                         obj = new belimpressao();
                         obj.sNfSeq = item.sCD_NFSEQ;
+                        obj.sNota = item.scd_numero_nfse;
+                        obj.bCanc = item.bCancelado;
+                        obj.dtEnvio = item.dDT_EMI;
                         sListImpressao.Add(obj);
                     }
 
@@ -517,35 +535,42 @@ namespace HLP.GeraXml.UI.NFse
                             }
                             else
                             {
-                                string sCD_NFSEQ = sListImpressao[0].sNfSeq;
 
                                 daoUtil dadosEmpresa = new daoUtil();
                                 dadosEmpresa.SetDadosEmpresa();
 
                                 string sEnderPrestador = string.Format("{0}, - BAIRRO: {1} ",
                                     dadosEmpresa.RuaEmpresa, dadosEmpresa.BairroEmpresa);
-                                string sRPS = daoUtil.GetNumRPSbyCD_NFSEQ(sCD_NFSEQ);
+                                string sRPS = daoUtil.GetNumRPSbyCD_NFSEQ(sListImpressao.FirstOrDefault().sNfSeq);
 
-                                string sPathXmlEnviado = belCarregaDadosRPS.GetFilePathMonthServico(true, sRPS);
+                                string sPathXml = "";
 
+                                if (sListImpressao.FirstOrDefault().bCanc)
+                                {
+                                    sPathXml = belCancelamentoDSF.GetFilePathMonthServico(false, sListImpressao.FirstOrDefault().sNota, sListImpressao.FirstOrDefault().dtEnvio);
+                                }
+                                else
+                                {
+                                    sPathXml = belCancelamentoDSF.GetFilePathMonthServico(true, sListImpressao.FirstOrDefault().sNota, sListImpressao.FirstOrDefault().dtEnvio);
+                                }
                                 if (!Directory.Exists(Pastas.ENVIADOS + "PDF\\"))
                                 {
                                     Directory.CreateDirectory(Pastas.ENVIADOS + "PDF\\");
                                 }
 
-                                string sPathPDFdsf ="";
-                                if (objSelect.FirstOrDefault().bCancelado)
+                                string sPathPDFdsf = "";
+                                if (sListImpressao.FirstOrDefault().bCanc)
                                 {
-                                    sPathPDFdsf = Pastas.ENVIADOS + "PDF\\" + sRPS + "_canc.pdf";
+                                    sPathPDFdsf = Pastas.ENVIADOS + "PDF\\" + sListImpressao.FirstOrDefault().sNota + "_canc.pdf"; //belCancelamentoDSF
                                 }
                                 else
                                 {
-                                    sPathPDFdsf = Pastas.ENVIADOS + "PDF\\" + sRPS + ".pdf";
+                                    sPathPDFdsf = Pastas.ENVIADOS + "PDF\\" + sListImpressao.FirstOrDefault().sNota + ".pdf";
                                 }
 
-                                LoteRPS nota = SerializeClassToXml.DeserializeClasse<LoteRPS>(sPathXmlEnviado);
+                                LoteRPS nota = SerializeClassToXml.DeserializeClasse<LoteRPS>(sPathXml);
 
-                                nota.NumeroRPS = sRPS;
+                                nota.NumeroRPS = sListImpressao.FirstOrDefault().sNota;
                                 foreach (LoteRPSItensItem item in nota.Itens.Item)
                                 {
                                     item.NumeroRPS = nota.NumeroRPS;
@@ -561,15 +586,22 @@ namespace HLP.GeraXml.UI.NFse
                                 rpt.Load(Application.StartupPath + "\\Relatorios\\rptNFSeCamp.rpt");
 
 
-                                dsNFSeCampinas ds = CarregaDataSet(sCD_NFSEQ, dadosEmpresa, sEnderPrestador, nota);
+                                dsNFSeCampinas ds = CarregaDataSet(sListImpressao.FirstOrDefault().sNfSeq, dadosEmpresa, sEnderPrestador, nota);
                                 rpt.SetDataSource(ds);
                                 rpt.DataDefinition.FormulaFields["F_BAIRRO_TOMADOR"].Text = "\"" + nota.BairroTomador + "\"";
+                                decimal vl_iss = Math.Round(nota.Itens.Item.Sum(c => c.ValorTotal) * (Convert.ToDecimal(nota.AliquotaAtividade.Replace('.', ',')) / 100), 2);
+                                rpt.DataDefinition.FormulaFields["F_VALOR_ISS"].Text = "\"" + "R$    " + vl_iss.ToString().Replace('.', ',') + "\"";
+
+
+
+
+
                                 //try { rpt.SetParameterValue("PathImage", Acesso.LOGOTIPO); }
                                 //catch (System.Exception ex) { };
 
                                 if (objSelect.FirstOrDefault().bCancelado)
                                 {
-                                    string sMotivoCanc = daoUtil.GetMOTIVO_CANC(sCD_NFSEQ);
+                                    string sMotivoCanc = daoUtil.GetMOTIVO_CANC(sListImpressao.FirstOrDefault().sNfSeq);
                                     rpt.DataDefinition.FormulaFields["F_MOTIVO_CANC"].Text = "\"" + sMotivoCanc + "\"";
                                 }
 
@@ -589,8 +621,8 @@ namespace HLP.GeraXml.UI.NFse
                                                 Util.ExportPDF(rpt, sPathPDFdsf);
                                             }
                                             for (int i = 0; i < sListImpressao.Count; i++)
-                                            {                                                
-                                                belEmail objemail = new belEmail(sPathXmlEnviado,sPathPDFdsf, sCD_NFSEQ, "", "", sListImpressao[i].sVerificacao);
+                                            {
+                                                belEmail objemail = new belEmail(sPathXml, sPathPDFdsf, sListImpressao.FirstOrDefault().sNfSeq, "", "", sListImpressao[i].sVerificacao);
                                                 objlbelEmail.Add(objemail);
                                             }
                                             if (objlbelEmail.Count > 0)
@@ -668,7 +700,7 @@ namespace HLP.GeraXml.UI.NFse
                                 {
                                     if (Acesso.VerificaDadosEmail())
                                     {
-                                        List<belEmail> objlbelEmail = new List<belEmail>();                                        
+                                        List<belEmail> objlbelEmail = new List<belEmail>();
                                         for (int i = 0; i < sListImpressao.Count; i++)
                                         {
                                             belEmail objemail = new belEmail("", "", sListImpressao[i].sNota, "", "", sListImpressao[i].sVerificacao);
@@ -773,11 +805,11 @@ namespace HLP.GeraXml.UI.NFse
             row.AliquotaIR = nota.AliquotaIR;
             row.AliquotaCSLL = nota.AliquotaCSLL;
 
-            row.ValorCOFINS = nota.ValorCOFINS;
-            row.ValorCSLL = nota.ValorCSLL;
-            row.ValorINSS = nota.ValorINSS;
-            row.ValorIR = nota.ValorIR;
-            row.ValorPIS = nota.ValorPIS;
+            row.ValorCOFINS = Convert.ToDecimal(nota.ValorCOFINS.ToString().Replace(".", ","));
+            row.ValorCSLL = Convert.ToDecimal(nota.ValorCSLL.ToString().Replace(".", ","));
+            row.ValorINSS = Convert.ToDecimal(nota.ValorINSS.ToString().Replace(".", ","));
+            row.ValorIR = Convert.ToDecimal(nota.ValorIR.ToString().Replace(".", ","));
+            row.ValorPIS = Convert.ToDecimal(nota.ValorPIS.ToString().Replace(".", ","));
 
             row.DescricaoRPS = nota.DescricaoRPS;
             row.F_ENDER_TOMADOR =

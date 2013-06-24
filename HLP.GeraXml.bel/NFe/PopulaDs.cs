@@ -612,7 +612,6 @@ namespace HLP.GeraXml.bel.NFe
 
         public void populaTagdet(dsDanfe dsdanfe, XmlDocument xml, string CodinfNfeId)
         {
-
             XmlNodeList xNdDet = xml.GetElementsByTagName("det");
             XmlNodeList xNdProd = xml.GetElementsByTagName("prod");
             XmlNodeList xNdImposto = xml.GetElementsByTagName("imposto");
@@ -1982,8 +1981,6 @@ namespace HLP.GeraXml.bel.NFe
                     break;
                 case "vNF": drICMStot.vNF = double.Parse(valor.Replace('.', ','));
                     break;
-
-
             }
             drICMStot.totalID = totalID;
         }
@@ -2465,6 +2462,7 @@ namespace HLP.GeraXml.bel.NFe
                     drObsCont = dsdanfe.obsCont.NewobsContRow();
                 }
             }
+            
 
             if (xndObsFisco.Count > 0)
             {
@@ -2506,6 +2504,7 @@ namespace HLP.GeraXml.bel.NFe
                 case "infCpl": drInfAdic.infCpl = valor;
                     break;
             }
+          
             drInfAdic.InfNFeId = CodinfNfeId;
             drInfAdic.infAdicID = infAdicID;
         }

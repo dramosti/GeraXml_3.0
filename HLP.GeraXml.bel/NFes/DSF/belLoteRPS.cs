@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using HLP.GeraXml.Comum.Static;
+using System.ComponentModel.DataAnnotations;
 
 namespace HLP.GeraXml.bel.NFes.DSF
 {
@@ -275,6 +276,8 @@ namespace HLP.GeraXml.bel.NFes.DSF
     public class LoteRPS
     {
 
+        [System.Xml.Serialization.XmlIgnore]
+        public bool bSerialize { get; set; }
 
         private string inscricaoMunicipalPrestadorField;
 
@@ -326,7 +329,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
 
         private string codigoAtividadeField;
 
-        private decimal aliquotaAtividadeField;
+        private string aliquotaAtividadeField;
 
         private string tipoRecolhimentoField;
 
@@ -338,15 +341,15 @@ namespace HLP.GeraXml.bel.NFes.DSF
 
         private string tributacaoField;
 
-        private decimal valorPISField;
+        private string valorPISField;
 
-        private decimal valorCOFINSField;
+        private string valorCOFINSField;
 
-        private decimal valorINSSField;
+        private string valorINSSField;
 
-        private decimal valorIRField;
+        private string valorIRField;
 
-        private decimal valorCSLLField;
+        private string valorCSLLField;
 
         private decimal aliquotaPISField;
 
@@ -713,11 +716,11 @@ namespace HLP.GeraXml.bel.NFes.DSF
         }
 
         /// <remarks/>
-        public decimal AliquotaAtividade
+        public string AliquotaAtividade
         {
             get
             {
-                return this.aliquotaAtividadeField;
+                return this.aliquotaAtividadeField.Replace(',', '.');
             }
             set
             {
@@ -734,7 +737,14 @@ namespace HLP.GeraXml.bel.NFes.DSF
             }
             set
             {
-                this.tipoRecolhimentoField = value;
+                if (value.Equals("N"))
+                {
+                    this.tipoRecolhimentoField = "A";
+                }
+                else
+                {
+                    this.tipoRecolhimentoField = "R";
+                }
             }
         }
 
@@ -791,11 +801,11 @@ namespace HLP.GeraXml.bel.NFes.DSF
         }
 
         /// <remarks/>
-        public decimal ValorPIS
+        public string ValorPIS
         {
             get
             {
-                return this.valorPISField;
+                return (bSerialize ? Convert.ToDecimal(this.valorPISField).ToString("#0.00").Replace(",", ".") : this.valorPISField);
             }
             set
             {
@@ -804,24 +814,24 @@ namespace HLP.GeraXml.bel.NFes.DSF
         }
 
         /// <remarks/>
-        public decimal ValorCOFINS
+        public string ValorCOFINS
         {
             get
             {
-                return this.valorCOFINSField;
+                return (bSerialize ? Convert.ToDecimal(this.valorCOFINSField).ToString("#0.00").Replace(",", ".") : this.valorCOFINSField);
             }
             set
             {
-                this.valorCOFINSField = value;
+                this.valorCOFINSField = value.Replace(".", ",");
             }
         }
 
         /// <remarks/>
-        public decimal ValorINSS
+        public string ValorINSS
         {
             get
             {
-                return this.valorINSSField;
+                return (bSerialize ? Convert.ToDecimal(this.valorINSSField).ToString("#0.00").Replace(",", ".") : this.valorINSSField);
             }
             set
             {
@@ -830,11 +840,11 @@ namespace HLP.GeraXml.bel.NFes.DSF
         }
 
         /// <remarks/>
-        public decimal ValorIR
+        public string ValorIR
         {
             get
             {
-                return this.valorIRField;
+                return (bSerialize ? Convert.ToDecimal(this.valorIRField).ToString("#0.00").Replace(",", ".") : this.valorIRField);
             }
             set
             {
@@ -843,11 +853,11 @@ namespace HLP.GeraXml.bel.NFes.DSF
         }
 
         /// <remarks/>
-        public decimal ValorCSLL
+        public string ValorCSLL
         {
             get
             {
-                return this.valorCSLLField;
+                return (bSerialize ? Convert.ToDecimal(this.valorCSLLField).ToString("#0.00").Replace(",", ".") : this.valorCSLLField);
             }
             set
             {

@@ -98,7 +98,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     rps.SerieRPS = "NF";
                     rps.RazaoSocialPrestador = row["RazaoSocialPrestador"].ToString();
                     //rps.NumeroRPS = sNumeroRps;
-                    rps.DataEmissaoRPS = Convert.ToDateTime(row["DataEmissaoRPS"].ToString());
+                    rps.DataEmissaoRPS = DateTime.Today;// Convert.ToDateTime(row["DataEmissaoRPS"].ToString());
                     rps.SituacaoRPS = row["SituacaoRPS"].ToString();
                     rps.SerieRPSSubstituido = row["SerieRPSSubstituido"].ToString();
                     rps.NumeroRPSSubstituido = Convert.ToByte(row["NumeroRPSSubstituido"].ToString());
@@ -121,18 +121,26 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     rps.EmailTomador = row["EmailTomador"].ToString();
                     rps.CodigoAtividade = row["CodigoAtividade"].ToString();
                     rps.TipoRecolhimento = row["TipoRecolhimento"].ToString();
-                    rps.MunicipioPrestacao = rps.CidadeTomador; // VERIFICAR TRATAMENTO
-                    rps.MunicipioPrestacaoDescricao = rps.CidadeTomadorDescricao; // VERIFICAR TRATAMENTO
+                    if (row["cd_munPrestacao"].ToString() == "")
+                    {
+                        rps.MunicipioPrestacao = rps.CidadeTomador; // VERIFICAR TRATAMENTO
+                        rps.MunicipioPrestacaoDescricao = rps.CidadeTomadorDescricao; // VERIFICAR TRATAMENTO   
+                    }
+                    else
+                    {
+                        rps.MunicipioPrestacao = daoUtil.GetCodigoSiafiByCodigo(row["cd_munPrestacao"].ToString());
+                        rps.MunicipioPrestacaoDescricao = daoUtil.GetNM_MUNICIPIO(row["cd_munPrestacao"].ToString());
+                    }
                     rps.Operacao = row["Operacao"].ToString();
                     rps.Tributacao = row["Tributacao"].ToString();
-                    
-                    rps.ValorPIS = Convert.ToDecimal(row["ValorPIS"].ToString());
-                    rps.ValorCOFINS = Convert.ToDecimal(row["ValorCOFINS"].ToString());
-                    rps.ValorINSS = Convert.ToDecimal(row["ValorINSS"].ToString());
-                    rps.ValorCSLL = Convert.ToDecimal(row["ValorCSLL"].ToString());
+
+                    rps.ValorPIS = row["ValorPIS"].ToString();
+                    rps.ValorCOFINS = row["ValorCOFINS"].ToString();
+                    rps.ValorINSS = row["ValorINSS"].ToString();
+                    rps.ValorCSLL = row["ValorCSLL"].ToString();
 
 
-                    rps.ValorIR = Convert.ToDecimal(GetValorIR(cd_nfseq));
+                    rps.ValorIR = GetValorIR(cd_nfseq).ToString();
 
 
 
@@ -145,7 +153,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
 
 
 
-                    rps.DescricaoRPS = GetDescricaoRPS(cd_nfseq);
+                    rps.DescricaoRPS = daoUtil.GetTotImpostosServ(cd_nfseq) + GetDescricaoRPS(cd_nfseq);
                     rps.TelefonePrestador = row["TelefonePrestador"].ToString();
                     rps.TelefoneTomador = row["TelefoneTomador"].ToString();
                     rps.MotCancelamento = "";
@@ -159,7 +167,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     LoteRPSItensItem item;
                     foreach (DataRow rowItem in dtItem.Rows)
                     {
-                        rps.AliquotaAtividade = base.GetAliquotaAtividade(rowItem["cd_clifor"].ToString(), rowItem["cd_oper"].ToString());
+                        rps.AliquotaAtividade = base.GetAliquotaAtividade(rowItem["cd_clifor"].ToString(), rowItem["cd_oper"].ToString()).ToString();
                         item = new LoteRPSItensItem();
                         item.DiscriminacaoServico = rowItem["DiscriminacaoServico"].ToString();
                         item.Quantidade = Convert.ToByte(rowItem["Quantidade"].ToString());
@@ -183,7 +191,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                         rps.NumeroRPS = this.GetNumeroRPSsalvo(cd_nfseq);
                     }
 
-                    rps.Assinatura = this.GetAssinatura(rps);
+                    rps.Assinatura = belCarregaDadosRPS.GetAssinatura(rps);
 
                 }
                 return rps;
@@ -194,7 +202,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
             }
         }
 
-        public string GetAssinatura(LoteRPS rps)
+        public static string GetAssinatura(LoteRPS rps)
         {
             StringBuilder ass = new StringBuilder();
 
@@ -236,6 +244,11 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 //XmlSerializer xs = new XmlSerializer(typeof(ReqEnvioLoteRPS));
                 //xs.Serialize(xmlTextWriter, objLoteEnvio, nameSpaces);
                 //xmlTextWriter.Close();
+
+                foreach (LoteRPS item in objLoteEnvio.lote.RPS)
+                {
+                    item.bSerialize = true;
+                }
 
                 String XmlizedString = null;
                 XmlSerializer x = new XmlSerializer(objLoteEnvio.GetType());
@@ -301,18 +314,18 @@ namespace HLP.GeraXml.bel.NFes.DSF
         /// false-envio
         /// </summary>
         /// <param name="bStatus"></param>
-        /// <param name="sNumeroRPS"></param>
+        /// <param name="sNumero">NUMERO DO RPS </param>
         /// <returns></returns>
-        public static string GetFilePathMonthServico(bool bStatus, string sNumeroRPS)
+        public static string GetFilePathMonthServico(bool bStatus, string sNumero)
         {
 
-            string sDirectory = (bStatus ? Pastas.ENVIADOS : Pastas.ENVIO) + "\\Servicos\\" + DateTime.Today.Month.ToString().PadLeft(2, '0') + DateTime.Today.Date.Year.ToString().Substring(2, 2) + "\\";
+            string sDirectory = (bStatus ? Pastas.ENVIADOS : Pastas.ENVIO) + "\\Servicos\\" + DateTime.Today.Date.Year.ToString().Substring(2, 2) + DateTime.Today.Month.ToString().PadLeft(2, '0') + "\\";
             if (!Directory.Exists(sDirectory))
             {
                 Directory.CreateDirectory(sDirectory);
             }
 
-            string sName = "RPS_" + sNumeroRPS;
+            string sName = (bStatus ? "NFSE_" : "RPS_") + sNumero;
 
             return sDirectory + sName + ".xml";
         }

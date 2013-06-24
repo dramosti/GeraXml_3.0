@@ -246,6 +246,7 @@ namespace HLP.GeraXml.bel.NFe
                                                                             new XElement(pf + "UFCons", det.prod.belcomb.UFCons)) : null)),
 
                                                                                           new XElement(pf + "imposto",
+                                new XElement(pf + "vTotTrib", det.prod.vTotTrib.ToString("#0.00").Replace(",", ".")),
 
                                                    //---------------ICMS-----------------//
 
@@ -310,7 +311,7 @@ namespace HLP.GeraXml.bel.NFe
                                                         new XElement(pf + "ICMS40",
                                                             (det.imposto.belIcms.belIcms40.Orig != null ? new XElement(pf + "orig", det.imposto.belIcms.belIcms40.Orig.ToString()) : null),
                                                             (det.imposto.belIcms.belIcms40.Cst != null ? new XElement(pf + "CST", det.imposto.belIcms.belIcms40.Cst.ToString()) : null),
-                                                            (det.imposto.belIcms.belIcms40.Vicms > 0 ? new XElement(pf + "vICMS", det.imposto.belIcms.belIcms40.Vicms.ToString()) : null), //NFe_2.0
+                                                            (det.imposto.belIcms.belIcms40.Vicms > 0 ? new XElement(pf + "vICMS", det.imposto.belIcms.belIcms40.Vicms.ToString("#0.00").Replace(",", ".")) : null), //NFe_2.0
                                                             (det.imposto.belIcms.belIcms40.Vicms > 0 ? new XElement(pf + "motDesICMS", det.imposto.belIcms.belIcms40.motDesICMS.ToString()) : null)) : null),//NFe_2.0
 
                                                         //-------------ICMS41-------------//
@@ -319,7 +320,7 @@ namespace HLP.GeraXml.bel.NFe
                                                         new XElement(pf + "ICMS41",
                                                             (det.imposto.belIcms.belIcms41.Orig != null ? new XElement(pf + "orig", det.imposto.belIcms.belIcms41.Orig.ToString()) : null),
                                                             (det.imposto.belIcms.belIcms41.Cst != null ? new XElement(pf + "CST", det.imposto.belIcms.belIcms41.Cst.ToString()) : null),
-                                                            (det.imposto.belIcms.belIcms41.Vicms > 0 ? new XElement(pf + "vICMS", det.imposto.belIcms.belIcms41.Vicms.ToString()) : null),//NFe_2.0
+                                                            (det.imposto.belIcms.belIcms41.Vicms > 0 ? new XElement(pf + "vICMS", det.imposto.belIcms.belIcms41.Vicms.ToString("#0.00").Replace(",", ".")) : null),//NFe_2.0
                                                             (det.imposto.belIcms.belIcms41.motDesICMS > 0 ? new XElement(pf + "motDesICMS", det.imposto.belIcms.belIcms41.motDesICMS.ToString()) : null)) : null),//NFe_2.0
 
                                                         //-------------ICMS50-------------//
@@ -328,7 +329,7 @@ namespace HLP.GeraXml.bel.NFe
                                                         new XElement(pf + "ICMS50",
                                                             (det.imposto.belIcms.belIcms50.Orig != null ? new XElement(pf + "orig", det.imposto.belIcms.belIcms50.Orig.ToString()) : null),
                                                             (det.imposto.belIcms.belIcms50.Cst != null ? new XElement(pf + "CST", det.imposto.belIcms.belIcms50.Cst.ToString()) : null),
-                                                                (det.imposto.belIcms.belIcms50.Vicms > 0 ? new XElement(pf + "vICMS", det.imposto.belIcms.belIcms50.Vicms.ToString()) : null),//NFe_2.0
+                                                                (det.imposto.belIcms.belIcms50.Vicms > 0 ? new XElement(pf + "vICMS", det.imposto.belIcms.belIcms50.Vicms.ToString("#0.00").Replace(",", ".")) : null),//NFe_2.0
                                                             (det.imposto.belIcms.belIcms50.motDesICMS > 0 ? new XElement(pf + "motDesICMS", det.imposto.belIcms.belIcms50.motDesICMS.ToString()) : null)) : null),//NFe_2.0
 
                                                         //-------------ICMS51-------------//
@@ -622,7 +623,9 @@ namespace HLP.GeraXml.bel.NFe
                                                       new XElement(pf + "vPIS", objtotal.belIcmstot.Vpis.ToString("#0.00").Replace(",", ".")),
                                                       new XElement(pf + "vCOFINS", objtotal.belIcmstot.Vcofins.ToString("#0.00").Replace(",", ".")),
                                                       new XElement(pf + "vOutro", objtotal.belIcmstot.Voutro.ToString("#0.00").Replace(",", ".")),
-                                                      new XElement(pf + "vNF", objtotal.belIcmstot.Vnf.ToString("#0.00").Replace(",", "."))) : null),
+                                                      new XElement(pf + "vNF", objtotal.belIcmstot.Vnf.ToString("#0.00").Replace(",", "."))
+                            ,new XElement(pf + "vTotTrib", objtotal.belIcmstot.vTotTrib.ToString("#0.00").Replace(",", "."))
+                                                      ) : null),
 
 
 
@@ -631,7 +634,9 @@ namespace HLP.GeraXml.bel.NFe
                                                     new XElement(pf + "vBC", objtotal.belIssqntot.Vbc.ToString("#0.00").Replace(",", ".")),
                                                     new XElement(pf + "vISS", objtotal.belIssqntot.Viss.ToString("#0.00").Replace(",", ".")),
                                                     (objtotal.belIssqntot.Vpis != 0 ? new XElement(pf + "vPIS", objtotal.belIssqntot.Vpis.ToString("#0.00").Replace(",", ".")) : null),
-                                                    (objtotal.belIssqntot.Vcofins != 0 ? new XElement(pf + "vCOFINS", objtotal.belIssqntot.Vcofins.ToString("#0.00").Replace(",", ".")) : null)) : null)));
+                                                    (objtotal.belIssqntot.Vcofins != 0 ? new XElement(pf + "vCOFINS", objtotal.belIssqntot.Vcofins.ToString("#0.00").Replace(",", ".")) : null)
+
+                                                    ) : null)));
 
                         #endregion
                     }
@@ -856,7 +861,8 @@ namespace HLP.GeraXml.bel.NFe
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (!ex.Message.Contains("'vTotTrib'"))
+                    throw ex;
             }
 
         }

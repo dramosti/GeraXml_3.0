@@ -20,6 +20,7 @@ namespace HLP.GeraXml.bel.NFe
         public string sCD_NOTAFIS { get; set; }
         public string sCD_NFSEQ { get; set; }
         public string sCD_GRUPONF { get; set; }
+        public string scd_numero_nfse { get; set; }
         public DateTime dDT_EMI { get; set; }
         public string sNM_CLIFOR { get; set; }
         public double dVL_TOTNF { get; set; }
@@ -47,6 +48,7 @@ namespace HLP.GeraXml.bel.NFe
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nfseq", sAlias = "sCD_NFSEQ" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_numero_nfse,'')", sAlias = "scd_numero_nfse" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NM_CLIFOR", sAlias = "sNM_CLIFOR" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "vl_totnf", sAlias = "dVL_TOTNF" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NF.cd_gruponf", sAlias = "sCD_GRUPONF", sCoalesce = "" });
@@ -94,6 +96,7 @@ namespace HLP.GeraXml.bel.NFe
                     sCD_NOTAFIS = dr["sCD_NOTAFIS"].ToString(),
                     sNM_CLIFOR = dr["sNM_CLIFOR"].ToString(),
                     sCD_GRUPONF = dr["sCD_GRUPONF"].ToString(),
+                    scd_numero_nfse = dr["scd_numero_nfse"].ToString(),
                     dVL_TOTNF = Convert.ToDouble(dr["dVL_TOTNF"].ToString()),
                     dDT_EMI = Convert.ToDateTime(dr["dDT_EMI"].ToString()),
                     bEnviado = dr["bEnviado"].ToString().Equals("0") ? false : true,
@@ -117,6 +120,7 @@ namespace HLP.GeraXml.bel.NFe
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nfseq", sAlias = "sCD_NFSEQ" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "nm_guerra", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_numero_nfse,'')", sAlias = "scd_numero_nfse" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_chavenfe,'')", sAlias = "sCHAVENFE" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "vl_totnf", sAlias = "dVL_TOTNF" });
@@ -152,6 +156,7 @@ namespace HLP.GeraXml.bel.NFe
                     sNM_CLIFOR = dr["sNM_CLIFOR"].ToString(),
                     sCD_GRUPONF = dr["sCD_GRUPONF"].ToString(),
                     dVL_TOTNF = Convert.ToDouble(dr["dVL_TOTNF"].ToString()),
+                    scd_numero_nfse = dr["scd_numero_nfse"].ToString(),
                     dDT_EMI = Convert.ToDateTime(dr["dDT_EMI"].ToString()),
                     bEnviado = dr["bEnviado"].ToString().Equals("0") ? false : true,
                     bCancelado = dr["bCancelado"].ToString().Equals("1") ? true : false,
@@ -172,6 +177,7 @@ namespace HLP.GeraXml.bel.NFe
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "nm_guerra", sAlias = "sNM_CLIFOR" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_numero_nfse,'')", sAlias = "scd_numero_nfse" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_chavenfe,'')", sAlias = "sCHAVENFE" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "vl_totnf", sAlias = "dVL_TOTNF" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NF.cd_gruponf", sAlias = "sCD_GRUPONF", sCoalesce = "" });
@@ -194,6 +200,7 @@ namespace HLP.GeraXml.bel.NFe
                     sNM_CLIFOR = dr["sNM_CLIFOR"].ToString(),
                     sCD_GRUPONF = dr["sCD_GRUPONF"].ToString(),
                     dVL_TOTNF = Convert.ToDouble(dr["dVL_TOTNF"].ToString()),
+                    scd_numero_nfse = dr["scd_numero_nfse"].ToString(),
                     dDT_EMI = Convert.ToDateTime(dr["dDT_EMI"].ToString()),
                     bEnviado = dr["bEnviado"].ToString().Equals("0") ? false : true,
                     bCancelado = dr["bCancelado"].ToString().Equals("1") ? true : false,

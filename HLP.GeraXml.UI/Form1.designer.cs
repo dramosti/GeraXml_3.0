@@ -175,7 +175,7 @@
             this.txtPastaToPublish.Name = "txtPastaToPublish";
             this.txtPastaToPublish.Size = new System.Drawing.Size(420, 20);
             this.txtPastaToPublish.TabIndex = 1;
-            this.txtPastaToPublish.Text = "C:\\GeraXml\\Versoes\\GeraXml 3.0\\";
+            this.txtPastaToPublish.Text = "\\\\192.168.9.33\\GeraXml\\Versoes\\GeraXml 3.0";
             // 
             // btnLocalToPublish
             // 

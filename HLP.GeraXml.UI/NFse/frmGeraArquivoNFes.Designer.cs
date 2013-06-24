@@ -29,20 +29,12 @@ namespace HLP.GeraXml.UI.NFse
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGeraArquivoNFes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvNF = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.bSeleciona = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.sCD_NOTAFIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCD_NFSEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dDT_EMI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dVL_TOTNF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bsNotas = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -70,6 +62,15 @@ namespace HLP.GeraXml.UI.NFse
             this.btnVisualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBuscaRetorno = new System.Windows.Forms.ToolStripButton();
+            this.bSeleciona = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.sCD_NOTAFIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCD_NFSEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.scd_numero_nfse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dDT_EMI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dVL_TOTNF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -124,6 +125,7 @@ namespace HLP.GeraXml.UI.NFse
             this.bSeleciona,
             this.sCD_NOTAFIS,
             this.sCD_NFSEQ,
+            this.scd_numero_nfse,
             this.dDT_EMI,
             this.dVL_TOTNF,
             this.sNM_CLIFOR,
@@ -140,78 +142,6 @@ namespace HLP.GeraXml.UI.NFse
             this.dgvNF.TabIndex = 232;
             this.dgvNF.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNF_CellContentClick);
             this.dgvNF.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvNF_ColumnHeaderMouseClick);
-            // 
-            // bSeleciona
-            // 
-            this.bSeleciona.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.bSeleciona.DataPropertyName = "bSeleciona";
-            this.bSeleciona.HeaderText = "Selecionar";
-            this.bSeleciona.Name = "bSeleciona";
-            this.bSeleciona.Width = 71;
-            // 
-            // sCD_NOTAFIS
-            // 
-            this.sCD_NOTAFIS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sCD_NOTAFIS.DataPropertyName = "sCD_NOTAFIS";
-            this.sCD_NOTAFIS.HeaderText = "RPS";
-            this.sCD_NOTAFIS.Name = "sCD_NOTAFIS";
-            this.sCD_NOTAFIS.ReadOnly = true;
-            this.sCD_NOTAFIS.Width = 56;
-            // 
-            // sCD_NFSEQ
-            // 
-            this.sCD_NFSEQ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sCD_NFSEQ.DataPropertyName = "sCD_NFSEQ";
-            this.sCD_NFSEQ.HeaderText = "Sequência";
-            this.sCD_NFSEQ.Name = "sCD_NFSEQ";
-            this.sCD_NFSEQ.ReadOnly = true;
-            this.sCD_NFSEQ.Width = 90;
-            // 
-            // dDT_EMI
-            // 
-            this.dDT_EMI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dDT_EMI.DataPropertyName = "dDT_EMI";
-            this.dDT_EMI.HeaderText = "Emissão";
-            this.dDT_EMI.Name = "dDT_EMI";
-            this.dDT_EMI.ReadOnly = true;
-            this.dDT_EMI.Width = 79;
-            // 
-            // dVL_TOTNF
-            // 
-            this.dVL_TOTNF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dVL_TOTNF.DataPropertyName = "dVL_TOTNF";
-            dataGridViewCellStyle2.Format = "n2";
-            this.dVL_TOTNF.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dVL_TOTNF.HeaderText = "Valor";
-            this.dVL_TOTNF.Name = "dVL_TOTNF";
-            this.dVL_TOTNF.ReadOnly = true;
-            this.dVL_TOTNF.Width = 63;
-            // 
-            // sNM_CLIFOR
-            // 
-            this.sNM_CLIFOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sNM_CLIFOR.DataPropertyName = "sNM_CLIFOR";
-            this.sNM_CLIFOR.HeaderText = "Cliente";
-            this.sNM_CLIFOR.Name = "sNM_CLIFOR";
-            this.sNM_CLIFOR.ReadOnly = true;
-            // 
-            // bCancelado
-            // 
-            this.bCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.bCancelado.DataPropertyName = "bCancelado";
-            this.bCancelado.HeaderText = "Cancelada";
-            this.bCancelado.Name = "bCancelado";
-            this.bCancelado.ReadOnly = true;
-            this.bCancelado.Visible = false;
-            // 
-            // bEnviado
-            // 
-            this.bEnviado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.bEnviado.DataPropertyName = "bEnviado";
-            this.bEnviado.HeaderText = "Enviada";
-            this.bEnviado.Name = "bEnviado";
-            this.bEnviado.ReadOnly = true;
-            this.bEnviado.Visible = false;
             // 
             // bsNotas
             // 
@@ -548,6 +478,88 @@ namespace HLP.GeraXml.UI.NFse
             this.btnBuscaRetorno.Text = "Retorno";
             this.btnBuscaRetorno.Click += new System.EventHandler(this.btnBuscaRetorno_Click);
             // 
+            // bSeleciona
+            // 
+            this.bSeleciona.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.bSeleciona.DataPropertyName = "bSeleciona";
+            this.bSeleciona.HeaderText = "Selecionar";
+            this.bSeleciona.Name = "bSeleciona";
+            this.bSeleciona.Width = 71;
+            // 
+            // sCD_NOTAFIS
+            // 
+            this.sCD_NOTAFIS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sCD_NOTAFIS.DataPropertyName = "sCD_NOTAFIS";
+            this.sCD_NOTAFIS.HeaderText = "RPS";
+            this.sCD_NOTAFIS.Name = "sCD_NOTAFIS";
+            this.sCD_NOTAFIS.ReadOnly = true;
+            this.sCD_NOTAFIS.Width = 56;
+            // 
+            // sCD_NFSEQ
+            // 
+            this.sCD_NFSEQ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sCD_NFSEQ.DataPropertyName = "sCD_NFSEQ";
+            this.sCD_NFSEQ.HeaderText = "Sequência";
+            this.sCD_NFSEQ.Name = "sCD_NFSEQ";
+            this.sCD_NFSEQ.ReadOnly = true;
+            this.sCD_NFSEQ.Width = 90;
+            // 
+            // scd_numero_nfse
+            // 
+            this.scd_numero_nfse.DataPropertyName = "scd_numero_nfse";
+            this.scd_numero_nfse.HeaderText = "NFSe";
+            this.scd_numero_nfse.Name = "scd_numero_nfse";
+            this.scd_numero_nfse.ReadOnly = true;
+            this.scd_numero_nfse.Width = 60;
+            // 
+            // dDT_EMI
+            // 
+            this.dDT_EMI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dDT_EMI.DataPropertyName = "dDT_EMI";
+            this.dDT_EMI.HeaderText = "Emissão";
+            this.dDT_EMI.Name = "dDT_EMI";
+            this.dDT_EMI.ReadOnly = true;
+            this.dDT_EMI.Width = 79;
+            // 
+            // dVL_TOTNF
+            // 
+            this.dVL_TOTNF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dVL_TOTNF.DataPropertyName = "dVL_TOTNF";
+            dataGridViewCellStyle1.Format = "n2";
+            this.dVL_TOTNF.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dVL_TOTNF.HeaderText = "Valor";
+            this.dVL_TOTNF.Name = "dVL_TOTNF";
+            this.dVL_TOTNF.ReadOnly = true;
+            this.dVL_TOTNF.Width = 63;
+            // 
+            // sNM_CLIFOR
+            // 
+            this.sNM_CLIFOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sNM_CLIFOR.DataPropertyName = "sNM_CLIFOR";
+            this.sNM_CLIFOR.HeaderText = "Cliente";
+            this.sNM_CLIFOR.Name = "sNM_CLIFOR";
+            this.sNM_CLIFOR.ReadOnly = true;
+            // 
+            // bCancelado
+            // 
+            this.bCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.bCancelado.DataPropertyName = "bCancelado";
+            this.bCancelado.HeaderText = "Cancelada";
+            this.bCancelado.Name = "bCancelado";
+            this.bCancelado.ReadOnly = true;
+            this.bCancelado.Visible = false;
+            this.bCancelado.Width = 72;
+            // 
+            // bEnviado
+            // 
+            this.bEnviado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.bEnviado.DataPropertyName = "bEnviado";
+            this.bEnviado.HeaderText = "Enviada";
+            this.bEnviado.Name = "bEnviado";
+            this.bEnviado.ReadOnly = true;
+            this.bEnviado.Visible = false;
+            this.bEnviado.Width = 58;
+            // 
             // frmGeraArquivoNFes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -627,6 +639,7 @@ namespace HLP.GeraXml.UI.NFse
         private System.Windows.Forms.DataGridViewCheckBoxColumn bSeleciona;
         private System.Windows.Forms.DataGridViewTextBoxColumn sCD_NOTAFIS;
         private System.Windows.Forms.DataGridViewTextBoxColumn sCD_NFSEQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn scd_numero_nfse;
         private System.Windows.Forms.DataGridViewTextBoxColumn dDT_EMI;
         private System.Windows.Forms.DataGridViewTextBoxColumn dVL_TOTNF;
         private System.Windows.Forms.DataGridViewTextBoxColumn sNM_CLIFOR;

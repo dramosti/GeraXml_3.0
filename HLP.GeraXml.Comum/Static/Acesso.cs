@@ -145,6 +145,7 @@ namespace HLP.GeraXml.Comum.Static
         public static string GRUPO_SCAN { get; set; }
         public static bool DS_DETALHE { get; set; }
         public static string FUSO { get; set; }
+        public static int TRANSPARENCIA { get; set; }
         public static string TIPO_IMPRESSAO { get; set; }
         public static string HOST_SERVIDOR { get; set; }
         public static string PORTA_SERVIDOR { get; set; }
@@ -256,6 +257,7 @@ namespace HLP.GeraXml.Comum.Static
                     Acesso.GRUPO_SCAN = obj.GRUPO_SCAN;
                     Acesso.DS_DETALHE = obj.DS_DETALHE;
                     Acesso.FUSO = obj.FUSO;
+                    Acesso.TRANSPARENCIA = obj.TRANSPARENCIA;
                     Acesso.TIPO_IMPRESSAO = obj.TIPO_IMPRESSAO;
                     Acesso.HOST_SERVIDOR = obj.HOST_SERVIDOR;
                     Acesso.PORTA_SERVIDOR = obj.PORTA_SERVIDOR;

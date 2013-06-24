@@ -18,6 +18,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using HLP.GeraXml.bel;
 using System.Xml;
 using System.Threading;
+using HLP.GeraXml.dao;
 
 namespace HLP.GeraXml.UI.NFe
 {
@@ -417,6 +418,12 @@ namespace HLP.GeraXml.UI.NFe
 
                 if (objSelect.Count == 1)
                 {
+                    if (!daoUtil.ValidaUserToCancel())
+                    {
+                        KryptonMessageBox.Show("Usuário sem Acesso para cancelar Notas Fiscais.", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
                     frmCancelamentoNFe objfrm = new frmCancelamentoNFe(objSelect[0]);
                     objfrm.ShowDialog();
                 }
@@ -770,7 +777,7 @@ namespace HLP.GeraXml.UI.NFe
                 {
                     ReportDocument rpt = new ReportDocument();
                     rpt.Load(sCaminho);
-                    rpt.SetDataSource(ds);
+                    rpt.SetDataSource(ds);                    
                     rpt.Refresh();
 
                     DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\PDF");

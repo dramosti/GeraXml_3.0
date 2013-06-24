@@ -23,15 +23,16 @@ namespace HLP.GeraXml.Comum.Static
                 if (key != null)
                 {
                     Pastas.PASTA_XML_CONFIG = key.GetValue(Pastas.Caminho_xmls, "").ToString();
-                    return true;
+                    return true;                    
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                throw new Exception("O Sistema não conseguiu acessar o caminho hlp\\Config_xml_3 no Registro do Windows");
                 return false;
             }
         }
@@ -348,6 +349,7 @@ namespace HLP.GeraXml.Comum.Static
 
         public static string RetornaSTnovaAserUsada(string scst)
         {
+
             List<NovasCst> objList = new List<NovasCst>()
                     {
                         new NovasCst{ nsct = "101",sgrupo="101"},

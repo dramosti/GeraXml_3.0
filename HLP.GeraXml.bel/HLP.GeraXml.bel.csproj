@@ -42,6 +42,7 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Deployment" />
@@ -165,6 +166,7 @@
     <Compile Include="NFes\belLoteRps.cs" />
     <Compile Include="NFes\belPrestador.cs" />
     <Compile Include="NFes\belRecepcao.cs" />
+    <Compile Include="NFes\ConsultarSituacaoLoteRpsResposta.cs" />
     <Compile Include="NFes\belServico.cs" />
     <Compile Include="NFes\beltcIdentificacaoRps.cs" />
     <Compile Include="NFes\belTomador.cs" />

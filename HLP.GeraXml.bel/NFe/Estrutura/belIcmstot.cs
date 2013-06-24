@@ -160,5 +160,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
             get { return _vnf; }
             set { _vnf = value; }
         }
+
+        public decimal vTotTrib { get; set; }
     }
 }

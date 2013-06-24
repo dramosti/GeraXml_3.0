@@ -150,6 +150,7 @@
             this.vsegDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vdescDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vOutroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clvTotTrib = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.indTotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xPedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nItemPedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -253,6 +254,7 @@
             this.nudVCOFINS = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.nudVOutro = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.nudVNF = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
+            this.nudvTotTrib = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.kryptonPanel12 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.flpRetTrib = new System.Windows.Forms.FlowLayoutPanel();
@@ -1682,7 +1684,7 @@
             this.mtbEnderEmitFone.Color = System.Drawing.Color.White;
             this.mtbEnderEmitFone.Location = new System.Drawing.Point(72, 273);
             this.mtbEnderEmitFone.Margin = new System.Windows.Forms.Padding(72, 3, 15, 3);
-            this.mtbEnderEmitFone.MaxLength = 12;
+            this.mtbEnderEmitFone.MaxLength = 13;
             this.mtbEnderEmitFone.Name = "mtbEnderEmitFone";
             this.mtbEnderEmitFone.ReadOnly = false;
             this.mtbEnderEmitFone.Size = new System.Drawing.Size(186, 21);
@@ -2199,7 +2201,7 @@
             this.mtbEnderDestFone.Color = System.Drawing.Color.White;
             this.mtbEnderDestFone.Location = new System.Drawing.Point(72, 273);
             this.mtbEnderDestFone.Margin = new System.Windows.Forms.Padding(72, 3, 15, 3);
-            this.mtbEnderDestFone.MaxLength = 12;
+            this.mtbEnderDestFone.MaxLength = 13;
             this.mtbEnderDestFone.Name = "mtbEnderDestFone";
             this.mtbEnderDestFone.ReadOnly = false;
             this.mtbEnderDestFone.Size = new System.Drawing.Size(186, 21);
@@ -2409,7 +2411,7 @@
             this.tabProd.Location = new System.Drawing.Point(4, 25);
             this.tabProd.Margin = new System.Windows.Forms.Padding(0);
             this.tabProd.Name = "tabProd";
-            this.tabProd.Size = new System.Drawing.Size(733, 247);
+            this.tabProd.Size = new System.Drawing.Size(936, 540);
             this.tabProd.TabIndex = 5;
             this.tabProd.Tag = false;
             this.tabProd.Text = "Produtos";
@@ -2421,7 +2423,7 @@
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel5.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel5.Name = "kryptonPanel5";
-            this.kryptonPanel5.Size = new System.Drawing.Size(733, 247);
+            this.kryptonPanel5.Size = new System.Drawing.Size(936, 540);
             this.kryptonPanel5.TabIndex = 1;
             // 
             // dgvProd
@@ -2449,6 +2451,7 @@
             this.vsegDataGridViewTextBoxColumn,
             this.vdescDataGridViewTextBoxColumn,
             this.vOutroDataGridViewTextBoxColumn,
+            this.clvTotTrib,
             this.indTotDataGridViewTextBoxColumn,
             this.xPedDataGridViewTextBoxColumn,
             this.nItemPedDataGridViewTextBoxColumn,
@@ -2459,7 +2462,7 @@
             this.dgvProd.Location = new System.Drawing.Point(0, 0);
             this.dgvProd.Name = "dgvProd";
             this.dgvProd.RowHeadersWidth = 25;
-            this.dgvProd.Size = new System.Drawing.Size(733, 0);
+            this.dgvProd.Size = new System.Drawing.Size(936, 287);
             this.dgvProd.TabIndex = 118;
             this.dgvProd.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProd_ColumnHeaderMouseClick);
             // 
@@ -2621,6 +2624,14 @@
             this.vOutroDataGridViewTextBoxColumn.Name = "vOutroDataGridViewTextBoxColumn";
             this.vOutroDataGridViewTextBoxColumn.Width = 74;
             // 
+            // clvTotTrib
+            // 
+            this.clvTotTrib.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clvTotTrib.DataPropertyName = "vTotTrib";
+            this.clvTotTrib.HeaderText = "Valor Total Tributos";
+            this.clvTotTrib.Name = "clvTotTrib";
+            this.clvTotTrib.Width = 140;
+            // 
             // indTotDataGridViewTextBoxColumn
             // 
             this.indTotDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -2672,9 +2683,9 @@
             this.panelItens.Controls.Add(this.kryptonTabControl6);
             this.panelItens.Controls.Add(this.menuStrip2);
             this.panelItens.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelItens.Location = new System.Drawing.Point(0, -6);
+            this.panelItens.Location = new System.Drawing.Point(0, 287);
             this.panelItens.Name = "panelItens";
-            this.panelItens.Size = new System.Drawing.Size(733, 253);
+            this.panelItens.Size = new System.Drawing.Size(936, 253);
             this.panelItens.TabIndex = 117;
             // 
             // kryptonTabControl6
@@ -2705,7 +2716,7 @@
             this.kryptonTabControl6.Name = "kryptonTabControl6";
             this.kryptonTabControl6.PreserveTabColor = false;
             this.kryptonTabControl6.SelectedIndex = 0;
-            this.kryptonTabControl6.Size = new System.Drawing.Size(733, 226);
+            this.kryptonTabControl6.Size = new System.Drawing.Size(936, 226);
             this.kryptonTabControl6.TabIndex = 116;
             this.kryptonTabControl6.UseExtendedLayout = false;
             // 
@@ -2715,7 +2726,7 @@
             this.tabPage24.Location = new System.Drawing.Point(4, 25);
             this.tabPage24.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage24.Name = "tabPage24";
-            this.tabPage24.Size = new System.Drawing.Size(725, 197);
+            this.tabPage24.Size = new System.Drawing.Size(928, 197);
             this.tabPage24.TabIndex = 0;
             this.tabPage24.Tag = false;
             this.tabPage24.Text = "ICMS";
@@ -2726,7 +2737,7 @@
             this.kryptonPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel26.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel26.Name = "kryptonPanel26";
-            this.kryptonPanel26.Size = new System.Drawing.Size(725, 197);
+            this.kryptonPanel26.Size = new System.Drawing.Size(928, 197);
             this.kryptonPanel26.TabIndex = 0;
             // 
             // flICMS
@@ -2756,7 +2767,7 @@
             this.flICMS.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flICMS.Location = new System.Drawing.Point(0, 0);
             this.flICMS.Name = "flICMS";
-            this.flICMS.Size = new System.Drawing.Size(725, 197);
+            this.flICMS.Size = new System.Drawing.Size(928, 197);
             this.flICMS.TabIndex = 1;
             this.flICMS.Tag = "Dados Emitente";
             // 
@@ -4445,7 +4456,7 @@
             this.btnSalvarItens});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(733, 27);
+            this.menuStrip2.Size = new System.Drawing.Size(936, 27);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -4556,6 +4567,7 @@
             this.flptotalGeral.Controls.Add(this.nudVCOFINS);
             this.flptotalGeral.Controls.Add(this.nudVOutro);
             this.flptotalGeral.Controls.Add(this.nudVNF);
+            this.flptotalGeral.Controls.Add(this.nudvTotTrib);
             this.flptotalGeral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flptotalGeral.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flptotalGeral.Location = new System.Drawing.Point(0, 0);
@@ -4643,8 +4655,8 @@
             this.nudVBCICMSST.BackColor = System.Drawing.Color.Transparent;
             this.nudVBCICMSST.Color = System.Drawing.Color.White;
             this.nudVBCICMSST.DecimalPlaces = 2;
-            this.nudVBCICMSST.Location = new System.Drawing.Point(76, 59);
-            this.nudVBCICMSST.Margin = new System.Windows.Forms.Padding(76, 3, 15, 3);
+            this.nudVBCICMSST.Location = new System.Drawing.Point(75, 59);
+            this.nudVBCICMSST.Margin = new System.Windows.Forms.Padding(75, 3, 15, 3);
             this.nudVBCICMSST.Maximum = new decimal(new int[] {
             276447231,
             23283,
@@ -5039,6 +5051,40 @@
             0,
             131072});
             this.nudVNF.ValueInt = 0;
+            // 
+            // nudvTotTrib
+            // 
+            this.nudvTotTrib._LabelText = "Valor Total de Tributos";
+            this.nudvTotTrib._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.SIM;
+            this.nudvTotTrib._TamanhoMaiorLabel = 150;
+            this.nudvTotTrib._TamanhoNumericUpDown = 100;
+            this.nudvTotTrib._Visible = true;
+            this.nudvTotTrib.AutoSize = true;
+            this.nudvTotTrib.BackColor = System.Drawing.Color.Transparent;
+            this.nudvTotTrib.Color = System.Drawing.Color.White;
+            this.nudvTotTrib.DecimalPlaces = 2;
+            this.nudvTotTrib.Location = new System.Drawing.Point(545, 3);
+            this.nudvTotTrib.Margin = new System.Windows.Forms.Padding(9, 3, 15, 3);
+            this.nudvTotTrib.Maximum = new decimal(new int[] {
+            276447231,
+            23283,
+            0,
+            0});
+            this.nudvTotTrib.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudvTotTrib.Name = "nudvTotTrib";
+            this.nudvTotTrib.ReadOnly = false;
+            this.nudvTotTrib.Size = new System.Drawing.Size(244, 23);
+            this.nudvTotTrib.TabIndex = 15;
+            this.nudvTotTrib.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.nudvTotTrib.ValueInt = 0;
             // 
             // tabPage9
             // 
@@ -6696,7 +6742,7 @@
             this.tabPage16.Location = new System.Drawing.Point(4, 25);
             this.tabPage16.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage16.Name = "tabPage16";
-            this.tabPage16.Size = new System.Drawing.Size(936, 540);
+            this.tabPage16.Size = new System.Drawing.Size(733, 247);
             this.tabPage16.TabIndex = 9;
             this.tabPage16.Tag = false;
             this.tabPage16.Text = "Inf. Adicionais";
@@ -6708,7 +6754,7 @@
             this.panelInfAdic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelInfAdic.Location = new System.Drawing.Point(0, 0);
             this.panelInfAdic.Name = "panelInfAdic";
-            this.panelInfAdic.Size = new System.Drawing.Size(936, 540);
+            this.panelInfAdic.Size = new System.Drawing.Size(733, 247);
             this.panelInfAdic.TabIndex = 1;
             // 
             // lblCaracter
@@ -6729,7 +6775,7 @@
             this.txtInfAdic._Regex = Expressoes.ER32;
             this.txtInfAdic._Regex_Expressao = "^[!-ÿ]{1}[ -ÿ]{0,}[!-ÿ]{1}|[!-ÿ]{1}$";
             this.txtInfAdic._TamanhoMaiorLabel = 0;
-            this.txtInfAdic._TamanhoTextBox = 892;
+            this.txtInfAdic._TamanhoTextBox = 689;
             this.txtInfAdic._Visible = true;
             this.txtInfAdic.AutoSize = true;
             this.txtInfAdic.BackColor = System.Drawing.Color.Transparent;
@@ -6741,7 +6787,7 @@
             this.txtInfAdic.MaxLength = 5000;
             this.txtInfAdic.Name = "txtInfAdic";
             this.txtInfAdic.ReadOnly = false;
-            this.txtInfAdic.Size = new System.Drawing.Size(936, 230);
+            this.txtInfAdic.Size = new System.Drawing.Size(733, 230);
             this.txtInfAdic.TabIndex = 1;
             // 
             // tabPage21
@@ -6750,7 +6796,7 @@
             this.tabPage21.Location = new System.Drawing.Point(4, 25);
             this.tabPage21.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage21.Name = "tabPage21";
-            this.tabPage21.Size = new System.Drawing.Size(936, 540);
+            this.tabPage21.Size = new System.Drawing.Size(733, 247);
             this.tabPage21.TabIndex = 10;
             this.tabPage21.Tag = false;
             this.tabPage21.Text = "Ref. NF";
@@ -6763,7 +6809,7 @@
             this.kryptonPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel10.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel10.Name = "kryptonPanel10";
-            this.kryptonPanel10.Size = new System.Drawing.Size(936, 540);
+            this.kryptonPanel10.Size = new System.Drawing.Size(733, 247);
             this.kryptonPanel10.TabIndex = 1;
             // 
             // tabControl1
@@ -6786,7 +6832,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.PreserveTabColor = false;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(936, 309);
+            this.tabControl1.Size = new System.Drawing.Size(733, 16);
             this.tabControl1.TabIndex = 221;
             this.tabControl1.UseExtendedLayout = false;
             // 
@@ -6797,7 +6843,7 @@
             this.tabPageRefNotaA1.Location = new System.Drawing.Point(4, 25);
             this.tabPageRefNotaA1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageRefNotaA1.Name = "tabPageRefNotaA1";
-            this.tabPageRefNotaA1.Size = new System.Drawing.Size(928, 280);
+            this.tabPageRefNotaA1.Size = new System.Drawing.Size(725, 0);
             this.tabPageRefNotaA1.TabIndex = 1;
             this.tabPageRefNotaA1.Tag = false;
             this.tabPageRefNotaA1.Text = "NF modelo 1/1A";
@@ -6808,7 +6854,7 @@
             this.kryptonPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel24.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel24.Name = "kryptonPanel24";
-            this.kryptonPanel24.Size = new System.Drawing.Size(928, 280);
+            this.kryptonPanel24.Size = new System.Drawing.Size(725, 0);
             this.kryptonPanel24.TabIndex = 206;
             // 
             // flowLayoutPanel5
@@ -6826,7 +6872,7 @@
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(928, 280);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(725, 0);
             this.flowLayoutPanel5.TabIndex = 0;
             // 
             // txtnNFref
@@ -6867,7 +6913,7 @@
             this.txtserieRef.BackColor = System.Drawing.Color.Transparent;
             this.txtserieRef.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtserieRef.Color = System.Drawing.Color.White;
-            this.txtserieRef.Location = new System.Drawing.Point(114, 29);
+            this.txtserieRef.Location = new System.Drawing.Point(370, 3);
             this.txtserieRef.Margin = new System.Windows.Forms.Padding(114, 3, 15, 3);
             this.txtserieRef.MaxLength = 32767;
             this.txtserieRef.Name = "txtserieRef";
@@ -6890,7 +6936,7 @@
             this.txtcUF.BackColor = System.Drawing.Color.Transparent;
             this.txtcUF.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtcUF.Color = System.Drawing.Color.White;
-            this.txtcUF.Location = new System.Drawing.Point(127, 55);
+            this.txtcUF.Location = new System.Drawing.Point(639, 3);
             this.txtcUF.Margin = new System.Windows.Forms.Padding(127, 3, 15, 3);
             this.txtcUF.MaxLength = 32767;
             this.txtcUF.Name = "txtcUF";
@@ -6913,7 +6959,7 @@
             this.txtAAMM.BackColor = System.Drawing.Color.Transparent;
             this.txtAAMM.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtAAMM.Color = System.Drawing.Color.White;
-            this.txtAAMM.Location = new System.Drawing.Point(48, 81);
+            this.txtAAMM.Location = new System.Drawing.Point(816, 3);
             this.txtAAMM.Margin = new System.Windows.Forms.Padding(48, 3, 15, 3);
             this.txtAAMM.MaxLength = 32767;
             this.txtAAMM.Name = "txtAAMM";
@@ -6936,7 +6982,7 @@
             this.txtClifor.BackColor = System.Drawing.Color.Transparent;
             this.txtClifor.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtClifor.Color = System.Drawing.Color.White;
-            this.txtClifor.Location = new System.Drawing.Point(24, 107);
+            this.txtClifor.Location = new System.Drawing.Point(1048, 3);
             this.txtClifor.Margin = new System.Windows.Forms.Padding(24, 3, 15, 3);
             this.txtClifor.MaxLength = 32767;
             this.txtClifor.Name = "txtClifor";
@@ -6959,7 +7005,7 @@
             this.txtCNPJ.BackColor = System.Drawing.Color.Transparent;
             this.txtCNPJ.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtCNPJ.Color = System.Drawing.Color.White;
-            this.txtCNPJ.Location = new System.Drawing.Point(112, 133);
+            this.txtCNPJ.Location = new System.Drawing.Point(1563, 3);
             this.txtCNPJ.Margin = new System.Windows.Forms.Padding(112, 3, 15, 3);
             this.txtCNPJ.MaxLength = 32767;
             this.txtCNPJ.Name = "txtCNPJ";
@@ -6982,7 +7028,7 @@
             this.textBoxmod.BackColor = System.Drawing.Color.Transparent;
             this.textBoxmod.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.textBoxmod.Color = System.Drawing.Color.White;
-            this.textBoxmod.Location = new System.Drawing.Point(98, 159);
+            this.textBoxmod.Location = new System.Drawing.Point(1838, 3);
             this.textBoxmod.Margin = new System.Windows.Forms.Padding(98, 3, 15, 3);
             this.textBoxmod.MaxLength = 32767;
             this.textBoxmod.Name = "textBoxmod";
@@ -7063,11 +7109,11 @@
             this.nNFDataGridViewTextBoxColumn});
             this.dgvRefNFe.DataSource = this.bsNFreferenciadas;
             this.dgvRefNFe.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvRefNFe.Location = new System.Drawing.Point(0, 355);
+            this.dgvRefNFe.Location = new System.Drawing.Point(0, 62);
             this.dgvRefNFe.Name = "dgvRefNFe";
             this.dgvRefNFe.ReadOnly = true;
             this.dgvRefNFe.RowTemplate.Height = 19;
-            this.dgvRefNFe.Size = new System.Drawing.Size(936, 185);
+            this.dgvRefNFe.Size = new System.Drawing.Size(733, 185);
             this.dgvRefNFe.TabIndex = 220;
             // 
             // refNFeDataGridViewTextBoxColumn
@@ -7133,7 +7179,7 @@
             this.kryptonPanel107.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel107.Margin = new System.Windows.Forms.Padding(1);
             this.kryptonPanel107.Name = "kryptonPanel107";
-            this.kryptonPanel107.Size = new System.Drawing.Size(936, 46);
+            this.kryptonPanel107.Size = new System.Drawing.Size(733, 46);
             this.kryptonPanel107.TabIndex = 218;
             // 
             // btnPesquisarNF
@@ -7961,6 +8007,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn vdupDataGridViewTextBoxColumn;
         private System.Windows.Forms.GroupBox gbDI;
         private System.Windows.Forms.GroupBox gbADI;
+        private System.Windows.Forms.TabPage tabPage30;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel34;
+        private System.Windows.Forms.FlowLayoutPanel flCombustivel;
+        private Comum.Componentes.HLP_NumericUpDown nudCodigoANP;
+        private Comum.Componentes.HLP_TextBox txtUFcons;
+        private Comum.Componentes.HLP_NumericUpDown nudvTotTrib;
         private System.Windows.Forms.DataGridViewTextBoxColumn clCprod;
         private System.Windows.Forms.DataGridViewTextBoxColumn nitem;
         private System.Windows.Forms.DataGridViewTextBoxColumn xprodDataGridViewTextBoxColumn;
@@ -7979,16 +8031,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn vsegDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vdescDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn vOutroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clvTotTrib;
         private System.Windows.Forms.DataGridViewTextBoxColumn indTotDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xPedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nItemPedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn extipiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TabPage tabPage30;
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel34;
-        private System.Windows.Forms.FlowLayoutPanel flCombustivel;
-        private Comum.Componentes.HLP_NumericUpDown nudCodigoANP;
-        private Comum.Componentes.HLP_TextBox txtUFcons;
       // private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel;
        // private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel;
     }

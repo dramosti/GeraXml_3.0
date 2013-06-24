@@ -15,6 +15,7 @@ using ComponentFactory.Krypton.Toolkit;
 using HLP.GeraXml.Comum.Componentes;
 using HLP.GeraXml.bel;
 using HLP.GeraXml.UI.Configuracao;
+using HLP.GeraXml.dao.NFe.Estrutura;
 
 namespace HLP.GeraXml.UI.NFe
 {
@@ -219,6 +220,7 @@ namespace HLP.GeraXml.UI.NFe
                 bsProdutos.DataSource = objListaBelProd;
                 dgvProd.Columns["clVuncom"].DefaultCellStyle.Format = "n" + Acesso.QTDE_CASAS_VL_UNIT;
                 dgvProd.Columns["clVuntrib"].DefaultCellStyle.Format = "n" + Acesso.QTDE_CASAS_VL_UNIT;
+                dgvProd.Columns["clvTotTrib"].DefaultCellStyle.Format = "n2";
 
 
                 int IcountExport = nota.det.Where(p => (p.prod.Cfop == "7201") || (p.prod.Cfop == "7101") || (p.prod.Cfop == "7949") || (p.prod.Cfop == "7930") || (p.prod.Cfop == "7102")).Count(); //25679
@@ -245,6 +247,7 @@ namespace HLP.GeraXml.UI.NFe
                 nudVCOFINS.Value = nota.total.belIcmstot.Vcofins;
                 nudVOutro.Value = nota.total.belIcmstot.Voutro;
                 nudVNF.Value = nota.total.belIcmstot.Vnf;
+                nudvTotTrib.Value = nota.total.belIcmstot.vTotTrib;
 
                 //ISSQNtot
                 if (nota.total.belIssqntot != null)
@@ -570,6 +573,7 @@ namespace HLP.GeraXml.UI.NFe
                 nota.total.belIcmstot.Vcofins = nudVCOFINS.Value;
                 nota.total.belIcmstot.Voutro = nudVOutro.Value;
                 nota.total.belIcmstot.Vnf = nudVNF.Value;
+                nota.total.belIcmstot.vTotTrib = nudvTotTrib.Value;
                 //Fim - Totais
 
                 //ISSQNtot
@@ -725,7 +729,7 @@ namespace HLP.GeraXml.UI.NFe
                 //    }
                 //    nota.cobr.Fat.belDup = lObjDup;
                 //}
-               
+
                 #endregion
 
                 #region Inf Adicionais
@@ -910,7 +914,102 @@ namespace HLP.GeraXml.UI.NFe
             try
             {
                 DesabilitaComponentesConatiner(flICMS.Controls);
-                if (!Util.VerificaNovaST(icms.sCst))
+
+
+                string sEmpresaSuperSimples = daoDet.VerificaEmpresaSimplesNac();
+                bool bCstSuperSimples = Util.VerificaNovaST(icms.sCst);
+
+                if (bCstSuperSimples == true && sEmpresaSuperSimples == "S" )
+                {
+                    #region CTS_NOVAS
+                    switch ((Util.RetornaSTnovaAserUsada(icms.sCst)))
+                    {
+                        case "101":
+                            {
+                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN101.orig);
+                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN101.CSOSN;
+                                nudpCredSN.Value = icms.belICMSSN101.pCredSN;
+                                nudpCredSN.Visible = true;
+                                nudvCredICMSSN.Value = icms.belICMSSN101.vCredICMSSN;
+                                nudvCredICMSSN.Visible = true;
+                            }
+                            break;
+
+                        case "102":
+                            {
+                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN102.orig);
+                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN102.CSOSN;
+                            }
+                            break;
+                        case "201":
+                            {
+                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN201.orig);
+                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN201.CSOSN;
+                                cbxmodBCSTicmsItens.SelectedIndex = Convert.ToInt32(icms.belICMSSN201.modBCST);
+                                cbxmodBCSTicmsItens.Visible = true;
+                                nudpMVASTicmsItens.Value = icms.belICMSSN201.pMVAST;
+                                nudpMVASTicmsItens.Visible = true;
+                                nudpRedBCSTicmsItens.Value = icms.belICMSSN201.pRedBCST;
+                                nudpRedBCSTicmsItens.Visible = true;
+                                nudvBCSTicmsItens.Value = icms.belICMSSN201.vBCST;
+                                nudvBCSTicmsItens.Visible = true;
+                                nudpICMSSTicmsItens.Value = icms.belICMSSN201.pICMSST;
+                                nudpICMSSTicmsItens.Visible = true;
+                                nudvICMSSTicmsItens.Value = icms.belICMSSN201.vICMSST;
+                                nudvICMSSTicmsItens.Visible = true;
+                                nudpCredSN.Value = icms.belICMSSN201.pCredSN;
+                                nudpCredSN.Visible = true;
+                                nudvCredICMSSN.Value = icms.belICMSSN201.vCredICMSSN;
+                                nudvCredICMSSN.Visible = true;
+                            }
+                            break;
+                        case "500":
+                            {
+                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN500.orig);
+                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN500.CSOSN;
+                                nudvBCSTRetIcmsItens.Value = icms.belICMSSN500.vBCSTRet;
+                                nudvBCSTRetIcmsItens.Visible = true;
+                                nudvICMSSTRetIcmsItens.Value = icms.belICMSSN500.vICMSSTRet;
+                                nudvICMSSTRetIcmsItens.Visible = true;
+                            }
+                            break;
+                        case "900":
+                            {
+                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN900.orig);
+                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN900.CSOSN;
+                                cbxmodBCicmsItens.SelectedIndex = Convert.ToInt32(icms.belICMSSN900.modBC);
+                                cbxmodBCicmsItens.Visible = true;
+                                nudvBCicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.vBC);
+                                nudvBCicmsItens.Visible = true;
+                                nudpRedBCicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.pRedBC);
+                                nudpRedBCicmsItens.Visible = true;
+                                nudpICMSitens.Value = Convert.ToDecimal(icms.belICMSSN900.pICMS);
+                                nudpICMSitens.Visible = true;
+                                nudvICMSicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.vICMS);
+                                nudvICMSicmsItens.Visible = true;
+                                cbxmodBCSTicmsItens.SelectedIndex = Convert.ToInt32(icms.belICMSSN900.modBCST);
+                                cbxmodBCSTicmsItens.Visible = true;
+                                nudpMVASTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.pMVAST);
+                                nudpMVASTicmsItens.Visible = true;
+                                nudpRedBCSTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.pRedBCST);
+                                nudpRedBCSTicmsItens.Visible = true;
+                                nudvBCSTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.vBCST);
+                                nudvBCSTicmsItens.Visible = true;
+                                nudpICMSSTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.pICMSST);
+                                nudpICMSSTicmsItens.Visible = true;
+                                nudvICMSSTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.vICMSST);
+                                nudvICMSSTicmsItens.Visible = true;
+                                nudpCredSN.Value = Convert.ToDecimal(icms.belICMSSN900.pCredSN);
+                                nudpCredSN.Visible = true;
+                                nudvCredICMSSN.Value = Convert.ToDecimal(icms.belICMSSN900.vCredICMSSN);
+                                nudvCredICMSSN.Visible = true;
+                            }
+                            break;
+                    }
+                    #endregion
+                   
+                }
+                else
                 {
                     #region CST_ANTIGAS
                     switch (icms.sCst.Substring(1, 2))
@@ -1106,96 +1205,7 @@ namespace HLP.GeraXml.UI.NFe
                     }
 
                     #endregion
-                }
-                else
-                {
-
-                    #region CTS_NOVAS
-                    switch ((Util.RetornaSTnovaAserUsada(icms.sCst)))
-                    {
-                        case "101":
-                            {
-                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN101.orig);
-                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN101.CSOSN;
-                                nudpCredSN.Value = icms.belICMSSN101.pCredSN;
-                                nudpCredSN.Visible = true;
-                                nudvCredICMSSN.Value = icms.belICMSSN101.vCredICMSSN;
-                                nudvCredICMSSN.Visible = true;
-                            }
-                            break;
-
-                        case "102":
-                            {
-                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN102.orig);
-                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN102.CSOSN;
-                            }
-                            break;
-                        case "201":
-                            {
-                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN201.orig);
-                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN201.CSOSN;
-                                cbxmodBCSTicmsItens.SelectedIndex = Convert.ToInt32(icms.belICMSSN201.modBCST);
-                                cbxmodBCSTicmsItens.Visible = true;
-                                nudpMVASTicmsItens.Value = icms.belICMSSN201.pMVAST;
-                                nudpMVASTicmsItens.Visible = true;
-                                nudpRedBCSTicmsItens.Value = icms.belICMSSN201.pRedBCST;
-                                nudpRedBCSTicmsItens.Visible = true;
-                                nudvBCSTicmsItens.Value = icms.belICMSSN201.vBCST;
-                                nudvBCSTicmsItens.Visible = true;
-                                nudpICMSSTicmsItens.Value = icms.belICMSSN201.pICMSST;
-                                nudpICMSSTicmsItens.Visible = true;
-                                nudvICMSSTicmsItens.Value = icms.belICMSSN201.vICMSST;
-                                nudvICMSSTicmsItens.Visible = true;
-                                nudpCredSN.Value = icms.belICMSSN201.pCredSN;
-                                nudpCredSN.Visible = true;
-                                nudvCredICMSSN.Value = icms.belICMSSN201.vCredICMSSN;
-                                nudvCredICMSSN.Visible = true;
-                            }
-                            break;
-                        case "500":
-                            {
-                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN500.orig);
-                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN500.CSOSN;
-                                nudvBCSTRetIcmsItens.Value = icms.belICMSSN500.vBCSTRet;
-                                nudvBCSTRetIcmsItens.Visible = true;
-                                nudvICMSSTRetIcmsItens.Value = icms.belICMSSN500.vICMSSTRet;
-                                nudvICMSSTRetIcmsItens.Visible = true;
-                            }
-                            break;
-                        case "900":
-                            {
-                                cbxOrigICMSitens.cbx.SelectedIndex = Convert.ToInt16(icms.belICMSSN900.orig);
-                                cbxCSTicmsItens.SelectedValue = icms.belICMSSN900.CSOSN;
-                                cbxmodBCicmsItens.SelectedIndex = Convert.ToInt32(icms.belICMSSN900.modBC);
-                                cbxmodBCicmsItens.Visible = true;
-                                nudvBCicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.vBC);
-                                nudvBCicmsItens.Visible = true;
-                                nudpRedBCicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.pRedBC);
-                                nudpRedBCicmsItens.Visible = true;
-                                nudpICMSitens.Value = Convert.ToDecimal(icms.belICMSSN900.pICMS);
-                                nudpICMSitens.Visible = true;
-                                nudvICMSicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.vICMS);
-                                nudvICMSicmsItens.Visible = true;
-                                cbxmodBCSTicmsItens.SelectedIndex = Convert.ToInt32(icms.belICMSSN900.modBCST);
-                                cbxmodBCSTicmsItens.Visible = true;
-                                nudpMVASTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.pMVAST);
-                                nudpMVASTicmsItens.Visible = true;
-                                nudpRedBCSTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.pRedBCST);
-                                nudpRedBCSTicmsItens.Visible = true;
-                                nudvBCSTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.vBCST);
-                                nudvBCSTicmsItens.Visible = true;
-                                nudpICMSSTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.pICMSST);
-                                nudpICMSSTicmsItens.Visible = true;
-                                nudvICMSSTicmsItens.Value = Convert.ToDecimal(icms.belICMSSN900.vICMSST);
-                                nudvICMSSTicmsItens.Visible = true;
-                                nudpCredSN.Value = Convert.ToDecimal(icms.belICMSSN900.pCredSN);
-                                nudpCredSN.Visible = true;
-                                nudvCredICMSSN.Value = Convert.ToDecimal(icms.belICMSSN900.vCredICMSSN);
-                                nudvCredICMSSN.Visible = true;
-                            }
-                            break;
-                    }
-                    #endregion
+                 
                 }
             }
             catch (Exception ex)

@@ -8,7 +8,13 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
     public class belIcms
     {
 
-        public string sCst { get; set; }
+        private string _sCst;
+
+        public string sCst
+        {
+            get { return _sCst; }
+            set { _sCst = value; }
+        }
         private belIcms00 _belIcms00;
         private belIcms10 _belIcms10;
         private belIcms20 _belIcms20;

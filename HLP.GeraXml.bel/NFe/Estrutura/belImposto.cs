@@ -16,6 +16,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         private belCofins _belCofins;
         private belIss _belIss;
         public decimal nitem { get; set; }
+        
 
 
         public belIcms belIcms

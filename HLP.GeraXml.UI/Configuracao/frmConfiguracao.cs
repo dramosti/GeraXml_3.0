@@ -226,6 +226,7 @@ namespace HLP.GeraXml.UI.Configuracao
                         cbxGruposSCAN.SelectedValue = objbelConfiguracao.GRUPO_SCAN;
                     }
                 }
+                this.cbxTransparencia.SelectedIndex = objbelConfiguracao.TRANSPARENCIA;
                 this.cbxTpEmiss.cbx.SelectedValue = objbelConfiguracao.TP_EMIS.ToString();
                 this.cbxFormDanfe.Text = objbelConfiguracao.TIPO_IMPRESSAO;
                 this.hlP_TextBox1.Text = objbelConfiguracao.HOST_SERVIDOR;
@@ -260,6 +261,15 @@ namespace HLP.GeraXml.UI.Configuracao
                 else
                 {
                     objbelConfiguracao.FUSO = "-02:00";
+                }
+
+                if (cbxTransparencia.Text != "")
+                {
+                    objbelConfiguracao.TRANSPARENCIA = cbxTransparencia.SelectedIndex;
+                }
+                else
+                {
+                    objbelConfiguracao.TRANSPARENCIA = 0;
                 }
 
                 objbelConfiguracao.COD_BARRAS_XML = this.chkCodBarras.Checked.ToString();
