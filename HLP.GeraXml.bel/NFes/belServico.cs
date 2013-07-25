@@ -9,6 +9,7 @@ using System.IO;
 using FirebirdSql.Data.FirebirdClient;
 using HLP.GeraXml.dao.ADO;
 using HLP.GeraXml.dao;
+using HLP.GeraXml.bel.NFe.Estrutura;
 
 namespace HLP.GeraXml.bel.NFes
 {
@@ -48,12 +49,27 @@ namespace HLP.GeraXml.bel.NFes
                     {
                         objTcDadosServico.CodigoTributacaoMunicipio = dr["cd_trib_municipio"].ToString();
                     }
-                    objTcDadosServico.Discriminacao += Environment.NewLine + "* " + dr["ds_prod"].ToString().ToUpper() + " R$ " + Convert.ToDecimal(dr["vl_totbruto"].ToString()).ToString("#0.00");
+                    objTcDadosServico.Discriminacao += Environment.NewLine + "* " + dr["ds_prod"].ToString().ToUpper() + " R$ " + Convert.ToDecimal(dr["vl_totbruto"].ToString()).ToString("#0.00") +
+                        ((Acesso.NM_EMPRESA.Equals("FORMINGP") && dr["ds_obs"].ToString() != "") ? " - Obs.: " + dr["ds_obs"].ToString() : "");
+                }
+
+                if (Acesso.NM_EMPRESA.Equals("FORMINGP"))
+                {
+                    belCobr objCobrancas = new belCobr();
+                    objCobrancas.Carrega(sNota);
+                    string sDescDup = "{0}{0}VENCIMENTO: {1}{0}VALOR LÍQUIDO A PAGAR: R${2}{0}{0}";
+
+                    foreach (belDup dup in objCobrancas.Fat.belDup)
+                    {
+                        objTcDadosServico.Discriminacao += string.Format(sDescDup, Environment.NewLine, dup.Dvenc.ToShortDateString(), dup.Vdup);
+                    }
                 }
 
                 objTcDadosServico.Discriminacao += Environment.NewLine + Environment.NewLine + "Observação:" + Environment.NewLine
-                                                + daoUtil.GetTotImpostosServ(sNota) 
+                                                + daoUtil.GetTotImpostosServ(sNota)
                                                 + BuscaObs(sNota);
+
+
 
                 if (objTcDadosServico.Discriminacao[objTcDadosServico.Discriminacao.Length - 1].ToString().Equals("}"))
                 {
@@ -101,11 +117,23 @@ namespace HLP.GeraXml.bel.NFes
                 {
                     objTcValores.ValorServicos = Convert.ToDecimal(dr["ValorServicos"].ToString());
                     objTcValores.ValorDeducoes = 0; //Convert.ToDecimal(dr["ValorDeducoes"].ToString());
-                    objTcValores.ValorPis = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorPis"].ToString())); //conceito passado pela lorenzon
-                    objTcValores.ValorCofins = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorCofins"].ToString())); //conceito passado pela lorenzon
+
+                    if (Acesso.NM_EMPRESA.Equals("FORMINGP"))
+                    {
+                        objTcValores.ValorPis = base.SumValorMovitem(sNota, "vl_pis_desconto_dupl");
+                        objTcValores.ValorPis = base.SumValorMovitem(sNota, "vl_cofins_desconto_dupl");
+                        objTcValores.ValorPis = base.SumValorMovitem(sNota, "vl_csll_desconto_dupl");
+                    }
+                    else
+                    {
+                        objTcValores.ValorPis = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorPis"].ToString())); //conceito passado pela lorenzon
+                        objTcValores.ValorCofins = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorCofins"].ToString())); //conceito passado pela lorenzon
+                        objTcValores.ValorCsll = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["vl_csll_serv"].ToString())); //conceito passado pela lorenzon
+                    }
+
                     objTcValores.ValorInss = Convert.ToDecimal(dr["ValorInss"].ToString());
                     objTcValores.ValorIr = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorIr"].ToString())); //conceito passado pela lorenzon
-                    objTcValores.ValorCsll = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["vl_csll_serv"].ToString())); //conceito passado pela lorenzon
+
                     objTcValores.IssRetido = (dr["IssRetido"].ToString() == "S" ? 1 : 2); //OS_26219
                     objTcValores.ValorIss = (objTcValores.IssRetido == 2 ? Convert.ToDecimal(dr["ValorIss"].ToString()) : 0); // se não for retido joga no valor ISS //OS_26219
                     objTcValores.OutrasRetencoes = 0;// Convert.ToDecimal(dr["OutrasRetencoes"].ToString());

@@ -17,7 +17,7 @@ namespace HLP.GeraXml.dao.NFes
             {
                 StringBuilder sQuery = new StringBuilder();
                 sQuery.Append("Select ");
-                sQuery.Append("distinct movitem.ds_prod  ,movitem.vl_totbruto,coalesce(produto.cd_trib_municipio,'')cd_trib_municipio, " +
+                sQuery.Append("distinct movitem.ds_prod, coalesce(movitem.ds_obs,'')ds_obs  ,movitem.vl_totbruto,coalesce(produto.cd_trib_municipio,'')cd_trib_municipio, " +
                               " coalesce(empresa.cd_lista_servico,'')cd_lista_servico_Emp, " +
                               " coalesce(produto.cd_lista_servico,'')cd_lista_servico_Prod from movitem ");
                 sQuery.Append("left join produto on movitem.cd_prod = produto.cd_prod ");
@@ -80,6 +80,28 @@ namespace HLP.GeraXml.dao.NFes
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+
+        public decimal SumValorMovitem(string sNFSEQ, string sFIELD)
+        {
+            try
+            {
+                decimal dValor = 0;
+
+                string sResult = HlpDbFuncoes.qrySeekValue("MOVITEM", "SUM(" + sFIELD + ")", string.Format("cd_nfseq= '{0}' and cd_empresa = '{1}'", sNFSEQ, Acesso.CD_EMPRESA));
+
+                if (sResult != "")
+                {
+                    dValor = Convert.ToDecimal(sResult);
+                }
+                return dValor;
+
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

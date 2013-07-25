@@ -196,7 +196,7 @@ namespace HLP.GeraXml.bel
                 }
 
                 if (lPendenciaContador.Count > 0)
-                {                  
+                {
                     foreach (PendenciaEmail item in lPendenciaContador)
                     {
                         Attachment anexo = new Attachment(item.sPathZip);
@@ -371,7 +371,15 @@ namespace HLP.GeraXml.bel
         {
             try
             {
-                string scaminhoLink = "visualizar.ginfes" + (Acesso.TP_AMB_SERV == 2 ? "h" : "") + ".com.br/report/consultarNota?__report=nfs_ver4&cdVerificacao=" + email.sCodigoVerificacaoNFservico + "&numNota=" + email.sSeq; 
+                string scaminhoLink = "";
+                if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES)
+                {
+                    scaminhoLink = "visualizar.ginfes" + (Acesso.TP_AMB_SERV == 2 ? "h" : "") + ".com.br/report/consultarNota?__report=nfs_ver4&cdVerificacao=" + email.sCodigoVerificacaoNFservico + "&numNota=" + email.sSeq;
+                }
+                else
+                {
+                    scaminhoLink = string.Format("https://spe.riodasostras.rj.gov.br/nfse/nfse.aspx?ccm=2747&nf={0}&cod={1}", email.sSeq, email.sCodigoVerificacaoNFservico.Replace("-", ""));
+                }
 
                 StringBuilder sCorpo = new StringBuilder();
                 sCorpo.Append("<font face='Segoe UI' size='2'><H3>Sr. Contribuinte,</H3>");
@@ -395,7 +403,7 @@ namespace HLP.GeraXml.bel
         private string GeraCorpoEmailNF_ServicoDSF(belEmail email)
         {
             try
-            {                
+            {
 
                 StringBuilder sCorpo = new StringBuilder();
                 sCorpo.Append("<font face='Segoe UI' size='2'><H3>Sr. Contribuinte,</H3>");
@@ -414,7 +422,7 @@ namespace HLP.GeraXml.bel
             }
         }
 
-      
+
 
         private string GeraCorpoEmailContadorNfe()
         {

@@ -128,6 +128,14 @@ namespace HLP.GeraXml.Comum.Componentes
             set
             {
                 txt.Multiline = value;
+                if (value)
+                {
+                    txt.ScrollBars = ScrollBars.Vertical;
+                }
+                else
+                {
+                    txt.ScrollBars = ScrollBars.Both;
+                }
             }
         }
         public bool _Password

@@ -127,6 +127,7 @@
             this.tabErros = new System.Windows.Forms.TabPage();
             this.listErros = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
             this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
+            this.cachedrptNFSeCamp1 = new HLP.GeraXml.UI.Relatorios.CachedrptNFSeCamp();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
@@ -976,7 +977,7 @@
             this.tbParametros.Location = new System.Drawing.Point(4, 25);
             this.tbParametros.Margin = new System.Windows.Forms.Padding(0);
             this.tbParametros.Name = "tbParametros";
-            this.tbParametros.Size = new System.Drawing.Size(733, 247);
+            this.tbParametros.Size = new System.Drawing.Size(877, 338);
             this.tbParametros.TabIndex = 2;
             this.tbParametros.Tag = false;
             this.tbParametros.Text = "Serviço";
@@ -987,7 +988,7 @@
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel3.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(733, 247);
+            this.kryptonPanel3.Size = new System.Drawing.Size(877, 338);
             this.kryptonPanel3.TabIndex = 75;
             // 
             // kryptonTabControl2
@@ -1011,7 +1012,7 @@
             this.kryptonTabControl2.Name = "kryptonTabControl2";
             this.kryptonTabControl2.PreserveTabColor = false;
             this.kryptonTabControl2.SelectedIndex = 0;
-            this.kryptonTabControl2.Size = new System.Drawing.Size(733, 247);
+            this.kryptonTabControl2.Size = new System.Drawing.Size(877, 338);
             this.kryptonTabControl2.TabIndex = 226;
             this.kryptonTabControl2.UseExtendedLayout = false;
             // 
@@ -1022,7 +1023,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(725, 218);
+            this.tabPage7.Size = new System.Drawing.Size(869, 309);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Tag = false;
             this.tabPage7.Text = "Valores";
@@ -1033,7 +1034,7 @@
             this.kryptonPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel9.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel9.Name = "kryptonPanel9";
-            this.kryptonPanel9.Size = new System.Drawing.Size(725, 218);
+            this.kryptonPanel9.Size = new System.Drawing.Size(869, 309);
             this.kryptonPanel9.TabIndex = 75;
             // 
             // flpValoresServico
@@ -1061,7 +1062,7 @@
             this.flpValoresServico.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpValoresServico.Location = new System.Drawing.Point(0, 0);
             this.flpValoresServico.Name = "flpValoresServico";
-            this.flpValoresServico.Size = new System.Drawing.Size(725, 218);
+            this.flpValoresServico.Size = new System.Drawing.Size(869, 309);
             this.flpValoresServico.TabIndex = 79;
             // 
             // nudValorServ
@@ -1313,7 +1314,7 @@
             this.nudValorCOFINS.BackColor = System.Drawing.Color.Transparent;
             this.nudValorCOFINS.Color = System.Drawing.Color.White;
             this.nudValorCOFINS.DecimalPlaces = 2;
-            this.nudValorCOFINS.Location = new System.Drawing.Point(378, 3);
+            this.nudValorCOFINS.Location = new System.Drawing.Point(72, 206);
             this.nudValorCOFINS.Margin = new System.Windows.Forms.Padding(72, 3, 15, 3);
             this.nudValorCOFINS.Maximum = new decimal(new int[] {
             99999999,
@@ -1350,7 +1351,7 @@
             this.cboIssRetido.Color = System.Drawing.Color.White;
             this.cboIssRetido.DataSource = null;
             this.cboIssRetido.DisplayMember = "DisplayMember";
-            this.cboIssRetido.Location = new System.Drawing.Point(397, 32);
+            this.cboIssRetido.Location = new System.Drawing.Point(91, 235);
             this.cboIssRetido.Margin = new System.Windows.Forms.Padding(91, 3, 15, 3);
             this.cboIssRetido.Name = "cboIssRetido";
             this.cboIssRetido.SelectedIndex = -1;
@@ -1370,7 +1371,7 @@
             this.nudBaseCalc.BackColor = System.Drawing.Color.Transparent;
             this.nudBaseCalc.Color = System.Drawing.Color.White;
             this.nudBaseCalc.DecimalPlaces = 2;
-            this.nudBaseCalc.Location = new System.Drawing.Point(384, 61);
+            this.nudBaseCalc.Location = new System.Drawing.Point(78, 264);
             this.nudBaseCalc.Margin = new System.Windows.Forms.Padding(78, 3, 15, 3);
             this.nudBaseCalc.Maximum = new decimal(new int[] {
             99999999,
@@ -1404,7 +1405,7 @@
             this.nudIssRetido.BackColor = System.Drawing.Color.Transparent;
             this.nudIssRetido.Color = System.Drawing.Color.White;
             this.nudIssRetido.DecimalPlaces = 2;
-            this.nudIssRetido.Location = new System.Drawing.Point(363, 90);
+            this.nudIssRetido.Location = new System.Drawing.Point(363, 3);
             this.nudIssRetido.Margin = new System.Windows.Forms.Padding(57, 3, 15, 3);
             this.nudIssRetido.Maximum = new decimal(new int[] {
             99999999,
@@ -1438,7 +1439,7 @@
             this.nudValorInss.BackColor = System.Drawing.Color.Transparent;
             this.nudValorInss.Color = System.Drawing.Color.White;
             this.nudValorInss.DecimalPlaces = 2;
-            this.nudValorInss.Location = new System.Drawing.Point(395, 119);
+            this.nudValorInss.Location = new System.Drawing.Point(395, 32);
             this.nudValorInss.Margin = new System.Windows.Forms.Padding(89, 3, 15, 3);
             this.nudValorInss.Maximum = new decimal(new int[] {
             99999999,
@@ -1472,7 +1473,7 @@
             this.nudValorIr.BackColor = System.Drawing.Color.Transparent;
             this.nudValorIr.Color = System.Drawing.Color.White;
             this.nudValorIr.DecimalPlaces = 2;
-            this.nudValorIr.Location = new System.Drawing.Point(410, 148);
+            this.nudValorIr.Location = new System.Drawing.Point(410, 61);
             this.nudValorIr.Margin = new System.Windows.Forms.Padding(104, 3, 15, 3);
             this.nudValorIr.Maximum = new decimal(new int[] {
             99999999,
@@ -1506,7 +1507,7 @@
             this.nudValorISS.BackColor = System.Drawing.Color.Transparent;
             this.nudValorISS.Color = System.Drawing.Color.White;
             this.nudValorISS.DecimalPlaces = 2;
-            this.nudValorISS.Location = new System.Drawing.Point(404, 177);
+            this.nudValorISS.Location = new System.Drawing.Point(404, 90);
             this.nudValorISS.Margin = new System.Windows.Forms.Padding(98, 3, 15, 3);
             this.nudValorISS.Maximum = new decimal(new int[] {
             99999999,
@@ -1540,7 +1541,7 @@
             this.nudDescCond.BackColor = System.Drawing.Color.Transparent;
             this.nudDescCond.Color = System.Drawing.Color.White;
             this.nudDescCond.DecimalPlaces = 2;
-            this.nudDescCond.Location = new System.Drawing.Point(624, 3);
+            this.nudDescCond.Location = new System.Drawing.Point(318, 119);
             this.nudDescCond.Margin = new System.Windows.Forms.Padding(12, 3, 15, 3);
             this.nudDescCond.Maximum = new decimal(new int[] {
             99999999,
@@ -1574,7 +1575,7 @@
             this.nudAliquota.BackColor = System.Drawing.Color.Transparent;
             this.nudAliquota.Color = System.Drawing.Color.White;
             this.nudAliquota.DecimalPlaces = 2;
-            this.nudAliquota.Location = new System.Drawing.Point(713, 32);
+            this.nudAliquota.Location = new System.Drawing.Point(407, 148);
             this.nudAliquota.Margin = new System.Windows.Forms.Padding(101, 3, 15, 3);
             this.nudAliquota.Maximum = new decimal(new int[] {
             99999999,
@@ -2141,7 +2142,7 @@
             this.txtEstadoToma.BackColor = System.Drawing.Color.Transparent;
             this.txtEstadoToma.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtEstadoToma.Color = System.Drawing.Color.White;
-            this.txtEstadoToma.Location = new System.Drawing.Point(70, 265);
+            this.txtEstadoToma.Location = new System.Drawing.Point(541, 3);
             this.txtEstadoToma.Margin = new System.Windows.Forms.Padding(70, 3, 15, 3);
             this.txtEstadoToma.MaxLength = 2;
             this.txtEstadoToma.Name = "txtEstadoToma";
@@ -2164,7 +2165,7 @@
             this.mskFoneToma.BackColor = System.Drawing.Color.Transparent;
             this.mskFoneToma.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.mskFoneToma.Color = System.Drawing.Color.White;
-            this.mskFoneToma.Location = new System.Drawing.Point(506, 3);
+            this.mskFoneToma.Location = new System.Drawing.Point(506, 32);
             this.mskFoneToma.Margin = new System.Windows.Forms.Padding(35, 3, 15, 3);
             this.mskFoneToma.MaxLength = 12;
             this.mskFoneToma.Name = "mskFoneToma";
@@ -2187,7 +2188,7 @@
             this.txtEmailToma.BackColor = System.Drawing.Color.Transparent;
             this.txtEmailToma.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtEmailToma.Color = System.Drawing.Color.White;
-            this.txtEmailToma.Location = new System.Drawing.Point(520, 32);
+            this.txtEmailToma.Location = new System.Drawing.Point(520, 61);
             this.txtEmailToma.Margin = new System.Windows.Forms.Padding(49, 3, 15, 3);
             this.txtEmailToma.MaxLength = 60;
             this.txtEmailToma.Name = "txtEmailToma";
@@ -2398,5 +2399,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonListBox listErros;
         private Comum.Componentes.HLP_MaskedTextBox mskCpfCnpjToma;
         private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado1;
+        private Relatorios.CachedrptNFSeCamp cachedrptNFSeCamp1;
     }
 }
