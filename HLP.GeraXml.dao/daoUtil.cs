@@ -80,6 +80,20 @@ namespace HLP.GeraXml.dao
             }
         }
 
+        public static string GetNFSEQbyNumeroRPS(string sRPS)
+        {
+            try
+            {
+                string sCD_NFSEQ = "";
+                sCD_NFSEQ = HlpDbFuncoes.qrySeekValue("NF", "COALESCE(cd_nfseq,'')", string.Format("cd_rps = '{0}' AND CD_EMPRESA = '{1}'", sRPS, Acesso.CD_EMPRESA));
+                return sCD_NFSEQ;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static string GetMOTIVO_CANC(string sCD_NFSEQ)
         {
             try

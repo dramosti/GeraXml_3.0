@@ -786,368 +786,379 @@ namespace HLP.GeraXml.bel.NFe
             int i101 = 0;
             int i102 = 0;
             int i201 = 0;
+            int i202 = 0;
             int i500 = 0;
             int i900 = 0;
 
 
             for (int i = 0; i < xNdICMS.Count; i++)
             {
-                // Diego - OS_24302 - 01/04/2010
-                iPK_itens_notaAnterior++;
-
-                switch (xNdICMS[i].FirstChild.Name)
+                try
                 {
-                    case "ICMS00":
-                        for (int j = 0; j < xNdICMS00[i00].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS00(xNdICMS00[i00].ChildNodes[j].LocalName, xNdICMS00[i00].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS00.AddICMS00Row(drICMS00);
-                        drICMS00 = dsdanfe.ICMS00.NewICMS00Row();
+                    // Diego - OS_24302 - 01/04/2010
+                    iPK_itens_notaAnterior++;
 
-                        i00++;
-                        break;
-                    case "ICMS10":
-                        for (int j = 0; j < xNdICMS10[i10].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS10(xNdICMS10[i10].ChildNodes[j].LocalName, xNdICMS10[i10].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS10.AddICMS10Row(drICMS10);
-                        drICMS10 = dsdanfe.ICMS10.NewICMS10Row();
-                        i10++;
-                        break;
-                    case "ICMS20":
-                        for (int j = 0; j < xNdICMS20[i20].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS20(xNdICMS20[i20].ChildNodes[j].LocalName, xNdICMS20[i20].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS20.AddICMS20Row(drICMS20);
-                        drICMS20 = dsdanfe.ICMS20.NewICMS20Row();
-                        i20++;
-                        break;
-                    case "ICMS30":
-                        for (int j = 0; j < xNdICMS30[i30].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS30(xNdICMS30[i30].ChildNodes[j].LocalName, xNdICMS30[i30].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS30.AddICMS30Row(drICMS30);
-                        drICMS30 = dsdanfe.ICMS30.NewICMS30Row();
-                        i30++;
-                        break;
-                    case "ICMS40":
-                        for (int j = 0; j < xNdICMS40[i40].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS40(xNdICMS40[i40].ChildNodes[j].LocalName, xNdICMS40[i40].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS40.AddICMS40Row(drICMS40);
-                        drICMS40 = dsdanfe.ICMS40.NewICMS40Row();
-                        i40++;
-                        break;
-                    case "ICMS51":
-                        for (int j = 0; j < xNdICMS51[i51].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS51(xNdICMS51[i51].ChildNodes[j].LocalName, xNdICMS51[i51].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS51.AddICMS51Row(drICMS51);
-                        drICMS51 = dsdanfe.ICMS51.NewICMS51Row();
-                        i51++;
-                        break;
-                    case "ICMS60":
-                        for (int j = 0; j < xNdICMS60[i60].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS60(xNdICMS60[i60].ChildNodes[j].LocalName, xNdICMS60[i60].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS60.AddICMS60Row(drICMS60);
-                        drICMS60 = dsdanfe.ICMS60.NewICMS60Row();
-                        i60++;
-                        break;
-                    case "ICMS70":
-                        for (int j = 0; j < xNdICMS70[i70].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS70(xNdICMS70[i70].ChildNodes[j].LocalName, xNdICMS70[i70].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS70.AddICMS70Row(drICMS70);
-                        drICMS70 = dsdanfe.ICMS70.NewICMS70Row();
-                        i70++;
-                        break;
-                    case "ICMS90":
-                        for (int j = 0; j < xNdICMS90[i90].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMS90(xNdICMS90[i90].ChildNodes[j].LocalName, xNdICMS90[i90].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMS90.AddICMS90Row(drICMS90);
-                        drICMS90 = dsdanfe.ICMS90.NewICMS90Row();
-                        i90++;
-                        break;
-                    case "ICMSPart":
-                        for (int j = 0; j < xNdICMSPart[iPart].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMSPart(xNdICMSPart[iPart].ChildNodes[j].LocalName, xNdICMSPart[iPart].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMSPart.AddICMSPartRow(drICMSPart);
-                        drICMSPart = dsdanfe.ICMSPart.NewICMSPartRow();
-                        iPart++;
-                        break;
-                    case "ICMSST":
-                        for (int j = 0; j < xNdICMSST[iST].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMSST(xNdICMSST[iST].ChildNodes[j].LocalName, xNdICMSST[iST].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMSST.AddICMSSTRow(drICMSST);
-                        drICMSST = dsdanfe.ICMSST.NewICMSSTRow();
-                        iST++;
-                        break;
-                    case "ICMSSN101":
-                        for (int j = 0; j < xNdICMSSN101[i101].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMSSN101(xNdICMSSN101[i101].ChildNodes[j].LocalName, xNdICMSSN101[i101].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMSSN101.AddICMSSN101Row(drICMSSN101);
-                        drICMSSN101 = dsdanfe.ICMSSN101.NewICMSSN101Row();
-                        i101++;
-                        break;
-                    case "ICMSSN102":
-                        for (int j = 0; j < xNdICMSSN102[i102].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMSSN102(xNdICMSSN102[i102].ChildNodes[j].LocalName, xNdICMSSN102[i102].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMSSN102.AddICMSSN102Row(drICMSSN102);
-                        drICMSSN102 = dsdanfe.ICMSSN102.NewICMSSN102Row();
-                        i102++;
-                        break;
-                    case "ICMSSN201":
-                        for (int j = 0; j < xNdICMSSN201[i201].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMSSN201(xNdICMSSN201[i201].ChildNodes[j].LocalName, xNdICMSSN201[i201].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMSSN201.AddICMSSN201Row(drICMSSN201);
-                        drICMSSN201 = dsdanfe.ICMSSN201.NewICMSSN201Row();
-                        i201++;
-                        break;
-                    case "ICMSSN202":
-                        xNdICMSSN201 = xml.GetElementsByTagName("ICMSSN202");
-                        for (int j = 0; j < xNdICMSSN201[i201].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMSSN201(xNdICMSSN201[i201].ChildNodes[j].LocalName, xNdICMSSN201[i201].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMSSN201.AddICMSSN201Row(drICMSSN201);
-                        drICMSSN201 = dsdanfe.ICMSSN201.NewICMSSN201Row();
-                        i201++;
-                        break;
-                    case "ICMSSN500":
-                        for (int j = 0; j < xNdICMSSN500[i500].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMSSN500(xNdICMSSN500[i500].ChildNodes[j].LocalName, xNdICMSSN500[i500].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMSSN500.AddICMSSN500Row(drICMSSN500);
-                        drICMSSN500 = dsdanfe.ICMSSN500.NewICMSSN500Row();
-                        i500++;
-                        break;
-                    case "ICMSSN900":
-                        for (int j = 0; j < xNdICMSSN900[i900].ChildNodes.Count; j++)
-                        {
-                            populaDadosICMSSN900(xNdICMSSN900[i900].ChildNodes[j].LocalName, xNdICMSSN900[i900].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                        }
-                        dsdanfe.ICMSSN900.AddICMSSN900Row(drICMSSN900);
-                        drICMSSN900 = dsdanfe.ICMSSN900.NewICMSSN900Row();
-                        i900++;
-                        break;
-                } // Diego - OS_24302 - 01/04/2010 - Fim
-                if (xNdIPI.Count > 0)
-                {
-                    for (int j = 0; j < xNdIPI[i].ChildNodes.Count; j++)
+                    switch (xNdICMS[i].FirstChild.Name)
                     {
-                        populaDadosIPI(xNdIPI[i].ChildNodes[j].LocalName, xNdIPI[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior), (iPK_itens_notaAnterior).ToString());
-                    }
-                    dsdanfe.IPI.AddIPIRow(drIPI);
-                    drIPI = dsdanfe.IPI.NewIPIRow();
-
-                    //Claudinei - o.s. sem - 18/02/2010
-                    // Diego - Sem O.S - 18/02/2010 
-
-                    for (int x = 0; x < xNdIPI[i].ChildNodes.Count; x++)
-                    {
-                        if (xNdIPI[i].ChildNodes[x].Name.Equals("IPITrib"))
-                        {
-                            if (xNdIPItrib[icountxNdIPI] != null)
+                        case "ICMS00":
+                            for (int j = 0; j < xNdICMS00[i00].ChildNodes.Count; j++)
                             {
-                                for (int j = 0; j < xNdIPItrib[icountxNdIPI].ChildNodes.Count; j++)
-                                {
-                                    populaDadosIPItrib(xNdIPItrib[icountxNdIPI].ChildNodes[j].LocalName, xNdIPItrib[icountxNdIPI].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                                populaDadosICMS00(xNdICMS00[i00].ChildNodes[j].LocalName, xNdICMS00[i00].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS00.AddICMS00Row(drICMS00);
+                            drICMS00 = dsdanfe.ICMS00.NewICMS00Row();
 
+                            i00++;
+                            break;
+                        case "ICMS10":
+                            for (int j = 0; j < xNdICMS10[i10].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMS10(xNdICMS10[i10].ChildNodes[j].LocalName, xNdICMS10[i10].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS10.AddICMS10Row(drICMS10);
+                            drICMS10 = dsdanfe.ICMS10.NewICMS10Row();
+                            i10++;
+                            break;
+                        case "ICMS20":
+                            for (int j = 0; j < xNdICMS20[i20].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMS20(xNdICMS20[i20].ChildNodes[j].LocalName, xNdICMS20[i20].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS20.AddICMS20Row(drICMS20);
+                            drICMS20 = dsdanfe.ICMS20.NewICMS20Row();
+                            i20++;
+                            break;
+                        case "ICMS30":
+                            for (int j = 0; j < xNdICMS30[i30].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMS30(xNdICMS30[i30].ChildNodes[j].LocalName, xNdICMS30[i30].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS30.AddICMS30Row(drICMS30);
+                            drICMS30 = dsdanfe.ICMS30.NewICMS30Row();
+                            i30++;
+                            break;
+                        case "ICMS40":
+                            for (int j = 0; j < xNdICMS40[i40].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMS40(xNdICMS40[i40].ChildNodes[j].LocalName, xNdICMS40[i40].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS40.AddICMS40Row(drICMS40);
+                            drICMS40 = dsdanfe.ICMS40.NewICMS40Row();
+                            i40++;
+                            break;
+                        case "ICMS51":
+                            for (int j = 0; j < xNdICMS51[i51].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMS51(xNdICMS51[i51].ChildNodes[j].LocalName, xNdICMS51[i51].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS51.AddICMS51Row(drICMS51);
+                            drICMS51 = dsdanfe.ICMS51.NewICMS51Row();
+                            i51++;
+                            break;
+                        case "ICMS60":
+                            for (int j = 0; j < xNdICMS60[i60].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMS60(xNdICMS60[i60].ChildNodes[j].LocalName, xNdICMS60[i60].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS60.AddICMS60Row(drICMS60);
+                            drICMS60 = dsdanfe.ICMS60.NewICMS60Row();
+                            i60++;
+                            break;
+                        case "ICMS70":
+                            for (int j = 0; j < xNdICMS70[i70].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMS70(xNdICMS70[i70].ChildNodes[j].LocalName, xNdICMS70[i70].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS70.AddICMS70Row(drICMS70);
+                            drICMS70 = dsdanfe.ICMS70.NewICMS70Row();
+                            i70++;
+                            break;
+                        case "ICMS90":
+                            for (int j = 0; j < xNdICMS90[i90].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMS90(xNdICMS90[i90].ChildNodes[j].LocalName, xNdICMS90[i90].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMS90.AddICMS90Row(drICMS90);
+                            drICMS90 = dsdanfe.ICMS90.NewICMS90Row();
+                            i90++;
+                            break;
+                        case "ICMSPart":
+                            for (int j = 0; j < xNdICMSPart[iPart].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMSPart(xNdICMSPart[iPart].ChildNodes[j].LocalName, xNdICMSPart[iPart].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMSPart.AddICMSPartRow(drICMSPart);
+                            drICMSPart = dsdanfe.ICMSPart.NewICMSPartRow();
+                            iPart++;
+                            break;
+                        case "ICMSST":
+                            for (int j = 0; j < xNdICMSST[iST].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMSST(xNdICMSST[iST].ChildNodes[j].LocalName, xNdICMSST[iST].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMSST.AddICMSSTRow(drICMSST);
+                            drICMSST = dsdanfe.ICMSST.NewICMSSTRow();
+                            iST++;
+                            break;
+                        case "ICMSSN101":
+                            for (int j = 0; j < xNdICMSSN101[i101].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMSSN101(xNdICMSSN101[i101].ChildNodes[j].LocalName, xNdICMSSN101[i101].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMSSN101.AddICMSSN101Row(drICMSSN101);
+                            drICMSSN101 = dsdanfe.ICMSSN101.NewICMSSN101Row();
+                            i101++;
+                            break;
+                        case "ICMSSN102":
+                            for (int j = 0; j < xNdICMSSN102[i102].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMSSN102(xNdICMSSN102[i102].ChildNodes[j].LocalName, xNdICMSSN102[i102].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMSSN102.AddICMSSN102Row(drICMSSN102);
+                            drICMSSN102 = dsdanfe.ICMSSN102.NewICMSSN102Row();
+                            i102++;
+                            break;
+                        case "ICMSSN201":
+                            for (int j = 0; j < xNdICMSSN201[i201].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMSSN201(xNdICMSSN201[i201].ChildNodes[j].LocalName, xNdICMSSN201[i201].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMSSN201.AddICMSSN201Row(drICMSSN201);
+                            drICMSSN201 = dsdanfe.ICMSSN201.NewICMSSN201Row();
+                            i201++;
+                            break;
+                        case "ICMSSN202":
+                            xNdICMSSN201 = xml.GetElementsByTagName("ICMSSN202");
+                            for (int j = 0; j < xNdICMSSN201[i202].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMSSN201(xNdICMSSN201[i202].ChildNodes[j].LocalName, xNdICMSSN201[i202].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMSSN201.AddICMSSN201Row(drICMSSN201);
+                            drICMSSN201 = dsdanfe.ICMSSN201.NewICMSSN201Row();
+                            i202++;
+                            break;
+                        case "ICMSSN500":
+                            for (int j = 0; j < xNdICMSSN500[i500].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMSSN500(xNdICMSSN500[i500].ChildNodes[j].LocalName, xNdICMSSN500[i500].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMSSN500.AddICMSSN500Row(drICMSSN500);
+                            drICMSSN500 = dsdanfe.ICMSSN500.NewICMSSN500Row();
+                            i500++;
+                            break;
+                        case "ICMSSN900":
+                            for (int j = 0; j < xNdICMSSN900[i900].ChildNodes.Count; j++)
+                            {
+                                populaDadosICMSSN900(xNdICMSSN900[i900].ChildNodes[j].LocalName, xNdICMSSN900[i900].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.ICMSSN900.AddICMSSN900Row(drICMSSN900);
+                            drICMSSN900 = dsdanfe.ICMSSN900.NewICMSSN900Row();
+                            i900++;
+                            break;
+
+                    } // Diego - OS_24302 - 01/04/2010 - Fim
+
+                    if (xNdIPI.Count > 0)
+                    {
+                        for (int j = 0; j < xNdIPI[i].ChildNodes.Count; j++)
+                        {
+                            populaDadosIPI(xNdIPI[i].ChildNodes[j].LocalName, xNdIPI[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior), (iPK_itens_notaAnterior).ToString());
+                        }
+                        dsdanfe.IPI.AddIPIRow(drIPI);
+                        drIPI = dsdanfe.IPI.NewIPIRow();
+
+                        //Claudinei - o.s. sem - 18/02/2010
+                        // Diego - Sem O.S - 18/02/2010 
+
+                        for (int x = 0; x < xNdIPI[i].ChildNodes.Count; x++)
+                        {
+                            if (xNdIPI[i].ChildNodes[x].Name.Equals("IPITrib"))
+                            {
+                                if (xNdIPItrib[icountxNdIPI] != null)
+                                {
+                                    for (int j = 0; j < xNdIPItrib[icountxNdIPI].ChildNodes.Count; j++)
+                                    {
+                                        populaDadosIPItrib(xNdIPItrib[icountxNdIPI].ChildNodes[j].LocalName, xNdIPItrib[icountxNdIPI].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+
+                                    }
+                                    icountxNdIPI++;
+                                    dsdanfe.IPITrib.AddIPITribRow(drIPItrib);
+                                    drIPItrib = dsdanfe.IPITrib.NewIPITribRow();
                                 }
-                                icountxNdIPI++;
-                                dsdanfe.IPITrib.AddIPITribRow(drIPItrib);
-                                drIPItrib = dsdanfe.IPITrib.NewIPITribRow();
+                            }
+                        }
+
+
+
+                        for (int x = 0; x < xNdIPI[i].ChildNodes.Count; x++)
+                        {
+                            if (xNdIPI[i].ChildNodes[x].Name.Equals("IPINT"))
+                            {
+                                if (xNdIPInt[icontxNdIPInt] != null)
+                                {
+
+                                    for (int j = 0; j < xNdIPInt[icontxNdIPInt].ChildNodes.Count; j++)
+                                    {
+                                        populaDadosIPInt(xNdIPInt[icontxNdIPInt].ChildNodes[j].LocalName, xNdIPInt[icontxNdIPInt].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+
+                                    }
+                                    icontxNdIPInt++;
+                                    dsdanfe.IPINT.AddIPINTRow(drIPInt);
+                                    drIPInt = dsdanfe.IPINT.NewIPINTRow();
+                                }
                             }
                         }
                     }
 
+                    // Diego - Sem O.S - 18/02/2010 - fIM
 
 
-                    for (int x = 0; x < xNdIPI[i].ChildNodes.Count; x++)
+                    if (xndII.Count > 0)
                     {
-                        if (xNdIPI[i].ChildNodes[x].Name.Equals("IPINT"))
+                        for (int j = 0; j < xndII[i].ChildNodes.Count; j++)
                         {
-                            if (xNdIPInt[icontxNdIPInt] != null)
+                            populaDadosII(xndII[i].ChildNodes[j].LocalName, xndII[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                        }
+                        dsdanfe.II.AddIIRow(drII);
+                        drII = dsdanfe.II.NewIIRow();
+                    }
+                    if (xndPISAliq.Count > 0)
+                    {
+                        if (xndPISAliq[i] != null)
+                        {
+                            for (int j = 0; j < xndPISAliq[i].ChildNodes.Count; j++) //Claudinei - sem - 20/01/2010
                             {
-
-                                for (int j = 0; j < xNdIPInt[icontxNdIPInt].ChildNodes.Count; j++)
-                                {
-                                    populaDadosIPInt(xNdIPInt[icontxNdIPInt].ChildNodes[j].LocalName, xNdIPInt[icontxNdIPInt].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-
-                                }
-                                icontxNdIPInt++;
-                                dsdanfe.IPINT.AddIPINTRow(drIPInt);
-                                drIPInt = dsdanfe.IPINT.NewIPINTRow();
+                                populaDadosPisAliq(xndPISAliq[i].ChildNodes[j].LocalName, xndPISAliq[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
                             }
+                            dsdanfe.PISAliq.AddPISAliqRow(drPisAliq);
+                            drPisAliq = dsdanfe.PISAliq.NewPISAliqRow();
                         }
                     }
-                }
-
-                // Diego - Sem O.S - 18/02/2010 - fIM
-
-
-                if (xndII.Count > 0)
-                {
-                    for (int j = 0; j < xndII[i].ChildNodes.Count; j++)
+                    if (xndPISQtde.Count > 0)
                     {
-                        populaDadosII(xndII[i].ChildNodes[j].LocalName, xndII[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                    }
-                    dsdanfe.II.AddIIRow(drII);
-                    drII = dsdanfe.II.NewIIRow();
-                }
-                if (xndPISAliq.Count > 0)
-                {
-                    if (xndPISAliq[i] != null)
-                    {
-                        for (int j = 0; j < xndPISAliq[i].ChildNodes.Count; j++) //Claudinei - sem - 20/01/2010
+                        for (int j = 0; j < xndPISQtde[i].ChildNodes.Count; j++) //Claudinei - sem - 20/01/2010
                         {
-                            populaDadosPisAliq(xndPISAliq[i].ChildNodes[j].LocalName, xndPISAliq[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            populaDadosPisQtde(xndPISQtde[i].ChildNodes[j].LocalName, xndPISQtde[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
                         }
-                        dsdanfe.PISAliq.AddPISAliqRow(drPisAliq);
-                        drPisAliq = dsdanfe.PISAliq.NewPISAliqRow();
+                        dsdanfe.PISQtde.AddPISQtdeRow(drPisQtde);
+                        drPisQtde = dsdanfe.PISQtde.NewPISQtdeRow();
                     }
-                }
-                if (xndPISQtde.Count > 0)
-                {
-                    for (int j = 0; j < xndPISQtde[i].ChildNodes.Count; j++) //Claudinei - sem - 20/01/2010
+                    if (xndPISNT.Count > 0)
                     {
-                        populaDadosPisQtde(xndPISQtde[i].ChildNodes[j].LocalName, xndPISQtde[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                    }
-                    dsdanfe.PISQtde.AddPISQtdeRow(drPisQtde);
-                    drPisQtde = dsdanfe.PISQtde.NewPISQtdeRow();
-                }
-                if (xndPISNT.Count > 0)
-                {
-                    if (xndPISNT[i] != null)
-                    {
-
-                        for (int j = 0; j < xndPISNT[i].ChildNodes.Count; j++)
+                        if (xndPISNT[i] != null)
                         {
-                            populaDadosPisNT(xndPISNT[i].ChildNodes[j].LocalName, xndPISNT[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+
+                            for (int j = 0; j < xndPISNT[i].ChildNodes.Count; j++)
+                            {
+                                populaDadosPisNT(xndPISNT[i].ChildNodes[j].LocalName, xndPISNT[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.PISNT.AddPISNTRow(drPisNT);
+                            drPisNT = dsdanfe.PISNT.NewPISNTRow();
                         }
-                        dsdanfe.PISNT.AddPISNTRow(drPisNT);
-                        drPisNT = dsdanfe.PISNT.NewPISNTRow();
                     }
-                }
-                if (xndPISOutr[i] != null)
-                {
-                    if (xndPISOutr[i].ChildNodes.Count > 0)
+                    if (xndPISOutr[i] != null)
                     {
-                        for (int j = 0; j < xndPISOutr[i].ChildNodes.Count; j++)
+                        if (xndPISOutr[i].ChildNodes.Count > 0)
                         {
-                            populaDadosPisOut(xndPISOutr[i].ChildNodes[j].LocalName, xndPISOutr[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            for (int j = 0; j < xndPISOutr[i].ChildNodes.Count; j++)
+                            {
+                                populaDadosPisOut(xndPISOutr[i].ChildNodes[j].LocalName, xndPISOutr[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.PISOutr.AddPISOutrRow(drPisOutr);
+                            drPisOutr = dsdanfe.PISOutr.NewPISOutrRow();
                         }
-                        dsdanfe.PISOutr.AddPISOutrRow(drPisOutr);
-                        drPisOutr = dsdanfe.PISOutr.NewPISOutrRow();
+
                     }
 
-                }
-
-                if (xndPISST.Count > 0)
-                {
-                    for (int j = 0; j < xndPISST[i].ChildNodes.Count; j++)
+                    if (xndPISST.Count > 0)
                     {
-                        populaDadosPisST(xndPISST[i].ChildNodes[j].LocalName, xndPISST[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                    }
-                    dsdanfe.PISST.AddPISSTRow(drPisST);
-                    drPisST = dsdanfe.PISST.NewPISSTRow();
-                }
-                if (xndCOFINSaliq.Count > 0)
-                {
-                    if (xndCOFINSaliq[i] != null)
-                    {
-                        for (int j = 0; j < xndCOFINSaliq[i].ChildNodes.Count; j++)
+                        for (int j = 0; j < xndPISST[i].ChildNodes.Count; j++)
                         {
-                            populaDadosCofinsAliq(xndCOFINSaliq[i].ChildNodes[j].LocalName, xndCOFINSaliq[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            populaDadosPisST(xndPISST[i].ChildNodes[j].LocalName, xndPISST[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
                         }
-                        dsdanfe.COFINSAliq.AddCOFINSAliqRow(drCofinsAliq);
-                        drCofinsAliq = dsdanfe.COFINSAliq.NewCOFINSAliqRow();
+                        dsdanfe.PISST.AddPISSTRow(drPisST);
+                        drPisST = dsdanfe.PISST.NewPISSTRow();
                     }
-                }
-                if (xndCOFINSqtde.Count > 0)
-                {
-                    for (int j = 0; j < xndCOFINSqtde[i].ChildNodes.Count; j++)
+                    if (xndCOFINSaliq.Count > 0)
                     {
-                        populaDadosCofinsQtde(xndCOFINSqtde[i].ChildNodes[j].LocalName, xndCOFINSqtde[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
-                    }
-                    dsdanfe.COFINSQtde.AddCOFINSQtdeRow(drCofinsQtde);
-                    drCofinsQtde = dsdanfe.COFINSQtde.NewCOFINSQtdeRow();
-                }
-                if (xndCOFINSnt.Count > 0)
-                {
-                    if (xndCOFINSnt[i] != null)
-                    {
-                        for (int j = 0; j < xndCOFINSnt[i].ChildNodes.Count; j++)
+                        if (xndCOFINSaliq[i] != null)
                         {
-                            populaDadosCofinsNT(xndCOFINSnt[i].ChildNodes[j].LocalName, xndCOFINSnt[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            for (int j = 0; j < xndCOFINSaliq[i].ChildNodes.Count; j++)
+                            {
+                                populaDadosCofinsAliq(xndCOFINSaliq[i].ChildNodes[j].LocalName, xndCOFINSaliq[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.COFINSAliq.AddCOFINSAliqRow(drCofinsAliq);
+                            drCofinsAliq = dsdanfe.COFINSAliq.NewCOFINSAliqRow();
                         }
-                        dsdanfe.COFINSNT.AddCOFINSNTRow(drCofinsNT);
-                        drCofinsNT = dsdanfe.COFINSNT.NewCOFINSNTRow();
                     }
-                }
-                if (xndCOFINSoutr[i] != null)
-                {
-                    for (int j = 0; j < xndCOFINSoutr[i].ChildNodes.Count; j++)
+                    if (xndCOFINSqtde.Count > 0)
                     {
-                        populaDadosCofinsOutr(xndCOFINSoutr[i].ChildNodes[j].LocalName, xndCOFINSoutr[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                        for (int j = 0; j < xndCOFINSqtde[i].ChildNodes.Count; j++)
+                        {
+                            populaDadosCofinsQtde(xndCOFINSqtde[i].ChildNodes[j].LocalName, xndCOFINSqtde[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                        }
+                        dsdanfe.COFINSQtde.AddCOFINSQtdeRow(drCofinsQtde);
+                        drCofinsQtde = dsdanfe.COFINSQtde.NewCOFINSQtdeRow();
                     }
-                    dsdanfe.COFINSOutr.AddCOFINSOutrRow(drCofinsOutr);
-                    drCofinsOutr = dsdanfe.COFINSOutr.NewCOFINSOutrRow();
-                }
-                if (xndCOFINSst.Count > 0)
-                {
-                    for (int j = 0; j < xndCOFINSst[i].ChildNodes.Count; j++)
+                    if (xndCOFINSnt.Count > 0)
                     {
-                        populaDadosCofinsST(xndCOFINSst[i].ChildNodes[j].LocalName, xndCOFINSst[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                        if (xndCOFINSnt[i] != null)
+                        {
+                            for (int j = 0; j < xndCOFINSnt[i].ChildNodes.Count; j++)
+                            {
+                                populaDadosCofinsNT(xndCOFINSnt[i].ChildNodes[j].LocalName, xndCOFINSnt[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                            }
+                            dsdanfe.COFINSNT.AddCOFINSNTRow(drCofinsNT);
+                            drCofinsNT = dsdanfe.COFINSNT.NewCOFINSNTRow();
+                        }
                     }
-                    dsdanfe.COFINSST.AddCOFINSSTRow(drCofinsST);
-                    drCofinsST = dsdanfe.COFINSST.NewCOFINSSTRow();
-                }
-                if (xndISSQN.Count > 0)
-                {
-                    for (int j = 0; j < xndISSQN[i].ChildNodes.Count; j++)
+                    if (xndCOFINSoutr[i] != null)
                     {
-                        populaDadosISSQN(xndISSQN[i].ChildNodes[j].LocalName, xndISSQN[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                        for (int j = 0; j < xndCOFINSoutr[i].ChildNodes.Count; j++)
+                        {
+                            populaDadosCofinsOutr(xndCOFINSoutr[i].ChildNodes[j].LocalName, xndCOFINSoutr[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                        }
+                        dsdanfe.COFINSOutr.AddCOFINSOutrRow(drCofinsOutr);
+                        drCofinsOutr = dsdanfe.COFINSOutr.NewCOFINSOutrRow();
                     }
-                    dsdanfe.ISSQN.AddISSQNRow(drISSQN);
-                    drISSQN = dsdanfe.ISSQN.NewISSQNRow();
-                }
+                    if (xndCOFINSst.Count > 0)
+                    {
+                        for (int j = 0; j < xndCOFINSst[i].ChildNodes.Count; j++)
+                        {
+                            populaDadosCofinsST(xndCOFINSst[i].ChildNodes[j].LocalName, xndCOFINSst[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                        }
+                        dsdanfe.COFINSST.AddCOFINSSTRow(drCofinsST);
+                        drCofinsST = dsdanfe.COFINSST.NewCOFINSSTRow();
+                    }
+                    if (xndISSQN.Count > 0)
+                    {
+                        for (int j = 0; j < xndISSQN[i].ChildNodes.Count; j++)
+                        {
+                            populaDadosISSQN(xndISSQN[i].ChildNodes[j].LocalName, xndISSQN[i].ChildNodes[j].InnerText, (iPK_itens_notaAnterior).ToString());
+                        }
+                        dsdanfe.ISSQN.AddISSQNRow(drISSQN);
+                        drISSQN = dsdanfe.ISSQN.NewISSQNRow();
+                    }
 
-                //comentar
+                    //comentar
 
-                //Diego - o.s. sem - 09/02/2010
-                for (int x = 0; x < xNdDet[i].ChildNodes.Count; x++)
-                {
-                    if (xNdDet[i].ChildNodes[x].Name.Equals("infAdProd"))
+                    //Diego - o.s. sem - 09/02/2010
+                    for (int x = 0; x < xNdDet[i].ChildNodes.Count; x++)
                     {
-                        populaDadosInfAdProd(xNdDet[i].ChildNodes[x].InnerText, (iPK_itens_notaAnterior).ToString());
+                        if (xNdDet[i].ChildNodes[x].Name.Equals("infAdProd"))
+                        {
+                            populaDadosInfAdProd(xNdDet[i].ChildNodes[x].InnerText, (iPK_itens_notaAnterior).ToString());
+                        }
                     }
-                }
-                dsdanfe.infAdProd.AddinfAdProdRow(drInfAdProd);
-                drInfAdProd = dsdanfe.infAdProd.NewinfAdProdRow();
+                    dsdanfe.infAdProd.AddinfAdProdRow(drInfAdProd);
+                    drInfAdProd = dsdanfe.infAdProd.NewinfAdProdRow();
 
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -2462,7 +2473,7 @@ namespace HLP.GeraXml.bel.NFe
                     drObsCont = dsdanfe.obsCont.NewobsContRow();
                 }
             }
-            
+
 
             if (xndObsFisco.Count > 0)
             {
@@ -2504,7 +2515,7 @@ namespace HLP.GeraXml.bel.NFe
                 case "infCpl": drInfAdic.infCpl = valor;
                     break;
             }
-          
+
             drInfAdic.InfNFeId = CodinfNfeId;
             drInfAdic.infAdicID = infAdicID;
         }

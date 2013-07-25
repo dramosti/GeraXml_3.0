@@ -273,6 +273,24 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 foreach (LoteRPS lot in objLoteEnvio.lote.RPS)
                 {
                     sPathXml = GetFilePathMonthServico(false, lot.NumeroRPS);
+                    if (File.Exists(sPathXml))
+                    {
+                        LoteRPS lotExistente = SerializeClassToXml.DeserializeClasse<LoteRPS>(sPathXml);
+
+                        string sCD_NFSEQ = daoUtil.GetNFSEQbyNumeroRPS(lotExistente.NumeroRPS);
+
+                        if (lot.CD_NFSEQ == sCD_NFSEQ)
+                        {
+                            File.Delete(sPathXml);
+                        }
+                        else
+                        {
+                            throw new Exception(string.Format("A Nota de sequencia '{0}' já esta utilizando o RPS de numero '{1}', é necessário envia-la para que o RPS possa ser incrementado.", sCD_NFSEQ, lotExistente.NumeroRPS));
+                        }
+
+                    }
+
+
                     SerializeClassToXml.SerializeClasse<LoteRPS>(lot, sPathXml);
                 }
 

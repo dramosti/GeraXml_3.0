@@ -19,6 +19,7 @@ using HLP.GeraXml.bel;
 using System.Xml;
 using System.Threading;
 using HLP.GeraXml.dao;
+using HLP.GeraXml.UI.Configuracao;
 
 namespace HLP.GeraXml.UI.NFe
 {
@@ -420,12 +421,32 @@ namespace HLP.GeraXml.UI.NFe
                 {
                     if (!daoUtil.ValidaUserToCancel())
                     {
-                        KryptonMessageBox.Show("Usuário sem Acesso para cancelar Notas Fiscais.", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
+                        if (KryptonMessageBox.Show(null, "Usuário não tem Acesso para Alterar dados da Nota Fiscal" +
+                         Environment.NewLine +
+                         Environment.NewLine +
+                         "Deseja entrar com a Permissão de um Outro Usuário? ", Mensagens.MSG_Aviso,
+                          MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            frmLogin objfrm = new frmLogin();
+                            objfrm.ShowDialog();
+                            if (daoUtil.ValidaUserToCancel())
+                            {
+                                frmCancelamentoNFe objfrmCanc = new frmCancelamentoNFe(objSelect[0]);
+                                objfrmCanc.ShowDialog();
+                            }
+                            else
+                            {
+                                KryptonMessageBox.Show(null, "Usuário também não tem Permissão Para Alterar Dados da Nota Fiscal", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        frmCancelamentoNFe objfrmCanc = new frmCancelamentoNFe(objSelect[0]);
+                        objfrmCanc.ShowDialog();
                     }
 
-                    frmCancelamentoNFe objfrm = new frmCancelamentoNFe(objSelect[0]);
-                    objfrm.ShowDialog();
+                    
                 }
                 else if (objSelect.Count > 1)
                 {

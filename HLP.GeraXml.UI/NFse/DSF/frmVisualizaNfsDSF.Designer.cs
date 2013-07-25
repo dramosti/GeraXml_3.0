@@ -74,6 +74,7 @@
             this.kryptonPanel4 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.flFiscal = new System.Windows.Forms.FlowLayoutPanel();
             this.txtCodigoAtividade = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
+            this.nudAliquotaAtividade = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.cbxTipoRecolhimento = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.txtMunicipioPrestacao = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtMunicipioPrestacaoDescricao = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
@@ -116,7 +117,6 @@
             this.statusErro = new System.Windows.Forms.StatusStrip();
             this.lblErro = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblNumNota = new System.Windows.Forms.ToolStripStatusLabel();
-            this.nudAliquotaAtividade = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
@@ -912,7 +912,7 @@
             this.txtBairroTomador.BackColor = System.Drawing.Color.Transparent;
             this.txtBairroTomador.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtBairroTomador.Color = System.Drawing.Color.White;
-            this.txtBairroTomador.Location = new System.Drawing.Point(87, 237);
+            this.txtBairroTomador.Location = new System.Drawing.Point(669, 3);
             this.txtBairroTomador.Margin = new System.Windows.Forms.Padding(87, 3, 15, 3);
             this.txtBairroTomador.MaxLength = 60;
             this.txtBairroTomador.Name = "txtBairroTomador";
@@ -935,7 +935,7 @@
             this.txtCidadeTomador.BackColor = System.Drawing.Color.Transparent;
             this.txtCidadeTomador.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtCidadeTomador.Color = System.Drawing.Color.White;
-            this.txtCidadeTomador.Location = new System.Drawing.Point(637, 3);
+            this.txtCidadeTomador.Location = new System.Drawing.Point(637, 29);
             this.txtCidadeTomador.Margin = new System.Windows.Forms.Padding(55, 3, 15, 3);
             this.txtCidadeTomador.MaxLength = 60;
             this.txtCidadeTomador.Name = "txtCidadeTomador";
@@ -958,7 +958,7 @@
             this.txtCidadeTomadorDescricao.BackColor = System.Drawing.Color.Transparent;
             this.txtCidadeTomadorDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtCidadeTomadorDescricao.Color = System.Drawing.Color.White;
-            this.txtCidadeTomadorDescricao.Location = new System.Drawing.Point(665, 29);
+            this.txtCidadeTomadorDescricao.Location = new System.Drawing.Point(665, 55);
             this.txtCidadeTomadorDescricao.Margin = new System.Windows.Forms.Padding(83, 3, 15, 3);
             this.txtCidadeTomadorDescricao.MaxLength = 60;
             this.txtCidadeTomadorDescricao.Name = "txtCidadeTomadorDescricao";
@@ -981,7 +981,7 @@
             this.txtCEPTomador.BackColor = System.Drawing.Color.Transparent;
             this.txtCEPTomador.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtCEPTomador.Color = System.Drawing.Color.White;
-            this.txtCEPTomador.Location = new System.Drawing.Point(626, 56);
+            this.txtCEPTomador.Location = new System.Drawing.Point(626, 82);
             this.txtCEPTomador.Margin = new System.Windows.Forms.Padding(44, 3, 15, 3);
             this.txtCEPTomador.MaxLength = 60;
             this.txtCEPTomador.Name = "txtCEPTomador";
@@ -1004,7 +1004,7 @@
             this.txtEmailTomador.BackColor = System.Drawing.Color.Transparent;
             this.txtEmailTomador.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtEmailTomador.Color = System.Drawing.Color.White;
-            this.txtEmailTomador.Location = new System.Drawing.Point(673, 82);
+            this.txtEmailTomador.Location = new System.Drawing.Point(673, 108);
             this.txtEmailTomador.Margin = new System.Windows.Forms.Padding(91, 3, 15, 3);
             this.txtEmailTomador.MaxLength = 60;
             this.txtEmailTomador.Name = "txtEmailTomador";
@@ -1027,7 +1027,7 @@
             this.txtTelefoneTomador.BackColor = System.Drawing.Color.Transparent;
             this.txtTelefoneTomador.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtTelefoneTomador.Color = System.Drawing.Color.White;
-            this.txtTelefoneTomador.Location = new System.Drawing.Point(654, 109);
+            this.txtTelefoneTomador.Location = new System.Drawing.Point(654, 135);
             this.txtTelefoneTomador.Margin = new System.Windows.Forms.Padding(72, 3, 17, 3);
             this.txtTelefoneTomador.MaxLength = 15;
             this.txtTelefoneTomador.Name = "txtTelefoneTomador";
@@ -1097,6 +1097,29 @@
             this.txtCodigoAtividade.ReadOnly = false;
             this.txtCodigoAtividade.Size = new System.Drawing.Size(239, 20);
             this.txtCodigoAtividade.TabIndex = 48;
+            // 
+            // nudAliquotaAtividade
+            // 
+            this.nudAliquotaAtividade._LabelText = "Aliquita Atividade";
+            this.nudAliquotaAtividade._Multiline = false;
+            this.nudAliquotaAtividade._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
+            this.nudAliquotaAtividade._Password = false;
+            this.nudAliquotaAtividade._Regex = Expressoes.Não_Aplica;
+            this.nudAliquotaAtividade._Regex_Expressao = "";
+            this.nudAliquotaAtividade._TamanhoMaiorLabel = 160;
+            this.nudAliquotaAtividade._TamanhoTextBox = 61;
+            this.nudAliquotaAtividade._Visible = true;
+            this.nudAliquotaAtividade.AutoSize = true;
+            this.nudAliquotaAtividade.BackColor = System.Drawing.Color.Transparent;
+            this.nudAliquotaAtividade.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.nudAliquotaAtividade.Color = System.Drawing.Color.White;
+            this.nudAliquotaAtividade.Location = new System.Drawing.Point(47, 29);
+            this.nudAliquotaAtividade.Margin = new System.Windows.Forms.Padding(47, 3, 15, 3);
+            this.nudAliquotaAtividade.MaxLength = 14;
+            this.nudAliquotaAtividade.Name = "nudAliquotaAtividade";
+            this.nudAliquotaAtividade.ReadOnly = false;
+            this.nudAliquotaAtividade.Size = new System.Drawing.Size(177, 20);
+            this.nudAliquotaAtividade.TabIndex = 54;
             // 
             // cbxTipoRecolhimento
             // 
@@ -1955,29 +1978,6 @@
             this.lblNumNota.Name = "lblNumNota";
             this.lblNumNota.Size = new System.Drawing.Size(78, 19);
             this.lblNumNota.Text = "lblNumNota";
-            // 
-            // nudAliquotaAtividade
-            // 
-            this.nudAliquotaAtividade._LabelText = "Aliquita Atividade";
-            this.nudAliquotaAtividade._Multiline = false;
-            this.nudAliquotaAtividade._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
-            this.nudAliquotaAtividade._Password = false;
-            this.nudAliquotaAtividade._Regex = Expressoes.Não_Aplica;
-            this.nudAliquotaAtividade._Regex_Expressao = "";
-            this.nudAliquotaAtividade._TamanhoMaiorLabel = 160;
-            this.nudAliquotaAtividade._TamanhoTextBox = 61;
-            this.nudAliquotaAtividade._Visible = true;
-            this.nudAliquotaAtividade.AutoSize = true;
-            this.nudAliquotaAtividade.BackColor = System.Drawing.Color.Transparent;
-            this.nudAliquotaAtividade.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.nudAliquotaAtividade.Color = System.Drawing.Color.White;
-            this.nudAliquotaAtividade.Location = new System.Drawing.Point(47, 29);
-            this.nudAliquotaAtividade.Margin = new System.Windows.Forms.Padding(47, 3, 15, 3);
-            this.nudAliquotaAtividade.MaxLength = 14;
-            this.nudAliquotaAtividade.Name = "nudAliquotaAtividade";
-            this.nudAliquotaAtividade.ReadOnly = false;
-            this.nudAliquotaAtividade.Size = new System.Drawing.Size(177, 20);
-            this.nudAliquotaAtividade.TabIndex = 54;
             // 
             // frmVisualizaNfsDSF
             // 

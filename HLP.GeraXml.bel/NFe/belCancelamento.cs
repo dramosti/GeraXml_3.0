@@ -456,6 +456,7 @@ namespace HLP.GeraXml.bel.NFe
         {
             DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\" + objPesquisa.sCHAVENFE.Substring(2, 4));
             FileInfo f;
+            
             try
             {
                 FileInfo[] finfo = dinfo.GetFiles();
@@ -463,7 +464,7 @@ namespace HLP.GeraXml.bel.NFe
                 if (finfo.Where(c => c.Name.Contains(objPesquisa.sCHAVENFE)).Count() > 0)
                 {
                     f = finfo.FirstOrDefault(c => c.Name.Contains(objPesquisa.sCHAVENFE));
-                    DirectoryInfo dinfoPasta = new DirectoryInfo(Pastas.CANCELADOS + "\\" + daoUtil.GetDateServidor().Date.ToString("yyMM"));
+                    DirectoryInfo dinfoPasta = new DirectoryInfo(Pastas.CANCELADOS + "\\" + objPesquisa.dDT_EMI.Date.ToString("yyMM"));
                     if (!dinfoPasta.Exists) { dinfoPasta.Create(); }
                     File.Move(f.FullName, dinfoPasta.FullName + "\\" + f.Name.Replace("nfe", "can") + ".xml");
                     File.Delete(f.FullName);
