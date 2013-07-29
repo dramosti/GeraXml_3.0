@@ -117,20 +117,6 @@ namespace HLP.GeraXml.bel.NFes
                 {
                     objTcValores.ValorServicos = Convert.ToDecimal(dr["ValorServicos"].ToString());
                     objTcValores.ValorDeducoes = 0; //Convert.ToDecimal(dr["ValorDeducoes"].ToString());
-
-                    if (Acesso.NM_EMPRESA.Equals("FORMINGP"))
-                    {
-                        objTcValores.ValorPis = base.SumValorMovitem(sNota, "vl_pis_desconto_dupl");
-                        objTcValores.ValorPis = base.SumValorMovitem(sNota, "vl_cofins_desconto_dupl");
-                        objTcValores.ValorPis = base.SumValorMovitem(sNota, "vl_csll_desconto_dupl");
-                    }
-                    else
-                    {
-                        objTcValores.ValorPis = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorPis"].ToString())); //conceito passado pela lorenzon
-                        objTcValores.ValorCofins = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorCofins"].ToString())); //conceito passado pela lorenzon
-                        objTcValores.ValorCsll = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["vl_csll_serv"].ToString())); //conceito passado pela lorenzon
-                    }
-
                     objTcValores.ValorInss = Convert.ToDecimal(dr["ValorInss"].ToString());
                     objTcValores.ValorIr = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorIr"].ToString())); //conceito passado pela lorenzon
 
@@ -142,7 +128,23 @@ namespace HLP.GeraXml.bel.NFes
                     objTcValores.ValorIssRetido = (objTcValores.IssRetido == 1 ? Convert.ToDecimal(dr["ValorIssRetido"].ToString()) : 0); // ser for retido joga no valor iss retido //OS_26219
                     objTcValores.DescontoCondicionado = 0;// Convert.ToDecimal(dr["DescontoCondicionado"].ToString());
                     objTcValores.DescontoIncondicionado = 0;// Convert.ToDecimal(dr["DescontoIncondicionado"].ToString());
-                    objTcValores.ValorLiquidoNfse = objTcValores.CalculaValorLiquido();
+
+                    if (Acesso.NM_EMPRESA.Equals("FORMINGP"))
+                    {
+                        objTcValores.ValorPis = base.SumValorMovitem(sNota, "vl_pis_desconto_dupl");
+                        objTcValores.ValorCofins = base.SumValorMovitem(sNota, "vl_cofins_desconto_dupl");
+                        objTcValores.ValorCsll = base.SumValorMovitem(sNota, "vl_csll_desconto_dupl");
+                        objTcValores.ValorLiquidoNfse = Convert.ToDecimal(dr["ValorDeducoes"].ToString());
+                    }
+                    else
+                    {
+                        objTcValores.ValorPis = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorPis"].ToString())); //conceito passado pela lorenzon
+                        objTcValores.ValorCofins = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["ValorCofins"].ToString())); //conceito passado pela lorenzon
+                        objTcValores.ValorCsll = (bNaoDestacaValor == true ? 0 : Convert.ToDecimal(dr["vl_csll_serv"].ToString())); //conceito passado pela lorenzon
+                        objTcValores.ValorLiquidoNfse = objTcValores.CalculaValorLiquido();
+                    }
+
+                    
                 }
 
                 return objTcValores;

@@ -42,7 +42,7 @@ namespace HLP.GeraXml.dao.NFes
                 StringBuilder sQuery = new StringBuilder();
                 sQuery.Append(" select first 1 ");
                 sQuery.Append(" nf.vl_servico ValorServicos, ");
-                //sQuery.Append(" nf.vl_totnf ValorDeducoes, ");
+                sQuery.Append(" nf.vl_totnf ValorDeducoes, ");
                 sQuery.Append(" nf.vl_pis_serv ValorPis, ");
                 sQuery.Append(" nf.vl_cofins_serv ValorCofins, ");
                 sQuery.Append(" nf.vl_inss ValorInss, ");

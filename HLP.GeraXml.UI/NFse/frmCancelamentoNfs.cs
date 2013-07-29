@@ -13,10 +13,10 @@ using System.Linq;
 
 namespace HLP.GeraXml.UI.NFse
 {
-    public partial class frmCancelamentoNfs : ComponentFactory.Krypton.Toolkit.KryptonForm 
+    public partial class frmCancelamentoNfs : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
         belCancelamentoNFse objbelCanc = new belCancelamentoNFse();
-        List<belCancelamentoNFse> objListaAll = new List<belCancelamentoNFse>();
+        public List<belCancelamentoNFse> objListaAll = new List<belCancelamentoNFse>();
         public string sErro = "";
 
         public frmCancelamentoNfs()
@@ -28,6 +28,11 @@ namespace HLP.GeraXml.UI.NFse
             bsCancelamento.DataSource = objListaAll;
             cbxFiltro.SelectedIndex = 0;
             txtFiltro.Focus();
+
+            if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.TIPLAN)
+            {
+                    this.sErro = objListaAll.FirstOrDefault().msg;
+            }
         }
 
 

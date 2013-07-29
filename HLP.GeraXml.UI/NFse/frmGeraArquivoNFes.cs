@@ -462,7 +462,10 @@ namespace HLP.GeraXml.UI.NFse
                     else if (objSelect.Count == 1)
                     {
                         frmCancelamentoNfs objfrmCanc = new frmCancelamentoNfs();
-                        objfrmCanc.ShowDialog();
+                        if (Acesso.tipoWsNfse != Acesso.TP_WS_NFSE.TIPLAN)
+                        {
+                            objfrmCanc.ShowDialog();
+                        }
 
                         if (String.IsNullOrEmpty(objfrmCanc.sErro))
                         {
@@ -471,23 +474,26 @@ namespace HLP.GeraXml.UI.NFse
 
                         belCancelamentoNFse objbelCancelamentoNFse = new belCancelamentoNFse();
 
-                        TcPedidoCancelamento objTcPediCanc = objbelCancelamentoNFse.BuscaDadosParaCancelamento(objfrmCanc.sErro, objSelect[0].sCD_NFSEQ);
-                        string sXmlRet = objbelCancelamentoNFse.CancelaNfes(objTcPediCanc);
-                        string sMsgRet = "";
-                        if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES)
+                        if (KryptonMessageBox.Show("Deseja realmente cancelar essa Nota Fiscal ?", Mensagens.MSG_Confirmacao, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            sMsgRet = objbelCancelamentoNFse.ConfiguraMsgRetornoCancelamento(sXmlRet);
-                        }
-                        else
-                        {
-                            sMsgRet = objbelCancelamentoNFse.ConfiguraMsgRetornCancelamento2(sXmlRet);
-                        }
+                            TcPedidoCancelamento objTcPediCanc = objbelCancelamentoNFse.BuscaDadosParaCancelamento(objfrmCanc.sErro, objSelect[0].sCD_NFSEQ);
+                            string sXmlRet = objbelCancelamentoNFse.CancelaNfes(objTcPediCanc);
+                            string sMsgRet = "";
+                            if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES)
+                            {
+                                sMsgRet = objbelCancelamentoNFse.ConfiguraMsgRetornoCancelamento(sXmlRet);
+                            }
+                            else
+                            {
+                                sMsgRet = objbelCancelamentoNFse.ConfiguraMsgRetornCancelamento2(sXmlRet);
+                            }
 
-                        if (objbelCancelamentoNFse.bNotaCancelada)
-                        {
-                            objbelCancelamentoNFse.CancelarNFseSistema(objTcPediCanc.InfPedidoCancelamento.IdentificacaoNfse.Numero);
+                            if (objbelCancelamentoNFse.bNotaCancelada)
+                            {
+                                objbelCancelamentoNFse.CancelarNFseSistema(objTcPediCanc.InfPedidoCancelamento.IdentificacaoNfse.Numero);
+                            }
+                            KryptonMessageBox.Show(sMsgRet, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        KryptonMessageBox.Show(sMsgRet, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
