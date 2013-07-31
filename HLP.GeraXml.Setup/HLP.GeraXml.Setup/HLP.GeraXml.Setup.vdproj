@@ -892,13 +892,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
+        "OwnerKey" = "8:_0E60F1C8FCF0FE99E8326E76B02E95E0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0E60F1C8FCF0FE99E8326E76B02E95E0"
+        "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1556,7 +1556,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HLP.GeraXml.UI, Version=3.0.1.35, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:HLP.GeraXml.UI, Version=3.0.1.36, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_3D8733E0E6404420AC3D3A12983EA62E"
@@ -3689,15 +3689,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GeraXml 3.0"
-        "ProductCode" = "8:{1307C075-B4C8-4A67-A7BF-3407E9E3C520}"
-        "PackageCode" = "8:{972A6D91-7ADD-43CE-8DF4-5D264F8EBF5E}"
+        "ProductCode" = "8:{6EA68F0A-CB38-4F41-B354-0AE77596FA3F}"
+        "PackageCode" = "8:{6380B136-339D-4738-813A-3ACA57C6510C}"
         "UpgradeCode" = "8:{27898E47-F665-4982-BD1F-A648DABCB4A3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:3.1.36"
+        "ProductVersion" = "8:3.1.37"
         "Manufacturer" = "8:HLP"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

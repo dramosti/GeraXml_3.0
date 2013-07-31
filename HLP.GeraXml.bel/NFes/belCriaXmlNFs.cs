@@ -154,7 +154,11 @@ namespace HLP.GeraXml.bel.NFes
                                                                                        new XElement(tipos + "Bairro", rps.InfRps.Tomador.Endereco.Bairro),
                                                                                        new XElement(tipos + "CodigoMunicipio", rps.InfRps.Tomador.Endereco.CodigoMunicipio),
                                                                                        new XElement(tipos + "Uf", rps.InfRps.Tomador.Endereco.Uf),
-                                                                                       new XElement(tipos + "Cep", rps.InfRps.Tomador.Endereco.Cep))));
+                                                                                       new XElement(tipos + "Cep", rps.InfRps.Tomador.Endereco.Cep)),
+                                                                                       ((rps.InfRps.Tomador.Contato.Telefone != "" || rps.InfRps.Tomador.Contato.Email != "") ?
+                                                                                       (new XElement(tipos + "Contato",
+                                                                                                         ((rps.InfRps.Tomador.Contato.Telefone != "") ? new XElement(tipos + "Telefone", rps.InfRps.Tomador.Contato.Telefone) : null),
+                                                                                                         ((rps.InfRps.Tomador.Contato.Email != "") ? new XElement(tipos + "Email", rps.InfRps.Tomador.Contato.Email) : null))) : null)));
 
 
                     }
@@ -300,14 +304,14 @@ namespace HLP.GeraXml.bel.NFes
                 XContainer conEnviarLoteRpsEnvio = (new XElement(pf + "EnviarLoteRpsEnvio", new XAttribute("xmlns", "http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd")));
 
                 XContainer conLoteRps = null;
-                conLoteRps = (new XElement(pf+"LoteRps", new XAttribute("Id", Convert.ToInt32(objLoteRpd.NumeroLote)),
-                                                                                     new XElement(pf+"NumeroLote", objLoteRpd.NumeroLote.ToString()),
-                                                                                     new XElement(pf+"Cnpj", objLoteRpd.Cnpj.ToString()),
-                                                                                     new XElement(pf+"InscricaoMunicipal", objLoteRpd.InscricaoMunicipal.ToString()),
-                                                                                     new XElement(pf+"QuantidadeRps", objLoteRpd.QuantidadeRps.ToString())));
+                conLoteRps = (new XElement(pf + "LoteRps", new XAttribute("Id", Convert.ToInt32(objLoteRpd.NumeroLote)),
+                                                                                     new XElement(pf + "NumeroLote", objLoteRpd.NumeroLote.ToString()),
+                                                                                     new XElement(pf + "Cnpj", objLoteRpd.Cnpj.ToString()),
+                                                                                     new XElement(pf + "InscricaoMunicipal", objLoteRpd.InscricaoMunicipal.ToString()),
+                                                                                     new XElement(pf + "QuantidadeRps", objLoteRpd.QuantidadeRps.ToString())));
 
-                XContainer conListaRps = (new XElement(pf+"ListaRps"));
-                XContainer conRps = (new XElement(pf+"Rps"));
+                XContainer conListaRps = (new XElement(pf + "ListaRps"));
+                XContainer conRps = (new XElement(pf + "Rps"));
                 XContainer conInfRps = null;
                 XContainer conSubstituto = null;
                 XContainer conServico = null;

@@ -31,7 +31,7 @@ namespace HLP.GeraXml.UI.NFse
 
             if (Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.TIPLAN)
             {
-                    this.sErro = objListaAll.FirstOrDefault().msg;
+                    this.sErro = objListaAll.LastOrDefault().cod;
             }
         }
 
