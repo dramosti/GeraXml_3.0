@@ -34,6 +34,7 @@ namespace HLP.GeraXml.bel.NFe
         public bool bDenegada { get; set; }
         public string sRECIBO_NF { get; set; }
         public string cd_nprotnfe { get; set; }
+        public string sNM_GUERRA { get; set; }
 
         public List<belPesquisaNotas> lResultPesquisa = new List<belPesquisaNotas>();
 
@@ -49,7 +50,8 @@ namespace HLP.GeraXml.bel.NFe
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_numero_nfse,'')", sAlias = "scd_numero_nfse" });
-            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NM_CLIFOR", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "clifor.NM_CLIFOR", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "clifor.NM_GUERRA", sAlias = "sNM_GUERRA" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "vl_totnf", sAlias = "dVL_TOTNF" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "NF.cd_gruponf", sAlias = "sCD_GRUPONF", sCoalesce = "" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "st_contingencia", sCoalesce = "N", sAlias = "bContingencia" });
@@ -95,6 +97,7 @@ namespace HLP.GeraXml.bel.NFe
                     sCD_NFSEQ = dr["sCD_NFSEQ"].ToString(),
                     sCD_NOTAFIS = dr["sCD_NOTAFIS"].ToString(),
                     sNM_CLIFOR = dr["sNM_CLIFOR"].ToString(),
+                    sNM_GUERRA = dr["sNM_GUERRA"].ToString(),
                     sCD_GRUPONF = dr["sCD_GRUPONF"].ToString(),
                     scd_numero_nfse = dr["scd_numero_nfse"].ToString(),
                     dVL_TOTNF = Convert.ToDouble(dr["dVL_TOTNF"].ToString()),
@@ -106,6 +109,7 @@ namespace HLP.GeraXml.bel.NFe
                     bSeleciona = false,
                     cd_nprotnfe = dr["cd_nprotnfe"].ToString(),
                     sRECIBO_NF = dr["sRECIBO_NF"].ToString()
+
 
                 });
             }
@@ -119,7 +123,8 @@ namespace HLP.GeraXml.bel.NFe
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_notafis", sAlias = "sCD_NOTAFIS" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nfseq", sAlias = "sCD_NFSEQ" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
-            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "nm_guerra", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "CLIFOR.nm_clifor", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "CLIFOR.nm_guerra", sAlias = "sNM_GUERRA" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_numero_nfse,'')", sAlias = "scd_numero_nfse" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_chavenfe,'')", sAlias = "sCHAVENFE" });
@@ -145,7 +150,7 @@ namespace HLP.GeraXml.bel.NFe
             }
             sWhere.Append(" order by cd_notafis desc");
 
-            DataTable dt = HlpDbFuncoes.qrySeekRet("NF", "", sWhere.ToString(), lCampos);
+            DataTable dt = HlpDbFuncoes.qrySeekRet("nf inner join clifor on nf.cd_clifor = clifor.cd_clifor", "", sWhere.ToString(), lCampos);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -154,6 +159,7 @@ namespace HLP.GeraXml.bel.NFe
                     sCD_NFSEQ = dr["sCD_NFSEQ"].ToString(),
                     sCD_NOTAFIS = dr["sCD_NOTAFIS"].ToString(),
                     sNM_CLIFOR = dr["sNM_CLIFOR"].ToString(),
+                    sNM_GUERRA = dr["sNM_GUERRA"].ToString(),
                     sCD_GRUPONF = dr["sCD_GRUPONF"].ToString(),
                     dVL_TOTNF = Convert.ToDouble(dr["dVL_TOTNF"].ToString()),
                     scd_numero_nfse = dr["scd_numero_nfse"].ToString(),
@@ -175,7 +181,8 @@ namespace HLP.GeraXml.bel.NFe
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_notafis", sAlias = "sCD_NOTAFIS" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nfseq", sAlias = "sCD_NFSEQ" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "dt_emi", sAlias = "dDT_EMI" });
-            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "nm_guerra", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "clifor.NM_CLIFOR", sAlias = "sNM_CLIFOR" });
+            lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "clifor.nm_guerra", sAlias = "sNM_GUERRA" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "cd_nprotnfe", sAlias = "cd_nprotnfe" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_numero_nfse,'')", sAlias = "scd_numero_nfse" });
             lCampos.Add(new HlpDbFuncoes.ListaCampos { sCampo = "coalesce(cd_chavenfe,'')", sAlias = "sCHAVENFE" });
@@ -189,7 +196,7 @@ namespace HLP.GeraXml.bel.NFe
             sWhere.Append("cd_empresa = '" + Acesso.CD_EMPRESA + "' and  (coalesce(nf.st_nf_prod,'S') = 'N') and  cd_recibonfe = '" + sNumeroLote + "'");
             sWhere.Append(" order by cd_notafis desc");
 
-            DataTable dt = HlpDbFuncoes.qrySeekRet("NF", "", sWhere.ToString(), lCampos);
+            DataTable dt = HlpDbFuncoes.qrySeekRet("nf inner join clifor on nf.cd_clifor = clifor.cd_clifor", "", sWhere.ToString(), lCampos);
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -198,6 +205,7 @@ namespace HLP.GeraXml.bel.NFe
                     sCD_NFSEQ = dr["sCD_NFSEQ"].ToString(),
                     sCD_NOTAFIS = dr["sCD_NOTAFIS"].ToString(),
                     sNM_CLIFOR = dr["sNM_CLIFOR"].ToString(),
+                    sNM_GUERRA = dr["sNM_GUERRA"].ToString(),
                     sCD_GRUPONF = dr["sCD_GRUPONF"].ToString(),
                     dVL_TOTNF = Convert.ToDouble(dr["dVL_TOTNF"].ToString()),
                     scd_numero_nfse = dr["scd_numero_nfse"].ToString(),

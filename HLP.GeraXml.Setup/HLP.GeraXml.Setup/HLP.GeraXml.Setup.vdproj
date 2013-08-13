@@ -45,12 +45,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_09F4E5208834416C9CBD9AA2F8FA4BE3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0A39F5126BF14205A8613EAEC58FF81F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,6 +87,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0F4B4E86B5024DE880EE2867E33BDB8A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0F999D0C37A74C69BD4636ED1807552A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -129,12 +129,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1E3F22AF8A644667B7D3426DF1C519D3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1E61AE3E8F5C4A32B78EBF3E6A134A98"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -165,12 +159,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2519BB80856E4D859DBDB0CC6B5B7686"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_288C2E193B97DF610D18AF1438392620"
         "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
         "MsmSig" = "8:_UNDEFINED"
@@ -191,12 +179,6 @@
         {
         "MsmKey" = "8:_2F038A9FB067936A2DFF93190EBFAFD6"
         "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_335AF9B6BA10449E952C580F10310D47"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -231,6 +213,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3A84815CB7254EBCA00BE2DF867ABF19"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3ABB52A1779F4780BC02926EC12BE15E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -243,7 +231,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3DD0980F1F014764B569A070A580BAA8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4128175107E74501826A18B60F5EFC43"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4314EA2002C04AD1B6264CBAF9AFD3D1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -255,7 +255,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_45B9B6F13AAC4F6DAB9F07ACFECE8FBE"
+        "MsmKey" = "8:_46ABE7A01843425FBB4C2E358205A9F0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -297,13 +297,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4ABDB46710664E2185842822E30C29DD"
+        "MsmKey" = "8:_4B9D4048983F4F6D8910CBAEDF46F866"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_4BEB288CF5C645F68B854041049838A4"
+        "MsmKey" = "8:_4BEBF1A3F98C413A9971040FDA973178"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4DDE3E5FC7A54EBEB3363CAE47303AF3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -321,7 +327,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4FB0650A15BC491BBEE74BD2BA76D6D8"
+        "MsmKey" = "8:_508F715C5AF14B31ABF61B7951360DA1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -329,12 +335,6 @@
         {
         "MsmKey" = "8:_515B9B9CA0DB401872F81899C35A5A81"
         "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_516C1BD0C54F4470949E8A9EA0440F2D"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -351,31 +351,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_529EDAD7BF094E27813013EA2E980E41"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_55745976666948F1BCB152B1AECA2C88"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5C725EA60C554AB1B754B2CAE8D20684"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_5D63B6C19CDB4D65B2E2ED8E03EAC494"
+        "MsmKey" = "8:_60D0CD5195B940098069211718537D40"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_60D0CD5195B940098069211718537D40"
+        "MsmKey" = "8:_6113EA9A8FB54C20B8F0D2EE87A82847"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -405,6 +393,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_66F453BA9A5E4B8CA867BAB51A6F83C4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6AA49970BCB94A32A915785CFBBA370C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -417,12 +411,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6BFB78CE21A24EFFBF96B30BCEBBD0B9"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6CC1386A36F944399BF590CF2CA05982"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -430,12 +418,6 @@
         "Entry"
         {
         "MsmKey" = "8:_6D12B781D55D49FFAD6542AD0D0DFD02"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6F648C40B27844659C78B843931200D7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -465,12 +447,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7951FF0B7CFA4D15B08DFA8021E89F52"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_79F9E46E1B424B62A25F836156D219D9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -489,13 +465,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_82D9A7E267EF4875A77BBB9A72A57538"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_847A11DACEED4C41B8A94F672917DB57"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_84FDE3CD4EBB4D5A85E7B538DC00910B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_89EEA704DA744A0A8B8A0EDDCF64EDF6"
+        "MsmKey" = "8:_85561DC5DC73458E9A62512D61E04539"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_86FDB31992514EBF8015C7ABF54BFE0D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -531,12 +525,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8EB8B5649BBE4341BADBAFC9146981E3"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9210CF97D4AF4AE2A5D821942782F28D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -555,6 +543,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_941B86A61C02495195F8E56EB1D38A7E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_944F32F37AA2C87642C0A9AC8FE8DFC2"
         "OwnerKey" = "8:_CAE4CFF3D19E43E6A8500AB3B6392FAA"
         "MsmSig" = "8:_UNDEFINED"
@@ -568,12 +562,6 @@
         "Entry"
         {
         "MsmKey" = "8:_956C3C234ED143BC9C2084AD553DC158"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_957F8E66894740BF8873661F18A6A047"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -627,7 +615,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A3E9AF41999947FAA18D87F26F52A969"
+        "MsmKey" = "8:_A35E4B5EFFF54F929913C326E280407F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -651,6 +639,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A97E71E6AA7E414C92C5B8B1CBBEADF6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AA65899170554EB5A2CAE271804F1AA0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AC3CC2FE0F0A40E2BD2F39EDEB9F10E9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -658,6 +658,12 @@
         "Entry"
         {
         "MsmKey" = "8:_AD2D92406B4F4691B5CE3483A614B7C0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AE55BDF010FC4E89B917F18D5F7C5DB6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -687,6 +693,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BA20974088F74031A5B31740DE38AAF3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BAFD31F54AE34148AC4183299CBB98D7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -700,18 +712,6 @@
         "Entry"
         {
         "MsmKey" = "8:_BEAE71A311854466A9B2EE81F7E6250B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BF1305E7F1EB407AAEAEDB7DA0E00135"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BF9C595E764D46D9B94BC986B0510764"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -735,7 +735,19 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C6180448CC3E4C7689929A6BB8218CA1"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C7B2F213EF4B4767B289D1C9A1E85B0D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C881B5A533494D1FA7FEFAD417797F97"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -747,7 +759,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CE9D478320A64E7AB44D1E7C560A12FA"
+        "MsmKey" = "8:_CC2BCDD6740A4004A5633B3173FCA552"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE18FF48213340D885EC2951A3B78D80"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -789,13 +807,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D9494FE67AAD4CAEB292595270307CA3"
+        "MsmKey" = "8:_DBB266742DD04FD788F421F1BF150B00"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DBB266742DD04FD788F421F1BF150B00"
+        "MsmKey" = "8:_DE93D9322B85402FB32454880BC217DC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -813,13 +831,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EA98A70956FD462BB4E2F7F2BDADAAD8"
+        "MsmKey" = "8:_E508A0AE808E4AC3BE90C414966C8184"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EC3CBBA658C44B1BB66ACCE8F066F346"
+        "MsmKey" = "8:_E61738FE422D4DEBBD587250D3D31B38"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EA98A70956FD462BB4E2F7F2BDADAAD8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -831,13 +855,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_EE84EEEC70A549C6BF3D986661E93796"
+        "MsmKey" = "8:_EF9E5782D282448F938A790B2F41EC43"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EF9E5782D282448F938A790B2F41EC43"
+        "MsmKey" = "8:_F1A055DF8C5B48759756D4BB4CAAAF17"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -868,12 +892,6 @@
         "Entry"
         {
         "MsmKey" = "8:_F81D95A8460D4B13946D72C31CD89B1A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FBB9993EC1D645528E2A3EC17DA946DE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -1041,26 +1059,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_09F4E5208834416C9CBD9AA2F8FA4BE3"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\consSitNFe_v2.00.xsd"
-            "TargetName" = "8:consSitNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0A39F5126BF14205A8613EAEC58FF81F"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\cteTiposBasico_v1.04.xsd"
@@ -1138,6 +1136,26 @@
             "TargetName" = "8:inutCte_v1.04.xsd"
             "Tag" = "8:"
             "Folder" = "8:_28A88ABB2BA042868349B1FA88AFFFB2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0F4B4E86B5024DE880EE2867E33BDB8A"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\retCancNFe_v2.00.xsd"
+            "TargetName" = "8:retCancNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1272,26 +1290,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E3F22AF8A644667B7D3426DF1C519D3"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\retCancNFe_v2.00.xsd"
-            "TargetName" = "8:retCancNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E61AE3E8F5C4A32B78EBF3E6A134A98"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\cteModalRodoviario_v1.04.xsd"
@@ -1378,46 +1376,6 @@
             "TargetName" = "8:consSitCteTiposBasico_v1.04.xsd"
             "Tag" = "8:"
             "Folder" = "8:_28A88ABB2BA042868349B1FA88AFFFB2"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2519BB80856E4D859DBDB0CC6B5B7686"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\cancNFe_v2.00.xsd"
-            "TargetName" = "8:cancNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_335AF9B6BA10449E952C580F10310D47"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\procNFe_v2.00.xsd"
-            "TargetName" = "8:procNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1532,6 +1490,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3A84815CB7254EBCA00BE2DF867ABF19"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\inutNFe_v2.00.xsd"
+            "TargetName" = "8:inutNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3ABB52A1779F4780BC02926EC12BE15E"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\Canc\\eventoCancNFe_v1.00.xsd"
@@ -1556,7 +1534,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HLP.GeraXml.UI, Version=3.0.1.36, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:HLP.GeraXml.UI, Version=3.0.1.40, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_3D8733E0E6404420AC3D3A12983EA62E"
@@ -1569,6 +1547,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_687B1883591C40798B77B7B93F1A5C2F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3DD0980F1F014764B569A070A580BAA8"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\procCancNFe_v2.00.xsd"
+            "TargetName" = "8:procCancNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1603,6 +1601,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4314EA2002C04AD1B6264CBAF9AFD3D1"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\leiauteConsultaCadastro_v2.00.xsd"
+            "TargetName" = "8:leiauteConsultaCadastro_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_438D5F67665D4E73B38D56BF043A0ACB"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\consSitCte_v1.04.xsd"
@@ -1623,10 +1641,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_45B9B6F13AAC4F6DAB9F07ACFECE8FBE"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_46ABE7A01843425FBB4C2E358205A9F0"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\inutNFe_v2.00.xsd"
-            "TargetName" = "8:inutNFe_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\cancNFe_v2.00.xsd"
+            "TargetName" = "8:cancNFe_v2.00.xsd"
             "Tag" = "8:"
             "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
@@ -1723,10 +1741,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4ABDB46710664E2185842822E30C29DD"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4B9D4048983F4F6D8910CBAEDF46F866"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\leiauteInutNFe_v2.00.xsd"
-            "TargetName" = "8:leiauteInutNFe_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\procNFe_v2.00.xsd"
+            "TargetName" = "8:procNFe_v2.00.xsd"
             "Tag" = "8:"
             "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
@@ -1743,10 +1761,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4BEB288CF5C645F68B854041049838A4"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4BEBF1A3F98C413A9971040FDA973178"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\retConsReciNFe_v2.00.xsd"
-            "TargetName" = "8:retConsReciNFe_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\leiauteConsStatServ_v2.00.xsd"
+            "TargetName" = "8:leiauteConsStatServ_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4DDE3E5FC7A54EBEB3363CAE47303AF3"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\nfe_v2.00.xsd"
+            "TargetName" = "8:nfe_v2.00.xsd"
             "Tag" = "8:"
             "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
@@ -1803,70 +1841,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4FB0650A15BC491BBEE74BD2BA76D6D8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_508F715C5AF14B31ABF61B7951360DA1"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\consCad_v2.00.xsd"
-            "TargetName" = "8:consCad_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_516C1BD0C54F4470949E8A9EA0440F2D"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\nfe_v2.00.xsd"
-            "TargetName" = "8:nfe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_529EDAD7BF094E27813013EA2E980E41"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\retConsStatServ_v2.00.xsd"
-            "TargetName" = "8:retConsStatServ_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_55745976666948F1BCB152B1AECA2C88"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\retEnviNFe_v2.00.xsd"
-            "TargetName" = "8:retEnviNFe_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\retConsSitNFe_v2.01.xsd"
+            "TargetName" = "8:retConsSitNFe_v2.01.xsd"
             "Tag" = "8:"
             "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
@@ -1903,12 +1881,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D63B6C19CDB4D65B2E2ED8E03EAC494"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60D0CD5195B940098069211718537D40"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\leiauteConsStatServ_v2.00.xsd"
-            "TargetName" = "8:leiauteConsStatServ_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\cteModalDutoviario_v1.04.xsd"
+            "TargetName" = "8:cteModalDutoviario_v1.04.xsd"
             "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Folder" = "8:_28A88ABB2BA042868349B1FA88AFFFB2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1923,12 +1901,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60D0CD5195B940098069211718537D40"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6113EA9A8FB54C20B8F0D2EE87A82847"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\cteModalDutoviario_v1.04.xsd"
-            "TargetName" = "8:cteModalDutoviario_v1.04.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\retConsSitNFe_v2.00.xsd"
+            "TargetName" = "8:retConsSitNFe_v2.00.xsd"
             "Tag" = "8:"
-            "Folder" = "8:_28A88ABB2BA042868349B1FA88AFFFB2"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2023,6 +2001,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_66F453BA9A5E4B8CA867BAB51A6F83C4"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\leiauteNFe_v2.00.xsd"
+            "TargetName" = "8:leiauteNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6AA49970BCB94A32A915785CFBBA370C"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\consStatServTiposBasico_v1.04.xsd"
@@ -2063,26 +2061,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6BFB78CE21A24EFFBF96B30BCEBBD0B9"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\retConsCad_v2.00.xsd"
-            "TargetName" = "8:retConsCad_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6CC1386A36F944399BF590CF2CA05982"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe-s\\servico_consultar_nfse_rps_envio_v03.xsd"
@@ -2109,26 +2087,6 @@
             "TargetName" = "8:servico_cancelar_nfse_envio_v03.xsd"
             "Tag" = "8:"
             "Folder" = "8:_E5615F21F49440389BC56E9329B74D9D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F648C40B27844659C78B843931200D7"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\procInutNFe_v2.00.xsd"
-            "TargetName" = "8:procInutNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2223,26 +2181,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7951FF0B7CFA4D15B08DFA8021E89F52"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\consReciNFe_v2.00.xsd"
-            "TargetName" = "8:consReciNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_79F9E46E1B424B62A25F836156D219D9"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\Canc\\retEnvEventoCancNFe_v1.00.xsd"
@@ -2303,6 +2241,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_82D9A7E267EF4875A77BBB9A72A57538"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\consSitNFe_v2.00.xsd"
+            "TargetName" = "8:consSitNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_847A11DACEED4C41B8A94F672917DB57"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\retInutNFe_v2.00.xsd"
+            "TargetName" = "8:retInutNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_84FDE3CD4EBB4D5A85E7B538DC00910B"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\retEnviCte_v1.04.xsd"
@@ -2323,10 +2301,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89EEA704DA744A0A8B8A0EDDCF64EDF6"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_85561DC5DC73458E9A62512D61E04539"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\leiauteConsultaCadastro_v2.00.xsd"
-            "TargetName" = "8:leiauteConsultaCadastro_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\retEnviNFe_v2.00.xsd"
+            "TargetName" = "8:retEnviNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_86FDB31992514EBF8015C7ABF54BFE0D"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\retConsReciNFe_v2.00.xsd"
+            "TargetName" = "8:retConsReciNFe_v2.00.xsd"
             "Tag" = "8:"
             "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
@@ -2443,26 +2441,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8EB8B5649BBE4341BADBAFC9146981E3"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\tiposBasico_v1.03.xsd"
-            "TargetName" = "8:tiposBasico_v1.03.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9210CF97D4AF4AE2A5D821942782F28D"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\cteModalFerroviario_v1.04.xsd"
@@ -2523,6 +2501,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_941B86A61C02495195F8E56EB1D38A7E"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\consCad_v2.00.xsd"
+            "TargetName" = "8:consCad_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_94611ABBFDEB42269377DE9332D5C515"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\app.config"
@@ -2549,26 +2547,6 @@
             "TargetName" = "8:servico_consultar_nfse_rps_resposta_v03.xsd"
             "Tag" = "8:"
             "Folder" = "8:_E5615F21F49440389BC56E9329B74D9D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_957F8E66894740BF8873661F18A6A047"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\leiauteCancNFe_v2.00.xsd"
-            "TargetName" = "8:leiauteCancNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2723,10 +2701,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A3E9AF41999947FAA18D87F26F52A969"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A35E4B5EFFF54F929913C326E280407F"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\retInutNFe_v2.00.xsd"
-            "TargetName" = "8:retInutNFe_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\retConsCad_v2.00.xsd"
+            "TargetName" = "8:retConsCad_v2.00.xsd"
             "Tag" = "8:"
             "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
@@ -2803,6 +2781,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A97E71E6AA7E414C92C5B8B1CBBEADF6"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\xmldsig-core-schema_v1.01.xsd"
+            "TargetName" = "8:xmldsig-core-schema_v1.01.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AA65899170554EB5A2CAE271804F1AA0"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\leiauteCancNFe_v2.00.xsd"
+            "TargetName" = "8:leiauteCancNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC3CC2FE0F0A40E2BD2F39EDEB9F10E9"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CCe\\tiposBasico_v1.03.xsd"
@@ -2829,6 +2847,26 @@
             "TargetName" = "8:envCCe_v1.00.xsd"
             "Tag" = "8:"
             "Folder" = "8:_ED73F1C83B22435C8F6128BBA6332499"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AE55BDF010FC4E89B917F18D5F7C5DB6"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\procInutNFe_v2.00.xsd"
+            "TargetName" = "8:procInutNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2923,6 +2961,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BA20974088F74031A5B31740DE38AAF3"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\leiauteInutNFe_v2.00.xsd"
+            "TargetName" = "8:leiauteInutNFe_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BAFD31F54AE34148AC4183299CBB98D7"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\cancCteTiposBasico_v1.04.xsd"
@@ -2983,52 +3041,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF1305E7F1EB407AAEAEDB7DA0E00135"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\procCancNFe_v2.00.xsd"
-            "TargetName" = "8:procCancNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BF9C595E764D46D9B94BC986B0510764"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\leiauteConsSitNFe_v2.00.xsd"
-            "TargetName" = "8:leiauteConsSitNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C26D9B22D1DB4395880C195FF0C4A539"
             {
             "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe-s\\TIPLAN\\Tipos_NFSe_v01.xsd"
             "TargetName" = "8:Tipos_NFSe_v01.xsd"
             "Tag" = "8:"
             "Folder" = "8:_459270F02A6A43C4916EC6D90B8B64F3"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C6180448CC3E4C7689929A6BB8218CA1"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\retConsStatServ_v2.00.xsd"
+            "TargetName" = "8:retConsStatServ_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3063,10 +3101,50 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE9D478320A64E7AB44D1E7C560A12FA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C881B5A533494D1FA7FEFAD417797F97"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\xmldsig-core-schema_v1.01.xsd"
-            "TargetName" = "8:xmldsig-core-schema_v1.01.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\tiposBasico_v1.03.xsd"
+            "TargetName" = "8:tiposBasico_v1.03.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC2BCDD6740A4004A5633B3173FCA552"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\consStatServ_v2.00.xsd"
+            "TargetName" = "8:consStatServ_v2.00.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE18FF48213340D885EC2951A3B78D80"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\leiauteConsSitNFe_v2.01.xsd"
+            "TargetName" = "8:leiauteConsSitNFe_v2.01.xsd"
             "Tag" = "8:"
             "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
@@ -3203,12 +3281,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D9494FE67AAD4CAEB292595270307CA3"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DBB266742DD04FD788F421F1BF150B00"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\retConsSitNFe_v2.00.xsd"
-            "TargetName" = "8:retConsSitNFe_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Relatorios\\RelDanfePaisagem.rpt"
+            "TargetName" = "8:RelDanfePaisagem.rpt"
             "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Folder" = "8:_B6C72390BC9D4A7AAEA813DDB5094F9D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3223,12 +3301,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DBB266742DD04FD788F421F1BF150B00"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DE93D9322B85402FB32454880BC217DC"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Relatorios\\RelDanfePaisagem.rpt"
-            "TargetName" = "8:RelDanfePaisagem.rpt"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\leiauteConsSitNFe_v2.00.xsd"
+            "TargetName" = "8:leiauteConsSitNFe_v2.00.xsd"
             "Tag" = "8:"
-            "Folder" = "8:_B6C72390BC9D4A7AAEA813DDB5094F9D"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3283,12 +3361,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA98A70956FD462BB4E2F7F2BDADAAD8"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E508A0AE808E4AC3BE90C414966C8184"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe-s\\DSF\\RetornoEnvioLoteRPS.xsd"
-            "TargetName" = "8:RetornoEnvioLoteRPS.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\consReciNFe_v2.00.xsd"
+            "TargetName" = "8:consReciNFe_v2.00.xsd"
             "Tag" = "8:"
-            "Folder" = "8:_03D2F419181D49E9BC19DF668EBF956F"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3303,12 +3381,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EC3CBBA658C44B1BB66ACCE8F066F346"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E61738FE422D4DEBBD587250D3D31B38"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\leiauteNFe_v2.00.xsd"
-            "TargetName" = "8:leiauteNFe_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\consSitNFe_v2.01.xsd"
+            "TargetName" = "8:consSitNFe_v2.01.xsd"
             "Tag" = "8:"
             "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA98A70956FD462BB4E2F7F2BDADAAD8"
+            {
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe-s\\DSF\\RetornoEnvioLoteRPS.xsd"
+            "TargetName" = "8:RetornoEnvioLoteRPS.xsd"
+            "Tag" = "8:"
+            "Folder" = "8:_03D2F419181D49E9BC19DF668EBF956F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3343,12 +3441,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE84EEEC70A549C6BF3D986661E93796"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EF9E5782D282448F938A790B2F41EC43"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\consStatServ_v2.00.xsd"
-            "TargetName" = "8:consStatServ_v2.00.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\tiposGeralCTe_v1.04.xsd"
+            "TargetName" = "8:tiposGeralCTe_v1.04.xsd"
             "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
+            "Folder" = "8:_28A88ABB2BA042868349B1FA88AFFFB2"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3363,12 +3461,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EF9E5782D282448F938A790B2F41EC43"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F1A055DF8C5B48759756D4BB4CAAAF17"
             {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\CTe\\tiposGeralCTe_v1.04.xsd"
-            "TargetName" = "8:tiposGeralCTe_v1.04.xsd"
+            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\Schema\\NFe\\enviNFe_v2.00.xsd"
+            "TargetName" = "8:enviNFe_v2.00.xsd"
             "Tag" = "8:"
-            "Folder" = "8:_28A88ABB2BA042868349B1FA88AFFFB2"
+            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3469,26 +3567,6 @@
             "TargetName" = "8:procInutCTe_v1.04.xsd"
             "Tag" = "8:"
             "Folder" = "8:_28A88ABB2BA042868349B1FA88AFFFB2"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FBB9993EC1D645528E2A3EC17DA946DE"
-            {
-            "SourcePath" = "8:..\\..\\HLP.GeraXml.UI\\bin\\Debug\\Schema\\NFe\\enviNFe_v2.00.xsd"
-            "TargetName" = "8:enviNFe_v2.00.xsd"
-            "Tag" = "8:"
-            "Folder" = "8:_20D9EEB03C154BF0B53332DA25B3C6E9"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -3689,15 +3767,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:GeraXml 3.0"
-        "ProductCode" = "8:{6EA68F0A-CB38-4F41-B354-0AE77596FA3F}"
-        "PackageCode" = "8:{6380B136-339D-4738-813A-3ACA57C6510C}"
+        "ProductCode" = "8:{7175C750-FB05-4659-A9CC-68CCCE9C28A6}"
+        "PackageCode" = "8:{B3978B9C-284B-4464-AB7F-983E98F2BFBE}"
         "UpgradeCode" = "8:{27898E47-F665-4982-BD1F-A648DABCB4A3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:3.1.37"
+        "ProductVersion" = "8:3.1.41"
         "Manufacturer" = "8:HLP"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

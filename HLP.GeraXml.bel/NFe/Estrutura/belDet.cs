@@ -317,11 +317,11 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
 
                         bool bCST_SuperSimples = Util.VerificaNovaST(sCST);
 
+                        string sOrig = "";
                         if (bCST_SuperSimples == true && sSimplesNac == "S")
                         {
-                            string sOrig = drIItem["Orig"].ToString();
-
-                            #region CTS_NOVAS
+                            sOrig = drIItem["Orig"].ToString();
+                            #region CTS - empresas do Simples Nacional
                             switch ((Util.RetornaSTnovaAserUsada(sCST)))
                             {
                                 case "101":
@@ -446,13 +446,15 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                     break;
                             }
                             #endregion
-                          
+
                         }
                         else
-                        {                            
+                        {
                             #region CST_ANTIGAS
+                            sOrig = sCST.ToString().Substring(0, 1);
                             switch (sCST.Substring(1, 2))
                             {
+
                                 case "00":
                                     {
                                         #region 00
@@ -709,7 +711,12 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             }
 
                             #endregion
-                           
+
+                        }
+
+                        if (sOrig.Equals("3") || sOrig.Equals("5") || sOrig.Equals("8"))
+                        {
+                            objDet.prod.nFCI = drIItem["nr_fci"].ToString();
                         }
 
                         if ((dvBC != 0) && (Convert.ToDecimal(drIItem["pICMS"].ToString()) != 0))
@@ -1141,6 +1148,39 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                         //Fim - Obs                    
                         #endregion
 
+
+                        if (Acesso.NM_EMPRESA.Equals("BENGALAS"))
+                        {
+                            try
+                            {
+
+                                DataTable dtMed = daoDet.GetMed(drIItem["nr_lanc"].ToString());
+                                if (dtMed.Rows.Count > 0)
+                                {
+                                    string sMsgMed = "Lote:{0} / Qtde Lote:{1} / Data Fabr: {2} / Data Validade: {3}";
+                                    objDet.prod.belMed = new belMed();
+                                    foreach (DataRow row in dtMed.Rows)
+                                    {
+                                       
+                                        objDet.prod.belMed.Nlote = row["nr_lote"].ToString();
+                                        objDet.prod.belMed.Qlote = row["qt_fabr"].ToString();
+                                        objDet.prod.belMed.DFab = Convert.ToDateTime(row["dt_fabr"].ToString());
+                                        objDet.prod.belMed.Dval = Convert.ToDateTime(row["dt_valid"].ToString());
+                                        objDet.prod.belMed.Vpmc = 0;
+
+                                    }
+                                    sMsgMed = string.Format(sMsgMed, objDet.prod.belMed.Nlote, objDet.prod.belMed.Qlote, objDet.prod.belMed.DFab.ToShortDateString(), objDet.prod.belMed.Dval.ToShortDateString());
+                                    objinf.Infadprid += (objinf.Infadprid == "" ? "" : " - ") + sMsgMed;
+
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new Exception("Problemas ao buscar Dados sobre medicamentos, verifique os lançamentos."
+                                    + Environment.NewLine +
+                                    ex.Message);
+                            }
+                        }
                         objDet.imposto = objimp;
                         objDet.infAdProd = objinf;
                         objListaRet.Add(objDet);

@@ -222,6 +222,11 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         /// Indica se valor do Item (vProd) entra no valor total da NF-e(vProd)
         /// </summary>
         public int IndTot { get; set; }
+        /// <summary>
+        /// Número de controle da FCI - Ficha deConteúdo de Importação
+        /// Informação relacionada com a Resolução 13/2012 do Senado Federal. Formato: Algarismos, letras maiúsculas de "A" a "F" e o caractere hífen. Exemplo: B01F70AF-10BF-4B1F-848C-65FF57F616FE 
+        /// /// </summary>
+        public string nFCI { get; set; }
 
         public belVeicprod belVeicprod
         {
@@ -234,16 +239,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
             }
         }
 
-        public belMed belMed
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public belMed belMed { get; set; }
 
         public belArma belArma
         {
@@ -257,7 +253,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         }
 
         public belcomb belcomb { get; set; }
-                
+
         private string _ceantrib;
 
         public string Ceantrib

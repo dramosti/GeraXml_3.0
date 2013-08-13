@@ -216,9 +216,10 @@ namespace HLP.GeraXml.bel.NFe
                                                    (new XElement(pf + "vUnTrib", det.prod.Vuntrib.ToString("#0." + sCasasVlUnit).Replace(",", "."))),
                                                    (det.prod.Vfrete != 0 ? new XElement(pf + "vFrete", det.prod.Vfrete.ToString("#0.00").Replace(",", ".")) : null),
                                                    (det.prod.Vseg != 0 ? new XElement(pf + "vSeg", det.prod.Vseg.ToString("#0.00").Replace(",", ".")) : null),
-                                                   (det.prod.Vdesc != 0 ? new XElement(pf + "vDesc", det.prod.Vdesc.ToString("#0.00").Replace(",", ".")) : null),
+                                                   (det.prod.Vdesc > 0 ? new XElement(pf + "vDesc", det.prod.Vdesc.ToString("#0.00").Replace(",", ".")) : null),
                                                    (det.prod.VOutro != 0 ? new XElement(pf + "vOutro", det.prod.VOutro.ToString("#0.00").Replace(",", ".")) : null), //NFe_2.0 
                                                    (det.prod.IndTot != null ? new XElement(pf + "indTot", det.prod.IndTot.ToString()) : null), //NFe_2.0
+                                                   (det.prod.nFCI != null ? new XElement(pf + "nFCI", det.prod.nFCI.ToString()) : null), //29280
                                                    ((det.prod.belDI != null) ? from DI in det.prod.belDI
                                                                                where DI.nDI != null
                                                                                      && DI.xLocDesemb != null
@@ -240,6 +241,15 @@ namespace HLP.GeraXml.bel.NFe
                                                                                        new XElement(pf + "vDescDI", adic.vDescDI))) : null),
                                                  ((det.prod.XPed != "") ? new XElement(pf + "xPed", det.prod.XPed) : null),
                                                  ((det.prod.NItemPed != "") ? new XElement(pf + "nItemPed", det.prod.NItemPed) : null),
+
+                                                 (det.prod.belMed != null ?
+                                                        new XElement(pf + "med",
+                                                                            new XElement(pf + "nLote", det.prod.belMed.Nlote),
+                                                                            new XElement(pf + "qLote", Convert.ToDecimal(det.prod.belMed.Qlote).ToString("#0.000").Replace(",", ".")),
+                                                                            new XElement(pf + "dFab", det.prod.belMed.DFab.ToString("yyyy-MM-dd")),
+                                                                            new XElement(pf + "dVal", det.prod.belMed.Dval.ToString("yyyy-MM-dd")),
+                                                                            new XElement(pf + "vPMC", det.prod.belMed.Vpmc)) : null),
+
                                                  (det.prod.belcomb != null ?
                                                         new XElement(pf + "comb",
                                                                             new XElement(pf + "cProdANP", det.prod.belcomb.cProdANP),
@@ -624,7 +634,7 @@ namespace HLP.GeraXml.bel.NFe
                                                       new XElement(pf + "vCOFINS", objtotal.belIcmstot.Vcofins.ToString("#0.00").Replace(",", ".")),
                                                       new XElement(pf + "vOutro", objtotal.belIcmstot.Voutro.ToString("#0.00").Replace(",", ".")),
                                                       new XElement(pf + "vNF", objtotal.belIcmstot.Vnf.ToString("#0.00").Replace(",", "."))
-                            ,new XElement(pf + "vTotTrib", objtotal.belIcmstot.vTotTrib.ToString("#0.00").Replace(",", "."))
+                            , new XElement(pf + "vTotTrib", objtotal.belIcmstot.vTotTrib.ToString("#0.00").Replace(",", "."))
                                                       ) : null),
 
 
@@ -794,9 +804,7 @@ namespace HLP.GeraXml.bel.NFe
                                 contransp.AddAfterSelf(conobs);
                         }
                         if (conExporta != null)
-                        {
                             conobs.AddAfterSelf(conExporta);
-                        }
 
                         foreach (XElement x in lcondet)
                         {

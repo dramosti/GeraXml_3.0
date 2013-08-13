@@ -17,6 +17,28 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
             public bool bAgrupa = false;
         }
 
+        public static DataTable GetMed(string sNR_LANC)
+        {
+            try
+            {
+                StringBuilder sQuery = new StringBuilder();
+                sQuery.Append("SELECT M.cd_prod, MED.dt_fabr, MED.dt_valid, MED.nr_lote, MED.qt_fabr ");
+                sQuery.Append("FROM MOVITEM M INNER JOIN it_nf_med MED ");
+                sQuery.Append("ON M.nr_lanc = MED.nr_lancmov AND M.cd_empresa = MED.cd_empresa ");
+                sQuery.Append("WHERE M.nr_lanc = '{0}'  AND M.cd_empresa = '{1}' ");
+
+                DataTable dt = HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), sNR_LANC, Acesso.CD_EMPRESA));
+
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public static DataTable BuscaItem(string seqNF, bool bEx)
         {
             List<CamposSelect> lCampos = new List<CamposSelect>();
@@ -32,24 +54,20 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 //CD_DOC
 
                 if (HlpDbFuncoes.fExisteCampo("CD_ANP", "PRODUTO"))
-                {
                     lCampos.Add(new CamposSelect { sCampo = "coalesce(PRODUTO.CD_ANP,'0')", sAlias = "CD_ANP" });//OS_28293
-                }
                 else
-                {
                     lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "CD_ANP" });//OS_28293
-                }
 
                 if (HlpDbFuncoes.fExisteCampo("vl_total_impostos", "MOVITEM"))
-                {
                     lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_total_impostos,0)", sAlias = "vTotTrib" });//os_28878
-                }
                 else
-                {
                     lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "vTotTrib" });//os_28878
-                }
 
-                //
+                if (HlpDbFuncoes.fExisteCampo("nr_fci", "MOVITEM"))
+                    lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.nr_fci,'')", sAlias = "nr_fci" });//OS_29280
+                else
+                    lCampos.Add(new CamposSelect { sCampo = "''", sAlias = "nr_fci" });//OS_29280
+
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_siscomex,0)", sAlias = "vl_siscomex" });//OS_28303
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.CD_DOC,'')", sAlias = "CD_DOC" });//OS_27921
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(opereve.ST_ESTTERC,'N')", sAlias = "ST_ESTTERC" });//OS_27921
@@ -727,6 +745,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
             }
             return sOBS;
         }
+                       
 
     }
 }

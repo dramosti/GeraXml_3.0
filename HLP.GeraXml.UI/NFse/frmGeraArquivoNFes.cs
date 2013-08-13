@@ -709,7 +709,7 @@ namespace HLP.GeraXml.UI.NFse
                                         List<belEmail> objlbelEmail = new List<belEmail>();
                                         for (int i = 0; i < sListImpressao.Count; i++)
                                         {
-                                            belEmail objemail = new belEmail("", "", sListImpressao[i].sNota, "", "", sListImpressao[i].sVerificacao);
+                                            belEmail objemail = new belEmail("", "", sListImpressao[i].sNfSeq, sListImpressao[i].sNota, "", sListImpressao[i].sVerificacao);
                                             objlbelEmail.Add(objemail);
                                         }
                                         if (objlbelEmail.Count > 0)
@@ -881,26 +881,127 @@ namespace HLP.GeraXml.UI.NFse
                         }
                     }
                 }
-                if (e.ColumnIndex == 1)
+
+                if (dgvNF.Columns[e.ColumnIndex].Name == "sCD_NOTAFIS")
                 {
-                    if (!bCD_NOTAFIS)
-                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sCD_NOTAFIS);
-                    else
+                    if (dgvNF.Columns[e.ColumnIndex].Tag == null)
+                    {
+                        dgvNF.Columns[e.ColumnIndex].Tag = true;
+                    }
+                    if (Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString()))
+                    {
                         bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sCD_NOTAFIS);
-
-                    ColoriGrid();
-                    bCD_NOTAFIS = !bCD_NOTAFIS;
-                }
-                else if (e.ColumnIndex == 2)
-                {
-                    if (bCD_NFSEQ)
-                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sCD_NFSEQ);
+                    }
                     else
-                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sCD_NFSEQ);
-
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sCD_NOTAFIS);
+                    }
                     ColoriGrid();
-                    bCD_NFSEQ = !bCD_NFSEQ;
+                    dgvNF.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString());
                 }
+                else if (dgvNF.Columns[e.ColumnIndex].Name == "sCD_NFSEQ")
+                {
+                    if (dgvNF.Columns[e.ColumnIndex].Tag == null)
+                    {
+                        dgvNF.Columns[e.ColumnIndex].Tag = true;
+                    }
+                    if (Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString()))
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sCD_NFSEQ);
+                    }
+                    else
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sCD_NFSEQ);
+                    }
+                    ColoriGrid();
+                    dgvNF.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString());
+                }
+                else if (dgvNF.Columns[e.ColumnIndex].Name == "scd_numero_nfse")
+                {
+                    if (dgvNF.Columns[e.ColumnIndex].Tag == null)
+                    {
+                        dgvNF.Columns[e.ColumnIndex].Tag = true;
+                    }
+                    if (Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString()))
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.scd_numero_nfse);
+                    }
+                    else
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.scd_numero_nfse);
+                    }
+                    ColoriGrid();
+                    dgvNF.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString());
+                }
+                else if (dgvNF.Columns[e.ColumnIndex].Name == "dDT_EMI")
+                {
+                    if (dgvNF.Columns[e.ColumnIndex].Tag == null)
+                    {
+                        dgvNF.Columns[e.ColumnIndex].Tag = true;
+                    }
+                    if (Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString()))
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.dDT_EMI);
+                    }
+                    else
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.dDT_EMI);
+                    }
+                    ColoriGrid();
+                    dgvNF.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString());
+                }
+                else if (dgvNF.Columns[e.ColumnIndex].Name == "dVL_TOTNF")
+                {
+                    if (dgvNF.Columns[e.ColumnIndex].Tag == null)
+                    {
+                        dgvNF.Columns[e.ColumnIndex].Tag = true;
+                    }
+                    if (Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString()))
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.dVL_TOTNF);
+                    }
+                    else
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.dVL_TOTNF);
+                    }
+                    ColoriGrid();
+                    dgvNF.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString());
+                }
+                else if (dgvNF.Columns[e.ColumnIndex].Name == "sNM_GUERRA")
+                {
+                    if (dgvNF.Columns[e.ColumnIndex].Tag == null)
+                    {
+                        dgvNF.Columns[e.ColumnIndex].Tag = true;
+                    }
+                    if (Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString()))
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sNM_GUERRA);
+                    }
+                    else
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sNM_CLIFOR);
+                    }
+                    ColoriGrid();
+                    dgvNF.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString());
+                }
+                else if (dgvNF.Columns[e.ColumnIndex].Name == "sNM_CLIFOR")
+                {
+                    if (dgvNF.Columns[e.ColumnIndex].Tag == null)
+                    {
+                        dgvNF.Columns[e.ColumnIndex].Tag = true;
+                    }
+                    if (Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString()))
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sNM_GUERRA);
+                    }
+                    else
+                    {
+                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sNM_GUERRA);
+                    }
+                    ColoriGrid();
+                    dgvNF.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvNF.Columns[e.ColumnIndex].Tag.ToString());
+                }
+
             }
             catch (Exception ex)
             {

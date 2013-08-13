@@ -416,6 +416,7 @@ namespace HLP.GeraXml.Comum.Static
 
         public static string TiraCaracterEstranho(string sString)
         {
+            sString = sString.Replace("\\viewkind4\\uc1 d", "");
             sString = sString.Replace("{\\colortbl ;\\red0\\green0\\blue0;}\\viewkind4\\uc1\\pard\\cf1\\lang1046\\f0\\fs16 ", "");
             sString = sString.Replace(@"{\colortbl ;\red0\green0\blue255;}\viewkind4\uc1\pard\cf1\lang1046\f0\fs16 ", "");
             sString = sString.Replace("\\viewkind4\\uc1\\pard\\f0\\fs16 ", "");

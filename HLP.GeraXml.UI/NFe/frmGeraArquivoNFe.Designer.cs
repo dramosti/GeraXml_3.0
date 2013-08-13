@@ -89,6 +89,7 @@ namespace HLP.GeraXml.UI.NFe
             this.dDTEMIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dVLTOTNFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sNM_GUERRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bContingencia = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -141,6 +142,7 @@ namespace HLP.GeraXml.UI.NFe
             this.dDTEMIDataGridViewTextBoxColumn,
             this.dVLTOTNFDataGridViewTextBoxColumn,
             this.sNM_CLIFOR,
+            this.sNM_GUERRA,
             this.bCancelado,
             this.bEnviado,
             this.bContingencia,
@@ -755,6 +757,13 @@ namespace HLP.GeraXml.UI.NFe
             this.sNM_CLIFOR.Name = "sNM_CLIFOR";
             this.sNM_CLIFOR.ReadOnly = true;
             // 
+            // sNM_GUERRA
+            // 
+            this.sNM_GUERRA.DataPropertyName = "sNM_GUERRA";
+            this.sNM_GUERRA.HeaderText = "Fantasia";
+            this.sNM_GUERRA.Name = "sNM_GUERRA";
+            this.sNM_GUERRA.Width = 200;
+            // 
             // bCancelado
             // 
             this.bCancelado.DataPropertyName = "bCancelado";
@@ -893,6 +902,7 @@ namespace HLP.GeraXml.UI.NFe
         private System.Windows.Forms.DataGridViewTextBoxColumn dDTEMIDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dVLTOTNFDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sNM_CLIFOR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sNM_GUERRA;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bCancelado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bEnviado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bContingencia;

@@ -2136,5 +2136,10 @@ namespace HLP.GeraXml.UI.NFe
             }
         }
 
+        private void dgvProd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }

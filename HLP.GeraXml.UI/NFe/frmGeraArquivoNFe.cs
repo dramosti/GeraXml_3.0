@@ -198,8 +198,37 @@ namespace HLP.GeraXml.UI.NFe
                     }
                     else if (e.ColumnIndex == 6)
                     {
-                        bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sNM_CLIFOR);
+                        if (dgvArquivos.Columns[e.ColumnIndex].Tag == null )
+                        {
+                            dgvArquivos.Columns[e.ColumnIndex].Tag = true;
+                        }
+                        if (Convert.ToBoolean(dgvArquivos.Columns[e.ColumnIndex].Tag.ToString()))
+                        {
+                            bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sNM_CLIFOR);
+                        }
+                        else
+                        {
+                            bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sNM_CLIFOR);
+                        }
                         ColoriGrid();
+                        dgvArquivos.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvArquivos.Columns[e.ColumnIndex].Tag.ToString());
+                    }
+                    else if (e.ColumnIndex == 7)
+                    {
+                        if (dgvArquivos.Columns[e.ColumnIndex].Tag == null)
+                        {
+                            dgvArquivos.Columns[e.ColumnIndex].Tag = true;
+                        }
+                        if (Convert.ToBoolean(dgvArquivos.Columns[e.ColumnIndex].Tag.ToString()))
+                        {
+                            bsNotas.DataSource = belPesq.lResultPesquisa.OrderBy(C => C.sNM_GUERRA);
+                        }
+                        else
+                        {
+                            bsNotas.DataSource = belPesq.lResultPesquisa.OrderByDescending(C => C.sNM_GUERRA);
+                        }
+                        ColoriGrid();
+                        dgvArquivos.Columns[e.ColumnIndex].Tag = !Convert.ToBoolean(dgvArquivos.Columns[e.ColumnIndex].Tag.ToString());
                     }
                 }
             }

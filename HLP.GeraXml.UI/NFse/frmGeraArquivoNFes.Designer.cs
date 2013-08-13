@@ -35,7 +35,6 @@ namespace HLP.GeraXml.UI.NFse
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvNF = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.bsNotas = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -62,6 +61,7 @@ namespace HLP.GeraXml.UI.NFse
             this.btnVisualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBuscaRetorno = new System.Windows.Forms.ToolStripButton();
+            this.bsNotas = new System.Windows.Forms.BindingSource(this.components);
             this.bSeleciona = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.sCD_NOTAFIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sCD_NFSEQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +69,7 @@ namespace HLP.GeraXml.UI.NFse
             this.dDT_EMI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dVL_TOTNF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sNM_GUERRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
@@ -78,10 +79,10 @@ namespace HLP.GeraXml.UI.NFse
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNF)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPanel
@@ -129,6 +130,7 @@ namespace HLP.GeraXml.UI.NFse
             this.dDT_EMI,
             this.dVL_TOTNF,
             this.sNM_CLIFOR,
+            this.sNM_GUERRA,
             this.bCancelado,
             this.bEnviado});
             this.dgvNF.DataSource = this.bsNotas;
@@ -142,10 +144,6 @@ namespace HLP.GeraXml.UI.NFse
             this.dgvNF.TabIndex = 232;
             this.dgvNF.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNF_CellContentClick);
             this.dgvNF.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvNF_ColumnHeaderMouseClick);
-            // 
-            // bsNotas
-            // 
-            this.bsNotas.DataSource = typeof(HLP.GeraXml.bel.NFe.belPesquisaNotas);
             // 
             // flowLayoutPanel2
             // 
@@ -478,6 +476,10 @@ namespace HLP.GeraXml.UI.NFse
             this.btnBuscaRetorno.Text = "Retorno";
             this.btnBuscaRetorno.Click += new System.EventHandler(this.btnBuscaRetorno_Click);
             // 
+            // bsNotas
+            // 
+            this.bsNotas.DataSource = typeof(HLP.GeraXml.bel.NFe.belPesquisaNotas);
+            // 
             // bSeleciona
             // 
             this.bSeleciona.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -540,6 +542,13 @@ namespace HLP.GeraXml.UI.NFse
             this.sNM_CLIFOR.Name = "sNM_CLIFOR";
             this.sNM_CLIFOR.ReadOnly = true;
             // 
+            // sNM_GUERRA
+            // 
+            this.sNM_GUERRA.DataPropertyName = "sNM_GUERRA";
+            this.sNM_GUERRA.HeaderText = "Fantasia";
+            this.sNM_GUERRA.Name = "sNM_GUERRA";
+            this.sNM_GUERRA.Width = 190;
+            // 
             // bCancelado
             // 
             this.bCancelado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -580,13 +589,13 @@ namespace HLP.GeraXml.UI.NFse
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNF)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -643,6 +652,7 @@ namespace HLP.GeraXml.UI.NFse
         private System.Windows.Forms.DataGridViewTextBoxColumn dDT_EMI;
         private System.Windows.Forms.DataGridViewTextBoxColumn dVL_TOTNF;
         private System.Windows.Forms.DataGridViewTextBoxColumn sNM_CLIFOR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sNM_GUERRA;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bCancelado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bEnviado;
     }

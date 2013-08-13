@@ -420,18 +420,36 @@ namespace HLP.GeraXml.bel.NFes
                     #region Tomador
                     try
                     {
+                        //conTomador = (new XElement(pf + "Tomador", ((rps.InfRps.Tomador.IdentificacaoTomador != null) ? new XElement(pf + "IdentificacaoTomador", new XElement(pf + "CpfCnpj",
+                        //                                                                                       new XElement(pf + (rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj != "" ? "Cnpj" : "Cpf"), (rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj != "" ? rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj : rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cpf))),
+                        //                                            (rps.InfRps.Tomador.IdentificacaoTomador.InscricaoMunicipal != "" ? (new XElement(pf + "InscricaoMunicipal", rps.InfRps.Tomador.IdentificacaoTomador.InscricaoMunicipal)) : null)) : null),
+                        //                                            new XElement(pf + "RazaoSocial", rps.InfRps.Tomador.RazaoSocial),
+                        //                                            new XElement(pf + "Endereco",
+                        //                                                               new XElement(pf + "Endereco", rps.InfRps.Tomador.Endereco.Endereco),
+                        //                                                               new XElement(pf + "Numero", rps.InfRps.Tomador.Endereco.Numero),
+                        //                                                              (rps.InfRps.Tomador.Endereco.Complemento != "" ? new XElement(pf + "Complemento", rps.InfRps.Tomador.Endereco.Complemento) : null),
+                        //                                                               new XElement(pf + "Bairro", rps.InfRps.Tomador.Endereco.Bairro),
+                        //                                                               new XElement(pf + "CodigoMunicipio", rps.InfRps.Tomador.Endereco.CodigoMunicipio),
+                        //                                                               new XElement(pf + "Uf", rps.InfRps.Tomador.Endereco.Uf),
+                        //                                                               new XElement(pf + "Cep", rps.InfRps.Tomador.Endereco.Cep))));
+
                         conTomador = (new XElement(pf + "Tomador", ((rps.InfRps.Tomador.IdentificacaoTomador != null) ? new XElement(pf + "IdentificacaoTomador", new XElement(pf + "CpfCnpj",
-                                                                                                               new XElement(pf + (rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj != "" ? "Cnpj" : "Cpf"), (rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj != "" ? rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj : rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cpf))),
-                                                                    (rps.InfRps.Tomador.IdentificacaoTomador.InscricaoMunicipal != "" ? (new XElement(pf + "InscricaoMunicipal", rps.InfRps.Tomador.IdentificacaoTomador.InscricaoMunicipal)) : null)) : null),
-                                                                    new XElement(pf + "RazaoSocial", rps.InfRps.Tomador.RazaoSocial),
-                                                                    new XElement(pf + "Endereco",
-                                                                                       new XElement(pf + "Endereco", rps.InfRps.Tomador.Endereco.Endereco),
-                                                                                       new XElement(pf + "Numero", rps.InfRps.Tomador.Endereco.Numero),
-                                                                                      (rps.InfRps.Tomador.Endereco.Complemento != "" ? new XElement(pf + "Complemento", rps.InfRps.Tomador.Endereco.Complemento) : null),
-                                                                                       new XElement(pf + "Bairro", rps.InfRps.Tomador.Endereco.Bairro),
-                                                                                       new XElement(pf + "CodigoMunicipio", rps.InfRps.Tomador.Endereco.CodigoMunicipio),
-                                                                                       new XElement(pf + "Uf", rps.InfRps.Tomador.Endereco.Uf),
-                                                                                       new XElement(pf + "Cep", rps.InfRps.Tomador.Endereco.Cep))));
+                                                                                                              new XElement(pf + (rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj != "" ? "Cnpj" : "Cpf"), (rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj != "" ? rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cnpj : rps.InfRps.Tomador.IdentificacaoTomador.CpfCnpj.Cpf))),
+                                                                   (rps.InfRps.Tomador.IdentificacaoTomador.InscricaoMunicipal != "" ? (new XElement(pf + "InscricaoMunicipal", rps.InfRps.Tomador.IdentificacaoTomador.InscricaoMunicipal)) : null)) : null),
+                                                                   new XElement(pf + "RazaoSocial", rps.InfRps.Tomador.RazaoSocial),
+                                                                   new XElement(pf + "Endereco",
+                                                                                      new XElement(pf + "Endereco", rps.InfRps.Tomador.Endereco.Endereco),
+                                                                                      new XElement(pf + "Numero", rps.InfRps.Tomador.Endereco.Numero),
+                                                                                     (rps.InfRps.Tomador.Endereco.Complemento != "" ? new XElement(pf + "Complemento", rps.InfRps.Tomador.Endereco.Complemento) : null),
+                                                                                      new XElement(pf + "Bairro", rps.InfRps.Tomador.Endereco.Bairro),
+                                                                                      new XElement(pf + "CodigoMunicipio", rps.InfRps.Tomador.Endereco.CodigoMunicipio),
+                                                                                      new XElement(pf + "Uf", rps.InfRps.Tomador.Endereco.Uf),
+                                                                                      new XElement(pf + "Cep", rps.InfRps.Tomador.Endereco.Cep)),
+                                                                                      ((rps.InfRps.Tomador.Contato.Telefone != "" || rps.InfRps.Tomador.Contato.Email != "") ?
+                                                                                      (new XElement(pf + "Contato",
+                                                                                                        ((rps.InfRps.Tomador.Contato.Telefone != "") ? new XElement(pf + "Telefone", rps.InfRps.Tomador.Contato.Telefone) : null),
+                                                                                                        ((rps.InfRps.Tomador.Contato.Email != "") ? new XElement(pf + "Email", rps.InfRps.Tomador.Contato.Email) : null))) : null)));
+
 
 
                     }

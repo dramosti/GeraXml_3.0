@@ -288,7 +288,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                         }
                     }
                 }
-                return sObs;
+                return Util.TiraCaracterEstranho(sObs);
             }
             catch (Exception Ex)
             {

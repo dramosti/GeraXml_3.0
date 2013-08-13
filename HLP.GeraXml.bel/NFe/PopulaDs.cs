@@ -2752,6 +2752,7 @@ namespace HLP.GeraXml.bel.NFe
                 }
             }
         }
+
         private void populaDadosInfProt(string tag, string valor, string InfNFeId, string CodinfNfeId)
         {
             switch (tag)
