@@ -171,8 +171,10 @@ namespace HLP.GeraXml.Comum.Static
         public static bool IMPRIMI_NUM_NOTA_ENTRADA { get; set; }
         public static bool IMPRIMI_NUM_PEDIDO_VENDA { get; set; }
         public static bool IMPRIMI_NUM_REVISAO { get; set; }
+        public static bool IMPRIMI_RETORNO { get; set; }
         public static string COD_PREFEITURA { get; set; }
         public static string SENHA_WEB_NFES { get; set; }
+        public static bool VISUALIZA_DADOS_NFE { get; set; }
 
         #endregion
 
@@ -191,6 +193,7 @@ namespace HLP.GeraXml.Comum.Static
                 Stream file = new FileStream(Pastas.PASTA_XML_CONFIG + Acesso.NM_CONFIG_TEMP,
                     FileMode.Open, FileAccess.Read, FileShare.Read);
                 belConfiguracao obj = (belConfiguracao)s.Deserialize(file);
+                file.Dispose();
 
                 if (obj != null)
                 {
@@ -277,8 +280,10 @@ namespace HLP.GeraXml.Comum.Static
                     Acesso.IMPRIMI_NUM_NOTA_ENTRADA = obj.IMPRIMI_NUM_NOTA_ENTRADA;
                     Acesso.IMPRIMI_NUM_PEDIDO_VENDA = obj.IMPRIMI_NUM_PEDIDO_VENDA;
                     Acesso.IMPRIMI_NUM_REVISAO = obj.IMPRIMI_NUM_REVISAO;
+                    Acesso.IMPRIMI_RETORNO = obj.IMPRIMI_RETORNO;
                     Acesso.SENHA_WEB_NFES = obj.SENHA_WEB_NFES;
                     Acesso.COD_PREFEITURA = obj.COD_PREFEITURA;
+                    Acesso.VISUALIZA_DADOS_NFE = obj.VISUALIZA_DADOS_NFE;
 
 
                     if (Acesso.CAMINHO_BANCO_DADOS.ToUpper().Contains("INDUSTRI"))

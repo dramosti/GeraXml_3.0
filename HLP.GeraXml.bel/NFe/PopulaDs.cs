@@ -2797,8 +2797,9 @@ namespace HLP.GeraXml.bel.NFe
 
 
 
-        private string FormataQtdeComercial(string dvalor)
+        public static string FormataQtdeComercial(string dvalor)
         {
+            int iqtdeComercial = Convert.ToInt16(Acesso.QTDE_CASAS_PRODUTOS);
             if (iqtdeComercial == 0)
             {
                 if (dvalor[dvalor.Length - 1].ToString() != "0") // 4 casas

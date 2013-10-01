@@ -37,6 +37,8 @@ namespace HLP.GeraXml.UI.NFe
             this.cbxGrupos = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.txtUltimo = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtProximo = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.worker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -51,7 +53,7 @@ namespace HLP.GeraXml.UI.NFe
             this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel.Name = "kryptonPanel";
-            this.kryptonPanel.Size = new System.Drawing.Size(356, 171);
+            this.kryptonPanel.Size = new System.Drawing.Size(415, 171);
             this.kryptonPanel.TabIndex = 0;
             // 
             // btnGerar
@@ -59,7 +61,7 @@ namespace HLP.GeraXml.UI.NFe
             this.btnGerar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnGerar.Location = new System.Drawing.Point(0, 94);
             this.btnGerar.Name = "btnGerar";
-            this.btnGerar.Size = new System.Drawing.Size(356, 55);
+            this.btnGerar.Size = new System.Drawing.Size(415, 55);
             this.btnGerar.TabIndex = 8;
             this.btnGerar.Values.Text = "&Gerar Númeração";
             this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
@@ -69,10 +71,11 @@ namespace HLP.GeraXml.UI.NFe
             this.statusStrip1.BackColor = System.Drawing.Color.Transparent;
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pgStatus});
+            this.pgStatus,
+            this.lblStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 149);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(356, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(415, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -92,7 +95,7 @@ namespace HLP.GeraXml.UI.NFe
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(356, 94);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(415, 94);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // cbxGrupos
@@ -164,12 +167,22 @@ namespace HLP.GeraXml.UI.NFe
             this.txtProximo.Size = new System.Drawing.Size(205, 23);
             this.txtProximo.TabIndex = 249;
             // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            // 
+            // worker
+            // 
+            this.worker.WorkerSupportsCancellation = true;
+            this.worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.worker_DoWork);
+            // 
             // frmGeraNumeracaoNFe
             // 
             this.AllowFormChrome = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 171);
+            this.ClientSize = new System.Drawing.Size(415, 171);
             this.Controls.Add(this.kryptonPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -179,6 +192,7 @@ namespace HLP.GeraXml.UI.NFe
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gera Numeração";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGeraNumeracaoNFe_FormClosing);
             this.Load += new System.EventHandler(this.frmGeraNumeracaoNFe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
             this.kryptonPanel.ResumeLayout(false);
@@ -201,6 +215,8 @@ namespace HLP.GeraXml.UI.NFe
         private System.Windows.Forms.ToolStripProgressBar pgStatus;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnGerar;
         public Comum.Componentes.HLP_ComboBox cbxGrupos;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.ComponentModel.BackgroundWorker worker;
     }
 }
 

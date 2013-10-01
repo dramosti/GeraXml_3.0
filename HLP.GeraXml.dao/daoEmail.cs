@@ -125,5 +125,42 @@ namespace HLP.GeraXml.dao
                 throw new Exception(x.Message);
             }
         }
+
+
+        public string RetornaEmailVendedor(string sSeq)
+        {
+            StringBuilder sSql = new StringBuilder();
+            string email = "";
+            try
+            {
+                sSql.Append("select vendedor.cd_email from nf inner join vendedor on nf.cd_vend1 = vendedor.cd_vend ");
+                sSql.Append("where ");
+                sSql.Append("nf.cd_empresa = '");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("nf.cd_nfseq = '");
+                sSql.Append(sSeq);
+                sSql.Append("'");
+
+
+                DataTable dt = HlpDbFuncoes.qrySeekRet(sSql.ToString());
+                foreach (DataRow dr in dt.Rows)
+                {
+                    string[] split = dt.Rows[0]["cd_email"].ToString().Split(';');
+
+                    foreach (var i in split)
+                    {
+                        email = i;
+                        break;
+                    }
+                }
+                return email;
+            }
+            catch (Exception x)
+            {
+                throw new Exception(x.Message);
+            }
+        }
     }
 }

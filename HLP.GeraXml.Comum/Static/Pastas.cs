@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Windows.Forms;
 
 namespace HLP.GeraXml.Comum.Static
 {
@@ -244,6 +245,33 @@ namespace HLP.GeraXml.Comum.Static
             }
             set { Pastas._TIMER_RETORNOS = value; }
         }
+
+
+        //private static string _Temp = "Temp\\";
+        public static string Temp
+        {
+            get
+            {
+                try
+                {
+                    string sCaminho = Application.StartupPath + "\\Temp\\" + Environment.MachineName + "\\";
+                    DirectoryInfo info = new DirectoryInfo(sCaminho);
+                    if (!info.Exists)
+                    {
+                        info.Create();
+                    }
+                    return sCaminho.Trim();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            //set { Pastas._CCe = value; }
+        }
+
+
 
         public static string SCHEMA_NFE { get { return Pasta_StartupPath + "\\Schema\\NFe\\"; } }
         public static string SCHEMA_NFSE { get { return Pasta_StartupPath + "\\Schema\\NFe-s\\"; } }

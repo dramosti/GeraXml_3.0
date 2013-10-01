@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsImagens" targetNamespace="http://tempuri.org/dsImagens.xsd" xmlns:mstns="http://tempuri.org/dsImagens.xsd" xmlns="http://tempuri.org/dsImagens.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsImagens" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsImagens" msprop:Generator_UserDSName="dsImagens">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Imagens" msprop:Generator_TableClassName="ImagensDataTable" msprop:Generator_TableVarName="tableImagens" msprop:Generator_TablePropName="Imagens" msprop:Generator_RowDeletingName="ImagensRowDeleting" msprop:Generator_RowChangingName="ImagensRowChanging" msprop:Generator_RowEvHandlerName="ImagensRowChangeEventHandler" msprop:Generator_RowDeletedName="ImagensRowDeleted" msprop:Generator_UserTableName="Imagens" msprop:Generator_RowChangedName="ImagensRowChanged" msprop:Generator_RowEvArgName="ImagensRowChangeEvent" msprop:Generator_RowClassName="ImagensRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
+              <xs:element name="cod_barras" msprop:Generator_ColumnVarNameInTable="columncod_barras" msprop:Generator_ColumnPropNameInRow="cod_barras" msprop:Generator_ColumnPropNameInTable="cod_barrasColumn" msprop:Generator_UserColumnName="cod_barras" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="cod_barras_contingencia" msprop:Generator_ColumnVarNameInTable="columncod_barras_contingencia" msprop:Generator_ColumnPropNameInRow="cod_barras_contingencia" msprop:Generator_ColumnPropNameInTable="cod_barras_contingenciaColumn" msprop:Generator_UserColumnName="cod_barras_contingencia" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="hora_impressao" msprop:Generator_ColumnVarNameInTable="columnhora_impressao" msprop:Generator_ColumnPropNameInRow="hora_impressao" msprop:Generator_ColumnPropNameInTable="hora_impressaoColumn" msprop:Generator_UserColumnName="hora_impressao" type="xs:string" minOccurs="0" />
+              <xs:element name="LogoTipo" msprop:Generator_ColumnVarNameInTable="columnLogoTipo" msprop:Generator_ColumnPropNameInRow="LogoTipo" msprop:Generator_ColumnPropNameInTable="LogoTipoColumn" msprop:Generator_UserColumnName="LogoTipo" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:Imagens" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -29,11 +29,26 @@ namespace HLP.GeraXml.UI.NFe
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGeraArquivoNFe));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGeraArquivoNFe));
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvArquivos = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.bSelecionaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.sCDNOTAFISDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCDNFSEQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCD_GRUPONF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dDTEMIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dVLTOTNFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sNM_GUERRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bContingencia = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bDenegada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sRECIBO_NF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_nprotnfe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsNotas = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -82,21 +97,6 @@ namespace HLP.GeraXml.UI.NFe
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bSelecionaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.sCDNOTAFISDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCDNFSEQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCD_GRUPONF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dDTEMIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dVLTOTNFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sNM_CLIFOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sNM_GUERRA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bContingencia = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bDenegada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sRECIBO_NF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cd_nprotnfe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -114,7 +114,7 @@ namespace HLP.GeraXml.UI.NFe
             this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel.Name = "kryptonPanel";
-            this.kryptonPanel.Size = new System.Drawing.Size(1234, 398);
+            this.kryptonPanel.Size = new System.Drawing.Size(1234, 422);
             this.kryptonPanel.TabIndex = 0;
             // 
             // kryptonPanel1
@@ -126,7 +126,7 @@ namespace HLP.GeraXml.UI.NFe
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1234, 398);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1234, 422);
             this.kryptonPanel1.TabIndex = 1;
             // 
             // dgvArquivos
@@ -155,10 +155,130 @@ namespace HLP.GeraXml.UI.NFe
             this.dgvArquivos.Location = new System.Drawing.Point(0, 56);
             this.dgvArquivos.Name = "dgvArquivos";
             this.dgvArquivos.RowHeadersVisible = false;
-            this.dgvArquivos.Size = new System.Drawing.Size(1234, 313);
+            this.dgvArquivos.Size = new System.Drawing.Size(1234, 337);
             this.dgvArquivos.TabIndex = 232;
             this.dgvArquivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArquivos_CellClick);
             this.dgvArquivos.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvArquivos_ColumnHeaderMouseClick);
+            // 
+            // bSelecionaDataGridViewCheckBoxColumn
+            // 
+            this.bSelecionaDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
+            this.bSelecionaDataGridViewCheckBoxColumn.HeaderText = "Selecionar";
+            this.bSelecionaDataGridViewCheckBoxColumn.Name = "bSelecionaDataGridViewCheckBoxColumn";
+            this.bSelecionaDataGridViewCheckBoxColumn.Width = 71;
+            // 
+            // sCDNOTAFISDataGridViewTextBoxColumn
+            // 
+            this.sCDNOTAFISDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sCDNOTAFISDataGridViewTextBoxColumn.DataPropertyName = "sCD_NOTAFIS";
+            this.sCDNOTAFISDataGridViewTextBoxColumn.HeaderText = "NF";
+            this.sCDNOTAFISDataGridViewTextBoxColumn.Name = "sCDNOTAFISDataGridViewTextBoxColumn";
+            this.sCDNOTAFISDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sCDNOTAFISDataGridViewTextBoxColumn.Width = 51;
+            // 
+            // sCDNFSEQDataGridViewTextBoxColumn
+            // 
+            this.sCDNFSEQDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sCDNFSEQDataGridViewTextBoxColumn.DataPropertyName = "sCD_NFSEQ";
+            this.sCDNFSEQDataGridViewTextBoxColumn.HeaderText = "Sequência";
+            this.sCDNFSEQDataGridViewTextBoxColumn.Name = "sCDNFSEQDataGridViewTextBoxColumn";
+            this.sCDNFSEQDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sCDNFSEQDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // sCD_GRUPONF
+            // 
+            this.sCD_GRUPONF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.sCD_GRUPONF.DataPropertyName = "sCD_GRUPONF";
+            this.sCD_GRUPONF.HeaderText = "GF";
+            this.sCD_GRUPONF.MaxInputLength = 4;
+            this.sCD_GRUPONF.Name = "sCD_GRUPONF";
+            this.sCD_GRUPONF.ReadOnly = true;
+            this.sCD_GRUPONF.Width = 50;
+            // 
+            // dDTEMIDataGridViewTextBoxColumn
+            // 
+            this.dDTEMIDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dDTEMIDataGridViewTextBoxColumn.DataPropertyName = "dDT_EMI";
+            this.dDTEMIDataGridViewTextBoxColumn.HeaderText = "Emissão";
+            this.dDTEMIDataGridViewTextBoxColumn.Name = "dDTEMIDataGridViewTextBoxColumn";
+            this.dDTEMIDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dDTEMIDataGridViewTextBoxColumn.Width = 79;
+            // 
+            // dVLTOTNFDataGridViewTextBoxColumn
+            // 
+            this.dVLTOTNFDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dVLTOTNFDataGridViewTextBoxColumn.DataPropertyName = "dVL_TOTNF";
+            dataGridViewCellStyle1.Format = "n2";
+            this.dVLTOTNFDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dVLTOTNFDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.dVLTOTNFDataGridViewTextBoxColumn.Name = "dVLTOTNFDataGridViewTextBoxColumn";
+            this.dVLTOTNFDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dVLTOTNFDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // sNM_CLIFOR
+            // 
+            this.sNM_CLIFOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sNM_CLIFOR.DataPropertyName = "sNM_CLIFOR";
+            this.sNM_CLIFOR.HeaderText = "Cliente";
+            this.sNM_CLIFOR.Name = "sNM_CLIFOR";
+            this.sNM_CLIFOR.ReadOnly = true;
+            // 
+            // sNM_GUERRA
+            // 
+            this.sNM_GUERRA.DataPropertyName = "sNM_GUERRA";
+            this.sNM_GUERRA.HeaderText = "Fantasia";
+            this.sNM_GUERRA.Name = "sNM_GUERRA";
+            this.sNM_GUERRA.Width = 200;
+            // 
+            // bCancelado
+            // 
+            this.bCancelado.DataPropertyName = "bCancelado";
+            this.bCancelado.HeaderText = "bCancelado";
+            this.bCancelado.Name = "bCancelado";
+            this.bCancelado.Visible = false;
+            // 
+            // bEnviado
+            // 
+            this.bEnviado.DataPropertyName = "bEnviado";
+            this.bEnviado.HeaderText = "bEnviado";
+            this.bEnviado.Name = "bEnviado";
+            this.bEnviado.Visible = false;
+            // 
+            // bContingencia
+            // 
+            this.bContingencia.DataPropertyName = "bContingencia";
+            this.bContingencia.HeaderText = "bContingencia";
+            this.bContingencia.Name = "bContingencia";
+            this.bContingencia.Visible = false;
+            // 
+            // bDenegada
+            // 
+            this.bDenegada.DataPropertyName = "bDenegada";
+            this.bDenegada.HeaderText = "bDenegada";
+            this.bDenegada.Name = "bDenegada";
+            this.bDenegada.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "sCHAVENFE";
+            this.Column1.HeaderText = "Chave NFe";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // sRECIBO_NF
+            // 
+            this.sRECIBO_NF.DataPropertyName = "sRECIBO_NF";
+            this.sRECIBO_NF.HeaderText = "sRECIBO_NF";
+            this.sRECIBO_NF.Name = "sRECIBO_NF";
+            this.sRECIBO_NF.Visible = false;
+            // 
+            // cd_nprotnfe
+            // 
+            this.cd_nprotnfe.DataPropertyName = "cd_nprotnfe";
+            this.cd_nprotnfe.HeaderText = "cd_nprotnfe";
+            this.cd_nprotnfe.Name = "cd_nprotnfe";
+            this.cd_nprotnfe.Visible = false;
             // 
             // bsNotas
             // 
@@ -186,7 +306,7 @@ namespace HLP.GeraXml.UI.NFe
             this.flowLayoutPanel2.Controls.Add(this.lblMinutos);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 369);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 393);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(1234, 29);
             this.flowLayoutPanel2.TabIndex = 231;
@@ -305,13 +425,13 @@ namespace HLP.GeraXml.UI.NFe
             this.lblTotalRegistros.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldPanel;
             this.lblTotalRegistros.Location = new System.Drawing.Point(659, 3);
             this.lblTotalRegistros.Name = "lblTotalRegistros";
-            this.lblTotalRegistros.Size = new System.Drawing.Size(186, 25);
+            this.lblTotalRegistros.Size = new System.Drawing.Size(148, 25);
             this.lblTotalRegistros.TabIndex = 231;
             this.lblTotalRegistros.Values.Text = "";
             // 
             // pbMinutos
             // 
-            this.pbMinutos.Location = new System.Drawing.Point(851, 3);
+            this.pbMinutos.Location = new System.Drawing.Point(813, 3);
             this.pbMinutos.Name = "pbMinutos";
             this.pbMinutos.Size = new System.Drawing.Size(46, 16);
             this.pbMinutos.TabIndex = 232;
@@ -319,7 +439,7 @@ namespace HLP.GeraXml.UI.NFe
             // 
             // lblMinutos
             // 
-            this.lblMinutos.Location = new System.Drawing.Point(903, 3);
+            this.lblMinutos.Location = new System.Drawing.Point(865, 3);
             this.lblMinutos.Name = "lblMinutos";
             this.lblMinutos.Size = new System.Drawing.Size(6, 2);
             this.lblMinutos.TabIndex = 233;
@@ -628,7 +748,7 @@ namespace HLP.GeraXml.UI.NFe
             this.btnImpressao.Name = "btnImpressao";
             this.btnImpressao.Size = new System.Drawing.Size(61, 20);
             this.btnImpressao.Text = "Danfe";
-            this.btnImpressao.Click += new System.EventHandler(this.btnImpressao_Click);
+            this.btnImpressao.Click += new System.EventHandler(this.btnImpressao2_Click);
             // 
             // toolStripSeparator5
             // 
@@ -693,131 +813,11 @@ namespace HLP.GeraXml.UI.NFe
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // bSelecionaDataGridViewCheckBoxColumn
-            // 
-            this.bSelecionaDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
-            this.bSelecionaDataGridViewCheckBoxColumn.HeaderText = "Selecionar";
-            this.bSelecionaDataGridViewCheckBoxColumn.Name = "bSelecionaDataGridViewCheckBoxColumn";
-            this.bSelecionaDataGridViewCheckBoxColumn.Width = 71;
-            // 
-            // sCDNOTAFISDataGridViewTextBoxColumn
-            // 
-            this.sCDNOTAFISDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sCDNOTAFISDataGridViewTextBoxColumn.DataPropertyName = "sCD_NOTAFIS";
-            this.sCDNOTAFISDataGridViewTextBoxColumn.HeaderText = "NF";
-            this.sCDNOTAFISDataGridViewTextBoxColumn.Name = "sCDNOTAFISDataGridViewTextBoxColumn";
-            this.sCDNOTAFISDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sCDNOTAFISDataGridViewTextBoxColumn.Width = 51;
-            // 
-            // sCDNFSEQDataGridViewTextBoxColumn
-            // 
-            this.sCDNFSEQDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sCDNFSEQDataGridViewTextBoxColumn.DataPropertyName = "sCD_NFSEQ";
-            this.sCDNFSEQDataGridViewTextBoxColumn.HeaderText = "Sequência";
-            this.sCDNFSEQDataGridViewTextBoxColumn.Name = "sCDNFSEQDataGridViewTextBoxColumn";
-            this.sCDNFSEQDataGridViewTextBoxColumn.ReadOnly = true;
-            this.sCDNFSEQDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // sCD_GRUPONF
-            // 
-            this.sCD_GRUPONF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.sCD_GRUPONF.DataPropertyName = "sCD_GRUPONF";
-            this.sCD_GRUPONF.HeaderText = "GF";
-            this.sCD_GRUPONF.MaxInputLength = 4;
-            this.sCD_GRUPONF.Name = "sCD_GRUPONF";
-            this.sCD_GRUPONF.ReadOnly = true;
-            this.sCD_GRUPONF.Width = 50;
-            // 
-            // dDTEMIDataGridViewTextBoxColumn
-            // 
-            this.dDTEMIDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dDTEMIDataGridViewTextBoxColumn.DataPropertyName = "dDT_EMI";
-            this.dDTEMIDataGridViewTextBoxColumn.HeaderText = "Emissão";
-            this.dDTEMIDataGridViewTextBoxColumn.Name = "dDTEMIDataGridViewTextBoxColumn";
-            this.dDTEMIDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dDTEMIDataGridViewTextBoxColumn.Width = 79;
-            // 
-            // dVLTOTNFDataGridViewTextBoxColumn
-            // 
-            this.dVLTOTNFDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dVLTOTNFDataGridViewTextBoxColumn.DataPropertyName = "dVL_TOTNF";
-            dataGridViewCellStyle1.Format = "n2";
-            this.dVLTOTNFDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dVLTOTNFDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.dVLTOTNFDataGridViewTextBoxColumn.Name = "dVLTOTNFDataGridViewTextBoxColumn";
-            this.dVLTOTNFDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dVLTOTNFDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // sNM_CLIFOR
-            // 
-            this.sNM_CLIFOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sNM_CLIFOR.DataPropertyName = "sNM_CLIFOR";
-            this.sNM_CLIFOR.HeaderText = "Cliente";
-            this.sNM_CLIFOR.Name = "sNM_CLIFOR";
-            this.sNM_CLIFOR.ReadOnly = true;
-            // 
-            // sNM_GUERRA
-            // 
-            this.sNM_GUERRA.DataPropertyName = "sNM_GUERRA";
-            this.sNM_GUERRA.HeaderText = "Fantasia";
-            this.sNM_GUERRA.Name = "sNM_GUERRA";
-            this.sNM_GUERRA.Width = 200;
-            // 
-            // bCancelado
-            // 
-            this.bCancelado.DataPropertyName = "bCancelado";
-            this.bCancelado.HeaderText = "bCancelado";
-            this.bCancelado.Name = "bCancelado";
-            this.bCancelado.Visible = false;
-            // 
-            // bEnviado
-            // 
-            this.bEnviado.DataPropertyName = "bEnviado";
-            this.bEnviado.HeaderText = "bEnviado";
-            this.bEnviado.Name = "bEnviado";
-            this.bEnviado.Visible = false;
-            // 
-            // bContingencia
-            // 
-            this.bContingencia.DataPropertyName = "bContingencia";
-            this.bContingencia.HeaderText = "bContingencia";
-            this.bContingencia.Name = "bContingencia";
-            this.bContingencia.Visible = false;
-            // 
-            // bDenegada
-            // 
-            this.bDenegada.DataPropertyName = "bDenegada";
-            this.bDenegada.HeaderText = "bDenegada";
-            this.bDenegada.Name = "bDenegada";
-            this.bDenegada.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "sCHAVENFE";
-            this.Column1.HeaderText = "Chave NFe";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // sRECIBO_NF
-            // 
-            this.sRECIBO_NF.DataPropertyName = "sRECIBO_NF";
-            this.sRECIBO_NF.HeaderText = "sRECIBO_NF";
-            this.sRECIBO_NF.Name = "sRECIBO_NF";
-            this.sRECIBO_NF.Visible = false;
-            // 
-            // cd_nprotnfe
-            // 
-            this.cd_nprotnfe.DataPropertyName = "cd_nprotnfe";
-            this.cd_nprotnfe.HeaderText = "cd_nprotnfe";
-            this.cd_nprotnfe.Name = "cd_nprotnfe";
-            this.cd_nprotnfe.Visible = false;
-            // 
             // frmGeraArquivoNFe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1234, 398);
+            this.ClientSize = new System.Drawing.Size(1234, 422);
             this.Controls.Add(this.kryptonPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

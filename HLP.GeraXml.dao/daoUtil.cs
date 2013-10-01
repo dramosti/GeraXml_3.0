@@ -555,6 +555,7 @@ namespace HLP.GeraXml.dao
             }
             finally
             {
+                
                 sSql.Connection.Close();
             }
 

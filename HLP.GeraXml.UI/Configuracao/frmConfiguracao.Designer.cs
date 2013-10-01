@@ -64,6 +64,7 @@
             this.chkNumNotaEntrada = new HLP.GeraXml.Comum.Componentes.HLP_CheckBox();
             this.chkNumPedidoVendaItens = new HLP.GeraXml.Comum.Componentes.HLP_CheckBox();
             this.chkNumRevisaoItens = new HLP.GeraXml.Comum.Componentes.HLP_CheckBox();
+            this.chkImprimeRetorno = new HLP.GeraXml.Comum.Componentes.HLP_CheckBox();
             this.txtCodPrefeitura = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtSenhaWebNFse = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.tbEmail = new System.Windows.Forms.TabPage();
@@ -104,6 +105,7 @@
             this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             this.cachedrptCtePadraoCancelado2 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             this.cachedrptCtePadraoCancelado3 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
+            this.chkVisualizaDadosNFe = new HLP.GeraXml.Comum.Componentes.HLP_CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.Configuracoes.SuspendLayout();
@@ -147,7 +149,7 @@
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(724, 682);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1035, 482);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // Configuracoes
@@ -172,7 +174,7 @@
             this.Configuracoes.Name = "Configuracoes";
             this.Configuracoes.PreserveTabColor = false;
             this.Configuracoes.SelectedIndex = 0;
-            this.Configuracoes.Size = new System.Drawing.Size(724, 655);
+            this.Configuracoes.Size = new System.Drawing.Size(1035, 455);
             this.Configuracoes.TabIndex = 105;
             this.Configuracoes.UseExtendedLayout = false;
             // 
@@ -183,7 +185,7 @@
             this.tbPrincipal.Location = new System.Drawing.Point(4, 25);
             this.tbPrincipal.Margin = new System.Windows.Forms.Padding(0);
             this.tbPrincipal.Name = "tbPrincipal";
-            this.tbPrincipal.Size = new System.Drawing.Size(716, 626);
+            this.tbPrincipal.Size = new System.Drawing.Size(1027, 426);
             this.tbPrincipal.TabIndex = 1;
             this.tbPrincipal.Tag = false;
             this.tbPrincipal.Text = "Principal";
@@ -194,7 +196,7 @@
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(716, 626);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1027, 426);
             this.kryptonPanel2.TabIndex = 49;
             // 
             // flowLayoutPanel2
@@ -213,7 +215,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(716, 626);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1027, 426);
             this.flowLayoutPanel2.TabIndex = 50;
             // 
             // txtCaminhoPadrao
@@ -395,7 +397,7 @@
             this.tbParametros.Location = new System.Drawing.Point(4, 25);
             this.tbParametros.Margin = new System.Windows.Forms.Padding(0);
             this.tbParametros.Name = "tbParametros";
-            this.tbParametros.Size = new System.Drawing.Size(716, 626);
+            this.tbParametros.Size = new System.Drawing.Size(1027, 426);
             this.tbParametros.TabIndex = 2;
             this.tbParametros.Tag = false;
             this.tbParametros.Text = "Parâmetros";
@@ -406,12 +408,11 @@
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel3.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel3.Name = "kryptonPanel3";
-            this.kryptonPanel3.Size = new System.Drawing.Size(716, 626);
+            this.kryptonPanel3.Size = new System.Drawing.Size(1027, 426);
             this.kryptonPanel3.TabIndex = 75;
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.AutoScroll = true;
             this.flowLayoutPanel4.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel4.Controls.Add(this.cbxTpEmiss);
@@ -433,13 +434,15 @@
             this.flowLayoutPanel4.Controls.Add(this.chkNumNotaEntrada);
             this.flowLayoutPanel4.Controls.Add(this.chkNumPedidoVendaItens);
             this.flowLayoutPanel4.Controls.Add(this.chkNumRevisaoItens);
+            this.flowLayoutPanel4.Controls.Add(this.chkImprimeRetorno);
+            this.flowLayoutPanel4.Controls.Add(this.chkVisualizaDadosNFe);
             this.flowLayoutPanel4.Controls.Add(this.txtCodPrefeitura);
             this.flowLayoutPanel4.Controls.Add(this.txtSenhaWebNFse);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(716, 626);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(1027, 426);
             this.flowLayoutPanel4.TabIndex = 79;
             // 
             // cbxTpEmiss
@@ -449,15 +452,15 @@
             this.cbxTpEmiss._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.SIM;
             this.cbxTpEmiss._situacao = false;
             this.cbxTpEmiss._TamanhoComboBox = 221;
-            this.cbxTpEmiss._TamanhoMaiorLabel = 365;
+            this.cbxTpEmiss._TamanhoMaiorLabel = 320;
             this.cbxTpEmiss._Visible = true;
             this.cbxTpEmiss.AutoSize = true;
             this.cbxTpEmiss.BackColor = System.Drawing.Color.Transparent;
             this.cbxTpEmiss.Color = System.Drawing.Color.White;
             this.cbxTpEmiss.DataSource = null;
             this.cbxTpEmiss.DisplayMember = "DisplayMember";
-            this.cbxTpEmiss.Location = new System.Drawing.Point(253, 3);
-            this.cbxTpEmiss.Margin = new System.Windows.Forms.Padding(253, 3, 15, 3);
+            this.cbxTpEmiss.Location = new System.Drawing.Point(208, 3);
+            this.cbxTpEmiss.Margin = new System.Windows.Forms.Padding(208, 3, 15, 3);
             this.cbxTpEmiss.Name = "cbxTpEmiss";
             this.cbxTpEmiss.SelectedIndex = -1;
             this.cbxTpEmiss.SelectedValue = 0;
@@ -469,15 +472,15 @@
             // 
             this.nupCasasQtdeProd._LabelText = "Qtde de Casas Decimais - Campo Qtde de Produtos";
             this.nupCasasQtdeProd._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.SIM;
-            this.nupCasasQtdeProd._TamanhoMaiorLabel = 365;
+            this.nupCasasQtdeProd._TamanhoMaiorLabel = 320;
             this.nupCasasQtdeProd._TamanhoNumericUpDown = 168;
             this.nupCasasQtdeProd._Visible = true;
             this.nupCasasQtdeProd.AutoSize = true;
             this.nupCasasQtdeProd.BackColor = System.Drawing.Color.Transparent;
             this.nupCasasQtdeProd.Color = System.Drawing.Color.White;
             this.nupCasasQtdeProd.DecimalPlaces = 0;
-            this.nupCasasQtdeProd.Location = new System.Drawing.Point(62, 37);
-            this.nupCasasQtdeProd.Margin = new System.Windows.Forms.Padding(62, 3, 15, 3);
+            this.nupCasasQtdeProd.Location = new System.Drawing.Point(17, 37);
+            this.nupCasasQtdeProd.Margin = new System.Windows.Forms.Padding(17, 3, 15, 3);
             this.nupCasasQtdeProd.Maximum = new decimal(new int[] {
             4,
             0,
@@ -503,15 +506,15 @@
             // 
             this.nudQtd_Vl_unitario._LabelText = "Qtde de Casas Decimais - Campo Valor Unitário";
             this.nudQtd_Vl_unitario._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.SIM;
-            this.nudQtd_Vl_unitario._TamanhoMaiorLabel = 365;
+            this.nudQtd_Vl_unitario._TamanhoMaiorLabel = 320;
             this.nudQtd_Vl_unitario._TamanhoNumericUpDown = 164;
             this.nudQtd_Vl_unitario._Visible = true;
             this.nudQtd_Vl_unitario.AutoSize = true;
             this.nudQtd_Vl_unitario.BackColor = System.Drawing.Color.Transparent;
             this.nudQtd_Vl_unitario.Color = System.Drawing.Color.White;
             this.nudQtd_Vl_unitario.DecimalPlaces = 0;
-            this.nudQtd_Vl_unitario.Location = new System.Drawing.Point(83, 68);
-            this.nudQtd_Vl_unitario.Margin = new System.Windows.Forms.Padding(83, 3, 15, 3);
+            this.nudQtd_Vl_unitario.Location = new System.Drawing.Point(38, 68);
+            this.nudQtd_Vl_unitario.Margin = new System.Windows.Forms.Padding(38, 3, 15, 3);
             this.nudQtd_Vl_unitario.Maximum = new decimal(new int[] {
             6,
             0,
@@ -540,15 +543,15 @@
             this.cbxGruposServico._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.NÃO;
             this.cbxGruposServico._situacao = false;
             this.cbxGruposServico._TamanhoComboBox = 221;
-            this.cbxGruposServico._TamanhoMaiorLabel = 365;
+            this.cbxGruposServico._TamanhoMaiorLabel = 320;
             this.cbxGruposServico._Visible = true;
             this.cbxGruposServico.AutoSize = true;
             this.cbxGruposServico.BackColor = System.Drawing.Color.Transparent;
             this.cbxGruposServico.Color = System.Drawing.Color.White;
             this.cbxGruposServico.DataSource = null;
             this.cbxGruposServico.DisplayMember = "DisplayMember";
-            this.cbxGruposServico.Location = new System.Drawing.Point(127, 99);
-            this.cbxGruposServico.Margin = new System.Windows.Forms.Padding(127, 3, 15, 3);
+            this.cbxGruposServico.Location = new System.Drawing.Point(82, 99);
+            this.cbxGruposServico.Margin = new System.Windows.Forms.Padding(82, 3, 15, 3);
             this.cbxGruposServico.Name = "cbxGruposServico";
             this.cbxGruposServico.SelectedIndex = -1;
             this.cbxGruposServico.SelectedValue = 0;
@@ -563,15 +566,15 @@
             this.cbxGruposSCAN._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.NÃO;
             this.cbxGruposSCAN._situacao = false;
             this.cbxGruposSCAN._TamanhoComboBox = 221;
-            this.cbxGruposSCAN._TamanhoMaiorLabel = 365;
+            this.cbxGruposSCAN._TamanhoMaiorLabel = 320;
             this.cbxGruposSCAN._Visible = true;
             this.cbxGruposSCAN.AutoSize = true;
             this.cbxGruposSCAN.BackColor = System.Drawing.Color.Transparent;
             this.cbxGruposSCAN.Color = System.Drawing.Color.White;
             this.cbxGruposSCAN.DataSource = null;
             this.cbxGruposSCAN.DisplayMember = "DisplayMember";
-            this.cbxGruposSCAN.Location = new System.Drawing.Point(98, 126);
-            this.cbxGruposSCAN.Margin = new System.Windows.Forms.Padding(98, 3, 15, 3);
+            this.cbxGruposSCAN.Location = new System.Drawing.Point(53, 126);
+            this.cbxGruposSCAN.Margin = new System.Windows.Forms.Padding(53, 3, 15, 3);
             this.cbxGruposSCAN.Name = "cbxGruposSCAN";
             this.cbxGruposSCAN.SelectedIndex = -1;
             this.cbxGruposSCAN.SelectedValue = 0;
@@ -586,15 +589,15 @@
             this.cbxFormDanfe._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.SIM;
             this.cbxFormDanfe._situacao = false;
             this.cbxFormDanfe._TamanhoComboBox = 221;
-            this.cbxFormDanfe._TamanhoMaiorLabel = 365;
+            this.cbxFormDanfe._TamanhoMaiorLabel = 320;
             this.cbxFormDanfe._Visible = true;
             this.cbxFormDanfe.AutoSize = true;
             this.cbxFormDanfe.BackColor = System.Drawing.Color.Transparent;
             this.cbxFormDanfe.Color = System.Drawing.Color.White;
             this.cbxFormDanfe.DataSource = null;
             this.cbxFormDanfe.DisplayMember = "DisplayMember";
-            this.cbxFormDanfe.Location = new System.Drawing.Point(180, 153);
-            this.cbxFormDanfe.Margin = new System.Windows.Forms.Padding(180, 3, 15, 3);
+            this.cbxFormDanfe.Location = new System.Drawing.Point(135, 153);
+            this.cbxFormDanfe.Margin = new System.Windows.Forms.Padding(135, 3, 15, 3);
             this.cbxFormDanfe.Name = "cbxFormDanfe";
             this.cbxFormDanfe.SelectedIndex = -1;
             this.cbxFormDanfe.SelectedValue = 0;
@@ -609,15 +612,15 @@
             this.cbxFusoHorario._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.SIM;
             this.cbxFusoHorario._situacao = false;
             this.cbxFusoHorario._TamanhoComboBox = 221;
-            this.cbxFusoHorario._TamanhoMaiorLabel = 365;
+            this.cbxFusoHorario._TamanhoMaiorLabel = 320;
             this.cbxFusoHorario._Visible = true;
             this.cbxFusoHorario.AutoSize = true;
             this.cbxFusoHorario.BackColor = System.Drawing.Color.Transparent;
             this.cbxFusoHorario.Color = System.Drawing.Color.White;
             this.cbxFusoHorario.DataSource = null;
             this.cbxFusoHorario.DisplayMember = "DisplayMember";
-            this.cbxFusoHorario.Location = new System.Drawing.Point(160, 180);
-            this.cbxFusoHorario.Margin = new System.Windows.Forms.Padding(160, 3, 15, 3);
+            this.cbxFusoHorario.Location = new System.Drawing.Point(115, 180);
+            this.cbxFusoHorario.Margin = new System.Windows.Forms.Padding(115, 3, 15, 3);
             this.cbxFusoHorario.Name = "cbxFusoHorario";
             this.cbxFusoHorario.SelectedIndex = -1;
             this.cbxFusoHorario.SelectedValue = 0;
@@ -632,15 +635,15 @@
             this.cbxTransparencia._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.SIM;
             this.cbxTransparencia._situacao = false;
             this.cbxTransparencia._TamanhoComboBox = 221;
-            this.cbxTransparencia._TamanhoMaiorLabel = 365;
+            this.cbxTransparencia._TamanhoMaiorLabel = 320;
             this.cbxTransparencia._Visible = true;
             this.cbxTransparencia.AutoSize = true;
             this.cbxTransparencia.BackColor = System.Drawing.Color.Transparent;
             this.cbxTransparencia.Color = System.Drawing.Color.White;
             this.cbxTransparencia.DataSource = null;
             this.cbxTransparencia.DisplayMember = "DisplayMember";
-            this.cbxTransparencia.Location = new System.Drawing.Point(239, 207);
-            this.cbxTransparencia.Margin = new System.Windows.Forms.Padding(239, 3, 15, 3);
+            this.cbxTransparencia.Location = new System.Drawing.Point(194, 207);
+            this.cbxTransparencia.Margin = new System.Windows.Forms.Padding(194, 3, 15, 3);
             this.cbxTransparencia.Name = "cbxTransparencia";
             this.cbxTransparencia.SelectedIndex = 0;
             this.cbxTransparencia.SelectedValue = 0;
@@ -652,13 +655,13 @@
             // 
             this.ckbDanfeSimplificada._LabelText = "Utilizar Danfe Simplificada";
             this.ckbDanfeSimplificada._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.ckbDanfeSimplificada._TamanhoMaiorLabel = 365;
+            this.ckbDanfeSimplificada._TamanhoMaiorLabel = 320;
             this.ckbDanfeSimplificada._Visible = true;
             this.ckbDanfeSimplificada.AutoSize = true;
             this.ckbDanfeSimplificada.BackColor = System.Drawing.Color.Transparent;
             this.ckbDanfeSimplificada.Checked = false;
-            this.ckbDanfeSimplificada.Location = new System.Drawing.Point(203, 235);
-            this.ckbDanfeSimplificada.Margin = new System.Windows.Forms.Padding(203, 3, 15, 3);
+            this.ckbDanfeSimplificada.Location = new System.Drawing.Point(158, 235);
+            this.ckbDanfeSimplificada.Margin = new System.Windows.Forms.Padding(158, 3, 15, 3);
             this.ckbDanfeSimplificada.Name = "ckbDanfeSimplificada";
             this.ckbDanfeSimplificada.Size = new System.Drawing.Size(211, 23);
             this.ckbDanfeSimplificada.TabIndex = 9;
@@ -668,13 +671,13 @@
             // 
             this.hlP_CheckBox1._LabelText = "Sair Hora de saída na Danfe";
             this.hlP_CheckBox1._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.hlP_CheckBox1._TamanhoMaiorLabel = 365;
+            this.hlP_CheckBox1._TamanhoMaiorLabel = 320;
             this.hlP_CheckBox1._Visible = true;
             this.hlP_CheckBox1.AutoSize = true;
             this.hlP_CheckBox1.BackColor = System.Drawing.Color.Transparent;
             this.hlP_CheckBox1.Checked = false;
-            this.hlP_CheckBox1.Location = new System.Drawing.Point(197, 264);
-            this.hlP_CheckBox1.Margin = new System.Windows.Forms.Padding(197, 3, 15, 3);
+            this.hlP_CheckBox1.Location = new System.Drawing.Point(152, 264);
+            this.hlP_CheckBox1.Margin = new System.Windows.Forms.Padding(152, 3, 15, 3);
             this.hlP_CheckBox1.Name = "hlP_CheckBox1";
             this.hlP_CheckBox1.Size = new System.Drawing.Size(217, 23);
             this.hlP_CheckBox1.TabIndex = 10;
@@ -684,13 +687,13 @@
             // 
             this.ckbDataSaidaDanfe._LabelText = "Sair Data de saída na Danfe";
             this.ckbDataSaidaDanfe._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.ckbDataSaidaDanfe._TamanhoMaiorLabel = 365;
+            this.ckbDataSaidaDanfe._TamanhoMaiorLabel = 320;
             this.ckbDataSaidaDanfe._Visible = true;
             this.ckbDataSaidaDanfe.AutoSize = true;
             this.ckbDataSaidaDanfe.BackColor = System.Drawing.Color.Transparent;
             this.ckbDataSaidaDanfe.Checked = false;
-            this.ckbDataSaidaDanfe.Location = new System.Drawing.Point(198, 293);
-            this.ckbDataSaidaDanfe.Margin = new System.Windows.Forms.Padding(198, 3, 15, 3);
+            this.ckbDataSaidaDanfe.Location = new System.Drawing.Point(153, 293);
+            this.ckbDataSaidaDanfe.Margin = new System.Windows.Forms.Padding(153, 3, 15, 3);
             this.ckbDataSaidaDanfe.Name = "ckbDataSaidaDanfe";
             this.ckbDataSaidaDanfe.Size = new System.Drawing.Size(216, 23);
             this.ckbDataSaidaDanfe.TabIndex = 11;
@@ -700,13 +703,13 @@
             // 
             this.chkCodBarras._LabelText = "Utilizar o Campo Cod. Barras no xml ";
             this.chkCodBarras._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.chkCodBarras._TamanhoMaiorLabel = 365;
+            this.chkCodBarras._TamanhoMaiorLabel = 320;
             this.chkCodBarras._Visible = true;
             this.chkCodBarras.AutoSize = true;
             this.chkCodBarras.BackColor = System.Drawing.Color.Transparent;
             this.chkCodBarras.Checked = false;
-            this.chkCodBarras.Location = new System.Drawing.Point(147, 322);
-            this.chkCodBarras.Margin = new System.Windows.Forms.Padding(147, 3, 15, 3);
+            this.chkCodBarras.Location = new System.Drawing.Point(102, 322);
+            this.chkCodBarras.Margin = new System.Windows.Forms.Padding(102, 3, 15, 3);
             this.chkCodBarras.Name = "chkCodBarras";
             this.chkCodBarras.Size = new System.Drawing.Size(267, 23);
             this.chkCodBarras.TabIndex = 12;
@@ -716,13 +719,13 @@
             // 
             this.chkTotCfop._LabelText = "Totalizar Valor por CFOP na Observação";
             this.chkTotCfop._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.chkTotCfop._TamanhoMaiorLabel = 365;
+            this.chkTotCfop._TamanhoMaiorLabel = 320;
             this.chkTotCfop._Visible = true;
             this.chkTotCfop.AutoSize = true;
             this.chkTotCfop.BackColor = System.Drawing.Color.Transparent;
             this.chkTotCfop.Checked = false;
-            this.chkTotCfop.Location = new System.Drawing.Point(126, 351);
-            this.chkTotCfop.Margin = new System.Windows.Forms.Padding(126, 3, 15, 3);
+            this.chkTotCfop.Location = new System.Drawing.Point(81, 351);
+            this.chkTotCfop.Margin = new System.Windows.Forms.Padding(81, 3, 15, 3);
             this.chkTotCfop.Name = "chkTotCfop";
             this.chkTotCfop.Size = new System.Drawing.Size(288, 23);
             this.chkTotCfop.TabIndex = 13;
@@ -732,13 +735,13 @@
             // 
             this.chkGravaNumNFseDup._LabelText = "Gravar número da NFe-serviço na ref. da duplicata";
             this.chkGravaNumNFseDup._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.chkGravaNumNFseDup._TamanhoMaiorLabel = 365;
+            this.chkGravaNumNFseDup._TamanhoMaiorLabel = 320;
             this.chkGravaNumNFseDup._Visible = true;
             this.chkGravaNumNFseDup.AutoSize = true;
             this.chkGravaNumNFseDup.BackColor = System.Drawing.Color.Transparent;
             this.chkGravaNumNFseDup.Checked = false;
-            this.chkGravaNumNFseDup.Location = new System.Drawing.Point(65, 380);
-            this.chkGravaNumNFseDup.Margin = new System.Windows.Forms.Padding(65, 3, 15, 3);
+            this.chkGravaNumNFseDup.Location = new System.Drawing.Point(20, 380);
+            this.chkGravaNumNFseDup.Margin = new System.Windows.Forms.Padding(20, 3, 15, 3);
             this.chkGravaNumNFseDup.Name = "chkGravaNumNFseDup";
             this.chkGravaNumNFseDup.Size = new System.Drawing.Size(349, 23);
             this.chkGravaNumNFseDup.TabIndex = 14;
@@ -748,13 +751,13 @@
             // 
             this.chkTribMunicipio._LabelText = "Não destacar impostos quando for Trib. dentro do Município";
             this.chkTribMunicipio._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.chkTribMunicipio._TamanhoMaiorLabel = 365;
+            this.chkTribMunicipio._TamanhoMaiorLabel = 370;
             this.chkTribMunicipio._Visible = true;
             this.chkTribMunicipio.AutoSize = true;
             this.chkTribMunicipio.BackColor = System.Drawing.Color.Transparent;
             this.chkTribMunicipio.Checked = false;
-            this.chkTribMunicipio.Location = new System.Drawing.Point(3, 409);
-            this.chkTribMunicipio.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
+            this.chkTribMunicipio.Location = new System.Drawing.Point(567, 3);
+            this.chkTribMunicipio.Margin = new System.Windows.Forms.Padding(8, 3, 15, 3);
             this.chkTribMunicipio.Name = "chkTribMunicipio";
             this.chkTribMunicipio.Size = new System.Drawing.Size(411, 21);
             this.chkTribMunicipio.TabIndex = 15;
@@ -764,13 +767,13 @@
             // 
             this.chkDetalheProd._LabelText = "Mostrar Detalhes do Produto junto com a Descrição";
             this.chkDetalheProd._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.chkDetalheProd._TamanhoMaiorLabel = 365;
+            this.chkDetalheProd._TamanhoMaiorLabel = 370;
             this.chkDetalheProd._Visible = true;
             this.chkDetalheProd.AutoSize = true;
             this.chkDetalheProd.BackColor = System.Drawing.Color.Transparent;
             this.chkDetalheProd.Checked = false;
-            this.chkDetalheProd.Location = new System.Drawing.Point(56, 436);
-            this.chkDetalheProd.Margin = new System.Windows.Forms.Padding(56, 3, 15, 3);
+            this.chkDetalheProd.Location = new System.Drawing.Point(620, 30);
+            this.chkDetalheProd.Margin = new System.Windows.Forms.Padding(61, 3, 15, 3);
             this.chkDetalheProd.Name = "chkDetalheProd";
             this.chkDetalheProd.Size = new System.Drawing.Size(358, 20);
             this.chkDetalheProd.TabIndex = 16;
@@ -780,13 +783,13 @@
             // 
             this.chkNumNotaEntrada._LabelText = "Imprimir Numero da Nota de Entrada nos Itens ?";
             this.chkNumNotaEntrada._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.chkNumNotaEntrada._TamanhoMaiorLabel = 365;
+            this.chkNumNotaEntrada._TamanhoMaiorLabel = 370;
             this.chkNumNotaEntrada._Visible = true;
             this.chkNumNotaEntrada.AutoSize = true;
             this.chkNumNotaEntrada.BackColor = System.Drawing.Color.Transparent;
             this.chkNumNotaEntrada.Checked = false;
-            this.chkNumNotaEntrada.Location = new System.Drawing.Point(75, 462);
-            this.chkNumNotaEntrada.Margin = new System.Windows.Forms.Padding(75, 3, 15, 3);
+            this.chkNumNotaEntrada.Location = new System.Drawing.Point(639, 56);
+            this.chkNumNotaEntrada.Margin = new System.Windows.Forms.Padding(80, 3, 15, 3);
             this.chkNumNotaEntrada.Name = "chkNumNotaEntrada";
             this.chkNumNotaEntrada.Size = new System.Drawing.Size(339, 20);
             this.chkNumNotaEntrada.TabIndex = 17;
@@ -796,13 +799,13 @@
             // 
             this.chkNumPedidoVendaItens._LabelText = "Imprimir Numero do Pedido de Venda nos Itens ?";
             this.chkNumPedidoVendaItens._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.chkNumPedidoVendaItens._TamanhoMaiorLabel = 365;
+            this.chkNumPedidoVendaItens._TamanhoMaiorLabel = 370;
             this.chkNumPedidoVendaItens._Visible = true;
             this.chkNumPedidoVendaItens.AutoSize = true;
             this.chkNumPedidoVendaItens.BackColor = System.Drawing.Color.Transparent;
             this.chkNumPedidoVendaItens.Checked = false;
-            this.chkNumPedidoVendaItens.Location = new System.Drawing.Point(70, 488);
-            this.chkNumPedidoVendaItens.Margin = new System.Windows.Forms.Padding(70, 3, 15, 3);
+            this.chkNumPedidoVendaItens.Location = new System.Drawing.Point(634, 82);
+            this.chkNumPedidoVendaItens.Margin = new System.Windows.Forms.Padding(75, 3, 15, 3);
             this.chkNumPedidoVendaItens.Name = "chkNumPedidoVendaItens";
             this.chkNumPedidoVendaItens.Size = new System.Drawing.Size(344, 23);
             this.chkNumPedidoVendaItens.TabIndex = 18;
@@ -812,17 +815,33 @@
             // 
             this.chkNumRevisaoItens._LabelText = "Imprimir Numero da Revisão no Itens ?";
             this.chkNumRevisaoItens._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
-            this.chkNumRevisaoItens._TamanhoMaiorLabel = 365;
+            this.chkNumRevisaoItens._TamanhoMaiorLabel = 370;
             this.chkNumRevisaoItens._Visible = true;
             this.chkNumRevisaoItens.AutoSize = true;
             this.chkNumRevisaoItens.BackColor = System.Drawing.Color.Transparent;
             this.chkNumRevisaoItens.Checked = false;
-            this.chkNumRevisaoItens.Location = new System.Drawing.Point(131, 517);
-            this.chkNumRevisaoItens.Margin = new System.Windows.Forms.Padding(131, 3, 15, 3);
+            this.chkNumRevisaoItens.Location = new System.Drawing.Point(695, 111);
+            this.chkNumRevisaoItens.Margin = new System.Windows.Forms.Padding(136, 3, 15, 3);
             this.chkNumRevisaoItens.Name = "chkNumRevisaoItens";
             this.chkNumRevisaoItens.Size = new System.Drawing.Size(283, 20);
             this.chkNumRevisaoItens.TabIndex = 19;
             this.chkNumRevisaoItens.Value = false;
+            // 
+            // chkImprimeRetorno
+            // 
+            this.chkImprimeRetorno._LabelText = "Imprimir Mensagem de Retorno de Industrialização ?";
+            this.chkImprimeRetorno._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
+            this.chkImprimeRetorno._TamanhoMaiorLabel = 370;
+            this.chkImprimeRetorno._Visible = true;
+            this.chkImprimeRetorno.AutoSize = true;
+            this.chkImprimeRetorno.BackColor = System.Drawing.Color.Transparent;
+            this.chkImprimeRetorno.Checked = true;
+            this.chkImprimeRetorno.Location = new System.Drawing.Point(613, 137);
+            this.chkImprimeRetorno.Margin = new System.Windows.Forms.Padding(54, 3, 15, 3);
+            this.chkImprimeRetorno.Name = "chkImprimeRetorno";
+            this.chkImprimeRetorno.Size = new System.Drawing.Size(351, 23);
+            this.chkImprimeRetorno.TabIndex = 22;
+            this.chkImprimeRetorno.Value = true;
             // 
             // txtCodPrefeitura
             // 
@@ -832,15 +851,15 @@
             this.txtCodPrefeitura._Password = false;
             this.txtCodPrefeitura._Regex = Expressoes.Não_Aplica;
             this.txtCodPrefeitura._Regex_Expressao = null;
-            this.txtCodPrefeitura._TamanhoMaiorLabel = 365;
+            this.txtCodPrefeitura._TamanhoMaiorLabel = 370;
             this.txtCodPrefeitura._TamanhoTextBox = 79;
             this.txtCodPrefeitura._Visible = true;
             this.txtCodPrefeitura.AutoSize = true;
             this.txtCodPrefeitura.BackColor = System.Drawing.Color.Transparent;
             this.txtCodPrefeitura.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtCodPrefeitura.Color = System.Drawing.Color.White;
-            this.txtCodPrefeitura.Location = new System.Drawing.Point(237, 543);
-            this.txtCodPrefeitura.Margin = new System.Windows.Forms.Padding(237, 3, 15, 3);
+            this.txtCodPrefeitura.Location = new System.Drawing.Point(801, 199);
+            this.txtCodPrefeitura.Margin = new System.Windows.Forms.Padding(242, 3, 15, 3);
             this.txtCodPrefeitura.MaxLength = 32767;
             this.txtCodPrefeitura.Name = "txtCodPrefeitura";
             this.txtCodPrefeitura.ReadOnly = false;
@@ -855,15 +874,15 @@
             this.txtSenhaWebNFse._Password = false;
             this.txtSenhaWebNFse._Regex = Expressoes.Não_Aplica;
             this.txtSenhaWebNFse._Regex_Expressao = null;
-            this.txtSenhaWebNFse._TamanhoMaiorLabel = 365;
+            this.txtSenhaWebNFse._TamanhoMaiorLabel = 370;
             this.txtSenhaWebNFse._TamanhoTextBox = 80;
             this.txtSenhaWebNFse._Visible = true;
             this.txtSenhaWebNFse.AutoSize = true;
             this.txtSenhaWebNFse.BackColor = System.Drawing.Color.Transparent;
             this.txtSenhaWebNFse.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtSenhaWebNFse.Color = System.Drawing.Color.White;
-            this.txtSenhaWebNFse.Location = new System.Drawing.Point(160, 570);
-            this.txtSenhaWebNFse.Margin = new System.Windows.Forms.Padding(160, 3, 15, 3);
+            this.txtSenhaWebNFse.Location = new System.Drawing.Point(724, 226);
+            this.txtSenhaWebNFse.Margin = new System.Windows.Forms.Padding(165, 3, 15, 3);
             this.txtSenhaWebNFse.MaxLength = 32767;
             this.txtSenhaWebNFse.Name = "txtSenhaWebNFse";
             this.txtSenhaWebNFse.ReadOnly = false;
@@ -877,7 +896,7 @@
             this.tbEmail.Location = new System.Drawing.Point(4, 25);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(716, 626);
+            this.tbEmail.Size = new System.Drawing.Size(1027, 426);
             this.tbEmail.TabIndex = 3;
             this.tbEmail.Tag = false;
             this.tbEmail.Text = "E-Mail";
@@ -888,7 +907,7 @@
             this.kryptonPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel4.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel4.Name = "kryptonPanel4";
-            this.kryptonPanel4.Size = new System.Drawing.Size(716, 626);
+            this.kryptonPanel4.Size = new System.Drawing.Size(1027, 426);
             this.kryptonPanel4.TabIndex = 21;
             // 
             // flowLayoutPanel5
@@ -906,7 +925,7 @@
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(716, 626);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(1027, 426);
             this.flowLayoutPanel5.TabIndex = 23;
             // 
             // hlP_TextBox1
@@ -1051,7 +1070,7 @@
             this.btnSair});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(724, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1035, 27);
             this.menuStrip1.TabIndex = 104;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1104,7 +1123,7 @@
             // 
             this.txtEscrituracao.Location = new System.Drawing.Point(0, 0);
             this.txtEscrituracao.Name = "txtEscrituracao";
-            this.txtEscrituracao.Size = new System.Drawing.Size(100, 17);
+            this.txtEscrituracao.Size = new System.Drawing.Size(100, 20);
             this.txtEscrituracao.TabIndex = 0;
             // 
             // label5
@@ -1284,12 +1303,28 @@
             // 
             this.errorProvider2.ContainerControl = this;
             // 
+            // chkVisualizaDadosNFe
+            // 
+            this.chkVisualizaDadosNFe._LabelText = "Visualiza Informações da NFe ?";
+            this.chkVisualizaDadosNFe._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_CheckBox.CampoObrigatorio.SIM;
+            this.chkVisualizaDadosNFe._TamanhoMaiorLabel = 370;
+            this.chkVisualizaDadosNFe._Visible = true;
+            this.chkVisualizaDadosNFe.AutoSize = true;
+            this.chkVisualizaDadosNFe.BackColor = System.Drawing.Color.Transparent;
+            this.chkVisualizaDadosNFe.Checked = true;
+            this.chkVisualizaDadosNFe.Location = new System.Drawing.Point(742, 166);
+            this.chkVisualizaDadosNFe.Margin = new System.Windows.Forms.Padding(183, 3, 15, 3);
+            this.chkVisualizaDadosNFe.Name = "chkVisualizaDadosNFe";
+            this.chkVisualizaDadosNFe.Size = new System.Drawing.Size(228, 27);
+            this.chkVisualizaDadosNFe.TabIndex = 23;
+            this.chkVisualizaDadosNFe.Value = true;
+            // 
             // frmConfiguracao
             // 
             this.AllowFormChrome = false;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 682);
+            this.ClientSize = new System.Drawing.Size(1035, 482);
             this.ControlBox = false;
             this.Controls.Add(this.kryptonPanel1);
             this.ForeColor = System.Drawing.Color.DarkCyan;
@@ -1424,6 +1459,8 @@
         private Comum.Componentes.HLP_TextBox txtCodPrefeitura;
         private Comum.Componentes.HLP_TextBox txtSenhaWebNFse;
         private Comum.Componentes.HLP_ComboBox cbxTransparencia;
+        private Comum.Componentes.HLP_CheckBox chkImprimeRetorno;
+        private Comum.Componentes.HLP_CheckBox chkVisualizaDadosNFe;
 
     }
 }

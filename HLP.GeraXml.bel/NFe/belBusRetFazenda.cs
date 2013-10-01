@@ -21,7 +21,7 @@ namespace HLP.GeraXml.bel.NFe
         public KryptonLabel _lblQtde { get; set; }
         public List<DadosRetorno> lDadosRetorno = new List<DadosRetorno>();
 
-        public struct DadosRetorno
+        public class DadosRetorno
         {
             public string seqNota { get; set; }
             public string nNota { get; set; }

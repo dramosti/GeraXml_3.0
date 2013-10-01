@@ -23,7 +23,7 @@ namespace HLP.GeraXml.UI.NFe
     {
         private bool bOrderDesc { get; set; }
 
-        public frmVisualizaNFe(belCarregaDados objbelDados)
+        public frmVisualizaNFe(List<belInfNFe> objListaNFs)
         {
 
             try
@@ -34,7 +34,7 @@ namespace HLP.GeraXml.UI.NFe
                 cbxCSTicmsItens.cbx.DropDownHeight = 150;
                 cbxCSTicmsItens.cbx.DropDownWidth = 600;
                 listErros.ListBox.MouseDoubleClick += new MouseEventHandler(listErros_MouseDoubleClick);
-                bsNotas.DataSource = objbelDados.lNotas;
+                bsNotas.DataSource = objListaNFs;
                 ValidaNotas();
                 PopulaForm();
                 VerificaCampos();

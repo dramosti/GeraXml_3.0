@@ -16,14 +16,14 @@ namespace HLP.GeraXml.UI.Relatorios {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class RelDanfeSimplificada : ReportClass {
+    public class RelDanfeCancelados_old : ReportClass {
         
-        public RelDanfeSimplificada() {
+        public RelDanfeCancelados_old() {
         }
         
         public override string ResourceName {
             get {
-                return "RelDanfeSimplificada.rpt";
+                return "RelDanfeCancelados_old.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace HLP.GeraXml.UI.Relatorios {
         
         public override string FullResourceName {
             get {
-                return "HLP.GeraXml.UI.Relatorios.RelDanfeSimplificada.rpt";
+                return "HLP.GeraXml.UI.Relatorios.RelDanfeCancelados_old.rpt";
             }
             set {
                 // Do nothing
@@ -194,9 +194,9 @@ namespace HLP.GeraXml.UI.Relatorios {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedRelDanfeSimplificada : Component, ICachedReport {
+    public class CachedRelDanfeCancelados_old : Component, ICachedReport {
         
-        public CachedRelDanfeSimplificada() {
+        public CachedRelDanfeCancelados_old() {
         }
         
         [Browsable(false)]
@@ -233,7 +233,7 @@ namespace HLP.GeraXml.UI.Relatorios {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            RelDanfeSimplificada rpt = new RelDanfeSimplificada();
+            RelDanfeCancelados_old rpt = new RelDanfeCancelados_old();
             rpt.Site = this.Site;
             return rpt;
         }

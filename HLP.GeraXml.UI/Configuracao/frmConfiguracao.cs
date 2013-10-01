@@ -206,7 +206,9 @@ namespace HLP.GeraXml.UI.Configuracao
                 this.chkDetalheProd.Checked = objbelConfiguracao.DS_DETALHE;
                 this.chkNumNotaEntrada.Checked = objbelConfiguracao.IMPRIMI_NUM_NOTA_ENTRADA;
                 this.chkNumPedidoVendaItens.Checked = objbelConfiguracao.IMPRIMI_NUM_PEDIDO_VENDA;
+                this.chkVisualizaDadosNFe.Checked = objbelConfiguracao.VISUALIZA_DADOS_NFE;
                 this.chkNumRevisaoItens.Checked = objbelConfiguracao.IMPRIMI_NUM_REVISAO;
+                this.chkImprimeRetorno.Checked = objbelConfiguracao.IMPRIMI_RETORNO;
                 this.txtSenhaWebNFse.Text = objbelConfiguracao.SENHA_WEB_NFES;
                 this.txtCodPrefeitura.Text = objbelConfiguracao.COD_PREFEITURA;
 
@@ -283,8 +285,10 @@ namespace HLP.GeraXml.UI.Configuracao
                 objbelConfiguracao.IMPRIMI_NUM_NOTA_ENTRADA = chkNumNotaEntrada.Checked;
                 objbelConfiguracao.IMPRIMI_NUM_PEDIDO_VENDA = chkNumPedidoVendaItens.Checked;
                 objbelConfiguracao.IMPRIMI_NUM_REVISAO = chkNumRevisaoItens.Checked;
+                objbelConfiguracao.IMPRIMI_RETORNO = chkImprimeRetorno.Checked;
                 objbelConfiguracao.SENHA_WEB_NFES = this.txtSenhaWebNFse.Text;
                 objbelConfiguracao.COD_PREFEITURA = this.txtCodPrefeitura.Text;
+                objbelConfiguracao.VISUALIZA_DADOS_NFE = chkVisualizaDadosNFe.Checked;
 
 
                 if (cbxGruposServico.cbx.Items.Count > 0)

@@ -167,7 +167,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 lCampos.Add(new CamposSelect { sCampo = "movitem.qt_prod", sAlias = "qCom", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
 
 
-                if (Acesso.NM_EMPRESA.Equals("MAD_STA_RITA"))
+                if ((Acesso.NM_EMPRESA.Equals("MAD_STA_RITA")) || (Acesso.NM_EMPRESA.Equals("CONSTRUF")))
                 {
                     lCampos.Add(new CamposSelect { sCampo = "movitem.vl_comprimento", sAlias = "vl_comprimento", bAgrupa = Acesso.bAGRUPA_ITENS_NFE }); // Diego - OS_25550  
                 }
@@ -504,7 +504,10 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     for (int i = 0; i < lCampos.Count; i++)
                     {
                         CamposSelect camp = lCampos[i];
-                        sGroup.Append((camp.bAgrupa == false ? camp.sCampo + ((i + 1) < lCampos.Count() ? ", " : "") + Environment.NewLine : ""));
+                        if (camp.sCampo != "''")
+                        {
+                            sGroup.Append((camp.bAgrupa == false ? camp.sCampo + ((i + 1) < lCampos.Count() ? ", " : "") + Environment.NewLine : ""));
+                        }
                     }
                 }
 
@@ -745,7 +748,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
             }
             return sOBS;
         }
-                       
+
 
     }
 }

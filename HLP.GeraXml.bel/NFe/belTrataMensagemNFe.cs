@@ -102,6 +102,8 @@ namespace HLP.GeraXml.bel.NFe
                                                     dRet.cStat,
                                                     dRet.xMotivo,
                                                     Environment.NewLine);
+
+                        
                     }
                 }
                 else if (tipo == Tipo.ContingenciaFS)

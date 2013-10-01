@@ -17,7 +17,22 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         public string Cprod
         {
             get { return _cprod; }
-            set { _cprod = value.Length >= 60 ? value.Substring(0, 60) : value; }
+            set { 
+                _cprod = (value.Length >= 60 ? value.Substring(0, 60) : value);
+                string sValor = "";
+
+                for (int i = 0; i < _cprod.Count(); i++)
+                {
+                    if (!_cprod[i].ToString().Equals(""))
+                    {
+                        if (_cprod[i] != (char)31)
+                        {
+                            sValor += _cprod[i].ToString();                            
+                        }
+                    }
+                }
+                _cprod = sValor;
+            }
         }
 
         /// <summary>

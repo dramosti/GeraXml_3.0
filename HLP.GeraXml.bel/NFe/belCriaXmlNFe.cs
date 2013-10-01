@@ -199,7 +199,7 @@ namespace HLP.GeraXml.bel.NFe
                             //det.imposto.belIpi = null;
                             XElement condet = (new XElement(pf + "det", new XAttribute("nItem", det.nitem),
                                                new XElement(pf + "prod",
-                                                   (!String.IsNullOrEmpty(det.prod.Cprod) ? new XElement(pf + "cProd", det.prod.Cprod.ToString()) : null),
+                                                   (!String.IsNullOrEmpty(det.prod.Cprod) ? new XElement(pf + "cProd", det.prod.Cprod.ToString().Replace(" ", "")) : null),
                                                    (new XElement(pf + "cEAN", det.prod.Cean.ToString())),
                                                    (!String.IsNullOrEmpty(det.prod.Xprod) ? new XElement(pf + "xProd", det.prod.Xprod.ToString()) : null),
                                                    (!String.IsNullOrEmpty(det.prod.Ncm) ? new XElement(pf + "NCM", det.prod.Ncm.ToString()) : new XElement(pf + "NCM", det.prod.Ncm = "00000000")), //Claudinei - o.s. 24200 - 01/03/2010

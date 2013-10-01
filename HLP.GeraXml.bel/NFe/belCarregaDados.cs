@@ -21,13 +21,13 @@ namespace HLP.GeraXml.bel.NFe
         public belCarregaDados(List<belPesquisaNotas> _lPesquisa)
         {
             this.lPesquisa = _lPesquisa;
-            CarregaDados();
-            objbelCriaXml = new belCriaXmlNFe(lNotas);
+            //CarregaDados();
+            //objbelCriaXml = new belCriaXmlNFe(lNotas);
 
         }
         public belCarregaDados() { }
 
-        private void CarregaDados()
+        public void CarregaDados()
         {
             try
             {
@@ -81,6 +81,7 @@ namespace HLP.GeraXml.bel.NFe
 
                     lNotas.Add(objInfNFe);
                 }
+                objbelCriaXml = new belCriaXmlNFe(lNotas);
 
             }
             catch (Exception ex)

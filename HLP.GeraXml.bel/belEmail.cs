@@ -56,10 +56,12 @@ namespace HLP.GeraXml.bel
 
             string[] aux = RetornaEmailDestinatarioNfe(sCD_NFSEQ);
             this.sDestinatario = Acesso.NM_RAMO == Acesso.BancoDados.TRANSPORTE ? RetornaEmailDestinatarioCte(sCD_NFSEQ) : aux[0];
+            
+
             if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
             {
                 this.sOutros = RetornaEmailTransportador(sCD_NFSEQ) != "" ? RetornaEmailTransportador(sCD_NFSEQ) + "; " : "";
-
+                this.sOutros += RetornaEmailVendedor(sCD_NFSEQ);
                 for (int i = 1; i < aux.Length; i++)
                 {
                     if ((i + 1) < aux.Length)
@@ -117,6 +119,7 @@ namespace HLP.GeraXml.bel
         {
             try
             {
+
                 SmtpClient cliente = new SmtpClient(Acesso.HOST_SERVIDOR, Convert.ToInt16(Acesso.PORTA_SERVIDOR));
                 cliente.EnableSsl = Convert.ToBoolean(Acesso.REQUER_SSL);
                 cliente.Timeout = 200000;

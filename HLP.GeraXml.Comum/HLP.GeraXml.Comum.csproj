@@ -147,6 +147,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Static\Acesso.cs" />
+    <Compile Include="Static\Extension.cs" />
     <Compile Include="Static\Mensagens.cs" />
     <Compile Include="Static\Pastas.cs" />
     <Compile Include="Static\Util.cs" />

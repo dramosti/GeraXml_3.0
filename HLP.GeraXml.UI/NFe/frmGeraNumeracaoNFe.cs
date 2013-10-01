@@ -54,20 +54,70 @@ namespace HLP.GeraXml.UI.NFe
 
         private void btnGerar_Click(object sender, EventArgs e)
         {
+            btnGerar.Enabled = false;
+            pgStatus.Style = ProgressBarStyle.Marquee;
+            if (worker.IsBusy != true)
+            {
+                worker.RunWorkerAsync();
+            }
+        }
+
+        private void GerarNumeracao(DoWorkEventArgs e)
+        {
             try
             {
+                this.Invoke(new MethodInvoker(delegate()
+                {
+                    lblStatus.Text = "Validando sequencias no banco, aguarde...";
+                    statusStrip1.Refresh();
+                }));
                 objbelNumeracao.ValidaSequenciaNoBanco(Convert.ToInt32(txtProximo.Text));
-                objbelNumeracao.AlteraDuplicatas(bNotaServico);
-                this.Hide();
-                KryptonMessageBox.Show(null, "Numeração gerada com sucesso!", "Gerar Números de Notas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                bGerou = true;
-                this.Close();
+                if (!this.worker.CancellationPending)
+                {
+                    this.Invoke(new MethodInvoker(delegate()
+                    {
+                        lblStatus.Text = "Alterando duplicatas...";
+                        statusStrip1.Refresh();
+                    }));
+                    objbelNumeracao.AlteraDuplicatas(bNotaServico);
+                }
+                else
+                {
+                    e.Cancel = true;                    
+                }
+
+                if (!this.worker.CancellationPending)
+                {
+                    this.Invoke(new MethodInvoker(delegate()
+                   {
+                       this.Hide();
+                       KryptonMessageBox.Show(null, "Numeração gerada com sucesso!", "Gerar Números de Notas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       bGerou = true;
+                       this.Close();
+                   }));
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
             catch (Exception ex)
             {
                 new HLP.GeraXml.Comum.HLPexception(ex);
             }
+        }
 
+        private void frmGeraNumeracaoNFe_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (worker.IsBusy)
+            {
+                worker.CancelAsync();               
+            }
+        }
+
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            GerarNumeracao(e);
         }
     }
 }

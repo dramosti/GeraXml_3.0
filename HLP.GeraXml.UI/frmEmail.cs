@@ -11,6 +11,7 @@ using ComponentFactory.Krypton.Toolkit;
 using System.Text.RegularExpressions;
 using HLP.GeraXml.Comum.Static;
 using HLP.GeraXml.Comum;
+using System.Threading;
 
 namespace HLP.GeraXml.UI
 {
@@ -80,7 +81,7 @@ namespace HLP.GeraXml.UI
                     {
                         ret = false;
                     }
-                }                
+                }
 
 
             }
@@ -132,10 +133,12 @@ namespace HLP.GeraXml.UI
                         objListaEmail[i].sDestinatario = dgvEmail["sDestinatario", i].Value.ToString();
                         objListaEmail[i].sOutros = dgvEmail["sOutros", i].Value.ToString();
                     }
-                    belEmail objEmail = new belEmail(tipo);
-                    objEmail.EnviarEmail(objListaEmail);
-                    KryptonMessageBox.Show("E-mail enviado com sucesso!", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+
+                    if (worker.IsBusy != true)
+                    {
+                        worker.RunWorkerAsync();
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -143,6 +146,7 @@ namespace HLP.GeraXml.UI
                 new HLPexception(ex);
             }
         }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -163,6 +167,34 @@ namespace HLP.GeraXml.UI
                 new HLPexception(ex);
             }
         }
+
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            belEmail send = new belEmail(tipo);
+            List<belEmail> lEmail;
+            string slblInfo = "Enviando {0} de {1} Email(s)...";
+            int i = 0;
+            foreach (belEmail objEmail in objListaEmail)
+            {
+                lEmail = new List<belEmail>();
+                lEmail.Add(objEmail);
+                send.EnviarEmail(lEmail);
+                this.Invoke(new MethodInvoker(delegate()
+                {
+                    lblInfo.Text = string.Format(slblInfo, (i + 1).ToString(), objListaEmail.Count());
+                    lblInfo.Refresh();                                        
+                }));
+                i++;
+            }
+            this.Invoke(new MethodInvoker(delegate()
+                {
+                    KryptonMessageBox.Show("E-mail enviado com sucesso!", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }));
+
+        }
+
+
 
 
     }

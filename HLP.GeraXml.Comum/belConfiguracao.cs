@@ -6,9 +6,8 @@ using System.Text;
 namespace HLP.GeraXml.Comum
 {
     [Serializable()]
-    public class belConfiguracao 
+    public class belConfiguracao
     {
-
         public string CAMINHO_PADRAO { get; set; }
         public string USA_DANFE_SIMPLIFICADA { get; set; }
         public string CAMINHO_RELATORIO_ESPECIFICO { get; set; }
@@ -37,12 +36,24 @@ namespace HLP.GeraXml.Comum
         public string QTDE_CASAS_VL_UNIT { get; set; }
         public string VISUALIZA_HORA_DANFE { get; set; }
         public string VISUALIZA_DATA_DANFE { get; set; }
+        private bool _VISUALIZA_DADOS_NFE = true;
+        public bool VISUALIZA_DADOS_NFE
+        {
+            get { return _VISUALIZA_DADOS_NFE; }
+            set { _VISUALIZA_DADOS_NFE = value; }
+        }
         public string COD_BARRAS_XML { get; set; }
         public string TOTALIZA_CFOP { get; set; }
         public int TP_EMIS { get; set; }
         public bool IMPRIMI_NUM_NOTA_ENTRADA { get; set; }
         public bool IMPRIMI_NUM_PEDIDO_VENDA { get; set; }
         public bool IMPRIMI_NUM_REVISAO { get; set; }
+        private bool _IMPRIMI_RETORNO = true;
+        public bool IMPRIMI_RETORNO
+        {
+            get { return _IMPRIMI_RETORNO; }
+            set { _IMPRIMI_RETORNO = value; }
+        }
         public string COD_PREFEITURA { get; set; }
         public string SENHA_WEB_NFES { get; set; }
     }

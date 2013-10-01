@@ -141,11 +141,12 @@ namespace HLP.GeraXml.dao.ADO
         {
             get
             {
-                if (HlpDbFuncoesGeral._conexao == null)
-                {
-                    HlpDbFuncoesGeral._conexao = new FbConnection(MontaStringConexao());
-                }
-                return HlpDbFuncoesGeral._conexao;
+                //if (HlpDbFuncoesGeral._conexao == null)
+                //{
+                //    HlpDbFuncoesGeral._conexao = new FbConnection(MontaStringConexao());
+                //}
+                //return HlpDbFuncoesGeral._conexao;
+                return new FbConnection(MontaStringConexao());
             }
             set
             {
@@ -157,6 +158,6 @@ namespace HLP.GeraXml.dao.ADO
         {
             HlpDbFuncoesGeral._conexao = null;
         }
-      
+
     }
 }

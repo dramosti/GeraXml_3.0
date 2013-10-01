@@ -266,25 +266,28 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 }
                 if ((Acesso.NM_EMPRESA != "JAMAICA")) //25618
                 {
-                    for (int i = 0; i < Devolucoes.Count; i++)
+                    if (Acesso.IMPRIMI_RETORNO)
                     {
-
-                        if (sObs.Trim().Length > 0)
+                        for (int i = 0; i < Devolucoes.Count; i++)
                         {
-                            sObs += string.Format(" - Retorno {0} ref. sua NF {1} de {2} de valor R$ {3}", //Claudinei - o.s. 24043 - 25/01/2010
-                                                  Devolucoes[i].sSaldo,
-                                                  Devolucoes[i].scdNotafis,
-                                                  Devolucoes[i].dDtEmi.ToString("dd/MM/yyyy"),
-                                                  Devolucoes[i].dValorNF); //Claudinei - o.s. 24043 - 25/01/2010
-                        }
-                        else
-                        {
-                            sObs += string.Format("Retorno {0} ref. sua NF {1} de {2} de valor R$ {3}", //Claudinei - o.s. 24043 - 25/01/2010
-                                                  Devolucoes[i].sSaldo,
-                                                  Devolucoes[i].scdNotafis,
-                                                  Devolucoes[i].dDtEmi.ToString("dd/MM/yyyy"),
-                                                  Devolucoes[i].dValorNF); //Claudinei - o.s. 24043 - 25/01/2010
 
+                            if (sObs.Trim().Length > 0)
+                            {
+                                sObs += string.Format(" - Retorno {0} ref. sua NF {1} de {2} de valor R$ {3}", //Claudinei - o.s. 24043 - 25/01/2010
+                                                      Devolucoes[i].sSaldo,
+                                                      Devolucoes[i].scdNotafis,
+                                                      Devolucoes[i].dDtEmi.ToString("dd/MM/yyyy"),
+                                                      Devolucoes[i].dValorNF); //Claudinei - o.s. 24043 - 25/01/2010
+                            }
+                            else
+                            {
+                                sObs += string.Format("Retorno {0} ref. sua NF {1} de {2} de valor R$ {3}", //Claudinei - o.s. 24043 - 25/01/2010
+                                                      Devolucoes[i].sSaldo,
+                                                      Devolucoes[i].scdNotafis,
+                                                      Devolucoes[i].dDtEmi.ToString("dd/MM/yyyy"),
+                                                      Devolucoes[i].dValorNF); //Claudinei - o.s. 24043 - 25/01/2010
+
+                            }
                         }
                     }
                 }

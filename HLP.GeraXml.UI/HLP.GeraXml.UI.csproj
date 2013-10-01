@@ -279,11 +279,23 @@
     <Compile Include="NFe\frmCancelamentoNFe.Designer.cs">
       <DependentUpon>frmCancelamentoNFe.cs</DependentUpon>
     </Compile>
+    <Compile Include="NFe\frmCarregaDadosParaVisualizarDanfe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NFe\frmCarregaDadosParaVisualizarDanfe.Designer.cs">
+      <DependentUpon>frmCarregaDadosParaVisualizarDanfe.cs</DependentUpon>
+    </Compile>
     <Compile Include="NFe\frmContratoContingenciaNfe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NFe\frmContratoContingenciaNfe.Designer.cs">
       <DependentUpon>frmContratoContingenciaNfe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NFe\frmEnviaLotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NFe\frmEnviaLotes.Designer.cs">
+      <DependentUpon>frmEnviaLotes.cs</DependentUpon>
     </Compile>
     <Compile Include="NFe\frmGeraArquivoNFe.cs">
       <SubType>Form</SubType>
@@ -384,37 +396,56 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Relatorios\RelDanfeSimplificada2013.cs">
+      <DependentUpon>RelDanfeSimplificada2013.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Relatorios\RelDanfePaisagem2013.cs">
+      <DependentUpon>RelDanfePaisagem2013.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Relatorios\dsImagens.Designer.cs">
+      <DependentUpon>dsImagens.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Relatorios\relAvisoContingencia.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>relAvisoContingencia.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\RelDanfe.cs">
+    <Compile Include="Relatorios\RelDanfe_old.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RelDanfe.rpt</DependentUpon>
+      <DependentUpon>RelDanfe_old.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\RelDanfeCancelados.cs">
+    <Compile Include="Relatorios\RelDanfeCancelados_old.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RelDanfeCancelados.rpt</DependentUpon>
+      <DependentUpon>RelDanfeCancelados_old.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\RelDanfeContingencia.cs">
+    <Compile Include="Relatorios\RelDanfeContingencia_old.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RelDanfeContingencia.rpt</DependentUpon>
+      <DependentUpon>RelDanfeContingencia_old.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\RelDanfePaisagem.cs">
+    <Compile Include="Relatorios\RelDanfePaisagem_old.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RelDanfePaisagem.rpt</DependentUpon>
+      <DependentUpon>RelDanfePaisagem_old.rpt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
@@ -467,6 +498,13 @@
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Relatorios\RelDanfe2013.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RelDanfe2013.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Content Include="globe_glass.ico" />
     <Content Include="Relatorios\rptCteLotacao.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -514,8 +552,14 @@
       <DependentUpon>frmBuscaRetorno.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="NFe\frmCarregaDadosParaVisualizarDanfe.resx">
+      <DependentUpon>frmCarregaDadosParaVisualizarDanfe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NFe\frmContratoContingenciaNfe.resx">
       <DependentUpon>frmContratoContingenciaNfe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NFe\frmEnviaLotes.resx">
+      <DependentUpon>frmEnviaLotes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NFe\frmImportaEscritorNfe.resx">
       <DependentUpon>frmImportaEscritorNfe.cs</DependentUpon>
@@ -564,24 +608,24 @@
       <LastGenOutput>CCe.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Relatorios\RelDanfe.rpt">
+    <Content Include="Relatorios\RelDanfe_old.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RelDanfe.cs</LastGenOutput>
+      <LastGenOutput>RelDanfe_old.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Relatorios\RelDanfeCancelados.rpt">
+    <Content Include="Relatorios\RelDanfeCancelados_old.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RelDanfeCancelados.cs</LastGenOutput>
+      <LastGenOutput>RelDanfeCancelados_old.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Relatorios\RelDanfeContingencia.rpt">
+    <Content Include="Relatorios\RelDanfeContingencia_old.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RelDanfeContingencia.cs</LastGenOutput>
+      <LastGenOutput>RelDanfeContingencia_old.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Relatorios\RelDanfePaisagem.rpt">
+    <Content Include="Relatorios\RelDanfePaisagem_old.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RelDanfePaisagem.cs</LastGenOutput>
+      <LastGenOutput>RelDanfePaisagem_old.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Relatorios\RelDanfeSimplificada.rpt">
@@ -592,6 +636,16 @@
     <EmbeddedResource Include="NFse\Susesu\frmVisualizaNfsSusesu.resx">
       <DependentUpon>frmVisualizaNfsSusesu.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Relatorios\RelDanfeSimplificada2013.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RelDanfeSimplificada2013.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Relatorios\RelDanfePaisagem2013.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RelDanfePaisagem2013.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Relatorios\relAvisoContingencia.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>relAvisoContingencia.cs</LastGenOutput>
@@ -604,6 +658,11 @@
     <Content Include="Relatorios\rptNFSeCamp.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptNFSeCamp.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Relatorios\RelDanfe2013.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RelDanfe2013.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="HLP.GeraXml.UI_TemporaryKey.pfx" />
@@ -624,6 +683,19 @@
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.DSF.LoteRPSItensItem.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.Susesu.belNFesSusesu.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.PendenciaEmail.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.UI.NFe.frmEnviaLotes+lotes.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.UI.NFe.frmGeraArquivoNFe+DadosImpressao.datasource" />
+    <None Include="Relatorios\dsImagens.xsc">
+      <DependentUpon>dsImagens.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\dsImagens.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsImagens.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Relatorios\dsImagens.xss">
+      <DependentUpon>dsImagens.xsd</DependentUpon>
+    </None>
     <None Include="Resources\cancel %283%29.png" />
     <None Include="Resources\confirmar1.png" />
     <None Include="Resources\pesquisar.png" />

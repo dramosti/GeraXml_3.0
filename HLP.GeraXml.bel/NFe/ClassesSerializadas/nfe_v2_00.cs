@@ -206,7 +206,7 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
         public string versao { get; set; }
 
         [System.Xml.Serialization.XmlElementAttribute("NFe")]
-        public List<Nfe> lNfe { get; set; }
+        public List<NFe> lNfe { get; set; }
 
         [XmlElementAttribute("protNFe")]
         public protNFe[] protNFeField { get; set; }
@@ -247,12 +247,10 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
 
 
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe")]
-    public partial class Nfe
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    public partial class NFe
     {
         [XmlElementAttribute("infNFe")]
         public List<infNFe> lInfNfe { get; set; }
@@ -10170,7 +10168,7 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
     public partial class TNFeInfNFeDetImpostoICMSICMSSN102
     {
         public string orig { get; set; }
-        public string cSOSNField { get; set; }
+        public string CSOSN { get; set; }
     }
 
     /// <remarks/>
@@ -10206,7 +10204,7 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
     public partial class TNFeInfNFeDetImpostoICMSICMSSN201
     {
         public string orig { get; set; }
-        public string cSOSN { get; set; }
+        public string CSOSN { get; set; }
         public string modBCST { get; set; }
         public string pMVAST { get; set; }
         public string pRedBCST { get; set; }
@@ -10587,44 +10585,49 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
     public partial class TNFeInfNFeDetImpostoIPIIPITrib
     {
         public string CST { get; set; }
-
-        private string[] itemsField;
-
-        private ItemsChoiceType[] itemsElementNameField;
         public string vIPI { get; set; }
+        public string pIPI { get; set; }
+        public string qUnid { get; set; }
+        public string vBC { get; set; }
+        public string vUnid { get; set; }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("pIPI", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("qUnid", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("vBC", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("vUnid", typeof(string))]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public string[] Items
-        {
-            get
-            {
-                return this.itemsField;
-            }
-            set
-            {
-                this.itemsField = value;
-            }
-        }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType[] ItemsElementName
-        {
-            get
-            {
-                return this.itemsElementNameField;
-            }
-            set
-            {
-                this.itemsElementNameField = value;
-            }
-        }
+
+        //private string[] itemsField;
+
+        ///// <remarks/>
+        //[System.Xml.Serialization.XmlElementAttribute("pIPI", typeof(string))]
+        //[System.Xml.Serialization.XmlElementAttribute("qUnid", typeof(string))]
+        //[System.Xml.Serialization.XmlElementAttribute("vBC", typeof(string))]
+        //[System.Xml.Serialization.XmlElementAttribute("vUnid", typeof(string))]
+        //[System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        //public string[] Items
+        //{
+        //    get
+        //    {
+        //        return this.itemsField;
+        //    }
+        //    set
+        //    {
+        //        this.itemsField = value;
+        //    }
+        //}
+
+        //private ItemsChoiceType[] itemsElementNameField;
+        ///// <remarks/>
+        //[System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        //[System.Xml.Serialization.XmlIgnoreAttribute()]
+        //public ItemsChoiceType[] ItemsElementName
+        //{
+        //    get
+        //    {
+        //        return this.itemsElementNameField;
+        //    }
+        //    set
+        //    {
+        //        this.itemsElementNameField = value;
+        //    }
+        //}
     }
 
     /// <remarks/>

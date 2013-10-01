@@ -18,7 +18,7 @@ namespace HLP.GeraXml.dao.NFe
             {
                 StringBuilder sSql = new StringBuilder();
 
-                sSql.Append("update nf set cd_chavenferet ='");
+                sSql.Append("update nf set st_nfe = 'S', cd_chavenferet ='");
                 sSql.Append(sChNfe);
                 sSql.Append("', ");
                 sSql.Append("cd_nprotnfe ='");
@@ -61,7 +61,7 @@ namespace HLP.GeraXml.dao.NFe
             }
         }
 
-        
+
         public virtual void LimpaCampoRecibo(string sSeq)
         {
             StringBuilder sSql = new StringBuilder();

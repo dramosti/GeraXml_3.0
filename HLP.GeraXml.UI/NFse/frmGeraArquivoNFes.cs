@@ -622,6 +622,15 @@ namespace HLP.GeraXml.UI.NFse
                                         if (Acesso.VerificaDadosEmail())
                                         {
                                             List<belEmail> objlbelEmail = new List<belEmail>();
+                                            if (File.Exists(sPathPDFdsf))
+                                            {
+                                                try
+                                                {
+                                                    File.Delete(sPathPDFdsf);
+                                                }
+                                                catch (Exception) { }
+                                            }
+
                                             if (!File.Exists(sPathPDFdsf))
                                             {
                                                 Util.ExportPDF(rpt, sPathPDFdsf);

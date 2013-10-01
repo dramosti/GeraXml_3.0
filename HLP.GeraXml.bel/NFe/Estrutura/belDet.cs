@@ -161,7 +161,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             decimal dqCom = Math.Round(Convert.ToDecimal(drIItem["qCom"].ToString()) * Convert.ToDecimal(drIItem["vl_coef"].ToString()), 4);
                             objDet.prod.Qcom = dqCom;
                         }
-                        else if (Acesso.NM_EMPRESA.Equals("MAD_STA_RITA"))
+                        else if ((Acesso.NM_EMPRESA.Equals("MAD_STA_RITA")) || (Acesso.NM_EMPRESA.Equals("CONSTRUF")))
                         {
                             decimal dqCom = Math.Round(Convert.ToDecimal(drIItem["qCom"].ToString()), 4);
                             decimal dComprimento = Math.Round(Convert.ToDecimal(drIItem["vl_comprimento"].ToString()), 4);
@@ -247,7 +247,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             decimal dvqCom = Math.Round(Convert.ToDecimal(drIItem["qCom"].ToString()) * Convert.ToDecimal(drIItem["vl_coef"].ToString()), 4);
                             objDet.prod.Qtrib = dvqCom;
                         }
-                        else if (Acesso.NM_EMPRESA.Equals("MAD_STA_RITA"))
+                        else if ((Acesso.NM_EMPRESA.Equals("MAD_STA_RITA")) || (Acesso.NM_EMPRESA.Equals("CONSTRUF")))
                         {
                             objDet.prod.Qtrib = objDet.prod.Qcom;
                         }

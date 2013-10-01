@@ -198,7 +198,7 @@ namespace HLP.GeraXml.UI.NFe
                     }
                     else if (e.ColumnIndex == 6)
                     {
-                        if (dgvArquivos.Columns[e.ColumnIndex].Tag == null )
+                        if (dgvArquivos.Columns[e.ColumnIndex].Tag == null)
                         {
                             dgvArquivos.Columns[e.ColumnIndex].Tag = true;
                         }
@@ -263,6 +263,8 @@ namespace HLP.GeraXml.UI.NFe
                                                                    c.sRECIBO_NF == "").ToList<belPesquisaNotas>();
             try
             {
+
+                frmEnviaLotes objfrmLotes = null;
                 if (objSelect.Count() > 0)
                 {
 
@@ -358,31 +360,48 @@ namespace HLP.GeraXml.UI.NFe
                     }
                     else
                     {
-                        objbelCarregaDados = new belCarregaDados(objSelect);
-                        frmVisualizaNFe objfrmVisualizaNFe = new frmVisualizaNFe(objbelCarregaDados);
-                        objfrmVisualizaNFe.ShowDialog();
-                        if (objfrmVisualizaNFe.Cancelado)
-                        {
-                            throw new Exception("Envio da(s) Nota(s) Cancelado");
-                        }
-                        objbelCarregaDados.objbelCriaXml.GeraLoteXmlEnvio();
+                        objfrmLotes = new frmEnviaLotes(objSelect);
+                        objfrmLotes.ShowDialog();
 
-                        objbelCarregaDados.objbelRecepcao.TransmitirLote(objbelCarregaDados.objbelCriaXml.sPathLote, objSelect);
+                        //objbelCarregaDados = new belCarregaDados(objSelect);
+                        //frmVisualizaNFe objfrmVisualizaNFe = new frmVisualizaNFe(objbelCarregaDados);
+                        //objfrmVisualizaNFe.ShowDialog();
+                        //if (objfrmVisualizaNFe.Cancelado)
+                        //{
+                        //    throw new Exception("Envio da(s) Nota(s) Cancelado");
+                        //}
+                        //objbelCarregaDados.objbelCriaXml.GeraLoteXmlEnvio();
+
+                        //objbelCarregaDados.objbelRecepcao.TransmitirLote(objbelCarregaDados.objbelCriaXml.sPathLote, objSelect);
                     }
 
-                    belBusRetFazenda objbelRetFazenda = new belBusRetFazenda(objSelect);
-                    frmBuscaRetorno objFrmBuscaRet = new frmBuscaRetorno(objbelRetFazenda);
-                    objFrmBuscaRet.ShowDialog();
-                    KryptonMessageBox.Show(belTrataMensagemNFe.RetornaMensagem(objbelRetFazenda.lDadosRetorno, belTrataMensagemNFe.Tipo.Envio), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cboStatus.cbx.SelectedIndex = 2;
-                    PesquisaNotas();
+                    if (objfrmLotes == null)
+                    {
+                        belBusRetFazenda objbelRetFazenda = new belBusRetFazenda(objSelect);
+                        frmBuscaRetorno objFrmBuscaRet = new frmBuscaRetorno(objbelRetFazenda);
+                        objFrmBuscaRet.ShowDialog();
+                        KryptonMessageBox.Show(belTrataMensagemNFe.RetornaMensagem(objbelRetFazenda.lDadosRetorno, belTrataMensagemNFe.Tipo.Envio), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cboStatus.cbx.SelectedIndex = 2;
+                        PesquisaNotas();
 
-                    List<string> lsNotas = objbelRetFazenda.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
-                    List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
-                                                    where lsNotas.Contains(c.sCD_NFSEQ)
-                                                    select c).ToList();
+                        List<string> lsNotas = objbelRetFazenda.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
+                        List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
+                                                        where lsNotas.Contains(c.sCD_NFSEQ)
+                                                        select c).ToList();
 
-                    bsNotas.DataSource = dados;
+                        bsNotas.DataSource = dados;
+                    }
+                    else
+                    {
+                        cboStatus.cbx.SelectedIndex = 2;
+                        PesquisaNotas();
+
+                        List<string> lsNotas = objfrmLotes.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
+                        List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
+                                                        where lsNotas.Contains(c.sCD_NFSEQ)
+                                                        select c).ToList();
+
+                    }
                     cboStatus.cbx.SelectedIndex = 1;
                     ColoriGrid();
                     ValidaContadorBuscaRetorno();
@@ -418,7 +437,8 @@ namespace HLP.GeraXml.UI.NFe
                         }
                     }
                     belCarregaDados objbelCarregaDados = new belCarregaDados(objSelect);
-                    frmVisualizaNFe objfrmVisualizaNFe = new frmVisualizaNFe(objbelCarregaDados);
+                    objbelCarregaDados.CarregaDados();
+                    frmVisualizaNFe objfrmVisualizaNFe = new frmVisualizaNFe(objbelCarregaDados.lNotas);
                     objfrmVisualizaNFe.ShowDialog();
                     if (objfrmVisualizaNFe.Cancelado)
                     {
@@ -475,7 +495,7 @@ namespace HLP.GeraXml.UI.NFe
                         objfrmCanc.ShowDialog();
                     }
 
-                    
+
                 }
                 else if (objSelect.Count > 1)
                 {
@@ -642,6 +662,10 @@ namespace HLP.GeraXml.UI.NFe
                 new HLPexception(ex);
             }
         }
+
+
+
+
         private void btnBuscaRetorno_Click(object sender, EventArgs e)
         {
             try
@@ -653,7 +677,7 @@ namespace HLP.GeraXml.UI.NFe
                 {
                     if (ValidaBuscaRetorno(objSelect))
                     {
-                        objSelect = ((List<belPesquisaNotas>)bsNotas.DataSource).Where(c => c.sRECIBO_NF == objSelect.FirstOrDefault().sRECIBO_NF).ToList<belPesquisaNotas>();
+                        //objSelect = ((List<belPesquisaNotas>)bsNotas.List).Where(c => c.sRECIBO_NF == objSelect.FirstOrDefault().sRECIBO_NF).ToList<belPesquisaNotas>();
                         belBusRetFazenda objbelRetFazenda = new belBusRetFazenda(objSelect);
                         frmBuscaRetorno objFrmBuscaRet = new frmBuscaRetorno(objbelRetFazenda);
                         objFrmBuscaRet.ShowDialog();
@@ -764,13 +788,37 @@ namespace HLP.GeraXml.UI.NFe
 
         #region Metodos
 
-        private class DadosImpressao
+        public class DadosImpressao
         {
-            public string sCaminhoXml;
-            public string sCaminhoPDF;
+            public string sCaminhoXml { get; set; }
+
+            public string sCaminhoPDF
+            {
+                get
+                {
+                    string sTipoDanfe = "";
+                    if (Convert.ToBoolean(Acesso.USA_DANFE_SIMPLIFICADA))
+                    {
+                        sTipoDanfe = "_Simplificada";
+                    }
+                    else
+                    {
+                        sTipoDanfe = "_" + Acesso.TIPO_IMPRESSAO;
+                    }
+                    return string.Format((Pastas.ENVIADOS + "\\PDF\\{0}{1}{2}.pdf"), this.sCD_NOTAFIS.ToString().PadLeft(6, '0'), "_" + this.tipo.ToString(), sTipoDanfe);
+                }
+            }
             public bool Cancelado = false;
             public string sCD_NFSEQ { get; set; }
             public string sCD_NOTAFIS { get; set; }
+            public TipoPDF tipo { get; set; }
+            private string _xStatus = "Aguardando início do processo...";
+
+            public string xStatus
+            {
+                get { return _xStatus; }
+                set { _xStatus = value; }
+            }
         }
         public enum TipoPDF { ENVIADO, CANCELADO, CONTINGENCIA };
         private void GeraPDF_Danfe(dsDanfe ds, TipoPDF tpPdf, DadosImpressao objDados)
@@ -827,7 +875,7 @@ namespace HLP.GeraXml.UI.NFe
                 {
                     ReportDocument rpt = new ReportDocument();
                     rpt.Load(sCaminho);
-                    rpt.SetDataSource(ds);                    
+                    rpt.SetDataSource(ds);
                     rpt.Refresh();
 
                     DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\PDF");
@@ -836,13 +884,8 @@ namespace HLP.GeraXml.UI.NFe
                         dinfo.Create();
                     }
                     string sNmPdfVisualizacao = Environment.MachineName + "_Grupo_Danfes";
-
-
-
                     Util.ExportPDF(rpt, sCaminhoSave);
                 }
-                objDados.sCaminhoPDF = sCaminhoSave;
-
             }
             catch (Exception ex)
             {
@@ -1133,5 +1176,80 @@ namespace HLP.GeraXml.UI.NFe
             }
         }
 
+
+        private void btnImpressao2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<DadosImpressao> objListDadosImpressao = new List<DadosImpressao>();
+                string sPastaMes = "";
+                List<belPesquisaNotas> objSelecionadas = belPesq.lResultPesquisa.Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
+                List<belPesquisaNotas> objSelect = objSelecionadas.Where(c =>
+                                                                   c.bEnviado == true ||
+                                                                   c.bCancelado == true ||
+                                                                   c.bContingencia == true).ToList<belPesquisaNotas>();
+
+                if (objSelect.Count() > 0)
+                {
+                    foreach (belPesquisaNotas nota in objSelect)
+                    {
+                        DadosImpressao objDados = new DadosImpressao();
+                        objDados.sCD_NFSEQ = nota.sCD_NFSEQ;
+                        objDados.sCD_NOTAFIS = nota.sCD_NOTAFIS;
+
+                        #region Busca os Arquivos selecionados
+
+                        sPastaMes = nota.sCHAVENFE.Substring(2, 4);
+                        string sCaminho = "";
+                        if (nota.bContingencia)
+                        {
+                            sCaminho = Pastas.CONTINGENCIA + "\\" + nota.sCHAVENFE + "-nfe.xml";
+                            objDados.tipo = TipoPDF.CONTINGENCIA;
+                        }
+                        else
+                        {
+                            if (nota.bCancelado)
+                            {
+                                sCaminho = Pastas.CANCELADOS + "\\" + sPastaMes + "\\" + nota.sCHAVENFE + "-can.xml.xml";
+                                objDados.Cancelado = true;
+                                objDados.tipo = TipoPDF.CANCELADO;
+                            }
+                            else
+                            {
+                                sCaminho = Pastas.ENVIADOS + sPastaMes + "\\" + nota.sCHAVENFE + "-nfe.xml";
+                                objDados.tipo = TipoPDF.ENVIADO;
+                            }
+                        }
+                        if (File.Exists(sCaminho))
+                        {
+                            objDados.sCaminhoXml = sCaminho;
+                            objListDadosImpressao.Add(objDados);
+                        }
+                        else
+                        {
+                            throw new Exception("Arquivo Xml da NF-e nº " + nota.sCD_NOTAFIS + " não foi encontrado.");
+                        }
+
+                        #endregion
+                    }
+
+
+
+                    if (objListDadosImpressao.Count() > 0)
+                    {
+                        frmCarregaDadosParaVisualizarDanfe objfrmCarregar = new frmCarregaDadosParaVisualizarDanfe(objListDadosImpressao);
+                        objfrmCarregar.ShowDialog();
+                    }
+                }
+                else
+                {
+                    KryptonMessageBox.Show("Nenhuma nota Válida foi Selecionada", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                new HLPexception(ex);
+            }
+        }
     }
 }

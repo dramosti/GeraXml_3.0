@@ -63,7 +63,7 @@ namespace HLP.GeraXml.UI
             //{
             //    throw;
             //}
-
+            
 
             frmPrincipal objFrm = new frmPrincipal();
             objFrm.SetVisualandBackColor(belRegedit.BuscaNomeSkin());
