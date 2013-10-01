@@ -254,7 +254,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
             }
         }
 
-        public belMed belMed { get; set; }
+        public List<belMed> belMed { get; set; }
 
         public belArma belArma
         {

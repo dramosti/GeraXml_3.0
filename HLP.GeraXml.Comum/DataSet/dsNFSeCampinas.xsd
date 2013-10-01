@@ -12,7 +12,7 @@
   <xs:element name="dsNFSeCampinas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsNFSeCampinas" msprop:Generator_UserDSName="dsNFSeCampinas">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Nota" msprop:Generator_TableClassName="NotaDataTable" msprop:Generator_TableVarName="tableNota" msprop:Generator_TablePropName="Nota" msprop:Generator_RowDeletingName="NotaRowDeleting" msprop:Generator_RowChangingName="NotaRowChanging" msprop:Generator_RowEvHandlerName="NotaRowChangeEventHandler" msprop:Generator_RowDeletedName="NotaRowDeleted" msprop:Generator_UserTableName="Nota" msprop:Generator_RowChangedName="NotaRowChanged" msprop:Generator_RowEvArgName="NotaRowChangeEvent" msprop:Generator_RowClassName="NotaRow">
+        <xs:element name="Nota" msprop:Generator_TableClassName="NotaDataTable" msprop:Generator_TableVarName="tableNota" msprop:Generator_RowChangedName="NotaRowChanged" msprop:Generator_TablePropName="Nota" msprop:Generator_RowDeletingName="NotaRowDeleting" msprop:Generator_RowChangingName="NotaRowChanging" msprop:Generator_RowEvHandlerName="NotaRowChangeEventHandler" msprop:Generator_RowDeletedName="NotaRowDeleted" msprop:Generator_RowClassName="NotaRow" msprop:Generator_UserTableName="Nota" msprop:Generator_RowEvArgName="NotaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="RazaoSocialPrestador" msprop:Generator_ColumnVarNameInTable="columnRazaoSocialPrestador" msprop:Generator_ColumnPropNameInRow="RazaoSocialPrestador" msprop:Generator_ColumnPropNameInTable="RazaoSocialPrestadorColumn" msprop:Generator_UserColumnName="RazaoSocialPrestador" type="xs:string" minOccurs="0" />
@@ -56,10 +56,11 @@
               <xs:element name="F_VALOR_DECUCAO" msdata:Caption="DataColumn2" msprop:Generator_ColumnVarNameInTable="columnF_VALOR_DECUCAO" msprop:Generator_ColumnPropNameInRow="F_VALOR_DECUCAO" msprop:Generator_ColumnPropNameInTable="F_VALOR_DECUCAOColumn" msprop:Generator_UserColumnName="F_VALOR_DECUCAO" type="xs:decimal" minOccurs="0" />
               <xs:element name="CidadeTomadorDescricao" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnCidadeTomadorDescricao" msprop:Generator_ColumnPropNameInRow="CidadeTomadorDescricao" msprop:Generator_ColumnPropNameInTable="CidadeTomadorDescricaoColumn" msprop:Generator_UserColumnName="CidadeTomadorDescricao" type="xs:string" minOccurs="0" />
               <xs:element name="InscricaoPrestador" msprop:Generator_ColumnVarNameInTable="columnInscricaoPrestador" msprop:Generator_ColumnPropNameInRow="InscricaoPrestador" msprop:Generator_ColumnPropNameInTable="InscricaoPrestadorColumn" msprop:Generator_UserColumnName="InscricaoPrestador" type="xs:string" minOccurs="0" />
+              <xs:element name="Duplicatas" msprop:Generator_ColumnVarNameInTable="columnDuplicatas" msprop:Generator_ColumnPropNameInRow="Duplicatas" msprop:Generator_ColumnPropNameInTable="DuplicatasColumn" msprop:Generator_UserColumnName="Duplicatas" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Itens" msprop:Generator_TableClassName="ItensDataTable" msprop:Generator_TableVarName="tableItens" msprop:Generator_TablePropName="Itens" msprop:Generator_RowDeletingName="ItensRowDeleting" msprop:Generator_RowChangingName="ItensRowChanging" msprop:Generator_RowEvHandlerName="ItensRowChangeEventHandler" msprop:Generator_RowDeletedName="ItensRowDeleted" msprop:Generator_UserTableName="Itens" msprop:Generator_RowChangedName="ItensRowChanged" msprop:Generator_RowEvArgName="ItensRowChangeEvent" msprop:Generator_RowClassName="ItensRow">
+        <xs:element name="Itens" msprop:Generator_TableClassName="ItensDataTable" msprop:Generator_TableVarName="tableItens" msprop:Generator_RowChangedName="ItensRowChanged" msprop:Generator_TablePropName="Itens" msprop:Generator_RowDeletingName="ItensRowDeleting" msprop:Generator_RowChangingName="ItensRowChanging" msprop:Generator_RowEvHandlerName="ItensRowChangeEventHandler" msprop:Generator_RowDeletedName="ItensRowDeleted" msprop:Generator_RowClassName="ItensRow" msprop:Generator_UserTableName="Itens" msprop:Generator_RowEvArgName="ItensRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DiscriminacaoServico" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDiscriminacaoServico" msprop:Generator_ColumnPropNameInRow="DiscriminacaoServico" msprop:Generator_ColumnPropNameInTable="DiscriminacaoServicoColumn" msprop:Generator_UserColumnName="DiscriminacaoServico" type="xs:string" minOccurs="0" />
@@ -79,7 +80,7 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Nota_Itens" msdata:parent="Nota" msdata:child="Itens" msdata:parentkey="NumeroRPS" msdata:childkey="NumeroRPS" msprop:Generator_UserChildTable="Itens" msprop:Generator_ChildPropName="GetItensRows" msprop:Generator_UserRelationName="Nota_Itens" msprop:Generator_ParentPropName="NotaRow" msprop:Generator_RelationVarName="relationNota_Itens" msprop:Generator_UserParentTable="Nota" />
+      <msdata:Relationship name="Nota_Itens" msdata:parent="Nota" msdata:child="Itens" msdata:parentkey="NumeroRPS" msdata:childkey="NumeroRPS" msprop:Generator_UserChildTable="Itens" msprop:Generator_ChildPropName="GetItensRows" msprop:Generator_UserRelationName="Nota_Itens" msprop:Generator_RelationVarName="relationNota_Itens" msprop:Generator_UserParentTable="Nota" msprop:Generator_ParentPropName="NotaRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

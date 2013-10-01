@@ -1158,19 +1158,21 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                 if (dtMed.Rows.Count > 0)
                                 {
                                     string sMsgMed = "Lote:{0} / Qtde Lote:{1} / Data Fabr: {2} / Data Validade: {3}";
-                                    objDet.prod.belMed = new belMed();
+                                    objDet.prod.belMed = new List<belMed>();
+                                    belMed med;
                                     foreach (DataRow row in dtMed.Rows)
                                     {
-                                       
-                                        objDet.prod.belMed.Nlote = row["nr_lote"].ToString();
-                                        objDet.prod.belMed.Qlote = row["qt_fabr"].ToString();
-                                        objDet.prod.belMed.DFab = Convert.ToDateTime(row["dt_fabr"].ToString());
-                                        objDet.prod.belMed.Dval = Convert.ToDateTime(row["dt_valid"].ToString());
-                                        objDet.prod.belMed.Vpmc = 0;
-
+                                        med = new belMed();
+                                        med.Nlote = row["nr_lote"].ToString();
+                                        med.Qlote = row["qt_fabr"].ToString();
+                                        med.DFab = Convert.ToDateTime(row["dt_fabr"].ToString());
+                                        med.Dval = Convert.ToDateTime(row["dt_valid"].ToString());
+                                        med.Vpmc = 0;
+                                        objDet.prod.belMed.Add(med);
+                                        objinf.Infadprid += (objinf.Infadprid == "" ? "" : ";") + string.Format(sMsgMed, med.Nlote, med.Qlote, med.DFab.ToShortDateString(), med.Dval.ToShortDateString());
                                     }
-                                    sMsgMed = string.Format(sMsgMed, objDet.prod.belMed.Nlote, objDet.prod.belMed.Qlote, objDet.prod.belMed.DFab.ToShortDateString(), objDet.prod.belMed.Dval.ToShortDateString());
-                                    objinf.Infadprid += (objinf.Infadprid == "" ? "" : " - ") + sMsgMed;
+
+                                    //objinf.Infadprid += (objinf.Infadprid == "" ? "" : Environment.NewLine) + sMsgMed;
 
                                 }
                             }

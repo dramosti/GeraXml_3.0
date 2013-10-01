@@ -20,6 +20,7 @@ using HLP.GeraXml.bel.NFes.DSF;
 using HLP.GeraXml.UI.NFse.DSF;
 using HLP.GeraXml.Comum.DataSet;
 using System.IO;
+using HLP.GeraXml.dao.NFe.Estrutura;
 
 namespace HLP.GeraXml.UI.NFse
 {
@@ -575,6 +576,7 @@ namespace HLP.GeraXml.UI.NFse
                                 }
 
                                 LoteRPS nota = SerializeClassToXml.DeserializeClasse<LoteRPS>(sPathXml);
+                                nota.CD_NFSEQ = sListImpressao.FirstOrDefault().sNfSeq;
 
                                 nota.NumeroRPS = sListImpressao.FirstOrDefault().sNota;
                                 foreach (LoteRPSItensItem item in nota.Itens.Item)
@@ -849,6 +851,8 @@ namespace HLP.GeraXml.UI.NFse
             row.CidadeTomadorDescricao = nota.CidadeTomadorDescricao;
             row.InscricaoPrestador = nota.InscricaoMunicipalPrestador;
 
+            row.Duplicatas = daoCobr.BuscaFatToImpressaoNFSE_DSF(nota.CD_NFSEQ);
+
             ds.Nota.AddNotaRow(row);
 
             dsNFSeCampinas.ItensRow rowItem;
@@ -862,6 +866,9 @@ namespace HLP.GeraXml.UI.NFse
                 rowItem.NumeroRPS = nota.NumeroRPS;
                 ds.Itens.AddItensRow(rowItem);
             }
+
+
+
             return ds;
         }
 
