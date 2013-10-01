@@ -16,7 +16,7 @@ namespace HLP.GeraXml.dao.NFe
             public string sNrDoc { get; set; }
         }
 
-        public void BuscaVencto(string nrseq, string cdnotafis)
+        public void BuscaVencto(string nfseq, string cdnotafis)
         {
             string ssGravarCdDupli = HlpDbFuncoes.qrySeekValue("control", "control.cd_conteud", "cd_nivel = '1355'");
             string ssGravardteminf = HlpDbFuncoes.qrySeekValue("control", "control.cd_conteud", "cd_nivel = '1363'");
@@ -39,7 +39,7 @@ namespace HLP.GeraXml.dao.NFe
                 sSqlDup.Append("') ");
                 sSqlDup.Append("and ");
                 sSqlDup.Append("(doc_ctr.cd_nfseq = '");
-                sSqlDup.Append(nrseq);
+                sSqlDup.Append(nfseq);
                 sSqlDup.Append("') ");
 
                 #region MASTERFEW
@@ -56,7 +56,7 @@ namespace HLP.GeraXml.dao.NFe
                     sPedseq.Append("') ");
                     sPedseq.Append("and ");
                     sPedseq.Append("(pedseq.cd_nfseq = '");
-                    sPedseq.Append(nrseq);
+                    sPedseq.Append(nfseq);
                     sPedseq.Append("') ");
 
 
@@ -181,10 +181,5 @@ namespace HLP.GeraXml.dao.NFe
             }
 
         }
-
-       
-
-
-
     }
 }

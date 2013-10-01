@@ -243,12 +243,13 @@ namespace HLP.GeraXml.bel.NFe
                                                  ((det.prod.NItemPed != "") ? new XElement(pf + "nItemPed", det.prod.NItemPed) : null),
 
                                                  (det.prod.belMed != null ?
-                                                        new XElement(pf + "med",
-                                                                            new XElement(pf + "nLote", det.prod.belMed.Nlote),
-                                                                            new XElement(pf + "qLote", Convert.ToDecimal(det.prod.belMed.Qlote).ToString("#0.000").Replace(",", ".")),
-                                                                            new XElement(pf + "dFab", det.prod.belMed.DFab.ToString("yyyy-MM-dd")),
-                                                                            new XElement(pf + "dVal", det.prod.belMed.Dval.ToString("yyyy-MM-dd")),
-                                                                            new XElement(pf + "vPMC", det.prod.belMed.Vpmc)) : null),
+                                                            from med in det.prod.belMed
+                                                            select new XElement(pf + "med",
+                                                                            new XElement(pf + "nLote", med.Nlote),
+                                                                            new XElement(pf + "qLote", Convert.ToDecimal(med.Qlote).ToString("#0.000").Replace(",", ".")),
+                                                                            new XElement(pf + "dFab", med.DFab.ToString("yyyy-MM-dd")),
+                                                                            new XElement(pf + "dVal", med.Dval.ToString("yyyy-MM-dd")),
+                                                                            new XElement(pf + "vPMC", med.Vpmc)) : null),
 
                                                  (det.prod.belcomb != null ?
                                                         new XElement(pf + "comb",
