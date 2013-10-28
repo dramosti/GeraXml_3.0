@@ -188,7 +188,7 @@ namespace HLP.GeraXml.UI
             }
             this.Invoke(new MethodInvoker(delegate()
                 {
-                    KryptonMessageBox.Show("E-mail enviado com sucesso!", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    KryptonMessageBox.Show("E-mail(s) enviado(s) com sucesso!", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }));
 

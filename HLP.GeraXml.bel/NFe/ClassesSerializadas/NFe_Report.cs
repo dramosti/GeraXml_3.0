@@ -343,6 +343,7 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
     /// </summary>
     public class Produto
     {
+        public int count { get; set; }
         public string ide_nNF { get; set; }
         public string cProd { get; set; }
         public string xProd { get; set; }

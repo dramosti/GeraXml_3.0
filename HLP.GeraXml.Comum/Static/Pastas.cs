@@ -254,7 +254,7 @@ namespace HLP.GeraXml.Comum.Static
             {
                 try
                 {
-                    string sCaminho = Application.StartupPath + "\\Temp\\" + Environment.MachineName + "\\";
+                    string sCaminho = Acesso.CAMINHO_PADRAO + "\\Temp\\" + Environment.MachineName + "\\";
                     DirectoryInfo info = new DirectoryInfo(sCaminho);
                     if (!info.Exists)
                     {

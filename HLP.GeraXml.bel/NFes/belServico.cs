@@ -15,14 +15,14 @@ namespace HLP.GeraXml.bel.NFes
 {
     public class belServico : daoServico
     {
-        public TcDadosServico RetornaDadosServico(string sNota, int iNaturezaOperacao)
+        public TcDadosServico RetornaDadosServico(string sNFSEQ, int iNaturezaOperacao)
         {
             try
             {
                 TcDadosServico objTcDadosServico = new TcDadosServico();
-                objTcDadosServico.Valores = BuscaValores(sNota, iNaturezaOperacao);
+                objTcDadosServico.Valores = BuscaValores(sNFSEQ, iNaturezaOperacao);
 
-                DataTable dt = BuscaDadosServico(sNota);
+                DataTable dt = BuscaDadosServico(sNFSEQ);
 
                 objTcDadosServico.Discriminacao = "Serviço(s) Realizado(s): ";
                 foreach (DataRow dr in dt.Rows)
@@ -51,12 +51,17 @@ namespace HLP.GeraXml.bel.NFes
                     }
                     objTcDadosServico.Discriminacao += Environment.NewLine + "* " + dr["ds_prod"].ToString().ToUpper() + " R$ " + Convert.ToDecimal(dr["vl_totbruto"].ToString()).ToString("#0.00") +
                         ((Acesso.NM_EMPRESA.Equals("FORMINGP") && dr["ds_obs"].ToString() != "") ? " - Obs.: " + dr["ds_obs"].ToString() : "");
+
+                    if (Acesso.TRANSPARENCIA != 3)
+                    {
+                        objTcDadosServico.Discriminacao += Environment.NewLine + daoUtil.CarregaObsTransparenciaNF(sNFSEQ);
+                    }
                 }
 
                 if (Acesso.NM_EMPRESA.Equals("FORMINGP"))
                 {
                     belCobr objCobrancas = new belCobr();
-                    objCobrancas.Carrega(sNota);
+                    objCobrancas.Carrega(sNFSEQ);
                     string sDescDup = "{0}{0}VENCIMENTO: {1}{0}VALOR LÍQUIDO A PAGAR: R${2}{0}{0}";
 
                     foreach (belDup dup in objCobrancas.Fat.belDup)
@@ -66,8 +71,8 @@ namespace HLP.GeraXml.bel.NFes
                 }
 
                 objTcDadosServico.Discriminacao += Environment.NewLine + Environment.NewLine + "Observação:" + Environment.NewLine
-                                                + daoUtil.GetTotImpostosServ(sNota)
-                                                + BuscaObs(sNota);
+                                                + daoUtil.GetTotImpostosServ(sNFSEQ)
+                                                + BuscaObs(sNFSEQ);
 
 
 
@@ -144,7 +149,7 @@ namespace HLP.GeraXml.bel.NFes
                         objTcValores.ValorLiquidoNfse = objTcValores.CalculaValorLiquido();
                     }
 
-                    
+
                 }
 
                 return objTcValores;

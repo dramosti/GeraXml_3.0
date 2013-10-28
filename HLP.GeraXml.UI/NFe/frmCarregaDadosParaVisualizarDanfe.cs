@@ -82,7 +82,7 @@ namespace HLP.GeraXml.UI.NFe
 
                         objnfReport = new NFe_Report();
                         objnfReport.Notas.Add(nf);
-                        SerializeClassToXml.SerializeClasse<NFe_Report>(objnfReport, sFilePath);
+                        SerializeClassToXml.SerializeClasse<List<NFe_HLP>>(objnfReport.Notas, sFilePath);
                     }
                     catch (Exception ex)
                     {
@@ -235,24 +235,34 @@ namespace HLP.GeraXml.UI.NFe
                     objNFe.ISSQNtot_vServ = nfe.totalField.ISSQNtot.vServ.Replace('.', ',');
                     objNFe.ISSQNtot_vISS = nfe.totalField.ISSQNtot.vISS.Replace('.', ',');
                 }
-                if (nfe.cobrField != null)
+                int iCount = 1;
+                if (Acesso.IMPRIMI_FATURA)
                 {
-                    string sDupl = "Nº: {0} - R${1}  {2}  ";
-                    int iCount = 1;
-                    objNFe.xDuplicatas = "  ";
-                    foreach (TNFeInfNFeCobrDup dupli in nfe.cobrField.dup)
+                    if (nfe.cobrField != null)
                     {
-                        objNFe.xDuplicatas += string.Format(sDupl, dupli.nDup, dupli.vDup, (iCount == 6 ? Environment.NewLine : "|"));
-                        iCount++;
-                        if (iCount > 6)
-                            iCount = 1;
+                        string sDupl = "Nº:{0}-{1}-R${2}";
+                        
+                        objNFe.xDuplicatas = "";
+                        foreach (TNFeInfNFeCobrDup dupli in nfe.cobrField.dup)
+                        {
+                            objNFe.xDuplicatas += string.Format(sDupl, dupli.nDup,Convert.ToDateTime(dupli.dVenc).ToString("dd/MM/yy"),dupli.vDup).PadRight(33, ' ') + "|";
+                            if (iCount == 3)
+                                objNFe.xDuplicatas += Environment.NewLine;
+
+                            iCount++;
+                            if (iCount > 3)
+                                iCount = 1;
+                        }
                     }
                 }
                 objNFe.Produtos = new List<Produto>();
                 Produto prod = null;
+                iCount = 1;
                 foreach (det item in nfe.lDet)
                 {
                     prod = new Produto();
+                    prod.count = iCount;
+                    iCount++;
                     prod.ide_nNF = objNFe.ide_nNF;
                     prod.cProd = item.prodField.cProd.PadLeft(7, '0');
                     prod.xProd = item.prodField.xProd;
@@ -464,34 +474,26 @@ namespace HLP.GeraXml.UI.NFe
                 }
                 ReportDocument rpt = new ReportDocument();
 
+                
+
                 if (Convert.ToBoolean(Acesso.USA_DANFE_SIMPLIFICADA))
                 {
-                    rpt.Load(Application.StartupPath + @"\Relatorios\RelDanfeSimplificada2013.rpt");
+                    rpt.Load(Util.GetPathRelatorio("RelDanfeSimplificada2013.rpt") );
                 }
                 else if (Acesso.TIPO_IMPRESSAO.Equals("Retrato"))
                 {
-                    rpt.Load(Application.StartupPath + @"\Relatorios\RelDanfe2013.rpt");
+                    rpt.Load(Util.GetPathRelatorio("RelDanfe2013.rpt"));
                 }
                 else
                 {
-                    rpt.Load(Application.StartupPath + @"\Relatorios\RelDanfePaisagem2013.rpt");
+                    rpt.Load(Util.GetPathRelatorio("RelDanfePaisagem2013.rpt"));
                 }
+
+                rpt.Database.Tables["Imagens"].SetDataSource(dsImg);
                 DataSet dsTemp = null;
                 int i = 0;
                 foreach (HLP.GeraXml.bel.NFe.ClassesSerializadas.NFe_HLP nf in objNFeToReport)
                 {
-                    //string sTipoDanfe = "";
-                    //if (Convert.ToBoolean(Acesso.USA_DANFE_SIMPLIFICADA))
-                    //{
-                    //    sTipoDanfe = "_Simplificada";
-                    //}
-                    //else 
-                    //{
-                    //    sTipoDanfe = "_" + Acesso.TIPO_IMPRESSAO;
-                    //}
-
-                    //sCaminhoSave = string.Format((Pastas.ENVIADOS + "\\PDF\\{0}{1}{2}.pdf"), nf.ide_nNF.ToString().PadLeft(6, '0'), (nf.tipoPDF.ToString().Equals("ENVIADO") ? "_enviado" : "_cancelado"), sTipoDanfe);
-
                     HLP.GeraXml.UI.NFe.frmGeraArquivoNFe.DadosImpressao dadosImp = objDadosImp.FirstOrDefault(c => c.sCD_NOTAFIS == nf.ide_nNF);
                     if (!File.Exists(dadosImp.sCaminhoPDF))
                     {
@@ -509,14 +511,14 @@ namespace HLP.GeraXml.UI.NFe
                                 dsTemp.ReadXml(sFilePath);
                                 rpt.SetDataSource(dsTemp);
                                 rpt.Refresh();
-                                Util.ExportPDF(rpt, dadosImp.sCaminhoPDF);
-                                nf.PathPDF = dadosImp.sCaminhoPDF;
                             }
                             catch (Exception ex)
                             {
                                 throw ex;
                             }
                         }));
+                        Util.ExportPDF(rpt, dadosImp.sCaminhoPDF);
+                        nf.PathPDF = dadosImp.sCaminhoPDF;
                     }
                     else
                     {
@@ -576,15 +578,15 @@ namespace HLP.GeraXml.UI.NFe
                     ReportDocument rpt = new ReportDocument();
                     if (Convert.ToBoolean(Acesso.USA_DANFE_SIMPLIFICADA))
                     {
-                        rpt.Load(Application.StartupPath + @"\Relatorios\RelDanfeSimplificada2013.rpt");
+                        rpt.Load(Util.GetPathRelatorio("RelDanfeSimplificada2013.rpt") );
                     }
                     else if (Acesso.TIPO_IMPRESSAO.Equals("Retrato"))
                     {
-                        rpt.Load(Application.StartupPath + @"\Relatorios\RelDanfe2013.rpt");
+                        rpt.Load(Util.GetPathRelatorio("RelDanfe2013.rpt"));
                     }
                     else
                     {
-                        rpt.Load(Application.StartupPath + @"\Relatorios\RelDanfePaisagem2013.rpt");
+                        rpt.Load(Util.GetPathRelatorio("RelDanfePaisagem2013.rpt"));
                     }
                     rpt.SetDataSource(dsTemp);
                     rpt.Database.Tables["Imagens"].SetDataSource(dsImg);

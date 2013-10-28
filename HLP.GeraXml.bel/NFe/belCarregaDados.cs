@@ -70,13 +70,10 @@ namespace HLP.GeraXml.bel.NFe
                     objInfNFe.infAdic.Carrega(nota.sCD_NFSEQ, objInfNFe.det, objInfNFe.dest.Cnpj, dVbcIcmsRt, dVIcmsRt);
 
                     if (Acesso.TRANSPARENCIA == 0 || Acesso.TRANSPARENCIA == 2)
-                    {
-                        if (objInfNFe.total.belIcmstot.vTotTrib.ToString() != "")
-                        {
+                    {                        
                             string sMsg = objInfNFe.infAdic.Infcpl;
                             objInfNFe.infAdic.Infcpl = null;
-                            objInfNFe.infAdic.Infcpl = string.Format("TOTAL DE TRIBUTOS(TRANSPARÊNCIA) = R$ {0} ;", objInfNFe.total.belIcmstot.vTotTrib.ToString()) + sMsg;
-                        }
+                            objInfNFe.infAdic.Infcpl = daoUtil.CarregaObsTransparenciaNF(nota.sCD_NFSEQ) + sMsg;
                     }
 
                     lNotas.Add(objInfNFe);

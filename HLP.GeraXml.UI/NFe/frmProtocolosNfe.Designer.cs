@@ -34,8 +34,8 @@ namespace HLP.GeraXml.UI.NFe
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProtocolosNfe));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProtocolosNfe));
             this.tabControl1 = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvInutilizacoes = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
@@ -46,6 +46,12 @@ namespace HLP.GeraXml.UI.NFe
             this.nProt = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvCancelamentos = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.tpAmb = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.cNF = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.cSeq = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.cProtocolo = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Email = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
+            this.caminho = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dataGridViewTextBoxColumn1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
@@ -59,12 +65,7 @@ namespace HLP.GeraXml.UI.NFe
             this.dataGridViewTextBoxColumn10 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.cbxArquivos = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
-            this.tpAmb = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.cNF = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.cSeq = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.cProtocolo = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.Email = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewCheckBoxColumn();
-            this.caminho = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.btnPesquisar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInutilizacoes)).BeginInit();
@@ -204,6 +205,59 @@ namespace HLP.GeraXml.UI.NFe
             this.dgvCancelamentos.TabIndex = 2;
             this.dgvCancelamentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCancelamentos_CellClick);
             // 
+            // tpAmb
+            // 
+            this.tpAmb.HeaderText = "Ambiente";
+            this.tpAmb.Name = "tpAmb";
+            this.tpAmb.ReadOnly = true;
+            this.tpAmb.Width = 100;
+            // 
+            // cNF
+            // 
+            this.cNF.HeaderText = "Nota Fiscal";
+            this.cNF.Name = "cNF";
+            this.cNF.ReadOnly = true;
+            this.cNF.Width = 100;
+            // 
+            // cSeq
+            // 
+            this.cSeq.HeaderText = "Sequência";
+            this.cSeq.Name = "cSeq";
+            this.cSeq.ReadOnly = true;
+            this.cSeq.Width = 100;
+            // 
+            // cProtocolo
+            // 
+            this.cProtocolo.HeaderText = "Protocolo";
+            this.cProtocolo.Name = "cProtocolo";
+            this.cProtocolo.ReadOnly = true;
+            this.cProtocolo.Width = 150;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = false;
+            this.Email.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Email.FalseValue = null;
+            this.Email.HeaderText = "Email";
+            this.Email.IndeterminateValue = null;
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Email.TrueValue = null;
+            this.Email.Visible = false;
+            this.Email.Width = 50;
+            // 
+            // caminho
+            // 
+            this.caminho.HeaderText = "caminho";
+            this.caminho.Name = "caminho";
+            this.caminho.ReadOnly = true;
+            this.caminho.Visible = false;
+            this.caminho.Width = 100;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Ambiente";
@@ -277,6 +331,7 @@ namespace HLP.GeraXml.UI.NFe
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.btnPesquisar);
             this.kryptonPanel1.Controls.Add(this.cbxArquivos);
             this.kryptonPanel1.Controls.Add(this.tabControl1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -308,58 +363,14 @@ namespace HLP.GeraXml.UI.NFe
             this.cbxArquivos.TabIndex = 1;
             this.cbxArquivos.ValueMember = "ValueMember";
             // 
-            // tpAmb
+            // btnPesquisar
             // 
-            this.tpAmb.HeaderText = "Ambiente";
-            this.tpAmb.Name = "tpAmb";
-            this.tpAmb.ReadOnly = true;
-            this.tpAmb.Width = 100;
-            // 
-            // cNF
-            // 
-            this.cNF.HeaderText = "Nota Fiscal";
-            this.cNF.Name = "cNF";
-            this.cNF.ReadOnly = true;
-            this.cNF.Width = 100;
-            // 
-            // cSeq
-            // 
-            this.cSeq.HeaderText = "Sequência";
-            this.cSeq.Name = "cSeq";
-            this.cSeq.ReadOnly = true;
-            this.cSeq.Width = 100;
-            // 
-            // cProtocolo
-            // 
-            this.cProtocolo.HeaderText = "Protocolo";
-            this.cProtocolo.Name = "cProtocolo";
-            this.cProtocolo.ReadOnly = true;
-            this.cProtocolo.Width = 150;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = false;
-            this.Email.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Email.FalseValue = null;
-            this.Email.HeaderText = "Email";
-            this.Email.IndeterminateValue = null;
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Email.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Email.TrueValue = null;
-            this.Email.Visible = false;
-            this.Email.Width = 50;
-            // 
-            // caminho
-            // 
-            this.caminho.HeaderText = "caminho";
-            this.caminho.Name = "caminho";
-            this.caminho.ReadOnly = true;
-            this.caminho.Visible = false;
-            this.caminho.Width = 100;
+            this.btnPesquisar.Location = new System.Drawing.Point(375, 3);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(90, 24);
+            this.btnPesquisar.TabIndex = 2;
+            this.btnPesquisar.Values.Text = "Pesquisar";
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // frmProtocolosNfe
             // 
@@ -419,6 +430,7 @@ namespace HLP.GeraXml.UI.NFe
         private KryptonDataGridViewTextBoxColumn cProtocolo;
         private KryptonDataGridViewCheckBoxColumn Email;
         private KryptonDataGridViewTextBoxColumn caminho;
+        private KryptonButton btnPesquisar;
 
     }
 }

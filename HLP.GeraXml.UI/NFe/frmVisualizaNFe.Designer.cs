@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVisualizaNFe));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.statusErro = new System.Windows.Forms.StatusStrip();
             this.lblErro = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblNumNFe = new System.Windows.Forms.ToolStripStatusLabel();
@@ -132,6 +132,31 @@
             this.tabProd = new System.Windows.Forms.TabPage();
             this.kryptonPanel5 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvProd = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.clCprod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nitem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xprodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ceanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ceantribDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ncmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cfopDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ucomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.utribDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qcomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtribDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vprodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clVuncom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clVuntrib = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vfreteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vsegDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vdescDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vOutroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clvTotTrib = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.indTotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nFCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xPedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nItemPedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.extipiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsProdutos = new System.Windows.Forms.BindingSource(this.components);
             this.panelItens = new System.Windows.Forms.Panel();
             this.kryptonTabControl6 = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
@@ -366,31 +391,6 @@
             this.bsDI = new System.Windows.Forms.BindingSource(this.components);
             this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             this.cachedrptCtePadraoCancelado2 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
-            this.clCprod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nitem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xprodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ceanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ceantribDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ncmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cfopDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ucomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.utribDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qcomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtribDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vprodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clVuncom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clVuntrib = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vfreteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vsegDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vdescDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vOutroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clvTotTrib = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.indTotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nFCI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xPedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nItemPedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.generoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.extipiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
@@ -2412,7 +2412,7 @@
             this.tabProd.Location = new System.Drawing.Point(4, 25);
             this.tabProd.Margin = new System.Windows.Forms.Padding(0);
             this.tabProd.Name = "tabProd";
-            this.tabProd.Size = new System.Drawing.Size(936, 540);
+            this.tabProd.Size = new System.Drawing.Size(733, 247);
             this.tabProd.TabIndex = 5;
             this.tabProd.Tag = false;
             this.tabProd.Text = "Produtos";
@@ -2424,7 +2424,7 @@
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel5.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel5.Name = "kryptonPanel5";
-            this.kryptonPanel5.Size = new System.Drawing.Size(936, 540);
+            this.kryptonPanel5.Size = new System.Drawing.Size(733, 247);
             this.kryptonPanel5.TabIndex = 1;
             // 
             // dgvProd
@@ -2464,10 +2464,225 @@
             this.dgvProd.Location = new System.Drawing.Point(0, 0);
             this.dgvProd.Name = "dgvProd";
             this.dgvProd.RowHeadersWidth = 25;
-            this.dgvProd.Size = new System.Drawing.Size(936, 287);
+            this.dgvProd.Size = new System.Drawing.Size(733, 0);
             this.dgvProd.TabIndex = 118;
             this.dgvProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProd_CellContentClick);
             this.dgvProd.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProd_ColumnHeaderMouseClick);
+            // 
+            // clCprod
+            // 
+            this.clCprod.DataPropertyName = "Cprod";
+            this.clCprod.HeaderText = "Cprod";
+            this.clCprod.MaxInputLength = 60;
+            this.clCprod.Name = "clCprod";
+            // 
+            // nitem
+            // 
+            this.nitem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nitem.DataPropertyName = "nitem";
+            this.nitem.HeaderText = "nitem";
+            this.nitem.Name = "nitem";
+            this.nitem.Visible = false;
+            // 
+            // xprodDataGridViewTextBoxColumn
+            // 
+            this.xprodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.xprodDataGridViewTextBoxColumn.DataPropertyName = "Xprod";
+            this.xprodDataGridViewTextBoxColumn.HeaderText = "Descrição do Produto";
+            this.xprodDataGridViewTextBoxColumn.MaxInputLength = 120;
+            this.xprodDataGridViewTextBoxColumn.Name = "xprodDataGridViewTextBoxColumn";
+            this.xprodDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // ceanDataGridViewTextBoxColumn
+            // 
+            this.ceanDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ceanDataGridViewTextBoxColumn.DataPropertyName = "Cean";
+            this.ceanDataGridViewTextBoxColumn.HeaderText = "Cean";
+            this.ceanDataGridViewTextBoxColumn.MaxInputLength = 14;
+            this.ceanDataGridViewTextBoxColumn.Name = "ceanDataGridViewTextBoxColumn";
+            this.ceanDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // ceantribDataGridViewTextBoxColumn
+            // 
+            this.ceantribDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ceantribDataGridViewTextBoxColumn.DataPropertyName = "Ceantrib";
+            this.ceantribDataGridViewTextBoxColumn.HeaderText = "Ceantrib";
+            this.ceantribDataGridViewTextBoxColumn.Name = "ceantribDataGridViewTextBoxColumn";
+            this.ceantribDataGridViewTextBoxColumn.Width = 81;
+            // 
+            // ncmDataGridViewTextBoxColumn
+            // 
+            this.ncmDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ncmDataGridViewTextBoxColumn.DataPropertyName = "Ncm";
+            this.ncmDataGridViewTextBoxColumn.HeaderText = "Ncm";
+            this.ncmDataGridViewTextBoxColumn.MaxInputLength = 8;
+            this.ncmDataGridViewTextBoxColumn.Name = "ncmDataGridViewTextBoxColumn";
+            this.ncmDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // cfopDataGridViewTextBoxColumn
+            // 
+            this.cfopDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.cfopDataGridViewTextBoxColumn.DataPropertyName = "Cfop";
+            this.cfopDataGridViewTextBoxColumn.HeaderText = "Cfop";
+            this.cfopDataGridViewTextBoxColumn.MaxInputLength = 4;
+            this.cfopDataGridViewTextBoxColumn.Name = "cfopDataGridViewTextBoxColumn";
+            this.cfopDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // ucomDataGridViewTextBoxColumn
+            // 
+            this.ucomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ucomDataGridViewTextBoxColumn.DataPropertyName = "Ucom";
+            this.ucomDataGridViewTextBoxColumn.HeaderText = "Ucom";
+            this.ucomDataGridViewTextBoxColumn.MaxInputLength = 6;
+            this.ucomDataGridViewTextBoxColumn.Name = "ucomDataGridViewTextBoxColumn";
+            this.ucomDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // utribDataGridViewTextBoxColumn
+            // 
+            this.utribDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.utribDataGridViewTextBoxColumn.DataPropertyName = "Utrib";
+            this.utribDataGridViewTextBoxColumn.HeaderText = "Utrib";
+            this.utribDataGridViewTextBoxColumn.Name = "utribDataGridViewTextBoxColumn";
+            this.utribDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // qcomDataGridViewTextBoxColumn
+            // 
+            this.qcomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.qcomDataGridViewTextBoxColumn.DataPropertyName = "Qcom";
+            this.qcomDataGridViewTextBoxColumn.HeaderText = "Qcom";
+            this.qcomDataGridViewTextBoxColumn.Name = "qcomDataGridViewTextBoxColumn";
+            this.qcomDataGridViewTextBoxColumn.Width = 69;
+            // 
+            // qtribDataGridViewTextBoxColumn
+            // 
+            this.qtribDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.qtribDataGridViewTextBoxColumn.DataPropertyName = "Qtrib";
+            this.qtribDataGridViewTextBoxColumn.HeaderText = "Qtrib";
+            this.qtribDataGridViewTextBoxColumn.Name = "qtribDataGridViewTextBoxColumn";
+            this.qtribDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // vprodDataGridViewTextBoxColumn
+            // 
+            this.vprodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vprodDataGridViewTextBoxColumn.DataPropertyName = "Vprod";
+            dataGridViewCellStyle1.Format = "n2";
+            this.vprodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.vprodDataGridViewTextBoxColumn.HeaderText = "Vprod";
+            this.vprodDataGridViewTextBoxColumn.Name = "vprodDataGridViewTextBoxColumn";
+            this.vprodDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // clVuncom
+            // 
+            this.clVuncom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clVuncom.DataPropertyName = "Vuncom";
+            this.clVuncom.HeaderText = "Vuncom";
+            this.clVuncom.Name = "clVuncom";
+            this.clVuncom.Width = 81;
+            // 
+            // clVuntrib
+            // 
+            this.clVuntrib.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clVuntrib.DataPropertyName = "Vuntrib";
+            this.clVuntrib.HeaderText = "Vuntrib";
+            this.clVuntrib.Name = "clVuntrib";
+            this.clVuntrib.Width = 75;
+            // 
+            // vfreteDataGridViewTextBoxColumn
+            // 
+            this.vfreteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vfreteDataGridViewTextBoxColumn.DataPropertyName = "Vfrete";
+            dataGridViewCellStyle2.Format = "n2";
+            this.vfreteDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.vfreteDataGridViewTextBoxColumn.HeaderText = "Vfrete";
+            this.vfreteDataGridViewTextBoxColumn.Name = "vfreteDataGridViewTextBoxColumn";
+            this.vfreteDataGridViewTextBoxColumn.Width = 67;
+            // 
+            // vsegDataGridViewTextBoxColumn
+            // 
+            this.vsegDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vsegDataGridViewTextBoxColumn.DataPropertyName = "Vseg";
+            dataGridViewCellStyle3.Format = "n2";
+            this.vsegDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.vsegDataGridViewTextBoxColumn.HeaderText = "Vseg";
+            this.vsegDataGridViewTextBoxColumn.Name = "vsegDataGridViewTextBoxColumn";
+            this.vsegDataGridViewTextBoxColumn.Width = 61;
+            // 
+            // vdescDataGridViewTextBoxColumn
+            // 
+            this.vdescDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vdescDataGridViewTextBoxColumn.DataPropertyName = "Vdesc";
+            dataGridViewCellStyle4.Format = "n2";
+            this.vdescDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.vdescDataGridViewTextBoxColumn.HeaderText = "Vdesc";
+            this.vdescDataGridViewTextBoxColumn.Name = "vdescDataGridViewTextBoxColumn";
+            this.vdescDataGridViewTextBoxColumn.Width = 67;
+            // 
+            // vOutroDataGridViewTextBoxColumn
+            // 
+            this.vOutroDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vOutroDataGridViewTextBoxColumn.DataPropertyName = "VOutro";
+            dataGridViewCellStyle5.Format = "n2";
+            this.vOutroDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.vOutroDataGridViewTextBoxColumn.HeaderText = "VOutro";
+            this.vOutroDataGridViewTextBoxColumn.Name = "vOutroDataGridViewTextBoxColumn";
+            this.vOutroDataGridViewTextBoxColumn.Width = 74;
+            // 
+            // clvTotTrib
+            // 
+            this.clvTotTrib.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clvTotTrib.DataPropertyName = "vTotTrib";
+            this.clvTotTrib.HeaderText = "Valor Total Tributos";
+            this.clvTotTrib.Name = "clvTotTrib";
+            this.clvTotTrib.Width = 140;
+            // 
+            // indTotDataGridViewTextBoxColumn
+            // 
+            this.indTotDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.indTotDataGridViewTextBoxColumn.DataPropertyName = "IndTot";
+            this.indTotDataGridViewTextBoxColumn.HeaderText = "IndTot";
+            this.indTotDataGridViewTextBoxColumn.Name = "indTotDataGridViewTextBoxColumn";
+            this.indTotDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.indTotDataGridViewTextBoxColumn.Width = 71;
+            // 
+            // nFCI
+            // 
+            this.nFCI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nFCI.DataPropertyName = "nFCI";
+            this.nFCI.HeaderText = "FCI - Ficha de Conteúdo de Importação";
+            this.nFCI.Name = "nFCI";
+            this.nFCI.Width = 244;
+            // 
+            // xPedDataGridViewTextBoxColumn
+            // 
+            this.xPedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.xPedDataGridViewTextBoxColumn.DataPropertyName = "XPed";
+            this.xPedDataGridViewTextBoxColumn.HeaderText = "XPed";
+            this.xPedDataGridViewTextBoxColumn.Name = "xPedDataGridViewTextBoxColumn";
+            this.xPedDataGridViewTextBoxColumn.Width = 63;
+            // 
+            // nItemPedDataGridViewTextBoxColumn
+            // 
+            this.nItemPedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nItemPedDataGridViewTextBoxColumn.DataPropertyName = "NItemPed";
+            this.nItemPedDataGridViewTextBoxColumn.HeaderText = "NItemPed";
+            this.nItemPedDataGridViewTextBoxColumn.Name = "nItemPedDataGridViewTextBoxColumn";
+            this.nItemPedDataGridViewTextBoxColumn.Width = 89;
+            // 
+            // generoDataGridViewTextBoxColumn
+            // 
+            this.generoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.generoDataGridViewTextBoxColumn.DataPropertyName = "Genero";
+            this.generoDataGridViewTextBoxColumn.HeaderText = "Genero";
+            this.generoDataGridViewTextBoxColumn.Name = "generoDataGridViewTextBoxColumn";
+            this.generoDataGridViewTextBoxColumn.Width = 74;
+            // 
+            // extipiDataGridViewTextBoxColumn
+            // 
+            this.extipiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.extipiDataGridViewTextBoxColumn.DataPropertyName = "Extipi";
+            this.extipiDataGridViewTextBoxColumn.HeaderText = "Extipi";
+            this.extipiDataGridViewTextBoxColumn.Name = "extipiDataGridViewTextBoxColumn";
+            this.extipiDataGridViewTextBoxColumn.Width = 64;
             // 
             // bsProdutos
             // 
@@ -2479,9 +2694,9 @@
             this.panelItens.Controls.Add(this.kryptonTabControl6);
             this.panelItens.Controls.Add(this.menuStrip2);
             this.panelItens.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelItens.Location = new System.Drawing.Point(0, 287);
+            this.panelItens.Location = new System.Drawing.Point(0, -6);
             this.panelItens.Name = "panelItens";
-            this.panelItens.Size = new System.Drawing.Size(936, 253);
+            this.panelItens.Size = new System.Drawing.Size(733, 253);
             this.panelItens.TabIndex = 117;
             // 
             // kryptonTabControl6
@@ -2512,7 +2727,7 @@
             this.kryptonTabControl6.Name = "kryptonTabControl6";
             this.kryptonTabControl6.PreserveTabColor = false;
             this.kryptonTabControl6.SelectedIndex = 0;
-            this.kryptonTabControl6.Size = new System.Drawing.Size(936, 226);
+            this.kryptonTabControl6.Size = new System.Drawing.Size(733, 226);
             this.kryptonTabControl6.TabIndex = 116;
             this.kryptonTabControl6.UseExtendedLayout = false;
             // 
@@ -2522,7 +2737,7 @@
             this.tabPage24.Location = new System.Drawing.Point(4, 25);
             this.tabPage24.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage24.Name = "tabPage24";
-            this.tabPage24.Size = new System.Drawing.Size(928, 197);
+            this.tabPage24.Size = new System.Drawing.Size(725, 197);
             this.tabPage24.TabIndex = 0;
             this.tabPage24.Tag = false;
             this.tabPage24.Text = "ICMS";
@@ -2533,7 +2748,7 @@
             this.kryptonPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel26.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel26.Name = "kryptonPanel26";
-            this.kryptonPanel26.Size = new System.Drawing.Size(928, 197);
+            this.kryptonPanel26.Size = new System.Drawing.Size(725, 197);
             this.kryptonPanel26.TabIndex = 0;
             // 
             // flICMS
@@ -2563,7 +2778,7 @@
             this.flICMS.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flICMS.Location = new System.Drawing.Point(0, 0);
             this.flICMS.Name = "flICMS";
-            this.flICMS.Size = new System.Drawing.Size(928, 197);
+            this.flICMS.Size = new System.Drawing.Size(725, 197);
             this.flICMS.TabIndex = 1;
             this.flICMS.Tag = "Dados Emitente";
             // 
@@ -4252,7 +4467,7 @@
             this.btnSalvarItens});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(936, 27);
+            this.menuStrip2.Size = new System.Drawing.Size(733, 27);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -5374,7 +5589,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(733, 247);
+            this.tabPage7.Size = new System.Drawing.Size(936, 540);
             this.tabPage7.TabIndex = 7;
             this.tabPage7.Tag = false;
             this.tabPage7.Text = "Transporte";
@@ -5385,7 +5600,7 @@
             this.kryptonPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel7.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel7.Name = "kryptonPanel7";
-            this.kryptonPanel7.Size = new System.Drawing.Size(733, 247);
+            this.kryptonPanel7.Size = new System.Drawing.Size(936, 540);
             this.kryptonPanel7.TabIndex = 1;
             // 
             // flpRetencaoICMStransp
@@ -5412,7 +5627,7 @@
             this.flpRetencaoICMStransp.Name = "flpRetencaoICMStransp";
             this.flpRetencaoICMStransp.PreserveTabColor = false;
             this.flpRetencaoICMStransp.SelectedIndex = 0;
-            this.flpRetencaoICMStransp.Size = new System.Drawing.Size(733, 247);
+            this.flpRetencaoICMStransp.Size = new System.Drawing.Size(936, 540);
             this.flpRetencaoICMStransp.TabIndex = 112;
             this.flpRetencaoICMStransp.UseExtendedLayout = false;
             // 
@@ -5422,7 +5637,7 @@
             this.tabPage11.Location = new System.Drawing.Point(4, 25);
             this.tabPage11.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(725, 218);
+            this.tabPage11.Size = new System.Drawing.Size(928, 511);
             this.tabPage11.TabIndex = 0;
             this.tabPage11.Tag = false;
             this.tabPage11.Text = "Transportador";
@@ -5433,7 +5648,7 @@
             this.kryptonPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel14.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel14.Name = "kryptonPanel14";
-            this.kryptonPanel14.Size = new System.Drawing.Size(725, 218);
+            this.kryptonPanel14.Size = new System.Drawing.Size(928, 511);
             this.kryptonPanel14.TabIndex = 0;
             // 
             // flpTransp
@@ -5453,7 +5668,7 @@
             this.flpTransp.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpTransp.Location = new System.Drawing.Point(0, 0);
             this.flpTransp.Name = "flpTransp";
-            this.flpTransp.Size = new System.Drawing.Size(725, 218);
+            this.flpTransp.Size = new System.Drawing.Size(928, 511);
             this.flpTransp.TabIndex = 0;
             this.flpTransp.Tag = "Dados Emitente";
             // 
@@ -5552,7 +5767,7 @@
             // 
             this.txtXnomeTransp._LabelText = "Nome";
             this.txtXnomeTransp._Multiline = false;
-            this.txtXnomeTransp._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.NÃO;
+            this.txtXnomeTransp._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
             this.txtXnomeTransp._Password = false;
             this.txtXnomeTransp._Regex = Expressoes.Não_Aplica;
             this.txtXnomeTransp._Regex_Expressao = null;
@@ -5621,7 +5836,7 @@
             // 
             this.txtUFTransp._LabelText = "UF";
             this.txtUFTransp._Multiline = false;
-            this.txtUFTransp._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.NÃO;
+            this.txtUFTransp._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
             this.txtUFTransp._Password = false;
             this.txtUFTransp._Regex = Expressoes.Não_Aplica;
             this.txtUFTransp._Regex_Expressao = null;
@@ -7276,222 +7491,6 @@
             // 
             this.bsDI.DataSource = typeof(HLP.GeraXml.bel.NFe.Estrutura.belDI);
             this.bsDI.CurrentItemChanged += new System.EventHandler(this.bsDI_CurrentItemChanged);
-            // 
-            // clCprod
-            // 
-            this.clCprod.DataPropertyName = "Cprod";
-            this.clCprod.HeaderText = "Cprod";
-            this.clCprod.MaxInputLength = 60;
-            this.clCprod.Name = "clCprod";
-            // 
-            // nitem
-            // 
-            this.nitem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nitem.DataPropertyName = "nitem";
-            this.nitem.HeaderText = "nitem";
-            this.nitem.Name = "nitem";
-            this.nitem.Visible = false;
-            this.nitem.Width = 67;
-            // 
-            // xprodDataGridViewTextBoxColumn
-            // 
-            this.xprodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.xprodDataGridViewTextBoxColumn.DataPropertyName = "Xprod";
-            this.xprodDataGridViewTextBoxColumn.HeaderText = "Descrição do Produto";
-            this.xprodDataGridViewTextBoxColumn.MaxInputLength = 120;
-            this.xprodDataGridViewTextBoxColumn.Name = "xprodDataGridViewTextBoxColumn";
-            this.xprodDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // ceanDataGridViewTextBoxColumn
-            // 
-            this.ceanDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ceanDataGridViewTextBoxColumn.DataPropertyName = "Cean";
-            this.ceanDataGridViewTextBoxColumn.HeaderText = "Cean";
-            this.ceanDataGridViewTextBoxColumn.MaxInputLength = 14;
-            this.ceanDataGridViewTextBoxColumn.Name = "ceanDataGridViewTextBoxColumn";
-            this.ceanDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // ceantribDataGridViewTextBoxColumn
-            // 
-            this.ceantribDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ceantribDataGridViewTextBoxColumn.DataPropertyName = "Ceantrib";
-            this.ceantribDataGridViewTextBoxColumn.HeaderText = "Ceantrib";
-            this.ceantribDataGridViewTextBoxColumn.Name = "ceantribDataGridViewTextBoxColumn";
-            this.ceantribDataGridViewTextBoxColumn.Width = 81;
-            // 
-            // ncmDataGridViewTextBoxColumn
-            // 
-            this.ncmDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ncmDataGridViewTextBoxColumn.DataPropertyName = "Ncm";
-            this.ncmDataGridViewTextBoxColumn.HeaderText = "Ncm";
-            this.ncmDataGridViewTextBoxColumn.MaxInputLength = 8;
-            this.ncmDataGridViewTextBoxColumn.Name = "ncmDataGridViewTextBoxColumn";
-            this.ncmDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // cfopDataGridViewTextBoxColumn
-            // 
-            this.cfopDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.cfopDataGridViewTextBoxColumn.DataPropertyName = "Cfop";
-            this.cfopDataGridViewTextBoxColumn.HeaderText = "Cfop";
-            this.cfopDataGridViewTextBoxColumn.MaxInputLength = 4;
-            this.cfopDataGridViewTextBoxColumn.Name = "cfopDataGridViewTextBoxColumn";
-            this.cfopDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // ucomDataGridViewTextBoxColumn
-            // 
-            this.ucomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ucomDataGridViewTextBoxColumn.DataPropertyName = "Ucom";
-            this.ucomDataGridViewTextBoxColumn.HeaderText = "Ucom";
-            this.ucomDataGridViewTextBoxColumn.MaxInputLength = 6;
-            this.ucomDataGridViewTextBoxColumn.Name = "ucomDataGridViewTextBoxColumn";
-            this.ucomDataGridViewTextBoxColumn.Width = 68;
-            // 
-            // utribDataGridViewTextBoxColumn
-            // 
-            this.utribDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.utribDataGridViewTextBoxColumn.DataPropertyName = "Utrib";
-            this.utribDataGridViewTextBoxColumn.HeaderText = "Utrib";
-            this.utribDataGridViewTextBoxColumn.Name = "utribDataGridViewTextBoxColumn";
-            this.utribDataGridViewTextBoxColumn.Width = 62;
-            // 
-            // qcomDataGridViewTextBoxColumn
-            // 
-            this.qcomDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.qcomDataGridViewTextBoxColumn.DataPropertyName = "Qcom";
-            this.qcomDataGridViewTextBoxColumn.HeaderText = "Qcom";
-            this.qcomDataGridViewTextBoxColumn.Name = "qcomDataGridViewTextBoxColumn";
-            this.qcomDataGridViewTextBoxColumn.Width = 69;
-            // 
-            // qtribDataGridViewTextBoxColumn
-            // 
-            this.qtribDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.qtribDataGridViewTextBoxColumn.DataPropertyName = "Qtrib";
-            this.qtribDataGridViewTextBoxColumn.HeaderText = "Qtrib";
-            this.qtribDataGridViewTextBoxColumn.Name = "qtribDataGridViewTextBoxColumn";
-            this.qtribDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // vprodDataGridViewTextBoxColumn
-            // 
-            this.vprodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.vprodDataGridViewTextBoxColumn.DataPropertyName = "Vprod";
-            dataGridViewCellStyle1.Format = "n2";
-            this.vprodDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.vprodDataGridViewTextBoxColumn.HeaderText = "Vprod";
-            this.vprodDataGridViewTextBoxColumn.Name = "vprodDataGridViewTextBoxColumn";
-            this.vprodDataGridViewTextBoxColumn.Width = 68;
-            // 
-            // clVuncom
-            // 
-            this.clVuncom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clVuncom.DataPropertyName = "Vuncom";
-            this.clVuncom.HeaderText = "Vuncom";
-            this.clVuncom.Name = "clVuncom";
-            this.clVuncom.Width = 81;
-            // 
-            // clVuntrib
-            // 
-            this.clVuntrib.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clVuntrib.DataPropertyName = "Vuntrib";
-            this.clVuntrib.HeaderText = "Vuntrib";
-            this.clVuntrib.Name = "clVuntrib";
-            this.clVuntrib.Width = 75;
-            // 
-            // vfreteDataGridViewTextBoxColumn
-            // 
-            this.vfreteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.vfreteDataGridViewTextBoxColumn.DataPropertyName = "Vfrete";
-            dataGridViewCellStyle2.Format = "n2";
-            this.vfreteDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.vfreteDataGridViewTextBoxColumn.HeaderText = "Vfrete";
-            this.vfreteDataGridViewTextBoxColumn.Name = "vfreteDataGridViewTextBoxColumn";
-            this.vfreteDataGridViewTextBoxColumn.Width = 67;
-            // 
-            // vsegDataGridViewTextBoxColumn
-            // 
-            this.vsegDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.vsegDataGridViewTextBoxColumn.DataPropertyName = "Vseg";
-            dataGridViewCellStyle3.Format = "n2";
-            this.vsegDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.vsegDataGridViewTextBoxColumn.HeaderText = "Vseg";
-            this.vsegDataGridViewTextBoxColumn.Name = "vsegDataGridViewTextBoxColumn";
-            this.vsegDataGridViewTextBoxColumn.Width = 61;
-            // 
-            // vdescDataGridViewTextBoxColumn
-            // 
-            this.vdescDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.vdescDataGridViewTextBoxColumn.DataPropertyName = "Vdesc";
-            dataGridViewCellStyle4.Format = "n2";
-            this.vdescDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.vdescDataGridViewTextBoxColumn.HeaderText = "Vdesc";
-            this.vdescDataGridViewTextBoxColumn.Name = "vdescDataGridViewTextBoxColumn";
-            this.vdescDataGridViewTextBoxColumn.Width = 67;
-            // 
-            // vOutroDataGridViewTextBoxColumn
-            // 
-            this.vOutroDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.vOutroDataGridViewTextBoxColumn.DataPropertyName = "VOutro";
-            dataGridViewCellStyle5.Format = "n2";
-            this.vOutroDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.vOutroDataGridViewTextBoxColumn.HeaderText = "VOutro";
-            this.vOutroDataGridViewTextBoxColumn.Name = "vOutroDataGridViewTextBoxColumn";
-            this.vOutroDataGridViewTextBoxColumn.Width = 74;
-            // 
-            // clvTotTrib
-            // 
-            this.clvTotTrib.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clvTotTrib.DataPropertyName = "vTotTrib";
-            this.clvTotTrib.HeaderText = "Valor Total Tributos";
-            this.clvTotTrib.Name = "clvTotTrib";
-            this.clvTotTrib.Width = 140;
-            // 
-            // indTotDataGridViewTextBoxColumn
-            // 
-            this.indTotDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.indTotDataGridViewTextBoxColumn.DataPropertyName = "IndTot";
-            this.indTotDataGridViewTextBoxColumn.HeaderText = "IndTot";
-            this.indTotDataGridViewTextBoxColumn.Name = "indTotDataGridViewTextBoxColumn";
-            this.indTotDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.indTotDataGridViewTextBoxColumn.Width = 71;
-            // 
-            // nFCI
-            // 
-            this.nFCI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nFCI.DataPropertyName = "nFCI";
-            this.nFCI.HeaderText = "FCI - Ficha de Conteúdo de Importação";
-            this.nFCI.Name = "nFCI";
-            this.nFCI.Width = 244;
-            // 
-            // xPedDataGridViewTextBoxColumn
-            // 
-            this.xPedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.xPedDataGridViewTextBoxColumn.DataPropertyName = "XPed";
-            this.xPedDataGridViewTextBoxColumn.HeaderText = "XPed";
-            this.xPedDataGridViewTextBoxColumn.Name = "xPedDataGridViewTextBoxColumn";
-            this.xPedDataGridViewTextBoxColumn.Width = 63;
-            // 
-            // nItemPedDataGridViewTextBoxColumn
-            // 
-            this.nItemPedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nItemPedDataGridViewTextBoxColumn.DataPropertyName = "NItemPed";
-            this.nItemPedDataGridViewTextBoxColumn.HeaderText = "NItemPed";
-            this.nItemPedDataGridViewTextBoxColumn.Name = "nItemPedDataGridViewTextBoxColumn";
-            this.nItemPedDataGridViewTextBoxColumn.Width = 89;
-            // 
-            // generoDataGridViewTextBoxColumn
-            // 
-            this.generoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.generoDataGridViewTextBoxColumn.DataPropertyName = "Genero";
-            this.generoDataGridViewTextBoxColumn.HeaderText = "Genero";
-            this.generoDataGridViewTextBoxColumn.Name = "generoDataGridViewTextBoxColumn";
-            this.generoDataGridViewTextBoxColumn.Width = 74;
-            // 
-            // extipiDataGridViewTextBoxColumn
-            // 
-            this.extipiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.extipiDataGridViewTextBoxColumn.DataPropertyName = "Extipi";
-            this.extipiDataGridViewTextBoxColumn.HeaderText = "Extipi";
-            this.extipiDataGridViewTextBoxColumn.Name = "extipiDataGridViewTextBoxColumn";
-            this.extipiDataGridViewTextBoxColumn.Width = 64;
             // 
             // frmVisualizaNFe
             // 

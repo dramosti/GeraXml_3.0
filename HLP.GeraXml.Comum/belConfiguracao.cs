@@ -54,6 +54,14 @@ namespace HLP.GeraXml.Comum
             get { return _IMPRIMI_RETORNO; }
             set { _IMPRIMI_RETORNO = value; }
         }
+        private bool _IMPRIMI_FATURA = true;
+
+        public bool IMPRIMI_FATURA
+        {
+            get { return _IMPRIMI_FATURA; }
+            set { _IMPRIMI_FATURA = value; }
+        }
+
         public string COD_PREFEITURA { get; set; }
         public string SENHA_WEB_NFES { get; set; }
     }

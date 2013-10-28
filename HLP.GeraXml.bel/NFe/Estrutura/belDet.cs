@@ -6,6 +6,7 @@ using System.Data;
 using HLP.GeraXml.dao.NFe.Estrutura;
 using HLP.GeraXml.Comum.Static;
 using HLP.GeraXml.dao.NFe.Especifico;
+using HLP.GeraXml.dao;
 
 namespace HLP.GeraXml.bel.NFe.Estrutura
 {
@@ -1099,8 +1100,11 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             }
                         }
                         if (Acesso.TRANSPARENCIA == 1 || Acesso.TRANSPARENCIA == 2)
-                            if (!objDet.prod.vTotTrib.ToString().Equals(""))
-                                objinf.Infadprid = string.Format("TRIBUTOS(TRANSPARÊNCIA) = R$ {0}", objDet.prod.vTotTrib.ToString()) + (objinf.Infadprid == "" ? "" : " - " + objinf.Infadprid);
+                        {
+                            objinf.Infadprid = daoUtil.CarregaObsTransparenciaITEM(drIItem["nr_lanc"].ToString());
+                        }
+                            //if (!objDet.prod.vTotTrib.ToString().Equals(""))
+                            //    objinf.Infadprid = string.Format("TRIBUTOS(TRANSPARÊNCIA) = R$ {0}", objDet.prod.vTotTrib.ToString()) + (objinf.Infadprid == "" ? "" : " - " + objinf.Infadprid);
 
 
                         if (Acesso.IMPRIMI_NUM_NOTA_ENTRADA)

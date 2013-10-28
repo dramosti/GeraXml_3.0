@@ -67,7 +67,7 @@ namespace HLP.GeraXml.UI.Configuracao
                 txtBancoDados.txt.ButtonSpecs.Add(btnCaminhoBanco);
 
                 CarregarDados();
-                               
+
             }
             catch (Exception ex)
             {
@@ -209,6 +209,7 @@ namespace HLP.GeraXml.UI.Configuracao
                 this.chkVisualizaDadosNFe.Checked = objbelConfiguracao.VISUALIZA_DADOS_NFE;
                 this.chkNumRevisaoItens.Checked = objbelConfiguracao.IMPRIMI_NUM_REVISAO;
                 this.chkImprimeRetorno.Checked = objbelConfiguracao.IMPRIMI_RETORNO;
+                this.ckbImprimiFaturaDanfe.Checked = objbelConfiguracao.IMPRIMI_FATURA;
                 this.txtSenhaWebNFse.Text = objbelConfiguracao.SENHA_WEB_NFES;
                 this.txtCodPrefeitura.Text = objbelConfiguracao.COD_PREFEITURA;
 
@@ -284,6 +285,7 @@ namespace HLP.GeraXml.UI.Configuracao
                 objbelConfiguracao.DESTACA_IMP_TRIB_MUN = this.chkTribMunicipio.Checked.ToString();
                 objbelConfiguracao.IMPRIMI_NUM_NOTA_ENTRADA = chkNumNotaEntrada.Checked;
                 objbelConfiguracao.IMPRIMI_NUM_PEDIDO_VENDA = chkNumPedidoVendaItens.Checked;
+                objbelConfiguracao.IMPRIMI_FATURA = ckbImprimiFaturaDanfe.Checked;
                 objbelConfiguracao.IMPRIMI_NUM_REVISAO = chkNumRevisaoItens.Checked;
                 objbelConfiguracao.IMPRIMI_RETORNO = chkImprimeRetorno.Checked;
                 objbelConfiguracao.SENHA_WEB_NFES = this.txtSenhaWebNFse.Text;

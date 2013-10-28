@@ -108,6 +108,7 @@ namespace HLP.GeraXml.bel.NFe
                             if (lnotas.Where(c => c.sCHAVENFE == nodeschNFe[i].InnerText).Count() > 0)
                             {
                                 belPesquisaNotas nota = lnotas.FirstOrDefault(c => c.sCHAVENFE == nodeschNFe[i].InnerText);
+                                ret = new DadosRetorno();
                                 ret.cStat = nodecStat[i + 1].InnerText;
                                 ret.xMotivo = nodesxMotivo[i + 1].InnerText;
                                 ret.seqNota = nota.sCD_NFSEQ;

@@ -658,13 +658,12 @@ namespace HLP.GeraXml.bel.NFe
                     //Fim - Total
 
                     //Frete
-                    XContainer contransp;
+                    XContainer contransp = null;
                     belTransp objtransp;
                     try
                     {
                         objtransp = nota.transp;
                         #region XML_Transporte
-
                         contransp = (new XElement(pf + "transp",
                                                    new XElement(pf + "modFrete", objtransp.Modfrete.ToString()),
                                                    new XElement(pf + "transporta",
@@ -706,7 +705,7 @@ namespace HLP.GeraXml.bel.NFe
                     }
                     catch (Exception x)
                     {
-                        throw new Exception("Nota de Sequência - " + nota.ide.Cnf + "Erro na geração do XML, Regiao XML_Transporte - " + x.Message);
+                        throw new Exception("Nota de Sequência - " + nota.ide.Cnf + " - Erro na geração do XML, Regiao XML_Transporte - " + x.Message);
                     }
                     //Fim - Frete
 

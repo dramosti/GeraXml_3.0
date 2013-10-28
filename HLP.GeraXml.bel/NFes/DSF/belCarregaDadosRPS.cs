@@ -154,6 +154,11 @@ namespace HLP.GeraXml.bel.NFes.DSF
 
 
                     rps.DescricaoRPS = daoUtil.GetTotImpostosServ(cd_nfseq) + GetDescricaoRPS(cd_nfseq);
+                    if (Acesso.TRANSPARENCIA == 0 || Acesso.TRANSPARENCIA == 2)
+                    {
+                        rps.DescricaoRPS += Environment.NewLine + daoUtil.CarregaObsTransparenciaNF(cd_nfseq);
+                    }
+
                     rps.TelefonePrestador = row["TelefonePrestador"].ToString();
                     rps.TelefoneTomador = row["TelefoneTomador"].ToString();
                     rps.MotCancelamento = "";
@@ -170,6 +175,10 @@ namespace HLP.GeraXml.bel.NFes.DSF
                         rps.AliquotaAtividade = base.GetAliquotaAtividade(rowItem["cd_clifor"].ToString(), rowItem["cd_oper"].ToString()).ToString();
                         item = new LoteRPSItensItem();
                         item.DiscriminacaoServico = rowItem["DiscriminacaoServico"].ToString();
+                        if (Acesso.TRANSPARENCIA == 1 || Acesso.TRANSPARENCIA == 2)
+                        {
+                            item.DiscriminacaoServico += Environment.NewLine + daoUtil.CarregaObsTransparenciaITEM(rowItem["nr_lanc"].ToString());
+                        }
                         item.Quantidade = Convert.ToByte(rowItem["Quantidade"].ToString());
                         item.ValorUnitario = Convert.ToDecimal(rowItem["ValorUnitario"].ToString());
                         item.ValorTotal = Convert.ToDecimal(rowItem["ValorTotal"].ToString());

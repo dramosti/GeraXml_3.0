@@ -172,6 +172,13 @@ namespace HLP.GeraXml.Comum.Static
         public static bool IMPRIMI_NUM_PEDIDO_VENDA { get; set; }
         public static bool IMPRIMI_NUM_REVISAO { get; set; }
         public static bool IMPRIMI_RETORNO { get; set; }
+        private static bool _IMPRIMI_FATURA = true;
+
+        public static bool IMPRIMI_FATURA
+        {
+            get { return Acesso._IMPRIMI_FATURA; }
+            set { Acesso._IMPRIMI_FATURA = value; }
+        }
         public static string COD_PREFEITURA { get; set; }
         public static string SENHA_WEB_NFES { get; set; }
         public static bool VISUALIZA_DADOS_NFE { get; set; }
@@ -281,6 +288,7 @@ namespace HLP.GeraXml.Comum.Static
                     Acesso.IMPRIMI_NUM_PEDIDO_VENDA = obj.IMPRIMI_NUM_PEDIDO_VENDA;
                     Acesso.IMPRIMI_NUM_REVISAO = obj.IMPRIMI_NUM_REVISAO;
                     Acesso.IMPRIMI_RETORNO = obj.IMPRIMI_RETORNO;
+                    Acesso.IMPRIMI_FATURA = obj.IMPRIMI_FATURA;
                     Acesso.SENHA_WEB_NFES = obj.SENHA_WEB_NFES;
                     Acesso.COD_PREFEITURA = obj.COD_PREFEITURA;
                     Acesso.VISUALIZA_DADOS_NFE = obj.VISUALIZA_DADOS_NFE;

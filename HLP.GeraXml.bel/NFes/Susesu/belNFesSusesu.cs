@@ -415,6 +415,11 @@ namespace HLP.GeraXml.bel.NFes.Susesu
                     }
                     sObs = daoUtil.GetTotImpostosServ(sCD_NFSEQ) + sObs;
                     this.OUTRAS_INFORMACOES = sObs.Replace("}", "").Trim();
+
+                    if (Acesso.TRANSPARENCIA != 3)
+                    {
+                        this.OUTRAS_INFORMACOES += Environment.NewLine + daoUtil.CarregaObsTransparenciaNF(sCD_NFSEQ);
+                    }
                     break;
                 }
 

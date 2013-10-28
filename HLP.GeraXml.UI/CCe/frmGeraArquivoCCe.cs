@@ -15,7 +15,7 @@ using System.IO;
 using HLP.GeraXml.Comum.DataSet;
 using HLP.GeraXml.bel;
 
-namespace HLP.GeraXml.UI.CCe 
+namespace HLP.GeraXml.UI.CCe
 {
     public partial class frmGeraArquivoCCe : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
@@ -118,7 +118,7 @@ namespace HLP.GeraXml.UI.CCe
 
                 for (int i = 0; i < lsNotas.Count; i++)
                 {
-                    belEmail objemail = new belEmail("", Pastas.ENVIADOS + "\\Servicos\\PDF\\" + lsNotas[i].CD_NOTAFIS + ".pdf", lsNotas[i].CD_NFSEQ,lsNotas[i].CD_NOTAFIS);
+                    belEmail objemail = new belEmail("", Pastas.ENVIADOS + "\\Servicos\\PDF\\" + lsNotas[i].CD_NOTAFIS + ".pdf", lsNotas[i].CD_NFSEQ, lsNotas[i].CD_NOTAFIS);
                     objlbelEmail.Add(objemail);
                 }
 
@@ -174,7 +174,7 @@ namespace HLP.GeraXml.UI.CCe
                 }
             }
             catch (Exception ex)
-            {      
+            {
                 new HLPexception(ex);
             }
         }
@@ -189,18 +189,9 @@ namespace HLP.GeraXml.UI.CCe
                     {
                         belCarregaDataSet objbelCarregaDataSet = new belCarregaDataSet((bsGrid.DataSource as List<belPesquisaCCe>).Where(c => c.bSeleciona && c.QT_ENVIO > 0).ToList<belPesquisaCCe>());
 
-                        string sCaminho = "";
+                        string sCaminho = Util.GetPathRelatorio("CCe.rpt");
                         ReportDocument rpt = new ReportDocument();
-                        if (!String.IsNullOrEmpty(Acesso.CAMINHO_RELATORIO_ESPECIFICO))
-                        {
-                            sCaminho = Acesso.CAMINHO_RELATORIO_ESPECIFICO + "\\" + "CCe.rpt";
-                            rpt.Load(sCaminho);
-                        }
-                        else
-                        {
-                            sCaminho = Application.StartupPath + "\\Relatorios\\" + "CCe.rpt";
-                            rpt.Load(sCaminho);
-                        }
+                        rpt.Load(sCaminho);
                         DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\Servicos" + "\\PDF");
                         if (!dinfo.Exists)
                         {

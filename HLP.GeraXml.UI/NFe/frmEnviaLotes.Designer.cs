@@ -39,6 +39,7 @@
             this.iLoteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iQtdeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsLotes)).BeginInit();
@@ -48,6 +49,7 @@
             // async_work
             // 
             this.async_work.WorkerReportsProgress = true;
+            this.async_work.WorkerSupportsCancellation = true;
             this.async_work.DoWork += new System.ComponentModel.DoWorkEventHandler(this.worker_DoWork);
             this.async_work.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.async_work_ProgressChanged);
             // 
@@ -56,15 +58,15 @@
             this.kryptonPanel1.Controls.Add(this.btnParar);
             this.kryptonPanel1.Controls.Add(this.progressBar1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 354);
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 350);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(578, 24);
+            this.kryptonPanel1.Size = new System.Drawing.Size(574, 24);
             this.kryptonPanel1.TabIndex = 4;
             // 
             // btnParar
             // 
             this.btnParar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnParar.Location = new System.Drawing.Point(488, 0);
+            this.btnParar.Location = new System.Drawing.Point(484, 0);
             this.btnParar.Name = "btnParar";
             this.btnParar.Size = new System.Drawing.Size(90, 24);
             this.btnParar.TabIndex = 4;
@@ -89,12 +91,12 @@
             // 
             this.txtInfoLote.AlwaysActive = false;
             this.txtInfoLote.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtInfoLote.Location = new System.Drawing.Point(0, 204);
+            this.txtInfoLote.Location = new System.Drawing.Point(0, 200);
             this.txtInfoLote.Multiline = true;
             this.txtInfoLote.Name = "txtInfoLote";
             this.txtInfoLote.ReadOnly = true;
             this.txtInfoLote.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtInfoLote.Size = new System.Drawing.Size(578, 150);
+            this.txtInfoLote.Size = new System.Drawing.Size(574, 150);
             this.txtInfoLote.StateActive.Back.Color1 = System.Drawing.Color.White;
             this.txtInfoLote.StateActive.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.txtInfoLote.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -126,7 +128,7 @@
             this.dgvLotes.RowHeadersWidth = 25;
             this.dgvLotes.RowTemplate.Height = 20;
             this.dgvLotes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLotes.Size = new System.Drawing.Size(578, 204);
+            this.dgvLotes.Size = new System.Drawing.Size(574, 200);
             this.dgvLotes.TabIndex = 7;
             this.dgvLotes.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLotes_CellMouseClick);
             // 
@@ -154,11 +156,16 @@
             this.xStatusDataGridViewTextBoxColumn.Name = "xStatusDataGridViewTextBoxColumn";
             this.xStatusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmEnviaLotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 378);
+            this.ClientSize = new System.Drawing.Size(574, 374);
             this.ControlBox = false;
             this.Controls.Add(this.dgvLotes);
             this.Controls.Add(this.txtInfoLote);
@@ -192,5 +199,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn iLoteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iQtdeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Timer timer1;
     }
 }

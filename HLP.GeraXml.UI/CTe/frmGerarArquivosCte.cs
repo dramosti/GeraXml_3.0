@@ -696,7 +696,7 @@ namespace HLP.GeraXml.UI.CTe
                     if (dsPadrao.infCte.Count() > 0)
                     {
                         ReportDocument rpt = new ReportDocument();
-                        rpt.Load(Application.StartupPath + "\\Relatorios\\rptCtePadrao.rpt");
+                        rpt.Load(Util.GetPathRelatorio("rptCtePadrao.rpt"));
                         rpt.SetDataSource(dsPadrao);
                         rpt.Refresh();
 
@@ -706,7 +706,7 @@ namespace HLP.GeraXml.UI.CTe
                     if (dsPadraoCancelado.infCte.Count() > 0)
                     {
                         ReportDocument rpt = new ReportDocument();
-                        rpt.Load(Application.StartupPath + "\\Relatorios\\rptCtePadraoCancelado.rpt");
+                        rpt.Load(Util.GetPathRelatorio("rptCtePadraoCancelado.rpt"));
                         rpt.SetDataSource(dsPadraoCancelado);
                         rpt.Refresh();
 
@@ -716,7 +716,7 @@ namespace HLP.GeraXml.UI.CTe
                     if (dsLotacao.infCte.Count() > 0)
                     {
                         ReportDocument rpt = new ReportDocument();
-                        rpt.Load(Application.StartupPath + "\\Relatorios\\rptCteLotacao.rpt");
+                        rpt.Load(Util.GetPathRelatorio("rptCteLotacao.rpt"));
                         rpt.SetDataSource(dsLotacao);
                         rpt.Refresh();
 
@@ -726,7 +726,7 @@ namespace HLP.GeraXml.UI.CTe
                     if (dsLotacaoCancelado.infCte.Count() > 0)
                     {
                         ReportDocument rpt = new ReportDocument();
-                        rpt.Load(Application.StartupPath + "\\Relatorios\\rptCteLotacaoCancelado.rpt");
+                        rpt.Load(Util.GetPathRelatorio("rptCteLotacaoCancelado.rpt"));
                         rpt.SetDataSource(dsLotacaoCancelado);
                         rpt.Refresh();
 
@@ -1103,22 +1103,22 @@ namespace HLP.GeraXml.UI.CTe
 
                 if (tpPdf == TipoPDF.PADRAO)
                 {
-                    rpt.Load(Application.StartupPath + "\\Relatorios\\rptCtePadrao.rpt");
+                    rpt.Load(Util.GetPathRelatorio("rptCtePadrao.rpt"));
                     dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\PDF");
                 }
                 else if (tpPdf == TipoPDF.PADRAO_CANCELADO)
                 {
-                    rpt.Load(Application.StartupPath + "\\Relatorios\\rptCtePadraoCancelado.rpt");
+                    rpt.Load(Util.GetPathRelatorio("rptCtePadraoCancelado.rpt"));
                     dinfo = new DirectoryInfo(Pastas.CANCELADOS + "\\PDF");
                 }
                 else if (tpPdf == TipoPDF.LOTACAO)
                 {
-                    rpt.Load(Application.StartupPath + "\\Relatorios\\rptCteLotacao.rpt");
+                    rpt.Load(Util.GetPathRelatorio("Relatorios\\rptCteLotacao.rpt"));
                     dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\PDF");
                 }
                 else if (tpPdf == TipoPDF.LOTACAO_CANCELADO)
                 {
-                    rpt.Load(Application.StartupPath + "\\Relatorios\\rptCteLotacaoCancelado.rpt");
+                    rpt.Load(Util.GetPathRelatorio("rptCteLotacaoCancelado.rpt"));
                     dinfo = new DirectoryInfo(Pastas.CANCELADOS + "\\PDF");
                 }
                 rpt.SetDataSource(ds);
@@ -1151,19 +1151,19 @@ namespace HLP.GeraXml.UI.CTe
 
                 if (tpPdf == TipoPDF.PADRAO)
                 {
-                    rpt.Load(Application.StartupPath + "\\Relatorios\\rptCtePadrao.rpt");
+                    rpt.Load(Util.GetPathRelatorio("rptCtePadrao.rpt"));
                 }
                 else if (tpPdf == TipoPDF.PADRAO_CANCELADO)
                 {
-                    rpt.Load(Application.StartupPath + "\\Relatorios\\rptCtePadraoCancelado.rpt");
+                    rpt.Load(Util.GetPathRelatorio("rptCtePadraoCancelado.rpt"));
                 }
                 else if (tpPdf == TipoPDF.LOTACAO)
                 {
-                    rpt.Load(Application.StartupPath + "\\Relatorios\\rptCteLotacao.rpt");
+                    rpt.Load(Util.GetPathRelatorio("rptCteLotacao.rpt"));
                 }
                 else if (tpPdf == TipoPDF.LOTACAO_CANCELADO)
                 {
-                    rpt.Load(Application.StartupPath + "\\Relatorios\\rptCteLotacaoCancelado.rpt");
+                    rpt.Load(Util.GetPathRelatorio("rptCteLotacaoCancelado.rpt"));
                 }
                 rpt.SetDataSource(ds);
                 rpt.Refresh();

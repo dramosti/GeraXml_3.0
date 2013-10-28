@@ -10,11 +10,27 @@ using CrystalDecisions.Windows.Forms;
 using System.Drawing;
 using ICSharpCode.SharpZipLib.Zip;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace HLP.GeraXml.Comum.Static
 {
     public static class Util
     {
+
+        public static string GetPathRelatorio(string xNameRpt) 
+        {
+            string sPath = Application.StartupPath + "\\Relatorios\\" + xNameRpt;
+            if (!string.IsNullOrEmpty(Acesso.CAMINHO_RELATORIO_ESPECIFICO))
+            {
+                sPath = Acesso.CAMINHO_RELATORIO_ESPECIFICO + "\\" + xNameRpt;
+                if (!File.Exists(sPath))
+                {
+                    sPath = Application.StartupPath + "\\Relatorios\\" + xNameRpt;
+                }
+            }
+            return sPath;
+        }
+
         public static bool VerificaConfiguracaoPastasXml()
         {
             try

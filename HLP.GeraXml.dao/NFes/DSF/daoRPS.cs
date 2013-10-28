@@ -94,7 +94,7 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("m.cd_clifor, ");
                 sQuery.Append("m.qt_prod Quantidade, ");
                 sQuery.Append("m.vl_uniprod ValorUnitario, ");
-                sQuery.Append("m.vl_totbruto ValorTotal ");
+                sQuery.Append("m.vl_totbruto ValorTotal, m.nr_lanc ");
                 sQuery.Append("from movitem m ");
                 sQuery.Append("where m.cd_nfseq = '{0}' and m.cd_empresa ='{1}'");
                 dtItem = HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), cd_nfseq, Acesso.CD_EMPRESA));

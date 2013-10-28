@@ -136,7 +136,6 @@ namespace HLP.GeraXml.dao
             }
         }
 
-
         public static string GetCodigoSiafiByNome(string sNmMunicipio)
         {
             try
@@ -162,7 +161,6 @@ namespace HLP.GeraXml.dao
                 throw ex;
             }
         }
-
 
         public static bool ValidaUserToCancel()
         {
@@ -555,7 +553,7 @@ namespace HLP.GeraXml.dao
             }
             finally
             {
-                
+
                 sSql.Connection.Close();
             }
 
@@ -715,6 +713,56 @@ namespace HLP.GeraXml.dao
             {
 
                 throw;
+            }
+        }
+
+        public static string CarregaObsTransparenciaNF(string sNFSEQ)
+        {
+            try
+            {
+
+                string sMsg = "Val Aprox dos Tributos R$ {0} - ({1}) % Fonte: IBPT ;";
+
+                decimal dVL_IMP = 0;
+                decimal dVL_TOT = 0;
+                string sQuery = "select sum(coalesce(m.vl_fattransp,0)) from movitem m where m.cd_nfseq = '{0}' and m.cd_empresa = '{1}'";
+                DataTable dt = HlpDbFuncoes.qrySeekRet(string.Format(sQuery, sNFSEQ, Acesso.CD_EMPRESA));
+                if (dt.Rows.Count > 0)
+                    dVL_IMP = Convert.ToDecimal(dt.Rows[0][0].ToString());
+
+                sQuery = "select nf.vl_totnf from nf where nf.cd_nfseq = '{0}' and nf.cd_empresa = '{1}'";
+                dt = HlpDbFuncoes.qrySeekRet(string.Format(sQuery, sNFSEQ, Acesso.CD_EMPRESA));
+                if (dt.Rows.Count > 0)
+                    dVL_TOT = Convert.ToDecimal(dt.Rows[0][0].ToString());
+
+
+                return string.Format(sMsg, dVL_IMP.ToString("#0.00"), ((dVL_IMP / dVL_TOT) * 100).ToString("#0.00"));
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+        }
+
+        public static string CarregaObsTransparenciaITEM(string sNR_LANC) 
+        {
+            try
+            {
+                decimal dVL_ALIQ = 0;
+                decimal dVL_TRANSPAR = 0;
+                string sQuery = "select coalesce(m.vl_fattransp,0)vl_fattransp, coalesce(m.vl_aliqtransp,0)vl_aliqtransp from movitem m where m.nr_lanc = '{0}' and m.cd_empresa = '{1}'";
+                DataTable dt = HlpDbFuncoes.qrySeekRet(string.Format(sQuery, sNR_LANC, Acesso.CD_EMPRESA));
+                if (dt.Rows.Count > 0)
+                {
+                    dVL_TRANSPAR = Convert.ToDecimal(dt.Rows[0]["vl_fattransp"].ToString());
+                    dVL_ALIQ = Convert.ToDecimal(dt.Rows[0]["vl_aliqtransp"].ToString());
+                }
+                string sMsg = "Val Aprox dos Tributos R$ {0} - ({1}) % Fonte: IBPT ;";
+                return string.Format(sMsg, dVL_TRANSPAR.ToString("#0.00"), dVL_ALIQ.ToString("#0.00"));
+            }
+            catch (Exception ex)
+            {
+                return "";
             }
         }
 

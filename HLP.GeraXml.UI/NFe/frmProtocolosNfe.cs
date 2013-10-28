@@ -11,6 +11,7 @@ using ComponentFactory.Krypton.Toolkit;
 using HLP.GeraXml.Comum.Static;
 using HLP.GeraXml.Comum;
 using HLP.GeraXml.bel;
+using HLP.GeraXml.bel.NFe;
 
 namespace HLP.GeraXml.UI.NFe
 {
@@ -21,7 +22,7 @@ namespace HLP.GeraXml.UI.NFe
         public frmProtocolosNfe()
         {
             InitializeComponent();
-            cbxArquivos.cbx.SelectedIndexChanged += new EventHandler(cbxArquivos_SelectedIndexChanged);
+            //cbxArquivos.cbx.SelectedIndexChanged += new EventHandler(cbxArquivos_SelectedIndexChanged);
         }
 
         private void PopulaGridCancelados()
@@ -32,19 +33,28 @@ namespace HLP.GeraXml.UI.NFe
                 FileSystemInfo[] itens = diretorio.GetFileSystemInfos("*.xml");
                 int irow = 0;
                 dgvCancelamentos.Rows.Clear();
+                Evento eventoCanc = null;
                 foreach (FileSystemInfo item in itens)
                 {
                     if (item.Name.Contains("ped-can"))
                     {
-                        XmlDocument xml = new XmlDocument();
-                        xml.Load(item.FullName);
-                        dgvCancelamentos.Rows.Add();
-                        dgvCancelamentos[0, irow].Value = (xml.GetElementsByTagName("infCanc").Item(0).FirstChild.InnerText == "2" ? "Homologação" : "Produção");
-                        dgvCancelamentos[1, irow].Value = (xml.GetElementsByTagName("chNFe").Item(0).InnerText.Equals("") ? "S/Nota" : xml.GetElementsByTagName("chNFe").Item(0).InnerText.Substring(25, 9));
-                        dgvCancelamentos[2, irow].Value = (xml.GetElementsByTagName("chNFe").Item(0).InnerText.Equals("") ? "S/Sequencia" : xml.GetElementsByTagName("chNFe").Item(0).InnerText.Substring(34, 9));
-                        dgvCancelamentos[3, irow].Value = (xml.GetElementsByTagName("nProt").Item(0).InnerText.Equals("") ? "S/Protocolo" : xml.GetElementsByTagName("nProt").Item(0).InnerText);
-                        dgvCancelamentos[5, irow].Value = item.Name;
-                        irow++;
+                        eventoCanc = null;
+                        try
+                        {
+                            eventoCanc = SerializeClassToXml.DeserializeClasse<Evento>(item.FullName);
+                            dgvCancelamentos.Rows.Add();
+                            dgvCancelamentos[0, irow].Value = eventoCanc.infEvento.tpAmb == 2 ? "Homologação" : "Produção"; // (xml.GetElementsByTagName("infCanc").Item(0).FirstChild.InnerText == "2" ? "Homologação" : "Produção");
+                            dgvCancelamentos[1, irow].Value = eventoCanc.infEvento.chNFe.Substring(25, 9);// (xml.GetElementsByTagName("chNFe").Item(0).InnerText.Equals("") ? "S/Nota" : xml.GetElementsByTagName("chNFe").Item(0).InnerText.Substring(25, 9));
+                            dgvCancelamentos[2, irow].Value = eventoCanc.infEvento.chNFe.Substring(34, 9); // (xml.GetElementsByTagName("chNFe").Item(0).InnerText.Equals("") ? "S/Sequencia" : xml.GetElementsByTagName("chNFe").Item(0).InnerText.Substring(34, 9));
+                            dgvCancelamentos[3, irow].Value = eventoCanc.infEvento.detEvento.nProt;// (xml.GetElementsByTagName("nProt").Item(0).InnerText.Equals("") ? "S/Protocolo" : xml.GetElementsByTagName("nProt").Item(0).InnerText);
+                            dgvCancelamentos[5, irow].Value = item.Name;
+                            irow++;
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+
 
                     }
                 }
@@ -130,9 +140,13 @@ namespace HLP.GeraXml.UI.NFe
                     {
                         cbxArquivos.cbx.Items.Add(item.Name);
                     }
-                } if ((Acesso.NM_CONFIG_TEMP != "") && (Acesso.NM_CONFIG_TEMP != null))
+                }
+                if ((Acesso.NM_CONFIG_TEMP != "") && (Acesso.NM_CONFIG_TEMP != null))
                 {
-                    cbxArquivos.cbx.Text = Acesso.NM_CONFIG_TEMP.Replace("\\","").Trim();
+                    if (string.IsNullOrEmpty(Acesso.NM_CONFIG_TEMP))
+                    {
+                        cbxArquivos.cbx.Text = Acesso.NM_CONFIG_TEMP.Replace("\\", "").Trim();
+                    }
                 }
                 else if (cbxArquivos.cbx.Items.Count > 0)
                 {
@@ -147,9 +161,15 @@ namespace HLP.GeraXml.UI.NFe
 
         private void cbxArquivos_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
             try
             {
-                string sCaminho = Pastas.PASTA_XML_CONFIG+ "\\"+ cbxArquivos.cbx.SelectedItem.ToString();
+                string sCaminho = Pastas.PASTA_XML_CONFIG + "\\" + cbxArquivos.cbx.SelectedItem.ToString();
                 belConfiguracao objConfig = SerializeClassToXml.DeserializeClasse<belConfiguracao>(sCaminho);
                 sPastaProtocolos = objConfig.CAMINHO_PADRAO + "\\Protocolos\\";
 

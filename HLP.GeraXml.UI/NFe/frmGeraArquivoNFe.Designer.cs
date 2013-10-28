@@ -74,7 +74,6 @@ namespace HLP.GeraXml.UI.NFe
             this.txtNfIni = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtNfFim = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtCliente = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
-            this.cbxFormDanfe = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btnPesquisa = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -114,7 +113,7 @@ namespace HLP.GeraXml.UI.NFe
             this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel.Name = "kryptonPanel";
-            this.kryptonPanel.Size = new System.Drawing.Size(1234, 422);
+            this.kryptonPanel.Size = new System.Drawing.Size(1149, 422);
             this.kryptonPanel.TabIndex = 0;
             // 
             // kryptonPanel1
@@ -126,7 +125,7 @@ namespace HLP.GeraXml.UI.NFe
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1234, 422);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1149, 422);
             this.kryptonPanel1.TabIndex = 1;
             // 
             // dgvArquivos
@@ -155,7 +154,7 @@ namespace HLP.GeraXml.UI.NFe
             this.dgvArquivos.Location = new System.Drawing.Point(0, 56);
             this.dgvArquivos.Name = "dgvArquivos";
             this.dgvArquivos.RowHeadersVisible = false;
-            this.dgvArquivos.Size = new System.Drawing.Size(1234, 337);
+            this.dgvArquivos.Size = new System.Drawing.Size(1149, 337);
             this.dgvArquivos.TabIndex = 232;
             this.dgvArquivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArquivos_CellClick);
             this.dgvArquivos.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvArquivos_ColumnHeaderMouseClick);
@@ -308,7 +307,7 @@ namespace HLP.GeraXml.UI.NFe
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 393);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1234, 29);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1149, 29);
             this.flowLayoutPanel2.TabIndex = 231;
             // 
             // panel5
@@ -456,12 +455,11 @@ namespace HLP.GeraXml.UI.NFe
             this.flowLayoutPanel1.Controls.Add(this.txtNfIni);
             this.flowLayoutPanel1.Controls.Add(this.txtNfFim);
             this.flowLayoutPanel1.Controls.Add(this.txtCliente);
-            this.flowLayoutPanel1.Controls.Add(this.cbxFormDanfe);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 27);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1234, 29);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1149, 29);
             this.flowLayoutPanel1.TabIndex = 229;
             // 
             // cboStatus
@@ -615,29 +613,6 @@ namespace HLP.GeraXml.UI.NFe
             this.txtCliente.Size = new System.Drawing.Size(69, 23);
             this.txtCliente.TabIndex = 14;
             // 
-            // cbxFormDanfe
-            // 
-            this.cbxFormDanfe._Itens = ((System.Collections.Generic.List<string>)(resources.GetObject("cbxFormDanfe._Itens")));
-            this.cbxFormDanfe._LabelText = "Impressão";
-            this.cbxFormDanfe._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.SIM;
-            this.cbxFormDanfe._situacao = false;
-            this.cbxFormDanfe._TamanhoComboBox = 118;
-            this.cbxFormDanfe._TamanhoMaiorLabel = 0;
-            this.cbxFormDanfe._Visible = true;
-            this.cbxFormDanfe.AutoSize = true;
-            this.cbxFormDanfe.BackColor = System.Drawing.Color.Transparent;
-            this.cbxFormDanfe.Color = System.Drawing.Color.White;
-            this.cbxFormDanfe.DataSource = null;
-            this.cbxFormDanfe.DisplayMember = "DisplayMember";
-            this.cbxFormDanfe.Location = new System.Drawing.Point(1042, 3);
-            this.cbxFormDanfe.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
-            this.cbxFormDanfe.Name = "cbxFormDanfe";
-            this.cbxFormDanfe.SelectedIndex = 0;
-            this.cbxFormDanfe.SelectedValue = 0;
-            this.cbxFormDanfe.Size = new System.Drawing.Size(188, 23);
-            this.cbxFormDanfe.TabIndex = 15;
-            this.cbxFormDanfe.ValueMember = "ValueMember";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -662,7 +637,7 @@ namespace HLP.GeraXml.UI.NFe
             this.toolStripButton2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1234, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1149, 27);
             this.menuStrip1.TabIndex = 104;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -817,7 +792,7 @@ namespace HLP.GeraXml.UI.NFe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1234, 422);
+            this.ClientSize = new System.Drawing.Size(1149, 422);
             this.Controls.Add(this.kryptonPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -886,7 +861,6 @@ namespace HLP.GeraXml.UI.NFe
         private System.Windows.Forms.Panel panel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private System.Windows.Forms.HelpProvider helpProvider1;
-        private Comum.Componentes.HLP_ComboBox cbxFormDanfe;
         private System.Windows.Forms.Panel panel4;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblTotalRegistros;

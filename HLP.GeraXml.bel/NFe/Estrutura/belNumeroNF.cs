@@ -86,6 +86,29 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                 throw;
             }
         }
+        public void AlteraDuplicatasNFe()
+        {
+            try
+            {
+                foreach (daoNumeroNF.DadosGerar nota in lDadosGerar)
+                {
+                    daoRegras.AlteraDuplicatasNfe(nota.nNF, nota.seqNF, false);
+                    if (Acesso.NM_EMPRESA.Equals("LORENZON"))
+                    {
+                        belLorenzon objbelLorenzon = new belLorenzon();
+                        objbelLorenzon.AlteraDuplicataLorenzon(nota.nNF, nota.seqNF);
+                    }
+                    AtualizaMovitem(nota);
+                    belDuplicata objbelDuplicata = new belDuplicata();
+                    objbelDuplicata.BuscaVencto(nota.seqNF, nota.nNF);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
     }
 }

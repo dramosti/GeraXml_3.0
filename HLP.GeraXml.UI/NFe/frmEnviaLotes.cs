@@ -11,6 +11,7 @@ using HLP.GeraXml.bel.NFe.Estrutura;
 using HLP.GeraXml.bel.NFe;
 using System.Threading;
 using HLP.GeraXml.Comum.Static;
+using HLP.GeraXml.Comum;
 
 namespace HLP.GeraXml.UI.NFe
 {
@@ -46,7 +47,7 @@ namespace HLP.GeraXml.UI.NFe
             bsLotes.DataSource = lLotes;
 
         }
-
+        int iTentativas = 0;
         private void TransmiteLote(object l)
         {
             try
@@ -59,18 +60,28 @@ namespace HLP.GeraXml.UI.NFe
                     belBusRetFazenda objbelRetFazenda = new belBusRetFazenda(lote.lNotasPesquisa);
                     objbelRetFazenda.BuscaRetorno();
                     lote.xStatus = belTrataMensagemNFe.RetornaMensagem(objbelRetFazenda.lDadosRetorno, belTrataMensagemNFe.Tipo.Envio);
-                    lDadosRetorno.AddRange(objbelRetFazenda.lDadosRetorno);                    
+                    lDadosRetorno.AddRange(objbelRetFazenda.lDadosRetorno);
+                    iTentativas = 0;
                 }
                 catch (Exception ex)
                 {
-                    lote.xStatus = "Problema com o lote, Verifique a informação abaixo:" + Environment.NewLine + ex.Message;
+                    if (ex.Message.Contains("A conexão subjacente") && iTentativas < 4)
+                    {
+                        iTentativas++;
+                        TransmiteLote(lote);
+                    }
+                    else
+                    {
+                        lote.xStatus = "Problema com o lote, Verifique a informação abaixo:" + Environment.NewLine + ex.Message;
+                        iTentativas = 0;
+                    }
                 }
                 this.Invoke(new MethodInvoker(delegate()
                 {
                     dgvLotes.Refresh();
                     txtInfoLote.Text = lote.xStatus;
                 }));
-                
+
             }
             catch (Exception ex)
             {
@@ -85,38 +96,50 @@ namespace HLP.GeraXml.UI.NFe
                 BackgroundWorker w = sender as BackgroundWorker;
                 for (int i = 0; i < lLotes.Count; i++)
                 {
-                    lLotes[i].xStatus = "Carregando dados ...";
-                    this.Invoke(new MethodInvoker(delegate()
+                    try
                     {
-                        dgvLotes.CurrentCell = dgvLotes.Rows[i].Cells[0];
-                        dgvLotes.CurrentRow.DefaultCellStyle.BackColor = Color.Aquamarine;
-                        progressBar1.Maximum = lLotes.Count();
-                        dgvLotes.Refresh();
-                    }));
-                    lLotes[i].objDados.CarregaDados();
-                    w.ReportProgress(lLotes.Count() / 100);
-
-                    if (!Acesso.VISUALIZA_DADOS_NFE)
-                    {
-                        lLotes[i].xStatus = "Preparando para envio...";
+                        lLotes[i].xStatus = "Carregando dados ...";
                         this.Invoke(new MethodInvoker(delegate()
                         {
                             dgvLotes.CurrentCell = dgvLotes.Rows[i].Cells[0];
+                            dgvLotes.CurrentRow.DefaultCellStyle.BackColor = Color.Aquamarine;
+                            progressBar1.Maximum = lLotes.Count();
                             dgvLotes.Refresh();
                         }));
 
+                        lLotes[i].objDados.CarregaDados();
+                        w.ReportProgress(lLotes.Count() / 100);
 
-                        // Inicia rotina de envio das notas.
-                        ParameterizedThreadStart p = new ParameterizedThreadStart(TransmiteLote);
-                        Thread t = new Thread(p);
-                        t.Start(lLotes[i]);
+                        if (!Acesso.VISUALIZA_DADOS_NFE)
+                        {
+                            lLotes[i].xStatus = "Preparando para envio...";
+                            this.Invoke(new MethodInvoker(delegate()
+                            {
+                                dgvLotes.CurrentCell = dgvLotes.Rows[i].Cells[0];
+                                dgvLotes.Refresh();
+                            }));
+
+
+                            // Inicia rotina de envio das notas.
+                            ParameterizedThreadStart p = new ParameterizedThreadStart(TransmiteLote);
+                            Thread t = new Thread(p);
+                            t.Start(lLotes[i]);
+                        }
+                        else
+                        {
+                            lLotes[i].xStatus = "Dados carregados na memória...";
+                            this.Invoke(new MethodInvoker(delegate()
+                            {
+                                dgvLotes.CurrentCell = dgvLotes.Rows[i].Cells[0];
+                                dgvLotes.Refresh();
+                            }));
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        lLotes[i].xStatus = "Dados carregados na memória...";
+                        lLotes[i].xStatus = ex.Message;
                         this.Invoke(new MethodInvoker(delegate()
                         {
-                            dgvLotes.CurrentCell = dgvLotes.Rows[i].Cells[0];
                             dgvLotes.Refresh();
                         }));
                     }
@@ -131,32 +154,44 @@ namespace HLP.GeraXml.UI.NFe
                         objListaNFs.AddRange(lote.objDados.lNotas);
                     }
 
-                    this.Invoke(new MethodInvoker(delegate()
-                  {
-                      frmVisualizaNFe objFrmVisualizaDados = new frmVisualizaNFe(objListaNFs);
-                      objFrmVisualizaDados.ShowDialog();
-                      if (objFrmVisualizaDados.Cancelado)
+                    if (objListaNFs.Count > 0)
+                    {
+                        this.Invoke(new MethodInvoker(delegate()
                       {
-                          throw new Exception("Envio da(s) Nota(s) Cancelado");
-                      }
-
-
-                      foreach (lotes lote in lLotes)
-                      {
-                          lote.xStatus = "Lote sendo transmitido...";
-                          this.Invoke(new MethodInvoker(delegate()
+                          frmVisualizaNFe objFrmVisualizaDados = new frmVisualizaNFe(objListaNFs);
+                          objFrmVisualizaDados.ShowDialog();
+                          if (objFrmVisualizaDados.Cancelado)
                           {
-                              dgvLotes.Refresh();
-                          }));
-                          // Inicia rotina de envio das notas.
-                          ParameterizedThreadStart p = new ParameterizedThreadStart(TransmiteLote);
-                          Thread t = new Thread(p);
-                          t.Start(lote);
-                      }
-                  }));
+                              throw new Exception("Envio da(s) Nota(s) Cancelado");
+                          }
+
+
+                          foreach (lotes lote in lLotes)
+                          {
+                              lote.xStatus = "Lote sendo transmitido...";
+                              this.Invoke(new MethodInvoker(delegate()
+                              {
+                                  dgvLotes.Refresh();
+                              }));
+                              // Inicia rotina de envio das notas.
+                              ParameterizedThreadStart p = new ParameterizedThreadStart(TransmiteLote);
+                              Thread t = new Thread(p);
+                              t.Start(lote);
+                          }
+                      }));
+                    }
                 }
             }
-            catch (Exception ex) { throw ex; }
+            catch (Exception ex)
+            {
+                new HLPexception(ex);
+                //async_work.CancelAsync();
+                //timer1.Start();
+                this.Invoke(new MethodInvoker(delegate()
+                {
+                    this.Close();
+                }));
+            }
 
         }
 
@@ -216,6 +251,13 @@ namespace HLP.GeraXml.UI.NFe
             {
                 throw EX;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Thread.Sleep(100);
+            btnParar_Click(async_work, e);
+            timer1.Stop();
         }
 
 

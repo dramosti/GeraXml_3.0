@@ -584,14 +584,10 @@ namespace HLP.GeraXml.UI.NFse
                                     item.NumeroRPS = nota.NumeroRPS;
                                 }
                                 List<LoteRPS> lNotas = new List<LoteRPS>();
-                                lNotas.Add(nota);
-
-                                //ReportDocument rpt = new ReportDocument();
-                                //rptNFSeCamp rpt = new rptNFSeCamp();
-                                //rpt.Load(Application.StartupPath + "\\Relatorios\\rptNFSeDSF.rpt");
+                                lNotas.Add(nota);                               
 
                                 ReportDocument rpt = new ReportDocument();
-                                rpt.Load(Application.StartupPath + "\\Relatorios\\rptNFSeCamp.rpt");
+                                rpt.Load(Util.GetPathRelatorio("rptNFSeCamp.rpt"));
 
 
                                 dsNFSeCampinas ds = CarregaDataSet(sListImpressao.FirstOrDefault().sNfSeq, dadosEmpresa, sEnderPrestador, nota);
@@ -678,7 +674,7 @@ namespace HLP.GeraXml.UI.NFse
                             }
 
                             ReportDocument rpt = new ReportDocument();
-                            rpt.Load(Application.StartupPath + "\\Relatorios\\rptNfesSusesu.rpt");
+                            rpt.Load(Util.GetPathRelatorio("rptNfesSusesu.rpt"));
 
                             rpt.SetDataSource(lNfe);
 

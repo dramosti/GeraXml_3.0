@@ -163,8 +163,8 @@ namespace HLP.GeraXml.bel.NFe
                                 xRet.LoadXml(sRet);
                             }
                             if (Acesso.TP_AMB == 2)
-                            {
-                                throw new Exception("Não implementado");
+                            {                                
+                                throw new Exception("Não implementado para o RJ em modo de homologação.");
                             }
                             #endregion
                         }

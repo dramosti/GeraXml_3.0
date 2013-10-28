@@ -301,6 +301,11 @@ namespace HLP.GeraXml.UI.NFe
                         {
                             throw new Exception("Transmissão de Notas abortada");
                         }
+                        
+                        //Thread workThread = new Thread(objbelNumeracao.AlteraDuplicatasNFe);
+                        //workThread.Start();
+                        //while (!workThread.IsAlive) ;
+
                     }
 
                     if (objSelect.Where(c => c.bContingencia).Count() > 1)
@@ -393,7 +398,7 @@ namespace HLP.GeraXml.UI.NFe
                     }
                     else
                     {
-                        cboStatus.cbx.SelectedIndex = 2;
+                        //cboStatus.cbx.SelectedIndex = 2;
                         PesquisaNotas();
 
                         List<string> lsNotas = objfrmLotes.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
@@ -512,159 +517,6 @@ namespace HLP.GeraXml.UI.NFe
                 new HLPexception(ex);
             }
         }
-        private void btnImpressao_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                List<DadosImpressao> objListDadosImpressao = new List<DadosImpressao>();
-                dsDanfe dsdanfe = new dsDanfe();
-                belPopulaDataSetNfe objbelPopulaDataSetNfe = new belPopulaDataSetNfe();
-                string sPastaMes = "";
-                List<string> lCaminhoArquivosEnviados = new List<string>();
-                List<string> lCaminhoArquivosCancelados = new List<string>();
-                List<string> lCaminhoArquivosContingencia = new List<string>();
-
-
-                List<belPesquisaNotas> objSelecionadas = belPesq.lResultPesquisa.Where(c => c.bSeleciona).ToList<belPesquisaNotas>();
-                List<belPesquisaNotas> objSelect = objSelecionadas.Where(c =>
-                                                                   c.bEnviado == true ||
-                                                                   c.bCancelado == true ||
-                                                                   c.bContingencia == true).ToList<belPesquisaNotas>();
-
-                if (objSelect.Count() > 0)
-                {
-                    foreach (belPesquisaNotas nota in objSelect)
-                    {
-                        DadosImpressao objDados = new DadosImpressao();
-                        objDados.sCD_NFSEQ = nota.sCD_NFSEQ;
-                        objDados.sCD_NOTAFIS = nota.sCD_NOTAFIS;
-
-                        #region Busca os Arquivos selecionados
-
-                        sPastaMes = nota.sCHAVENFE.Substring(2, 4);
-                        string sCaminho = "";
-                        if (nota.bContingencia)
-                        {
-                            sCaminho = Pastas.CONTINGENCIA + "\\" + nota.sCHAVENFE + "-nfe.xml";
-                        }
-                        else
-                        {
-                            if (nota.bCancelado)
-                            {
-                                sCaminho = Pastas.CANCELADOS + "\\" + sPastaMes + "\\" + nota.sCHAVENFE + "-can.xml.xml";
-                                objDados.Cancelado = true;
-                            }
-                            else
-                            {
-                                sCaminho = Pastas.ENVIADOS + sPastaMes + "\\" + nota.sCHAVENFE + "-nfe.xml";
-                            }
-                        }
-                        if (File.Exists(sCaminho))
-                        {
-                            objDados.sCaminhoXml = sCaminho;
-                            objListDadosImpressao.Add(objDados);
-                            if (nota.bContingencia && !nota.bEnviado)
-                            {
-                                lCaminhoArquivosContingencia.Add(sCaminho);
-                            }
-                            else if (nota.bCancelado)
-                            {
-                                lCaminhoArquivosCancelados.Add(sCaminho);
-                            }
-                            else
-                            {
-                                lCaminhoArquivosEnviados.Add(sCaminho);
-                            }
-                        }
-                        else
-                        {
-                            throw new Exception("Arquivo Xml da NF-e nº " + nota.sCD_NOTAFIS + " não foi encontrado.");
-                        }
-
-                        #endregion
-                    }
-                    if ((lCaminhoArquivosEnviados.Count() > 0 || lCaminhoArquivosCancelados.Count() > 0) && lCaminhoArquivosContingencia.Count() > 0)
-                    {
-                        throw new Exception("Não é possível imprimir NF-e geradas em contingência juntamente com as normais." + Environment.NewLine +
-                        "Selecione apenas arquivos em contingência ou enviados e cancelados.");
-                    }
-
-                    #region Imprime Enviados
-
-                    if (lCaminhoArquivosEnviados.Count() > 0)
-                    {
-                        for (int i = 0; i < lCaminhoArquivosEnviados.Count; i++)
-                        {
-                            objbelPopulaDataSetNfe.PopulaDataSetXML(dsdanfe, lCaminhoArquivosEnviados[i].ToString(), (i + 1).ToString());
-
-                            dsDanfe dsPDF = new dsDanfe();
-                            objbelPopulaDataSetNfe.PopulaDataSetXML(dsPDF, lCaminhoArquivosEnviados[i].ToString(), 1.ToString());
-                            GeraPDF_Danfe(dsPDF, TipoPDF.ENVIADO, objListDadosImpressao.FirstOrDefault(C => C.sCaminhoXml == lCaminhoArquivosEnviados[i]));
-                        }
-                        if (Convert.ToBoolean(Acesso.EMAIL_AUTOMATICO))
-                        {
-                            EnviaEmail(objListDadosImpressao.Where(C => C.Cancelado == false).ToList());
-                        }
-                        Imprime_Danfe(dsdanfe, TipoPDF.ENVIADO);
-                    }
-                    #endregion
-
-                    #region Imprime Cancelados
-                    if (lCaminhoArquivosCancelados.Count() > 0)
-                    {
-                        for (int i = 0; i < lCaminhoArquivosCancelados.Count; i++)
-                        {
-                            objbelPopulaDataSetNfe.PopulaDataSetXML(dsdanfe, lCaminhoArquivosCancelados[i].ToString(), (i + 1).ToString());
-
-                            dsDanfe dsPDF = new dsDanfe();
-                            objbelPopulaDataSetNfe.PopulaDataSetXML(dsPDF, lCaminhoArquivosCancelados[i].ToString(), 1.ToString());
-                            GeraPDF_Danfe(dsPDF, TipoPDF.CANCELADO, objListDadosImpressao.FirstOrDefault(C => C.sCaminhoXml == lCaminhoArquivosCancelados[i]));
-                        }
-                        if (Convert.ToBoolean(Acesso.EMAIL_AUTOMATICO))
-                        {
-                            EnviaEmail(objListDadosImpressao.Where(C => C.Cancelado == true).ToList());
-                        }
-                        Imprime_Danfe(dsdanfe, TipoPDF.CANCELADO);
-                    }
-                    #endregion
-
-                    #region Imprime Contingencia
-
-                    if (lCaminhoArquivosContingencia.Count() > 0)
-                    {
-                        for (int i = 0; i < lCaminhoArquivosContingencia.Count; i++)
-                        {
-                            objbelPopulaDataSetNfe.PopulaDataSetXML(dsdanfe, lCaminhoArquivosContingencia[i].ToString(), (i + 1).ToString());
-
-                            dsDanfe dsPDF = new dsDanfe();
-                            objbelPopulaDataSetNfe.PopulaDataSetXML(dsPDF, lCaminhoArquivosContingencia[i].ToString(), 1.ToString());
-                            GeraPDF_Danfe(dsPDF, TipoPDF.CONTINGENCIA, objListDadosImpressao.FirstOrDefault(C => C.sCaminhoXml == lCaminhoArquivosContingencia[i]));
-                        }
-
-                        frmContratoContingenciaNfe objfrmContingencia = new frmContratoContingenciaNfe();
-                        objfrmContingencia.ShowDialog();
-                        if (objfrmContingencia.bImprime)
-                        {
-                            Imprime_Danfe(dsdanfe, TipoPDF.CONTINGENCIA);
-                        }
-                    }
-
-                    #endregion
-
-                }
-                else
-                {
-                    KryptonMessageBox.Show("Nenhuma nota Válida foi Selecionada", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                new HLPexception(ex);
-            }
-        }
-
-
-
 
         private void btnBuscaRetorno_Click(object sender, EventArgs e)
         {
@@ -821,171 +673,6 @@ namespace HLP.GeraXml.UI.NFe
             }
         }
         public enum TipoPDF { ENVIADO, CANCELADO, CONTINGENCIA };
-        private void GeraPDF_Danfe(dsDanfe ds, TipoPDF tpPdf, DadosImpressao objDados)
-        {
-            try
-            {
-                string sRelImpressao = "";
-
-                if (tpPdf == TipoPDF.CANCELADO)
-                {
-                    sRelImpressao = "RelDanfeCancelados.rpt";
-                }
-                else if (tpPdf == TipoPDF.ENVIADO)
-                {
-                    if (cbxFormDanfe.SelectedIndex == 0)
-                    {
-                        string simplificado = Acesso.USA_DANFE_SIMPLIFICADA;
-                        if (simplificado.ToUpper() == "TRUE")
-                        {
-                            sRelImpressao = "RelDanfeSimplificada.rpt";
-                        }
-                        else
-                        {
-                            sRelImpressao = "RelDanfe.rpt";
-                        }
-                    }
-                    else
-                    {
-                        sRelImpressao = "RelDanfePaisagem.rpt";
-                    }
-                }
-                else if (tpPdf == TipoPDF.CONTINGENCIA)
-                {
-                    sRelImpressao = "RelDanfeContingencia.rpt";
-                }
-
-
-                string sCaminho = "";
-                if (!String.IsNullOrEmpty(Acesso.CAMINHO_RELATORIO_ESPECIFICO))
-                {
-                    sCaminho = Acesso.CAMINHO_RELATORIO_ESPECIFICO + "\\" + sRelImpressao;
-                }
-                else
-                {
-                    sCaminho = Application.StartupPath + "\\Relatorios" + "\\" + sRelImpressao;
-                }
-
-                if (!File.Exists(sCaminho))
-                {
-                    MessageBox.Show("caminho inexistente: " + sCaminho);
-                }
-                string sCaminhoSave = Pastas.ENVIADOS + "\\PDF\\" + (ds.infNFe[0].ideRow.nNF.ToString().PadLeft(6, '0') + (tpPdf.ToString().Equals("ENVIADO") ? "_enviado" : "_cancelado")) + ".pdf";
-                if (!File.Exists(sCaminhoSave))
-                {
-                    ReportDocument rpt = new ReportDocument();
-                    rpt.Load(sCaminho);
-                    rpt.SetDataSource(ds);
-                    rpt.Refresh();
-
-                    DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\PDF");
-                    if (!dinfo.Exists)
-                    {
-                        dinfo.Create();
-                    }
-                    string sNmPdfVisualizacao = Environment.MachineName + "_Grupo_Danfes";
-                    Util.ExportPDF(rpt, sCaminhoSave);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-
-        }
-        private void Imprime_Danfe(dsDanfe ds, TipoPDF tpPdf)
-        {
-            try
-            {
-                string sRelImpressao = "";
-
-                if (tpPdf == TipoPDF.CANCELADO)
-                {
-                    sRelImpressao = "RelDanfeCancelados.rpt";
-                }
-                else if (tpPdf == TipoPDF.ENVIADO)
-                {
-                    if (cbxFormDanfe.SelectedIndex == 0)
-                    {
-                        string simplificado = Acesso.USA_DANFE_SIMPLIFICADA;
-                        if (simplificado.ToUpper() == "TRUE")
-                        {
-                            sRelImpressao = "RelDanfeSimplificada.rpt";
-                        }
-                        else
-                        {
-                            sRelImpressao = "RelDanfe.rpt";
-                        }
-                    }
-                    else
-                    {
-                        sRelImpressao = "RelDanfePaisagem.rpt";
-                    }
-                }
-                else if (tpPdf == TipoPDF.CONTINGENCIA)
-                {
-                    sRelImpressao = "RelDanfeContingencia.rpt";
-                }
-
-                ReportDocument rpt = new ReportDocument();
-                if (!String.IsNullOrEmpty(Acesso.CAMINHO_RELATORIO_ESPECIFICO))
-                {
-                    string sCaminho = Acesso.CAMINHO_RELATORIO_ESPECIFICO + "\\" + sRelImpressao;
-                    rpt.Load(sCaminho);
-                }
-                else
-                {
-                    rpt.Load(Application.StartupPath + "\\Relatorios" + "\\" + sRelImpressao);
-                }
-                rpt.SetDataSource(ds);
-                rpt.Refresh();
-
-
-
-                frmRelatorio objfrmDanfe = new frmRelatorio(rpt, "Impressão de DANFE");
-                objfrmDanfe.Show();
-
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-
-        }
-
-        private void EnviaEmail(List<DadosImpressao> objListDadosImpressao)
-        {
-            try
-            {
-                if (Acesso.VerificaDadosEmail())
-                {
-                    List<belEmail> objlbelEmail = new List<belEmail>();
-                    for (int i = 0; i < objListDadosImpressao.Count; i++)
-                    {
-                        belEmail objemail = new belEmail(objListDadosImpressao[i].sCaminhoXml, objListDadosImpressao[i].sCaminhoPDF, objListDadosImpressao[i].sCD_NFSEQ, objListDadosImpressao[i].sCD_NOTAFIS);
-                        objlbelEmail.Add(objemail);
-                    }
-
-                    if (objlbelEmail.Count > 0)
-                    {
-                        frmEmail objfrmEmail = new frmEmail(objlbelEmail, objListDadosImpressao.Where(C => C.Cancelado == true).Count() > 0 ? belEmail.TipoEmail.NFe_Cancelada : belEmail.TipoEmail.NFe_Normal);
-                        objfrmEmail.ShowDialog();
-                    }
-                }
-                else
-                {
-                    KryptonMessageBox.Show(null, "Campos para o envio de e-mail automático não estão preenchidos corretamente!", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
 
         private List<belPesquisaNotas> BuscaNotasSelecionadas()
         {
@@ -1001,6 +688,7 @@ namespace HLP.GeraXml.UI.NFe
                 throw;
             }
         }
+
         public void PesquisaNotas()
         {
             belPesquisaNotas.status st;
@@ -1133,7 +821,6 @@ namespace HLP.GeraXml.UI.NFe
         private void bsNotas_PositionChanged(object sender, EventArgs e)
         {
             ValidaContadorBuscaRetorno();
-
         }
 
         private void ValidaContadorBuscaRetorno()
@@ -1175,7 +862,6 @@ namespace HLP.GeraXml.UI.NFe
                 new HLPexception(ex);
             }
         }
-
 
         private void btnImpressao2_Click(object sender, EventArgs e)
         {
