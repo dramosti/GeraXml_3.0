@@ -70,7 +70,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                 foreach (daoNumeroNF.DadosGerar nota in lDadosGerar)
                 {
                     daoRegras.AlteraDuplicatasNfe(nota.nNF, nota.seqNF, bNotaServico);
-                    if (Acesso.NM_EMPRESA.Equals("LORENZON"))
+                    if (Acesso.NM_EMPRESA.Equals("LORENZON") || Acesso.NM_EMPRESA.Equals("LOCON"))
                     {
                         belLorenzon objbelLorenzon = new belLorenzon();
                         objbelLorenzon.AlteraDuplicataLorenzon(nota.nNF, nota.seqNF);

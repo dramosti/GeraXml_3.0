@@ -16,7 +16,7 @@ namespace HLP.GeraXml.dao.NFe
             public string sNrDoc { get; set; }
         }
 
-        public void BuscaVencto(string nfseq, string cdnotafis)
+        public void BuscaVencto(string nfseq, string cdnotafis, string cd_nfse = "")
         {
             string ssGravarCdDupli = HlpDbFuncoes.qrySeekValue("control", "control.cd_conteud", "cd_nivel = '1355'");
             string ssGravardteminf = HlpDbFuncoes.qrySeekValue("control", "control.cd_conteud", "cd_nivel = '1363'");
@@ -99,6 +99,8 @@ namespace HLP.GeraXml.dao.NFe
                 List<NotasDuplicatas> objListNfs = new List<NotasDuplicatas>();
                 NotasDuplicatas objNFs = new NotasDuplicatas();
 
+                string sNumGerador = (cd_nfse != "" ? cd_nfse : cdnotafis).Trim();
+
                 foreach (DataRow drEmit in dtEmit.Rows)
                 {
                     objNFs = new NotasDuplicatas();
@@ -109,7 +111,7 @@ namespace HLP.GeraXml.dao.NFe
                         {
                             iParcela++;
                             objNFs.sNF = string.Format("{0}{1}",
-                                                cdnotafis.Trim(),
+                                                sNumGerador,
                                                 Convert.ToChar((64 + iParcela)));
                             objNFs.sNrDoc = drEmit["NR_DOC"].ToString();
                         }
@@ -117,7 +119,7 @@ namespace HLP.GeraXml.dao.NFe
                         {
                             iSemNota++;
                             objNFs.sNF = string.Format("{0}/{1}",
-                                                Convert.ToInt64(cdnotafis).ToString().PadLeft(5, '0'),
+                                                Convert.ToInt64(sNumGerador).ToString().PadLeft(5, '0'),
                                                 iSemNota.ToString().Trim());
                             objNFs.sNrDoc = drEmit["NR_DOC"].ToString();
 
@@ -162,11 +164,16 @@ namespace HLP.GeraXml.dao.NFe
                 {
 
                     StringBuilder sSql = new StringBuilder();
+                    string sNumDup = "";
+                    if (objListNfs[i].sNF.Count() > 7)
+                        sNumDup = objListNfs[i].sNF.Substring((objListNfs[i].sNF.Count() - 7), 7);
+                    else
+                        sNumDup = objListNfs[i].sNF.PadLeft(7, '0');
 
                     sSql.Append("update ");
                     sSql.Append("doc_ctr ");
                     sSql.Append("set cd_dupli = '");
-                    sSql.Append(objListNfs[i].sNF);
+                    sSql.Append(sNumDup);
                     sSql.Append("' Where ");
                     sSql.Append("(cd_empresa = '");
                     sSql.Append(Acesso.CD_EMPRESA);

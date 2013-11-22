@@ -9,7 +9,7 @@ using FirebirdSql.Data.FirebirdClient;
 
 namespace HLP.GeraXml.dao.NFes
 {
-    public class daoRecepcao
+    public class daoRecepcaoServ
     {
         public void SalvaRecibo(string sReciboProt, string Nfseq)
         {

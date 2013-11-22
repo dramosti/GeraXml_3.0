@@ -12,10 +12,11 @@ using System.Xml.Linq;
 using HLP.GeraXml.dao.NFes;
 using System.Data;
 using HLP.GeraXml.Comum;
+using HLP.GeraXml.dao.NFe;
 
 namespace HLP.GeraXml.bel.NFes
 {
-    public class belRecepcao : daoRecepcao
+    public class belRecepcao : daoRecepcaoServ
     {
         string sReciboProt;
         daoBuscaDados objdaoBuscaDados = new daoBuscaDados();
@@ -235,10 +236,16 @@ namespace HLP.GeraXml.bel.NFes
 
                             tcIdentificacaoRps objIdentRps = BuscatcIdentificacaoRps(xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "") + "IdentificacaoRps")[i][(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "") + "Numero"].InnerText.PadLeft(6, '0'));
 
-
+                            string sNotaFis = xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "") + "InfNfse")[i][(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "") + "Numero"].InnerText;
                             if (Acesso.NM_EMPRESA.Equals("LORENZON"))
                             {
-                                AlteraDuplicataNumNFse(objIdentRps, xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "") + "InfNfse")[i][(Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "") + "Numero"].InnerText);
+                                AlteraDuplicataNumNFse(objIdentRps, sNotaFis);
+                            }
+
+                            if (Acesso.NM_EMPRESA.Equals("FORMINGP"))
+                            {                                
+                                daoDuplicata objdaodup = new daoDuplicata();
+                                objdaodup.BuscaVencto(objIdentRps.Nfseq, sNotaFis, objIdentRps.Numero);
                             }
 
                             if (xmlRet.GetElementsByTagName((Acesso.tipoWsNfse == Acesso.TP_WS_NFSE.GINFES ? "ns4:" : "") + "SubstituicaoNfse")[i] != null)

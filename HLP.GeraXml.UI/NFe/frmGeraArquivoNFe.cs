@@ -301,7 +301,7 @@ namespace HLP.GeraXml.UI.NFe
                         {
                             throw new Exception("Transmissão de Notas abortada");
                         }
-                        
+
                         //Thread workThread = new Thread(objbelNumeracao.AlteraDuplicatasNFe);
                         //workThread.Start();
                         //while (!workThread.IsAlive) ;
@@ -657,12 +657,13 @@ namespace HLP.GeraXml.UI.NFe
                     {
                         sTipoDanfe = "_" + Acesso.TIPO_IMPRESSAO;
                     }
-                    return string.Format((Pastas.ENVIADOS + "\\PDF\\{0}{1}{2}.pdf"), this.sCD_NOTAFIS.ToString().PadLeft(6, '0'), "_" + this.tipo.ToString(), sTipoDanfe);
+                    return string.Format((Pastas.ENVIADOS + "\\PDF\\{0}{1}{2}_{3}.pdf"), this.sCD_NOTAFIS.ToString().PadLeft(6, '0'), "_" + this.tipo.ToString(), sTipoDanfe, this.sNUM_GRUPO);
                 }
             }
             public bool Cancelado = false;
             public string sCD_NFSEQ { get; set; }
             public string sCD_NOTAFIS { get; set; }
+            public string sNUM_GRUPO { get; set; }
             public TipoPDF tipo { get; set; }
             private string _xStatus = "Aguardando início do processo...";
 
@@ -877,11 +878,26 @@ namespace HLP.GeraXml.UI.NFe
 
                 if (objSelect.Count() > 0)
                 {
+                    if (Acesso.NM_EMPRESA == "MASTERFEW")
+                    {
+                        int iCountNotaNETSHOES = objSelect.Where(C => C.sNM_GUERRA.ToUpper().Contains("NETSHOES")).Count();
+
+                        if (iCountNotaNETSHOES > 0)
+                        {
+                            if (iCountNotaNETSHOES != objSelect.Count())
+                            {
+                                throw new Exception("Notas para o cliente NETSHOES devem ser impressas individualmente.");
+                            }
+
+                        }
+                    }
+
                     foreach (belPesquisaNotas nota in objSelect)
                     {
                         DadosImpressao objDados = new DadosImpressao();
                         objDados.sCD_NFSEQ = nota.sCD_NFSEQ;
                         objDados.sCD_NOTAFIS = nota.sCD_NOTAFIS;
+                        objDados.sNUM_GRUPO = nota.sCD_GRUPONF;
 
                         #region Busca os Arquivos selecionados
 

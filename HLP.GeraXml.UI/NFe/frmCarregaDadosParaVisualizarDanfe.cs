@@ -241,11 +241,11 @@ namespace HLP.GeraXml.UI.NFe
                     if (nfe.cobrField != null)
                     {
                         string sDupl = "Nº:{0}-{1}-R${2}";
-                        
+
                         objNFe.xDuplicatas = "";
                         foreach (TNFeInfNFeCobrDup dupli in nfe.cobrField.dup)
                         {
-                            objNFe.xDuplicatas += string.Format(sDupl, dupli.nDup,Convert.ToDateTime(dupli.dVenc).ToString("dd/MM/yy"),dupli.vDup).PadRight(33, ' ') + "|";
+                            objNFe.xDuplicatas += string.Format(sDupl, dupli.nDup, Convert.ToDateTime(dupli.dVenc).ToString("dd/MM/yy"), dupli.vDup).PadRight(33, ' ') + "|";
                             if (iCount == 3)
                                 objNFe.xDuplicatas += Environment.NewLine;
 
@@ -264,7 +264,7 @@ namespace HLP.GeraXml.UI.NFe
                     prod.count = iCount;
                     iCount++;
                     prod.ide_nNF = objNFe.ide_nNF;
-                    prod.cProd = item.prodField.cProd.PadLeft(7, '0');
+                    prod.cProd = item.prodField.cProd.ToString().Trim();
                     prod.xProd = item.prodField.xProd;
                     prod.ncm = item.prodField.NCM;
                     prod.cfop = item.prodField.CFOP;
@@ -272,7 +272,9 @@ namespace HLP.GeraXml.UI.NFe
                     prod.qCom = PopulaDs.FormataQtdeComercial(item.prodField.qCom.ToString().Replace('.', ','));
                     prod.vProd = item.prodField.vProd.Replace('.', ',');
                     prod.vUnCom = item.prodField.vUnCom.Replace('.', ',');
+                    prod.cEAN = item.prodField.cEAN;
                     prod.xObs = item.infAdProd == null ? "" : item.infAdProd;
+
 
                     object icms = item.impostoField.Items.FirstOrDefault(c => c.GetType() == typeof(TNFeInfNFeDetImpostoICMS));
                     if (icms != null)
@@ -474,15 +476,16 @@ namespace HLP.GeraXml.UI.NFe
                 }
                 ReportDocument rpt = new ReportDocument();
 
-                
+
 
                 if (Convert.ToBoolean(Acesso.USA_DANFE_SIMPLIFICADA))
                 {
-                    rpt.Load(Util.GetPathRelatorio("RelDanfeSimplificada2013.rpt") );
+                    rpt.Load(Util.GetPathRelatorio("RelDanfeSimplificada2013.rpt"));
                 }
                 else if (Acesso.TIPO_IMPRESSAO.Equals("Retrato"))
                 {
-                    rpt.Load(Util.GetPathRelatorio("RelDanfe2013.rpt"));
+                    string xCNPJ = objNFeToReport.FirstOrDefault().dest_CPF_CNPJ;
+                    rpt.Load(Util.GetPathRelatorio("RelDanfe2013.rpt", xCNPJ));
                 }
                 else
                 {
@@ -568,6 +571,7 @@ namespace HLP.GeraXml.UI.NFe
         {
             try
             {
+
                 if (worker.IsBusy == false)
                 {
                     timerGeraPDF.Stop();
@@ -575,14 +579,16 @@ namespace HLP.GeraXml.UI.NFe
                     DataSet dsTemp = new DataSet();
                     dsTemp.ReadXml(sFileSave);
 
+
                     ReportDocument rpt = new ReportDocument();
                     if (Convert.ToBoolean(Acesso.USA_DANFE_SIMPLIFICADA))
                     {
-                        rpt.Load(Util.GetPathRelatorio("RelDanfeSimplificada2013.rpt") );
+                        rpt.Load(Util.GetPathRelatorio("RelDanfeSimplificada2013.rpt"));
                     }
                     else if (Acesso.TIPO_IMPRESSAO.Equals("Retrato"))
                     {
-                        rpt.Load(Util.GetPathRelatorio("RelDanfe2013.rpt"));
+                        string xCNPJ = objNFeToReport.FirstOrDefault().dest_CPF_CNPJ;
+                        rpt.Load(Util.GetPathRelatorio("RelDanfe2013.rpt", xCNPJ));
                     }
                     else
                     {

@@ -19,7 +19,12 @@ namespace HLP.GeraXml.bel.NFe
         public bool bSeleciona { get; set; }
         public string sCD_NOTAFIS { get; set; }
         public string sCD_NFSEQ { get; set; }
-        public string sCD_GRUPONF { get; set; }
+        private string _sCD_GRUPONF;
+        public string sCD_GRUPONF
+        {
+            get { return _sCD_GRUPONF; }
+            set { _sCD_GRUPONF = value; }
+        }
         public string scd_numero_nfse { get; set; }
         public DateTime dDT_EMI { get; set; }
         public string sNM_CLIFOR { get; set; }

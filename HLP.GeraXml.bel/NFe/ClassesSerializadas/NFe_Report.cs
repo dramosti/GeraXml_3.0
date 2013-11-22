@@ -414,7 +414,13 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
         public string xObs { get; set; }
 
 
+        private string _cEAN = string.Empty;
 
+        public string cEAN
+        {
+            get { return _cEAN; }
+            set { _cEAN = value; }
+        }
 
     }
 

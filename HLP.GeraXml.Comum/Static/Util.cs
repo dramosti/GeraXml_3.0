@@ -17,7 +17,7 @@ namespace HLP.GeraXml.Comum.Static
     public static class Util
     {
 
-        public static string GetPathRelatorio(string xNameRpt) 
+        public static string GetPathRelatorio(string xNameRpt, string xCNPJ = "")
         {
             string sPath = Application.StartupPath + "\\Relatorios\\" + xNameRpt;
             if (!string.IsNullOrEmpty(Acesso.CAMINHO_RELATORIO_ESPECIFICO))
@@ -27,6 +27,14 @@ namespace HLP.GeraXml.Comum.Static
                 {
                     sPath = Application.StartupPath + "\\Relatorios\\" + xNameRpt;
                 }
+
+                if (Acesso.NM_EMPRESA == "MASTERFEW")
+                {
+                    if (xCNPJ.ToUpper().Contains("09339936000205") == false)
+                        sPath = Application.StartupPath + "\\Relatorios\\" + xNameRpt;
+                }
+
+
             }
             return sPath;
         }
@@ -39,7 +47,7 @@ namespace HLP.GeraXml.Comum.Static
                 if (key != null)
                 {
                     Pastas.PASTA_XML_CONFIG = key.GetValue(Pastas.Caminho_xmls, "").ToString();
-                    return true;                    
+                    return true;
                 }
                 else
                 {
@@ -805,7 +813,7 @@ namespace HLP.GeraXml.Comum.Static
             {
                 sb.Append(hash[i].ToString("X2"));
             }
-            return sb.ToString().ToLower();                      
+            return sb.ToString().ToLower();
         }
 
 
