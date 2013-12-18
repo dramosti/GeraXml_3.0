@@ -36,10 +36,16 @@ namespace HLP.GeraXml.Comum.Static
         public static string NM_RAZAOSOCIAL { get; set; }
         public static string NM_EMPRESA { get; set; }
         public static string NM_FANTASIA { get; set; }
+       
+        private static int _TP_AMB;
         /// <summary>
         /// 1-Produção / 2-Homologação
         /// </summary>
-        public static int TP_AMB { get; set; }
+        public static int TP_AMB
+        {
+            get { return Acesso._TP_AMB; }
+            set { Acesso._TP_AMB = value; }
+        } 
 
         private static int _TP_AMB_SERV;
         /// <summary>
@@ -118,7 +124,7 @@ namespace HLP.GeraXml.Comum.Static
         {
             get
             {
-                if (Acesso.xUF == "RJ" || Acesso.xUF == "RS")
+                if (Acesso.xUF == "RJ")
                 {
                     return "SVRS";
                 }

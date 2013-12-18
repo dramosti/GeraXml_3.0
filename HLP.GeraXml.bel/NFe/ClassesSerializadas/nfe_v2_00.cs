@@ -12242,21 +12242,110 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/nfe")]
     public partial class TNFeInfNFeTotalICMSTot
     {
-        public string vBC { get; set; }
-        public string vICMS { get; set; }
-        public string vBCST { get; set; }
-        public string vST { get; set; }
-        public string vProd { get; set; }
-        public string vFrete { get; set; }
-        public string vSeg { get; set; }
-        public string vDesc { get; set; }
-        public string vII { get; set; }
-        public string vIPI { get; set; }
-        public string vPIS { get; set; }
-        public string vCOFINS { get; set; }
-        public string vOutro { get; set; }
-        public string vNF { get; set; }
-        public string vTotTrib { get; set; }
+        private string _vBC = "0";
+        public string vBC
+        {
+            get { return _vBC; }
+            set { _vBC = value; }
+        }
+        
+        private string _vICMS = "0";
+        public string vICMS
+        {
+            get { return _vICMS; }
+            set { _vICMS = value; }
+        }
+        
+        private string _vBCST = "0";
+        public string vBCST
+        {
+            get { return _vBCST; }
+            set { _vBCST = value; }
+        }
+        
+        private string _vST = "0";
+        public string vST
+        {
+            get { return _vST; }
+            set { _vST = value; }
+        }
+        
+        private string _vProd = "0";
+        public string vProd
+        {
+            get { return _vProd; }
+            set { _vProd = value; }
+        }
+        
+        private string _vFrete = "0";
+        public string vFrete
+        {
+            get { return _vFrete; }
+            set { _vFrete = value; }
+        }
+        
+        private string _vSeg = "0";
+        public string vSeg
+        {
+            get { return _vSeg; }
+            set { _vSeg = value; }
+        }
+        
+        private string _vDesc = "0";
+        public string vDesc
+        {
+            get { return _vDesc; }
+            set { _vDesc = value; }
+        }
+        
+        private string _vII = "0";
+        public string vII
+        {
+            get { return _vII; }
+            set { _vII = value; }
+        }
+        
+        private string _vIPI = "0";
+        public string vIPI
+        {
+            get { return _vIPI; }
+            set { _vIPI = value; }
+        }
+        
+        private string _vPIS = "0";
+        public string vPIS
+        {
+            get { return _vPIS; }
+            set { _vPIS = value; }
+        }
+        
+        private string _vCOFINS = "0";
+        public string vCOFINS
+        {
+            get { return _vCOFINS; }
+            set { _vCOFINS = value; }
+        }
+        
+        private string _vOutro = "0";
+        public string vOutro
+        {
+            get { return _vOutro; }
+            set { _vOutro = value; }
+        }
+        
+        private string _vNF = "0";
+        public string vNF
+        {
+            get { return _vNF; }
+            set { _vNF = value; }
+        }
+        
+        private string _vTotTrib = "0";
+        public string vTotTrib
+        {
+            get { return _vTotTrib; }
+            set { _vTotTrib = value; }
+        }
     }
 
     /// <remarks/>

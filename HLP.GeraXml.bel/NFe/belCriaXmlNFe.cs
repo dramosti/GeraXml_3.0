@@ -690,7 +690,7 @@ namespace HLP.GeraXml.bel.NFe
                                                        (!String.IsNullOrEmpty(objtransp.belReboque.Uf) ? new XElement(pf + "UF", objtransp.belReboque.Uf.ToString()) : null),
                                                        (!String.IsNullOrEmpty(objtransp.belReboque.Rntc) ? new XElement(pf + "RNTC", objtransp.belReboque.Rntc.ToString()) : null)) : null),
                        (objtransp.belVol != null ? new XElement(pf + "vol",
-                                                       (objtransp.belVol.Qvol > 0 ? new XElement(pf + "qVol", objtransp.belVol.Qvol.ToString("#")) : null),
+                                                       (objtransp.belVol.Qvol > 0 ? new XElement(pf + "qVol", Convert.ToInt32(objtransp.belVol.Qvol).ToString()) : null),
                                                        (!String.IsNullOrEmpty(objtransp.belVol.Esp) ? new XElement(pf + "esp", objtransp.belVol.Esp.ToString()) : null),
                                                        (!String.IsNullOrEmpty(objtransp.belVol.Marca) ? new XElement(pf + "marca", objtransp.belVol.Marca.ToString()) : null),
                                                        (!String.IsNullOrEmpty(objtransp.belVol.Nvol) ? new XElement(pf + "nVol", objtransp.belVol.Nvol.ToString()) : null),

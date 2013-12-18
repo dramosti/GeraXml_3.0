@@ -289,12 +289,15 @@ namespace HLP.GeraXml.bel.NFe
             DadosRetorno objRetorno = new DadosRetorno();
             objRetorno.cStat = objConsulta.cStat;
             objRetorno.xMotivo = objConsulta.xMotivo;
-            objRetorno.dhRecbto = objConsulta.protNFe.infProt.dhRecbto.ToString("dd/MM/yyyy HH:mm");
-            objRetorno.digVal = objConsulta.protNFe.infProt.digVal;
+            if (objConsulta.protNFe != null)
+            {
+                objRetorno.dhRecbto = objConsulta.protNFe.infProt.dhRecbto.ToString("dd/MM/yyyy HH:mm");
+                objRetorno.digVal = objConsulta.protNFe.infProt.digVal;
+            }
             objRetorno.chNFe = objConsulta.chNFe;
 
             if ((objRetorno.cStat == "100") || (objRetorno.cStat == "101") || (objRetorno.cStat == "110"))
-            {                
+            {
                 objRetorno.nProt = "";
                 if (objConsulta.procEventoNFe.Count() > 0)
                 {
@@ -303,17 +306,17 @@ namespace HLP.GeraXml.bel.NFe
                         if (evento.retEvento.infEvento.tpEvento == "110111")
                         {
                             objRetorno.nProt = evento.retEvento.infEvento.nProt;
-                            objRetorno.xMotivo = objConsulta.xMotivo;      
+                            objRetorno.xMotivo = objConsulta.xMotivo;
                             //Altera Nota para cancelada
                             dao.NFe.daoCancelamento objdaoCanc = new dao.NFe.daoCancelamento();
                             objdaoCanc.AlteraNotaParaCancelada(objRetorno.nProt, objPesquisa.sCD_NFSEQ);
                             belCancelamento.MoveArquivoParaPastaCancelada(objPesquisa);
-                        }                        
+                        }
                     }
                 }
                 if (objRetorno.nProt == "")
                 {
-                    objRetorno.nProt = objConsulta.protNFe.infProt.nProt;                    
+                    objRetorno.nProt = objConsulta.protNFe.infProt.nProt;
                 }
             }
             else
@@ -321,7 +324,7 @@ namespace HLP.GeraXml.bel.NFe
                 objRetorno.dhRecbto = "s/data";
                 objRetorno.nProt = "inexistente";
                 objRetorno.digVal = "inexistente";
-            }         
+            }
             objRetorno.nNota = objPesquisa.sCD_NOTAFIS;
             objRetorno.seqNota = objPesquisa.sCD_NFSEQ;
             return objRetorno;

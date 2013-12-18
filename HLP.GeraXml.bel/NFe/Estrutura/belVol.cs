@@ -15,7 +15,10 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         public decimal Qvol
         {
             get { return _qvol; }
-            set { _qvol = value; }
+            set
+            {
+                _qvol = Convert.ToInt32(value);
+            }
         }
         /// <summary>
         /// Espécie dos Volumes transportados

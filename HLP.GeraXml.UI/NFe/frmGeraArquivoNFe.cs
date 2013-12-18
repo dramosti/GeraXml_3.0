@@ -953,5 +953,10 @@ namespace HLP.GeraXml.UI.NFe
                 new HLPexception(ex);
             }
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

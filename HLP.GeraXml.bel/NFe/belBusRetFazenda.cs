@@ -377,6 +377,39 @@ namespace HLP.GeraXml.bel.NFe
                                 #endregion
                             }
                             break;
+                        case "RS":
+                            {
+                                #region Regiao_SP
+                                if (Acesso.TP_AMB == 1)
+                                {
+                                    HLP.GeraXml.WebService.v2_Producao_NFeRetRecepcao_RS.NfeRetRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeRetRecepcao_RS.NfeRetRecepcao2();
+                                    HLP.GeraXml.WebService.v2_Producao_NFeRetRecepcao_RS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeRetRecepcao_RS.nfeCabecMsg();
+                                    cabec.cUF = Acesso.cUF.ToString();
+                                    cabec.versaoDados = Acesso.versaoNFe;
+                                    ws2.nfeCabecMsgValue = cabec;
+                                    ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                                    XmlDocument xmlNfeDadosMsg = new XmlDocument();
+                                    xmlNfeDadosMsg.LoadXml(snfeDadosMsg);
+                                    XmlNode xNodeRet = xmlNfeDadosMsg.DocumentElement;
+                                    sXmlRetorno = ws2.nfeRetRecepcao2(xNodeRet).OuterXml;
+                                }
+                                else if (Acesso.TP_AMB == 2)
+                                {
+                                    HLP.GeraXml.WebService.v2_Homologacao_NFeRetRecepacao_RS.NfeRetRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NFeRetRecepacao_RS.NfeRetRecepcao2();
+                                    HLP.GeraXml.WebService.v2_Homologacao_NFeRetRecepacao_RS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NFeRetRecepacao_RS.nfeCabecMsg();
+                                    cabec.cUF = Acesso.cUF.ToString();
+                                    cabec.versaoDados = Acesso.versaoNFe;
+                                    ws2.nfeCabecMsgValue = cabec;
+                                    ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                                    XmlDocument xmlNfeDadosMsg = new XmlDocument();
+                                    xmlNfeDadosMsg.LoadXml(snfeDadosMsg);
+                                    XmlNode xNodeRet = xmlNfeDadosMsg.DocumentElement;
+                                    sXmlRetorno = ws2.nfeRetRecepcao2(xNodeRet).OuterXml;
+                                }
+                                #endregion
+                            }
+                            break;
+
 
                     }
                     //fazer Ret Recepcao para MS E RS

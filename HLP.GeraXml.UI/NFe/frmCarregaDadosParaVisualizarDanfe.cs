@@ -226,8 +226,11 @@ namespace HLP.GeraXml.UI.NFe
                 objNFe.ICMSTot_vOutro = nfe.totalField.ICMSTot.vOutro.Replace('.', ',');
                 objNFe.ICMSTot_vNF = nfe.totalField.ICMSTot.vNF.Replace('.', ',');
                 objNFe.ICMSTot_vTotTrib = nfe.totalField.ICMSTot.vTotTrib.Replace('.', ',');
-
-                objNFe.xObs = nfe.infAdicField.infCpl.Replace(";", "." + Environment.NewLine);
+                if (nfe.infAdicField.infCpl != null)
+                {
+                    objNFe.xObs = nfe.infAdicField.infCpl.Replace(";", "." + Environment.NewLine);
+                }
+              
 
                 if (nfe.totalField.ISSQNtot != null)
                 {
