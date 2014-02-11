@@ -129,8 +129,18 @@ namespace HLP.GeraXml.UI.NFse
                 st = belPesquisaNotas.status.Ambos;
             }
 
+            belPesquisaNotas.Filtro filtro = belPesquisaNotas.Filtro.Data;
+            if (cboFiltro.cbx.SelectedIndex == 0)
+                filtro = belPesquisaNotas.Filtro.Data;
+            else if (cboFiltro.cbx.SelectedIndex == 1)
+                filtro = belPesquisaNotas.Filtro.Sequencia;
+            else if (cboFiltro.cbx.SelectedIndex == 2)
+                filtro = belPesquisaNotas.Filtro.NFSe;
+
+
+
             belPesq = new belPesquisaNotas(st,
-                                                           (cboFiltro.cbx.SelectedIndex == 0 ? belPesquisaNotas.Filtro.Data : belPesquisaNotas.Filtro.Sequencia),
+                                                           filtro,
                                                            (cboFiltro.cbx.SelectedIndex == 0 ? dtpIni.Value.ToString() : txtNfIni.Text),
                                                            (cboFiltro.cbx.SelectedIndex == 0 ? dtpFim.Value.ToString() : txtNfFim.Text), true);
             bsNotas.DataSource = belPesq.lResultPesquisa;
@@ -584,7 +594,7 @@ namespace HLP.GeraXml.UI.NFse
                                     item.NumeroRPS = nota.NumeroRPS;
                                 }
                                 List<LoteRPS> lNotas = new List<LoteRPS>();
-                                lNotas.Add(nota);                               
+                                lNotas.Add(nota);
 
                                 ReportDocument rpt = new ReportDocument();
                                 rpt.Load(Util.GetPathRelatorio("rptNFSeCamp.rpt"));

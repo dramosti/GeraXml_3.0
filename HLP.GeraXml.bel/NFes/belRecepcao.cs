@@ -27,7 +27,7 @@ namespace HLP.GeraXml.bel.NFes
         public List<TcInfNfse> objListaNfseRetorno = new List<TcInfNfse>();
         public string sCodigoRetorno = "";
         public string NumeroLote { get; set; }
-        private string _Protocolo;
+        private string _Protocolo = "";
 
         public string Protocolo
         {
@@ -243,7 +243,7 @@ namespace HLP.GeraXml.bel.NFes
                             }
 
                             if (Acesso.NM_EMPRESA.Equals("FORMINGP"))
-                            {                                
+                            {
                                 daoDuplicata objdaodup = new daoDuplicata();
                                 objdaodup.BuscaVencto(objIdentRps.Nfseq, sNotaFis, objIdentRps.Numero);
                             }

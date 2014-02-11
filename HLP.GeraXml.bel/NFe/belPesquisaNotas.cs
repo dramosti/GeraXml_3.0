@@ -11,7 +11,7 @@ namespace HLP.GeraXml.bel.NFe
     public class belPesquisaNotas : dao.NFe.daoPesquisaNotas
     {
         public enum status { Enviados, NaoEnviados, Ambos };
-        public enum Filtro { Data, Sequencia, Cliente };
+        public enum Filtro { Data, Sequencia, Cliente, NFSe };
         /// <summary>
         /// Chave de Retorno
         /// </summary>
@@ -148,6 +148,10 @@ namespace HLP.GeraXml.bel.NFe
             if (_fl == Filtro.Data)
             {
                 sWhere.Append("(dt_emi between '" + Convert.ToDateTime(_sValor1).ToString("dd.MM.yyyy") + "' and '" + Convert.ToDateTime(_sValor2).ToString("dd.MM.yyyy") + "')");
+            }
+            else if (_fl == Filtro.NFSe)
+            {
+                sWhere.Append("(nf.cd_numero_nfse between '" + Convert.ToInt32(_sValor1).ToString() + "' and '" + Convert.ToInt32(_sValor2).ToString() + "')");
             }
             else
             {
