@@ -29,7 +29,7 @@ namespace HLP.GeraXml.UI.NFe
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGeraArquivoNFe));
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -208,8 +208,8 @@ namespace HLP.GeraXml.UI.NFe
             // 
             this.dVLTOTNFDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dVLTOTNFDataGridViewTextBoxColumn.DataPropertyName = "dVL_TOTNF";
-            dataGridViewCellStyle2.Format = "n2";
-            this.dVLTOTNFDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "n2";
+            this.dVLTOTNFDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.dVLTOTNFDataGridViewTextBoxColumn.HeaderText = "Valor";
             this.dVLTOTNFDataGridViewTextBoxColumn.Name = "dVLTOTNFDataGridViewTextBoxColumn";
             this.dVLTOTNFDataGridViewTextBoxColumn.ReadOnly = true;

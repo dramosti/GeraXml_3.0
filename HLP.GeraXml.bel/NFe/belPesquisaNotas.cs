@@ -11,7 +11,7 @@ namespace HLP.GeraXml.bel.NFe
     public class belPesquisaNotas : dao.NFe.daoPesquisaNotas
     {
         public enum status { Enviados, NaoEnviados, Ambos };
-        public enum Filtro { Data, Sequencia, Cliente, NFSe };
+        public enum Filtro { Data, Sequencia, Cliente, NFSe, NF };
         /// <summary>
         /// Chave de Retorno
         /// </summary>
@@ -86,6 +86,10 @@ namespace HLP.GeraXml.bel.NFe
             {
                 sWhere.Append("(nf.cd_nfseq between '" + _sValor1 + "' and '" + _sValor2 + "') ");
             }
+            else if (_fl == Filtro.NF)
+            {
+                sWhere.Append("(nf.cd_notafis between '" + _sValor1 + "' and '" + _sValor2 + "') ");
+            }
             else if (_fl == Filtro.Cliente)
             {
                 sWhere.Append("clifor.nm_clifor like('%" + _sValor1.ToUpper() + "%')");
@@ -153,9 +157,17 @@ namespace HLP.GeraXml.bel.NFe
             {
                 sWhere.Append("(nf.cd_numero_nfse between '" + Convert.ToInt32(_sValor1).ToString() + "' and '" + Convert.ToInt32(_sValor2).ToString() + "')");
             }
-            else
+            else if (_fl == Filtro.NF)
+            {
+                sWhere.Append("(nf.cd_notafis between '" + _sValor1+ "' and '" + _sValor2+ "')");
+            }
+            else if (_fl == Filtro.Sequencia)
             {
                 sWhere.Append("(nf.cd_nfseq between '" + _sValor1 + "' and '" + _sValor2 + "')");
+            }
+            else if (_fl == Filtro.Cliente)
+            {
+                sWhere.Append("clifor.nm_clifor like('%" + _sValor1.ToUpper() + "%')");
             }
             sWhere.Append(" order by cd_notafis desc");
 

@@ -84,21 +84,34 @@ namespace HLP.GeraXml.UI.NFse
         }
         private void cbx_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Por Data
+            //Por Sequência
+            //Por Cliente
+            //NF
+            //NFS-e
+            txtCliente.Visible = false;
             if (cboFiltro.SelectedIndex == 0)
             {
                 txtNfIni.Visible = false;
                 txtNfFim.Visible = false;
-
                 dtpIni.Visible = true;
                 dtpFim.Visible = true;
             }
-            else
+            else if (cboFiltro.SelectedIndex == 1 || cboFiltro.SelectedIndex == 3 || cboFiltro.SelectedIndex == 4)
             {
                 txtNfIni.Visible = true;
                 txtNfFim.Visible = true;
-
                 dtpIni.Visible = false;
                 dtpFim.Visible = false;
+            }
+            else if (cboFiltro.SelectedIndex == 2)
+            {
+                txtNfIni.Visible = false;
+                txtNfFim.Visible = false;
+                dtpIni.Visible = false;
+                dtpFim.Visible = false;
+                txtCliente._TamanhoTextBox = 200;
+                txtCliente.Visible = true;
             }
         }
 
@@ -128,21 +141,50 @@ namespace HLP.GeraXml.UI.NFse
             {
                 st = belPesquisaNotas.status.Ambos;
             }
-
+            //Por Data
+            //Por Sequência
+            //Por Cliente
+            //NF
+            //NFS-e
+            string sValor1 = string.Empty;
+            string sValor2 = string.Empty;
             belPesquisaNotas.Filtro filtro = belPesquisaNotas.Filtro.Data;
             if (cboFiltro.cbx.SelectedIndex == 0)
+            {
                 filtro = belPesquisaNotas.Filtro.Data;
+                sValor1 = dtpIni.Value.ToString();
+                sValor2 = dtpFim.Value.ToString();
+            }
             else if (cboFiltro.cbx.SelectedIndex == 1)
+            {
                 filtro = belPesquisaNotas.Filtro.Sequencia;
+                sValor1 = txtNfIni.Text;
+                sValor2 = txtNfFim.Text;
+            }
             else if (cboFiltro.cbx.SelectedIndex == 2)
+            {
+                filtro = belPesquisaNotas.Filtro.Cliente;
+                sValor1 = txtCliente.Text;
+            }
+            else if (cboFiltro.cbx.SelectedIndex == 3)
+            {
+                filtro = belPesquisaNotas.Filtro.NF;
+                sValor1 = txtNfIni.Text;
+                sValor2 = txtNfFim.Text;
+            }
+            else if (cboFiltro.cbx.SelectedIndex == 4)
+            {
                 filtro = belPesquisaNotas.Filtro.NFSe;
+                sValor1 = txtNfIni.Text;
+                sValor2 = txtNfFim.Text;
+            }
 
 
 
             belPesq = new belPesquisaNotas(st,
                                                            filtro,
-                                                           (cboFiltro.cbx.SelectedIndex == 0 ? dtpIni.Value.ToString() : txtNfIni.Text),
-                                                           (cboFiltro.cbx.SelectedIndex == 0 ? dtpFim.Value.ToString() : txtNfFim.Text), true);
+                                                           sValor1,
+                                                           sValor2, true);
             bsNotas.DataSource = belPesq.lResultPesquisa;
 
             ColoriGrid();

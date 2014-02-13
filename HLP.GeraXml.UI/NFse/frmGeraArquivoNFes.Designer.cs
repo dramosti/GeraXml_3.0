@@ -29,7 +29,7 @@ namespace HLP.GeraXml.UI.NFse
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGeraArquivoNFes));
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -72,6 +72,7 @@ namespace HLP.GeraXml.UI.NFse
             this.btnVisualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBuscaRetorno = new System.Windows.Forms.ToolStripButton();
+            this.txtCliente = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -91,7 +92,7 @@ namespace HLP.GeraXml.UI.NFse
             this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel.Name = "kryptonPanel";
-            this.kryptonPanel.Size = new System.Drawing.Size(1024, 367);
+            this.kryptonPanel.Size = new System.Drawing.Size(1155, 367);
             this.kryptonPanel.TabIndex = 0;
             // 
             // kryptonPanel1
@@ -100,7 +101,7 @@ namespace HLP.GeraXml.UI.NFse
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1024, 367);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1155, 367);
             this.kryptonPanel1.TabIndex = 1;
             // 
             // kryptonPanel2
@@ -112,7 +113,7 @@ namespace HLP.GeraXml.UI.NFse
             this.kryptonPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel2.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel2.Name = "kryptonPanel2";
-            this.kryptonPanel2.Size = new System.Drawing.Size(1024, 367);
+            this.kryptonPanel2.Size = new System.Drawing.Size(1155, 367);
             this.kryptonPanel2.TabIndex = 1;
             // 
             // dgvNF
@@ -140,7 +141,7 @@ namespace HLP.GeraXml.UI.NFse
             this.dgvNF.RowHeadersVisible = false;
             this.dgvNF.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvNF.RowTemplate.Height = 23;
-            this.dgvNF.Size = new System.Drawing.Size(1024, 281);
+            this.dgvNF.Size = new System.Drawing.Size(1155, 281);
             this.dgvNF.TabIndex = 232;
             this.dgvNF.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNF_CellContentClick);
             this.dgvNF.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvNF_ColumnHeaderMouseClick);
@@ -192,8 +193,8 @@ namespace HLP.GeraXml.UI.NFse
             // 
             this.dVL_TOTNF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.dVL_TOTNF.DataPropertyName = "dVL_TOTNF";
-            dataGridViewCellStyle1.Format = "n2";
-            this.dVL_TOTNF.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "n2";
+            this.dVL_TOTNF.DefaultCellStyle = dataGridViewCellStyle3;
             this.dVL_TOTNF.HeaderText = "Valor";
             this.dVL_TOTNF.Name = "dVL_TOTNF";
             this.dVL_TOTNF.ReadOnly = true;
@@ -251,7 +252,7 @@ namespace HLP.GeraXml.UI.NFse
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 338);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1024, 29);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1155, 29);
             this.flowLayoutPanel2.TabIndex = 231;
             // 
             // panel5
@@ -328,11 +329,12 @@ namespace HLP.GeraXml.UI.NFse
             this.flowLayoutPanel1.Controls.Add(this.dtpFim);
             this.flowLayoutPanel1.Controls.Add(this.txtNfIni);
             this.flowLayoutPanel1.Controls.Add(this.txtNfFim);
+            this.flowLayoutPanel1.Controls.Add(this.txtCliente);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 27);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1024, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1155, 30);
             this.flowLayoutPanel1.TabIndex = 229;
             // 
             // cboStatus
@@ -479,7 +481,7 @@ namespace HLP.GeraXml.UI.NFse
             this.btnBuscaRetorno});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1024, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1155, 27);
             this.menuStrip1.TabIndex = 104;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -567,11 +569,34 @@ namespace HLP.GeraXml.UI.NFse
             this.btnBuscaRetorno.Text = "Retorno";
             this.btnBuscaRetorno.Click += new System.EventHandler(this.btnBuscaRetorno_Click);
             // 
+            // txtCliente
+            // 
+            this.txtCliente._LabelText = "Cliente";
+            this.txtCliente._Multiline = false;
+            this.txtCliente._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
+            this.txtCliente._Password = false;
+            this.txtCliente._Regex = Expressoes.Não_Aplica;
+            this.txtCliente._Regex_Expressao = "";
+            this.txtCliente._TamanhoMaiorLabel = 0;
+            this.txtCliente._TamanhoTextBox = 18;
+            this.txtCliente._Visible = true;
+            this.txtCliente.AutoSize = true;
+            this.txtCliente.BackColor = System.Drawing.Color.Transparent;
+            this.txtCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtCliente.Color = System.Drawing.Color.White;
+            this.txtCliente.Location = new System.Drawing.Point(955, 3);
+            this.txtCliente.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
+            this.txtCliente.MaxLength = 200;
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.ReadOnly = false;
+            this.txtCliente.Size = new System.Drawing.Size(69, 23);
+            this.txtCliente.TabIndex = 15;
+            // 
             // frmGeraArquivoNFes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 367);
+            this.ClientSize = new System.Drawing.Size(1155, 367);
             this.Controls.Add(this.kryptonPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -653,6 +678,7 @@ namespace HLP.GeraXml.UI.NFse
         private System.Windows.Forms.DataGridViewTextBoxColumn sNM_GUERRA;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bCancelado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bEnviado;
+        private Comum.Componentes.HLP_TextBox txtCliente;
     }
 }
 

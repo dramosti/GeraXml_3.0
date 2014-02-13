@@ -105,6 +105,14 @@ namespace HLP.GeraXml.UI.NFe
                 txtCliente._TamanhoTextBox = 200;
                 txtCliente.Visible = true;
             }
+            else if (cboFiltro.SelectedIndex == 3)
+            {
+                txtNfIni.Visible = true;
+                txtNfFim.Visible = true;
+
+                dtpIni.Visible = false;
+                dtpFim.Visible = false;
+            }
         }
         private void txt_Validated(object sender, EventArgs e)
         {
@@ -721,10 +729,16 @@ namespace HLP.GeraXml.UI.NFe
                 sValor1 = txtNfIni.Text;
                 sValor2 = txtNfFim.Text;
             }
-            else
+            else if (cboFiltro.cbx.SelectedIndex == 2)
             {
                 filtro = belPesquisaNotas.Filtro.Cliente;
                 sValor1 = txtCliente.Text;
+            }
+            else if (cboFiltro.cbx.SelectedIndex == 3)
+            {
+                filtro = belPesquisaNotas.Filtro.NF;
+                sValor1 = txtNfIni.Text;
+                sValor2 = txtNfFim.Text;
             }
 
             belPesq = new belPesquisaNotas(st,
