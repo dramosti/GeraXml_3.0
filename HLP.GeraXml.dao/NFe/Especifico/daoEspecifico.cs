@@ -42,13 +42,7 @@ namespace HLP.GeraXml.dao.NFe.Especifico
                             sOBS += string.Format("Contrato {0}",
                                                  dr["cd_contrato"].ToString());
 
-                        }
-                        if (dr["ds_obs"].ToString() != "")
-                        {
-                            sOBS += string.Format("{0}OBS {1}",
-                                                  (sOBS != "" ? " - " : ""),
-                                                  dr["ds_obs"].ToString());
-                        }
+                        }                       
                     }
                 }
                 catch (Exception ex)

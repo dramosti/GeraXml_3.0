@@ -954,18 +954,18 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                         {
                             sObsItem += daoEspecifico.BuscaInformacoesLote(drIItem["nr_lanc"].ToString());
                         }
-                        sObsItem = BuscaObsItemSimples(drIItem["nr_lanc"].ToString()) + sObsItem;
+                        sObsItem = (sObsItem != "" ? " " : "") + BuscaObsItemSimples(drIItem["nr_lanc"].ToString()) + sObsItem;
 
                         if (drIItem["st_imp_cdpedcli"].ToString() != "N")
                         {
                             if (drIItem["xPed"].ToString() != "")
                             {
-                                sObsItem += string.Format("SEU PEDIDO.: {0}",
+                                sObsItem += (sObsItem != "" ? " " : "") + string.Format("SEU PEDIDO.: {0}",
                                                               drIItem["xPed"].ToString().Trim());
                             }
                             if (drIItem["nItemPed"].ToString() != "")
                             {
-                                sObsItem += string.Format("ITEM NUMERO.: {0}",
+                                sObsItem += (sObsItem != "" ? " " : "") + string.Format("ITEM NUMERO.: {0}",
                                                               drIItem["nItemPed"].ToString().Trim());
                             }
                             if (Acesso.NM_RAMO == Acesso.BancoDados.INDUSTRIA)
@@ -1101,10 +1101,10 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                         }
                         if (Acesso.TRANSPARENCIA == 1 || Acesso.TRANSPARENCIA == 2)
                         {
-                            objinf.Infadprid = daoUtil.CarregaObsTransparenciaITEM(drIItem["nr_lanc"].ToString());
+                            objinf.Infadprid = daoUtil.CarregaObsTransparenciaITEM(sNr_Lanc);
                         }
-                            //if (!objDet.prod.vTotTrib.ToString().Equals(""))
-                            //    objinf.Infadprid = string.Format("TRIBUTOS(TRANSPARÊNCIA) = R$ {0}", objDet.prod.vTotTrib.ToString()) + (objinf.Infadprid == "" ? "" : " - " + objinf.Infadprid);
+                        //if (!objDet.prod.vTotTrib.ToString().Equals(""))
+                        //    objinf.Infadprid = string.Format("TRIBUTOS(TRANSPARÊNCIA) = R$ {0}", objDet.prod.vTotTrib.ToString()) + (objinf.Infadprid == "" ? "" : " - " + objinf.Infadprid);
 
 
                         if (Acesso.IMPRIMI_NUM_NOTA_ENTRADA)

@@ -17,7 +17,8 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         public string Cprod
         {
             get { return _cprod; }
-            set { 
+            set
+            {
                 _cprod = (value.Length >= 60 ? value.Substring(0, 60) : value);
                 string sValor = "";
 
@@ -27,7 +28,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                     {
                         if (_cprod[i] != (char)31)
                         {
-                            sValor += _cprod[i].ToString();                            
+                            sValor += _cprod[i].ToString();
                         }
                     }
                 }
@@ -241,7 +242,14 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         /// Número de controle da FCI - Ficha deConteúdo de Importação
         /// Informação relacionada com a Resolução 13/2012 do Senado Federal. Formato: Algarismos, letras maiúsculas de "A" a "F" e o caractere hífen. Exemplo: B01F70AF-10BF-4B1F-848C-65FF57F616FE 
         /// /// </summary>
-        public string nFCI { get; set; }
+        private string _nFCI = "";
+
+        public string nFCI
+        {
+            get { return _nFCI; }
+            set { _nFCI = value; }
+        }
+
 
         public belVeicprod belVeicprod
         {

@@ -63,10 +63,6 @@ namespace HLP.GeraXml.bel.NFe
 
                     objInfNFe.cobr.Carrega(nota.sCD_NFSEQ);
 
-
-
-
-
                     objInfNFe.infAdic.Carrega(nota.sCD_NFSEQ, objInfNFe.det, objInfNFe.dest.Cnpj, dVbcIcmsRt, dVIcmsRt);
 
                     if (Acesso.TRANSPARENCIA == 0 || Acesso.TRANSPARENCIA == 2)

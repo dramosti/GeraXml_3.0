@@ -219,7 +219,7 @@ namespace HLP.GeraXml.bel.NFe
                                                    (det.prod.Vdesc > 0 ? new XElement(pf + "vDesc", det.prod.Vdesc.ToString("#0.00").Replace(",", ".")) : null),
                                                    (det.prod.VOutro != 0 ? new XElement(pf + "vOutro", det.prod.VOutro.ToString("#0.00").Replace(",", ".")) : null), //NFe_2.0 
                                                    (det.prod.IndTot != null ? new XElement(pf + "indTot", det.prod.IndTot.ToString()) : null), //NFe_2.0
-                                                   (det.prod.nFCI != null ? new XElement(pf + "nFCI", det.prod.nFCI.ToString()) : null), //29280
+                                                   (det.prod.nFCI != "" ? new XElement(pf + "nFCI", det.prod.nFCI.ToString()) : null), //29280
                                                    ((det.prod.belDI != null) ? from DI in det.prod.belDI
                                                                                where DI.nDI != null
                                                                                      && DI.xLocDesemb != null

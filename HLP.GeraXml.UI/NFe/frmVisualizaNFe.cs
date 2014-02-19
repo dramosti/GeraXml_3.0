@@ -29,6 +29,7 @@ namespace HLP.GeraXml.UI.NFe
             try
             {
                 InitializeComponent();
+              
                 cbxmotDesICMS.cbx.DropDownHeight = 150;
                 cbxmotDesICMS.cbx.DropDownWidth = 600;
                 cbxCSTicmsItens.cbx.DropDownHeight = 150;
@@ -46,6 +47,7 @@ namespace HLP.GeraXml.UI.NFe
                 dgvADI.Dock = DockStyle.Fill;
                 gbDI.Controls.Add(dgvDI);
                 dgvDI.Dock = DockStyle.Fill;
+                nudvTotTrib.Visible = false;
 
             }
             catch (Exception ex)
@@ -1715,6 +1717,8 @@ namespace HLP.GeraXml.UI.NFe
                 cbxCSTicmsItens.Enabled = false;
                 cbxCSTipi.Enabled = false;
                 cbxCSTpis.Enabled = false;
+                
+                
             }
             else
             {

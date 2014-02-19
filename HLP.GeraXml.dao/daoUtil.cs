@@ -725,7 +725,7 @@ namespace HLP.GeraXml.dao
 
                 decimal dVL_IMP = 0;
                 decimal dVL_TOT = 0;
-                string sQuery = "select sum(coalesce(m.vl_fattransp,0)) from movitem m where m.cd_nfseq = '{0}' and m.cd_empresa = '{1}'";
+                string sQuery = "select cast(sum(coalesce(m.vl_fattransp,0)) as numeric(10,4)) total from movitem m where m.cd_nfseq = '{0}' and m.cd_empresa = '{1}'";
                 DataTable dt = HlpDbFuncoes.qrySeekRet(string.Format(sQuery, sNFSEQ, Acesso.CD_EMPRESA));
                 if (dt.Rows.Count > 0)
                     dVL_IMP = Convert.ToDecimal(dt.Rows[0][0].ToString());
@@ -735,8 +735,10 @@ namespace HLP.GeraXml.dao
                 if (dt.Rows.Count > 0)
                     dVL_TOT = Convert.ToDecimal(dt.Rows[0][0].ToString());
 
-
-                return string.Format(sMsg, dVL_IMP.ToString("#0.00"), ((dVL_IMP / dVL_TOT) * 100).ToString("#0.00"));
+                if (dVL_IMP > 0)
+                    return string.Format(sMsg, dVL_IMP.ToString("#0.00"), ((dVL_IMP / dVL_TOT) * 100).ToString("#0.00"));
+                else
+                    return "";
             }
             catch (Exception)
             {
@@ -744,7 +746,7 @@ namespace HLP.GeraXml.dao
             }
         }
 
-        public static string CarregaObsTransparenciaITEM(string sNR_LANC) 
+        public static string CarregaObsTransparenciaITEM(string sNR_LANC)
         {
             try
             {
@@ -758,7 +760,10 @@ namespace HLP.GeraXml.dao
                     dVL_ALIQ = Convert.ToDecimal(dt.Rows[0]["vl_aliqtransp"].ToString());
                 }
                 string sMsg = "Val Aprox dos Tributos R$ {0} - ({1}) % Fonte: IBPT ;";
-                return string.Format(sMsg, dVL_TRANSPAR.ToString("#0.00"), dVL_ALIQ.ToString("#0.00"));
+                if (dVL_TRANSPAR > 0)
+                    return string.Format(sMsg, dVL_TRANSPAR.ToString("#0.00"), dVL_ALIQ.ToString("#0.00"));
+                else
+                    return "";
             }
             catch (Exception ex)
             {
