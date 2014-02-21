@@ -207,6 +207,12 @@
     <Compile Include="CTe\frmInutilizaFaixaCte.Designer.cs">
       <DependentUpon>frmInutilizaFaixaCte.cs</DependentUpon>
     </Compile>
+    <Compile Include="CTe\frmVisualizaCte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CTe\frmVisualizaCte.designer.cs">
+      <DependentUpon>frmVisualizaCte.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDownloadVersao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,12 +236,6 @@
     </Compile>
     <Compile Include="frmRelatorio.Designer.cs">
       <DependentUpon>frmRelatorio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CTe\frmVisualizaCte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CTe\frmVisualizaCte.Designer.cs">
-      <DependentUpon>frmVisualizaCte.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEmail.cs">
       <SubType>Form</SubType>
@@ -354,7 +354,7 @@
     <Compile Include="NFse\DSF\frmVisualizaNfsDSF.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NFse\DSF\frmVisualizaNfsDSF.Designer.cs">
+    <Compile Include="NFse\DSF\frmVisualizaNfsDSF.designer.cs">
       <DependentUpon>frmVisualizaNfsDSF.cs</DependentUpon>
     </Compile>
     <Compile Include="NFse\frmCancelamentoNfs.cs">
@@ -378,13 +378,13 @@
     <Compile Include="NFse\frmVisualizaNfs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NFse\frmVisualizaNfs.Designer.cs">
+    <Compile Include="NFse\frmVisualizaNfs.designer.cs">
       <DependentUpon>frmVisualizaNfs.cs</DependentUpon>
     </Compile>
     <Compile Include="NFse\Susesu\frmVisualizaNfsSusesu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NFse\Susesu\frmVisualizaNfsSusesu.Designer.cs">
+    <Compile Include="NFse\Susesu\frmVisualizaNfsSusesu.designer.cs">
       <DependentUpon>frmVisualizaNfsSusesu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -495,6 +495,9 @@
       <DependentUpon>frmSelecionaConfigs.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="CTe\frmVisualizaCte.resx">
+      <DependentUpon>frmVisualizaCte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDownloadVersao.resx">
       <DependentUpon>frmDownloadVersao.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -545,7 +548,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NFe\frmVisualizaNFe.resx">
       <DependentUpon>frmVisualizaNFe.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="NFse\DSF\FrmCancelamentoDSF.resx">
       <DependentUpon>FrmCancelamentoDSF.cs</DependentUpon>
@@ -565,16 +567,13 @@
       <DependentUpon>frmStatusEnvioNfs.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="NFse\frmVisualizaNfs.resx">
-      <DependentUpon>frmVisualizaNfs.cs</DependentUpon>
-    </EmbeddedResource>
     <Content Include="Relatorios\CCe.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CCe.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="NFse\Susesu\frmVisualizaNfsSusesu.resx">
-      <DependentUpon>frmVisualizaNfsSusesu.cs</DependentUpon>
+    <EmbeddedResource Include="NFse\frmVisualizaNfs.resx">
+      <DependentUpon>frmVisualizaNfs.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="Relatorios\RelDanfeSimplificada2013.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -586,6 +585,9 @@
       <LastGenOutput>RelDanfePaisagem2013.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="NFse\Susesu\frmVisualizaNfsSusesu.resx">
+      <DependentUpon>frmVisualizaNfsSusesu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\relAvisoContingencia.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>relAvisoContingencia.cs</LastGenOutput>
@@ -695,9 +697,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRelatorio.resx">
       <DependentUpon>frmRelatorio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CTe\frmVisualizaCte.resx">
-      <DependentUpon>frmVisualizaCte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmail.resx">
       <DependentUpon>frmEmail.cs</DependentUpon>

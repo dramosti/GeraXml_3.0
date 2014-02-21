@@ -134,10 +134,8 @@
     <Compile Include="FormException.designer.cs">
       <DependentUpon>FormException.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormPadraoVisualizacao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormPadraoVisualizacao.Designer.cs">
+    <Compile Include="Forms\FormPadraoVisualizacao.cs" />
+    <Compile Include="Forms\FormPadraoVisualizacao.designer.cs">
       <DependentUpon>FormPadraoVisualizacao.cs</DependentUpon>
     </Compile>
     <Compile Include="HLPexception.cs" />
@@ -177,7 +175,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormPadraoVisualizacao.resx">
       <DependentUpon>FormPadraoVisualizacao.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

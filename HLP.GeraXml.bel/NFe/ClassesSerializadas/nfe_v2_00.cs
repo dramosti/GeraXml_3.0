@@ -9392,7 +9392,7 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
         public string orig { get; set; }
         public string CST { get; set; }
         public string modBC { get; set; }
-        public string vBCField { get; set; }
+        public string vBC { get; set; }
         public string pICMS { get; set; }
         public string vICMS { get; set; }
     }
