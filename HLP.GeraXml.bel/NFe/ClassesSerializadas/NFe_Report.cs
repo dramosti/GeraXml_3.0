@@ -185,13 +185,14 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
         public string transp_CFP_CNPJ { get; set; }
         public string transp_xEnder { get; set; }
         public string transp_xMun { get; set; }
-        public string transp_UF { get; set; }
+        public string transp_UF { get; set; }        
         public string transp_qVol { get; set; }
         public string transp_esp { get; set; }
         public string transp_marca { get; set; }
         public string transp_nVol { get; set; }
         public string transp_PesoB { get; set; }
         public string transp_PesoL { get; set; }
+        public string transp_IE { get; set; }
 
 
 

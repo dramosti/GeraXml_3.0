@@ -1020,7 +1020,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
 
                                     }
                                 }
-                                objinf.Infadprid = Util.TiraSimbolo(sObsItem.Trim(), "");
+                                objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "");
                             }
                             else
                             {
@@ -1035,7 +1035,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                                                   dDesconto_Percentual,
                                                                   dDesconto_Valor);
 
-                                        objinf.Infadprid = Util.TiraSimbolo(sObsItem.Trim(), "");
+                                        objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "");
                                     }
                                 }
                             }
@@ -1056,14 +1056,14 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
 
                                     if (sObsItem != "")
                                     {
-                                        objinf.Infadprid = Util.TiraSimbolo(sObsItem.Trim(), "");
+                                        objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "");
                                     }
                                 }
                                 else
                                 {
                                     if (sObsItem != "")
                                     {
-                                        objinf.Infadprid = Util.TiraSimbolo(sObsItem.Trim(), "").Replace(Environment.NewLine, "-");
+                                        objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "").Replace(Environment.NewLine, "-");
                                     }
                                 }
                             }
@@ -1071,7 +1071,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             {
                                 if (sObsItem != "")
                                 {
-                                    objinf.Infadprid = Util.TiraSimbolo(sObsItem.Trim(), "");
+                                    objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "");
                                 }
 
                             }
@@ -1096,12 +1096,12 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                                           );
                                 sTransportadora += ";";
                                 sObsItem = sTransportadora + sObsItem;
-                                objinf.Infadprid = Util.TiraSimbolo(sObsItem.Trim(), "-");
+                                objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "-");
                             }
                         }
                         if (Acesso.TRANSPARENCIA == 1 || Acesso.TRANSPARENCIA == 2)
                         {
-                            objinf.Infadprid = daoUtil.CarregaObsTransparenciaITEM(sNr_Lanc);
+                            objinf.Infadprid += daoUtil.CarregaObsTransparenciaITEM(sNr_Lanc);
                         }
                         //if (!objDet.prod.vTotTrib.ToString().Equals(""))
                         //    objinf.Infadprid = string.Format("TRIBUTOS(TRANSPARÊNCIA) = R$ {0}", objDet.prod.vTotTrib.ToString()) + (objinf.Infadprid == "" ? "" : " - " + objinf.Infadprid);
@@ -1138,7 +1138,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             {
                                 if ((objinf.Infadprid.Contains("FRETE A PAGAR DESTINO") == false))
                                 {
-                                    objinf.Infadprid = objinf.Infadprid.Replace("REDESPACHO ", "");
+                                    objinf.Infadprid += objinf.Infadprid.Replace("REDESPACHO ", "");
                                 }
                             }
                         }
@@ -1146,7 +1146,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                         {
                             if (objinf.Infadprid.Length > 500)
                             {
-                                objinf.Infadprid = objinf.Infadprid.Substring(0, 500);
+                                objinf.Infadprid += objinf.Infadprid.Substring(0, 500);
                             }
                         }
                         //Fim - Obs                    
@@ -1186,6 +1186,11 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                     + Environment.NewLine +
                                     ex.Message);
                             }
+                        }
+
+                        if (objDet.prod.nFCI != "")
+                        {
+                            objinf.Infadprid += (objinf.Infadprid == "" ? "" : " - ") + "nFCI: " + objDet.prod.nFCI.Trim();
                         }
                         objDet.imposto = objimp;
                         objDet.infAdProd = objinf;

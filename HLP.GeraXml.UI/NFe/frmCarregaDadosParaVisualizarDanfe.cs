@@ -187,6 +187,7 @@ namespace HLP.GeraXml.UI.NFe
                         objNFe.transp_xEnder = nfe.transpField.transporta.xEnder;
                         objNFe.transp_xMun = nfe.transpField.transporta.xMun;
                         objNFe.transp_UF = nfe.transpField.transporta.UF;
+                        objNFe.transp_IE = nfe.transpField.transporta.IE;
 
                         if (nfe.transpField.Items != null)
                         {

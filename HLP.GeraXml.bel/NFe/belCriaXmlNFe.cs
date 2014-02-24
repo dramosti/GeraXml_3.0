@@ -218,8 +218,7 @@ namespace HLP.GeraXml.bel.NFe
                                                    (det.prod.Vseg != 0 ? new XElement(pf + "vSeg", det.prod.Vseg.ToString("#0.00").Replace(",", ".")) : null),
                                                    (det.prod.Vdesc > 0 ? new XElement(pf + "vDesc", det.prod.Vdesc.ToString("#0.00").Replace(",", ".")) : null),
                                                    (det.prod.VOutro != 0 ? new XElement(pf + "vOutro", det.prod.VOutro.ToString("#0.00").Replace(",", ".")) : null), //NFe_2.0 
-                                                   (det.prod.IndTot != null ? new XElement(pf + "indTot", det.prod.IndTot.ToString()) : null), //NFe_2.0
-                                                   (det.prod.nFCI != "" ? new XElement(pf + "nFCI", det.prod.nFCI.ToString()) : null), //29280
+                                                   (det.prod.IndTot != null ? new XElement(pf + "indTot", det.prod.IndTot.ToString()) : null), //NFe_2.0                                                   
                                                    ((det.prod.belDI != null) ? from DI in det.prod.belDI
                                                                                where DI.nDI != null
                                                                                      && DI.xLocDesemb != null
@@ -241,6 +240,7 @@ namespace HLP.GeraXml.bel.NFe
                                                                                        new XElement(pf + "vDescDI", adic.vDescDI))) : null),
                                                  ((det.prod.XPed != "") ? new XElement(pf + "xPed", det.prod.XPed) : null),
                                                  ((det.prod.NItemPed != "") ? new XElement(pf + "nItemPed", det.prod.NItemPed) : null),
+                                                 (det.prod.nFCI != "" ? new XElement(pf + "nFCI", det.prod.nFCI.ToString()) : null), //29280
 
                                                  (det.prod.belMed != null ?
                                                             from med in det.prod.belMed
