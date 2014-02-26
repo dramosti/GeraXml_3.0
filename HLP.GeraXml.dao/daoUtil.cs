@@ -746,18 +746,26 @@ namespace HLP.GeraXml.dao
             }
         }
 
-        public static string CarregaObsTransparenciaITEM(string sNR_LANC)
+        public static string CarregaObsTransparenciaITEM(string sNR_LANC, string sVl_fattransp="0", string sVl_aliqtransp="0")
         {
             try
             {
                 decimal dVL_ALIQ = 0;
                 decimal dVL_TRANSPAR = 0;
-                string sQuery = "select coalesce(m.vl_fattransp,0)vl_fattransp, coalesce(m.vl_aliqtransp,0)vl_aliqtransp from movitem m where m.nr_lanc = '{0}' and m.cd_empresa = '{1}'";
-                DataTable dt = HlpDbFuncoes.qrySeekRet(string.Format(sQuery, sNR_LANC, Acesso.CD_EMPRESA));
-                if (dt.Rows.Count > 0)
+                if (sNR_LANC != "0")
                 {
-                    dVL_TRANSPAR = Convert.ToDecimal(dt.Rows[0]["vl_fattransp"].ToString());
-                    dVL_ALIQ = Convert.ToDecimal(dt.Rows[0]["vl_aliqtransp"].ToString());
+                    string sQuery = "select coalesce(m.vl_fattransp,0)vl_fattransp, coalesce(m.vl_aliqtransp,0)vl_aliqtransp from movitem m where m.nr_lanc = '{0}' and m.cd_empresa = '{1}'";
+                    DataTable dt = HlpDbFuncoes.qrySeekRet(string.Format(sQuery, sNR_LANC, Acesso.CD_EMPRESA));
+                    if (dt.Rows.Count > 0)
+                    {
+                        dVL_TRANSPAR = Convert.ToDecimal(dt.Rows[0]["vl_fattransp"].ToString());
+                        dVL_ALIQ = Convert.ToDecimal(dt.Rows[0]["vl_aliqtransp"].ToString());
+                    }
+                }
+                else
+                {
+                    dVL_ALIQ = Convert.ToDecimal(sVl_aliqtransp);
+                    dVL_TRANSPAR= Convert.ToDecimal(sVl_fattransp);
                 }
                 string sMsg = "Val Aprox dos Tributos R$ {0} - ({1}) % Fonte: IBPT ;";
                 if (dVL_TRANSPAR > 0)

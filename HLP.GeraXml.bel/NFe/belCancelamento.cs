@@ -84,8 +84,8 @@ namespace HLP.GeraXml.bel.NFe
                             #region Regiao_RS
                             if (Acesso.TP_AMB == 1)
                             {
-                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_MS.RecepcaoEvento ws2 = new WebService.v2_Producao_NFeRecepcaoEvento_MS.RecepcaoEvento();
-                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_MS.nfeCabecMsg cabec = new WebService.v2_Producao_NFeRecepcaoEvento_MS.nfeCabecMsg();
+                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_RS.RecepcaoEvento ws2 = new WebService.v2_Producao_NFeRecepcaoEvento_RS.RecepcaoEvento();
+                                HLP.GeraXml.WebService.v2_Producao_NFeRecepcaoEvento_RS.nfeCabecMsg cabec = new WebService.v2_Producao_NFeRecepcaoEvento_RS.nfeCabecMsg();
 
                                 cabec.versaoDados = "1.00";
                                 cabec.cUF = Acesso.cUF.ToString();

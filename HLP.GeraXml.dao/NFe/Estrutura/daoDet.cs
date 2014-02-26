@@ -59,7 +59,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "CD_ANP" });//OS_28293
 
                 if (HlpDbFuncoes.fExisteCampo("vl_total_impostos", "MOVITEM"))
-                    lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_total_impostos,0)", sAlias = "vTotTrib" });//os_28878
+                    lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_total_impostos,0)", sAlias = "vTotTrib", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });//os_28878
                 else
                     lCampos.Add(new CamposSelect { sCampo = "'0'", sAlias = "vTotTrib" });//os_28878
 
@@ -68,14 +68,19 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 else
                     lCampos.Add(new CamposSelect { sCampo = "''", sAlias = "nr_fci" });//OS_29280
 
-                lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_siscomex,0)", sAlias = "vl_siscomex" });//OS_28303
+                //coalesce(m.vl_fattransp,0)vl_fattransp
+                //coalesce(m.vl_aliqtransp,0)vl_aliqtransp
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_fattransp,0)", sAlias = "vl_fattransp", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });//OS_29949
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_aliqtransp,0)", sAlias = "vl_aliqtransp" });//OS_29949
+
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_siscomex,0)", sAlias = "vl_siscomex", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });//OS_28303
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.CD_DOC,'')", sAlias = "CD_DOC" });//OS_27921
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(opereve.ST_ESTTERC,'N')", sAlias = "ST_ESTTERC" });//OS_27921
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(tpdoc.st_pauta,'N')", sAlias = "st_pauta" });//OS_25969
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(tpdoc.st_frete_entra_ipi_s,'N')", sAlias = "st_frete_entra_ipi_s" });//OS_26866
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(tpdoc.ST_FRETE_ENTRA_ICMS_S,'N')", sAlias = "ST_FRETE_ENTRA_ICMS_S" });//OS_26866
-                lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_baseicm,0)", sAlias = "vBC_Pauta" });//OS_25969
-                lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_icms,0)", sAlias = "vl_icms_Pauta" });//OS_25969
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_baseicm,0)", sAlias = "vBC_Pauta", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });//OS_25969
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.vl_icms,0)", sAlias = "vl_icms_Pauta", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });//OS_25969
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(MOVITEM.cd_pedcli,'')", sAlias = "xPed" });//OS_25977
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.nr_item_ped_compra,'')", sAlias = "nItemPed" });//OS_25977
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(opereve.st_servico,'')", sAlias = "st_servico" });
@@ -176,7 +181,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                     lCampos.Add(new CamposSelect { sCampo = "coalesce(opereve.tp_industrializacao,'')", sAlias = "tp_industrializacao" });
                 }
 
-                lCampos.Add(new CamposSelect { sCampo = "coalesce(vl_uniprod_sem_desc,0)", sAlias = "vl_uniprod_sem_desc" });//cast -> OS_25771 // 6 casas decimais
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(vl_uniprod_sem_desc,0)", sAlias = "vl_uniprod_sem_desc", bAgrupa = Acesso.bAGRUPA_ITENS_NFE  });//cast -> OS_25771 // 6 casas decimais
 
                 if (!bEx)
                 {
@@ -216,7 +221,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
 
                 if (!bEx)
                 {
-                    lCampos.Add(new CamposSelect { sCampo = "movitem.vl_uniprod", sAlias = "vUnTrib" });
+                    lCampos.Add(new CamposSelect { sCampo = "movitem.vl_uniprod", sAlias = "vUnTrib", bAgrupa = Acesso.bAGRUPA_ITENS_NFE  });
                 }
                 else
                 {
@@ -234,7 +239,7 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
 
                     lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_base_ii,0)", sAlias = "bii", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
                 }
-                lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_ii,0)", sAlias = "vl_ii" });
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.vl_ii,0)", sAlias = "vl_ii", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
                 lCampos.Add(new CamposSelect { sCampo = "coalesce(nf.st_ipi,'S')", sAlias = "st_ipi" }); //OS_25673
                 lCampos.Add(new CamposSelect { sCampo = "movitem.vl_alicredicms", sAlias = "pCredSN" });//NFe_2.0
                 lCampos.Add(new CamposSelect { sCampo = "movitem.vl_credicms", sAlias = "vCredICMSSN", bAgrupa = Acesso.bAGRUPA_ITENS_NFE }); // **

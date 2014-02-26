@@ -1101,7 +1101,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                         }
                         if (Acesso.TRANSPARENCIA == 1 || Acesso.TRANSPARENCIA == 2)
                         {
-                            objinf.Infadprid += daoUtil.CarregaObsTransparenciaITEM(sNr_Lanc);
+                            objinf.Infadprid += daoUtil.CarregaObsTransparenciaITEM(drIItem["nr_lanc"].ToString(), drIItem["vl_fattransp"].ToString(), drIItem["vl_aliqtransp"].ToString());
                         }
                         //if (!objDet.prod.vTotTrib.ToString().Equals(""))
                         //    objinf.Infadprid = string.Format("TRIBUTOS(TRANSPARÊNCIA) = R$ {0}", objDet.prod.vTotTrib.ToString()) + (objinf.Infadprid == "" ? "" : " - " + objinf.Infadprid);
