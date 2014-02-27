@@ -221,12 +221,12 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
 
                 if (!bEx)
                 {
-                    lCampos.Add(new CamposSelect { sCampo = "movitem.vl_uniprod", sAlias = "vUnTrib", bAgrupa = Acesso.bAGRUPA_ITENS_NFE  });
+                    lCampos.Add(new CamposSelect { sCampo = "movitem.vl_uniprod", sAlias = "vUnTrib"  });
                 }
                 else
                 {
                     // lCampos.Add(new CamposSelect { sCampo = "movitem.vl_uniprod_ii", sAlias = "vUnTrib" });
-                    lCampos.Add(new CamposSelect { sCampo = "(case when movitem.vl_uniprod_ii = 0 then movitem.vl_uniprod else movitem.vl_uniprod_ii end)", sAlias = "vUnTrib", bAgrupa = Acesso.bAGRUPA_ITENS_NFE });
+                    lCampos.Add(new CamposSelect { sCampo = "(case when movitem.vl_uniprod_ii = 0 then movitem.vl_uniprod else movitem.vl_uniprod_ii end)", sAlias = "vUnTrib" });
 
                     if (HlpDbFuncoes.fExisteCampo("vl_base_ii", "movitem"))
                     {
