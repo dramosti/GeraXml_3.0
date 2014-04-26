@@ -36,7 +36,7 @@ namespace HLP.GeraXml.Comum.Static
         public static string NM_RAZAOSOCIAL { get; set; }
         public static string NM_EMPRESA { get; set; }
         public static string NM_FANTASIA { get; set; }
-       
+
         private static int _TP_AMB;
         /// <summary>
         /// 1-Produção / 2-Homologação
@@ -45,7 +45,7 @@ namespace HLP.GeraXml.Comum.Static
         {
             get { return Acesso._TP_AMB; }
             set { Acesso._TP_AMB = value; }
-        } 
+        }
 
         private static int _TP_AMB_SERV;
         /// <summary>
@@ -110,6 +110,7 @@ namespace HLP.GeraXml.Comum.Static
 
         public static bool bALTERA_DADOS { get; set; }
         public static bool bAGRUPA_ITENS_NFE { get; set; }
+        public static bool bAGRUPA_ITENS_NFSE { get; set; }
         public static bool bESCRITA { get; set; }
         public static string SERIE_SCAN = "900";
         public static X509Certificate2 cert_CTe = null;

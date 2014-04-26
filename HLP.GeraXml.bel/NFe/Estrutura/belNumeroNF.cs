@@ -79,7 +79,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                     belDuplicata objbelDuplicata = new belDuplicata();
                     objbelDuplicata.BuscaVencto(nota.seqNF, nota.nNF);
                 }
-
+                    
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                     }
                     AtualizaMovitem(nota);
                     belDuplicata objbelDuplicata = new belDuplicata();
-                    objbelDuplicata.BuscaVencto(nota.seqNF, nota.nNF);
+                    objbelDuplicata.BuscaVencto(nota.seqNF, nota.nNF);                    
                 }
 
             }

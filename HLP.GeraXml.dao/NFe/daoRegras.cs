@@ -201,7 +201,7 @@ namespace HLP.GeraXml.dao.NFe
             }
         }
 
-        public static bool VerificaSeAgrupaItens()
+        public static bool VerificaSeAgrupaItensNFe()
         {
             try
             {
@@ -212,7 +212,18 @@ namespace HLP.GeraXml.dao.NFe
             {
                 throw;
             }
-
+        }
+        public static bool VerificaSeAgrupaItensNFeServico()
+        {
+            try
+            {               
+                string sValor = HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekValue("control", "control.cd_conteud", "control.cd_nivel = '1349'");
+                return (sValor.Equals("S") ? true : false);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

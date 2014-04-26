@@ -215,8 +215,8 @@ namespace HLP.GeraXml.bel.CCe
                     if (mot.Status == "135")
                     {
                         AtualizaContadorCCe(sNR_LANC, iQT_ENVIO);
-                        SaveXmlPastaCCe(mot.chave);
-
+                        // SaveXmlPastaCCe(mot.chave);
+                        AssinaEsalvaRetornoCCe(mot.chave, sRet);
 
                     }
                     sDetalhes += string.Format("CCe da NFe: {0} - '{1}'{2}", sNota, mot.xMotivo, Environment.NewLine);
@@ -228,6 +228,21 @@ namespace HLP.GeraXml.bel.CCe
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private void AssinaEsalvaRetornoCCe(string sChave, string sRet)
+        {
+            try
+            {
+                DirectoryInfo dPastaData = new DirectoryInfo(Pastas.CCe + "\\" + sChave.Substring(2, 4));
+                if (!dPastaData.Exists) { dPastaData.Create(); }
+                XDocument xml = XDocument.Parse("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + sRet, LoadOptions.PreserveWhitespace);
+                xml.Save(Pastas.CCe + "\\" + sChave.Substring(2, 4) + "\\" + sChave + "-cce.xml");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("O Caminho para salvar os arquivos Xmls de CCe não foi configurado!"); ;
             }
         }
 

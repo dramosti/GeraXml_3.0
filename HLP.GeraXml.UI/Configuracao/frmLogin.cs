@@ -177,7 +177,8 @@ namespace HLP.GeraXml.UI.Configuracao
                 Acesso.cUF = Convert.ToInt32(objUf.CUF);
                 Acesso.xUF = objUf.SiglaUF;
             }
-            Acesso.bAGRUPA_ITENS_NFE = daoRegras.VerificaSeAgrupaItens();
+            Acesso.bAGRUPA_ITENS_NFE = daoRegras.VerificaSeAgrupaItensNFe();
+            Acesso.bAGRUPA_ITENS_NFSE = daoRegras.VerificaSeAgrupaItensNFeServico();
             daoEmailContador.VerificaEmailContador();
         }
 

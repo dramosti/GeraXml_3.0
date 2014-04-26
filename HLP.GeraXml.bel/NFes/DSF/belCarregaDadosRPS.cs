@@ -222,14 +222,22 @@ namespace HLP.GeraXml.bel.NFes.DSF
             ass.Append(rps.Tributacao.ToString().PadRight(2, ' '));
             ass.Append(rps.SituacaoRPS);
             ass.Append(rps.TipoRecolhimento == "A" ? "N" : "S");
-            decimal dTotal = rps.Itens.Item.Sum(c => c.ValorTotal);
-            decimal dTotalDeducao = rps.Deducoes.Deducao.Sum(c => c.ValorDeduzir);
-            ass.Append(Util.TiraSimbolo((dTotal - dTotalDeducao).ToString("#0.00").Replace(",", "")).PadLeft(15, '0'));
-            ass.Append(Util.TiraSimbolo(dTotalDeducao.ToString("#0.00").Replace(",", "")).PadLeft(15, '0'));
+            decimal dTotal = Truncate(rps.Itens.Item.Sum(c => c.ValorUnitario), 2);
+            decimal dTotalDeducao = Truncate(rps.Deducoes.Deducao.Sum(c => c.ValorDeduzir), 2);
+            ass.Append((dTotal - dTotalDeducao).ToString("#0.00").Replace(",", "").PadLeft(15, '0'));
+            ass.Append(dTotalDeducao.ToString("#0.00").Replace(",", "").PadLeft(15, '0'));
             ass.Append(rps.CodigoAtividade.PadLeft(10, '0'));
             ass.Append(Util.TiraSimbolo(rps.CPFCNPJTomador).PadLeft(14, '0'));
 
             return Util.StringToHashSHA1(ass.ToString());
+        }
+
+
+        public static decimal Truncate(decimal number, int digits)
+        {
+            decimal stepper = (decimal)(Math.Pow(10.0, (double)digits));
+            int temp = (int)(stepper * number);
+            return (decimal)temp / stepper;
         }
 
         private void Serialize()

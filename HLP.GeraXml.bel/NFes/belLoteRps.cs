@@ -75,7 +75,6 @@ namespace HLP.GeraXml.bel.NFes
 
                     #endregion
 
-
                     #region  ConstrucaoCivil - TcDadosContrucaoCivil - Tratado na Visualização da Nota
 
                     if (Acesso.NM_EMPRESA.Equals("AENGE"))

@@ -63,10 +63,12 @@ namespace HLP.GeraXml.bel.NFes
                     belCobr objCobrancas = new belCobr();
                     objCobrancas.Carrega(sNFSEQ);
                     string sDescDup = "{0}{0}VENCIMENTO: {1}{0}VALOR LÍQUIDO A PAGAR: R${2}{0}{0}";
-
-                    foreach (belDup dup in objCobrancas.Fat.belDup)
+                    if (objCobrancas.Fat != null)
                     {
-                        objTcDadosServico.Discriminacao += string.Format(sDescDup, Environment.NewLine, dup.Dvenc.ToShortDateString(), dup.Vdup);
+                        foreach (belDup dup in objCobrancas.Fat.belDup)
+                        {
+                            objTcDadosServico.Discriminacao += string.Format(sDescDup, Environment.NewLine, dup.Dvenc.ToShortDateString(), dup.Vdup);
+                        }
                     }
                 }
 

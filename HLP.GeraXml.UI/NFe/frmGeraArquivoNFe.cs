@@ -315,7 +315,6 @@ namespace HLP.GeraXml.UI.NFe
                         //while (!workThread.IsAlive) ;
 
                     }
-
                     if (objSelect.Where(c => c.bContingencia).Count() > 1)
                     {
                         throw new Exception("Selecione uma nota de cada vez quando houver notas de contingêcia a ser enviada.");
@@ -395,7 +394,7 @@ namespace HLP.GeraXml.UI.NFe
                         objFrmBuscaRet.ShowDialog();
                         KryptonMessageBox.Show(belTrataMensagemNFe.RetornaMensagem(objbelRetFazenda.lDadosRetorno, belTrataMensagemNFe.Tipo.Envio), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cboStatus.cbx.SelectedIndex = 2;
-                        PesquisaNotas();
+                        //PesquisaNotas();
 
                         List<string> lsNotas = objbelRetFazenda.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
                         List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
@@ -406,13 +405,13 @@ namespace HLP.GeraXml.UI.NFe
                     }
                     else
                     {
-                        //cboStatus.cbx.SelectedIndex = 2;
+                        cboStatus.cbx.SelectedIndex = 2;
                         PesquisaNotas();
-
                         List<string> lsNotas = objfrmLotes.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
                         List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
                                                         where lsNotas.Contains(c.sCD_NFSEQ)
                                                         select c).ToList();
+                        bsNotas.DataSource = dados;
 
                     }
                     cboStatus.cbx.SelectedIndex = 1;

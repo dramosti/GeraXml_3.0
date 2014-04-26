@@ -5767,7 +5767,7 @@
             // 
             this.txtXnomeTransp._LabelText = "Nome";
             this.txtXnomeTransp._Multiline = false;
-            this.txtXnomeTransp._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
+            this.txtXnomeTransp._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.NÃO;
             this.txtXnomeTransp._Password = false;
             this.txtXnomeTransp._Regex = Expressoes.Não_Aplica;
             this.txtXnomeTransp._Regex_Expressao = null;
@@ -5836,7 +5836,7 @@
             // 
             this.txtUFTransp._LabelText = "UF";
             this.txtUFTransp._Multiline = false;
-            this.txtUFTransp._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
+            this.txtUFTransp._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.NÃO;
             this.txtUFTransp._Password = false;
             this.txtUFTransp._Regex = Expressoes.Não_Aplica;
             this.txtUFTransp._Regex_Expressao = null;

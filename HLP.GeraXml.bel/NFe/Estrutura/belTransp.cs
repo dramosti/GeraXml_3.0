@@ -182,6 +182,10 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                                              ex.Message));
                         }
                     }
+                }
+                else
+                {
+                    this.Modfrete = "9";
                 }                
             }
             catch (Exception ex)

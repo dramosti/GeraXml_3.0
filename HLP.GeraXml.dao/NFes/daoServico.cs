@@ -11,23 +11,78 @@ namespace HLP.GeraXml.dao.NFes
 {
     public class daoServico
     {
+        private class CamposSelect
+        {
+            public string sCampo = "";
+            public string sAlias = "";
+            public bool bAgrupa = false;
+        }
+
         public DataTable BuscaDadosServico(string sNota)
         {
             try
             {
-                StringBuilder sQuery = new StringBuilder();
-                sQuery.Append("Select ");
-                sQuery.Append("distinct movitem.ds_prod, coalesce(movitem.ds_obs,'')ds_obs  ,movitem.vl_totbruto,coalesce(produto.cd_trib_municipio,'')cd_trib_municipio, " +
-                              " coalesce(empresa.cd_lista_servico,'')cd_lista_servico_Emp, " +
-                              " coalesce(produto.cd_lista_servico,'')cd_lista_servico_Prod from movitem ");
-                sQuery.Append("left join produto on movitem.cd_prod = produto.cd_prod ");
-                sQuery.Append("left join empresa on movitem.cd_empresa = empresa.cd_empresa ");
-                sQuery.Append("where movitem.cd_nfseq = '" + sNota + "' and ");
-                sQuery.Append("movitem.cd_empresa = '" + Acesso.CD_EMPRESA + "' and ");
-                sQuery.Append("produto.cd_empresa = '" + Acesso.CD_EMPRESA + "'");
+                List<CamposSelect> lCampos = new List<CamposSelect>();
+                StringBuilder sCampos = new StringBuilder();
+                StringBuilder sInnerJoin = new StringBuilder();
+                StringBuilder sWhere = new StringBuilder();
+                StringBuilder sGroup = new StringBuilder();
 
-                return HlpDbFuncoes.qrySeekRet(sQuery.ToString());
+                lCampos.Add(new CamposSelect { sCampo = "movitem.ds_prod", sAlias = "ds_prod" });
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(movitem.ds_obs,'')", sAlias = "ds_obs" });
+                lCampos.Add(new CamposSelect { sCampo = "movitem.vl_totbruto", sAlias = "vl_totbruto", bAgrupa = Acesso.bAGRUPA_ITENS_NFSE });
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(produto.cd_trib_municipio,'')", sAlias = "cd_trib_municipio" });
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(empresa.cd_lista_servico,'')", sAlias = "cd_lista_servico_Emp" });
+                lCampos.Add(new CamposSelect { sCampo = "coalesce(produto.cd_lista_servico,'')", sAlias = "cd_lista_servico_Prod" });
+                
+                sCampos.Append(Environment.NewLine + "Select " + Environment.NewLine);
+                lCampos = lCampos.OrderBy(c => c.bAgrupa).ToList();
+                for (int i = 0; i < lCampos.Count; i++)
+                {
+                    CamposSelect camp = lCampos[i];
+                    string sFormat = "Sum({0}) ";
+                    sCampos.Append((camp.bAgrupa ? string.Format(sFormat, camp.sCampo) : camp.sCampo) + " " + camp.sAlias + ((i + 1) != lCampos.Count() ? "," : "") + Environment.NewLine);
+                }
 
+                sInnerJoin.Append("from movitem ");
+                sInnerJoin.Append("left join produto on movitem.cd_prod = produto.cd_prod ");
+                sInnerJoin.Append("left join empresa on movitem.cd_empresa = empresa.cd_empresa ");
+
+                #region Where
+                sWhere.Append("Where ");
+                sWhere.Append("movitem.cd_nfseq = '" + sNota + "' and ");
+                sWhere.Append("movitem.cd_empresa = '" + Acesso.CD_EMPRESA + "' and ");
+                sWhere.Append("produto.cd_empresa = '" + Acesso.CD_EMPRESA + "'" );
+                #endregion
+                if (Acesso.bAGRUPA_ITENS_NFSE)
+                {
+                    sGroup.Append(Environment.NewLine + " Group by " + Environment.NewLine);
+                    lCampos = lCampos.Where(c => c.bAgrupa == false).ToList();
+                    for (int i = 0; i < lCampos.Count; i++)
+                    {
+                        CamposSelect camp = lCampos[i];
+                        if (camp.sCampo != "''")
+                        {
+                            sGroup.Append((camp.bAgrupa == false ? camp.sCampo + ((i + 1) < lCampos.Count() ? ", " : "") + Environment.NewLine : ""));
+                        }
+                    }
+                }
+
+                string sQueryItens = sCampos.ToString() + sInnerJoin + sWhere + (Acesso.bAGRUPA_ITENS_NFSE ? sGroup.ToString() : "");
+                return HlpDbFuncoes.qrySeekRet(sQueryItens.ToString());
+
+                //StringBuilder sQuery = new StringBuilder();
+                //sQuery.Append("Select ");
+                //sQuery.Append("distinct movitem.ds_prod, coalesce(movitem.ds_obs,'')ds_obs  ,movitem.vl_totbruto,coalesce(produto.cd_trib_municipio,'')cd_trib_municipio, " +
+                //              " coalesce(empresa.cd_lista_servico,'')cd_lista_servico_Emp, " +
+                //              " coalesce(produto.cd_lista_servico,'')cd_lista_servico_Prod from movitem ");
+                //sQuery.Append("left join produto on movitem.cd_prod = produto.cd_prod ");
+                //sQuery.Append("left join empresa on movitem.cd_empresa = empresa.cd_empresa ");
+                //sQuery.Append("where movitem.cd_nfseq = '" + sNota + "' and ");
+                //sQuery.Append("movitem.cd_empresa = '" + Acesso.CD_EMPRESA + "' and ");
+                //sQuery.Append("produto.cd_empresa = '" + Acesso.CD_EMPRESA + "'");
+
+                //return HlpDbFuncoes.qrySeekRet(sQuery.ToString());
             }
             catch (Exception ex)
             {

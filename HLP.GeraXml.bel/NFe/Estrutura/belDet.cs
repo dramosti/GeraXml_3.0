@@ -1045,6 +1045,24 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
 
                             if (drIItem["nr_lanc"].ToString() == sNr_Lanc)
                             {
+                                if (drIItem["xLgrRedes"].ToString().Trim() != "")
+                                {
+                                    string sTransportadora = "";
+
+                                    sTransportadora = string.Format((Acesso.NM_EMPRESA == "TORCETEX" ? "FRETE A PAGAR DESTINO - TRANSP . DE REDESPACHO.: " : "Redespacho.:")
+                                                              + "{5} - {0} {1} - Bairro.: {2} - Cidade.: {3} - UF.: {4} - CNPJ:{6} ",
+                                                              Util.TiraSimbolo(drIItem["xLgrRedes"].ToString().Trim(), ""),
+                                                              Util.TiraSimbolo(drIItem["nroRedes"].ToString().Trim(), ""),
+                                                              Util.TiraSimbolo(drIItem["xBairroRedes"].ToString().Trim(), ""),
+                                                              RetiraCaracterEsquerda(Util.TiraSimbolo(drIItem["cmunRedes"].ToString().Trim(), ""), '0'),
+                                                              Util.TiraSimbolo(drIItem["UFRedes"].ToString().Trim(), ""),
+                                                              drIItem["Redespacho"].ToString().Trim(),
+                                                              Util.TiraSimbolo(drIItem["Transpcd_cgc"].ToString().Trim(), "")
+                                                              );
+                                    sTransportadora += ";";
+                                    sObsItem = sTransportadora + sObsItem;
+                                }                                
+
                                 if (drIItem["xLgr"].ToString().Trim() != "")
                                 {
                                     sObsItem += string.Format("Endereco de Entrega.: {0}, {1} - Bairro.: {2} - Cidade.: {3} - UF.: {4} ",
@@ -1053,51 +1071,14 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                                                  drIItem["xBairro"].ToString().Trim(),
                                                                  RetiraCaracterEsquerda(drIItem["cMun"].ToString().Trim(), '0'),
                                                                  drIItem["UF"].ToString().Trim());
-
-                                    if (sObsItem != "")
-                                    {
-                                        objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "");
-                                    }
-                                }
-                                else
-                                {
-                                    if (sObsItem != "")
-                                    {
-                                        objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "").Replace(Environment.NewLine, "-");
-                                    }
                                 }
                             }
-                            else
+                            
+                            if (sObsItem != "")
                             {
-                                if (sObsItem != "")
-                                {
-                                    objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "");
-                                }
-
+                                objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "");
                             }
 
-                        }
-
-                        if (drIItem["nr_lanc"].ToString() == sNr_Lanc)
-                        {
-                            if (drIItem["xLgrRedes"].ToString().Trim() != "")
-                            {
-                                string sTransportadora = "";
-
-                                sTransportadora = string.Format((Acesso.NM_EMPRESA == "TORCETEX" ? "FRETE A PAGAR DESTINO - TRANSP . DE REDESPACHO.: " : "Redespacho.:")
-                                                          + "{5} - {0} {1} - Bairro.: {2} - Cidade.: {3} - UF.: {4} - CNPJ:{6} ",
-                                                          Util.TiraSimbolo(drIItem["xLgrRedes"].ToString().Trim(), ""),
-                                                          Util.TiraSimbolo(drIItem["nroRedes"].ToString().Trim(), ""),
-                                                          Util.TiraSimbolo(drIItem["xBairroRedes"].ToString().Trim(), ""),
-                                                          RetiraCaracterEsquerda(Util.TiraSimbolo(drIItem["cmunRedes"].ToString().Trim(), ""), '0'),
-                                                          Util.TiraSimbolo(drIItem["UFRedes"].ToString().Trim(), ""),
-                                                          drIItem["Redespacho"].ToString().Trim(),
-                                                          Util.TiraSimbolo(drIItem["Transpcd_cgc"].ToString().Trim(), "")
-                                                          );
-                                sTransportadora += ";";
-                                sObsItem = sTransportadora + sObsItem;
-                                objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "-");
-                            }
                         }
                         if (Acesso.TRANSPARENCIA == 1 || Acesso.TRANSPARENCIA == 2)
                         {
@@ -1138,7 +1119,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                             {
                                 if ((objinf.Infadprid.Contains("FRETE A PAGAR DESTINO") == false))
                                 {
-                                    objinf.Infadprid += objinf.Infadprid.Replace("REDESPACHO ", "");
+                                    objinf.Infadprid = objinf.Infadprid.Replace("REDESPACHO ", "");
                                 }
                             }
                         }
