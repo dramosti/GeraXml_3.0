@@ -176,15 +176,23 @@ namespace HLP.GeraXml.UI
             int i = 0;
             foreach (belEmail objEmail in objListaEmail)
             {
-                lEmail = new List<belEmail>();
-                lEmail.Add(objEmail);
-                send.EnviarEmail(lEmail);
-                this.Invoke(new MethodInvoker(delegate()
+                try
                 {
-                    lblInfo.Text = string.Format(slblInfo, (i + 1).ToString(), objListaEmail.Count());
-                    lblInfo.Refresh();                                        
-                }));
-                i++;
+                    lEmail = new List<belEmail>();
+                    lEmail.Add(objEmail);
+                    send.EnviarEmail(lEmail);
+                    this.Invoke(new MethodInvoker(delegate()
+                    {
+                        lblInfo.Text = string.Format(slblInfo, (i + 1).ToString(), objListaEmail.Count());
+                        lblInfo.Refresh();
+                    }));
+                    i++;
+
+                }
+                catch (Exception ex)
+                {
+                    new HLPexception(ex);
+                }
             }
             this.Invoke(new MethodInvoker(delegate()
                 {

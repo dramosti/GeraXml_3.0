@@ -3983,7 +3983,7 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1629652782</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1629652782</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>1629654830</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.hlp.com.br</td><td>0</td><td/><td>-1725800728</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.hlp.com.br</td><td>0</td><td/><td>1789058761</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>HLP Estratégia em Sistemas</td><td>0</td><td/><td>1763871693</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>GeraXml 2.0.exe</td><td>0</td><td/><td>1763844779</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>GeraXml 3.0.exe</td><td>0</td><td/><td>-1994226005</td></row>
@@ -4605,7 +4605,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{FD67D959-DF54-4D98-BA50-E312B70461EC}</td><td/></row>
 		<row><td>ProductName</td><td>GeraXml 3.0</td><td/></row>
-		<row><td>ProductVersion</td><td>3.0.2.41</td><td/></row>
+		<row><td>ProductVersion</td><td>3.0.2.45</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>

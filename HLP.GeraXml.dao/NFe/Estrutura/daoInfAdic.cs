@@ -649,5 +649,36 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
             }
             return sObs.Trim();
         }
+
+        public string MsgGiwa(string seqNota)
+        {
+            try
+            {
+                string sreturn = "";
+
+                StringBuilder sQuery = new StringBuilder();
+                sQuery.Append("select distinct coalesce(movitem.ds_compr,'') COMPRADOR, coalesce(movitem.cd_pedcli,'') PEDCLI from movitem ");
+                sQuery.Append("where movitem.cd_nfseq = '{0}' and movitem.cd_empresa = '{1}'");
+
+                DataTable dtRet = HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), seqNota, Acesso.CD_EMPRESA));
+
+                foreach (DataRow row in dtRet.Rows)
+                {
+                    if (row["COMPRADOR"].ToString() != "")
+                        sreturn += "COMPRADOR: " + row["COMPRADOR"].ToString().ToUpper() + ";";
+
+                    if (row["PEDCLI"].ToString() != "")
+                        sreturn += "NUMERO DO PEDIDO: " + row["PEDCLI"].ToString().ToUpper() + ";";
+                    else
+                        sreturn += "NUMERO DO PEDIDO: " + "(EM BRANCO);";
+                }
+
+                return sreturn;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

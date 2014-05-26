@@ -78,6 +78,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
         {
             try
             {
+
                 this.Infcpl = BuscaMsgJAMAICA(seqNF, sCNPJ);
                 this.Infcpl = BuscaMsgLORENZON(seqNF);
                 bool cfopsValidos = (ldet.Count(p => (p.prod.Cfop.Equals("5101"))
@@ -94,6 +95,8 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                     this.Infcpl = "VbcIcmsRetido: " + dVbcIcmsRt.ToString("#0.00") + " | VIcmsRetido: " + dVIcmsRt.ToString("#0.00") + " ;";
                 }
                 this.Infcpl = MsgInsumosZINCOBRIL(ldet);
+                if (Acesso.NM_EMPRESA.Equals("GIWA"))
+                    this.Infcpl = MsgGiwa(seqNF);
 
 
             }
@@ -102,6 +105,8 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                 throw;
             }
         }
+
+
 
         private string MsgInsumosZINCOBRIL(List<belDet> ldet)
         {

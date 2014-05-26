@@ -28,7 +28,7 @@ namespace HLP.GeraXml.dao.NFe
                 sSqlDup.Append("Select ");
                 sSqlDup.Append("doc_ctr.nr_doc, ");
                 sSqlDup.Append("doc_ctr.cd_documento, ");
-                sSqlDup.Append("doc_ctr.cd_dupli, ");
+                sSqlDup.Append("doc_ctr.cd_dupli, doc_ctr.cd_seqped, ");
                 sSqlDup.Append("'S' Nota ");
                 //Tabela
                 sSqlDup.Append("From Doc_ctr ");
@@ -72,7 +72,7 @@ namespace HLP.GeraXml.dao.NFe
                         //Campos do Select
                         sSqlDup.Append("Select ");
                         sSqlDup.Append("doc_ctr.nr_doc, ");
-                        sSqlDup.Append("doc_ctr.cd_documento, ");
+                        sSqlDup.Append("doc_ctr.cd_documento,  ");
                         sSqlDup.Append("doc_ctr.cd_dupli, ");
                         sSqlDup.Append("'N' Nota ");
                         //Tabela
@@ -238,8 +238,8 @@ namespace HLP.GeraXml.dao.NFe
                                 sSqlDup.Append(Acesso.CD_EMPRESA);
                                 sSqlDup.Append("') ");
                                 sSqlDup.Append("and ");
-                                sSqlDup.Append("(doc_ctr.cd_pedido = '");
-                                sSqlDup.Append(CD_PEDIDO);
+                                sSqlDup.Append("(doc_ctr.cd_nfseq_conversao = '");
+                                sSqlDup.Append(nfseq);
                                 sSqlDup.Append("') ");
 
                                 #region MASTERFEW

@@ -192,7 +192,7 @@ namespace HLP.GeraXml.UI.CCe
                         string sCaminho = Util.GetPathRelatorio("CCe.rpt");
                         ReportDocument rpt = new ReportDocument();
                         rpt.Load(sCaminho);
-                        DirectoryInfo dinfo = new DirectoryInfo(Pastas.ENVIADOS + "\\Servicos" + "\\PDF");
+                        DirectoryInfo dinfo = new DirectoryInfo(Pastas.CCe + "\\PDF");
                         if (!dinfo.Exists)
                         {
                             dinfo.Create();

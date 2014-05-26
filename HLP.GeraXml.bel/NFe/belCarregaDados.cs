@@ -66,11 +66,32 @@ namespace HLP.GeraXml.bel.NFe
                     objInfNFe.infAdic.Carrega(nota.sCD_NFSEQ, objInfNFe.det, objInfNFe.dest.Cnpj, dVbcIcmsRt, dVIcmsRt);
 
                     if (Acesso.TRANSPARENCIA == 0 || Acesso.TRANSPARENCIA == 2)
-                    {                        
-                            string sMsg = objInfNFe.infAdic.Infcpl;
-                            objInfNFe.infAdic.Infcpl = null;
-                            objInfNFe.infAdic.Infcpl = daoUtil.CarregaObsTransparenciaNF(nota.sCD_NFSEQ) + sMsg;
+                    {
+                        string sMsg = objInfNFe.infAdic.Infcpl;
+                        objInfNFe.infAdic.Infcpl = null;
+                        objInfNFe.infAdic.Infcpl = daoUtil.CarregaObsTransparenciaNF(nota.sCD_NFSEQ) + sMsg;
                     }
+
+                    if (Acesso.NM_EMPRESA.Equals("GIWA"))
+                    {
+                        if (objInfNFe.cobr != null)
+                        {
+                            if (objInfNFe.cobr.Fat != null)
+                            {
+                                if (objInfNFe.cobr.Fat.belDup != null)
+                                {
+                                    if (objInfNFe.cobr.Fat.belDup.Count() > 0)
+                                        objInfNFe.infAdic.Infcpl = "PARCELA(S): ";
+                                    foreach (var item in objInfNFe.cobr.Fat.belDup)
+                                    {
+                                        objInfNFe.infAdic.Infcpl = string.Format("{0} - VALOR R${1}", item.Dvenc.ToShortDateString()
+                                            , item.Vdup.ToString());
+                                    }
+                                }
+                            }
+                        }
+                    }
+
 
                     lNotas.Add(objInfNFe);
                 }
