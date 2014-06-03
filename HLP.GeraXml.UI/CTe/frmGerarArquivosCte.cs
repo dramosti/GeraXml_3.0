@@ -239,18 +239,33 @@ namespace HLP.GeraXml.UI.CTe
                             string sRecibo = objCriaXml.GerarXml(objFrm.objObjetosAlter, iNumLote);
 
                             List<belStatusCte> ListaStatus = objCriaXml.ConsultaLoteEnviado(sRecibo);
-                            if (sRecibo != "")
+                            // if (sRecibo != "")
                             {
                                 objGravaDadosRetorno.GravarRecibo(objFrm.objObjetosAlter, sRecibo);
                             }
+                            List<string> lstatusValid = new List<string>();
+                            lstatusValid.Add("218");
+                            lstatusValid.Add("101");
+                            lstatusValid.Add("103");
+                            lstatusValid.Add("104");
+                            lstatusValid.Add("105");
+                            lstatusValid.Add("100");
+                            lstatusValid.Add("204");
+
+
                             foreach (belStatusCte cte in ListaStatus)
                             {
-                                if (cte.CodRetorno != "103" && cte.CodRetorno != "104" && cte.CodRetorno != "105" && cte.CodRetorno != "100")
+                                if (!lstatusValid.Contains(cte.CodRetorno))
                                 {
                                     objGravaDadosRetorno.ApagarRecibo(sRecibo);
                                 }
                                 else
                                 {
+                                    //objGravaDadosRetorno.GravarProtocoloEnvio(cte.Protocolo, cte.NumeroSeq);                                    
+                                    if (cte.CodRetorno == "204" || cte.CodRetorno == "100")
+                                    {
+                                        cte.Enviado = true;
+                                    }
                                     objGravaDadosRetorno.GravarProtocoloEnvio(cte.Protocolo, cte.NumeroSeq);
                                 }
                             }
@@ -549,17 +564,21 @@ namespace HLP.GeraXml.UI.CTe
                             if (dgvArquivos["cl_assina", i].Value.ToString().Equals("True"))
                             {
                                 string sProtEnvio = objGerais.VerificaCampoProtocoloEnvio(dgvArquivos["cd_conheci", i].Value.ToString());
-                                if (sProtEnvio != "")
+
+                                if (sProtEnvio == "")
                                 {
-                                    DadosImpressao objDados = new DadosImpressao();
-                                    objDados.sNumeroCte = dgvArquivos["cd_conheci", i].Value.ToString();
-                                    objDados.sProtocolo = sProtEnvio;
-                                    if (Convert.ToBoolean(dgvArquivos["ds_cancelamento", i].Value).ToString().Equals("True"))
-                                    {
-                                        objDados.Cancelado = true;
-                                    }
-                                    objListDados.Add(objDados);
+                                    sProtEnvio = objGerais.VerificaCampoProtocoloEnvioByChave(dgvArquivos["cd_conheci", i].Value.ToString()
+                                        , (dgvArquivos["ds_cancelamento", i].Value.ToString() == "0" ? false : true));
                                 }
+
+                                DadosImpressao objDados = new DadosImpressao();
+                                objDados.sNumeroCte = dgvArquivos["cd_conheci", i].Value.ToString();
+                                objDados.sProtocolo = sProtEnvio;
+                                if (Convert.ToBoolean(dgvArquivos["ds_cancelamento", i].Value).ToString().Equals("True"))
+                                {
+                                    objDados.Cancelado = true;
+                                }
+                                objListDados.Add(objDados);
 
                             }
                         }
@@ -767,17 +786,19 @@ namespace HLP.GeraXml.UI.CTe
                             if (dgvArquivos["cl_assina", i].Value.ToString().Equals("True"))
                             {
                                 string sProtEnvio = objGerais.VerificaCampoProtocoloEnvio(dgvArquivos["cd_conheci", i].Value.ToString());
-                                if (sProtEnvio != "")
+                                if (sProtEnvio == "")
                                 {
-                                    DadosImpressao objDados = new DadosImpressao();
-                                    objDados.sNumeroCte = dgvArquivos["cd_conheci", i].Value.ToString();
-                                    objDados.sProtocolo = sProtEnvio;
-                                    if (Convert.ToBoolean(dgvArquivos["ds_cancelamento", i].Value).ToString().Equals("True"))
-                                    {
-                                        objDados.Cancelado = true;
-                                    }
-                                    objListDados.Add(objDados);
+                                    sProtEnvio = objGerais.VerificaCampoProtocoloEnvioByChave(dgvArquivos["cd_conheci", i].Value.ToString()
+                                        , (dgvArquivos["ds_cancelamento", i].Value.ToString() == "0" ? false : true));
                                 }
+                                DadosImpressao objDados = new DadosImpressao();
+                                objDados.sNumeroCte = dgvArquivos["cd_conheci", i].Value.ToString();
+                                objDados.sProtocolo = sProtEnvio;
+                                if (Convert.ToBoolean(dgvArquivos["ds_cancelamento", i].Value).ToString().Equals("True"))
+                                {
+                                    objDados.Cancelado = true;
+                                }
+                                objListDados.Add(objDados);
 
                             }
                         }
@@ -942,8 +963,15 @@ namespace HLP.GeraXml.UI.CTe
                             string sRecibo = objGerais.VerificaCampoReciboPreenchido(dgvArquivos["nr_lanc", i].Value.ToString());
                             if (sRecibo != "")
                             {
-                                sListCodConhec.Add(sRecibo);
-                                belTrataMensagem.sNumCte = dgvArquivos["nr_lanc", i].Value.ToString();
+                                if (objGerais.VerificaDataUltimoRetorno(dgvArquivos["nr_lanc", i].Value.ToString()))
+                                {
+                                    sListCodConhec.Add(sRecibo);
+                                    belTrataMensagem.sNumCte = dgvArquivos["nr_lanc", i].Value.ToString();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format("Último retorno do conhecimento: {0}, não ultrapassa os 5 min solicitado pela SEFAZ, aguarde mais um pouco.", dgvArquivos["nr_lanc", i].Value.ToString()), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
                         }
                     }
@@ -952,16 +980,30 @@ namespace HLP.GeraXml.UI.CTe
                 {
 
                     List<belStatusCte> ListaStatus = objCriaXml.ConsultaLoteEnviado(sListCodConhec[0]);
+                    List<string> lstatusValid = new List<string>();
+                    lstatusValid.Add("218");
+                    lstatusValid.Add("101");
+                    lstatusValid.Add("103");
+                    lstatusValid.Add("104");
+                    lstatusValid.Add("105");
+                    lstatusValid.Add("100");
+                    lstatusValid.Add("204");
+
                     foreach (belStatusCte cte in ListaStatus)
                     {
-                        if (cte.CodRetorno != "103" && cte.CodRetorno != "104" && cte.CodRetorno != "105" && cte.CodRetorno != "100")
+                        if (!lstatusValid.Contains(cte.CodRetorno))
                         {
                             objGravaDadosRetorno.ApagarRecibo(sListCodConhec[0]);
                         }
                         else
                         {
                             objGravaDadosRetorno.GravarProtocoloEnvio(cte.Protocolo, cte.NumeroSeq);
+                            if (cte.CodRetorno == "204" || cte.CodRetorno == "100")
+                            {
+                                cte.Enviado = true;
+                            }
                         }
+                        objGravaDadosRetorno.GravarUltimoRetorno(cte.NumeroSeq);
                     }
                     foreach (belStatusCte cte in ListaStatus.Where(C => C.Enviado == true))
                     {
@@ -1379,32 +1421,6 @@ namespace HLP.GeraXml.UI.CTe
                             dgvArquivos[0, e.RowIndex].Value = false;
                             SendKeys.Send("{right}");
                             SendKeys.Send("{left}");
-                        }
-                    }
-                }
-                if ((e.RowIndex > -1) && (e.ColumnIndex == 1))
-                {
-                    if ((dgvArquivos[1, e.RowIndex].Value == null))
-                    {
-                        dgvArquivos[1, e.RowIndex].Value = true;
-                        SendKeys.Send("{left}");
-                        SendKeys.Send("{right}");
-                    }
-                    else
-                    {
-                        if (dgvArquivos[1, e.RowIndex].Value.ToString() == "False")
-                        {
-                            dgvArquivos[1, e.RowIndex].Value = true;
-                            SendKeys.Send("{left}");
-                            SendKeys.Send("{right}");
-
-
-                        }
-                        else
-                        {
-                            dgvArquivos[1, e.RowIndex].Value = false;
-                            SendKeys.Send("{left}");
-                            SendKeys.Send("{right}");
                         }
                     }
                 }

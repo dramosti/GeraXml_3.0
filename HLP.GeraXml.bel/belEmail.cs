@@ -53,10 +53,15 @@ namespace HLP.GeraXml.bel
             this.sNotaFis = sCD_NOTAFIS;
             this.sChaveNFe = sChaveNFe;
             this.sCodigoVerificacaoNFservico = sCodigoVerificacaoNFservico;
-
-            string[] aux = RetornaEmailDestinatarioNfe(sCD_NFSEQ);
+            string[] aux;
+            if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
+                aux = RetornaEmailDestinatarioNfe(sCD_NFSEQ);
+            else
+            {
+                aux = RetornaEmailDestinatarioCte(sCD_NFSEQ).Split(';');
+            }
             this.sDestinatario = Acesso.NM_RAMO == Acesso.BancoDados.TRANSPORTE ? RetornaEmailDestinatarioCte(sCD_NFSEQ) : aux[0];
-            
+
 
             if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
             {

@@ -31,15 +31,6 @@ namespace HLP.GeraXml.UI.CTe
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerarArquivosCte));
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.dgvArquivos = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.cl_assina = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nr_lanc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cd_conheci = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dt_emi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vl_total = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
-            this.nm_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.st_cte = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ds_cancelamento = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.st_contingencia = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -76,6 +67,15 @@ namespace HLP.GeraXml.UI.CTe
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnConsultaSituacao = new System.Windows.Forms.ToolStripButton();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.cl_assina = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.nr_lanc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_conheci = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dt_emi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vl_total = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
+            this.nm_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.st_cte = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ds_cancelamento = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.st_contingencia = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArquivos)).BeginInit();
@@ -118,103 +118,6 @@ namespace HLP.GeraXml.UI.CTe
             this.dgvArquivos.TabIndex = 232;
             this.dgvArquivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArquivos_CellClick);
             this.dgvArquivos.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvArquivos_ColumnHeaderMouseClick);
-            // 
-            // cl_assina
-            // 
-            this.cl_assina.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.cl_assina.HeaderText = "Selecionar";
-            this.cl_assina.Name = "cl_assina";
-            this.cl_assina.Width = 71;
-            // 
-            // nr_lanc
-            // 
-            this.nr_lanc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.nr_lanc.DataPropertyName = "nr_lanc";
-            this.nr_lanc.HeaderText = "Sequência";
-            this.nr_lanc.Name = "nr_lanc";
-            this.nr_lanc.ReadOnly = true;
-            this.nr_lanc.Width = 90;
-            // 
-            // cd_conheci
-            // 
-            this.cd_conheci.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.cd_conheci.DataPropertyName = "cd_conheci";
-            this.cd_conheci.HeaderText = "Conhecimento";
-            this.cd_conheci.Name = "cd_conheci";
-            this.cd_conheci.ReadOnly = true;
-            this.cd_conheci.Width = 115;
-            // 
-            // dt_emi
-            // 
-            this.dt_emi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dt_emi.DataPropertyName = "dt_emi";
-            this.dt_emi.HeaderText = "Emissão";
-            this.dt_emi.Name = "dt_emi";
-            this.dt_emi.ReadOnly = true;
-            this.dt_emi.Width = 79;
-            // 
-            // vl_total
-            // 
-            this.vl_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.vl_total.DataPropertyName = "vl_total";
-            this.vl_total.DecimalPlaces = 2;
-            this.vl_total.HeaderText = "Valor Total";
-            this.vl_total.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.vl_total.Maximum = new decimal(new int[] {
-            1215752191,
-            23,
-            0,
-            0});
-            this.vl_total.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.vl_total.Name = "vl_total";
-            this.vl_total.ReadOnly = true;
-            this.vl_total.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vl_total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.vl_total.Width = 93;
-            // 
-            // nm_social
-            // 
-            this.nm_social.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nm_social.DataPropertyName = "nm_social";
-            this.nm_social.HeaderText = "Remetente";
-            this.nm_social.Name = "nm_social";
-            this.nm_social.ReadOnly = true;
-            // 
-            // st_cte
-            // 
-            this.st_cte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.st_cte.DataPropertyName = "st_cte";
-            this.st_cte.HeaderText = "Enviado";
-            this.st_cte.Name = "st_cte";
-            this.st_cte.ReadOnly = true;
-            this.st_cte.Visible = false;
-            // 
-            // ds_cancelamento
-            // 
-            this.ds_cancelamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.ds_cancelamento.DataPropertyName = "ds_cancelamento";
-            this.ds_cancelamento.HeaderText = "Cancelado";
-            this.ds_cancelamento.Name = "ds_cancelamento";
-            this.ds_cancelamento.ReadOnly = true;
-            this.ds_cancelamento.Visible = false;
-            // 
-            // st_contingencia
-            // 
-            this.st_contingencia.DataPropertyName = "st_contingencia";
-            this.st_contingencia.HeaderText = "Contingência";
-            this.st_contingencia.Name = "st_contingencia";
-            this.st_contingencia.ReadOnly = true;
-            this.st_contingencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.st_contingencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.st_contingencia.Visible = false;
             // 
             // flowLayoutPanel2
             // 
@@ -628,6 +531,106 @@ namespace HLP.GeraXml.UI.CTe
             this.btnConsultaSituacao.Size = new System.Drawing.Size(129, 20);
             this.btnConsultaSituacao.Text = "Consultar Situação";
             this.btnConsultaSituacao.Click += new System.EventHandler(this.btnConsultaSituacao_Click);
+            // 
+            // cl_assina
+            // 
+            this.cl_assina.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.cl_assina.HeaderText = "Selecionar";
+            this.cl_assina.Name = "cl_assina";
+            this.cl_assina.Width = 71;
+            // 
+            // nr_lanc
+            // 
+            this.nr_lanc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.nr_lanc.DataPropertyName = "nr_lanc";
+            this.nr_lanc.HeaderText = "Sequência";
+            this.nr_lanc.Name = "nr_lanc";
+            this.nr_lanc.ReadOnly = true;
+            this.nr_lanc.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.nr_lanc.Width = 90;
+            // 
+            // cd_conheci
+            // 
+            this.cd_conheci.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.cd_conheci.DataPropertyName = "cd_conheci";
+            this.cd_conheci.HeaderText = "Conhecimento";
+            this.cd_conheci.Name = "cd_conheci";
+            this.cd_conheci.ReadOnly = true;
+            this.cd_conheci.Width = 115;
+            // 
+            // dt_emi
+            // 
+            this.dt_emi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dt_emi.DataPropertyName = "dt_emi";
+            this.dt_emi.HeaderText = "Emissão";
+            this.dt_emi.Name = "dt_emi";
+            this.dt_emi.ReadOnly = true;
+            this.dt_emi.Width = 79;
+            // 
+            // vl_total
+            // 
+            this.vl_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.vl_total.DataPropertyName = "vl_total";
+            this.vl_total.DecimalPlaces = 2;
+            this.vl_total.HeaderText = "Valor Total";
+            this.vl_total.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.vl_total.Maximum = new decimal(new int[] {
+            1215752191,
+            23,
+            0,
+            0});
+            this.vl_total.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.vl_total.Name = "vl_total";
+            this.vl_total.ReadOnly = true;
+            this.vl_total.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.vl_total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.vl_total.Width = 93;
+            // 
+            // nm_social
+            // 
+            this.nm_social.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nm_social.DataPropertyName = "nm_social";
+            this.nm_social.HeaderText = "Remetente";
+            this.nm_social.Name = "nm_social";
+            this.nm_social.ReadOnly = true;
+            // 
+            // st_cte
+            // 
+            this.st_cte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.st_cte.DataPropertyName = "st_cte";
+            this.st_cte.HeaderText = "Enviado";
+            this.st_cte.Name = "st_cte";
+            this.st_cte.ReadOnly = true;
+            this.st_cte.Visible = false;
+            this.st_cte.Width = 59;
+            // 
+            // ds_cancelamento
+            // 
+            this.ds_cancelamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ds_cancelamento.DataPropertyName = "ds_cancelamento";
+            this.ds_cancelamento.HeaderText = "Cancelado";
+            this.ds_cancelamento.Name = "ds_cancelamento";
+            this.ds_cancelamento.ReadOnly = true;
+            this.ds_cancelamento.Visible = false;
+            this.ds_cancelamento.Width = 73;
+            // 
+            // st_contingencia
+            // 
+            this.st_contingencia.DataPropertyName = "st_contingencia";
+            this.st_contingencia.HeaderText = "Contingência";
+            this.st_contingencia.Name = "st_contingencia";
+            this.st_contingencia.ReadOnly = true;
+            this.st_contingencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.st_contingencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.st_contingencia.Visible = false;
             // 
             // frmGerarArquivosCte
             // 

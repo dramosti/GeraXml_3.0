@@ -118,7 +118,7 @@ namespace HLP.GeraXml.UI.CCe
 
                 for (int i = 0; i < lsNotas.Count; i++)
                 {
-                    belEmail objemail = new belEmail("", Pastas.ENVIADOS + "\\Servicos\\PDF\\" + lsNotas[i].CD_NOTAFIS + ".pdf", lsNotas[i].CD_NFSEQ, lsNotas[i].CD_NOTAFIS);
+                    belEmail objemail = new belEmail("", Pastas.CCe + "\\PDF\\" + lsNotas[i].CD_NOTAFIS + ".pdf", lsNotas[i].CD_NFSEQ, lsNotas[i].CD_NOTAFIS);
                     objlbelEmail.Add(objemail);
                 }
 

@@ -19,10 +19,10 @@ namespace HLP.GeraXml.dao.CTe
                 sQuery.Append("coalesce(conhecim.ds_prodpred,'')proPred, ");
                 sQuery.Append("coalesce(nfconhec.vl_nf,'')vMerc ");
                 sQuery.Append("from conhecim ");
-                sQuery.Append("join nfconhec on  conhecim.nr_lanc = nfconhec.nr_lancconhecim ");
-                sQuery.Append("join empresa on conhecim.cd_empresa = empresa.cd_empresa ");
+                sQuery.Append("inner JOIN nfconhec ON  (conhecim.nr_lanc = nfconhec.nr_lancconhecim) and ");
+                sQuery.Append("(conhecim.cd_empresa = nfconhec.cd_empresa) ");
                 sQuery.Append("where   conhecim.nr_lanc ='" + sCte + "' ");
-                sQuery.Append("and empresa.cd_empresa ='" + Acesso.CD_EMPRESA + "'");
+                sQuery.Append("and conhecim.cd_empresa ='" + Acesso.CD_EMPRESA + "'");
 
 
 

@@ -158,7 +158,8 @@ namespace HLP.GeraXml.UI.Configuracao
                     throw new Exception("Empresa não habilitada para emitir NFe, verifique o cadastro de empresa!");
                 }
                 Acesso.TP_AMB = Convert.ToInt16(dt.Rows[0]["tpAmb"].ToString());
-                Acesso.TP_AMB_SERV = Convert.ToInt16(dt.Rows[0]["tpAmb_Servico"].ToString());
+                try
+                {Acesso.TP_AMB_SERV = Convert.ToInt16(dt.Rows[0]["tpAmb_Servico"].ToString());}catch (Exception){}
             }
             Acesso.NM_RAZAOSOCIAL = dt.Rows[0]["nm_empresa"].ToString();
             Acesso.CNPJ_EMPRESA = dt.Rows[0]["cd_cgc"].ToString();

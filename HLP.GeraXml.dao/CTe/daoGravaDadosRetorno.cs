@@ -69,12 +69,30 @@ namespace HLP.GeraXml.dao.CTe
 
 
         }
+        public void GravarUltimoRetorno(string NumeroSeq)
+        {
+            try
+            {
+
+                StringBuilder sQuery = new StringBuilder();
+                sQuery.Append("Update conhecim ");
+                sQuery.Append("set conhecim.DT_ULTRET='" + DateTime.Now.ToString() + "' ");
+                sQuery.Append("where conhecim.nr_lanc='" + NumeroSeq + "' ");
+                sQuery.Append("and conhecim.cd_empresa ='" + Acesso.CD_EMPRESA + "'");
+
+                HlpDbFuncoes.qrySeekUpdate(sQuery.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public void GravarProtocoloEnvio(string Protocolo, string NumeroSeq)
         {
             try
             {
-
+                
                 StringBuilder sQuery = new StringBuilder();
                 sQuery.Append("Update conhecim ");
                 sQuery.Append("set conhecim.cd_nprotcte='" + Protocolo + "' ");

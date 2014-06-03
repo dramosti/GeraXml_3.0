@@ -80,6 +80,8 @@
     <Compile Include="CCe\_infEvento.cs" />
     <Compile Include="CTe\belBuscaDadosGerais.cs" />
     <Compile Include="CTe\belCancelaCte.cs" />
+    <Compile Include="CTe\belCancelamentoCTe.cs" />
+    <Compile Include="CTe\belcompl.cs" />
     <Compile Include="CTe\belCriaXml.cs" />
     <Compile Include="CTe\belDadosDest.cs" />
     <Compile Include="CTe\belDadosEmit.cs" />
@@ -102,7 +104,11 @@
     <Compile Include="CTe\belPopulaObjetos.cs" />
     <Compile Include="CTe\belStatusCte.cs" />
     <Compile Include="belStatusServico.cs" />
+    <Compile Include="CTe\belStatusServicoCTe.cs" />
     <Compile Include="CTe\belTrataMensagem.cs" />
+    <Compile Include="CTe\evCancCTe.cs" />
+    <Compile Include="CTe\eventoCTe.cs" />
+    <Compile Include="CTe\Evento\RetEventoCTe.cs" />
     <Compile Include="CTe\Expressoes.cs" />
     <Compile Include="CTe\infCte\dest\beldest.cs" />
     <Compile Include="CTe\infCte\dest\belenderDest.cs" />
@@ -135,6 +141,7 @@
     <Compile Include="CTe\infCte\infCTeNorm\belidDocAntPap.cs" />
     <Compile Include="CTe\infCte\infCTeNorm\belinfCarga.cs" />
     <Compile Include="CTe\infCte\infCTeNorm\belinfCTeNorm.cs" />
+    <Compile Include="CTe\infCte\infCTeNorm\belinfNF.cs" />
     <Compile Include="CTe\infCte\infCTeNorm\belinfQ.cs" />
     <Compile Include="CTe\infCte\infCTeNorm\bellacContQt.cs" />
     <Compile Include="CTe\infCte\infCTeNorm\bellacRodo.cs" />
@@ -145,10 +152,10 @@
     <Compile Include="CTe\infCte\infCTeNorm\belseg.cs" />
     <Compile Include="CTe\infCte\infCTeNorm\belvalePed.cs" />
     <Compile Include="CTe\infCte\infCTeNorm\belveic.cs" />
+    <Compile Include="CTe\infCte\infCTeNorm\belInfDoc.cs" />
     <Compile Include="CTe\infCte\receb\belenderReceb.cs" />
     <Compile Include="CTe\infCte\receb\belreceb.cs" />
     <Compile Include="CTe\infCte\rem\belenderReme.cs" />
-    <Compile Include="CTe\infCte\rem\belinfNF.cs" />
     <Compile Include="CTe\infCte\rem\belinfNFe.cs" />
     <Compile Include="CTe\infCte\rem\belinfOutros.cs" />
     <Compile Include="CTe\infCte\rem\bellocRet.cs" />

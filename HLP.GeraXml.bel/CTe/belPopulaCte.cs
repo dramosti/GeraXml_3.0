@@ -44,6 +44,8 @@ namespace HLP.GeraXml.bel.CTe
                     belDadosinfQ objInfQ = new belDadosinfQ();
                     belDadosrodo objRodo = new belDadosrodo();
 
+                    objbelinfCte.compl = new belcompl(sCte);
+
                     objIde.PopulaIde(sCte, sCTe[sCTe.Length - 1].ToString(), objbelinfCte, sCTe);
                     objEmit.PopulaEmit(objbelinfCte);
                     objRem.PopulaRem(objbelinfCte, sCte);

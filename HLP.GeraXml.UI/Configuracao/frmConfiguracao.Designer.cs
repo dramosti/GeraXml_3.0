@@ -110,9 +110,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
-            this.cachedrptCtePadraoCancelado2 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
-            this.cachedrptCtePadraoCancelado3 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.Configuracoes.SuspendLayout();
@@ -1553,9 +1550,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ErrorProvider errorProvider2;
-        private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado1;
-        private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado2;
-        private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado3;
         private AC.ExtendedRenderer.Navigator.KryptonTabControl kryptonTabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel6;

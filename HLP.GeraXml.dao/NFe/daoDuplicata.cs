@@ -113,9 +113,9 @@ namespace HLP.GeraXml.dao.NFe
                         if (drEmit["NOTA"].ToString() == "S")
                         {
                             iParcela++;
-                            objNFs.sNF = string.Format("{0}{1}",
+                            objNFs.sNF = string.Format("{0}-{1}",
                                                 sNumGerador,
-                                                Convert.ToChar((64 + iParcela)));
+                                                iParcela);
                             objNFs.sNrDoc = drEmit["NR_DOC"].ToString();
                         }
                         else
@@ -312,7 +312,7 @@ namespace HLP.GeraXml.dao.NFe
                                             iParcela++;
                                             objNFs.sNF = string.Format("{0}-{1}",
                                                                 sNumGerador,
-                                                                 iParcela);
+                                                                 iParcela + 10);
                                             objNFs.sNrDoc = drEmit["NR_DOC"].ToString();
                                         }
                                         else

@@ -7,6 +7,11 @@ namespace HLP.GeraXml.bel.CTe.infCte.infCTeNorm
 {
     public class belinfCTeNorm
     {
+        public belinfCTeNorm()
+        {
+            this.infDoc = new belInfDoc();
+        }
+
         /// <summary>
         /// 1:1
         /// </summary>
@@ -33,5 +38,8 @@ namespace HLP.GeraXml.bel.CTe.infCte.infCTeNorm
         /// 1:1
         /// </summary>
         public belrodo rodo { get; set; }
+
+
+        public belInfDoc infDoc { get; set; }
     }
 }

@@ -94,7 +94,6 @@ namespace HLP.GeraXml.UI.NFe
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
@@ -867,7 +866,6 @@ namespace HLP.GeraXml.UI.NFe
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblTotalRegistros;
         private Comum.Componentes.HLP_TextBox txtCliente;
-        private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ProgressBar pbMinutos;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblMinutos;

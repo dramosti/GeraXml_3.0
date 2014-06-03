@@ -16,6 +16,15 @@ namespace HLP.GeraXml.Comum.Static
 {
     public static class Util
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sChaveCTe"></param>
+        /// <returns></returns>
+        public static string GetNRLANC(string sChaveCTe)
+        {
+            return Convert.ToInt32(sChaveCTe.Substring(35, 8)).ToString().PadLeft(7, '0');
+        }
 
         public static string GetPathRelatorio(string xNameRpt, string xCNPJ = "")
         {

@@ -93,9 +93,10 @@
             this.tabPage32 = new System.Windows.Forms.TabPage();
             this.kryptonPanel32 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.gridinfQ = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.cUnid = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.tpMed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qCarga = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
+            this.cUnidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tpMedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qCargaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsInfQ = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.kryptonPanel10 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonTabControl8 = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
@@ -135,21 +136,31 @@
             this.tabPage27 = new System.Windows.Forms.TabPage();
             this.kryptonPanel27 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.gridNfNormal = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.mod = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.nDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dEmi = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
-            this.vBC = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
-            this.vICMS = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
-            this.vBCST = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
-            this.vST = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
-            this.vProd = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
-            this.vNF = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
-            this.nCFOP = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn();
+            this.nRomaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nPedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nDocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dEmiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vBCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vICMSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vBCSTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vSTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vProdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vNFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nCFOPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nPesoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pINDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locRetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsInfNF = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage28 = new System.Windows.Forms.TabPage();
             this.kryptonPanel28 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.gridNfe = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.chave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chaveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nDocDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pINDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsInfNFe = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.kryptonPanel7 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonTabControl6 = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
@@ -319,6 +330,7 @@
             this.txtcMunFim = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtUFFim = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.cboretira = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
+            this.txtxTexto = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.Configuracoes = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
             this.errErro = new System.Windows.Forms.ErrorProvider(this.components);
             this.bsVeiculos = new System.Windows.Forms.BindingSource(this.components);
@@ -362,6 +374,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel32)).BeginInit();
             this.kryptonPanel32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridinfQ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsInfQ)).BeginInit();
             this.tabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel10)).BeginInit();
             this.kryptonPanel10.SuspendLayout();
@@ -386,10 +399,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel27)).BeginInit();
             this.kryptonPanel27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNfNormal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsInfNF)).BeginInit();
             this.tabPage28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel28)).BeginInit();
             this.kryptonPanel28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNfe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsInfNFe)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel7)).BeginInit();
             this.kryptonPanel7.SuspendLayout();
@@ -1225,7 +1240,7 @@
             this.tabPage12.Location = new System.Drawing.Point(4, 25);
             this.tabPage12.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(733, 271);
+            this.tabPage12.Size = new System.Drawing.Size(1112, 422);
             this.tabPage12.TabIndex = 11;
             this.tabPage12.Tag = false;
             this.tabPage12.Text = "Rodoviário";
@@ -1236,7 +1251,7 @@
             this.kryptonPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel12.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel12.Name = "kryptonPanel12";
-            this.kryptonPanel12.Size = new System.Drawing.Size(733, 271);
+            this.kryptonPanel12.Size = new System.Drawing.Size(1112, 422);
             this.kryptonPanel12.TabIndex = 1;
             // 
             // flpRodoviario
@@ -1252,7 +1267,7 @@
             this.flpRodoviario.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpRodoviario.Location = new System.Drawing.Point(0, 0);
             this.flpRodoviario.Name = "flpRodoviario";
-            this.flpRodoviario.Size = new System.Drawing.Size(733, 271);
+            this.flpRodoviario.Size = new System.Drawing.Size(1112, 422);
             this.flpRodoviario.TabIndex = 0;
             this.flpRodoviario.Tag = "Rodoviário";
             // 
@@ -1293,7 +1308,7 @@
             this.mskdPrev.Color = System.Drawing.Color.White;
             this.mskdPrev.Location = new System.Drawing.Point(3, 32);
             this.mskdPrev.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
-            this.mskdPrev.Mask = "00/00/0000";
+            this.mskdPrev.Mask = "";
             this.mskdPrev.MaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.mskdPrev.MaxLength = 32767;
             this.mskdPrev.Name = "mskdPrev";
@@ -1555,11 +1570,13 @@
             // 
             this.gridinfQ.AllowUserToAddRows = false;
             this.gridinfQ.AllowUserToDeleteRows = false;
+            this.gridinfQ.AutoGenerateColumns = false;
             this.gridinfQ.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.gridinfQ.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cUnid,
-            this.tpMed,
-            this.qCarga});
+            this.cUnidDataGridViewTextBoxColumn,
+            this.tpMedDataGridViewTextBoxColumn,
+            this.qCargaDataGridViewTextBoxColumn});
+            this.gridinfQ.DataSource = this.bsInfQ;
             this.gridinfQ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridinfQ.Location = new System.Drawing.Point(0, 0);
             this.gridinfQ.Name = "gridinfQ";
@@ -1567,53 +1584,30 @@
             this.gridinfQ.Size = new System.Drawing.Size(1104, 393);
             this.gridinfQ.TabIndex = 5;
             // 
-            // cUnid
+            // cUnidDataGridViewTextBoxColumn
             // 
-            this.cUnid.DataPropertyName = "cUnid";
-            this.cUnid.HeaderText = "Unidade Medida";
-            this.cUnid.Items.AddRange(new object[] {
-            "00-M3",
-            "01-KG",
-            "02-Ton",
-            "03-Unidade",
-            "04-Litros"});
-            this.cUnid.Name = "cUnid";
-            this.cUnid.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cUnid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cUnid.Width = 123;
+            this.cUnidDataGridViewTextBoxColumn.DataPropertyName = "cUnid";
+            this.cUnidDataGridViewTextBoxColumn.HeaderText = "Unidade de medida";
+            this.cUnidDataGridViewTextBoxColumn.Name = "cUnidDataGridViewTextBoxColumn";
+            this.cUnidDataGridViewTextBoxColumn.Width = 139;
             // 
-            // tpMed
+            // tpMedDataGridViewTextBoxColumn
             // 
-            this.tpMed.DataPropertyName = "tpMed";
-            this.tpMed.HeaderText = "Tipo Medida";
-            this.tpMed.MaxInputLength = 20;
-            this.tpMed.Name = "tpMed";
-            this.tpMed.Width = 103;
+            this.tpMedDataGridViewTextBoxColumn.DataPropertyName = "tpMed";
+            this.tpMedDataGridViewTextBoxColumn.HeaderText = "tipo de medida";
+            this.tpMedDataGridViewTextBoxColumn.Name = "tpMedDataGridViewTextBoxColumn";
+            this.tpMedDataGridViewTextBoxColumn.Width = 116;
             // 
-            // qCarga
+            // qCargaDataGridViewTextBoxColumn
             // 
-            this.qCarga.DataPropertyName = "qCarga";
-            this.qCarga.DecimalPlaces = 4;
-            this.qCarga.HeaderText = "Quantidade";
-            this.qCarga.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.qCarga.Maximum = new decimal(new int[] {
-            1215752191,
-            23,
-            0,
-            0});
-            this.qCarga.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.qCarga.Name = "qCarga";
-            this.qCarga.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.qCarga.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.qCarga.Width = 98;
+            this.qCargaDataGridViewTextBoxColumn.DataPropertyName = "qCarga";
+            this.qCargaDataGridViewTextBoxColumn.HeaderText = "Quantidade";
+            this.qCargaDataGridViewTextBoxColumn.Name = "qCargaDataGridViewTextBoxColumn";
+            this.qCargaDataGridViewTextBoxColumn.Width = 98;
+            // 
+            // bsInfQ
+            // 
+            this.bsInfQ.DataSource = typeof(HLP.GeraXml.bel.CTe.infCte.infCTeNorm.belinfQ);
             // 
             // tabPage10
             // 
@@ -2449,21 +2443,26 @@
             // 
             // gridNfNormal
             // 
-            this.gridNfNormal.AllowUserToAddRows = false;
-            this.gridNfNormal.AllowUserToDeleteRows = false;
+            this.gridNfNormal.AutoGenerateColumns = false;
             this.gridNfNormal.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.gridNfNormal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mod,
-            this.nDoc,
-            this.serie,
-            this.dEmi,
-            this.vBC,
-            this.vICMS,
-            this.vBCST,
-            this.vST,
-            this.vProd,
-            this.vNF,
-            this.nCFOP});
+            this.nRomaDataGridViewTextBoxColumn,
+            this.nPedDataGridViewTextBoxColumn,
+            this.modDataGridViewTextBoxColumn,
+            this.serieDataGridViewTextBoxColumn,
+            this.nDocDataGridViewTextBoxColumn,
+            this.dEmiDataGridViewTextBoxColumn,
+            this.vBCDataGridViewTextBoxColumn,
+            this.vICMSDataGridViewTextBoxColumn,
+            this.vBCSTDataGridViewTextBoxColumn,
+            this.vSTDataGridViewTextBoxColumn,
+            this.vProdDataGridViewTextBoxColumn,
+            this.vNFDataGridViewTextBoxColumn,
+            this.nCFOPDataGridViewTextBoxColumn,
+            this.nPesoDataGridViewTextBoxColumn,
+            this.pINDataGridViewTextBoxColumn,
+            this.locRetDataGridViewTextBoxColumn});
+            this.gridNfNormal.DataSource = this.bsInfNF;
             this.gridNfNormal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridNfNormal.Location = new System.Drawing.Point(0, 0);
             this.gridNfNormal.Name = "gridNfNormal";
@@ -2471,228 +2470,121 @@
             this.gridNfNormal.Size = new System.Drawing.Size(725, 242);
             this.gridNfNormal.TabIndex = 10;
             // 
-            // mod
+            // nRomaDataGridViewTextBoxColumn
             // 
-            this.mod.HeaderText = "Modelo da Nota Fiscal";
-            this.mod.Items.AddRange(new object[] {
-            "01 - NF Modelo 01/1A e Avulsa",
-            "04 - NF de Produtor"});
-            this.mod.Name = "mod";
-            this.mod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.mod.Width = 135;
+            this.nRomaDataGridViewTextBoxColumn.DataPropertyName = "nRoma";
+            this.nRomaDataGridViewTextBoxColumn.HeaderText = "nRoma";
+            this.nRomaDataGridViewTextBoxColumn.Name = "nRomaDataGridViewTextBoxColumn";
+            this.nRomaDataGridViewTextBoxColumn.Width = 74;
             // 
-            // nDoc
+            // nPedDataGridViewTextBoxColumn
             // 
-            this.nDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.nDoc.DataPropertyName = "nDoc";
-            this.nDoc.HeaderText = "Número";
-            this.nDoc.MaxInputLength = 20;
-            this.nDoc.Name = "nDoc";
-            this.nDoc.Width = 80;
+            this.nPedDataGridViewTextBoxColumn.DataPropertyName = "nPed";
+            this.nPedDataGridViewTextBoxColumn.HeaderText = "nPed";
+            this.nPedDataGridViewTextBoxColumn.Name = "nPedDataGridViewTextBoxColumn";
+            this.nPedDataGridViewTextBoxColumn.Width = 63;
             // 
-            // serie
+            // modDataGridViewTextBoxColumn
             // 
-            this.serie.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.serie.DataPropertyName = "serie";
-            this.serie.HeaderText = "Série";
-            this.serie.MaxInputLength = 3;
-            this.serie.Name = "serie";
-            this.serie.Width = 61;
+            this.modDataGridViewTextBoxColumn.DataPropertyName = "mod";
+            this.modDataGridViewTextBoxColumn.HeaderText = "mod";
+            this.modDataGridViewTextBoxColumn.Name = "modDataGridViewTextBoxColumn";
+            this.modDataGridViewTextBoxColumn.Width = 61;
             // 
-            // dEmi
+            // serieDataGridViewTextBoxColumn
             // 
-            this.dEmi.AutoShift = true;
-            this.dEmi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dEmi.CalendarTodayDate = new System.DateTime(2011, 11, 4, 0, 0, 0, 0);
-            this.dEmi.Checked = false;
-            this.dEmi.DataPropertyName = "dEmi";
-            this.dEmi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dEmi.HeaderText = "Data Emissão";
-            this.dEmi.Name = "dEmi";
-            this.dEmi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dEmi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dEmi.Width = 106;
+            this.serieDataGridViewTextBoxColumn.DataPropertyName = "serie";
+            this.serieDataGridViewTextBoxColumn.HeaderText = "serie";
+            this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
+            this.serieDataGridViewTextBoxColumn.Width = 60;
             // 
-            // vBC
+            // nDocDataGridViewTextBoxColumn
             // 
-            this.vBC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.vBC.DataPropertyName = "vBC";
-            this.vBC.DecimalPlaces = 2;
-            this.vBC.HeaderText = "Valor Base Calc ICMS";
-            this.vBC.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.vBC.Maximum = new decimal(new int[] {
-            1316134911,
-            2328,
-            0,
-            0});
-            this.vBC.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.vBC.Name = "vBC";
-            this.vBC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vBC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.vBC.Width = 147;
+            this.nDocDataGridViewTextBoxColumn.DataPropertyName = "nDoc";
+            this.nDocDataGridViewTextBoxColumn.HeaderText = "nDoc";
+            this.nDocDataGridViewTextBoxColumn.Name = "nDocDataGridViewTextBoxColumn";
+            this.nDocDataGridViewTextBoxColumn.Width = 64;
             // 
-            // vICMS
+            // dEmiDataGridViewTextBoxColumn
             // 
-            this.vICMS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.vICMS.DataPropertyName = "vICMS";
-            this.vICMS.DecimalPlaces = 2;
-            this.vICMS.HeaderText = "Valor Total ICMS";
-            this.vICMS.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.vICMS.Maximum = new decimal(new int[] {
-            1316134911,
-            2328,
-            0,
-            0});
-            this.vICMS.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.vICMS.Name = "vICMS";
-            this.vICMS.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vICMS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.vICMS.Width = 124;
+            this.dEmiDataGridViewTextBoxColumn.DataPropertyName = "dEmi";
+            this.dEmiDataGridViewTextBoxColumn.HeaderText = "dEmi";
+            this.dEmiDataGridViewTextBoxColumn.Name = "dEmiDataGridViewTextBoxColumn";
+            this.dEmiDataGridViewTextBoxColumn.Width = 63;
             // 
-            // vBCST
+            // vBCDataGridViewTextBoxColumn
             // 
-            this.vBCST.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.vBCST.DataPropertyName = "vBCST";
-            this.vBCST.DecimalPlaces = 2;
-            this.vBCST.HeaderText = "Valor Base Calc ICMS ST";
-            this.vBCST.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.vBCST.Maximum = new decimal(new int[] {
-            1316134911,
-            2328,
-            0,
-            0});
-            this.vBCST.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.vBCST.Name = "vBCST";
-            this.vBCST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vBCST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.vBCST.Width = 163;
+            this.vBCDataGridViewTextBoxColumn.DataPropertyName = "vBC";
+            this.vBCDataGridViewTextBoxColumn.HeaderText = "vBC";
+            this.vBCDataGridViewTextBoxColumn.Name = "vBCDataGridViewTextBoxColumn";
+            this.vBCDataGridViewTextBoxColumn.Width = 57;
             // 
-            // vST
+            // vICMSDataGridViewTextBoxColumn
             // 
-            this.vST.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.vST.DataPropertyName = "vST";
-            this.vST.DecimalPlaces = 2;
-            this.vST.HeaderText = "Valor Total ICMS ST";
-            this.vST.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.vST.Maximum = new decimal(new int[] {
-            1316134911,
-            2328,
-            0,
-            0});
-            this.vST.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.vST.Name = "vST";
-            this.vST.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.vST.Width = 140;
+            this.vICMSDataGridViewTextBoxColumn.DataPropertyName = "vICMS";
+            this.vICMSDataGridViewTextBoxColumn.HeaderText = "vICMS";
+            this.vICMSDataGridViewTextBoxColumn.Name = "vICMSDataGridViewTextBoxColumn";
+            this.vICMSDataGridViewTextBoxColumn.Width = 70;
             // 
-            // vProd
+            // vBCSTDataGridViewTextBoxColumn
             // 
-            this.vProd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.vProd.DataPropertyName = "vProd";
-            this.vProd.DecimalPlaces = 2;
-            this.vProd.HeaderText = "Valor Total dos Produtos";
-            this.vProd.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.vProd.Maximum = new decimal(new int[] {
-            1316134911,
-            2328,
-            0,
-            0});
-            this.vProd.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.vProd.Name = "vProd";
-            this.vProd.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vProd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.vProd.Width = 166;
+            this.vBCSTDataGridViewTextBoxColumn.DataPropertyName = "vBCST";
+            this.vBCSTDataGridViewTextBoxColumn.HeaderText = "vBCST";
+            this.vBCSTDataGridViewTextBoxColumn.Name = "vBCSTDataGridViewTextBoxColumn";
+            this.vBCSTDataGridViewTextBoxColumn.Width = 70;
             // 
-            // vNF
+            // vSTDataGridViewTextBoxColumn
             // 
-            this.vNF.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.vNF.DataPropertyName = "vProd";
-            this.vNF.DecimalPlaces = 2;
-            this.vNF.HeaderText = "Valor Total da NF";
-            this.vNF.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.vNF.Maximum = new decimal(new int[] {
-            1316134911,
-            2328,
-            0,
-            0});
-            this.vNF.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.vNF.Name = "vNF";
-            this.vNF.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.vNF.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.vNF.Width = 127;
+            this.vSTDataGridViewTextBoxColumn.DataPropertyName = "vST";
+            this.vSTDataGridViewTextBoxColumn.HeaderText = "vST";
+            this.vSTDataGridViewTextBoxColumn.Name = "vSTDataGridViewTextBoxColumn";
+            this.vSTDataGridViewTextBoxColumn.Width = 55;
             // 
-            // nCFOP
+            // vProdDataGridViewTextBoxColumn
             // 
-            this.nCFOP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.nCFOP.DataPropertyName = "nCFOP";
-            this.nCFOP.HeaderText = "CFOP Predominante";
-            this.nCFOP.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nCFOP.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.nCFOP.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.nCFOP.Name = "nCFOP";
-            this.nCFOP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.nCFOP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.nCFOP.Width = 144;
+            this.vProdDataGridViewTextBoxColumn.DataPropertyName = "vProd";
+            this.vProdDataGridViewTextBoxColumn.HeaderText = "vProd";
+            this.vProdDataGridViewTextBoxColumn.Name = "vProdDataGridViewTextBoxColumn";
+            this.vProdDataGridViewTextBoxColumn.Width = 67;
+            // 
+            // vNFDataGridViewTextBoxColumn
+            // 
+            this.vNFDataGridViewTextBoxColumn.DataPropertyName = "vNF";
+            this.vNFDataGridViewTextBoxColumn.HeaderText = "vNF";
+            this.vNFDataGridViewTextBoxColumn.Name = "vNFDataGridViewTextBoxColumn";
+            this.vNFDataGridViewTextBoxColumn.Width = 57;
+            // 
+            // nCFOPDataGridViewTextBoxColumn
+            // 
+            this.nCFOPDataGridViewTextBoxColumn.DataPropertyName = "nCFOP";
+            this.nCFOPDataGridViewTextBoxColumn.HeaderText = "nCFOP";
+            this.nCFOPDataGridViewTextBoxColumn.Name = "nCFOPDataGridViewTextBoxColumn";
+            this.nCFOPDataGridViewTextBoxColumn.Width = 73;
+            // 
+            // nPesoDataGridViewTextBoxColumn
+            // 
+            this.nPesoDataGridViewTextBoxColumn.DataPropertyName = "nPeso";
+            this.nPesoDataGridViewTextBoxColumn.HeaderText = "nPeso";
+            this.nPesoDataGridViewTextBoxColumn.Name = "nPesoDataGridViewTextBoxColumn";
+            this.nPesoDataGridViewTextBoxColumn.Width = 68;
+            // 
+            // pINDataGridViewTextBoxColumn
+            // 
+            this.pINDataGridViewTextBoxColumn.DataPropertyName = "PIN";
+            this.pINDataGridViewTextBoxColumn.HeaderText = "PIN";
+            this.pINDataGridViewTextBoxColumn.Name = "pINDataGridViewTextBoxColumn";
+            this.pINDataGridViewTextBoxColumn.Width = 55;
+            // 
+            // locRetDataGridViewTextBoxColumn
+            // 
+            this.locRetDataGridViewTextBoxColumn.DataPropertyName = "locRet";
+            this.locRetDataGridViewTextBoxColumn.HeaderText = "locRet";
+            this.locRetDataGridViewTextBoxColumn.Name = "locRetDataGridViewTextBoxColumn";
+            this.locRetDataGridViewTextBoxColumn.Width = 69;
+            // 
+            // bsInfNF
+            // 
+            this.bsInfNF.DataSource = typeof(HLP.GeraXml.bel.CTe.infCte.infCTeNorm.belinfNF);
             // 
             // tabPage28
             // 
@@ -2716,11 +2608,14 @@
             // 
             // gridNfe
             // 
-            this.gridNfe.AllowUserToAddRows = false;
-            this.gridNfe.AllowUserToDeleteRows = false;
+            this.gridNfe.AutoGenerateColumns = false;
             this.gridNfe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.gridNfe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.chave});
+            this.chave,
+            this.chaveDataGridViewTextBoxColumn,
+            this.nDocDataGridViewTextBoxColumn1,
+            this.pINDataGridViewTextBoxColumn1});
+            this.gridNfe.DataSource = this.bsInfNFe;
             this.gridNfe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridNfe.Location = new System.Drawing.Point(0, 0);
             this.gridNfe.Name = "gridNfe";
@@ -2732,9 +2627,34 @@
             // 
             this.chave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.chave.DataPropertyName = "chave";
-            this.chave.HeaderText = "Chave";
-            this.chave.MaxInputLength = 44;
+            this.chave.HeaderText = "chave";
             this.chave.Name = "chave";
+            // 
+            // chaveDataGridViewTextBoxColumn
+            // 
+            this.chaveDataGridViewTextBoxColumn.DataPropertyName = "chave";
+            this.chaveDataGridViewTextBoxColumn.HeaderText = "chave";
+            this.chaveDataGridViewTextBoxColumn.Name = "chaveDataGridViewTextBoxColumn";
+            this.chaveDataGridViewTextBoxColumn.Width = 67;
+            // 
+            // nDocDataGridViewTextBoxColumn1
+            // 
+            this.nDocDataGridViewTextBoxColumn1.DataPropertyName = "nDoc";
+            this.nDocDataGridViewTextBoxColumn1.HeaderText = "nDoc";
+            this.nDocDataGridViewTextBoxColumn1.Name = "nDocDataGridViewTextBoxColumn1";
+            this.nDocDataGridViewTextBoxColumn1.Width = 64;
+            // 
+            // pINDataGridViewTextBoxColumn1
+            // 
+            this.pINDataGridViewTextBoxColumn1.DataPropertyName = "PIN";
+            this.pINDataGridViewTextBoxColumn1.HeaderText = "PIN";
+            this.pINDataGridViewTextBoxColumn1.Name = "pINDataGridViewTextBoxColumn1";
+            this.pINDataGridViewTextBoxColumn1.Width = 55;
+            // 
+            // bsInfNFe
+            // 
+            this.bsInfNFe.DataSource = typeof(HLP.GeraXml.bel.CTe.infCte.rem.belinfNFe);
+            this.bsInfNFe.CurrentChanged += new System.EventHandler(this.belinfNFeBindingSource_CurrentChanged);
             // 
             // tabPage7
             // 
@@ -5540,6 +5460,7 @@
             this.flpIdentificacao.Controls.Add(this.txtcMunFim);
             this.flpIdentificacao.Controls.Add(this.txtUFFim);
             this.flpIdentificacao.Controls.Add(this.cboretira);
+            this.flpIdentificacao.Controls.Add(this.txtxTexto);
             this.flpIdentificacao.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpIdentificacao.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpIdentificacao.Location = new System.Drawing.Point(0, 0);
@@ -5862,7 +5783,7 @@
             this.txtcMunEmi.BackColor = System.Drawing.Color.Transparent;
             this.txtcMunEmi.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtcMunEmi.Color = System.Drawing.Color.White;
-            this.txtcMunEmi.Location = new System.Drawing.Point(51, 380);
+            this.txtcMunEmi.Location = new System.Drawing.Point(571, 3);
             this.txtcMunEmi.Margin = new System.Windows.Forms.Padding(51, 3, 15, 3);
             this.txtcMunEmi.MaxLength = 7;
             this.txtcMunEmi.Name = "txtcMunEmi";
@@ -5885,7 +5806,7 @@
             this.txtUFEmi.BackColor = System.Drawing.Color.Transparent;
             this.txtUFEmi.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtUFEmi.Color = System.Drawing.Color.White;
-            this.txtUFEmi.Location = new System.Drawing.Point(644, 3);
+            this.txtUFEmi.Location = new System.Drawing.Point(644, 32);
             this.txtUFEmi.Margin = new System.Windows.Forms.Padding(124, 3, 15, 3);
             this.txtUFEmi.MaxLength = 2;
             this.txtUFEmi.Name = "txtUFEmi";
@@ -5907,7 +5828,7 @@
             this.cbomodal.Color = System.Drawing.Color.White;
             this.cbomodal.DataSource = null;
             this.cbomodal.DisplayMember = "DisplayMember";
-            this.cbomodal.Location = new System.Drawing.Point(657, 32);
+            this.cbomodal.Location = new System.Drawing.Point(657, 61);
             this.cbomodal.Margin = new System.Windows.Forms.Padding(137, 3, 15, 3);
             this.cbomodal.Name = "cbomodal";
             this.cbomodal.SelectedIndex = -1;
@@ -5930,7 +5851,7 @@
             this.cbotpServ.Color = System.Drawing.Color.White;
             this.cbotpServ.DataSource = null;
             this.cbotpServ.DisplayMember = "DisplayMember";
-            this.cbotpServ.Location = new System.Drawing.Point(623, 61);
+            this.cbotpServ.Location = new System.Drawing.Point(623, 90);
             this.cbotpServ.Margin = new System.Windows.Forms.Padding(103, 3, 15, 3);
             this.cbotpServ.Name = "cbotpServ";
             this.cbotpServ.SelectedIndex = -1;
@@ -5954,7 +5875,7 @@
             this.txtxMunIni.BackColor = System.Drawing.Color.Transparent;
             this.txtxMunIni.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtxMunIni.Color = System.Drawing.Color.White;
-            this.txtxMunIni.Location = new System.Drawing.Point(569, 90);
+            this.txtxMunIni.Location = new System.Drawing.Point(569, 119);
             this.txtxMunIni.Margin = new System.Windows.Forms.Padding(49, 3, 15, 3);
             this.txtxMunIni.MaxLength = 60;
             this.txtxMunIni.Name = "txtxMunIni";
@@ -5977,7 +5898,7 @@
             this.txtcMunIni.BackColor = System.Drawing.Color.Transparent;
             this.txtcMunIni.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtcMunIni.Color = System.Drawing.Color.White;
-            this.txtcMunIni.Location = new System.Drawing.Point(540, 119);
+            this.txtcMunIni.Location = new System.Drawing.Point(540, 148);
             this.txtcMunIni.Margin = new System.Windows.Forms.Padding(20, 3, 15, 3);
             this.txtcMunIni.MaxLength = 7;
             this.txtcMunIni.Name = "txtcMunIni";
@@ -6000,7 +5921,7 @@
             this.txtUFIni.BackColor = System.Drawing.Color.Transparent;
             this.txtUFIni.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtUFIni.Color = System.Drawing.Color.White;
-            this.txtUFIni.Location = new System.Drawing.Point(584, 148);
+            this.txtUFIni.Location = new System.Drawing.Point(584, 177);
             this.txtUFIni.Margin = new System.Windows.Forms.Padding(64, 3, 15, 3);
             this.txtUFIni.MaxLength = 2;
             this.txtUFIni.Name = "txtUFIni";
@@ -6023,7 +5944,7 @@
             this.txtxMunFim.BackColor = System.Drawing.Color.Transparent;
             this.txtxMunFim.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtxMunFim.Color = System.Drawing.Color.White;
-            this.txtxMunFim.Location = new System.Drawing.Point(553, 177);
+            this.txtxMunFim.Location = new System.Drawing.Point(553, 206);
             this.txtxMunFim.Margin = new System.Windows.Forms.Padding(33, 3, 15, 3);
             this.txtxMunFim.MaxLength = 60;
             this.txtxMunFim.Name = "txtxMunFim";
@@ -6046,7 +5967,7 @@
             this.txtcMunFim.BackColor = System.Drawing.Color.Transparent;
             this.txtcMunFim.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtcMunFim.Color = System.Drawing.Color.White;
-            this.txtcMunFim.Location = new System.Drawing.Point(523, 206);
+            this.txtcMunFim.Location = new System.Drawing.Point(523, 235);
             this.txtcMunFim.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
             this.txtcMunFim.MaxLength = 7;
             this.txtcMunFim.Name = "txtcMunFim";
@@ -6069,7 +5990,7 @@
             this.txtUFFim.BackColor = System.Drawing.Color.Transparent;
             this.txtUFFim.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtUFFim.Color = System.Drawing.Color.White;
-            this.txtUFFim.Location = new System.Drawing.Point(567, 235);
+            this.txtUFFim.Location = new System.Drawing.Point(567, 264);
             this.txtUFFim.Margin = new System.Windows.Forms.Padding(47, 3, 15, 3);
             this.txtUFFim.MaxLength = 2;
             this.txtUFFim.Name = "txtUFFim";
@@ -6091,7 +6012,7 @@
             this.cboretira.Color = System.Drawing.Color.White;
             this.cboretira.DataSource = null;
             this.cboretira.DisplayMember = "DisplayMember";
-            this.cboretira.Location = new System.Drawing.Point(616, 264);
+            this.cboretira.Location = new System.Drawing.Point(616, 293);
             this.cboretira.Margin = new System.Windows.Forms.Padding(96, 3, 15, 3);
             this.cboretira.Name = "cboretira";
             this.cboretira.SelectedIndex = -1;
@@ -6099,6 +6020,29 @@
             this.cboretira.Size = new System.Drawing.Size(169, 23);
             this.cboretira.TabIndex = 23;
             this.cboretira.ValueMember = "ValueMember";
+            // 
+            // txtxTexto
+            // 
+            this.txtxTexto._LabelText = "Observação";
+            this.txtxTexto._Multiline = true;
+            this.txtxTexto._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.NÃO;
+            this.txtxTexto._Password = false;
+            this.txtxTexto._Regex = Expressoes.ER32;
+            this.txtxTexto._Regex_Expressao = "";
+            this.txtxTexto._TamanhoMaiorLabel = 182;
+            this.txtxTexto._TamanhoTextBox = 320;
+            this.txtxTexto._Visible = true;
+            this.txtxTexto.AutoSize = true;
+            this.txtxTexto.BackColor = System.Drawing.Color.Transparent;
+            this.txtxTexto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtxTexto.Color = System.Drawing.Color.White;
+            this.txtxTexto.Location = new System.Drawing.Point(1147, 3);
+            this.txtxTexto.Margin = new System.Windows.Forms.Padding(107, 3, 15, 3);
+            this.txtxTexto.MaxLength = 60;
+            this.txtxTexto.Name = "txtxTexto";
+            this.txtxTexto.ReadOnly = false;
+            this.txtxTexto.Size = new System.Drawing.Size(398, 81);
+            this.txtxTexto.TabIndex = 56;
             // 
             // Configuracoes
             // 
@@ -6202,6 +6146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel32)).EndInit();
             this.kryptonPanel32.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridinfQ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsInfQ)).EndInit();
             this.tabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel10)).EndInit();
             this.kryptonPanel10.ResumeLayout(false);
@@ -6228,10 +6173,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel27)).EndInit();
             this.kryptonPanel27.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridNfNormal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsInfNF)).EndInit();
             this.tabPage28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel28)).EndInit();
             this.kryptonPanel28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridNfe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsInfNFe)).EndInit();
             this.tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel7)).EndInit();
             this.kryptonPanel7.ResumeLayout(false);
@@ -6506,21 +6453,9 @@
         private System.Windows.Forms.TabPage tabPage27;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel27;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView gridNfNormal;
-        private System.Windows.Forms.DataGridViewComboBoxColumn mod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nDoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serie;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn dEmi;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn vBC;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn vICMS;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn vBCST;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn vST;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn vProd;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn vNF;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn nCFOP;
         private System.Windows.Forms.TabPage tabPage28;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel28;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView gridNfe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn chave;
         private System.Windows.Forms.TabPage tabPage9;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel9;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView gridDocumentos;
@@ -6566,9 +6501,6 @@
         private System.Windows.Forms.TabPage tabPage32;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel32;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView gridinfQ;
-        private System.Windows.Forms.DataGridViewComboBoxColumn cUnid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tpMed;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewNumericUpDownColumn qCarga;
         private System.Windows.Forms.TabPage tabPage12;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel12;
         private System.Windows.Forms.FlowLayoutPanel flpRodoviario;
@@ -6625,5 +6557,32 @@
         private Comum.Componentes.HLP_MaskedTextBox mskCNPJexped;
         private Comum.Componentes.HLP_MaskedTextBox mskCpfCnpfreceb;
         private Comum.Componentes.HLP_MaskedTextBox mskCNPJdest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cUnidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tpMedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qCargaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource bsInfQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chave;
+        private System.Windows.Forms.BindingSource bsInfNFe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nRomaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nPedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn modDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serieDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nDocDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dEmiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vBCDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vICMSDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vBCSTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vSTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vProdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vNFDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nCFOPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nPesoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pINDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn locRetDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource bsInfNF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chaveDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nDocDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pINDataGridViewTextBoxColumn1;
+        private Comum.Componentes.HLP_TextBox txtxTexto;
     }
 }

@@ -126,7 +126,6 @@
             this.txtEmailToma = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.tabErros = new System.Windows.Forms.TabPage();
             this.listErros = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
-            this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             this.cachedrptNFSeCamp1 = new HLP.GeraXml.UI.Relatorios.CachedrptNFSeCamp();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
@@ -2398,7 +2397,6 @@
         private Comum.Componentes.HLP_TextBox txtEmailToma;
         private ComponentFactory.Krypton.Toolkit.KryptonListBox listErros;
         private Comum.Componentes.HLP_MaskedTextBox mskCpfCnpjToma;
-        private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado1;
         private Relatorios.CachedrptNFSeCamp cachedrptNFSeCamp1;
     }
 }

@@ -10,7 +10,9 @@ namespace HLP.GeraXml.bel.CTe.infCte.rem
         private string _CNPJ = "";
         public string CNPJ
         {
-            get { return _CNPJ; }
+            get { 
+                return _CNPJ; 
+            }
             set { _CNPJ = value; }
         }
 
@@ -35,14 +37,15 @@ namespace HLP.GeraXml.bel.CTe.infCte.rem
             {
                 if (HLP.GeraXml.Comum.Static.Acesso.TP_AMB == 2)
                 {
-                    return "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO – SEM VALOR FISCAL";
+                     return "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO – SEM VALOR FISCAL";
+                    //return _xNome;
                 }
                 else
                 {
                     return _xNome;
                 }
             }
-            set { _xNome =  value; }
+            set { _xNome = value; }
         }
 
         private string _xFant = "";
@@ -60,9 +63,9 @@ namespace HLP.GeraXml.bel.CTe.infCte.rem
         }
 
         public belenderReme enderReme { get; set; }
-        public List<belinfNF> infNF { get; set; }
-        public List<belinfNFe> infNFe { get; set; }
-        public List<belinfOutros> infOutros { get; set; }
+        //public List<belinfNF> infNF { get; set; }
+        //public List<belinfNFe> infNFe { get; set; }
+        //public List<belinfOutros> infOutros { get; set; }
 
 
 

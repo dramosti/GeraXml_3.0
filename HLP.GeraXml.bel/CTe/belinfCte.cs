@@ -16,6 +16,12 @@ namespace HLP.GeraXml.bel.CTe
 {
     public class belinfCte
     {
+
+        public belinfCte() 
+        {
+            this.infCTeNorm = new belinfCTeNorm();
+        }
+
         /// <summary>
         /// 1:1
         /// </summary>
@@ -40,7 +46,7 @@ namespace HLP.GeraXml.bel.CTe
         /// <summary>
         /// 0:1
         /// </summary>
-        //public belcompl compl { get; set; }
+        public belcompl compl { get; set; }
 
         /// <summary>
         /// 0:1

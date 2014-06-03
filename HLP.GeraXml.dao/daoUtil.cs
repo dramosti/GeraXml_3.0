@@ -94,6 +94,23 @@ namespace HLP.GeraXml.dao
             }
         }
 
+        public static string BuscaNumNotas(string scd_nrlanc)
+        {
+
+            scd_nrlanc = Convert.ToInt32(scd_nrlanc).ToString().PadLeft(7, '0');
+
+            string sQuery = string.Format("select cd_nf from nfconhec where   cd_empresa = '{0}' and nr_lancconhecim = '{1}'", Acesso.CD_EMPRESA, scd_nrlanc);
+
+
+            DataTable dt = HlpDbFuncoes.qrySeekRet(sQuery);
+            string sretorno = "";
+            foreach (DataRow item in dt.Rows)
+            {
+                sretorno += "- Nota nº" + item["cd_nf"].ToString();
+            }
+            return sretorno;
+        }
+
         public static string GetMOTIVO_CANC(string sCD_NFSEQ)
         {
             try
@@ -215,6 +232,23 @@ namespace HLP.GeraXml.dao
                 string sNM_MUN = HlpDbFuncoes.qrySeekValue("CIDADES", "nm_cidnor", "cd_municipio = '" + sCodigoMun + "'");
                 return sNM_MUN;
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static decimal GetValorTransparenciaCTe(string sCTe)
+        {
+            try
+            {
+                string sValor = HlpDbFuncoes.qrySeekValue("CONHECIM", "COALESCE(vl_total_impostos,0)vl_total_impostos", string.Format("nr_lanc  = '{0}' and cd_empresa = '{1}'", sCTe, Acesso.CD_EMPRESA));
+
+                decimal dReturn = 0;
+                if (sValor != "")
+                    dReturn = Convert.ToDecimal(sValor);
+                return dReturn;
             }
             catch (Exception ex)
             {
@@ -678,20 +712,6 @@ namespace HLP.GeraXml.dao
             }
         }
 
-        public static string BuscaNumNotas(string scd_nrlanc)
-        {
-            string squery = "select cd_nf from nfconhec where   cd_empresa = '{0}' and nr_lancconhecim = '{1}'";
-
-            DataTable dt = HlpDbFuncoes.qrySeekRet(string.Format(squery, Acesso.CD_EMPRESA, scd_nrlanc));
-
-            string sretorno = "";
-
-            foreach (DataRow item in dt.Rows)
-            {
-                sretorno += "-" + item["cd_nf"].ToString();
-            }
-            return sretorno;
-        }
 
         /// <summary>
         /// DataValueMember = idMunicipio
@@ -746,7 +766,7 @@ namespace HLP.GeraXml.dao
             }
         }
 
-        public static string CarregaObsTransparenciaITEM(string sNR_LANC, string sVl_fattransp="0", string sVl_aliqtransp="0")
+        public static string CarregaObsTransparenciaITEM(string sNR_LANC, string sVl_fattransp = "0", string sVl_aliqtransp = "0")
         {
             try
             {
@@ -765,7 +785,7 @@ namespace HLP.GeraXml.dao
                 else
                 {
                     dVL_ALIQ = Convert.ToDecimal(sVl_aliqtransp);
-                    dVL_TRANSPAR= Convert.ToDecimal(sVl_fattransp);
+                    dVL_TRANSPAR = Convert.ToDecimal(sVl_fattransp);
                 }
                 string sMsg = "Val Aprox dos Tributos R$ {0} - ({1}) % Fonte: IBPT ;";
                 if (dVL_TRANSPAR > 0)

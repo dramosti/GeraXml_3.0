@@ -18,11 +18,13 @@ namespace HLP.GeraXml.dao.CTe
                 sQuery.Append("Select ");
                 sQuery.Append("coalesce(nfconhec.cd_um,'')cUnid, ");
                 sQuery.Append("coalesce(nfconhec.ds_especie,'') tpMed, ");
-                sQuery.Append("coalesce(nfconhec.vl_volume,'') qCarga ");
+                sQuery.Append("sum(coalesce(nfconhec.vl_volume,'')) qCarga_Volume, ");
+                sQuery.Append("sum(coalesce(nfconhec.vl_peso,'')) qCarga_Peso ");
                 sQuery.Append("from nfconhec ");
                 sQuery.Append("join empresa on nfconhec.cd_empresa = empresa.cd_empresa ");
                 sQuery.Append("where nfconhec.nr_lancconhecim ='" + sCte + "'");
                 sQuery.Append("and empresa.cd_empresa ='" + Acesso.CD_EMPRESA + "'");
+                sQuery.Append("group by  coalesce(nfconhec.cd_um,''), coalesce(nfconhec.ds_especie,'')");
 
 
                 return HlpDbFuncoes.qrySeekRet(sQuery.ToString());

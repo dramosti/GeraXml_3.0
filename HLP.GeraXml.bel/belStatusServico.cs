@@ -15,14 +15,51 @@ namespace HLP.GeraXml.bel
         public static string Mensagem = "";
 
 
-        public static void VerificaStatusServicoCte()
+        //public static void VerificaStatusServicoCte()
+        //{
+        //    try
+        //    {
+        //        Acesso.bCERT_CONSULTA_SELECIONADO = false;
+
+        //        Mensagem = "";
+
+        //        InternetCS objVerificaInternet = new InternetCS();
+        //        if (objVerificaInternet.Conexao())
+        //        {
+        //            X509Certificate2 cert = new X509Certificate2();
+        //            cert = belCertificadoDigital.BuscaNome("");
+        //            if (!belCertificadoDigital.ValidaCertificado(cert))
+        //            {
+        //                Mensagem = "Certificado Inválido";
+        //            }
+        //            else
+        //            {
+        //                Acesso.bCERT_CONSULTA_SELECIONADO = true;
+        //                Acesso.cert_CTe = cert;
+        //                belCriaXml objCriaXml = new belCriaXml();
+        //                List<belStatusCte> ListaStatus = objCriaXml.GerarXmlConsultaStatus();
+        //                Mensagem = belTrataMensagem.RetornaMensagem(ListaStatus, belTrataMensagem.Tipo.Status);
+
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Mensagem = "A internet parece estar Indisponível";
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Mensagem = ex.Message;
+        //    }
+
+        //}
+
+        public static void VerificaStatusServicoCTe()
         {
             try
             {
                 Acesso.bCERT_CONSULTA_SELECIONADO = false;
-
                 Mensagem = "";
-
                 InternetCS objVerificaInternet = new InternetCS();
                 if (objVerificaInternet.Conexao())
                 {
@@ -35,11 +72,9 @@ namespace HLP.GeraXml.bel
                     else
                     {
                         Acesso.bCERT_CONSULTA_SELECIONADO = true;
-                        Acesso.cert_CTe = cert;
-                        belCriaXml objCriaXml = new belCriaXml();
-                        List<belStatusCte> ListaStatus = objCriaXml.GerarXmlConsultaStatus();
-                        Mensagem = belTrataMensagem.RetornaMensagem(ListaStatus, belTrataMensagem.Tipo.Status);
-
+                        Acesso.cert_NFe = cert;
+                        HLP.GeraXml.bel.NFe.belStatusServicoNFe.DadosRetorno objStatus = belStatusServicoCTe.RealizaConsultaStatusServico();
+                        Mensagem = belTrataMensagemNFe.RetornaMensagem(objStatus, belTrataMensagemNFe.Tipo.Status);
                     }
                 }
                 else
@@ -47,12 +82,127 @@ namespace HLP.GeraXml.bel
                     Mensagem = "A internet parece estar Indisponível";
                 }
             }
+
             catch (Exception ex)
             {
                 Mensagem = ex.Message;
             }
 
+
         }
+
+        public static void VerificaStatusServicoNFe()
+        {
+            try
+            {
+                Acesso.bCERT_CONSULTA_SELECIONADO = false;
+                Mensagem = "";
+                InternetCS objVerificaInternet = new InternetCS();
+                if (objVerificaInternet.Conexao())
+                {
+                    X509Certificate2 cert = new X509Certificate2();
+                    cert = belCertificadoDigital.BuscaNome("");
+                    if (!belCertificadoDigital.ValidaCertificado(cert))
+                    {
+                        Mensagem = "Certificado Inválido";
+                    }
+                    else
+                    {
+                        Acesso.bCERT_CONSULTA_SELECIONADO = true;
+                        Acesso.cert_NFe = cert;
+                        HLP.GeraXml.bel.NFe.belStatusServicoNFe.DadosRetorno objStatus = belStatusServicoNFe.RealizaConsultaStatusServico();
+                        Mensagem = belTrataMensagemNFe.RetornaMensagem(objStatus, belTrataMensagemNFe.Tipo.Status);
+                    }
+                }
+                else
+                {
+                    Mensagem = "A internet parece estar Indisponível";
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Mensagem = ex.Message;
+            }
+
+
+        }
+
+        //public static void VerificaStatusServicoCteTela()
+        //{
+        //    try
+        //    {
+        //        Acesso.bCERT_CONSULTA_SELECIONADO = false;
+        //        ServicoOperando = false;
+        //        AcaoCancelada = false;
+        //        Mensagem = "";
+
+        //        X509Certificate2 cert = new X509Certificate2();
+        //        cert = belCertificadoDigital.BuscaNome("");
+        //        if (!belCertificadoDigital.ValidaCertificado(cert))
+        //        {
+        //            Mensagem = "Certificado Inválido";
+        //        }
+        //        else
+        //        {
+        //            Acesso.cert_CTe = cert;
+        //            InternetCS objVerificaInternet = new InternetCS();
+        //            if (objVerificaInternet.Conexao())
+        //            {
+        //                Acesso.bCERT_CONSULTA_SELECIONADO = true;
+        //                belCriaXml objCriaXml = new belCriaXml();
+        //                List<belStatusCte> ListaStatus = objCriaXml.GerarXmlConsultaStatus();
+        //                Mensagem = belTrataMensagem.RetornaMensagem(ListaStatus, belTrataMensagem.Tipo.Status);
+
+        //                if (!AcaoCancelada)
+        //                {
+        //                    foreach (belStatusCte status in ListaStatus)
+        //                    {
+        //                        if (status.CodRetorno == "107")
+        //                        {
+        //                            if (Acesso.TP_EMIS != 1)
+        //                            {
+        //                                Mensagem += Environment.NewLine + Environment.NewLine + "O Sefaz está Operante." + Environment.NewLine + "Altere o Sistema para Modo Normal";
+        //                            }
+        //                            else
+        //                            {
+        //                                ServicoOperando = true;
+        //                            }
+        //                        }
+        //                        else if (status.CodRetorno != "107" && Acesso.TP_EMIS == 1)
+        //                        {
+        //                            Mensagem += Environment.NewLine + Environment.NewLine + "O Sefaz não está Operante." + Environment.NewLine + "Caso queira emitir Conhecimentos utilizando o formulário de segurança," + Environment.NewLine +
+        //                             "Altere o Sistema para Modo Contingência FS.";
+        //                        }
+        //                        else
+        //                        {
+        //                            ServicoOperando = true;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                Mensagem = "A internet parece estar Indisponível";
+        //                if (Acesso.TP_EMIS == 2)
+        //                {
+        //                    ServicoOperando = true;
+        //                }
+        //                else
+        //                {
+        //                    Mensagem += Environment.NewLine + Environment.NewLine + "O Sistema não está Operante."
+        //                         + Environment.NewLine + "Caso queira emitir Conhecimentos utilizando o formulário de segurança," + Environment.NewLine +
+        //                            "Altere o Sistema para Modo Contingência FS.";
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Mensagem = ex.Message;
+        //    }
+        //}
+
         public static void VerificaStatusServicoCteTela()
         {
             try
@@ -75,34 +225,30 @@ namespace HLP.GeraXml.bel
                     if (objVerificaInternet.Conexao())
                     {
                         Acesso.bCERT_CONSULTA_SELECIONADO = true;
-                        belCriaXml objCriaXml = new belCriaXml();
-                        List<belStatusCte> ListaStatus = objCriaXml.GerarXmlConsultaStatus();
-                        Mensagem = belTrataMensagem.RetornaMensagem(ListaStatus, belTrataMensagem.Tipo.Status);
+                        HLP.GeraXml.bel.NFe.belStatusServicoNFe.DadosRetorno objStatus = belStatusServicoCTe.RealizaConsultaStatusServico();
+                        Mensagem = belTrataMensagemNFe.RetornaMensagem(objStatus, belTrataMensagemNFe.Tipo.Status);
 
                         if (!AcaoCancelada)
                         {
-                            foreach (belStatusCte status in ListaStatus)
+                            if (objStatus.cStat == "107")
                             {
-                                if (status.CodRetorno == "107")
+                                if (Acesso.TP_EMIS == 2)
                                 {
-                                    if (Acesso.TP_EMIS != 1)
-                                    {
-                                        Mensagem += Environment.NewLine + Environment.NewLine + "O Sefaz está Operante." + Environment.NewLine + "Altere o Sistema para Modo Normal";
-                                    }
-                                    else
-                                    {
-                                        ServicoOperando = true;
-                                    }
-                                }
-                                else if (status.CodRetorno != "107" && Acesso.TP_EMIS == 1)
-                                {
-                                    Mensagem += Environment.NewLine + Environment.NewLine + "O Sefaz não está Operante." + Environment.NewLine + "Caso queira emitir Conhecimentos utilizando o formulário de segurança," + Environment.NewLine +
-                                     "Altere o Sistema para Modo Contingência FS.";
+                                    Mensagem += Environment.NewLine + Environment.NewLine + "O Sefaz está Operante." + Environment.NewLine + "Altere o Sistema para Modo Normal.";
                                 }
                                 else
                                 {
                                     ServicoOperando = true;
                                 }
+                            }
+                            else if (objStatus.cStat != "107" && Acesso.TP_EMIS == 1)
+                            {
+                                Mensagem += Environment.NewLine + Environment.NewLine + "O Sefaz não está Operante." + Environment.NewLine + "Caso queira emitir Notas utilizando o formulário de segurança," + Environment.NewLine +
+                                    "Altere o Sistema para Modo Contingência FS.";
+                            }
+                            else
+                            {
+                                ServicoOperando = true;
                             }
                         }
                     }
@@ -116,8 +262,8 @@ namespace HLP.GeraXml.bel
                         else
                         {
                             Mensagem += Environment.NewLine + Environment.NewLine + "O Sistema não está Operante."
-                                 + Environment.NewLine + "Caso queira emitir Conhecimentos utilizando o formulário de segurança," + Environment.NewLine +
-                                    "Altere o Sistema para Modo Contingência FS.";
+                                + Environment.NewLine + "Caso queira emitir Notas utilizando o formulário de segurança," + Environment.NewLine +
+                                   "Altere o Sistema para Modo Contingência FS.";
                         }
                     }
                 }
@@ -126,6 +272,7 @@ namespace HLP.GeraXml.bel
             {
                 Mensagem = ex.Message;
             }
+
         }
 
 
@@ -200,42 +347,8 @@ namespace HLP.GeraXml.bel
             }
 
         }
-        public static void VerificaStatusServicoNFe()
-        {
-            try
-            {
-                Acesso.bCERT_CONSULTA_SELECIONADO = false;
-                Mensagem = "";
-                InternetCS objVerificaInternet = new InternetCS();
-                if (objVerificaInternet.Conexao())
-                {
-                    X509Certificate2 cert = new X509Certificate2();
-                    cert = belCertificadoDigital.BuscaNome("");
-                    if (!belCertificadoDigital.ValidaCertificado(cert))
-                    {
-                        Mensagem = "Certificado Inválido";
-                    }
-                    else
-                    {
-                        Acesso.bCERT_CONSULTA_SELECIONADO = true;
-                        Acesso.cert_NFe = cert;
-                        HLP.GeraXml.bel.NFe.belStatusServicoNFe.DadosRetorno objStatus = belStatusServicoNFe.RealizaConsultaStatusServico();
-                        Mensagem = belTrataMensagemNFe.RetornaMensagem(objStatus, belTrataMensagemNFe.Tipo.Status);
-                    }
-                }
-                else
-                {
-                    Mensagem = "A internet parece estar Indisponível";
-                }
-            }
 
-            catch (Exception ex)
-            {
-                Mensagem = ex.Message;
-            }
-
-
-        }
+     
 
         public static void VerificaStatusInternetNFs()
         {

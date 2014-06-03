@@ -8,6 +8,7 @@ using System.Xml;
 using HLP.GeraXml.Comum.DataSet;
 using System.Data;
 using HLP.GeraXml.dao.ADO;
+using HLP.GeraXml.dao;
 
 namespace HLP.GeraXml.bel.CTe
 {
@@ -19,6 +20,8 @@ namespace HLP.GeraXml.bel.CTe
 
         dsCTe.infCteRow dsInfCte;
         dsCTe.ideRow dsIde;
+        dsCTe.complRow dsCompl;
+        dsCTe.ObsContRow dsObsCont;
         dsCTe.toma03Row dsToma03;
         dsCTe.toma4Row dsToma4;
         dsCTe.enderTomaRow dsEnderToma;
@@ -66,7 +69,7 @@ namespace HLP.GeraXml.bel.CTe
 
 
 
-                Byte[] bLogo = carregaImagem(Acesso.LOGOTIPO);
+                Byte[] bLogo = Util.CarregaImagem(Acesso.LOGOTIPO);
                 dsLogo = dsCte.Logotipo.NewLogotipoRow();
                 if (bLogo != null)
                 {
@@ -232,15 +235,50 @@ namespace HLP.GeraXml.bel.CTe
                     }
 
                 }
-
-                dsIde.nProt = sProtocolo;
+                dsIde.nProt = nProt;// dsInfCte.nProt; // sProtocolo;
                 dsIde.pk_ide = iChave;
                 dsIde.pk_infCte = iChave;
-                dsIde.Notas = dao.daoUtil.BuscaNumNotas(dsIde.cCT);
+                string scCT = dsIde.cCT; //sicupira
 
                 dsCte.ide.AddideRow(dsIde);
                 dsIde = dsCte.ide.NewideRow();
 
+                #endregion
+
+                #region Compl
+
+                XmlNodeList objcont = doc.GetElementsByTagName("ObsCont");
+                dsCompl = dsCte.compl.NewcomplRow();
+                dsCompl.pk_infCte = iChave;
+                dsCompl.pk_compl = iChave;
+                dsCte.compl.AddcomplRow(dsCompl);
+                if (objcont.Count > 0)
+                {
+                    dsObsCont = dsCte.ObsCont.NewObsContRow();
+                    for (int i = 0; i < objcont.Count; i++)
+                    {
+                        for (int j = 0; j < objcont[i].ChildNodes.Count; j++)
+                        {
+                            switch (objcont[i].ChildNodes[j].LocalName)
+                            {
+                                case "xTexto": dsObsCont.xTexto = objcont[i].ChildNodes[j].InnerText;
+                                    break;
+                            }
+                        }
+                    }
+                    dsObsCont.xTexto += Environment.NewLine + daoUtil.BuscaNumNotas(scCT);
+                    dsObsCont.pk_compl = iChave;
+                    dsObsCont.pk_xObs = iChave;
+                    dsCte.ObsCont.AddObsContRow(dsObsCont);
+                }
+                else
+                {
+                    dsObsCont = dsCte.ObsCont.NewObsContRow();
+                    dsObsCont.xTexto = daoUtil.BuscaNumNotas(scCT);
+                    dsObsCont.pk_compl = iChave;
+                    dsObsCont.pk_xObs = iChave;
+                    dsCte.ObsCont.AddObsContRow(dsObsCont);
+                }
                 #endregion
 
                 #region Tomador
@@ -335,34 +373,31 @@ namespace HLP.GeraXml.bel.CTe
                                 case "xBairro": dsEnderToma.xBairro = enderToma[i].ChildNodes[j].InnerText;
                                     break;
 
-                                case "cMun": dsEnderToma.cMun = toma4[i].ChildNodes[j].InnerText;
+                                case "cMun": dsEnderToma.cMun = enderToma[i].ChildNodes[j].InnerText;
                                     break;
 
-                                case "xMun": dsEnderToma.xMun = toma4[i].ChildNodes[j].InnerText;
+                                case "xMun": dsEnderToma.xMun = enderToma[i].ChildNodes[j].InnerText;
                                     break;
 
-                                case "CEP": dsEnderToma.CEP = toma4[i].ChildNodes[j].InnerText;
+                                case "CEP": dsEnderToma.CEP = enderToma[i].ChildNodes[j].InnerText;
                                     break;
 
-                                case "UF": dsEnderToma.UF = toma4[i].ChildNodes[j].InnerText;
+                                case "UF": dsEnderToma.UF = enderToma[i].ChildNodes[j].InnerText;
                                     break;
 
-                                case "cPais": dsEnderToma.cPais = toma4[i].ChildNodes[j].InnerText;
+                                case "cPais": dsEnderToma.cPais = enderToma[i].ChildNodes[j].InnerText;
                                     break;
 
-                                case "xPais": dsEnderToma.xPais = toma4[i].ChildNodes[j].InnerText;
+                                case "xPais": dsEnderToma.xPais = enderToma[i].ChildNodes[j].InnerText;
                                     break;
 
                             }
                         }
                     }
-
                     dsEnderToma.pk_toma4 = iChave;
                     dsEnderToma.pk_enderToma = iChave;
-
                     dsCte.enderToma.AddenderTomaRow(dsEnderToma);
                     dsEnderToma = dsCte.enderToma.NewenderTomaRow();
-
                     #endregion
                 }
 
@@ -1272,7 +1307,7 @@ namespace HLP.GeraXml.bel.CTe
                     {
                         switch (infCarga[i].ChildNodes[j].LocalName)
                         {
-                            case "vMerc": dsInfCarga.vMerc = infCarga[i].ChildNodes[j].InnerText;
+                            case "vCarga": dsInfCarga.vMerc = infCarga[i].ChildNodes[j].InnerText;
                                 break;
 
                             case "proPred": dsInfCarga.proPred = infCarga[i].ChildNodes[j].InnerText;
@@ -1312,7 +1347,7 @@ namespace HLP.GeraXml.bel.CTe
                             case "tpMed": dsInfQ.tpMed = infQ[i].ChildNodes[j].InnerText;
                                 break;
 
-                            case "qCarga": dsInfQ.qCarga = Convert.ToDecimal(infQ[i].ChildNodes[j].InnerText.Replace(".", ",")).ToString("N0");
+                            case "qCarga": dsInfQ.qCarga = infQ[i].ChildNodes[j].InnerText;
                                 break;
 
                         }
@@ -1320,6 +1355,18 @@ namespace HLP.GeraXml.bel.CTe
                     dsInfQ.pk_infCarga = iChave;
                     dsInfQ.pk_infQ = iChaveCarga;
                     iChaveCarga++;
+                    if (dsInfQ.qCarga != "")
+                    {
+                        if (dsInfQ.cUnid.Equals("00"))
+                        {
+                            dsCte.ide[iChave - 1].Volume = Convert.ToDecimal(dsInfQ.qCarga.Replace(".", ","));
+                        }
+                        else
+                        {
+                            dsCte.ide[iChave - 1].Peso = Convert.ToDecimal(dsInfQ.qCarga.Replace(".", ","));
+                        }
+                    }
+
 
                     dsCte.infQ.AddinfQRow(dsInfQ);
                     dsInfQ = dsCte.infQ.NewinfQRow();
@@ -1487,6 +1534,7 @@ namespace HLP.GeraXml.bel.CTe
             }
         }
 
+      
 
 
         private void PopulaDadosNf(string sNumNf)

@@ -78,7 +78,6 @@
             this.txtEmail = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.listErros = new ComponentFactory.Krypton.Toolkit.KryptonListBox();
-            this.cachedrptCtePadraoCancelado1 = new HLP.GeraXml.UI.Relatorios.CachedrptCtePadraoCancelado();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
@@ -1283,7 +1282,6 @@
         private Comum.Componentes.HLP_TextBox txtEmail;
         private Comum.Componentes.HLP_NumericUpDown nudAliquota;
         private Comum.Componentes.HLP_NumericUpDown nudRegEspec;
-        private Relatorios.CachedrptCtePadraoCancelado cachedrptCtePadraoCancelado1;
         private System.Windows.Forms.TabPage tabPage4;
         private ComponentFactory.Krypton.Toolkit.KryptonListBox listErros;
         private Comum.Componentes.HLP_ComboBox cbxLocExec;

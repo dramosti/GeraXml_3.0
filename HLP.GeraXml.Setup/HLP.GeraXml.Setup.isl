@@ -4605,7 +4605,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{FD67D959-DF54-4D98-BA50-E312B70461EC}</td><td/></row>
 		<row><td>ProductName</td><td>GeraXml 3.0</td><td/></row>
-		<row><td>ProductVersion</td><td>3.0.2.45</td><td/></row>
+		<row><td>ProductVersion</td><td>3.0.2.46</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>

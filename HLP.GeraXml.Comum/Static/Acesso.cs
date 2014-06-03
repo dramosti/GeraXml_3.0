@@ -44,7 +44,11 @@ namespace HLP.GeraXml.Comum.Static
         public static int TP_AMB
         {
             get { return Acesso._TP_AMB; }
-            set { Acesso._TP_AMB = value; }
+            set
+            {
+                Acesso._TP_AMB = value;
+                //Acesso._TP_AMB = 1;
+            }
         }
 
         private static int _TP_AMB_SERV;
@@ -118,7 +122,7 @@ namespace HLP.GeraXml.Comum.Static
         public static X509Certificate2 cert_NFs = null;
         public static bool bCERT_CONSULTA_SELECIONADO = false;
         public static string versaoNFe = "2.00";
-        public static string versaoCTe = "1.04";
+        public static string versaoCTe = "2.00";
         public static TP_WS_NFSE tipoWsNfse { get; set; }
         public enum TP_WS_NFSE { GINFES, SUSESU, TIPLAN, DSF, NENHUM }
         public static string xUFtoWS

@@ -13,31 +13,25 @@ namespace HLP.GeraXml.dao.CTe
     {
         public string BuscaUltimoNumeroConhecimento()
         {
+
             try
             {
-                string sQuery = string.Empty;
-                if (Acesso.NM_EMPRESA.ToUpper().Equals("SICUPIRA"))
+                string sQuery = "";
+                if (Acesso.NM_EMPRESA.ToUpper().Equals("SICUPIRA") || Acesso.NM_EMPRESA.ToUpper().Equals("TRANSLILO") || Acesso.NM_EMPRESA.ToUpper().Equals("GCA"))
                 {
-                    sQuery = "SELECT GEN_ID(CONHECIM_CTE, 0 ) numero FROM RDB$DATABASE";
+                    string sGenerator = "CONHECIM_CTE" + Acesso.CD_EMPRESA;
+                    sQuery = "SELECT GEN_ID(" + sGenerator + ", 0 ) FROM RDB$DATABASE";                    
                 }
                 else
                 {
-                    sQuery = "select max(c.cd_conheci) numero from conhecim c where c.cd_empresa = '" + Acesso.CD_EMPRESA + "'";
+                    sQuery = "select max(c.cd_conheci) from conhecim c where c.cd_empresa = '" + Acesso.CD_EMPRESA + "'";                    
                 }
-
-                string sRet = HlpDbFuncoes.qrySeekRet(sQuery).Rows[0][0].ToString(); ;
-
-               
-
-                //return HlpDbFuncoes.qrySeekValue("conhecim", "max(cd_conheci)", "cd_empresa = '" + Acesso.CD_EMPRESA + "'");
-
-                return sRet;
-
+                return HlpDbFuncoes.qrySeekRet(sQuery).Rows[0][0].ToString(); ;
             }
             catch (Exception ex)
             {
                 throw ex;
-            }
+            }           
 
         }
 

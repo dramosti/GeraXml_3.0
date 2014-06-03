@@ -14,7 +14,9 @@ namespace HLP.GeraXml.bel.CTe.infCte.receb
         /// </summary>
         public string CNPJ
         {
-            get { return _CNPJ; }
+            get { 
+                return _CNPJ; 
+            }
             set { _CNPJ = value; }
         }
 
@@ -52,6 +54,7 @@ namespace HLP.GeraXml.bel.CTe.infCte.receb
                 if (HLP.GeraXml.Comum.Static.Acesso.TP_AMB == 2)
                 {
                     return "CT-E EMITIDO EM AMBIENTE DE HOMOLOGACAO – SEM VALOR FISCAL";
+                   // return _xNome;
                 }
                 else
                 {

@@ -21,7 +21,17 @@ namespace HLP.GeraXml.Comum
                 xSettings.ValidationEventHandler += new ValidationEventHandler(xSettingsValidationEventHandler);
 
                 reader = XmlReader.Create(sPathXml, xSettings);
-                while (reader.Read()) { }
+                while (reader.Read())
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception ex)
+                    {                        
+                        throw ex;
+                    }
+                }
                 reader.Close();
             }
             catch (Exception ex)

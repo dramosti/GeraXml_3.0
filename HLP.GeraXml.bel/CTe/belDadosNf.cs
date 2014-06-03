@@ -5,6 +5,7 @@ using System.Text;
 using HLP.GeraXml.dao.CTe;
 using System.Data;
 using HLP.GeraXml.bel.CTe.infCte.rem;
+using HLP.GeraXml.bel.CTe.infCte.infCTeNorm;
 
 namespace HLP.GeraXml.bel.CTe
 {
@@ -15,11 +16,7 @@ namespace HLP.GeraXml.bel.CTe
             try
             {
                 DataTable dt = BuscaDadosNf(sCte);
-
-                objbelinfCte.rem.infNF = new List<belinfNF>();
-                objbelinfCte.rem.infNFe = new List<belinfNFe>();
-                objbelinfCte.rem.infOutros = new List<belinfOutros>();
-
+                //objbelinfCte.infCTeNorm = new belinfCTeNorm();
                 foreach (DataRow dr in dt.Rows)
                 {
                     switch (dr["Tipo"].ToString())
@@ -38,14 +35,14 @@ namespace HLP.GeraXml.bel.CTe
                             infNf.vNF = dr["vProd"].ToString() != "" ? dr["vProd"].ToString().Replace(",", ".") : "0.00";
                             infNf.nCFOP = dr["nCFOP"].ToString() != "" ? Convert.ToInt32(dr["nCFOP"]).ToString() : "0";
 
-                            objbelinfCte.rem.infNF.Add(infNf);
+                            objbelinfCte.infCTeNorm.infDoc.infNF.Add(infNf);
                             break;
 
                         case "E":
                             belinfNFe infNfe = new belinfNFe();
                             infNfe.chave = dr["chave"].ToString();
                             infNfe.nDoc = dr["nDoc"].ToString();
-                            objbelinfCte.rem.infNFe.Add(infNfe);
+                            objbelinfCte.infCTeNorm.infDoc.infNFe.Add(infNfe);
                             break;
 
                         case "00":
@@ -55,7 +52,7 @@ namespace HLP.GeraXml.bel.CTe
                             infDeclaracao.dEmi = dr["dEmi"].ToString() != "" ? (Convert.ToDateTime(dr["dEmi"].ToString())).ToString("dd/MM/yyyy") : "";
                             infDeclaracao.vDocFisc = dr["vProd"].ToString() != "" ? dr["vProd"].ToString().Replace(",", ".") : "0.00";
 
-                            objbelinfCte.rem.infOutros.Add(infDeclaracao);
+                            objbelinfCte.infCTeNorm.infDoc.infOutros.Add(infDeclaracao);
                             break;
 
                         case "10":
@@ -65,7 +62,7 @@ namespace HLP.GeraXml.bel.CTe
                             infDutoviario.dEmi = dr["dEmi"].ToString() != "" ? (Convert.ToDateTime(dr["dEmi"].ToString())).ToString("dd/MM/yyyy") : "";
                             infDutoviario.vDocFisc = dr["vProd"].ToString() != "" ? dr["vProd"].ToString().Replace(",", ".") : "0.00";
 
-                            objbelinfCte.rem.infOutros.Add(infDutoviario);
+                            objbelinfCte.infCTeNorm.infDoc.infOutros.Add(infDutoviario);
                             break;
 
                         case "99":
@@ -76,23 +73,18 @@ namespace HLP.GeraXml.bel.CTe
                             infOutros.dEmi = dr["dEmi"].ToString() != "" ? (Convert.ToDateTime(dr["dEmi"].ToString())).ToString("dd/MM/yyyy") : "";
                             infOutros.vDocFisc = dr["vProd"].ToString() != "" ? dr["vProd"].ToString().Replace(",", ".") : "0.00";
 
-                            objbelinfCte.rem.infOutros.Add(infOutros);
+                            objbelinfCte.infCTeNorm.infDoc.infOutros.Add(infOutros);
                             break;
 
                         default:
                             throw new Exception("A nota " + dr["nDoc"].ToString() + " do Conhecimento " + objbelinfCte.ide.nCT + " não tem Tipo selecionado(NF, NF-e, Declaração, Dutoviário, Outros)");
-
                     }
                 }
-
-
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-
         }
     }
 }

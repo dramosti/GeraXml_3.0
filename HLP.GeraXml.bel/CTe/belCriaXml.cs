@@ -11,6 +11,8 @@ using HLP.GeraXml.Comum.Static;
 using HLP.GeraXml.bel.CTe.infCte.imp;
 using System.Xml.Schema;
 using HLP.GeraXml.Comum;
+using System.Xml.Serialization;
+using HLP.GeraXml.bel.CTe.Evento;
 
 namespace HLP.GeraXml.bel.CTe
 {
@@ -26,7 +28,6 @@ namespace HLP.GeraXml.bel.CTe
 
         public string GerarXml(belPopulaObjetos objObjetos, int iNumLote)
         {
-
             try
             {
                 List<string> listXml = new List<string>();
@@ -43,6 +44,7 @@ namespace HLP.GeraXml.bel.CTe
                 XContainer toma4 = null;
                 XContainer enderToma = null;
                 XContainer emit = null;
+                XContainer compl = null;
                 XContainer enderEmit = null;
                 XContainer rem = null;
                 XContainer enderReme = null;
@@ -65,6 +67,8 @@ namespace HLP.GeraXml.bel.CTe
                 XContainer ICMS60 = null;
                 XContainer ICMS90 = null;
                 XContainer ICMSOutraUF = null;
+                XContainer ICMSSN = null;
+
                 XContainer infCTeNorm = null;
                 XContainer seg = null;
                 XContainer infModal = null;
@@ -88,7 +92,7 @@ namespace HLP.GeraXml.bel.CTe
                     CTe = new XElement(pf + "CTe");
                     belinfCte obj = objObjetos.objListaConhecimentos[i];
 
-                    infCte = (new XElement(pf + "infCte", new XAttribute("versao", Acesso.versaoCTe),
+                    infCte = (new XElement(pf + "infCte", new XAttribute("versao", "2.00"),
                                                              new XAttribute("Id", obj.id)));
 
                     #region ide
@@ -99,7 +103,7 @@ namespace HLP.GeraXml.bel.CTe
                                                                 new XElement(pf + "forPag", obj.ide.forPag),
                                                                 new XElement(pf + "mod", obj.ide.mod),
                                                                 new XElement(pf + "serie", obj.ide.serie),
-                                                                new XElement(pf + "nCT", Convert.ToInt32(obj.ide.nCT).ToString()),
+                                                                new XElement(pf + "nCT", Convert.ToInt32(obj.ide.nCT)),
                                                                 new XElement(pf + "dhEmi", (daoUtil.GetDateServidor()).ToString("yyyy-MM-ddTHH:MM:ss")),
                                                                 new XElement(pf + "tpImp", obj.ide.tpImp),
                                                                 new XElement(pf + "tpEmis", obj.ide.tpEmis),
@@ -122,7 +126,6 @@ namespace HLP.GeraXml.bel.CTe
                                                                 new XElement(pf + "retira", obj.ide.retira)));
 
 
-
                     if (obj.ide.toma03 != null)
                     {
                         toma03 = (new XElement(pf + "toma03", new XElement(pf + "toma", obj.ide.toma03.toma)));
@@ -130,7 +133,7 @@ namespace HLP.GeraXml.bel.CTe
                     }
                     else if (obj.ide.toma04 != null)
                     {
-                        toma4 = (new XElement(pf + "toma4", new XElement(pf + "toma", obj.ide.toma04),
+                        toma4 = (new XElement(pf + "toma4", new XElement(pf + "toma", obj.ide.toma04.toma),
                                                               obj.ide.toma04.CNPJ != "" ? new XElement(pf + "CNPJ", obj.ide.toma04.CNPJ) : null,
                                                               obj.ide.toma04.CPF != "" ? new XElement(pf + "CPF", obj.ide.toma04.CPF) : null,
                                                               obj.ide.toma04.IE != "" ? new XElement(pf + "IE", obj.ide.toma04.IE) : null,
@@ -153,11 +156,14 @@ namespace HLP.GeraXml.bel.CTe
                         ide.Add(toma4);
                     }
 
-                    if (obj.ide.tpEmis == "5")
-                    {
-                        ide.Add(new XElement(pf + "dhCont", (daoUtil.GetDateServidor()).ToString("yyyy-MM-ddTHH:MM:ss")),
-                                new XElement(pf + "xJust", "Falha na Internet"));
-                    }
+
+                    #endregion
+
+                    #region Comp
+                    // OS_ 30302
+                    compl = (obj.compl != null ? new XElement(pf + "compl", new XElement(pf + "ObsCont",
+                                                            new XAttribute("xCampo", obj.compl.ObsCont.xCampo),
+                                                            new XElement(pf + "xTexto", obj.compl.ObsCont.xTexto.Trim()))) : null);
 
                     #endregion
 
@@ -183,7 +189,6 @@ namespace HLP.GeraXml.bel.CTe
                     #endregion
 
                     #region rem
-
                     rem = (new XElement(pf + "rem", obj.rem.CNPJ != "" ? new XElement(pf + "CNPJ", obj.rem.CNPJ) : null,
                                                     obj.rem.CPF != "" ? new XElement(pf + "CPF", obj.rem.CPF) : null,
                                                           new XElement(pf + "IE", obj.rem.IE),
@@ -200,53 +205,52 @@ namespace HLP.GeraXml.bel.CTe
                                                                    obj.rem.enderReme.CEP != "" ? new XElement(pf + "CEP", obj.rem.enderReme.CEP) : null,
                                                                    new XElement(pf + "UF", obj.rem.enderReme.UF),
                                                                    obj.rem.enderReme.cPais != "" ? new XElement(pf + "cPais", obj.rem.enderReme.cPais) : null,
-                                                                   obj.rem.enderReme.xPais != "" ? new XElement(pf + "xPais", obj.rem.enderReme.xPais) : null,
-                                                                   obj.rem.enderReme.email != "" ? new XElement(pf + "email", obj.rem.enderReme.email) : null));
+                                                                   obj.rem.enderReme.xPais != "" ? new XElement(pf + "xPais", obj.rem.enderReme.xPais) : null));
 
                     rem.Add(enderReme);
 
+                    // 1
+                    //for (int j = 0; j < obj.rem.infNF.Count; j++)
+                    //{
+                    //    infNF = new XElement(pf + "infNF",
+                    //               new XElement(pf + "mod", obj.rem.infNF[j].mod),
+                    //               new XElement(pf + "serie", obj.rem.infNF[j].serie),
+                    //               new XElement(pf + "nDoc", obj.rem.infNF[j].nDoc.Replace(",", ".")),
+                    //               new XElement(pf + "dEmi", (Convert.ToDateTime(obj.rem.infNF[j].dEmi)).ToString("yyyy-MM-dd")),
+                    //               new XElement(pf + "vBC", obj.rem.infNF[j].vBC.Replace(",", ".")),
+                    //               new XElement(pf + "vICMS", obj.rem.infNF[j].vICMS.Replace(",", ".")),
+                    //               new XElement(pf + "vBCST", obj.rem.infNF[j].vBCST.Replace(",", ".")),
+                    //               new XElement(pf + "vST", obj.rem.infNF[j].vST.Replace(",", ".")),
+                    //               new XElement(pf + "vProd", obj.rem.infNF[j].vProd.Replace(",", ".")),
+                    //               new XElement(pf + "vNF", obj.rem.infNF[j].vNF.Replace(",", ".")),
+                    //               new XElement(pf + "nCFOP", obj.rem.infNF[j].nCFOP.Replace(",", ".")));
 
-                    for (int j = 0; j < obj.rem.infNF.Count; j++)
-                    {
-                        infNF = new XElement(pf + "infNF",
-                                   new XElement(pf + "mod", obj.rem.infNF[j].mod),
-                                   new XElement(pf + "serie", obj.rem.infNF[j].serie),
-                                   new XElement(pf + "nDoc", obj.rem.infNF[j].nDoc.Replace(",", ".")),
-                                   new XElement(pf + "dEmi", (Convert.ToDateTime(obj.rem.infNF[j].dEmi)).ToString("yyyy-MM-dd")),
-                                   new XElement(pf + "vBC", obj.rem.infNF[j].vBC.Replace(",", ".")),
-                                   new XElement(pf + "vICMS", obj.rem.infNF[j].vICMS.Replace(",", ".")),
-                                   new XElement(pf + "vBCST", obj.rem.infNF[j].vBCST.Replace(",", ".")),
-                                   new XElement(pf + "vST", obj.rem.infNF[j].vST.Replace(",", ".")),
-                                   new XElement(pf + "vProd", obj.rem.infNF[j].vProd.Replace(",", ".")),
-                                   new XElement(pf + "vNF", obj.rem.infNF[j].vNF.Replace(",", ".")),
-                                   new XElement(pf + "nCFOP", obj.rem.infNF[j].nCFOP.Replace(",", ".")));
+                    //    rem.Add(infNF);
+                    //}
 
-                        rem.Add(infNF);
-                    }
-
-
-
-                    for (int nfe = 0; nfe < obj.rem.infNFe.Count; nfe++)
-                    {
-                        infNFe = new XElement(pf + "infNFe", new XElement(pf + "chave", obj.rem.infNFe[nfe].chave));
-                        rem.Add(infNFe);
-                    }
-
-                    for (int j = 0; j < obj.rem.infOutros.Count; j++)
-                    {
-                        infOutros = new XElement(pf + "infOutros", new XElement(pf + "tpDoc", obj.rem.infOutros[j].tpDoc),
-                                                obj.rem.infOutros[j].descOutros != "" ? new XElement(pf + "descOutros", obj.rem.infOutros[j].descOutros) : null,
-                                                new XElement(pf + "nDoc", obj.rem.infOutros[j].nDoc),
-                                                new XElement(pf + "dEmi", Convert.ToDateTime(obj.rem.infOutros[j].dEmi).ToString("yyyy-MM-dd")),
-                                                new XElement(pf + "vDocFisc", obj.rem.infOutros[j].vDocFisc.Replace(",", ".")));
-                        rem.Add(infOutros);
-                    }
-
-
+                    // 2
+                    //for (int nfe = 0; nfe < obj.rem.infNFe.Count; nfe++)
+                    //{
+                    //    infNFe = new XElement(pf + "infNFe", new XElement(pf + "chave", obj.rem.infNFe[nfe].chave));
+                    //    rem.Add(infNFe);
+                    //}
+                    //3
+                    //for (int j = 0; j < obj.rem.infOutros.Count; j++)
+                    //{
+                    //    infOutros = new XElement(pf + "infOutros",
+                    //                            new XElement(pf + "tpDoc", obj.rem.infOutros[j].tpDoc),
+                    //                            obj.rem.infOutros[j].descOutros != "" ? new XElement(pf + "descOutros", obj.rem.infOutros[j].descOutros) : null,
+                    //                            new XElement(pf + "nDoc", obj.rem.infOutros[j].nDoc),
+                    //                            new XElement(pf + "dEmi", Convert.ToDateTime(obj.rem.infOutros[j].dEmi).ToString("yyyy-MM-dd")),
+                    //                            new XElement(pf + "vDocFisc", obj.rem.infOutros[j].vDocFisc.Replace(",", ".")));
+                    //    rem.Add(infOutros);
+                    //}
 
                     #endregion
 
                     #region exped
+
+                    exped = null;
 
                     if (obj.exped != null)
                     {
@@ -275,6 +279,7 @@ namespace HLP.GeraXml.bel.CTe
 
                     #region receb
 
+                    receb = null;
                     if (obj.receb != null)
                     {
                         receb = (new XElement(pf + "receb", obj.receb.CNPJ != "" ? new XElement(pf + "CNPJ", obj.receb.CNPJ) : null,
@@ -342,6 +347,7 @@ namespace HLP.GeraXml.bel.CTe
                     #region imp
 
                     imp = new XElement(pf + "imp");
+                    //ICMS = new XElement(pf + "ICMS", new XElement(pf + "vTotTrib", "200.06"));
                     ICMS = new XElement(pf + "ICMS");
 
                     if (obj.imp.ICMS.ICMS00 != null)
@@ -396,7 +402,11 @@ namespace HLP.GeraXml.bel.CTe
                                                                  new XElement(pf + "vICMSOutraUF", objICMSOutraUF.vICMSOutraUF)));
                         ICMS.Add(ICMSOutraUF);
                     }
-
+                    else if (obj.imp.ICMS.ICMSSN != null)
+                    {
+                        ICMSSN = (new XElement(pf + "ICMSSN", new XElement(pf + "indSN", "1")));
+                        ICMS.Add(ICMSSN);
+                    }
 
                     imp.Add(ICMS);
                     #endregion
@@ -406,12 +416,51 @@ namespace HLP.GeraXml.bel.CTe
                     infCTeNorm = new XElement(pf + "infCTeNorm", new XElement(pf + "infCarga",
                                                                                   new XElement(pf + "vCarga", obj.infCTeNorm.infCarga.vCarga),
                                                                                   new XElement(pf + "proPred", obj.infCTeNorm.infCarga.proPred),
-                                                                                  obj.infCTeNorm.infCarga.xOutCat != "" ? new XElement(pf + "xOutCat", obj.infCTeNorm.infCarga.xOutCat) : null,
+                                                                                  obj.infCTeNorm.infCarga.xOutCat.Trim() != "" ? new XElement(pf + "xOutCat", obj.infCTeNorm.infCarga.xOutCat.Trim()) : null,
                                                                                   obj.infCTeNorm.infCarga.infQ != null ?
                                                                                   (from c in obj.infCTeNorm.infCarga.infQ
                                                                                    select new XElement(pf + "infQ", new XElement(pf + "cUnid", c.cUnid),
                                                                                                                new XElement(pf + "tpMed", c.tpMed),
-                                                                                                               new XElement(pf + "qCarga", c.qCarga.ToString().Replace(",", ".") + "00"))) : null));
+                                                                                                               new XElement(pf + "qCarga", retornaqCarga(c.qCarga)))) : null),
+                                                                 (obj.infCTeNorm.infDoc != null ? new XElement(pf + "infDoc",
+                                                                   (obj.infCTeNorm.infDoc.infNF.Count > 0 ?
+                                                                       (from c in obj.infCTeNorm.infDoc.infNF  //2.0
+                                                                        select new XElement(pf + "infNF",
+                                                                        new XElement(pf + "mod", c.mod),
+                                                                        new XElement(pf + "serie", c.serie),
+                                                                        new XElement(pf + "nDoc", c.nDoc.Replace(",", ".")),
+                                                                        new XElement(pf + "dEmi", (Convert.ToDateTime(c.dEmi)).ToString("yyyy-MM-dd")),
+                                                                        new XElement(pf + "vBC", c.vBC.Replace(",", ".")),
+                                                                        new XElement(pf + "vICMS", c.vICMS.Replace(",", ".")),
+                                                                        new XElement(pf + "vBCST", c.vBCST.Replace(",", ".")),
+                                                                        new XElement(pf + "vST", c.vST.Replace(",", ".")),
+                                                                        new XElement(pf + "vProd", c.vProd.Replace(",", ".")),
+                                                                        new XElement(pf + "vNF", c.vNF.Replace(",", ".")),
+                                                                        new XElement(pf + "nCFOP", c.nCFOP.Replace(",", ".")))) : null),
+                                                                    (obj.infCTeNorm.infDoc.infNFe.Count > 0 ?
+                                                                        (from c in obj.infCTeNorm.infDoc.infNFe //2.0                                                                             select 
+                                                                         select new XElement(pf + "infNFe", new XElement(pf + "chave", c.chave))) : null),
+                                                                     (obj.infCTeNorm.infDoc.infOutros.Count > 0 ? //2.0
+                                                                     (from c in obj.infCTeNorm.infDoc.infOutros
+                                                                      select new XElement(pf + "infOutros",
+                                                                           new XElement(pf + "tpDoc", c.tpDoc),
+                                                                            c.descOutros != "" ? new XElement(pf + "descOutros", c.descOutros) : null,
+                                                                            new XElement(pf + "nDoc", c.nDoc),
+                                                                            new XElement(pf + "dEmi", Convert.ToDateTime(c.dEmi).ToString("yyyy-MM-dd")),
+                                                                            new XElement(pf + "vDocFisc", c.vDocFisc.Replace(",", ".")))) : null)) : null),
+                                                                 ((obj.ide.tpCTe == 0 || obj.ide.tpCTe == 3) && (obj.ide.tpServ > 0)) ? new XElement(pf + "docAnt",
+                                                                      new XElement(pf + "emiDocAnt",
+                                                                            obj.rem.CNPJ != "" ? new XElement(pf + "CNPJ", obj.rem.CNPJ) : null,
+                                                                            obj.rem.CPF != "" ? new XElement(pf + "CPF", obj.rem.CPF) : null,
+                                                                            new XElement(pf + "IE", obj.rem.IE),
+                                                                            new XElement(pf + "UF", obj.rem.enderReme.UF),
+                                                                            new XElement(pf + "xNome", obj.rem.xNome.Trim()),
+                                                                      new XElement(pf + "idDocAnt",
+                                                                          (from c in obj.infCTeNorm.infDoc.infNFe
+                                                                           select new XElement(pf + "idDocAntEle",
+                                                                           new XElement(pf + "chave", c.chave)
+                                                                     ))))) : null);
+
 
 
                     seg = new XElement(pf + "seg", new XElement(pf + "respSeg", obj.infCTeNorm.seg.respSeg),
@@ -421,7 +470,7 @@ namespace HLP.GeraXml.bel.CTe
 
                     #region Modal Rodoviario
 
-                    infModal = new XElement(pf + "infModal", new XAttribute("versaoModal", Acesso.versaoCTe));
+                    infModal = new XElement(pf + "infModal", new XAttribute("versaoModal", "2.00"));
 
                     rodo = new XElement(pf + "rodo", new XElement(pf + "RNTRC", obj.infCTeNorm.rodo.RNTRC),
                                                               new XElement(pf + "dPrev", Convert.ToDateTime(obj.infCTeNorm.rodo.dPrev).ToString("yyyy-MM-dd")),
@@ -474,6 +523,7 @@ namespace HLP.GeraXml.bel.CTe
                     #region Monta CTe
 
                     infCte.Add(ide);
+                    infCte.Add(compl);
                     infCte.Add(emit);
                     infCte.Add(rem);
                     infCte.Add(exped);
@@ -487,21 +537,18 @@ namespace HLP.GeraXml.bel.CTe
                     #endregion
 
                     #region Assinatura
-
                     belAssinaXml Assinatura = new belAssinaXml();
                     string sCte = Assinatura.ConfigurarArquivo(CTe.ToString(), "infCte", Acesso.cert_CTe);
-
                     listXml.Add(sCte);
 
                     #endregion
 
                     #region SalvaCteIndividual
 
-                    XDocument XmlCte = XDocument.Parse(sCte);
+                    sCte = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + sCte;
+                    string sNumCte = obj.ide.nCT.PadLeft(6, '0');
 
-                    string sNumCte = obj.ide.nCT;
-
-                    if (Acesso.TP_EMIS != 1)
+                    if (Acesso.TP_EMIS == 2)
                     {
                         dPastaEnvio = new DirectoryInfo(Pastas.CONTINGENCIA);
                     }
@@ -513,8 +560,7 @@ namespace HLP.GeraXml.bel.CTe
 
                     dPastaMesAtual = new DirectoryInfo(dPastaEnvio + @"\\" + sData.Substring(3, 2) + "-" + sData.Substring(8, 2));
                     if (!dPastaMesAtual.Exists) { dPastaMesAtual.Create(); }
-
-                    XmlCte.Save(dPastaMesAtual.ToString() + "\\" + "Cte_" + sNumCte + ".xml");
+                    File.WriteAllText(dPastaMesAtual.ToString() + "\\" + "Cte_" + sNumCte + ".xml", sCte);
 
                     #endregion
 
@@ -529,14 +575,13 @@ namespace HLP.GeraXml.bel.CTe
                     sXml = sXml + xml;
                 }
 
-                string sXmlCte = ("<?xml version=\"1.0\" encoding=\"UTF-8\"?><enviCTe versao=\"1.04\" " +
+                string sXmlCte = ("<?xml version=\"1.0\" encoding=\"UTF-8\"?><enviCTe versao=\"2.00\" " +
                                  "xsi:schemaLocation=\"http://www.portalfiscal.inf.br/cte enviCte_v1.04.xsd\" " +
                                  "xmlns=\"http://www.portalfiscal.inf.br/cte\" xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\" " +
                                  "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><idLote>" + iNumLote + "</idLote>" + sXml + "</enviCTe>");
 
-
-                string sCaminho = dPastaEnvio.ToString() + "\\" + "Cte_Lote_" + iNumLote + "_" + sData + ".xml";
-                StreamWriter sw = new StreamWriter(sCaminho);
+                string sPathLote = dPastaEnvio.ToString() + "\\" + "Cte_Lote_" + iNumLote + "_" + sData + ".xml";
+                StreamWriter sw = new StreamWriter(sPathLote);
                 sw.Write(sXmlCte);
                 sw.Close();
 
@@ -544,15 +589,44 @@ namespace HLP.GeraXml.bel.CTe
                 #endregion
 
                 #region Valida_Xml
+                belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\enviCTe_v2.00.xsd", sPathLote);
 
-                belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\enviCte_v1.04.xsd", sCaminho);
+                //belGlobais getschema = new belGlobais();
+                //XmlSchemaCollection myschema = new XmlSchemaCollection();
 
+                //XmlValidatingReader reader;
+
+                //try
+                //{
+                //    XmlParserContext context = new XmlParserContext(null, null, "", XmlSpace.None);
+
+                //    reader = new XmlValidatingReader(sXmlCte.ToString(), XmlNodeType.Element, context);
+
+                //    myschema.Add("http://www.portalfiscal.inf.br/cte", belStaticPastas.SCHEMA_CTE + "\\enviCte_v1.04.xsd");
+
+                //    reader.ValidationType = ValidationType.Schema;
+
+                //    reader.Schemas.Add(myschema);
+
+                //    while (reader.Read())
+                //    {
+                //    }
+
+                //}
+                //catch (XmlException x)
+                //{
+                //    throw new Exception(x.Message);
+                //}
+                //catch (XmlSchemaException x)
+                //{
+                //    throw new Exception(x.Message);
+                //}
 
                 #endregion
 
                 #region Envia e Busca Recibo Lote WebService
 
-                if (Acesso.TP_EMIS == 1)
+                if (Acesso.TP_EMIS == 1) // modo normal
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.Load(dPastaEnvio.ToString() + "\\" + "Cte_Lote_" + iNumLote + "_" + sData + ".xml");
@@ -573,93 +647,127 @@ namespace HLP.GeraXml.bel.CTe
                 throw ex;
             }
         }
-        public List<belStatusCte> GerarXmlCancelamento(belCancelaCte objCancelaCte)
+        string retornaqCarga(decimal dValor)
+        {
+            string sRetorno = String.Format("{0:N4}", dValor);
+
+            return sRetorno.Replace(".", "").Replace(",", ".");
+
+        }
+        public TRetEvento GerarXmlCancelamento(belCancelaCte objCancelaCte)
         {
             try
             {
+                //Serialização Cancelamento
                 XNamespace pf = "http://www.portalfiscal.inf.br/cte";
-                XNamespace ns = "http://www.w3.org/2001/XMLSchema-instance";
 
-                XContainer cancCTe = new XElement(pf + "cancCTe", new XAttribute("versao", Acesso.versaoCTe),
-                                                                     new XAttribute(ns + "schemaLocation", "http://www.portalfiscal.inf.br/cancCte_v1.04.xsd"),
-                                                                     new XAttribute("xmlns", "http://www.portalfiscal.inf.br/cte"),
-                                                                     new XAttribute(XNamespace.Xmlns + "ds", "http://www.w3.org/2000/09/xmldsig#"),
-                                                                     new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"));
 
-                XContainer infCanc = new XElement(pf + "infCanc", new XAttribute("Id", objCancelaCte.Id),
-                                                                  new XElement(pf + "tpAmb", objCancelaCte.tpAmb),
-                                                                  new XElement(pf + "xServ", objCancelaCte.xServ),
-                                                                  new XElement(pf + "chCTe", objCancelaCte.chCTe),
-                                                                  new XElement(pf + "nProt", objCancelaCte.nProt),
-                                                                  new XElement(pf + "xJust", objCancelaCte.xJust));
+                XContainer envCTe = new XElement(pf + "evCancCTe",
+                     new XElement(pf + "descEvento", "Cancelamento"),
+                     new XElement(pf + "nProt", objCancelaCte.nProt),
+                     new XElement(pf + "xJust", objCancelaCte.xJust));
 
-                cancCTe.Add(infCanc);
 
-                #region Assinatura
+                XmlDocument xmlCanc = new XmlDocument();
+                xmlCanc.LoadXml(envCTe.ToString());
+
+                // Serialização Evento
+                string sVersao = Acesso.versaoCTe; // "1.00";
+
+                TEvento evento = new TEvento();
+                evento.versao = sVersao;
+                evento.infEvento = new TEventoInfEvento();
+                evento.infEvento.tpEvento = "110111";
+                evento.infEvento.nSeqEvento = "1"; // numero de evento
+                evento.infEvento.Id = "ID" + evento.infEvento.tpEvento + objCancelaCte.chCTe + evento.infEvento.nSeqEvento.PadLeft(2, '0');
+                evento.infEvento.cOrgao = Convert.ToByte(Acesso.cUF);
+                evento.infEvento.tpAmb = Acesso.TP_AMB == 1 ? TAmb.Item1 : TAmb.Item2;
+                evento.infEvento.CNPJ = Util.RetiraCaracterCNPJ(Acesso.CNPJ_EMPRESA);
+                evento.infEvento.chCTe = objCancelaCte.chCTe;
+                evento.infEvento.dhEvento = daoUtil.GetDateServidor().ToString("yyyy-MM-ddTHH:mm:ss");
+                evento.infEvento.detEvento = new TEventoInfEventoDetEvento();
+                evento.infEvento.detEvento.versaoEvento = sVersao;
+                evento.infEvento.detEvento.Any = (System.Xml.XmlElement)xmlCanc.DocumentElement;
+
+                string sEvento = "";
+
+                XmlSerializerNamespaces nameSpaces = new XmlSerializerNamespaces();
+                nameSpaces.Add("", "");
+                nameSpaces.Add("", "http://www.portalfiscal.inf.br/cte");
+
+
+                //SerializeClassToXml.SerializeClasse(TEvento,)
+
+
+
+                XmlSerializer xs = new XmlSerializer(typeof(TEvento));
+                MemoryStream memory = new MemoryStream();
+                XmlTextWriter xmltext = new XmlTextWriter(memory, Encoding.UTF8);
+                xs.Serialize(xmltext, evento, nameSpaces);
+                UTF8Encoding encoding = new UTF8Encoding();
+                sEvento = encoding.GetString(memory.ToArray());
+                sEvento = sEvento.Substring(1);
+
 
                 belAssinaXml Assinatura = new belAssinaXml();
-                string sInfCanc = Assinatura.ConfigurarArquivo(cancCTe.ToString(), "infCanc", Acesso.cert_CTe);
-                XElement xInfCanc = XElement.Parse(sInfCanc);
+                sEvento = Assinatura.ConfigurarArquivo(sEvento, "infEvento", Acesso.cert_CTe);
 
+                //string sXMLfinal = "<?xml version=\"1.0\" encoding=\"utf-8\"?><envEvento xmlns=\"http://www.portalfiscal.inf.br/nfe\" versao=\"1.00\"><idLote>" + nota.sCD_NFSEQ.PadLeft(15, '0')
+                //                    + "</idLote>" + sEvento.Replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "") + "</envEvento>";
 
-
-                #endregion
-
-                #region Salva Xml
-
-                string sData = daoUtil.GetDateServidor().Date.ToString("dd-MM-yyyy");
-
-                DirectoryInfo dPastaProtocolo = new DirectoryInfo(Pastas.PROTOCOLOS);
-                if (!dPastaProtocolo.Exists) { dPastaProtocolo.Create(); }
-                DirectoryInfo dPastaMesAtual = new DirectoryInfo(dPastaProtocolo + @"\\" + sData.Substring(3, 2) + "-" + sData.Substring(8, 2));
-                if (!dPastaMesAtual.Exists) { dPastaMesAtual.Create(); }
-
-                string sCaminho = dPastaMesAtual.ToString() + "\\" + "Canc_" + objCancelaCte.chCTe + ".xml";
-                XDocument XmlCanc = new XDocument(xInfCanc);
-                XmlCanc.Save(sCaminho);
-
-                #endregion
-
-                #region Valida_Xml
-
-                belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\cancCte_v1.04.xsd", sCaminho);
-
-                #endregion
-
-
-
+                XmlDocument xDoc = new XmlDocument();
+                xDoc.LoadXml(sEvento);
+                string sPath = Pastas.PROTOCOLOS + "\\" + objCancelaCte.chCTe + "_ped-can.xml";
+                if (File.Exists(sPath))
+                {
+                    File.Delete(sPath);
+                }
+                xDoc.Save(sPath);
+                try
+                {
+                    belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\eventoCTe_v2.00.xsd", sPath);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
 
                 #region Cancelar Cte
 
 
                 XmlDocument doc = new XmlDocument();
-                doc.Load(sCaminho);
+                doc.Load(sPath);
 
                 string sRetorno = CancelarCte(doc);
-                List<belStatusCte> ListaStatus = TrataDadosRetorno(sRetorno);
 
-                foreach (belStatusCte cte in ListaStatus)
+                XDocument xRet = XDocument.Parse(sRetorno);
+                xRet.Save(sPath);
+                HLP.GeraXml.bel.CTe.Evento.TRetEvento retorno = SerializeClassToXml.DeserializeClasse<HLP.GeraXml.bel.CTe.Evento.TRetEvento>(sPath);
+
+                //List<belStatusCte> ListaStatus = TrataDadosRetorno(sRetorno);
+
+                //foreach (belStatusCte cte in ListaStatus)
+                //{
+                if (retorno.infEvento.cStat != "135")
                 {
-                    if (cte.CodRetorno == "101")
-                    {
-                        XDocument xRet = XDocument.Parse(sRetorno);
-                        xRet.Save(sCaminho);
-                    }
-                    else
-                    {
-                        File.Delete(sCaminho);
-                    }
+                    File.Delete(sPath);
                 }
+                //}
 
                 #endregion
 
-                return ListaStatus;
+                return retorno;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+
+
+
+
         public List<belStatusCte> GerarXmlInutilizacao(belInutilizaFaixaCte objInutiliza)
         {
             XNamespace pf = "http://www.portalfiscal.inf.br/cte";
@@ -777,7 +885,7 @@ namespace HLP.GeraXml.bel.CTe
             string sCaminho = dPastaMesAtual.ToString() + "\\" + "Status_" + DateTime.Now.Day + "_" + DateTime.Now.ToLongTimeString().Replace(":", "-") + ".xml";
 
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(consStatServ.ToString());
+            doc.LoadXml("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + consStatServ.ToString());
             doc.Save(sCaminho);
 
 
@@ -835,7 +943,7 @@ namespace HLP.GeraXml.bel.CTe
                 doc.LoadXml(consReciCTe.ToString());
                 doc.Save(sCaminho);
 
-                belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\consReciCte_v1.04.xsd", sCaminho);
+                belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\consReciCTe_v2.00.xsd", sCaminho);
 
                 #endregion
 
@@ -896,7 +1004,7 @@ namespace HLP.GeraXml.bel.CTe
             doc.LoadXml(consReciCTe.ToString());
             doc.Save(sCaminho);
 
-            belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\consSitCte_v1.04.xsd", sCaminho);
+            belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\consSitCTe_v2.00.xsd", sCaminho);
 
 
             #endregion
@@ -954,14 +1062,13 @@ namespace HLP.GeraXml.bel.CTe
 
             try
             {
-                belUF objUf = new belUF();
-                objUf.SiglaUF = "SP";
+
 
                 //Homologação
                 if (Acesso.TP_AMB == 2)
                 {
                     HLP.GeraXml.WebService.CTe_Homologacao_cteCancelamento.cteCabecMsg objCabecCancelamento = new HLP.GeraXml.WebService.CTe_Homologacao_cteCancelamento.cteCabecMsg();
-                    objCabecCancelamento.cUF = objUf.CUF;
+                    objCabecCancelamento.cUF = Acesso.cUF.ToString();
                     objCabecCancelamento.versaoDados = Acesso.versaoCTe;
 
                     HLP.GeraXml.WebService.CTe_Homologacao_cteCancelamento.CteCancelamento objCancelamento = new HLP.GeraXml.WebService.CTe_Homologacao_cteCancelamento.CteCancelamento();
@@ -972,14 +1079,14 @@ namespace HLP.GeraXml.bel.CTe
                 //Produção
                 else if (Acesso.TP_AMB == 1)
                 {
-                    HLP.GeraXml.WebService.CTe_Producao_cteCancelamento.cteCabecMsg objCabecCancelamento = new HLP.GeraXml.WebService.CTe_Producao_cteCancelamento.cteCabecMsg();
-                    objCabecCancelamento.cUF = objUf.CUF;
-                    objCabecCancelamento.versaoDados = Acesso.versaoCTe;
 
-                    HLP.GeraXml.WebService.CTe_Producao_cteCancelamento.CteCancelamento objCancelamento = new HLP.GeraXml.WebService.CTe_Producao_cteCancelamento.CteCancelamento();
-                    objCancelamento.cteCabecMsgValue = objCabecCancelamento;
+                    HLP.GeraXml.WebService.CTe_Producao_evento.cteCabecMsg cabec = new WebService.CTe_Producao_evento.cteCabecMsg();
+                    HLP.GeraXml.WebService.CTe_Producao_evento.CteRecepcaoEvento objCancelamento = new WebService.CTe_Producao_evento.CteRecepcaoEvento();
+                    cabec.cUF = Acesso.cUF.ToString();
+                    cabec.versaoDados = Acesso.versaoCTe;
+                    objCancelamento.cteCabecMsgValue = cabec;
                     objCancelamento.ClientCertificates.Add(Acesso.cert_CTe);
-                    sRetorno = objCancelamento.cteCancelamentoCT(doc).OuterXml;
+                    sRetorno = objCancelamento.cteRecepcaoEvento(doc).OuterXml;
                 }
                 return sRetorno;
             }
@@ -1209,6 +1316,12 @@ namespace HLP.GeraXml.bel.CTe
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// antigo
+        /// </summary>
+        /// <param name="sRetorno"></param>
+        /// <returns></returns>
         private List<belStatusCte> TrataDadosRetorno(string sRetorno)
         {
             try
@@ -1279,7 +1392,7 @@ namespace HLP.GeraXml.bel.CTe
                     ListaStatus.Add(cte);
                 }
 
-                
+
                 return ListaStatus;
             }
             catch (Exception ex)
@@ -1287,6 +1400,9 @@ namespace HLP.GeraXml.bel.CTe
                 throw ex;
             }
         }
+
+
+
 
 
         public void SalvaArquivoPastaEnviado(string sNumCte, string sChaveCte)

@@ -13,7 +13,7 @@ using HLP.GeraXml.bel;
 using HLP.GeraXml.bel.CTe;
 using HLP.GeraXml.dao.CTe;
 
-namespace HLP.GeraXml.UI.CTe 
+namespace HLP.GeraXml.UI.CTe
 {
     public partial class frmCancJustCte : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
@@ -64,18 +64,23 @@ namespace HLP.GeraXml.UI.CTe
                 belCancelaCte objCte = objCancelaCte.PopulaDadosCancelamento(sCodConhecimento, sJustificativa);
 
                 belCriaXml objXml = new belCriaXml();
-                List<belStatusCte> ListaStatus = objXml.GerarXmlCancelamento(objCte);
+                HLP.GeraXml.bel.CTe.Evento.TRetEvento ret = objXml.GerarXmlCancelamento(objCte);
 
-                foreach (belStatusCte cte in ListaStatus)
+
+                if (ret.infEvento.cStat == "135")
                 {
-                    if (cte.CodRetorno == "101")
-                    {
-                        objDadosRetorno.GravarReciboCancelamento(sCodConhecimento, cte.Protocolo, sJustificativa);
-                        objXml.SalvaArquivoPastaCancelado(objdaoDadosGerais.BuscaChaveRetornoCteSeq(cte.NumeroSeq));
-                    }
+                    objDadosRetorno.GravarReciboCancelamento(sCodConhecimento, ret.infEvento.nProt, sJustificativa);
+                    objXml.SalvaArquivoPastaCancelado(objdaoDadosGerais.BuscaChaveRetornoCteSeq(objCte.chCTe));
                 }
 
-                KryptonMessageBox.Show(belTrataMensagem.RetornaMensagem(ListaStatus, belTrataMensagem.Tipo.Cancelamento), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string sMessageRetorno = string.Format("Codigo do Retorno: {0}{1}Motivo: {2}{1}Chave: {3}{1}Protocolo: {4}{1}",
+                    ret.infEvento.cStat,
+                    Environment.NewLine,
+                    ret.infEvento.xMotivo,
+                    ret.infEvento.chCTe,
+                    ret.infEvento.nProt);
+
+                KryptonMessageBox.Show(sMessageRetorno, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (Exception ex)

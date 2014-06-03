@@ -17,7 +17,7 @@ namespace HLP.GeraXml.bel.CTe
             {
                 DataTable dt = BuscaDadosinfCarga(sCte);
 
-                objbelinfCte.infCTeNorm = new belinfCTeNorm();
+                //objbelinfCte.infCTeNorm = new belinfCTeNorm();
                 objbelinfCte.infCTeNorm.infCarga = new belinfCarga();
 
                 foreach (DataRow dr in dt.Rows)

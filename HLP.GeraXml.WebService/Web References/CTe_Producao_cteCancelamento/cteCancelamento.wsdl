@@ -60,7 +60,7 @@
   <wsdl:service name="CteCancelamento">
     <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Serviço destinado ao atendimento de solicitações de cancelamento de CT-e.</wsdl:documentation>
     <wsdl:port name="CteCancelamentoSoap12" binding="tns:CteCancelamentoSoap12">
-      <soap12:address location="https://nfe.fazenda.sp.gov.br/cteWEB/services/cteCancelamento.asmx" />
+      <soap12:address location="https://nfe.fazenda.sp.gov.br/cteWEB/services/CteCancelamento.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

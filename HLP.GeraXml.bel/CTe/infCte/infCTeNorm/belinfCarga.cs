@@ -35,7 +35,12 @@ namespace HLP.GeraXml.bel.CTe.infCte.infCTeNorm
         /// <summary>
         /// 1:N
         /// </summary>
-        public List<belinfQ> infQ { get; set; }
+        private List<belinfQ> _infQ = new List<belinfQ>();
+        public List<belinfQ> infQ
+        {
+            get { return _infQ; }
+            set { _infQ = value; }
+        }
 
 
 

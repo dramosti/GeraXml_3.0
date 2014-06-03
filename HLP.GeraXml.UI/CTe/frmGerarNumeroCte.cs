@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using HLP.GeraXml.bel.CTe;
 using HLP.GeraXml.Comum.Static;
+using HLP.GeraXml.dao.CTe;
+using HLP.GeraXml.dao;
 
 namespace HLP.GeraXml.UI.CTe
 {
@@ -28,6 +30,7 @@ namespace HLP.GeraXml.UI.CTe
 
             try
             {
+                daoGeraNumero objdaoGeraNumero = new daoGeraNumero();
                 List<belNumeroCte> objLbelConhec = objNumeroCte.GeraNumerosConhecimentos(objlGerarConhec, txtNumeroASerEmi.Text);
 
                 pgbNF.Minimum = 0;
@@ -38,6 +41,8 @@ namespace HLP.GeraXml.UI.CTe
                     objNumeroCte.GravaConhec(objLbelConhec[i].cdConhec, objLbelConhec[i].nfSeq);
                     pgbNF.Value++;
                 }
+                objdaoGeraNumero.AtualizaGenerator(objLbelConhec[objLbelConhec.Count - 1].cdConhec);
+
                 KryptonMessageBox.Show(null, "Numeração dos Conhecimentos gerados com sucesso!", Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -51,15 +56,17 @@ namespace HLP.GeraXml.UI.CTe
         {
             try
             {
-                if (Acesso.NM_EMPRESA.ToUpper().Equals("SICUPIRA"))
+                daoNumeroCte objdaoGeraNumero = new daoNumeroCte();
+                if (Acesso.NM_EMPRESA.ToUpper().Equals("SICUPIRA") || Acesso.NM_EMPRESA.ToUpper().Equals("TRANSLILO") || Acesso.NM_EMPRESA.ToUpper().Equals("GCA"))
                 {
-                    if (!dao.daoUtil.VerificaExistenciaGenerator("CONHECIM_CTE"))
+                    string sGenerator = "CONHECIM_CTE" + Acesso.CD_EMPRESA;
+                    daoUtil util = new daoUtil();
+                    if (!daoUtil.VerificaExistenciaGenerator(sGenerator))
                     {
-                        dao.daoUtil.CreateGenerator("CONHECIM_CTE", 0);
+                        daoUtil.CreateGenerator(sGenerator, 0);
                     }
                 }
-
-                txtNumeroUltNF.Text = objNumeroCte.BuscaUltimoNumeroConhecimento().PadLeft(6, '0');
+                txtNumeroUltNF.Text = objdaoGeraNumero.BuscaUltimoNumeroConhecimento().PadLeft(6, '0');
                 txtNumeroASerEmi.Text = (Convert.ToInt32(txtNumeroUltNF.Text) + 1).ToString().PadLeft(6, '0');
             }
             catch (Exception ex)

@@ -25,11 +25,25 @@ namespace HLP.GeraXml.bel.CTe
 
                 foreach (DataRow dr in dt.Rows)
                 {
+                    //belinfQ objinfQ = new belinfQ();
+                    //objinfQ.cUnid = dr["cUnid"].ToString();
+                    //objinfQ.tpMed = dr["tpMed"].ToString();
+                    //objinfQ.qCarga = Convert.ToDecimal(dr["qCarga"].ToString().Replace(".", ","));
+                    //objbelinfCte.infCTeNorm.infCarga.infQ.Add(objinfQ);
+
                     belinfQ objinfQ = new belinfQ();
-                    objinfQ.cUnid = dr["cUnid"].ToString();
-                    objinfQ.tpMed = dr["tpMed"].ToString();
-                    objinfQ.qCarga = Convert.ToDecimal(dr["qCarga"].ToString().Replace(".", ","));
+                    objinfQ.cUnid = "00";
+                    objinfQ.tpMed = dr["tpMed"].ToString().ToUpper();
+                    objinfQ.qCarga = Convert.ToDecimal(dr["qCarga_Volume"].ToString().Replace(".", ","));
                     objbelinfCte.infCTeNorm.infCarga.infQ.Add(objinfQ);
+
+                    objinfQ = new belinfQ();
+                    objinfQ.cUnid = dr["cUnid"].ToString();
+                    objinfQ.tpMed = "PESO";
+                    objinfQ.qCarga = Convert.ToDecimal(dr["qCarga_Peso"].ToString().Replace(".", ","));
+                    objbelinfCte.infCTeNorm.infCarga.infQ.Add(objinfQ);
+
+
                 }
             }
             catch (Exception ex)

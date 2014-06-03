@@ -35,6 +35,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +50,16 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CTe_Producao_cteCancelamento\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CTe_Producao_evento\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\NFSE_Campinas\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -255,11 +267,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\CTe_Homologacao_cteStatusServico\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\CTe_Producao_cteCancelamento\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -1346,10 +1353,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>HLP_GeraXml_WebService_br_gov_ms_fazenda_nfe_NfeStatusServico2</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="https://nfe.fazenda.sp.gov.br/cteWEB/services/cteCancelamento.asmx">
+    <WebReferenceUrl Include="https://nfe.fazenda.sp.gov.br/cteWEB/services/CteCancelamento.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\CTe_Producao_cteCancelamento\</RelPath>
-      <UpdateFromURL>https://nfe.fazenda.sp.gov.br/cteWEB/services/cteCancelamento.asmx</UpdateFromURL>
+      <UpdateFromURL>https://nfe.fazenda.sp.gov.br/cteWEB/services/CteCancelamento.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -1389,6 +1396,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>HLP_GeraXml_WebService_CTe_Producao_cteRecepcao_CteRecepcao</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://nfe.fazenda.sp.gov.br/cteweb/services/cteRecepcaoEvento.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CTe_Producao_evento\</RelPath>
+      <UpdateFromURL>https://nfe.fazenda.sp.gov.br/cteweb/services/cteRecepcaoEvento.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_CTe_Producao_evento_CteRecepcaoEvento</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="https://nfe.fazenda.sp.gov.br/cteWEB/services/cteRetRecepcao.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -1758,9 +1776,20 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CTe_Producao_cteCancelamento\CteCancelamento.wsdl" />
+    <None Include="Web References\CTe_Producao_cteCancelamento\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CTe_Producao_evento\cteRecepcaoEvento.wsdl" />
+    <None Include="Web References\CTe_Producao_evento\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\NFSE_Campinas\LoteRps.wsdl" />
     <None Include="Web References\NFSE_Campinas\Reference.map">
@@ -1970,11 +1999,6 @@
     </None>
     <None Include="Web References\CTe_Homologacao_cteStatusServico\cteStatusServico.wsdl" />
     <None Include="Web References\CTe_Homologacao_cteStatusServico\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\CTe_Producao_cteCancelamento\cteCancelamento.wsdl" />
-    <None Include="Web References\CTe_Producao_cteCancelamento\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2313,9 +2337,6 @@
     <None Include="Web References\CTe_Homologacao_cteStatusServico\cteStatusServico.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\CTe_Producao_cteCancelamento\cteCancelamento.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Web References\CTe_Producao_cteInutilizacao\cteInutilizacao.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -2458,6 +2479,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\v2_Producao_NFeRetRecepcao_RS\NfeRetRecepcao2.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\CTe_Producao_cteCancelamento\CteCancelamento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\CTe_Producao_evento\cteRecepcaoEvento.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,7 +28,6 @@ namespace HLP.GeraXml.UI.CTe
         belPopulaObjetos objObjetos = null;
         public belPopulaObjetos objObjetosAlter = null;
 
-
         public frmVisualizaCte(belPopulaObjetos objObjetos)
         {
             InitializeComponent();
@@ -41,15 +40,11 @@ namespace HLP.GeraXml.UI.CTe
             VerificaCampos();
         }
 
-
-
-
         private void frmVisualizaCte_Load(object sender, EventArgs e)
         {
             cbotoma.cbx.SelectedIndexChanged += new EventHandler(cbotoma_SelectedIndexChanged);
             cboCST.cbx.SelectedIndexChanged += new EventHandler(cboCST_SelectedIndexChanged);
         }
-
 
         #region Eventos
 
@@ -107,7 +102,6 @@ namespace HLP.GeraXml.UI.CTe
             try
             {
                 List<belinfCte> objList = new List<belinfCte>();
-
 
                 for (int i = 0; i < this.objObjetos.objListaConhecimentos.Count; i++)
                 {
@@ -316,52 +310,54 @@ namespace HLP.GeraXml.UI.CTe
                     #endregion
 
                     #region Informacoes da NF
+                    objbelinfCte.infCTeNorm.infDoc.infNF = obj.infCTeNorm.infDoc.infNF;
+                    //objbelinfCte.infCTeNorm.infDoc.infNF = new List<belinfNF>();
+                    //for (int j = 0; j < obj.infCTeNorm.infDoc.infNF.Count; j++)
+                    //{
+                    //    belinfNF nf = new belinfNF();
+                    //    nf.mod = obj.infCTeNorm.infDoc.infNF[j].mod;
+                    //    nf.nDoc = obj.infCTeNorm.infDoc.infNF[j].nDoc;
+                    //    nf.serie = obj.infCTeNorm.infDoc.infNF[j].serie;
+                    //    nf.dEmi = obj.infCTeNorm.infDoc.infNF[j].dEmi;
+                    //    nf.vBC = obj.infCTeNorm.infDoc.infNF[j].vBC;
+                    //    nf.vICMS = obj.infCTeNorm.infDoc.infNF[j].vICMS;
+                    //    nf.vBCST = obj.infCTeNorm.infDoc.infNF[j].vBCST;
+                    //    nf.vST = obj.infCTeNorm.infDoc.infNF[j].vST;
+                    //    nf.vProd = obj.infCTeNorm.infDoc.infNF[j].vProd;
+                    //    nf.vNF = obj.infCTeNorm.infDoc.infNF[j].vNF;
+                    //    nf.nCFOP = Convert.ToInt32(obj.infCTeNorm.infDoc.infNF[j].nCFOP).ToString();
 
-                    objbelinfCte.rem.infNF = new List<belinfNF>();
-                    for (int j = 0; j < obj.rem.infNF.Count; j++)
-                    {
-                        belinfNF nf = new belinfNF();
-                        nf.mod = obj.rem.infNF[j].mod;
-                        nf.nDoc = obj.rem.infNF[j].nDoc;
-                        nf.serie = obj.rem.infNF[j].serie;
-                        nf.dEmi = obj.rem.infNF[j].dEmi;
-                        nf.vBC = obj.rem.infNF[j].vBC;
-                        nf.vICMS = obj.rem.infNF[j].vICMS;
-                        nf.vBCST = obj.rem.infNF[j].vBCST;
-                        nf.vST = obj.rem.infNF[j].vST;
-                        nf.vProd = obj.rem.infNF[j].vProd;
-                        nf.vNF = obj.rem.infNF[j].vNF;
-                        nf.nCFOP = Convert.ToInt32(obj.rem.infNF[j].nCFOP).ToString();
+                    //    objbelinfCte.infCTeNorm.infDoc.infNF.Add(nf);
+                    //}
 
-                        objbelinfCte.rem.infNF.Add(nf);
-                    }
+                    objbelinfCte.infCTeNorm.infDoc.infNFe = obj.infCTeNorm.infDoc.infNFe;
+                    //objbelinfCte.infCTeNorm.infDoc.infNFe = new List<belinfNFe>();
+                    //for (int n = 0; n < obj.infCTeNorm.infDoc.infNFe.Count; n++)
+                    //{
+                    //    belinfNFe nfe = new belinfNFe();
+                    //    nfe.chave = obj.infCTeNorm.infDoc.infNFe[n].chave;
+                    //    nfe.nDoc = obj.infCTeNorm.infDoc.infNFe[n].nDoc;
 
-
-                    objbelinfCte.rem.infNFe = new List<belinfNFe>();
-                    for (int n = 0; n < obj.rem.infNFe.Count; n++)
-                    {
-                        belinfNFe nfe = new belinfNFe();
-                        nfe.chave = obj.rem.infNFe[n].chave;
-
-                        objbelinfCte.rem.infNFe.Add(nfe);
-                    }
+                    //    objbelinfCte.infCTeNorm.infDoc.infNFe.Add(nfe);
+                    //}
 
                     #endregion
 
                     #region Outros Documentos
 
-                    objbelinfCte.rem.infOutros = new List<belinfOutros>();
-                    for (int j = 0; j < obj.rem.infOutros.Count; j++)
-                    {
-                        belinfOutros infOutros = new belinfOutros();
-                        infOutros.tpDoc = obj.rem.infOutros[j].tpDoc;
-                        infOutros.descOutros = obj.rem.infOutros[j].descOutros;
-                        infOutros.nDoc = obj.rem.infOutros[j].nDoc;
-                        infOutros.dEmi = obj.rem.infOutros[j].dEmi;
-                        infOutros.vDocFisc = obj.rem.infOutros[j].vDocFisc;
+                    objbelinfCte.infCTeNorm.infDoc.infOutros = obj.infCTeNorm.infDoc.infOutros;
+                    //objbelinfCte.infCTeNorm.infDoc.infOutros = new List<belinfOutros>();
+                    //for (int j = 0; j < obj.infCTeNorm.infDoc.infOutros.Count; j++)
+                    //{
+                    //    belinfOutros infOutros = new belinfOutros();
+                    //    infOutros.tpDoc = obj.infCTeNorm.infDoc.infOutros[j].tpDoc;
+                    //    infOutros.descOutros = obj.infCTeNorm.infDoc.infOutros[j].descOutros;
+                    //    infOutros.nDoc = obj.infCTeNorm.infDoc.infOutros[j].nDoc;
+                    //    infOutros.dEmi = obj.infCTeNorm.infDoc.infOutros[j].dEmi;
+                    //    infOutros.vDocFisc = obj.infCTeNorm.infDoc.infOutros[j].vDocFisc;
 
-                        objbelinfCte.rem.infOutros.Add(infOutros);
-                    }
+                    //    objbelinfCte.infCTeNorm.infDoc.infOutros.Add(infOutros);
+                    //}
 
 
                     #endregion
@@ -435,7 +431,7 @@ namespace HLP.GeraXml.UI.CTe
 
                     #region InformacoesCarga
 
-                    objbelinfCte.infCTeNorm = new belinfCTeNorm();
+                    //objbelinfCte.infCTeNorm = new belinfCTeNorm();
                     objbelinfCte.infCTeNorm.infCarga = new belinfCarga();
 
                     objbelinfCte.infCTeNorm.infCarga.vCarga = obj.infCTeNorm.infCarga.vCarga;
@@ -466,6 +462,11 @@ namespace HLP.GeraXml.UI.CTe
                     objbelinfCte.infCTeNorm.rodo.dPrev = obj.infCTeNorm.rodo.dPrev;
                     objbelinfCte.infCTeNorm.rodo.lota = obj.infCTeNorm.rodo.lota;
 
+                    #endregion
+
+                    #region Obs
+                    objbelinfCte.compl = new belcompl();
+                    objbelinfCte.compl.ObsCont.xTexto = obj.compl.ObsCont.xTexto;
                     #endregion
 
                     #region Veiculo
@@ -785,47 +786,50 @@ namespace HLP.GeraXml.UI.CTe
 
                 #region Informacoes da NF
 
-                gridNfNormal.Rows.Clear();
-                for (int j = 0; j < objInfCte.rem.infNF.Count; j++)
-                {
-                    gridNfNormal.Rows.Add();
+                this.bsInfNF.DataSource = objInfCte.infCTeNorm.infDoc.infNF;
 
-                    switch (objInfCte.rem.infNF[j].mod)
-                    {
-                        case "01": gridNfNormal.Rows[j].Cells["mod"].Value = mod.Items[0];
-                            break;
-                        case "04": gridNfNormal.Rows[j].Cells["mod"].Value = mod.Items[1];
-                            break;
-                    }
-                    gridNfNormal.Rows[j].Cells["nDoc"].Value = objInfCte.rem.infNF[j].nDoc;
-                    gridNfNormal.Rows[j].Cells["serie"].Value = objInfCte.rem.infNF[j].serie;
-                    gridNfNormal.Rows[j].Cells["dEmi"].Value = Convert.ToDateTime(objInfCte.rem.infNF[j].dEmi);
-                    gridNfNormal.Rows[j].Cells["vBC"].Value = Convert.ToDecimal(objInfCte.rem.infNF[j].vBC.Replace(".", ","));
-                    gridNfNormal.Rows[j].Cells["vICMS"].Value = Convert.ToDecimal(objInfCte.rem.infNF[j].vICMS.Replace(".", ","));
-                    gridNfNormal.Rows[j].Cells["vBCST"].Value = Convert.ToDecimal(objInfCte.rem.infNF[j].vBCST.Replace(".", ","));
-                    gridNfNormal.Rows[j].Cells["vST"].Value = Convert.ToDecimal(objInfCte.rem.infNF[j].vST.Replace(".", ","));
-                    gridNfNormal.Rows[j].Cells["vProd"].Value = Convert.ToDecimal(objInfCte.rem.infNF[j].vProd.Replace(".", ","));
-                    gridNfNormal.Rows[j].Cells["vNF"].Value = Convert.ToDecimal(objInfCte.rem.infNF[j].vNF.Replace(".", ","));
-                    gridNfNormal.Rows[j].Cells["nCFOP"].Value = Convert.ToInt32(objInfCte.rem.infNF[j].nCFOP.Replace(".", ","));
+                //gridNfNormal.Rows.Clear();
+                //for (int j = 0; j < objInfCte.infCTeNorm.infDoc.infNF.Count; j++)
+                //{
+                //    gridNfNormal.Rows.Add();
 
-                }
+                //    switch (objInfCte.infCTeNorm.infDoc.infNF[j].mod)
+                //    {
+                //        case "01": gridNfNormal.Rows[j].Cells["mod"].Value = mod.Items[0];
+                //            break;
+                //        case "04": gridNfNormal.Rows[j].Cells["mod"].Value = mod.Items[1];
+                //            break;
+                //    }
+                //    gridNfNormal.Rows[j].Cells["nDoc"].Value = objInfCte.infCTeNorm.infDoc.infNF[j].nDoc;
+                //    gridNfNormal.Rows[j].Cells["serie"].Value = objInfCte.infCTeNorm.infDoc.infNF[j].serie;
+                //    gridNfNormal.Rows[j].Cells["dEmi"].Value = Convert.ToDateTime(objInfCte.infCTeNorm.infDoc.infNF[j].dEmi);
+                //    gridNfNormal.Rows[j].Cells["vBC"].Value = Convert.ToDecimal(objInfCte.infCTeNorm.infDoc.infNF[j].vBC.Replace(".", ","));
+                //    gridNfNormal.Rows[j].Cells["vICMS"].Value = Convert.ToDecimal(objInfCte.infCTeNorm.infDoc.infNF[j].vICMS.Replace(".", ","));
+                //    gridNfNormal.Rows[j].Cells["vBCST"].Value = Convert.ToDecimal(objInfCte.infCTeNorm.infDoc.infNF[j].vBCST.Replace(".", ","));
+                //    gridNfNormal.Rows[j].Cells["vST"].Value = Convert.ToDecimal(objInfCte.infCTeNorm.infDoc.infNF[j].vST.Replace(".", ","));
+                //    gridNfNormal.Rows[j].Cells["vProd"].Value = Convert.ToDecimal(objInfCte.infCTeNorm.infDoc.infNF[j].vProd.Replace(".", ","));
+                //    gridNfNormal.Rows[j].Cells["vNF"].Value = Convert.ToDecimal(objInfCte.infCTeNorm.infDoc.infNF[j].vNF.Replace(".", ","));
+                //    gridNfNormal.Rows[j].Cells["nCFOP"].Value = Convert.ToInt32(objInfCte.infCTeNorm.infDoc.infNF[j].nCFOP.Replace(".", ","));
 
-                gridNfe.Rows.Clear();
-                for (int n = 0; n < objInfCte.rem.infNFe.Count; n++)
-                {
-                    gridNfe.Rows.Add();
-                    gridNfe.Rows[n].Cells[0].Value = objInfCte.rem.infNFe[n].chave;
-                }
+                //}
+                this.bsInfNFe.DataSource = objInfCte.infCTeNorm.infDoc.infNFe;
+
+                //gridNfe.Rows.Clear();
+                //for (int n = 0; n < objInfCte.infCTeNorm.infDoc.infNFe.Count; n++)
+                //{
+                //    gridNfe.Rows.Add();
+                //    gridNfe.Rows[n].Cells[0].Value = objInfCte.infCTeNorm.infDoc.infNFe[n].chave;
+                //}
 
 
                 #endregion
 
                 #region Outros Documentos
                 gridDocumentos.Rows.Clear();
-                for (int j = 0; j < objInfCte.rem.infOutros.Count; j++)
+                for (int j = 0; j < objInfCte.infCTeNorm.infDoc.infOutros.Count; j++)
                 {
                     gridDocumentos.Rows.Add();
-                    switch (objInfCte.rem.infOutros[j].tpDoc)
+                    switch (objInfCte.infCTeNorm.infDoc.infOutros[j].tpDoc)
                     {
                         case "00":
                             gridDocumentos.Rows[j].Cells["tpDoc"].Value = tpDoc.Items[0];
@@ -837,10 +841,10 @@ namespace HLP.GeraXml.UI.CTe
                             gridDocumentos.Rows[j].Cells["tpDoc"].Value = tpDoc.Items[2];
                             break;
                     }
-                    gridDocumentos.Rows[j].Cells["descOutros"].Value = objInfCte.rem.infOutros[j].descOutros;
-                    gridDocumentos.Rows[j].Cells["nDoc_"].Value = objInfCte.rem.infOutros[j].nDoc;
-                    gridDocumentos.Rows[j].Cells["dEmi_"].Value = Convert.ToDateTime(objInfCte.rem.infOutros[j].dEmi);
-                    gridDocumentos.Rows[j].Cells["vDocFisc"].Value = Convert.ToDecimal(objInfCte.rem.infOutros[j].vDocFisc.Replace(".", ","));
+                    gridDocumentos.Rows[j].Cells["descOutros"].Value = objInfCte.infCTeNorm.infDoc.infOutros[j].descOutros;
+                    gridDocumentos.Rows[j].Cells["nDoc_"].Value = objInfCte.infCTeNorm.infDoc.infOutros[j].nDoc;
+                    gridDocumentos.Rows[j].Cells["dEmi_"].Value = Convert.ToDateTime(objInfCte.infCTeNorm.infDoc.infOutros[j].dEmi);
+                    gridDocumentos.Rows[j].Cells["vDocFisc"].Value = Convert.ToDecimal(objInfCte.infCTeNorm.infDoc.infOutros[j].vDocFisc.Replace(".", ","));
 
                 }
 
@@ -977,26 +981,28 @@ namespace HLP.GeraXml.UI.CTe
                 txtproPred.Text = objInfCte.infCTeNorm.infCarga.proPred;
                 txtxOutCat.Text = objInfCte.infCTeNorm.infCarga.xOutCat;
 
-                gridinfQ.Rows.Clear();
-                for (int j = 0; j < objInfCte.infCTeNorm.infCarga.infQ.Count; j++)
-                {
-                    gridinfQ.Rows.Add();
-                    switch (objInfCte.infCTeNorm.infCarga.infQ[j].cUnid)
-                    {
-                        case "00": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[0];
-                            break;
-                        case "01": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[1];
-                            break;
-                        case "02": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[2];
-                            break;
-                        case "03": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[3];
-                            break;
-                        case "04": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[4];
-                            break;
-                    }
-                    gridinfQ.Rows[j].Cells[1].Value = objInfCte.infCTeNorm.infCarga.infQ[j].tpMed;
-                    gridinfQ.Rows[j].Cells[2].Value = objInfCte.infCTeNorm.infCarga.infQ[j].qCarga;
-                }
+                bsInfQ.DataSource = objInfCte.infCTeNorm.infCarga.infQ;
+
+                //gridinfQ.Rows.Clear();
+                //for (int j = 0; j < objInfCte.infCTeNorm.infCarga.infQ.Count; j++)
+                //{
+                //    gridinfQ.Rows.Add();
+                //    switch (objInfCte.infCTeNorm.infCarga.infQ[j].cUnid)
+                //    {
+                //        case "00": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[0];
+                //            break;
+                //        case "01": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[1];
+                //            break;
+                //        case "02": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[2];
+                //            break;
+                //        case "03": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[3];
+                //            break;
+                //        case "04": gridinfQ.Rows[j].Cells[0].Value = cUnid.Items[4];
+                //            break;
+                //    }
+                //    gridinfQ.Rows[j].Cells[1].Value = objInfCte.infCTeNorm.infCarga.infQ[j].tpMed;
+                //    gridinfQ.Rows[j].Cells[2].Value = objInfCte.infCTeNorm.infCarga.infQ[j].qCarga;
+                //}
 
                 #endregion
 
@@ -1059,6 +1065,13 @@ namespace HLP.GeraXml.UI.CTe
                 }
                 #endregion
 
+                #region Obs
+                if (objInfCte.compl != null)
+                    txtxTexto.Text = objInfCte.compl.ObsCont.xTexto;
+
+
+                #endregion
+
                 lblNumCte.Text = "Número CT-e: " + objInfCte.ide.nCT;
 
 
@@ -1068,8 +1081,6 @@ namespace HLP.GeraXml.UI.CTe
                 new HLPexception(ex);
             }
         }
-
-
         private void SalvarAlteracao()
         {
             try
@@ -1406,40 +1417,40 @@ namespace HLP.GeraXml.UI.CTe
 
                 #region Informacoes da NF
 
-                objInfCte.rem.infNF = new List<belinfNF>();
-                for (int j = 0; j < gridNfNormal.RowCount; j++)
-                {
-                    belinfNF nf = new belinfNF();
+                //objInfCte.infCTeNorm.infDoc.infNF = new List<belinfNF>();
+                //for (int j = 0; j < gridNfNormal.RowCount; j++)
+                //{
+                //    belinfNF nf = new belinfNF();
 
-                    switch (gridNfNormal.Rows[j].Cells["mod"].Value.ToString())
-                    {
-                        case "01 - NF Modelo 01/1A e Avulsa": nf.mod = "01";
-                            break;
-                        case "04 - NF de Produtor": nf.mod = "04";
-                            break;
-                    }
-                    nf.nDoc = gridNfNormal.Rows[j].Cells["nDoc"].Value == null ? "" : gridNfNormal.Rows[j].Cells["nDoc"].Value.ToString();
-                    nf.serie = gridNfNormal.Rows[j].Cells["serie"].Value == null ? "" : gridNfNormal.Rows[j].Cells["serie"].Value.ToString();
-                    nf.dEmi = gridNfNormal.Rows[j].Cells["dEmi"].Value == null ? "" : gridNfNormal.Rows[j].Cells["dEmi"].Value.ToString();
-                    nf.vBC = gridNfNormal.Rows[j].Cells["vBC"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vBC"].Value.ToString().Replace(",", ".");
-                    nf.vICMS = gridNfNormal.Rows[j].Cells["vICMS"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vICMS"].Value.ToString().Replace(",", ".");
-                    nf.vBCST = gridNfNormal.Rows[j].Cells["vBCST"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vBCST"].Value.ToString().Replace(",", ".");
-                    nf.vST = gridNfNormal.Rows[j].Cells["vST"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vST"].Value.ToString().Replace(",", ".");
-                    nf.vProd = gridNfNormal.Rows[j].Cells["vProd"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vProd"].Value.ToString().Replace(",", ".");
-                    nf.vNF = gridNfNormal.Rows[j].Cells["vNF"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vNF"].Value.ToString().Replace(",", ".");
-                    nf.nCFOP = gridNfNormal.Rows[j].Cells["nCFOP"].Value == null ? "" : gridNfNormal.Rows[j].Cells["nCFOP"].Value.ToString();
+                //    switch (gridNfNormal.Rows[j].Cells["mod"].Value.ToString())
+                //    {
+                //        case "01 - NF Modelo 01/1A e Avulsa": nf.mod = "01";
+                //            break;
+                //        case "04 - NF de Produtor": nf.mod = "04";
+                //            break;
+                //    }
+                //    nf.nDoc = gridNfNormal.Rows[j].Cells["nDoc"].Value == null ? "" : gridNfNormal.Rows[j].Cells["nDoc"].Value.ToString();
+                //    nf.serie = gridNfNormal.Rows[j].Cells["serie"].Value == null ? "" : gridNfNormal.Rows[j].Cells["serie"].Value.ToString();
+                //    nf.dEmi = gridNfNormal.Rows[j].Cells["dEmi"].Value == null ? "" : gridNfNormal.Rows[j].Cells["dEmi"].Value.ToString();
+                //    nf.vBC = gridNfNormal.Rows[j].Cells["vBC"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vBC"].Value.ToString().Replace(",", ".");
+                //    nf.vICMS = gridNfNormal.Rows[j].Cells["vICMS"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vICMS"].Value.ToString().Replace(",", ".");
+                //    nf.vBCST = gridNfNormal.Rows[j].Cells["vBCST"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vBCST"].Value.ToString().Replace(",", ".");
+                //    nf.vST = gridNfNormal.Rows[j].Cells["vST"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vST"].Value.ToString().Replace(",", ".");
+                //    nf.vProd = gridNfNormal.Rows[j].Cells["vProd"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vProd"].Value.ToString().Replace(",", ".");
+                //    nf.vNF = gridNfNormal.Rows[j].Cells["vNF"].Value == null ? "" : gridNfNormal.Rows[j].Cells["vNF"].Value.ToString().Replace(",", ".");
+                //    nf.nCFOP = gridNfNormal.Rows[j].Cells["nCFOP"].Value == null ? "" : gridNfNormal.Rows[j].Cells["nCFOP"].Value.ToString();
+                //    objInfCte.infCTeNorm.infDoc.infNF.Add(nf);
+                //}
+                objInfCte.infCTeNorm.infDoc.infNF = this.bsInfNF.DataSource as List<belinfNF>; // 2.0
 
-                    objInfCte.rem.infNF.Add(nf);
-                }
+                objInfCte.infCTeNorm.infDoc.infNFe = this.bsInfNFe.DataSource as List<belinfNFe>; //2.0
+                //for (int n = 0; n < gridNfe.RowCount; n++)
+                //{
+                //    belinfNFe nfe = new belinfNFe();
+                //    nfe.chave = gridNfe.Rows[n].Cells[0].Value == null ? "" : gridNfe.Rows[n].Cells[0].Value.ToString();
 
-                objInfCte.rem.infNFe = new List<belinfNFe>();
-                for (int n = 0; n < gridNfe.RowCount; n++)
-                {
-                    belinfNFe nfe = new belinfNFe();
-                    nfe.chave = gridNfe.Rows[n].Cells[0].Value == null ? "" : gridNfe.Rows[n].Cells[0].Value.ToString();
-
-                    objInfCte.rem.infNFe.Add(nfe);
-                }
+                //    objInfCte.infCTeNorm.infDoc.infNFe.Add(nfe);
+                //}
 
 
 
@@ -1447,7 +1458,7 @@ namespace HLP.GeraXml.UI.CTe
 
                 #region Outros Documentos
 
-                objInfCte.rem.infOutros = new List<belinfOutros>();
+                objInfCte.infCTeNorm.infDoc.infOutros = new List<belinfOutros>();
                 for (int j = 0; j < gridDocumentos.RowCount; j++)
                 {
                     belinfOutros infOutros = new belinfOutros();
@@ -1468,7 +1479,7 @@ namespace HLP.GeraXml.UI.CTe
                     infOutros.dEmi = gridDocumentos.Rows[j].Cells["dEmi_"].Value == null ? "" : gridDocumentos.Rows[j].Cells["dEmi_"].Value.ToString();
                     infOutros.vDocFisc = gridDocumentos.Rows[j].Cells["vDocFisc"].Value == null ? "" : gridDocumentos.Rows[j].Cells["vDocFisc"].Value.ToString().Replace(",", ".");
 
-                    objInfCte.rem.infOutros.Add(infOutros);
+                    objInfCte.infCTeNorm.infDoc.infOutros.Add(infOutros);
                 }
 
                 #endregion
@@ -1625,49 +1636,50 @@ namespace HLP.GeraXml.UI.CTe
                 objInfCte.infCTeNorm.infCarga.xOutCat = txtxOutCat.Text;
 
 
-                objInfCte.infCTeNorm.infCarga.infQ = new List<belinfQ>();
-                for (int j = 0; j < gridinfQ.RowCount; j++)
-                {
-                    belinfQ obj = new belinfQ();
-                    if (gridinfQ.Rows[j].Cells[0].Value == null)
-                    {
-                        obj.cUnid = "";
-                    }
-                    else
-                    {
-                        switch (gridinfQ.Rows[j].Cells[0].Value.ToString())
-                        {
-                            case "00-M3": obj.cUnid = "00";
-                                break;
-                            case "01-KG": obj.cUnid = "01";
-                                break;
-                            case "02-Ton": obj.cUnid = "02";
-                                break;
-                            case "03-Unidade": obj.cUnid = "03";
-                                break;
-                            case "04-Litros": obj.cUnid = "04";
-                                break;
-                        }
-                    }
-                    if (gridinfQ.Rows[j].Cells[1].Value == null)
-                    {
-                        obj.tpMed = "";
-                    }
-                    else
-                    {
-                        obj.tpMed = gridinfQ.Rows[j].Cells[1].Value.ToString();
-                    }
-                    if (gridinfQ.Rows[j].Cells[2].Value == null)
-                    {
-                        obj.qCarga = 0;
-                    }
-                    else
-                    {
-                        obj.qCarga = Convert.ToDecimal(gridinfQ.Rows[j].Cells[2].Value.ToString());
-                    }
+                objInfCte.infCTeNorm.infCarga.infQ = bsInfQ.DataSource as List<belinfQ>;
 
-                    objInfCte.infCTeNorm.infCarga.infQ.Add(obj);
-                }
+                //for (int j = 0; j < gridinfQ.RowCount; j++)
+                //{
+                //    belinfQ obj = new belinfQ();
+                //    if (gridinfQ.Rows[j].Cells[0].Value == null)
+                //    {
+                //        obj.cUnid = "";
+                //    }
+                //    else
+                //    {
+                //        switch (gridinfQ.Rows[j].Cells[0].Value.ToString())
+                //        {
+                //            case "00-M3": obj.cUnid = "00";
+                //                break;
+                //            case "01-KG": obj.cUnid = "01";
+                //                break;
+                //            case "02-Ton": obj.cUnid = "02";
+                //                break;
+                //            case "03-Unidade": obj.cUnid = "03";
+                //                break;
+                //            case "04-Litros": obj.cUnid = "04";
+                //                break;
+                //        }
+                //    }
+                //    if (gridinfQ.Rows[j].Cells[1].Value == null)
+                //    {
+                //        obj.tpMed = "";
+                //    }
+                //    else
+                //    {
+                //        obj.tpMed = gridinfQ.Rows[j].Cells[1].Value.ToString();
+                //    }
+                //    if (gridinfQ.Rows[j].Cells[2].Value == null)
+                //    {
+                //        obj.qCarga = 0;
+                //    }
+                //    else
+                //    {
+                //        obj.qCarga = Convert.ToDecimal(gridinfQ.Rows[j].Cells[2].Value.ToString());
+                //    }
+
+                //    objInfCte.infCTeNorm.infCarga.infQ.Add(obj);
+                //}
 
                 #endregion
 
@@ -1675,7 +1687,7 @@ namespace HLP.GeraXml.UI.CTe
 
                 objInfCte.infCTeNorm.seg.respSeg = cborespSeg.SelectedIndex != -1 ? cborespSeg.SelectedIndex.ToString() : "";
 
-                objInfCte.infCTeNorm.rodo.dPrev = mskdPrev.Text.Replace(" ", "").Replace("/", "") != "" ? Convert.ToDateTime(mskdPrev.Text).ToShortDateString() : "";
+                objInfCte.infCTeNorm.rodo.dPrev = mskdPrev.Text.Replace(" ", "").Replace("/", "").Replace('_',' ').Trim() != "" ? Convert.ToDateTime(mskdPrev.Text).ToShortDateString() : "";
                 objInfCte.infCTeNorm.seg.nApol = txtnApol.Text;
                 objInfCte.infCTeNorm.rodo.RNTRC = txtRNTRC.Text;
                 objInfCte.infCTeNorm.rodo.lota = cbolota.SelectedIndex != -1 ? cbolota.SelectedIndex.ToString() : "";
@@ -1742,6 +1754,9 @@ namespace HLP.GeraXml.UI.CTe
 
                 #endregion
 
+                #region Obs
+                objInfCte.compl.ObsCont.xTexto = objInfCte.compl.ObsCont.xTexto;
+                #endregion
 
                 VerificaCampos();
 
@@ -1751,7 +1766,6 @@ namespace HLP.GeraXml.UI.CTe
                 new HLPexception(ex);
             }
         }
-
         private bool VerificaCampos()
         {
             belinfCte objInfCte = (belinfCte)bsNotas.Current;
@@ -1826,22 +1840,22 @@ namespace HLP.GeraXml.UI.CTe
             Erros += belValidaCampos.Validar(flpInfCarga.Controls, false);
 
             bool bErroCarga = false;
-            if (gridinfQ.RowCount > 1)
-            {
+            //if (gridinfQ.RowCount > 1)
+            //{
 
-                for (int i = 0; i < gridinfQ.RowCount - 1; i++)
-                {
-                    if (gridinfQ.Rows[i].Cells[0].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                    if (gridinfQ.Rows[i].Cells[1].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                    if (gridinfQ.Rows[i].Cells[2].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                }
-            }
-            else if (gridinfQ.RowCount == 1)
-            {
-                if (gridinfQ.Rows[0].Cells[0].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                if (gridinfQ.Rows[0].Cells[1].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                if (gridinfQ.Rows[0].Cells[2].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-            }
+            //    for (int i = 0; i < gridinfQ.RowCount - 1; i++)
+            //    {
+            //        if (gridinfQ.Rows[i].Cells[0].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+            //        if (gridinfQ.Rows[i].Cells[1].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+            //        if (gridinfQ.Rows[i].Cells[2].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+            //    }
+            //}
+            //else if (gridinfQ.RowCount == 1)
+            //{
+            //    if (gridinfQ.Rows[0].Cells[0].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+            //    if (gridinfQ.Rows[0].Cells[1].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+            //    if (gridinfQ.Rows[0].Cells[2].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+            //}
             if (bErroCarga)
             {
                 Erros++;
@@ -1927,7 +1941,6 @@ namespace HLP.GeraXml.UI.CTe
                 throw ex;
             }
         }
-
         private bool ValidaConhecimentos()
         {
             try
@@ -1940,6 +1953,11 @@ namespace HLP.GeraXml.UI.CTe
                 {
                     belinfCte objInfCte = (belinfCte)bsNotas.Current;
                     PopulaForm();
+
+                    if (objInfCte.infCTeNorm.infCarga.infQ.Count() == 0)
+                    {
+                        MessageBox.Show("Informações de quantidade da carga do CT-e é obrigatório");
+                    }
 
                     #region Identificacao
 
@@ -2008,22 +2026,22 @@ namespace HLP.GeraXml.UI.CTe
                     belValidaCampos.ValidarTodosDocumentos(flpInfCarga.Controls, txtnCT.Text);
 
                     bool bErroCarga = false;
-                    if (gridinfQ.RowCount > 1)
-                    {
+                    //if (gridinfQ.RowCount > 1)
+                    //{
 
-                        for (int j = 0; j < gridinfQ.RowCount - 1; j++)
-                        {
-                            if (gridinfQ.Rows[i].Cells[0].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                            if (gridinfQ.Rows[i].Cells[1].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                            if (gridinfQ.Rows[i].Cells[2].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                        }
-                    }
-                    else if (gridinfQ.RowCount == 1)
-                    {
-                        if (gridinfQ.Rows[0].Cells[0].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                        if (gridinfQ.Rows[0].Cells[1].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                        if (gridinfQ.Rows[0].Cells[2].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
-                    }
+                    //    for (int j = 0; j < gridinfQ.RowCount - 1; j++)
+                    //    {
+                    //        if (gridinfQ.Rows[i].Cells[0].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+                    //        if (gridinfQ.Rows[i].Cells[1].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+                    //        if (gridinfQ.Rows[i].Cells[2].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+                    //    }
+                    //}
+                    //else if (gridinfQ.RowCount == 1)
+                    //{
+                    //    if (gridinfQ.Rows[0].Cells[0].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+                    //    if (gridinfQ.Rows[0].Cells[1].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+                    //    if (gridinfQ.Rows[0].Cells[2].Value == null) { errErro.SetError(gridinfQ, "Preencha Todos os Campos!"); bErroCarga = true; }
+                    //}
                     if (bErroCarga)
                     {
                         belValidaCampos.iErros++;
@@ -2042,6 +2060,9 @@ namespace HLP.GeraXml.UI.CTe
                     belValidaCampos.iErros += VerificaCamposObrigatoriosVeiculo();
 
                     #endregion
+
+                    objInfCte.compl = new belcompl();
+                    objInfCte.compl.ObsCont.xTexto = txtxTexto.Text;
 
                     if (txtxNomemoto.Text != "" || txtCPFmoto.Text != "" || cbolota.SelectedIndex == 1)
                     {
@@ -2069,7 +2090,6 @@ namespace HLP.GeraXml.UI.CTe
                 return false;
             }
         }
-
         private void HabilitaCamposToma()
         {
             if (cbotoma.SelectedIndex == 4)
@@ -2270,7 +2290,12 @@ namespace HLP.GeraXml.UI.CTe
             }
         }
 
-         
+        private void belinfNFeBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
     }
 }

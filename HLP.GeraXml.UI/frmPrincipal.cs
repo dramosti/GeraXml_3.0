@@ -272,7 +272,7 @@ namespace HLP.GeraXml.UI
                             case "Status Cte":
 
                                 timer1.Start();
-                                T = new Thread(belStatusServico.VerificaStatusServicoCte);
+                                T = new Thread(belStatusServico.VerificaStatusServicoCTe);
                                 T.Start();
                                 frmStatusServico = new frmStatus();
                                 frmStatusServico.ShowDialog();
