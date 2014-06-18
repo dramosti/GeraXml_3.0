@@ -396,6 +396,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Relatorios\CCeCTe.cs">
+      <DependentUpon>CCeCTe.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Relatorios\RelDanfeSimplificada2013.cs">
       <DependentUpon>RelDanfeSimplificada2013.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -540,6 +547,11 @@
     <EmbeddedResource Include="NFse\Susesu\frmVisualizaNfsSusesu.resx">
       <DependentUpon>frmVisualizaNfsSusesu.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Relatorios\CCeCTe.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CCeCTe.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Relatorios\relAvisoContingencia.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>relAvisoContingencia.cs</LastGenOutput>
@@ -1386,7 +1398,7 @@
     </BootstrapperPackage>
     <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
       <Visible>False</Visible>
-      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework 4.0</ProductName>
+      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>

@@ -231,7 +231,7 @@ namespace HLP.GeraXml.UI.NFe
                 {
                     objNFe.xObs = nfe.infAdicField.infCpl.Replace(";", "." + Environment.NewLine);
                 }
-              
+
 
                 if (nfe.totalField.ISSQNtot != null)
                 {
@@ -247,9 +247,16 @@ namespace HLP.GeraXml.UI.NFe
                         string sDupl = "Nº:{0}-{1}-R${2}";
 
                         objNFe.xDuplicatas = "";
+                        string sDup = "";
                         foreach (TNFeInfNFeCobrDup dupli in nfe.cobrField.dup)
                         {
-                            objNFe.xDuplicatas += string.Format(sDupl, dupli.nDup, Convert.ToDateTime(dupli.dVenc).ToString("dd/MM/yy"), dupli.vDup).PadRight(33, ' ') + "|";
+                            if (Acesso.NM_EMPRESA.Equals("GIWA"))
+                                sDup = dupli.nDup.ToString().Insert(dupli.nDup.Count() - 1, "-");
+                            else
+                                sDup = dupli.nDup.ToString().Insert(dupli.nDup.Count() - 1, "-");
+
+                                objNFe.xDuplicatas += string.Format(sDupl, sDup, Convert.ToDateTime(dupli.dVenc).ToString("dd/MM/yy"),
+                                    Convert.ToDecimal(dupli.vDup.Replace(".", ",")).ToString("#0.00").Replace(".", ",")).PadRight(33, ' ') + "|";
                             if (iCount == 3)
                                 objNFe.xDuplicatas += Environment.NewLine;
 
@@ -479,9 +486,6 @@ namespace HLP.GeraXml.UI.NFe
                     dinfo.Create();
                 }
                 ReportDocument rpt = new ReportDocument();
-
-
-
                 if (Convert.ToBoolean(Acesso.USA_DANFE_SIMPLIFICADA))
                 {
                     rpt.Load(Util.GetPathRelatorio("RelDanfeSimplificada2013.rpt"));

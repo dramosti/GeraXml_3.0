@@ -355,17 +355,21 @@ namespace HLP.GeraXml.bel
         {
             try
             {
-                string scaminhoLink = "https://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=";
+                string scaminhoLink = (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE) ? 
+                    "https://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=" :
+                    "http://www.cte.fazenda.gov.br/consulta.aspx?tipoConsulta=completa&tipoConteudo=mCK/KoCqru0=";
+                string sSistema = (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE) ? "NFe" : "CTe";
 
                 StringBuilder sCorpo = new StringBuilder();
                 sCorpo.Append("<font face='Segoe UI' size='2'><H3>Sr. Contribuinte,</H3>");
-                sCorpo.Append("Esta mensagem refere-se a Carta de Correção Eletrônica efetuada na NF-e de número " + email.sNotaFis + " emitida por: <br><br>");
+                sCorpo.Append("Esta mensagem refere-se a Carta de Correção Eletrônica efetuada na ");
+                sCorpo.Append(sSistema + " de número " + email.sNotaFis + " emitida por: <br><br>");
                 sCorpo.Append("Razao Social: " + Acesso.NM_RAZAOSOCIAL + "<br>");
                 sCorpo.Append("CNPJ: " + Acesso.CNPJ_EMPRESA + "<br><br><br>");
-                sCorpo.Append("Visualize a NF-e ");
-                sCorpo.Append("<a href=" + scaminhoLink + ">aqui!</a><br>");
+                sCorpo.Append("Visualize a " + sSistema);
+                sCorpo.Append(" <a href=" + scaminhoLink + ">aqui!</a><br>");
                 sCorpo.Append("Chave de Acesso: " + email.sChaveNFe + "<br><br>");
-                sCorpo.Append("Esse é um e-mail automático gerado por nosso sistema transmissor de NF-e</font>");
+                sCorpo.Append("Esse é um e-mail automático gerado por nosso sistema transmissor de " + sSistema + "</font>");
                 sCorpo.Append(AssinaturaEmail());
 
                 return sCorpo.ToString();

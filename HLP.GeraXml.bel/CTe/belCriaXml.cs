@@ -161,9 +161,12 @@ namespace HLP.GeraXml.bel.CTe
 
                     #region Comp
                     // OS_ 30302
-                    compl = (obj.compl != null ? new XElement(pf + "compl", new XElement(pf + "ObsCont",
-                                                            new XAttribute("xCampo", obj.compl.ObsCont.xCampo),
-                                                            new XElement(pf + "xTexto", obj.compl.ObsCont.xTexto.Trim()))) : null);
+                    if (obj.compl.ObsCont.xTexto.Trim() != "")
+                    {
+                        compl = (obj.compl != null ? new XElement(pf + "compl", new XElement(pf + "ObsCont",
+                                                                new XAttribute("xCampo", obj.compl.ObsCont.xCampo),
+                                                                new XElement(pf + "xTexto", obj.compl.ObsCont.xTexto.Trim()))) : null);
+                    }
 
                     #endregion
 

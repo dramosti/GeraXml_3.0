@@ -645,7 +645,7 @@ namespace HLP.GeraXml.UI.CCe
             this.txtAjustes._Regex = Expressoes.Não_Aplica;
             this.txtAjustes._Regex_Expressao = null;
             this.txtAjustes._TamanhoMaiorLabel = 0;
-            this.txtAjustes._TamanhoTextBox = 385;
+            this.txtAjustes._TamanhoTextBox = 435;
             this.txtAjustes._Visible = true;
             this.txtAjustes.AutoSize = true;
             this.txtAjustes.BackColor = System.Drawing.Color.Transparent;
@@ -656,7 +656,7 @@ namespace HLP.GeraXml.UI.CCe
             this.txtAjustes.MaxLength = 32767;
             this.txtAjustes.Name = "txtAjustes";
             this.txtAjustes.ReadOnly = true;
-            this.txtAjustes.Size = new System.Drawing.Size(465, 350);
+            this.txtAjustes.Size = new System.Drawing.Size(515, 350);
             this.txtAjustes.TabIndex = 4;
             // 
             // toolStrip2

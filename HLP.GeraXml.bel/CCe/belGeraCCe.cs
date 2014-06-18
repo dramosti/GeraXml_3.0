@@ -9,6 +9,11 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Linq;
 using System.IO;
+using System.Data;
+using HLP.GeraXml.bel.CTe;
+using HLP.GeraXml.bel.CTe.Evento;
+using System.Xml.Serialization;
+using HLP.GeraXml.Comum;
 
 namespace HLP.GeraXml.bel.CCe
 {
@@ -19,7 +24,17 @@ namespace HLP.GeraXml.bel.CCe
 
         public string sXMLfinal = "";
         private List<belPesquisaCCe> objlItensPesquisa = new List<belPesquisaCCe>();
+        /// <summary>
+        /// Evento para NFe
+        /// </summary>
         public belEnvEvento objEnvEvento = new belEnvEvento();
+
+        /// <summary>
+        /// Evento para CTe
+        /// </summary>
+        public TEvento objEvCCeCTe = new TEvento();
+
+
         /// <summary>
         /// chave, xml
         /// </summary>
@@ -40,38 +55,118 @@ namespace HLP.GeraXml.bel.CCe
         public belGeraCCe(List<belPesquisaCCe> _objlItensPesquisa)
         {
             objlItensPesquisa = _objlItensPesquisa;
-            objEnvEvento = new belEnvEvento();
-
-            foreach (belPesquisaCCe obj in _objlItensPesquisa)
+            if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
             {
-                CarregaItensEventoCartaCorrecao(obj);
+                foreach (belPesquisaCCe obj in _objlItensPesquisa)
+                {
+                    CarregaItensEventoCartaCorrecao(obj);
+                }
+            }
+            else
+            {
+                CarregaItensEventoCartaCorrecao(objlItensPesquisa.FirstOrDefault());
             }
         }
+
+
 
         private void CarregaItensEventoCartaCorrecao(belPesquisaCCe objbelPesquisa)
         {
             try
             {
-                objEnvEvento.versao = this._VERSAO;
-                objEnvEvento.id = objbelPesquisa.CD_NRLANC;
-                belEvento objEvento = new belEvento();
-                objEvento.versao = _VERSAO;
-                objEvento.infEvento = new _infEvento();
-                objEvento.infEvento.CNPJ = objbelPesquisa.CNPJ;
-                objEvento.infEvento.CPF = objbelPesquisa.CPF;
-                objEvento.infEvento.dhEvento = daoUtil.GetDateServidor().ToString("yyyy-MM-ddTHH:mm:ss" + Acesso.FUSO);
-                objEvento.infEvento.verEvento = _VERSAO;
-                objEvento.infEvento.tpAmb = Acesso.TP_AMB;
-                objEvento.infEvento.chNFe = objbelPesquisa.CHNFE;
-                objEvento.infEvento.cOrgao = Acesso.cUF.ToString();
-                objEvento.infEvento.detEvento = new _detEvento
+                if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
                 {
-                    versao = _VERSAO
-                };
-                objEvento.infEvento.detEvento.xCorrecao = BuscaCorrecoes(objbelPesquisa.CD_NRLANC);
-                objEvento.infEvento.nSeqEvento = objbelPesquisa.QT_ENVIO + 1;
-                objEvento.idLote = "ID" + objEvento.infEvento.tpEvento + objEvento.infEvento.chNFe + objEvento.infEvento.nSeqEvento.ToString().PadLeft(2, '0');
-                objEnvEvento.evento.Add(objEvento);
+                    objEnvEvento = new belEnvEvento();
+                    objEnvEvento.versao = this._VERSAO;
+                    objEnvEvento.id = objbelPesquisa.CD_NRLANC;
+                    belEvento objEvento = new belEvento();
+                    objEvento.versao = _VERSAO;
+                    objEvento.infEvento = new _infEvento();
+                    objEvento.infEvento.CNPJ = objbelPesquisa.CNPJ;
+                    objEvento.infEvento.CPF = objbelPesquisa.CPF;
+                    objEvento.infEvento.dhEvento = daoUtil.GetDateServidor().ToString("yyyy-MM-ddTHH:mm:ss" + Acesso.FUSO);
+                    objEvento.infEvento.verEvento = _VERSAO;
+                    objEvento.infEvento.tpAmb = Acesso.TP_AMB;
+                    objEvento.infEvento.chNFe = objbelPesquisa.CHNFE;
+                    objEvento.infEvento.cOrgao = Acesso.cUF.ToString();
+                    objEvento.infEvento.detEvento = new _detEvento
+                    {
+                        versao = _VERSAO
+                    };
+                    objEvento.infEvento.detEvento.xCorrecao = BuscaCorrecoes(objbelPesquisa.CD_NRLANC);
+                    objEvento.infEvento.nSeqEvento = objbelPesquisa.QT_ENVIO + 1;
+                    objEvento.idLote = "ID" + objEvento.infEvento.tpEvento + objEvento.infEvento.chNFe + objEvento.infEvento.nSeqEvento.ToString().PadLeft(2, '0');
+                    objEnvEvento.evento.Add(objEvento);
+                }
+                else
+                {
+
+                    objEvCCeCTe = new TEvento();
+
+                    objEvCCeCTe.versao = Acesso.versaoCTe;
+                    objEvCCeCTe.infEvento = new TEventoInfEvento();
+                    objEvCCeCTe.infEvento.tpEvento = "110110";
+                    objEvCCeCTe.infEvento.nSeqEvento = (objbelPesquisa.QT_ENVIO + 1).ToString();// numero de evento
+                    objEvCCeCTe.infEvento.Id = "ID" + objEvCCeCTe.infEvento.tpEvento + objlItensPesquisa.FirstOrDefault().CHNFE + objEvCCeCTe.infEvento.nSeqEvento.ToString().PadLeft(2, '0');
+                    //objEvCCeCTe.infEvento.Id = "ID" + objlItensPesquisa.FirstOrDefault().CHNFE;                   
+                    objEvCCeCTe.infEvento.cOrgao = Convert.ToByte(Acesso.cUF);
+                    objEvCCeCTe.infEvento.tpAmb = Acesso.TP_AMB == 1 ? TAmb.Item1 : TAmb.Item2;
+                    objEvCCeCTe.infEvento.CNPJ = Util.RetiraCaracterCNPJ(Acesso.CNPJ_EMPRESA);
+                    objEvCCeCTe.infEvento.chCTe = objbelPesquisa.CHNFE;
+                    objEvCCeCTe.infEvento.dhEvento = daoUtil.GetDateServidor().ToString("yyyy-MM-ddTHH:mm:ss");
+                    objEvCCeCTe.infEvento.detEvento = new TEventoInfEventoDetEvento();
+                    objEvCCeCTe.infEvento.detEvento.versaoEvento = Acesso.versaoCTe;
+
+                    evCCeCTe objEvCanc = new evCCeCTe();
+                    objEvCanc.descEvento = evCCeCTeDescEvento.CartadeCorrecao;
+                    objEvCanc.infCorrecao = new List<evCCeCTeInfCorrecao>();
+                    objEvCanc.CD_NRLANC = objbelPesquisa.CD_NRLANC;
+                    foreach (DataRow item in BuscaCorrecoesCTe(objbelPesquisa.CD_NRLANC).Rows)
+                    {
+                        objEvCanc.infCorrecao.Add(new evCCeCTeInfCorrecao
+                        {
+                            grupoAlterado = item["grupoAlterado"].ToString(),
+                            campoAlterado = item["campoAlterado"].ToString(),
+                            valorAlterado = item["valorAlterado"].ToString(),
+                            nroItemAlterado = item["nroItemAlterado"].ToString(),
+                        });
+                    }
+                    objEvCanc.xCondUso = evCCeCTeXCondUso.ACartadeCorreçãoédisciplinadapeloArt58BdoCONVÊNIOSINIEF0689FicapermitidaautilizaçãodecartadecorreçãopararegularizaçãodeerroocorridonaemissãodedocumentosfiscaisrelativosàprestaçãodeserviçodetransportedesdequeoerronãoestejarelacionadocomIasvariáveisquedeterminamovalordoimpostotaiscomobasedecálculoalíquotadiferençadepreçoquantidadevalordaprestaçãoIIacorreçãodedadoscadastraisqueimpliquemudançadoemitentetomadorremetenteoudodestinatárioIIIadatadeemissãooudesaída;
+                    string xFile = Pastas.CCe + "\\" + objEvCanc.CD_NRLANC + "_prevalida.xml";
+                    SerializeClassToXml.SerializeClasse<evCCeCTe>(objEvCanc, xFile);
+                    XmlDocument xml = new XmlDocument();
+                    xml.Load(xFile);
+                    objEvCCeCTe.infEvento.detEvento.Any = (System.Xml.XmlElement)xml.DocumentElement;
+
+
+                    XmlSerializer xs = new XmlSerializer(typeof(TEvento));
+                    MemoryStream memory = new MemoryStream();
+                    XmlTextWriter xmltext = new XmlTextWriter(memory, Encoding.UTF8);
+                    xs.Serialize(xmltext, objEvCCeCTe);
+                    UTF8Encoding encoding = new UTF8Encoding();
+                    this.sXMLfinal = encoding.GetString(memory.ToArray());
+                    this.sXMLfinal = this.sXMLfinal.Substring(1);
+
+                    belAssinaXml Assinatura = new belAssinaXml();
+                    this.sXMLfinal = Assinatura.ConfigurarArquivo(this.sXMLfinal, "infEvento", Acesso.cert_CTe);
+
+                    xml = new XmlDocument();
+                    xml.LoadXml(this.sXMLfinal);
+                    string sPath = Pastas.PROTOCOLOS + "\\" + objbelPesquisa.CHNFE + "_ped-cce.xml";
+                    if (File.Exists(sPath))
+                    {
+                        File.Delete(sPath);
+                    }
+                    xml.Save(sPath);
+                    try
+                    {
+                        belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/cte", Pastas.SCHEMA_CTE + "\\eventoCTe_v2.00.xsd", sPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -216,7 +311,7 @@ namespace HLP.GeraXml.bel.CCe
                     {
                         AtualizaContadorCCe(sNR_LANC, iQT_ENVIO);
                         // SaveXmlPastaCCe(mot.chave);
-                        AssinaEsalvaRetornoCCe(mot.chave, sRet);
+                        SalvaRetornoCCe(mot.chave, sRet);
 
                     }
                     sDetalhes += string.Format("CCe da NFe: {0} - '{1}'{2}", sNota, mot.xMotivo, Environment.NewLine);
@@ -231,7 +326,34 @@ namespace HLP.GeraXml.bel.CCe
             }
         }
 
-        private void AssinaEsalvaRetornoCCe(string sChave, string sRet)
+        public string AnalisaRetornoEnvioCCeCTe(HLP.GeraXml.bel.CTe.Evento.TRetEvento ret, string sNotaFis)
+        {
+            try
+            {
+                //string sNota = "";
+                if (ret.infEvento.cStat == "135")
+                {
+                    //sNota = objlItensPesquisa.FirstOrDefault(c => c.CHNFE == ret.infEvento.chCTe).CD_NOTAFIS;
+                    int iQT_ENVIO = objlItensPesquisa.FirstOrDefault(c => c.CHNFE == ret.infEvento.chCTe).QT_ENVIO;
+                    string sNR_LANC = objlItensPesquisa.FirstOrDefault(c => c.CHNFE == ret.infEvento.chCTe).CD_NRLANC;
+                    AtualizaContadorCCe(sNR_LANC, iQT_ENVIO);
+                    string sPath = Pastas.CCe + "\\" + ret.infEvento.chCTe.Substring(2, 4);
+                    DirectoryInfo dPastaData = new DirectoryInfo(sPath);
+                    if (!dPastaData.Exists) { dPastaData.Create(); }
+                    sPath = sPath + "\\35140614920065000160570010000011721000029623" + "_ret-cce.xml";
+                    SerializeClassToXml.SerializeClasse<HLP.GeraXml.bel.CTe.Evento.TRetEvento>(ret, sPath);
+                }
+
+                return string.Format("CCe do CTe: {0} - '{1}'{2}", sNotaFis, ret.infEvento.xMotivo, Environment.NewLine);
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void SalvaRetornoCCe(string sChave, string sRet)
         {
             try
             {
@@ -562,5 +684,52 @@ namespace HLP.GeraXml.bel.CCe
         }
 
 
+        public HLP.GeraXml.bel.CTe.Evento.TRetEvento TransmiteLoteCCeCTe()
+        {
+            string sRetorno = "";
+
+            XmlDocument _xmlxelem = new XmlDocument();
+            _xmlxelem.PreserveWhitespace = true;
+            _xmlxelem.LoadXml(this.sXMLfinal);
+
+            XmlNode xNelem = null;
+            xNelem = _xmlxelem.DocumentElement;
+            try
+            {
+                //Homologação
+                if (Acesso.TP_AMB == 2)
+                {
+                    HLP.GeraXml.WebService.CTe_Homologacao_cteCancelamento.cteCabecMsg objCabecCancelamento = new HLP.GeraXml.WebService.CTe_Homologacao_cteCancelamento.cteCabecMsg();
+                    objCabecCancelamento.cUF = Acesso.cUF.ToString();
+                    objCabecCancelamento.versaoDados = Acesso.versaoCTe;
+
+                    HLP.GeraXml.WebService.CTe_Homologacao_cteCancelamento.CteCancelamento objCancelamento = new HLP.GeraXml.WebService.CTe_Homologacao_cteCancelamento.CteCancelamento();
+                    objCancelamento.cteCabecMsgValue = objCabecCancelamento;
+                    objCancelamento.ClientCertificates.Add(Acesso.cert_CTe);
+                    sRetorno = objCancelamento.cteCancelamentoCT(xNelem).OuterXml;
+                }
+                //Produção
+                else if (Acesso.TP_AMB == 1)
+                {
+                    HLP.GeraXml.WebService.CTe_Producao_evento.cteCabecMsg cabec = new WebService.CTe_Producao_evento.cteCabecMsg();
+                    HLP.GeraXml.WebService.CTe_Producao_evento.CteRecepcaoEvento objCancelamento = new WebService.CTe_Producao_evento.CteRecepcaoEvento();
+                    cabec.cUF = Acesso.cUF.ToString();
+                    cabec.versaoDados = Acesso.versaoCTe;
+                    objCancelamento.cteCabecMsgValue = cabec;
+                    objCancelamento.ClientCertificates.Add(Acesso.cert_CTe);
+                    sRetorno = objCancelamento.cteRecepcaoEvento(xNelem).OuterXml;
+                }
+
+                XDocument xRet = XDocument.Parse(sRetorno);
+                string sPath = Pastas.PROTOCOLOS + "\\" + this.objlItensPesquisa.FirstOrDefault().CHNFE + "_ret-cce.xml";
+                xRet.Save(sPath);
+                HLP.GeraXml.bel.CTe.Evento.TRetEvento retorno = SerializeClassToXml.DeserializeClasse<HLP.GeraXml.bel.CTe.Evento.TRetEvento>(sPath);
+                return retorno;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

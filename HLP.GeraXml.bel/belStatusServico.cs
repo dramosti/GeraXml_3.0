@@ -293,7 +293,7 @@ namespace HLP.GeraXml.bel
                 }
                 else
                 {
-                    Acesso.cert_NFe = cert;
+                      Acesso.cert_CTe =  Acesso.cert_NFe = cert;
                     InternetCS objVerificaInternet = new InternetCS();
                     if (objVerificaInternet.Conexao())
                     {
@@ -348,7 +348,7 @@ namespace HLP.GeraXml.bel
 
         }
 
-     
+
 
         public static void VerificaStatusInternetNFs()
         {

@@ -18,11 +18,13 @@ namespace HLP.GeraXml.bel.CTe
             this.ObsCont = new obsCont();
             this.ObsCont.xTexto = daoUtil.RetornaBlob(string.Format("select c.ds_obs from conhecim c where c.nr_lanc  = '{0}' and c.cd_empresa = '{1}'", sCTE, Acesso.CD_EMPRESA));
 
+            this.ObsCont.xTexto = Util.TiraCaracterEstranho(this.ObsCont.xTexto).Trim();
+
             decimal dTransparencia = daoUtil.GetValorTransparenciaCTe(sCTE);
 
             if (dTransparencia > 0)
             {
-                this.ObsCont.xTexto += this.ObsCont.xTexto != "" ? " - " : "" + string.Format("O VALOR APROXIMADO DE TRIBUTOS INCIDENTES SOBRE O PRECO DESTE SERVICO É DE R${0}", dTransparencia.ToString());
+                this.ObsCont.xTexto += (this.ObsCont.xTexto != "" ? " - " : "") + string.Format("O VALOR APROXIMADO DE TRIBUTOS INCIDENTES SOBRE O PRECO DESTE SERVICO É DE R${0}", dTransparencia.ToString());
             }
 
 
@@ -40,7 +42,7 @@ namespace HLP.GeraXml.bel.CTe
         public string xTexto
         {
             get { return _xTexto; }
-            set { _xTexto = value; }
+            set { _xTexto = Util.TiraCaracterEstranho(value); }
         }
     }
 }

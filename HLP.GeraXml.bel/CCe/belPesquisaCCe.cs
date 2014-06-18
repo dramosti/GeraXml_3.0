@@ -90,7 +90,7 @@ namespace HLP.GeraXml.bel.CCe
                 else
                 {
                     AddCamposAqueryCte();
-                    sQuery.Append(string.Format("where coalesce(conhecim.cd_recibocanc,'') = '' and cartacor.dt_emi between '{0}' and '{1}' and cartacor.cd_empresa = '{2}' ", dtInicial.ToString("dd.MM.yyyy"), dtFinal.ToString("dd.MM.yyyy"), Acesso.CD_EMPRESA));
+                    sQuery.Append(string.Format("where conhecim.dt_emi > '01.05.2014' and coalesce(conhecim.cd_recibocanc,'') = '' and cartacor.dt_emi between '{0}' and '{1}' and cartacor.cd_empresa = '{2}' ", dtInicial.ToString("dd.MM.yyyy"), dtFinal.ToString("dd.MM.yyyy"), Acesso.CD_EMPRESA));
                 }
 
                 AddWhereStatus(status);

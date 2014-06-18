@@ -233,6 +233,7 @@ namespace HLP.GeraXml.UI
                 if (Acesso.NM_RAMO == Acesso.BancoDados.TRANSPORTE)
                 {
                     tvMenu.Nodes.Add(nodeCte);
+                    tvMenu.Nodes.Add(nodeCCe);
                 }
                 else
                 {
@@ -467,13 +468,20 @@ namespace HLP.GeraXml.UI
             }
             if (!ok)
             {
-                timer1.Start();
-                T = new Thread(belStatusServico.VerificaStatusServicoNFeTela);
-                T.Start();
-                frmStatusServico = new frmStatus();
-                frmStatusServico.ShowDialog();
+                if (Acesso.TP_EMIS != 2)
+                {
+                    timer1.Start();
+                    T = new Thread(belStatusServico.VerificaStatusServicoNFeTela);
+                    T.Start();
+                    frmStatusServico = new frmStatus();
+                    frmStatusServico.ShowDialog();
+                    KryptonMessageBox.Show(belStatusServico.Mensagem, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    belStatusServico.ServicoOperando = true;
+                }
 
-                KryptonMessageBox.Show(belStatusServico.Mensagem, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (belStatusServico.ServicoOperando)
                 {

@@ -17,6 +17,7 @@ namespace HLP.GeraXml.dao.CTe
 
                 StringBuilder sQuery = new StringBuilder();
                 sQuery.Append("select ");
+                sQuery.Append("coalesce(conhecim.cd_consignat,'')cd_consignat, ");
                 sQuery.Append("coalesce(empresa.cd_ufnor,'') cUF,");
                 sQuery.Append("coalesce(conhecim.cd_respons,'') Tomador,");
                 sQuery.Append("coalesce(conhecim.nr_lanc,'') cCT,");
@@ -29,7 +30,7 @@ namespace HLP.GeraXml.dao.CTe
                 sQuery.Append("coalesce(cidade1.cd_municipio,'') cMunIni,");
                 sQuery.Append("coalesce(conhecim.ds_cidcole,'') xMunIni,");
                 sQuery.Append("coalesce(conhecim.cd_ufcole,'') UFIni,");
-                sQuery.Append("coalesce(clifor.cd_ufnor,'') UFFim, ");
+                sQuery.Append("coalesce(destino.cd_uf,'') UFFim, ");
                 sQuery.Append("coalesce(cidade2.cd_municipio,'') cMunFim,");
                 sQuery.Append("coalesce(conhecim.ds_calc,'') xMunFim,");
                 sQuery.Append("coalesce(conhecim.st_forpag,'1') forPag,");
@@ -40,9 +41,18 @@ namespace HLP.GeraXml.dao.CTe
                 sQuery.Append("coalesce(conhecim.cd_motoris,'') Motorista ");
                 sQuery.Append("from conhecim left join natop  on conhecim.cd_cfop = natop.cd_cfop ");
                 sQuery.Append("left join empresa on conhecim.cd_empresa = empresa.cd_empresa ");
+                sQuery.Append("left join remetent destino on (destino.cd_remetent = conhecim.cd_redes and conhecim.cd_redes is not null) ");
+                sQuery.Append("or (destino.cd_remetent = conhecim.cd_destinat and conhecim.cd_redes is null) ");
                 sQuery.Append("left join clifor on conhecim.cd_clifor = clifor.cd_clifor ");
                 sQuery.Append("left join cidades cidade1 on  cidade1.nm_cidnor = conhecim.ds_cidcole  and cidade1.cd_ufnor = conhecim.cd_ufcole  ");
-                sQuery.Append("left join cidades cidade2 on  cidade2.nm_cidnor = conhecim.ds_calc  and cidade2.cd_ufnor = clifor.cd_ufnor  ");
+                sQuery.Append("left join cidades cidade2 on  cidade2.nm_cidnor = conhecim.ds_calc  and cidade2.cd_ufnor = destino.cd_uf  ");
+
+                //sQuery.Append("from conhecim left join natop  on conhecim.cd_cfop = natop.cd_cfop ");
+                //sQuery.Append("left join empresa on conhecim.cd_empresa = empresa.cd_empresa ");
+                //sQuery.Append("left join clifor on conhecim.cd_clifor = clifor.cd_clifor ");
+                //sQuery.Append("left join cidades cidade1 on  cidade1.nm_cidnor = conhecim.ds_cidcole  and cidade1.cd_ufnor = conhecim.cd_ufcole  ");
+                //sQuery.Append("left join cidades cidade2 on  cidade2.nm_cidnor = conhecim.ds_calc  and cidade2.cd_ufnor = destino.cd_uf  ");
+                //sQuery.Append("left join cidades cidade2 on  cidade2.nm_cidnor = conhecim.ds_calc ");
                 sQuery.Append("where empresa.cd_empresa ='" + Acesso.CD_EMPRESA);
                 sQuery.Append("' and conhecim.nr_lanc ='" + sCte + "'");
 

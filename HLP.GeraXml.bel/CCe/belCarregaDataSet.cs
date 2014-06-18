@@ -55,7 +55,10 @@ namespace HLP.GeraXml.bel.CCe
             drCCe.NFE = objListCCe[i].CD_NOTAFIS;
             drCCe.DT_EMISSAO = objListCCe[i].DT_EMI.ToString("dd/MM/yyyy");
             belGeraCCe objdaoGeraCCe = new belGeraCCe();
-            drCCe.RETIFICACAO = objdaoGeraCCe.BuscaCorrecoesPulandoLinha(objListCCe[i].CD_NRLANC);
+            if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
+                drCCe.RETIFICACAO = objdaoGeraCCe.BuscaCorrecoesPulandoLinha(objListCCe[i].CD_NRLANC);
+            else
+                drCCe.RETIFICACAO = objdaoGeraCCe.BuscaCorrecoesPulandoLinhaCCeCTe(objListCCe[i].CD_NRLANC);
             drCCe.LOGO = bimagem;
             Byte[] bCodBarras = SalvaCodBarras(drCCe.CHAVE);
             drCCe.BARRAS = bCodBarras;

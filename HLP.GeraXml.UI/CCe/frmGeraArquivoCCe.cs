@@ -14,6 +14,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using System.IO;
 using HLP.GeraXml.Comum.DataSet;
 using HLP.GeraXml.bel;
+using HLP.GeraXml.bel.CTe;
 
 namespace HLP.GeraXml.UI.CCe
 {
@@ -79,15 +80,41 @@ namespace HLP.GeraXml.UI.CCe
             lblTotalRegistros.Text = dgvItens.Rows.Count + " Registro(s) encontrado(s)";
         }
 
-        private void PopulaTabVisualizacao(belEvento objEvento)
+        private void PopulaTabVisualizacao(object obj)
         {
             try
             {
-                txtNotaFis.Text = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.CHNFE == objEvento.infEvento.chNFe).CD_NOTAFIS;
-                txtChaveNFe.Text = objEvento.infEvento.chNFe;
-                txtRazaoSocial.Text = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.CHNFE == objEvento.infEvento.chNFe).NM_CLIFOR;
-                txtCondUso.Text = objEvento.infEvento.detEvento.xCondUso;
-                txtAjustes.Text = objEvento.infEvento.detEvento.xCorrecao.Replace("|", Environment.NewLine);
+                if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
+                {
+                    belEvento objEvento = obj as belEvento;
+                    txtNotaFis.Text = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.CHNFE == objEvento.infEvento.chNFe).CD_NOTAFIS;
+                    txtChaveNFe.Text = objEvento.infEvento.chNFe;
+                    txtRazaoSocial.Text = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.CHNFE == objEvento.infEvento.chNFe).NM_CLIFOR;
+                    txtCondUso.Text = objEvento.infEvento.detEvento.xCondUso;
+                    txtAjustes.Text = objEvento.infEvento.detEvento.xCorrecao.Replace("|", Environment.NewLine);
+                }
+                else
+                {
+                    TEvento objEvCCeCTe = obj as TEvento;
+                    txtNotaFis.Text = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.CHNFE == objEvCCeCTe.infEvento.chCTe).CD_NOTAFIS;
+                    txtChaveNFe.Text = objEvCCeCTe.infEvento.chCTe;
+                    txtRazaoSocial.Text = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.CHNFE == objEvCCeCTe.infEvento.chCTe).NM_CLIFOR;
+
+                    string xFile = Pastas.CCe + "\\" + (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.CHNFE == objEvCCeCTe.infEvento.chCTe).CD_NRLANC + "_prevalida.xml";
+                    evCCeCTe objEvCanc = SerializeClassToXml.DeserializeClasse<evCCeCTe>(xFile);
+                    txtCondUso.Text = objEvCanc.xCondUso.ToString();
+                    txtAjustes.Text = "";
+
+                    foreach (var item in objEvCanc.infCorrecao)
+                    {
+                        txtAjustes.Text += string.Format("GRUPO: {0} - CAMPO: {1} - CORREÇÃO:{2} - {3}{4}" + Environment.NewLine,
+                                                 item.grupoAlterado.ToString().ToUpper().Trim(),
+                                                item.campoAlterado.ToString().ToUpper().Trim(),
+                                               item.valorAlterado.ToString().ToUpper().Trim(),
+                                                 (item.nroItemAlterado != null ? "INDEX:" : ""),
+                                                 (item.nroItemAlterado != null ? item.nroItemAlterado.ToString() : ""));
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -158,13 +185,39 @@ namespace HLP.GeraXml.UI.CCe
                 {
                     if ((bsGrid.DataSource as List<belPesquisaCCe>).Where(c => c.bSeleciona).Count() > 0)
                     {
-                        belPesquisaCCe objbelPesqEnvio = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.bSeleciona);
-                        List<belPesquisaCCe> objListaSelect = (bsGrid.DataSource as List<belPesquisaCCe>).Where(c => c.bSeleciona).ToList();
-                        belGeraCCe objbelGeraCCe = new belGeraCCe(objListaSelect);
-                        objbelGeraCCe.GeraXmlEnvio();
-                        string sRetorno = objbelGeraCCe.TransmiteLoteCCe(objbelGeraCCe.sXMLfinal);
-                        string sMessage = objbelGeraCCe.AnalisaRetornoEnvio(sRetorno);
-                        KryptonMessageBox.Show(sMessage, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
+                        {
+                            belPesquisaCCe objbelPesqEnvio = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.bSeleciona);
+                            List<belPesquisaCCe> objListaSelect = (bsGrid.DataSource as List<belPesquisaCCe>).Where(c => c.bSeleciona).ToList();
+                            belGeraCCe objbelGeraCCe = new belGeraCCe(objListaSelect);
+                            objbelGeraCCe.GeraXmlEnvio();
+                            string sRetorno = objbelGeraCCe.TransmiteLoteCCe(objbelGeraCCe.sXMLfinal);
+                            string sMessage = objbelGeraCCe.AnalisaRetornoEnvio(sRetorno);
+                            KryptonMessageBox.Show(sMessage, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if ((bsGrid.DataSource as List<belPesquisaCCe>).Where(c => c.bSeleciona).Count() > 1)
+                            {
+                                KryptonMessageBox.Show("Somente uma carta de correção por vez é aceito!", Mensagens.MSG_Aviso, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                belPesquisaCCe objbelPesqEnvio = (bsGrid.DataSource as List<belPesquisaCCe>).FirstOrDefault(c => c.bSeleciona);
+                                List<belPesquisaCCe> objListaSelect = (bsGrid.DataSource as List<belPesquisaCCe>).Where(c => c.bSeleciona).ToList();
+                                belGeraCCe objbelGeraCCe = new belGeraCCe(objListaSelect);
+                                HLP.GeraXml.bel.CTe.Evento.TRetEvento ret = objbelGeraCCe.TransmiteLoteCCeCTe();
+
+                                //Testes
+                                //string sPath = Pastas.PROTOCOLOS + "\\" + "35140614920065000160570010000011721000029623" + "_ret-cce.xml";
+                                //HLP.GeraXml.bel.CTe.Evento.TRetEvento retorno = SerializeClassToXml.DeserializeClasse<HLP.GeraXml.bel.CTe.Evento.TRetEvento>(sPath);
+
+                                string sMessage = objbelGeraCCe.AnalisaRetornoEnvioCCeCTe(ret, objbelPesqEnvio.CD_NOTAFIS);
+                                KryptonMessageBox.Show(sMessage, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            }
+
+                        }
                         PesquisaCartas();
                     }
                     else
@@ -189,7 +242,12 @@ namespace HLP.GeraXml.UI.CCe
                     {
                         belCarregaDataSet objbelCarregaDataSet = new belCarregaDataSet((bsGrid.DataSource as List<belPesquisaCCe>).Where(c => c.bSeleciona && c.QT_ENVIO > 0).ToList<belPesquisaCCe>());
 
-                        string sCaminho = Util.GetPathRelatorio("CCe.rpt");
+                        string sCaminho = "";
+
+                        if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
+                            sCaminho = Util.GetPathRelatorio("CCe.rpt");
+                        else
+                            sCaminho = Util.GetPathRelatorio("CCeCTe.rpt");
                         ReportDocument rpt = new ReportDocument();
                         rpt.Load(sCaminho);
                         DirectoryInfo dinfo = new DirectoryInfo(Pastas.CCe + "\\PDF");
@@ -309,9 +367,13 @@ namespace HLP.GeraXml.UI.CCe
                             List<belPesquisaCCe> objLfiltro = ((bsGrid.DataSource as List<belPesquisaCCe>).Where(c => c.bSeleciona).ToList());
                             belGeraCCe objdaoGeraCCeVisual = new belGeraCCe(objLfiltro);
                             bsEvento.DataSource = objdaoGeraCCeVisual.objEnvEvento.evento;
-                            if (bsEvento.Count > 0)
+                            if (bsEvento.Count > 0 || objdaoGeraCCeVisual.objEnvEvento != null)
                             {
-                                PopulaTabVisualizacao(bsEvento.Current as belEvento);
+                                if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
+                                    PopulaTabVisualizacao(bsEvento.Current as belEvento);
+                                else
+                                    PopulaTabVisualizacao(objdaoGeraCCeVisual.objEvCCeCTe);
+
 
                                 if (bsEvento.Count == 1)
                                 {
