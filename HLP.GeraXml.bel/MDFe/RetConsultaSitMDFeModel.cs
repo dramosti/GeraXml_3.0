@@ -1,101 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
+using HLP.GeraXml.bel;
+using HLP.GeraXml.bel.MDFe.Generic;
+using System.Xml.Serialization;
 
-namespace HLP.GeraXml.bel.CTe.Evento
+namespace HLP.GeraXml.bel.MDFe
 {
-
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    [System.Xml.Serialization.XmlRootAttribute("retEventoCTe", Namespace = "http://www.portalfiscal.inf.br/cte", IsNullable = false)]
-    public partial class TRetEvento
-    {
-
-        private TRetEventoInfEvento infEventoField;
-
-        private SignatureType signatureField;
-
-        private string versaoField;
-
-        /// <remarks/>
-        public TRetEventoInfEvento infEvento
-        {
-            get
-            {
-                return this.infEventoField;
-            }
-            set
-            {
-                this.infEventoField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.w3.org/2000/09/xmldsig#")]
-        public SignatureType Signature
-        {
-            get
-            {
-                return this.signatureField;
-            }
-            set
-            {
-                this.signatureField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string versao
-        {
-            get
-            {
-                return this.versaoField;
-            }
-            set
-            {
-                this.versaoField = value;
-            }
-        }
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public partial class TRetEventoInfEvento
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    [System.Xml.Serialization.XmlRootAttribute("retConsSitMDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
+    public partial class TRetConsSitMDFe
     {
 
         private TAmb tpAmbField;
 
         private string verAplicField;
 
-        private TCOrgaoIBGE cOrgaoField;
-
         private string cStatField;
 
         private string xMotivoField;
 
-        private string chCTeField;
+        private TCodUfIBGE cUFField;
 
-        private string tpEventoField;
+        private TProtMDFe protMDFeField;
 
-        private string xEventoField;
+        private TProcEvento[] procEventoMDFeField;
 
-        private string nSeqEventoField;
-
-        private string dhRegEventoField;
-
-        private string nProtField;
-
-        private string idField;
+        private string versaoField;
 
         /// <remarks/>
         public TAmb tpAmb
@@ -120,19 +54,6 @@ namespace HLP.GeraXml.bel.CTe.Evento
             set
             {
                 this.verAplicField = value;
-            }
-        }
-
-        /// <remarks/>
-        public TCOrgaoIBGE cOrgao
-        {
-            get
-            {
-                return this.cOrgaoField;
-            }
-            set
-            {
-                this.cOrgaoField = value;
             }
         }
 
@@ -163,118 +84,64 @@ namespace HLP.GeraXml.bel.CTe.Evento
         }
 
         /// <remarks/>
-        public string chCTe
+        public TCodUfIBGE cUF
         {
             get
             {
-                return this.chCTeField;
+                return this.cUFField;
             }
             set
             {
-                this.chCTeField = value;
+                this.cUFField = value;
             }
         }
 
         /// <remarks/>
-        public string tpEvento
+        public TProtMDFe protMDFe
         {
             get
             {
-                return this.tpEventoField;
+                return this.protMDFeField;
             }
             set
             {
-                this.tpEventoField = value;
+                this.protMDFeField = value;
             }
         }
 
         /// <remarks/>
-        public string xEvento
+        [System.Xml.Serialization.XmlElementAttribute("procEventoMDFe")]
+        public TProcEvento[] procEventoMDFe
         {
             get
             {
-                return this.xEventoField;
+                return this.procEventoMDFeField;
             }
             set
             {
-                this.xEventoField = value;
+                this.procEventoMDFeField = value;
             }
         }
 
         /// <remarks/>
-        public string nSeqEvento
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string versao
         {
             get
             {
-                return this.nSeqEventoField;
+                return this.versaoField;
             }
             set
             {
-                this.nSeqEventoField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string dhRegEvento
-        {
-            get
-            {
-                return this.dhRegEventoField;
-            }
-            set
-            {
-                this.dhRegEventoField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string nProt
-        {
-            get
-            {
-                return this.nProtField;
-            }
-            set
-            {
-                this.nProtField = value;
-            }
-        }
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType = "ID")]
-        public string Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
+                this.versaoField = value;
             }
         }
     }
-
+    
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/cte")]
-    public enum TAmb
-    {
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("2")]
-        Item2,
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/cte")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public enum TCOrgaoIBGE
     {
 
@@ -389,7 +256,70 @@ namespace HLP.GeraXml.bel.CTe.Evento
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("90")]
         Item90,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("91")]
+        Item91,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("92")]
+        Item92,
     }
 
 
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    public partial class TProcEvento
+    {
+
+        private TEvento eventoMDFeField;
+
+        private TRetEvento retEventoMDFeField;
+
+        private string versaoField;
+
+        /// <remarks/>
+        public TEvento eventoMDFe
+        {
+            get
+            {
+                return this.eventoMDFeField;
+            }
+            set
+            {
+                this.eventoMDFeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public TRetEvento retEventoMDFe
+        {
+            get
+            {
+                return this.retEventoMDFeField;
+            }
+            set
+            {
+                this.retEventoMDFeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string versao
+        {
+            get
+            {
+                return this.versaoField;
+            }
+            set
+            {
+                this.versaoField = value;
+            }
+        }
+    }
 }

@@ -104,7 +104,7 @@ namespace HLP.GeraXml.bel.CCe
                     objEvCCeCTe = new TEvento();
 
                     objEvCCeCTe.versao = Acesso.versaoCTe;
-                    objEvCCeCTe.infEvento = new TEventoInfEvento();
+                    objEvCCeCTe.infEvento = new  TEventoInfEvento();
                     objEvCCeCTe.infEvento.tpEvento = "110110";
                     objEvCCeCTe.infEvento.nSeqEvento = (objbelPesquisa.QT_ENVIO + 1).ToString();// numero de evento
                     objEvCCeCTe.infEvento.Id = "ID" + objEvCCeCTe.infEvento.tpEvento + objlItensPesquisa.FirstOrDefault().CHNFE + objEvCCeCTe.infEvento.nSeqEvento.ToString().PadLeft(2, '0');

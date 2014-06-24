@@ -165,6 +165,19 @@
     <Compile Include="EmailContadorXml.cs" />
     <Compile Include="Escrita\belEscrituracao.cs" />
     <Compile Include="InternetCS.cs" />
+    <Compile Include="MDFe\consStatServModel.cs" />
+    <Compile Include="MDFe\consultaReciboModel.cs" />
+    <Compile Include="MDFe\consultaSitMDFeModel.cs" />
+    <Compile Include="MDFe\enviMDFeModel.cs" />
+    <Compile Include="MDFe\evCancMDFeModel.cs" />
+    <Compile Include="MDFe\evEncMDFeModel.cs" />
+    <Compile Include="MDFe\eventoMDFeModel.cs" />
+    <Compile Include="MDFe\Generic\GenericClassMDFe.cs" />
+    <Compile Include="MDFe\RetConsStatServMDFe.cs" />
+    <Compile Include="MDFe\RetConsultaReciboModel.cs" />
+    <Compile Include="MDFe\RetConsultaSitMDFeModel.cs" />
+    <Compile Include="MDFe\RetEventoMDFeModel.cs" />
+    <Compile Include="MethodGenericSerializable.cs" />
     <Compile Include="NFes\belBuscaDados.cs" />
     <Compile Include="NFes\belCancelamentoNFse.cs" />
     <Compile Include="NFes\belConstrucaoCivil.cs" />
@@ -367,6 +380,7 @@
   <ItemGroup>
     <Compile Include="CCe\CTe\evCCeCTe_v2.00.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

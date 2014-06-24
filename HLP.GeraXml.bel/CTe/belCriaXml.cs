@@ -14,6 +14,7 @@ using HLP.GeraXml.Comum;
 using System.Xml.Serialization;
 using HLP.GeraXml.bel.CTe.Evento;
 
+
 namespace HLP.GeraXml.bel.CTe
 {
     public class belCriaXml
