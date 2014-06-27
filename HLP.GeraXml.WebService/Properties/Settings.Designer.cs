@@ -1101,5 +1101,55 @@ namespace HLP.GeraXml.WebService.Properties {
                 return ((string)(this["HLP_GeraXml_WebService_CTe_Producao_evento_CteRecepcaoEvento"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://mdfe.sefaz.rs.gov.br/ws/MDFerecepcao/MDFeRecepcao.asmx")]
+        public string HLP_GeraXml_WebService_MDFe_Producao_Recepcao_MDFeRecepcao {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_MDFe_Producao_Recepcao_MDFeRecepcao"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://mdfe.sefaz.rs.gov.br/ws/MDFeRetRecepcao/MDFeRetRecepcao.asmx")]
+        public string HLP_GeraXml_WebService_MDFe_Producao_RetRecepcao_MDFeRetRecepcao {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_MDFe_Producao_RetRecepcao_MDFeRetRecepcao"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://mdfe.sefaz.rs.gov.br/ws/MDFeRecepcaoEvento/MDFeRecepcaoEvento.asmx")]
+        public string HLP_GeraXml_WebService_MDFe_Producao_RecepcaoEvento_MDFeRecepcaoEvento {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_MDFe_Producao_RecepcaoEvento_MDFeRecepcaoEvento"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://mdfe.sefaz.rs.gov.br/ws/MDFeConsulta/MDFeConsulta.asmx")]
+        public string HLP_GeraXml_WebService_MDFe_Producao_Consulta_MDFeConsulta {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_MDFe_Producao_Consulta_MDFeConsulta"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://mdfe.sefaz.rs.gov.br/ws/MDFeStatusServico/MDFeStatusServico.asmx")]
+        public string HLP_GeraXml_WebService_MDFe_Producao_StatusServico_MDFeStatusServico {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_MDFe_Producao_StatusServico_MDFeStatusServico"]));
+            }
+        }
     }
 }

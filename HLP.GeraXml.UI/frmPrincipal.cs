@@ -14,6 +14,7 @@ using HLP.GeraXml.UI.NFse;
 using System.Threading;
 using System.IO;
 using System.Reflection;
+using HLP.GeraXml.UI.CTe.Manifesto;
 
 namespace HLP.GeraXml.UI
 {
@@ -452,6 +453,45 @@ namespace HLP.GeraXml.UI
                 }
             }
         }
+        private void AbreFormMDFe()
+        {
+            bool ok = false;
+            foreach (Control crt in this.splitContainerTela.Panel2.Controls)
+            {
+                if (crt is frmGerarArquivosMDFe)
+                {
+                    crt.BringToFront();
+                    ((Form)crt).WindowState = FormWindowState.Normal;
+                    ok = true;
+                    break;
+                }
+            }
+            if (!ok)
+            {
+                //timer1.Start();
+                //T = new Thread(belStatusServico.VerificaStatusServicoMDFeTela);
+                //T.Start();
+                //frmStatusServico = new frmStatus();
+                //frmStatusServico.ShowDialog();
+
+                belStatusServico.VerificaStatusServicoMDFeTela();
+
+                KryptonMessageBox.Show(belStatusServico.Mensagem, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (belStatusServico.ServicoOperando)
+                {
+                    frmGerarArquivosMDFe objfrmMDFe = new frmGerarArquivosMDFe();
+                    this.AddOwnedForm(objfrmMDFe);
+                    objfrmMDFe.MdiParent = this;
+                    this.splitContainerTela.Panel2.Controls.Add(objfrmMDFe);
+                    objfrmMDFe.WindowState = FormWindowState.Normal;
+                    objfrmMDFe.Dock = DockStyle.Fill;
+                    objfrmMDFe.Show();
+                    objfrmMDFe.BringToFront();
+                    objfrmMDFe.Pesquisar();
+                }
+            }
+        }
         private void AbreFormNfe()
         {
 
@@ -851,6 +891,11 @@ namespace HLP.GeraXml.UI
                     if (e.Modifiers == Keys.Control && e.KeyCode == Keys.T)
                     {
                         AbreFormCte();
+                        ok = true;
+                    }
+                    if (e.Modifiers == Keys.Control && e.KeyCode == Keys.M)
+                    {
+                        AbreFormMDFe();
                         ok = true;
                     }
                 }

@@ -123,6 +123,7 @@ namespace HLP.GeraXml.Comum.Static
         public static bool bCERT_CONSULTA_SELECIONADO = false;
         public static string versaoNFe = "2.00";
         public static string versaoCTe = "2.00";
+        public static string versaoMDFe = "1.00";
         public static TP_WS_NFSE tipoWsNfse { get; set; }
         public enum TP_WS_NFSE { GINFES, SUSESU, TIPLAN, DSF, NENHUM }
         public static string xUFtoWS

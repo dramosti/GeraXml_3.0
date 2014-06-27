@@ -372,6 +372,7 @@ namespace HLP.GeraXml.bel.NFe
             sEvento = encoding.GetString(memory.ToArray());
             sEvento = sEvento.Substring(1);
 
+            
 
             belAssinaXml Assinatura = new belAssinaXml();
             sEvento = Assinatura.ConfigurarArquivo(sEvento, "infEvento", Acesso.cert_NFe);

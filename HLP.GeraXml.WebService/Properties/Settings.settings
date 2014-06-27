@@ -323,5 +323,20 @@
     <Setting Name="HLP_GeraXml_WebService_CTe_Producao_evento_CteRecepcaoEvento" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://nfe.fazenda.sp.gov.br/cteweb/services/cteRecepcaoEvento.asmx</Value>
     </Setting>
+    <Setting Name="HLP_GeraXml_WebService_MDFe_Producao_Recepcao_MDFeRecepcao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe.sefaz.rs.gov.br/ws/MDFerecepcao/MDFeRecepcao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_MDFe_Producao_RetRecepcao_MDFeRetRecepcao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe.sefaz.rs.gov.br/ws/MDFeRetRecepcao/MDFeRetRecepcao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_MDFe_Producao_RecepcaoEvento_MDFeRecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe.sefaz.rs.gov.br/ws/MDFeRecepcaoEvento/MDFeRecepcaoEvento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_MDFe_Producao_Consulta_MDFeConsulta" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe.sefaz.rs.gov.br/ws/MDFeConsulta/MDFeConsulta.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebService_MDFe_Producao_StatusServico_MDFeStatusServico" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe.sefaz.rs.gov.br/ws/MDFeStatusServico/MDFeStatusServico.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

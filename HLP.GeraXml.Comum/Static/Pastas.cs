@@ -279,6 +279,7 @@ namespace HLP.GeraXml.Comum.Static
         public static string SCHEMA_CCE { get { return Pasta_StartupPath + "\\Schema\\CCe\\"; } }
         public static string SCHEMA_CANC { get { return Pasta_StartupPath + "\\Schema\\Canc\\"; } }
         public static string SCHEMA_CTE { get { return Pasta_StartupPath + "\\Schema\\CTe\\"; } }
+        public static string SCHEMA_MDFe { get { return Pasta_StartupPath + "\\Schema\\MDFe\\"; } }
 
     }
 }

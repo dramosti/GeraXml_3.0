@@ -6,6 +6,7 @@ using System.Data;
 using HLP.GeraXml.dao.NFe;
 using HLP.GeraXml.Comum.Static;
 using System.Windows.Forms;
+using HLP.GeraXml.bel.MDFe;
 
 namespace HLP.GeraXml.bel.NFe.Estrutura
 {
@@ -51,7 +52,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                 lsNotas.Add(item.sCD_NFSEQ);
             }
         }
-
+        
         private void ValidaGruposFaturamento()
         {
 
@@ -79,7 +80,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                     belDuplicata objbelDuplicata = new belDuplicata();
                     objbelDuplicata.BuscaVencto(nota.seqNF, nota.nNF);
                 }
-                    
+
             }
             catch (Exception ex)
             {
@@ -100,7 +101,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                     }
                     AtualizaMovitem(nota);
                     belDuplicata objbelDuplicata = new belDuplicata();
-                    objbelDuplicata.BuscaVencto(nota.seqNF, nota.nNF);                    
+                    objbelDuplicata.BuscaVencto(nota.seqNF, nota.nNF);
                 }
 
             }

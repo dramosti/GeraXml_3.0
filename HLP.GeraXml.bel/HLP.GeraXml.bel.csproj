@@ -165,6 +165,10 @@
     <Compile Include="EmailContadorXml.cs" />
     <Compile Include="Escrita\belEscrituracao.cs" />
     <Compile Include="InternetCS.cs" />
+    <Compile Include="MDFe\Acoes\belDadosManifesto.cs" />
+    <Compile Include="MDFe\Acoes\belNumeroManifesto.cs" />
+    <Compile Include="MDFe\Acoes\belConsultaStatusWebService.cs" />
+    <Compile Include="MDFe\Acoes\belPesquisaManifestros.cs" />
     <Compile Include="MDFe\consStatServModel.cs" />
     <Compile Include="MDFe\consultaReciboModel.cs" />
     <Compile Include="MDFe\consultaSitMDFeModel.cs" />
@@ -173,6 +177,8 @@
     <Compile Include="MDFe\evEncMDFeModel.cs" />
     <Compile Include="MDFe\eventoMDFeModel.cs" />
     <Compile Include="MDFe\Generic\GenericClassMDFe.cs" />
+    <Compile Include="MDFe\ModelRoroviarioModel.cs" />
+    <Compile Include="MDFe\PesquisaManifestosModel.cs" />
     <Compile Include="MDFe\RetConsStatServMDFe.cs" />
     <Compile Include="MDFe\RetConsultaReciboModel.cs" />
     <Compile Include="MDFe\RetConsultaSitMDFeModel.cs" />
@@ -368,6 +374,10 @@
     <ProjectReference Include="..\HLP.GeraXml.dao\HLP.GeraXml.dao.csproj">
       <Project>{FD1EA646-5421-469C-ADF2-6CA5BD7F51B8}</Project>
       <Name>HLP.GeraXml.dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HLP.GeraXml.WebServiceHomologacao\HLP.GeraXml.WebServiceHomologacao.csproj">
+      <Project>{2c9663d3-385f-4f4c-99a6-37cdf4433f71}</Project>
+      <Name>HLP.GeraXml.WebServiceHomologacao</Name>
     </ProjectReference>
     <ProjectReference Include="..\HLP.GeraXml.WebService\HLP.GeraXml.WebService.csproj">
       <Project>{2EE8C713-3065-48EF-BC14-6E97B249B802}</Project>

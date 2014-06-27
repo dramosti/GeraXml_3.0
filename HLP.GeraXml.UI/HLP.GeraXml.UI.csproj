@@ -213,6 +213,24 @@
     <Compile Include="CTe\frmVisualizaCte.designer.cs">
       <DependentUpon>frmVisualizaCte.cs</DependentUpon>
     </Compile>
+    <Compile Include="CTe\Manifesto\frmGerarArquivosMDFe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CTe\Manifesto\frmGerarArquivosMDFe.Designer.cs">
+      <DependentUpon>frmGerarArquivosMDFe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CTe\Manifesto\frmGerarNumeroMDFe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CTe\Manifesto\frmGerarNumeroMDFe.Designer.cs">
+      <DependentUpon>frmGerarNumeroMDFe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CTe\Manifesto\frmVisualizaMDFe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CTe\Manifesto\frmVisualizaMDFe.Designer.cs">
+      <DependentUpon>frmVisualizaMDFe.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDownloadVersao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -457,6 +475,16 @@
     <EmbeddedResource Include="CTe\frmVisualizaCte.resx">
       <DependentUpon>frmVisualizaCte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CTe\Manifesto\frmGerarArquivosMDFe.resx">
+      <DependentUpon>frmGerarArquivosMDFe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CTe\Manifesto\frmGerarNumeroMDFe.resx">
+      <DependentUpon>frmGerarNumeroMDFe.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CTe\Manifesto\frmVisualizaMDFe.resx">
+      <DependentUpon>frmVisualizaMDFe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDownloadVersao.resx">
       <DependentUpon>frmDownloadVersao.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -579,6 +607,7 @@
     <None Include="Properties\DataSources\HLP.GeraXml.bel.CTe.infCte.infCTeNorm.belinfNF.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.CTe.infCte.infCTeNorm.belinfQ.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.CTe.infCte.rem.belinfNFe.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.PesquisaManifestosModel.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.belPesquisaNotas.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.beladi.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.belDet.datasource" />

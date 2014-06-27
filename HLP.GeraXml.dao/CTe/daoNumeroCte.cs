@@ -71,7 +71,7 @@ namespace HLP.GeraXml.dao.CTe
 
 
 
-        public void GravaConhec(string cd_conheci, string nr_lanc)
+        public void GravaConhec(string sequencia, string numero)
         {
             try
             {
@@ -79,15 +79,15 @@ namespace HLP.GeraXml.dao.CTe
 
                 if (Acesso.NM_EMPRESA.ToUpper().Equals("SICUPIRA"))
                 {
-                    sQuery = "update conhecim set  cd_conheci = '" + cd_conheci.PadLeft(6, '0') + "' "
+                    sQuery = "update conhecim set  cd_conheci = '" + sequencia.PadLeft(6, '0') + "' "
                                 + "where cd_empresa = '" + Acesso.CD_EMPRESA + "' "
-                                + "and nr_lanc = '" + nr_lanc.PadLeft(7, '0') + "'";
+                                + "and nr_lanc = '" + numero.PadLeft(7, '0') + "'";
                 }
                 else
                 {
-                    sQuery = "update conhecim set  cd_conheci = '" + cd_conheci.PadLeft(6, '0') + "' "
+                    sQuery = "update conhecim set  cd_conheci = '" + sequencia.PadLeft(6, '0') + "' "
                                   + "where cd_empresa = '" + Acesso.CD_EMPRESA + "' "
-                                  + "and nr_lanc = '" + nr_lanc.PadLeft(7, '0') + "'";
+                                  + "and nr_lanc = '" + numero.PadLeft(7, '0') + "'";
                 }
 
                 HlpDbFuncoes.qrySeekUpdate(sQuery);
@@ -98,5 +98,7 @@ namespace HLP.GeraXml.dao.CTe
             }
 
         }
+
+      
     }
 }

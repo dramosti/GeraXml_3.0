@@ -1,5 +1,6 @@
 ﻿
 using HLP.GeraXml.bel;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 namespace HLP.GeraXml.bel.MDFe
 {
@@ -116,7 +117,7 @@ namespace HLP.GeraXml.bel.MDFe
 
         private TMDFeInfMDFeInfModal infModalField;
 
-        private TMDFeInfMDFeInfMunDescarga[] infDocField;
+        private List<TMDFeInfMDFeInfMunDescarga> infDocField;
 
         private TMDFeInfMDFeTot totField;
 
@@ -171,7 +172,7 @@ namespace HLP.GeraXml.bel.MDFe
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("infMunDescarga", IsNullable = false)]
-        public TMDFeInfMDFeInfMunDescarga[] infDoc
+        public List<TMDFeInfMDFeInfMunDescarga> infDoc
         {
             get
             {
@@ -275,7 +276,7 @@ namespace HLP.GeraXml.bel.MDFe
     public partial class TMDFeInfMDFeIde
     {
 
-        private TCodUfIBGE cUFField;
+        private string cUFField;
 
         private TAmb tpAmbField;
 
@@ -301,16 +302,16 @@ namespace HLP.GeraXml.bel.MDFe
 
         private string verProcField;
 
-        private TUf uFIniField;
+        private string uFIniField;
 
-        private TUf uFFimField;
+        private string uFFimField;
 
-        private TMDFeInfMDFeIdeInfMunCarrega[] infMunCarregaField;
+        private List<TMDFeInfMDFeIdeInfMunCarrega> infMunCarregaField;
 
-        private TMDFeInfMDFeIdeInfPercurso[] infPercursoField;
+        private List<TMDFeInfMDFeIdeInfPercurso> infPercursoField;
 
         /// <remarks/>
-        public TCodUfIBGE cUF
+        public string cUF
         {
             get
             {
@@ -479,7 +480,7 @@ namespace HLP.GeraXml.bel.MDFe
         }
 
         /// <remarks/>
-        public TUf UFIni
+        public string UFIni
         {
             get
             {
@@ -492,7 +493,7 @@ namespace HLP.GeraXml.bel.MDFe
         }
 
         /// <remarks/>
-        public TUf UFFim
+        public string UFFim
         {
             get
             {
@@ -506,7 +507,7 @@ namespace HLP.GeraXml.bel.MDFe
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("infMunCarrega")]
-        public TMDFeInfMDFeIdeInfMunCarrega[] infMunCarrega
+        public List<TMDFeInfMDFeIdeInfMunCarrega> infMunCarrega
         {
             get
             {
@@ -520,7 +521,7 @@ namespace HLP.GeraXml.bel.MDFe
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("infPercurso")]
-        public TMDFeInfMDFeIdeInfPercurso[] infPercurso
+        public List<TMDFeInfMDFeIdeInfPercurso> infPercurso
         {
             get
             {
@@ -2497,7 +2498,7 @@ namespace HLP.GeraXml.bel.MDFe
 
         private string cEPField;
 
-        private TUf ufField;
+        private string ufField;
 
         private string foneField;
 
@@ -2595,7 +2596,7 @@ namespace HLP.GeraXml.bel.MDFe
         }
 
         /// <remarks/>
-        public TUf UF
+        public string UF
         {
             get
             {
@@ -2643,10 +2644,10 @@ namespace HLP.GeraXml.bel.MDFe
     public partial class TMDFeInfMDFeIdeInfPercurso
     {
 
-        private TUf uFPerField;
+        private string uFPerField;
 
         /// <remarks/>
-        public TUf UFPer
+        public string UFPer
         {
             get
             {
@@ -2835,6 +2836,12 @@ namespace HLP.GeraXml.bel.MDFe
             }
         }
 
+        /// <summary>
+        /// numero do conhecimento, nao serializado.
+        /// </summary>
+        /// 
+        [System.Xml.Serialization.XmlIgnore]
+        public string nr_lanc { get; set; }
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("infCTe")]
         public TMDFeInfMDFeInfMunDescargaInfCTe[] infCTe
@@ -3130,7 +3137,7 @@ namespace HLP.GeraXml.bel.MDFe
 
         private string cNPJField;
 
-        private TUf ufField;
+        private string ufField;
 
         private string nNFField;
 
@@ -3158,7 +3165,7 @@ namespace HLP.GeraXml.bel.MDFe
         }
 
         /// <remarks/>
-        public TUf UF
+        public string UF
         {
             get
             {

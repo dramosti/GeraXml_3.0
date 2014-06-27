@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HLP.GeraXml.WebServiceHomologacao.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="HLP_GeraXml_WebServiceHomologacao_MDFe_Homologacao_Recepcao_MDFeRecepcao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe-hml.sefaz.rs.gov.br/ws/MDFerecepcao/MDFeRecepcao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebServiceHomologacao_MDFe_Homologacao_RetRecepcao_MDFeRetRecepcao" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe-hml.sefaz.rs.gov.br/ws/MDFeRetRecepcao/MDFeRetRecepcao.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebServiceHomologacao_MDFe_Homologacao_RecepcaoEvento_MDFeRecepcaoEvento" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe-hml.sefaz.rs.gov.br/ws/MDFeRecepcaoEvento/MDFeRecepcaoEvento.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebServiceHomologacao_MDFe_Homologacao_Consulta_MDFeConsulta" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe-hml.sefaz.rs.gov.br/ws/MDFeConsulta/MDFeConsulta.asmx</Value>
+    </Setting>
+    <Setting Name="HLP_GeraXml_WebServiceHomologacao_MDFe_Homologacao_StatusServico_MDFeStatusServico" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://mdfe-hml.sefaz.rs.gov.br/ws/MDFeStatusServico/MDFeStatusServico.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

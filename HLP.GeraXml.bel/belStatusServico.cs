@@ -4,6 +4,9 @@ using System.Security.Cryptography.X509Certificates;
 using HLP.GeraXml.Comum.Static;
 using HLP.GeraXml.bel.NFe;
 using HLP.GeraXml.bel.CTe;
+using HLP.GeraXml.bel.MDFe;
+using System.Text;
+using HLP.GeraXml.bel.MDFe.Acoes;
 
 
 namespace HLP.GeraXml.bel
@@ -203,6 +206,97 @@ namespace HLP.GeraXml.bel
         //    }
         //}
 
+
+
+        public static void VerificaStatusServicoMDFeTela()
+        {
+            try
+            {
+                Acesso.bCERT_CONSULTA_SELECIONADO = false;
+                ServicoOperando = false;
+                AcaoCancelada = false;
+                Mensagem = "";
+
+                X509Certificate2 cert = new X509Certificate2();
+                cert = belCertificadoDigital.BuscaNome("");
+                if (!belCertificadoDigital.ValidaCertificado(cert))
+                {
+                    Mensagem = "Certificado Inválido";
+                }
+                else
+                {
+                    Acesso.cert_CTe = cert;
+                    InternetCS objVerificaInternet = new InternetCS();
+                    if (objVerificaInternet.Conexao())
+                    {
+                        Acesso.bCERT_CONSULTA_SELECIONADO = true;
+                        belConsultaStatusWebService obj = new belConsultaStatusWebService();
+                        TRetConsStatServ ret = obj.ExecuteConsulta();
+
+                        StringBuilder s = new StringBuilder();
+                        s.Append("Versão: {0}{6}");
+                        s.Append("Ambiente: {1}{6}");
+                        s.Append("Status: {2}{6}");
+                        s.Append("Motivo: {3}{6}");
+                        s.Append("Código da UF: {4}{6}");
+                        s.Append("Tempo Médio: {5}{6}");
+
+                        Mensagem = string.Format(s.ToString(),
+                              ret.versao,
+                              ret.tpAmb == TAmb.Item1 ? "Produção" : "Homologação",
+                              ret.cStat,
+                              ret.xMotivo,
+                              ret.cUF.ToString().Replace("Item", ""),
+                              ret.tMed,
+                              Environment.NewLine);
+
+                        if (!AcaoCancelada)
+                        {
+                            if (ret.cStat == "107")
+                            {
+                                if (Acesso.TP_EMIS == 2)
+                                {
+                                    Mensagem += Environment.NewLine + Environment.NewLine + "O Sefaz está Operante." + Environment.NewLine + "Altere o Sistema para Modo Normal.";
+                                }
+                                else
+                                {
+                                    ServicoOperando = true;
+                                }
+                            }
+                            else if (ret.cStat != "107" && Acesso.TP_EMIS == 1)
+                            {
+                                Mensagem += Environment.NewLine + Environment.NewLine + "O Sefaz não está Operante." + Environment.NewLine + "Caso queira emitir Notas utilizando o formulário de segurança," + Environment.NewLine +
+                                    "Altere o Sistema para Modo Contingência FS.";
+                            }
+                            else
+                            {
+                                ServicoOperando = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Mensagem = "A internet parece estar Indisponível";
+                        if (Acesso.TP_EMIS == 2)
+                        {
+                            ServicoOperando = true;
+                        }
+                        else
+                        {
+                            Mensagem += Environment.NewLine + Environment.NewLine + "O Sistema não está Operante."
+                                + Environment.NewLine + "Caso queira emitir Notas utilizando o formulário de segurança," + Environment.NewLine +
+                                   "Altere o Sistema para Modo Contingência FS.";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensagem = ex.Message;
+            }
+
+        }
+
         public static void VerificaStatusServicoCteTela()
         {
             try
@@ -293,7 +387,7 @@ namespace HLP.GeraXml.bel
                 }
                 else
                 {
-                      Acesso.cert_CTe =  Acesso.cert_NFe = cert;
+                    Acesso.cert_CTe = Acesso.cert_NFe = cert;
                     InternetCS objVerificaInternet = new InternetCS();
                     if (objVerificaInternet.Conexao())
                     {

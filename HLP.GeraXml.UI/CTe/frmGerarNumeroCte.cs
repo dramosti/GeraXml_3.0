@@ -17,7 +17,7 @@ namespace HLP.GeraXml.UI.CTe
     {
         belNumeroCte objNumeroCte = new belNumeroCte();
         List<string> objlGerarConhec;
-
+        enum tipo { CTE, MDFE };
 
         public frmGerarNumeroCte(List<string> objlGerarConhec)
         {
