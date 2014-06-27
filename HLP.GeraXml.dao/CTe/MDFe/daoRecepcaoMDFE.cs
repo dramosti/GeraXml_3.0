@@ -10,6 +10,189 @@ namespace HLP.GeraXml.dao.CTe.MDFe
 {
     public class daoManifesto
     {
+        public static void gravaChave(string sChave, string sequencia)
+        {
+            try
+            {
+                StringBuilder sSql = new StringBuilder();
+                sSql.Append("update MANIFEST ");
+                sSql.Append("set CD_CHAVEMDFE ='");
+                sSql.Append(sChave);
+                sSql.Append("' ");
+                sSql.Append("where ");
+                sSql.Append("cd_empresa ='");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("cd_manifest ='");
+                sSql.Append(sequencia);
+                sSql.Append("' ");
+
+                HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public static void gravaRecibo(string sRecibo, string sequencia)
+        {
+            try
+            {
+                StringBuilder sSql = new StringBuilder();
+                sSql.Append("update MANIFEST ");
+                sSql.Append("set CD_RECIBOMDFE ='");
+                sSql.Append(sRecibo);
+                sSql.Append("' ");
+                sSql.Append("where ");
+                sSql.Append("cd_empresa ='");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("cd_manifest ='");
+                sSql.Append(sequencia);
+                sSql.Append("'");
+                sSql.Append(" and coalesce(CD_RECIBOMDFE, '') = ''");
+
+                HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public static void LimpaRecibo(string sequencia)
+        {
+            try
+            {
+                StringBuilder sSql = new StringBuilder();
+                sSql.Append("update MANIFEST ");
+                sSql.Append("set CD_RECIBOMDFE ='");
+                sSql.Append("' ");
+                sSql.Append("where ");
+                sSql.Append("cd_empresa ='");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("cd_manifest ='");
+                sSql.Append(sequencia);
+                sSql.Append("' ");
+
+                HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public static void gravaProtocolo(string sProtocolo, string sequencia)
+        {
+            try
+            {
+                StringBuilder sSql = new StringBuilder();
+                sSql.Append("update MANIFEST ");
+                sSql.Append("set CD_PROTMDFE ='");
+                sSql.Append(sProtocolo);
+                sSql.Append("' ");
+                sSql.Append("where ");
+                sSql.Append("cd_empresa ='");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("cd_manifest ='");
+                sSql.Append(sequencia);
+                sSql.Append("'");
+                HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public static void AlteraStatusMDFe(string sequencia)
+        {
+            try
+            {
+                StringBuilder sSql = new StringBuilder();
+                sSql.Append("update MANIFEST ");
+                sSql.Append("set ST_MDFE ='S' ");
+                sSql.Append("where ");
+                sSql.Append("cd_empresa ='");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("cd_manifest ='");
+                sSql.Append(sequencia);
+                sSql.Append("'");
+                HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public static void AlteraUltimoRetorno(string sequencia)
+        {
+            try
+            {
+                StringBuilder sSql = new StringBuilder();
+                sSql.Append("update MANIFEST ");
+                sSql.Append("set DS_ULTIMORET ='" + daoUtil.GetDateServidor().ToString() + "' ");
+                sSql.Append("where ");
+                sSql.Append("cd_empresa ='");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("cd_manifest ='");
+                sSql.Append(sequencia);
+                sSql.Append("'");
+                HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        public static DateTime? GetUltimoRetorno(string sequencia)
+        {
+            try
+            {
+                string s = HlpDbFuncoes.qrySeekValue("MANIFEST",
+                    "coalesce(DS_ULTIMORET,'')",
+                    string.Format("cd_manifest = '{0}' and cd_empresa = '{1}'", sequencia, Acesso.CD_EMPRESA));
+                if (s != "")
+                    return Convert.ToDateTime(s);
+                else
+                    return null;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+
+
 
         public static DataTable GetIDE(string sequencia)
         {
@@ -59,7 +242,8 @@ namespace HLP.GeraXml.dao.CTe.MDFe
             {
                 StringBuilder sQuery = new StringBuilder();
                 sQuery.Append("Select ");
-                sQuery.Append("e.cd_empresa CNPJ , ");
+                sQuery.Append("e.cd_empresa , ");
+                sQuery.Append("e.cd_cgc CNPJ , ");
                 sQuery.Append("e.cd_insest IE , ");
                 sQuery.Append("e.nm_empresa xNome , ");
                 sQuery.Append("e.nm_guerra xFant , ");
@@ -255,7 +439,14 @@ namespace HLP.GeraXml.dao.CTe.MDFe
                 sQuery.Append("r.cd_uf uf, ");
                 sQuery.Append("r.cd_TPCARROCERIA tpCar, ");
                 sQuery.Append("r.cd_capacidadereb capKG, ");
-                sQuery.Append("r.cd_capamcreb capM3 ");
+                sQuery.Append("r.cd_capamcreb capM3, ");
+                sQuery.Append("coalesce(r.st_proprietario,'N')st_proprietario , ");
+                sQuery.Append("r.cd_cgccpfreb CNPJ, ");
+                sQuery.Append("r.cd_rntrc RNTRC, ");
+                sQuery.Append("r.nm_propreb xNome, ");
+                sQuery.Append("r.cd_inscest IE, ");
+                sQuery.Append("r.cd_tpproreb tpProp, ");
+                sQuery.Append("r.cd_tpcarroceria tpCar ");
                 sQuery.Append("from reboquema rm inner join reboque r on rm.cd_reboque = r.cd_reboque ");
                 sQuery.Append("where rm.cd_manifest = '{0}' and rm.cd_empresa = '{1}'");
                 return HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), sequencia, Acesso.CD_EMPRESA));

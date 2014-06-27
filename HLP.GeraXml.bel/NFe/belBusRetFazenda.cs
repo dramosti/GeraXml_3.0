@@ -182,8 +182,6 @@ namespace HLP.GeraXml.bel.NFe
         private void IncluiTagInfProc(belPesquisaNotas nota, XmlNode xret, XNamespace pf)
         {
             //Geração do Xml da nfe Autorizado, incluindo a TAG infProc onde consta as informaçoes de retorno da nfe.
-            XContainer retproc = new XElement(pf + "nfeProc", new XAttribute("versao", "2.00"),
-                                                                 new XAttribute("xmlns", "http://www.portalfiscal.inf.br/nfe"));
 
             string sCodificacao = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
             string sRetProc = "<nfeProc versao=\"2.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">";

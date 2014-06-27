@@ -165,10 +165,12 @@
     <Compile Include="EmailContadorXml.cs" />
     <Compile Include="Escrita\belEscrituracao.cs" />
     <Compile Include="InternetCS.cs" />
+    <Compile Include="MDFe\Acoes\belBuscaRetornoMDFe.cs" />
     <Compile Include="MDFe\Acoes\belDadosManifesto.cs" />
     <Compile Include="MDFe\Acoes\belNumeroManifesto.cs" />
     <Compile Include="MDFe\Acoes\belConsultaStatusWebService.cs" />
     <Compile Include="MDFe\Acoes\belPesquisaManifestros.cs" />
+    <Compile Include="MDFe\Acoes\belTransmiteMDFe.cs" />
     <Compile Include="MDFe\consStatServModel.cs" />
     <Compile Include="MDFe\consultaReciboModel.cs" />
     <Compile Include="MDFe\consultaSitMDFeModel.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="MDFe\RetConsultaReciboModel.cs" />
     <Compile Include="MDFe\RetConsultaSitMDFeModel.cs" />
     <Compile Include="MDFe\RetEventoMDFeModel.cs" />
+    <Compile Include="MDFe\rodoVeicPrincipal.cs" />
     <Compile Include="MethodGenericSerializable.cs" />
     <Compile Include="NFes\belBuscaDados.cs" />
     <Compile Include="NFes\belCancelamentoNFse.cs" />

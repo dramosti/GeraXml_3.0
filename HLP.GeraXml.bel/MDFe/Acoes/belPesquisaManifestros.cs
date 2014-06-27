@@ -40,6 +40,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                      dt_manife = (c["dt_cad"].ToString() != "" ? Convert.ToDateTime(c["dt_cad"].ToString()).ToString("dd/MM/yyyy") : ""),
                      descricao = c["descricao"].ToString(),
                      cd_empresa = c["cd_empresa"].ToString(),
+                     chaveMDFe = c["chave"].ToString(),
                      recibo = c["recibo"].ToString(),
                      bEnviado = c["bEnviado"].ToString() == "0" ? false : true,
                      bCancelado = c["bCancelado"].ToString() == "0" ? false : true,

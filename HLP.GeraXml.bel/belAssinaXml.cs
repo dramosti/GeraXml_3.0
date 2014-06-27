@@ -64,7 +64,8 @@ namespace HLP.GeraXml.bel
                         throw new Exception(mensagemResultado);
                     }
                 }
-            } return XMLStringAssinado;
+            } 
+            return XMLStringAssinado;
         }
         /// <summary>
         /// Gera assinatura Digital do XML

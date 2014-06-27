@@ -67,6 +67,7 @@ namespace HLP.GeraXml.bel.MDFe
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    [System.Xml.Serialization.XmlRootAttribute("MDFe", Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
     public partial class TMDFe
     {
 
@@ -74,7 +75,8 @@ namespace HLP.GeraXml.bel.MDFe
 
         private SignatureType signatureField;
 
-        /// <remarks/>
+
+
         public TMDFeInfMDFe infMDFe
         {
             get
@@ -107,7 +109,7 @@ namespace HLP.GeraXml.bel.MDFe
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    [System.Xml.Serialization.XmlTypeAttribute("infMDFe", AnonymousType = true)]
     public partial class TMDFeInfMDFe
     {
 
@@ -2303,29 +2305,21 @@ namespace HLP.GeraXml.bel.MDFe
         }
     }
 
+    //<retEnviMDFe xmlns='http://www.portalfiscal.inf.br/mdfe'> não era esperado.
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.portalfiscal.inf.br/mdfe")]
-    public partial class TRetEnviMDFe
+    public class retEnviMDFe
     {
-
         private object tpAmbField;
-
-        private TCodUfIBGE cUFField;
-
+        private string cUFField;
         private string verAplicField;
-
         private string cStatField;
-
         private string xMotivoField;
-
         private TRetEnviMDFeInfRec infRecField;
-
         private string versaoField;
-
         /// <remarks/>
         public object tpAmb
         {
@@ -2338,9 +2332,8 @@ namespace HLP.GeraXml.bel.MDFe
                 this.tpAmbField = value;
             }
         }
-
         /// <remarks/>
-        public TCodUfIBGE cUF
+        public string cUF
         {
             get
             {
@@ -2351,7 +2344,6 @@ namespace HLP.GeraXml.bel.MDFe
                 this.cUFField = value;
             }
         }
-
         /// <remarks/>
         public string verAplic
         {
@@ -2364,7 +2356,6 @@ namespace HLP.GeraXml.bel.MDFe
                 this.verAplicField = value;
             }
         }
-
         /// <remarks/>
         public string cStat
         {
@@ -2377,7 +2368,6 @@ namespace HLP.GeraXml.bel.MDFe
                 this.cStatField = value;
             }
         }
-
         /// <remarks/>
         public string xMotivo
         {
@@ -2390,7 +2380,6 @@ namespace HLP.GeraXml.bel.MDFe
                 this.xMotivoField = value;
             }
         }
-
         /// <remarks/>
         public TRetEnviMDFeInfRec infRec
         {
@@ -2403,7 +2392,6 @@ namespace HLP.GeraXml.bel.MDFe
                 this.infRecField = value;
             }
         }
-
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string versao
@@ -2424,7 +2412,6 @@ namespace HLP.GeraXml.bel.MDFe
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/mdfe")]
     public partial class TRetEnviMDFeInfRec
     {
 
@@ -3332,7 +3319,7 @@ namespace HLP.GeraXml.bel.MDFe
             }
             set
             {
-                this.qCTeField = value;
+                this.qCTeField = value == "0" ? null : value;
             }
         }
 
@@ -3345,7 +3332,7 @@ namespace HLP.GeraXml.bel.MDFe
             }
             set
             {
-                this.qCTField = value;
+                this.qCTField = value == "0" ? null : value;
             }
         }
 
@@ -3358,7 +3345,7 @@ namespace HLP.GeraXml.bel.MDFe
             }
             set
             {
-                this.qNFeField = value;
+                this.qNFeField = value == "0" ? null : value;
             }
         }
 
@@ -3371,7 +3358,7 @@ namespace HLP.GeraXml.bel.MDFe
             }
             set
             {
-                this.qNFField = value;
+                this.qNFField = value == "0" ? null : value;
             }
         }
 

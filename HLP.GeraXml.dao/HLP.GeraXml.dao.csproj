@@ -61,7 +61,7 @@
     <Compile Include="CTe\daoDadosrodo.cs" />
     <Compile Include="CTe\daoDadosVPrest.cs" />
     <Compile Include="CTe\daoGeraNumero.cs" />
-    <Compile Include="CTe\MDFe\daoManifesto.cs" />
+    <Compile Include="CTe\MDFe\daoRecepcaoMDFE.cs" />
     <Compile Include="CTe\MDFe\daoNumeroManifesto.cs" />
     <Compile Include="CTe\MDFe\daoPesquisaManifesto.cs" />
     <Compile Include="daoGenerator.cs" />

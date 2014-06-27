@@ -57,6 +57,16 @@
             this.btnConsultaSituacao = new System.Windows.Forms.ToolStripButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dgvArquivos = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.bSelecionaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cdempresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sequenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtmanifeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.recibo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsGrid = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -64,24 +74,15 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cboStatus = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.bSelecionaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cdempresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sequenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtmanifeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bEnviadoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.bCanceladoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsGrid = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArquivos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpIni
@@ -295,6 +296,7 @@
             this.btnBuscaRetorno.Name = "btnBuscaRetorno";
             this.btnBuscaRetorno.Size = new System.Drawing.Size(73, 20);
             this.btnBuscaRetorno.Text = "Retorno";
+            this.btnBuscaRetorno.Click += new System.EventHandler(this.btnBuscaRetorno_Click);
             // 
             // toolStripSeparator7
             // 
@@ -335,8 +337,9 @@
             this.sequenciaDataGridViewTextBoxColumn,
             this.numeroDataGridViewTextBoxColumn,
             this.dtmanifeDataGridViewTextBoxColumn,
-            this.bEnviadoDataGridViewCheckBoxColumn,
-            this.bCanceladoDataGridViewCheckBoxColumn,
+            this.bEnviado,
+            this.bCancelado,
+            this.recibo,
             this.descricaoDataGridViewTextBoxColumn});
             this.dgvArquivos.DataSource = this.bsGrid;
             this.dgvArquivos.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -346,6 +349,70 @@
             this.dgvArquivos.Size = new System.Drawing.Size(1150, 437);
             this.dgvArquivos.TabIndex = 232;
             this.dgvArquivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArquivos_CellClick);
+            // 
+            // bSelecionaDataGridViewCheckBoxColumn
+            // 
+            this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
+            this.bSelecionaDataGridViewCheckBoxColumn.HeaderText = "Selecionar";
+            this.bSelecionaDataGridViewCheckBoxColumn.Name = "bSelecionaDataGridViewCheckBoxColumn";
+            this.bSelecionaDataGridViewCheckBoxColumn.Width = 70;
+            // 
+            // cdempresaDataGridViewTextBoxColumn
+            // 
+            this.cdempresaDataGridViewTextBoxColumn.DataPropertyName = "cd_empresa";
+            this.cdempresaDataGridViewTextBoxColumn.HeaderText = "cd_empresa";
+            this.cdempresaDataGridViewTextBoxColumn.Name = "cdempresaDataGridViewTextBoxColumn";
+            this.cdempresaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // sequenciaDataGridViewTextBoxColumn
+            // 
+            this.sequenciaDataGridViewTextBoxColumn.DataPropertyName = "sequencia";
+            this.sequenciaDataGridViewTextBoxColumn.HeaderText = "Sequencia";
+            this.sequenciaDataGridViewTextBoxColumn.Name = "sequenciaDataGridViewTextBoxColumn";
+            // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
+            this.numeroDataGridViewTextBoxColumn.HeaderText = "Número";
+            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            // 
+            // dtmanifeDataGridViewTextBoxColumn
+            // 
+            this.dtmanifeDataGridViewTextBoxColumn.DataPropertyName = "dt_manife";
+            this.dtmanifeDataGridViewTextBoxColumn.HeaderText = "Data Emissão";
+            this.dtmanifeDataGridViewTextBoxColumn.Name = "dtmanifeDataGridViewTextBoxColumn";
+            // 
+            // bEnviado
+            // 
+            this.bEnviado.DataPropertyName = "bEnviado";
+            this.bEnviado.HeaderText = "bEnviado";
+            this.bEnviado.Name = "bEnviado";
+            this.bEnviado.Visible = false;
+            // 
+            // bCancelado
+            // 
+            this.bCancelado.DataPropertyName = "bCancelado";
+            this.bCancelado.HeaderText = "bCancelado";
+            this.bCancelado.Name = "bCancelado";
+            this.bCancelado.Visible = false;
+            // 
+            // recibo
+            // 
+            this.recibo.DataPropertyName = "recibo";
+            this.recibo.HeaderText = "recibo";
+            this.recibo.Name = "recibo";
+            this.recibo.Visible = false;
+            // 
+            // descricaoDataGridViewTextBoxColumn
+            // 
+            this.descricaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricaoDataGridViewTextBoxColumn.DataPropertyName = "descricao";
+            this.descricaoDataGridViewTextBoxColumn.HeaderText = "Placa";
+            this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
+            // 
+            // bsGrid
+            // 
+            this.bsGrid.DataSource = typeof(HLP.GeraXml.bel.MDFe.PesquisaManifestosModel);
             // 
             // kryptonPanel
             // 
@@ -433,63 +500,6 @@
             this.cboStatus.TabIndex = 8;
             this.cboStatus.ValueMember = "ValueMember";
             // 
-            // bSelecionaDataGridViewCheckBoxColumn
-            // 
-            this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
-            this.bSelecionaDataGridViewCheckBoxColumn.HeaderText = "Selecionar";
-            this.bSelecionaDataGridViewCheckBoxColumn.Name = "bSelecionaDataGridViewCheckBoxColumn";
-            this.bSelecionaDataGridViewCheckBoxColumn.Width = 70;
-            // 
-            // cdempresaDataGridViewTextBoxColumn
-            // 
-            this.cdempresaDataGridViewTextBoxColumn.DataPropertyName = "cd_empresa";
-            this.cdempresaDataGridViewTextBoxColumn.HeaderText = "cd_empresa";
-            this.cdempresaDataGridViewTextBoxColumn.Name = "cdempresaDataGridViewTextBoxColumn";
-            this.cdempresaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // sequenciaDataGridViewTextBoxColumn
-            // 
-            this.sequenciaDataGridViewTextBoxColumn.DataPropertyName = "sequencia";
-            this.sequenciaDataGridViewTextBoxColumn.HeaderText = "Sequencia";
-            this.sequenciaDataGridViewTextBoxColumn.Name = "sequenciaDataGridViewTextBoxColumn";
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "Número";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            // 
-            // dtmanifeDataGridViewTextBoxColumn
-            // 
-            this.dtmanifeDataGridViewTextBoxColumn.DataPropertyName = "dt_manife";
-            this.dtmanifeDataGridViewTextBoxColumn.HeaderText = "Data Emissão";
-            this.dtmanifeDataGridViewTextBoxColumn.Name = "dtmanifeDataGridViewTextBoxColumn";
-            // 
-            // bEnviadoDataGridViewCheckBoxColumn
-            // 
-            this.bEnviadoDataGridViewCheckBoxColumn.DataPropertyName = "bEnviado";
-            this.bEnviadoDataGridViewCheckBoxColumn.HeaderText = "bEnviado";
-            this.bEnviadoDataGridViewCheckBoxColumn.Name = "bEnviadoDataGridViewCheckBoxColumn";
-            this.bEnviadoDataGridViewCheckBoxColumn.Visible = false;
-            // 
-            // bCanceladoDataGridViewCheckBoxColumn
-            // 
-            this.bCanceladoDataGridViewCheckBoxColumn.DataPropertyName = "bCancelado";
-            this.bCanceladoDataGridViewCheckBoxColumn.HeaderText = "bCancelado";
-            this.bCanceladoDataGridViewCheckBoxColumn.Name = "bCanceladoDataGridViewCheckBoxColumn";
-            this.bCanceladoDataGridViewCheckBoxColumn.Visible = false;
-            // 
-            // descricaoDataGridViewTextBoxColumn
-            // 
-            this.descricaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricaoDataGridViewTextBoxColumn.DataPropertyName = "descricao";
-            this.descricaoDataGridViewTextBoxColumn.HeaderText = "Placa";
-            this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
-            // 
-            // bsGrid
-            // 
-            this.bsGrid.DataSource = typeof(HLP.GeraXml.bel.MDFe.PesquisaManifestosModel);
-            // 
             // frmGerarArquivosMDFe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,6 +511,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArquivos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
             this.kryptonPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -510,7 +521,6 @@
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -551,14 +561,15 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Comum.Componentes.HLP_ComboBox cboStatus;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.BindingSource bsGrid;
         private System.Windows.Forms.DataGridViewCheckBoxColumn bSelecionaDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cdempresaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sequenciaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtmanifeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn bEnviadoDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn bCanceladoDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn bEnviado;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn bCancelado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recibo;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource bsGrid;
     }
 }
