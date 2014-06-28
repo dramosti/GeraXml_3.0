@@ -213,6 +213,12 @@
     <Compile Include="CTe\frmVisualizaCte.designer.cs">
       <DependentUpon>frmVisualizaCte.cs</DependentUpon>
     </Compile>
+    <Compile Include="CTe\Manifesto\frmAux.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CTe\Manifesto\frmAux.Designer.cs">
+      <DependentUpon>frmAux.cs</DependentUpon>
+    </Compile>
     <Compile Include="CTe\Manifesto\frmGerarArquivosMDFe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,6 +481,9 @@
     <EmbeddedResource Include="CTe\frmVisualizaCte.resx">
       <DependentUpon>frmVisualizaCte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CTe\Manifesto\frmAux.resx">
+      <DependentUpon>frmAux.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CTe\Manifesto\frmGerarArquivosMDFe.resx">
       <DependentUpon>frmGerarArquivosMDFe.cs</DependentUpon>
     </EmbeddedResource>
@@ -608,6 +617,15 @@
     <None Include="Properties\DataSources\HLP.GeraXml.bel.CTe.infCte.infCTeNorm.belinfQ.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.CTe.infCte.rem.belinfNFe.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.PesquisaManifestosModel.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.rodoVeicReboque.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.rodoVeicTracaoCondutor.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.TMDFeInfMDFeIdeInfMunCarrega.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.TMDFeInfMDFeIdeInfPercurso.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.TMDFeInfMDFeInfMunDescarga.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.TMDFeInfMDFeInfMunDescargaInfCT.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.TMDFeInfMDFeInfMunDescargaInfCTe.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.TMDFeInfMDFeInfMunDescargaInfNF.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.MDFe.TMDFeInfMDFeInfMunDescargaInfNFe.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.belPesquisaNotas.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.beladi.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.belDet.datasource" />
