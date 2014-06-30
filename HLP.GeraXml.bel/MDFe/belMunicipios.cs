@@ -36,14 +36,25 @@ namespace HLP.GeraXml.bel.MDFe
 
         public static List<belMunicipios> GetMunicipios()
         {
-            return daoUtil.GetCidades().AsEnumerable().Select(c =>
-                new belMunicipios
+            try
+            {
+                List<belMunicipios> lreturn = new List<belMunicipios>();
+                foreach (DataRow c in daoUtil.GetMunicipios().Rows)
                 {
-                    xMun = c["xMun"].ToString(),
-                    cMun = c["cMun"].ToString(),
-                    xUF = c["xUF"].ToString()
+                    lreturn.Add(new belMunicipios
+                    {
+                        xMun = c["xMun"].ToString(),
+                        cMun = c["cMun"].ToString(),
+                        xUF = c["xUF"].ToString()
+                    });
                 }
-                ).ToList();
+                return lreturn;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

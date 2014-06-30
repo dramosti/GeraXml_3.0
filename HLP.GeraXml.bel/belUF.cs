@@ -555,7 +555,7 @@ namespace HLP.GeraXml.bel
             }
             catch (Exception ex)
             {
-                throw;
+                return "";
             }
         }
 

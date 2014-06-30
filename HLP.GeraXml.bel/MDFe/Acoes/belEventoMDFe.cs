@@ -24,10 +24,10 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
             evento = new TEvento();
             evento.versao = Acesso.versaoMDFe;
             evento.infEvento = new TEventoInfEvento();
-            evento.infEvento.Id = "ID" + tpEvento + objPesquisa.chaveMDFe + nSeq;
+            evento.infEvento.Id = "ID" + tpEvento + objPesquisa.chaveMDFe + nSeq.PadLeft(2,'0');
             evento.infEvento.cOrgao = Convert.ToByte(Acesso.cUF).ToString();
             evento.infEvento.tpAmb = Acesso.TP_AMB == 1 ? TAmb.Item1 : TAmb.Item2;
-            evento.infEvento.CNPJ = Acesso.CNPJ_EMPRESA;
+            evento.infEvento.CNPJ = Util.RetiraCaracterCNPJ(Acesso.CNPJ_EMPRESA);
             evento.infEvento.chMDFe = objPesquisa.chaveMDFe;
             evento.infEvento.dhEvento = daoUtil.GetDateServidor().ToString("yyyy-MM-ddTHH:mm:ss");
             evento.infEvento.tpEvento = tpEvento;

@@ -45,7 +45,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
 
         }

@@ -389,6 +389,25 @@ namespace HLP.GeraXml.dao.CTe.MDFe
 
         // DADOS RODO
 
+        public static DataTable GetMotorista(string sequencia)
+        {
+            try
+            {
+                StringBuilder sQuery = new StringBuilder();
+                sQuery.Append("SELECT ");
+                sQuery.Append("mot.nm_motoris xNome, mot.cd_cgc cpf  from manifest m inner join motorista mot on m.cd_motoris = mot.cd_motoris ");
+                sQuery.Append("where m.cd_manifest = '{0}' and m.cd_empresa = '{1}'");
+
+                return HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), sequencia, Acesso.CD_EMPRESA));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
         public static DataTable GetVeiculoTracao(string sequencia)
         {
             try
@@ -501,6 +520,9 @@ namespace HLP.GeraXml.dao.CTe.MDFe
             }
 
         }
+
+
+
 
 
 

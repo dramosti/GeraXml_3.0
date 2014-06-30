@@ -15,6 +15,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
     {
         PesquisaManifestosModel objPesquisa;
         XmlDocument xmlConsulta = null;
+        XmlDocument xmlRetorno = null;
         public string sMessage { get; set; }
 
         public belBuscaRetornoMDFe(PesquisaManifestosModel objPesquisa)
@@ -66,9 +67,9 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 string sPath = Pastas.PROTOCOLOS + Convert.ToInt32(objPesquisa.numero) + "-pro-rec.xml";
                 if (File.Exists(sPath))
                     File.Delete(sPath);
-                XmlDocument x = new XmlDocument();
-                x.LoadXml(sRetorno);
-                x.Save(sPath);
+                xmlRetorno = new XmlDocument();
+                xmlRetorno.LoadXml(sRetorno);
+                xmlRetorno.Save(sPath);
                 TRetConsReciMDFe recepacao = SerializeClassToXml.DeserializeClasse<TRetConsReciMDFe>(sPath);
 
                 sMessage = string.Format("Sequencia: {0}{4}Numero: {1}{4}Motivo: {2}{4}Status: {3}{4}",
@@ -85,7 +86,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 }
                 else
                 {
-                    if (recepacao.cStat == "100") // ENVIADO
+                    if (recepacao.protMDFe != null)
                     {
                         if (recepacao.protMDFe.infProt.cStat == "100")
                         {
@@ -93,19 +94,23 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                             daoManifesto.AlteraStatusMDFe(objPesquisa.sequencia, "S");
                             IncluiTagInfProc();
                         }
-                    }
-                    else if (recepacao.cStat == "101") //CANCELADO.
-                    {
-                        daoManifesto.gravaProtocolo(recepacao.nRec, objPesquisa.sequencia);
+                        else if (recepacao.protMDFe.infProt.cStat == "101") //CANCELADO.
+                        {
+                            daoManifesto.gravaProtocolo(recepacao.nRec, objPesquisa.sequencia);
 
-                    }
-                    else if (recepacao.cStat == "204") //DUPLICADO.
-                    {
+                        }
+                        else if (recepacao.protMDFe.infProt.cStat == "204") //DUPLICADO.
+                        {
 
-                    }
-                    else if (recepacao.cStat == "110") //LOTE EM PROCESSAMENTO.
-                    {
+                        }
+                        else if (recepacao.protMDFe.infProt.cStat == "110") //LOTE EM PROCESSAMENTO.
+                        {
 
+                        }
+                        else
+                        {
+                            daoManifesto.LimpaRecibo(objPesquisa.sequencia);
+                        }
                     }
                     else
                     {
@@ -129,16 +134,16 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
             XmlDocument xmldoc = new XmlDocument();
             xmldoc.Load(Pastas.ENVIO + this.objPesquisa.chaveMDFe.Substring(2, 4) + "\\Lote_" + Convert.ToInt32(this.objPesquisa.numero).ToString() + ".xml");
 
-            XmlNode xret = xmlConsulta.GetElementsByTagName("protMDFe")[0];
+            XmlNode xret = xmlRetorno.GetElementsByTagName("protMDFe")[0];
             StreamWriter sw = new StreamWriter(Util.BuscaCaminhoArquivoXml(this.objPesquisa.chaveMDFe, 2));
 
             if (xmldoc.FirstChild.Name.Equals("xml"))
             {
-                sw.Write(@sRetProc + xmldoc.OuterXml.Remove(0, 38) + @xret.OuterXml.ToString() + @"</nfeProc>");
+                sw.Write(@sRetProc + xmldoc.OuterXml.Remove(0, 38) + @xret.OuterXml.ToString() + @"</mdfeProc>");
             }
             else
             {
-                sw.Write(@sCodificacao + @sRetProc + xmldoc.OuterXml + @xret.OuterXml.ToString() + @"</nfeProc>");
+                sw.Write(@sCodificacao + @sRetProc + xmldoc.OuterXml + @xret.OuterXml.ToString() + @"</mdfeProc>");
             }
             sw.Close();
         }

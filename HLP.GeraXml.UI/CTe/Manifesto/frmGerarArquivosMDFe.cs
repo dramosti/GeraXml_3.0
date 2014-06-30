@@ -1,6 +1,8 @@
-﻿using HLP.GeraXml.bel.MDFe;
+﻿using HLP.GeraXml.bel;
+using HLP.GeraXml.bel.MDFe;
 using HLP.GeraXml.bel.MDFe.Acoes;
 using HLP.GeraXml.Comum;
+using HLP.GeraXml.Comum.Static;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace HLP.GeraXml.UI.CTe.Manifesto
 {
@@ -60,7 +63,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                     {
                         dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.Khaki;
                     }
-                    else if (Convert.ToBoolean(dgvArquivos["bEnviado", i].Value) == true && dgvArquivos["status", i].Value.ToString() != "S")
+                    else if (Convert.ToBoolean(dgvArquivos["bEnviado", i].Value) == true && dgvArquivos["status", i].Value.ToString() == "S")
                     {
                         dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
                     }
@@ -68,7 +71,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                     {
                         dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.LightCyan;
                     }
-                    else if (Convert.ToBoolean(dgvArquivos["bEnviado", i].Value) == true && dgvArquivos["status", i].Value.ToString() != "E") // ENCERRADO
+                    else if (Convert.ToBoolean(dgvArquivos["bEnviado", i].Value) == true && dgvArquivos["status", i].Value.ToString() == "E") // ENCERRADO
                     {
                         dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
                     }
@@ -180,7 +183,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                 List<PesquisaManifestosModel> objSelect = this.objPesquisa.resultado.Where(c =>
                                        c.bCancelado == false &&
                                        c.bEnviado == true &&
-                                       c.status == "S" &&
+                                       c.status != "" &&
                                        c.protocolo != "" && c.bSeleciona
                                        ).ToList();
 
@@ -200,6 +203,152 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
 
                 throw;
             }
+        }
+
+        private void btnEncerramento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<PesquisaManifestosModel> objSelect = this.objPesquisa.resultado.Where(c =>
+                                       c.bCancelado == false &&
+                                       c.bEnviado == true &&
+                                       c.status == "S" &&
+                                       c.protocolo != "" && c.bSeleciona
+                                       ).ToList();
+
+                if (objSelect.Count() > 1)
+                {
+                    MessageBox.Show("Selecione apenas um manifesto por vez.", "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (objSelect.Count() == 1)
+                {
+                    frmEncerramentoMDFe objfrm = new frmEncerramentoMDFe(objSelect.FirstOrDefault());
+                    objfrm.ShowDialog();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        private void btnImpressao_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                List<PesquisaManifestosModel> objSelect = this.objPesquisa.resultado.Where(c =>
+                                       c.bEnviado == true &&
+                                       c.recibo != "" && c.bSeleciona && c.protocolo != ""
+                                       ).ToList();
+
+                objSelect = objPesquisa.resultado.ToList(); // PARA TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
+                List<belPrintMDFe> lResult = new List<belPrintMDFe>();
+                belPrintMDFe obj;
+
+                foreach (PesquisaManifestosModel item in objSelect)
+                {
+                    obj = new belPrintMDFe();
+                    string sPath = Util.BuscaCaminhoArquivoXml(item.chaveMDFe, 2);
+                    XmlDocument xml = new XmlDocument();
+                    xml.Load(sPath);
+                    XmlNodeList node = xml.GetElementsByTagName("infModal");
+
+                    TEnviMDFe objEnvi = SerializeClassToXml.DeserializeClasse<TEnviMDFe>(sPath);
+                    rodo objRodo = SerializeClassToXml.DeserializeClasseString<rodo>(node[0].InnerXml.ToString());
+
+                    obj.xEmpresa = string.Format("CNPJ:{0} IE:{1} RNTRC:{2} Razão Social:{3} Logradouro:{4} nº {5} Bairro:{6} UF:{7} Município:{8} Cep:{9}",
+                        objEnvi.MDFe.infMDFe.emit.CNPJ,
+                        objEnvi.MDFe.infMDFe.emit.IE,
+                        objRodo.RNTRC,
+                        objEnvi.MDFe.infMDFe.emit.xNome,
+                        objEnvi.MDFe.infMDFe.emit.enderEmit.xLgr,
+                        objEnvi.MDFe.infMDFe.emit.enderEmit.nro,
+                        objEnvi.MDFe.infMDFe.emit.enderEmit.xBairro,
+                        objEnvi.MDFe.infMDFe.emit.enderEmit.UF,
+                        objEnvi.MDFe.infMDFe.emit.enderEmit.xMun,
+                        objEnvi.MDFe.infMDFe.emit.enderEmit.CEP);
+
+                    obj.chave = item.chaveMDFe;
+                    obj.chave = item.protocolo;
+                    obj.serie = objEnvi.MDFe.infMDFe.ide.serie;
+                    obj.dataEmissao = Convert.ToDateTime(objEnvi.MDFe.infMDFe.ide.dhEmi).ToShortDateString();
+                    obj.CIOT = objRodo.CIOT;
+                    obj.qtdeCT = objEnvi.MDFe.infMDFe.tot.qCT == null ? "0" : objEnvi.MDFe.infMDFe.tot.qCT.ToString();
+                    obj.qtdeCTe = objEnvi.MDFe.infMDFe.tot.qCTe == null ? "0" : objEnvi.MDFe.infMDFe.tot.qCTe;
+                    obj.qtdeNF = objEnvi.MDFe.infMDFe.tot.qNF == null ? "0" : objEnvi.MDFe.infMDFe.tot.qNF;
+                    obj.qtdeNFe = objEnvi.MDFe.infMDFe.tot.qNFe == null ? "0" : objEnvi.MDFe.infMDFe.tot.qNFe;
+                    obj.pesoTotal = objEnvi.MDFe.infMDFe.tot.qCarga;
+
+                    obj.veicPlaca = objRodo.veicTracao.placa + Environment.NewLine;
+                    foreach (var v in objRodo.veicReboque)
+                    {
+                        obj.veicPlaca += v.placa + Environment.NewLine;
+                    }
+
+                    if (objRodo.veicTracao.prop != null)
+                        obj.veicRNTRC = objRodo.veicTracao.prop.RNTRC + Environment.NewLine;
+
+                    foreach (var v in objRodo.veicReboque)
+                    {
+                        if (v.prop != null)
+                            obj.veicRNTRC += v.prop.RNTRC + Environment.NewLine;
+                    }
+                    if (objRodo.veicTracao.condutor != null)
+                    {
+                        foreach (var cond in objRodo.veicTracao.condutor)
+                        {
+                            obj.Condutor_cpf += cond.CPF + Environment.NewLine;
+                            obj.Condutor_Nome += cond.xNome + Environment.NewLine;
+                        }
+                    }
+
+                    if (objRodo.valePed != null)
+                    {
+                        foreach (var vale in objRodo.valePed)
+                        {
+                            obj.Pedagio_Resp_cnp += vale.CNPJPg + Environment.NewLine;
+                            obj.Pedagio_Forn_cnpj += vale.CNPJForn + Environment.NewLine;
+                            obj.Pedagio_comprovante += vale.nCompra + Environment.NewLine;
+                        }
+                    }
+
+                    string sDocEletronico = "{0} - Chave: {1}{2}";
+                    foreach (var doc in objEnvi.MDFe.infMDFe.infDoc)
+                    {
+                        if (doc.infCTe != null)
+                            foreach (var cte in doc.infCTe)
+                            {
+                                obj.documentos_Fiscais = string.Format(sDocEletronico, "CTe", cte.chCTe, Environment.NewLine);
+                            }
+                        if (doc.infNFe != null)
+                            foreach (var nfe in doc.infNFe)
+                            {
+                                obj.documentos_Fiscais = string.Format(sDocEletronico, "NFe", nfe.chNFe, Environment.NewLine);
+                            }
+                        if (doc.infNF != null)
+                            foreach (var nf in doc.infNF)
+                            {
+                                obj.documentos_Fiscais = string.Format("{0} - CNPJ{1} - Serie:{2} - Nº {3}{4}", "NF", nf.CNPJ, nf.serie, nf.nNF, Environment.NewLine);
+                            }
+                        if (doc.infCT != null)
+                            foreach (var ct in doc.infCT)
+                            {
+                                obj.documentos_Fiscais = string.Format("{0} - Serie:{1} - Nº {2}{3}", "CT", ct.serie, ct.nCT, Environment.NewLine);
+                            }
+                    }
+                    if (objEnvi.MDFe.infMDFe.infAdic != null)
+                        obj.observacao = objEnvi.MDFe.infMDFe.infAdic.infCpl;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
 

@@ -603,7 +603,15 @@ namespace HLP.GeraXml.Comum.Static
                     {
                         Directory.CreateDirectory((iTipo == 2 ? Pastas.ENVIADOS : Pastas.ENVIO) + sChaveNFe.Substring(2, 4));
                     }
-                    sCaminho = (iTipo == 2 ? Pastas.ENVIADOS : Pastas.ENVIO) + sChaveNFe.Substring(2, 4) + "\\" + sChaveNFe + "-nfe.xml";
+                    if (Acesso.NM_RAMO == Acesso.BancoDados.TRANSPORTE)
+                    {
+                        sCaminho = (iTipo == 2 ? Pastas.ENVIADOS : Pastas.ENVIO) + sChaveNFe.Substring(2, 4) + "\\" + sChaveNFe + "-mdfe.xml";
+                    }
+                    else
+                    {
+                        sCaminho = (iTipo == 2 ? Pastas.ENVIADOS : Pastas.ENVIO) + sChaveNFe.Substring(2, 4) + "\\" + sChaveNFe + "-nfe.xml";
+                    }
+                    
                 }
                 return sCaminho;
             }

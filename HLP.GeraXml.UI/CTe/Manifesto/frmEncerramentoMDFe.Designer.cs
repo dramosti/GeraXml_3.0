@@ -28,34 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblDescricao = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.cbxCidades = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnCancelar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.lblDescricao = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.cbxCidades = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.cbxCidades)).BeginInit();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // btnSair
             // 
-            this.flowLayoutPanel1.Controls.Add(this.lblDescricao);
-            this.flowLayoutPanel1.Controls.Add(this.cbxCidades);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(256, 65);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.btnSair.Location = new System.Drawing.Point(167, 73);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(90, 25);
+            this.btnSair.TabIndex = 5;
+            this.btnSair.Values.Text = "Sair";
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(17, 73);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(137, 25);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Values.Text = "Encerrar MDFe";
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lblDescricao
             // 
-            this.lblDescricao.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblDescricao.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldPanel;
-            this.lblDescricao.Location = new System.Drawing.Point(3, 3);
+            this.lblDescricao.Location = new System.Drawing.Point(14, 0);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(243, 20);
-            this.lblDescricao.TabIndex = 1;
+            this.lblDescricao.TabIndex = 7;
             this.lblDescricao.Values.Text = "Selecione o município de encerramento.";
             // 
             // cbxCidades
@@ -66,7 +70,7 @@
             this.cbxCidades.DisplayMember = "DisplayMember";
             this.cbxCidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCidades.DropDownWidth = 116;
-            this.cbxCidades.Location = new System.Drawing.Point(3, 29);
+            this.cbxCidades.Location = new System.Drawing.Point(17, 29);
             this.cbxCidades.Name = "cbxCidades";
             this.cbxCidades.Size = new System.Drawing.Size(243, 21);
             this.cbxCidades.StateActive.ComboBox.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -87,51 +91,34 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.cbxCidades.StateDisabled.ComboBox.Border.Width = 1;
-            this.cbxCidades.TabIndex = 6;
+            this.cbxCidades.TabIndex = 8;
             this.cbxCidades.ValueMember = "ValueMember";
-            // 
-            // btnSair
-            // 
-            this.btnSair.Location = new System.Drawing.Point(159, 73);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(90, 25);
-            this.btnSair.TabIndex = 5;
-            this.btnSair.Values.Text = "Sair";
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(5, 73);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(147, 25);
-            this.btnCancelar.TabIndex = 4;
-            this.btnCancelar.Values.Text = "Encerrar MDFe";
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmEncerramentoMDFe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 110);
+            this.ClientSize = new System.Drawing.Size(274, 110);
+            this.Controls.Add(this.lblDescricao);
+            this.Controls.Add(this.cbxCidades);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "frmEncerramentoMDFe";
-            this.Text = "Encerramento de MDFe";
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Encerramento.";
             ((System.ComponentModel.ISupportInitialize)(this.cbxCidades)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        public ComponentFactory.Krypton.Toolkit.KryptonLabel lblDescricao;
-        public ComponentFactory.Krypton.Toolkit.KryptonComboBox cbxCidades;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancelar;
+        public ComponentFactory.Krypton.Toolkit.KryptonLabel lblDescricao;
+        public ComponentFactory.Krypton.Toolkit.KryptonComboBox cbxCidades;
 
     }
 }

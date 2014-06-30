@@ -65,6 +65,22 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
             this.enviMDFe.MDFe.infMDFe.infModal.versaoModal = Acesso.versaoMDFe;
             this.enviMDFe.MDFe.infMDFe.ide.cDV = GeraChaveMDFe().ToString();
             this.GeraXmlAndValida();
+
+            string sPathRodo = Pastas.ENVIO + this.enviMDFe.MDFe.infMDFe.Id.Substring(6, 4) + "\\rodo_" + this.enviMDFe.idLote + ".xml";
+            if (File.Exists(sPathRodo))
+                File.Delete(sPathRodo);
+            xml.Save(sPathRodo);
+
+            try
+            {
+                belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/mdfe", Pastas.SCHEMA_MDFe + "\\mdfeModalRodoviario_v1.00.xsd", sPathRodo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
             Envio = new belTransmiteMDFe(this.sPathLote, this.enviMDFe, this.xmlFinal);
         }
 
@@ -102,10 +118,16 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                     }
                 ).ToList();
             List<string> lUFPer = infMun.Select(c => c["UFPer"].ToString()).Distinct().ToList();
-            this.enviMDFe.MDFe.infMDFe.ide.infPercurso = new List<TMDFeInfMDFeIdeInfPercurso>();
             foreach (string uf in lUFPer)
             {
-                this.enviMDFe.MDFe.infMDFe.ide.infPercurso.Add(new TMDFeInfMDFeIdeInfPercurso { UFPer = uf });
+                if (this.enviMDFe.MDFe.infMDFe.ide.UFFim.Equals(uf) || this.enviMDFe.MDFe.infMDFe.ide.UFIni.Equals(uf))
+                {
+                    if (this.enviMDFe.MDFe.infMDFe.ide.infPercurso == null)
+                    {
+                        this.enviMDFe.MDFe.infMDFe.ide.infPercurso = new List<TMDFeInfMDFeIdeInfPercurso>();
+                    }
+                    this.enviMDFe.MDFe.infMDFe.ide.infPercurso.Add(new TMDFeInfMDFeIdeInfPercurso { UFPer = uf });
+                }
             }
 
 
@@ -172,28 +194,28 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                     }
                    ).ToArray();
 
-                    EnumerableRowCollection<DataRow> lNFs;
+                    //EnumerableRowCollection<DataRow> lNFs;
 
-                    foreach (string nr_lanc in infDoc.Where(w => w["xMunDescarga"].ToString() == doc.xMunDescarga).Select(c => c["nr_lanc"]).ToList())
-                    {
-                        lNFs = daoManifesto.GetInfNF(nrlanc: nr_lanc).AsEnumerable();
+                    //foreach (string nr_lanc in infDoc.Where(w => w["xMunDescarga"].ToString() == doc.xMunDescarga).Select(c => c["nr_lanc"]).ToList())
+                    //{
+                    //    lNFs = daoManifesto.GetInfNF(nrlanc: nr_lanc).AsEnumerable();
 
-                        doc.infNFe = lNFs.Where(c => c["chNFe"] != null).Select(c => new TMDFeInfMDFeInfMunDescargaInfNFe
-                        {
-                            chNFe = c["chNFe"].ToString()
-                        }).ToArray();
+                    //    doc.infNFe = lNFs.Where(c => c["chNFe"] != null).Select(c => new TMDFeInfMDFeInfMunDescargaInfNFe
+                    //    {
+                    //        chNFe = c["chNFe"].ToString()
+                    //    }).ToArray();
 
-                        doc.infNF = lNFs.Where(c => c["chNFe"] == null).Select(c => new TMDFeInfMDFeInfMunDescargaInfNF
-                        {
-                            CNPJ = Util.RetiraCaracterCNPJ(c["CNPJ"].ToString()),
-                            dEmi = Convert.ToDateTime(c["dEmi"].ToString()).ToString("yyyy-MM-dd"),
-                            nNF = c["nNF"].ToString(),
-                            serie = c["serie"].ToString(),
-                            UF = c["UF"].ToString(),
-                            vNF = c["vNF"].ToString(),
-                        }).ToArray();
+                    //    doc.infNF = lNFs.Where(c => c["chNFe"] == null).Select(c => new TMDFeInfMDFeInfMunDescargaInfNF
+                    //    {
+                    //        CNPJ = Util.RetiraCaracterCNPJ(c["CNPJ"].ToString()),
+                    //        dEmi = Convert.ToDateTime(c["dEmi"].ToString()).ToString("yyyy-MM-dd"),
+                    //        nNF = c["nNF"].ToString(),
+                    //        serie = c["serie"].ToString(),
+                    //        UF = c["UF"].ToString(),
+                    //        vNF = c["vNF"].ToString(),
+                    //    }).ToArray();
 
-                    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -269,6 +291,12 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                         }).FirstOrDefault();
 
                         objRodo.veicTracao.prop.ItemElementName = objRodo.veicTracao.prop.Item.ToString().Count() == 14 ? ItemChoiceType.CNPJ : ItemChoiceType.CPF;
+
+                        objRodo.veicTracao.condutor = daoManifesto.GetMotorista(objManifesto.sequencia).AsEnumerable().Select(c => new rodoVeicTracaoCondutor
+                        {
+                            xNome = c["xNome"].ToString(),
+                            CPF = Util.RetiraCaracterCNPJ(c["cpf"].ToString())
+                        }).ToArray();
                     }
 
                 }
@@ -375,8 +403,12 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 if (!Directory.Exists(Pastas.ENVIO + this.enviMDFe.MDFe.infMDFe.Id.Substring(6, 4)))
                     Directory.CreateDirectory(Pastas.ENVIO + this.enviMDFe.MDFe.infMDFe.Id.Substring(6, 4));
                 sPathLote = Pastas.ENVIO + this.enviMDFe.MDFe.infMDFe.Id.Substring(6, 4) + "\\Lote_" + this.enviMDFe.idLote + ".xml";
+
                 if (File.Exists(sPathLote))
                     File.Delete(sPathLote);
+
+
+
 
                 belAssinaXml Assinatura = new belAssinaXml();
                 XmlSerializerNamespaces ns = new XmlSerializerNamespaces();

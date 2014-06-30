@@ -121,11 +121,11 @@ namespace HLP.GeraXml.bel.MDFe
             get { return _Pedagio_comprovante; }
             set { _Pedagio_comprovante = value; }
         }
-        private string _Condutor_cnpj = "";
-        public string Condutor_cnpj
+        private string _Condutor_cpf = "";
+        public string Condutor_cpf
         {
-            get { return _Condutor_cnpj; }
-            set { _Condutor_cnpj = value; }
+            get { return _Condutor_cpf; }
+            set { _Condutor_cpf = value; }
         }
         private string _Condutor_Nome = "";
         public string Condutor_Nome

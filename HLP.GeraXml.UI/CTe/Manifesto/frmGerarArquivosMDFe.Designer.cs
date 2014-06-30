@@ -61,12 +61,13 @@
             this.btnBuscaRetorno = new System.Windows.Forms.ToolStripButton();
             this.btnConsultaNFe = new System.Windows.Forms.ToolStripButton();
             this.btnEncerramento = new System.Windows.Forms.ToolStripButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.recibo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboStatus = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.dtpIni = new HLP.GeraXml.Comum.Componentes.HLP_DateTimePicker();
             this.dtpFim = new HLP.GeraXml.Comum.Componentes.HLP_DateTimePicker();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.bsGrid = new System.Windows.Forms.BindingSource(this.components);
             this.bSelecionaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cdempresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sequenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,9 +75,8 @@
             this.dtmanifeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.recibo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsGrid = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArquivos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
@@ -355,6 +355,7 @@
             this.btnImpressao.Name = "btnImpressao";
             this.btnImpressao.Size = new System.Drawing.Size(77, 20);
             this.btnImpressao.Text = "Damdf-e";
+            this.btnImpressao.Click += new System.EventHandler(this.btnImpressao_Click);
             // 
             // btnBuscaRetorno
             // 
@@ -383,6 +384,39 @@
             this.btnEncerramento.Name = "btnEncerramento";
             this.btnEncerramento.Size = new System.Drawing.Size(106, 20);
             this.btnEncerramento.Text = "Encerramento";
+            this.btnEncerramento.Click += new System.EventHandler(this.btnEncerramento_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightCyan;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Location = new System.Drawing.Point(423, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(21, 20);
+            this.panel3.TabIndex = 234;
+            // 
+            // kryptonLabel4
+            // 
+            this.kryptonLabel4.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldPanel;
+            this.kryptonLabel4.Location = new System.Drawing.Point(450, 3);
+            this.kryptonLabel4.Name = "kryptonLabel4";
+            this.kryptonLabel4.Size = new System.Drawing.Size(99, 20);
+            this.kryptonLabel4.TabIndex = 235;
+            this.kryptonLabel4.Values.Text = "Buscar Retorno";
+            // 
+            // recibo
+            // 
+            this.recibo.DataPropertyName = "recibo";
+            this.recibo.HeaderText = "recibo";
+            this.recibo.Name = "recibo";
+            this.recibo.Visible = false;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "status";
+            this.status.Name = "status";
+            this.status.Visible = false;
             // 
             // cboStatus
             // 
@@ -443,28 +477,6 @@
             this.dtpFim.TabIndex = 11;
             this.dtpFim.Value = new System.DateTime(2012, 5, 7, 14, 58, 27, 875);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.LightCyan;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Location = new System.Drawing.Point(423, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(21, 20);
-            this.panel3.TabIndex = 234;
-            // 
-            // kryptonLabel4
-            // 
-            this.kryptonLabel4.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldPanel;
-            this.kryptonLabel4.Location = new System.Drawing.Point(450, 3);
-            this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(99, 20);
-            this.kryptonLabel4.TabIndex = 235;
-            this.kryptonLabel4.Values.Text = "Buscar Retorno";
-            // 
-            // bsGrid
-            // 
-            this.bsGrid.DataSource = typeof(HLP.GeraXml.bel.MDFe.PesquisaManifestosModel);
-            // 
             // bSelecionaDataGridViewCheckBoxColumn
             // 
             this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
@@ -511,13 +523,6 @@
             this.bCancelado.Name = "bCancelado";
             this.bCancelado.Visible = false;
             // 
-            // recibo
-            // 
-            this.recibo.DataPropertyName = "recibo";
-            this.recibo.HeaderText = "recibo";
-            this.recibo.Name = "recibo";
-            this.recibo.Visible = false;
-            // 
             // descricaoDataGridViewTextBoxColumn
             // 
             this.descricaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -525,12 +530,9 @@
             this.descricaoDataGridViewTextBoxColumn.HeaderText = "Placa";
             this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
             // 
-            // status
+            // bsGrid
             // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "status";
-            this.status.Name = "status";
-            this.status.Visible = false;
+            this.bsGrid.DataSource = typeof(HLP.GeraXml.bel.MDFe.PesquisaManifestosModel);
             // 
             // frmGerarArquivosMDFe
             // 

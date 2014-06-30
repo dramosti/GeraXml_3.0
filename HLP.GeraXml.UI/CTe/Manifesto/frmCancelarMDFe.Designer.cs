@@ -119,7 +119,9 @@
             this.ClientSize = new System.Drawing.Size(428, 194);
             this.Controls.Add(this.kryptonPanel);
             this.Name = "frmCancelarMDFe";
-            this.Text = "frmCancelarMDFe";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "CancelarMDFe";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
             this.kryptonPanel.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
