@@ -374,7 +374,7 @@ namespace HLP.GeraXml.bel.MDFe
         }
     }
 
-    
+
 
 
     /// <remarks/>
@@ -605,6 +605,31 @@ namespace HLP.GeraXml.bel.MDFe
         }
 
         /// <remarks/>
+        /// 
+
+        public string xTpCar
+        {
+            get
+            {
+                switch (this.tpCar)
+                {
+                    case rodoVeicReboqueTpCar.Item00:
+                        return "Não Aplicável";
+                    case rodoVeicReboqueTpCar.Item01:
+                        return "Aberta";
+                    case rodoVeicReboqueTpCar.Item02:
+                        return "Fechada/Baú";
+                    case rodoVeicReboqueTpCar.Item03:
+                        return "Granelera";
+                    case rodoVeicReboqueTpCar.Item04:
+                        return "Porta-contêiner";
+                    case rodoVeicReboqueTpCar.Item05:
+                    default:
+                        return "Sider";
+                }
+            }
+        }
+
         public rodoVeicReboqueTpCar tpCar
         {
             get
@@ -769,6 +794,7 @@ namespace HLP.GeraXml.bel.MDFe
         [System.Xml.Serialization.XmlEnumAttribute("2")]
         Item2,
     }
+
 
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]

@@ -231,15 +231,12 @@ namespace HLP.GeraXml.Comum.Forms
 
         #endregion
 
-        private System.Windows.Forms.ToolStripButton btnAtualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnEnviar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton btnCancelar;
         private System.Windows.Forms.ToolStripButton btnSair;
         public System.Windows.Forms.BindingSource bsNotas;
-        public ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel;
         public System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.ToolStripButton btnPrimeiro;
         public System.Windows.Forms.ToolStripButton btnProximo;
@@ -248,6 +245,9 @@ namespace HLP.GeraXml.Comum.Forms
         public System.Windows.Forms.ToolStripButton btnUltimo;
         public System.Windows.Forms.ToolStripButton btnAnterior;
         public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        protected System.Windows.Forms.ToolStripButton btnAtualizar;
+        protected System.Windows.Forms.ToolStripButton btnCancelar;
+        public ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel;
     }
 }
 
