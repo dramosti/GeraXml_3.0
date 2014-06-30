@@ -10,7 +10,6 @@ namespace HLP.GeraXml.dao.NFe
     {
         public void gravaRecibo(string sRecibo, string seqNF)
         {
-
             try
             {
                 StringBuilder sSql = new StringBuilder();

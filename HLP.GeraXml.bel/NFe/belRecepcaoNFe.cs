@@ -126,7 +126,7 @@ namespace HLP.GeraXml.bel.NFe
                                 else
                                 {
                                     HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.nfeCabecMsg();
-                                    HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.NfeRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.NfeRecepcao2();                                  
+                                    HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.NfeRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeRecepcao_MS.NfeRecepcao2();
                                     belUF objbelUf = new belUF();
                                     cabec.cUF = Acesso.cUF.ToString();
                                     cabec.versaoDados = Acesso.versaoNFe;

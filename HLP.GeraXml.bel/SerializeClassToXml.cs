@@ -34,6 +34,26 @@ namespace HLP.GeraXml.bel
             textReader.Dispose();
             return config;
         }
+        public static T DeserializeClasseString<T>(string xml) where T : class
+        {
+            try
+            {
+                XmlSerializer deserializer = new XmlSerializer(typeof(T));
+                using (TextReader textReader = new StringReader(xml))
+                {
+                    T config;
+                    config = (T)deserializer.Deserialize(textReader);
+                    textReader.Close();
+                    textReader.Dispose();
+                    return config;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
 
     }
 }
