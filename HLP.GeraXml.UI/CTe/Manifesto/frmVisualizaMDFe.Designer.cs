@@ -43,7 +43,7 @@
             this.txtNmdf = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtCmdf = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtCdv = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
-            this.txtModal = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
+            this.cboModal = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.txtDhEmi = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.cboTpEmis = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.txtProcEmi = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
@@ -54,6 +54,8 @@
             this.kryptonTabControl8 = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
             this.tabPage16 = new System.Windows.Forms.TabPage();
             this.dgvProd = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.cMunCarregaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMunCarregaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsInfMunicipios = new System.Windows.Forms.BindingSource(this.components);
             this.kp14 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kp2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -112,11 +114,11 @@
             this.tabPage13 = new System.Windows.Forms.TabPage();
             this.kryptonDataGridView5 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.cIntDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xTpCar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.placaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capKGDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capM3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tpCarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uFDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsVeicReboc = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonTabControl7 = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
@@ -181,15 +183,13 @@
             this.txtQNfe = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtQNf = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.txtVCarga = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
-            this.txtCUnid = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
+            this.cboCUnid = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
             this.txtQCarga = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.kryptonDataGridView7 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.bsInformacaoPercurso = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cMunCarregaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMunCarregaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsInformacaoPercurso = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(base.kryptonPanel)).BeginInit();
             base.kryptonPanel.SuspendLayout();
@@ -331,7 +331,7 @@
             this.flowLayoutPanel1.Controls.Add(this.txtNmdf);
             this.flowLayoutPanel1.Controls.Add(this.txtCmdf);
             this.flowLayoutPanel1.Controls.Add(this.txtCdv);
-            this.flowLayoutPanel1.Controls.Add(this.txtModal);
+            this.flowLayoutPanel1.Controls.Add(this.cboModal);
             this.flowLayoutPanel1.Controls.Add(this.txtDhEmi);
             this.flowLayoutPanel1.Controls.Add(this.cboTpEmis);
             this.flowLayoutPanel1.Controls.Add(this.txtProcEmi);
@@ -398,7 +398,7 @@
             this.cbotpAmb._LabelText = "Tp do Ambiente";
             this.cbotpAmb._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.SIM;
             this.cbotpAmb._situacao = false;
-            this.cbotpAmb._TamanhoComboBox = 142;
+            this.cbotpAmb._TamanhoComboBox = 213;
             this.cbotpAmb._TamanhoMaiorLabel = 220;
             this.cbotpAmb._Visible = true;
             this.cbotpAmb.AutoSize = true;
@@ -411,17 +411,17 @@
             this.cbotpAmb.Name = "cbotpAmb";
             this.cbotpAmb.SelectedIndex = -1;
             this.cbotpAmb.SelectedValue = 0;
-            this.cbotpAmb.Size = new System.Drawing.Size(246, 23);
+            this.cbotpAmb.Size = new System.Drawing.Size(317, 23);
             this.cbotpAmb.TabIndex = 9;
             this.cbotpAmb.ValueMember = "ValueMember";
             // 
             // cboTpEmit
             // 
             this.cboTpEmit._Itens = ((System.Collections.Generic.List<string>)(resources.GetObject("cboTpEmit._Itens")));
-            this.cboTpEmit._LabelText = "Tipo do Emiente";
+            this.cboTpEmit._LabelText = "Tp do Emiente";
             this.cboTpEmit._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.SIM;
             this.cboTpEmit._situacao = false;
-            this.cboTpEmit._TamanhoComboBox = 142;
+            this.cboTpEmit._TamanhoComboBox = 224;
             this.cboTpEmit._TamanhoMaiorLabel = 220;
             this.cboTpEmit._Visible = true;
             this.cboTpEmit.AutoSize = true;
@@ -434,7 +434,7 @@
             this.cboTpEmit.Name = "cboTpEmit";
             this.cboTpEmit.SelectedIndex = -1;
             this.cboTpEmit.SelectedValue = 0;
-            this.cboTpEmit.Size = new System.Drawing.Size(248, 24);
+            this.cboTpEmit.Size = new System.Drawing.Size(319, 24);
             this.cboTpEmit.TabIndex = 12;
             this.cboTpEmit.ValueMember = "ValueMember";
             // 
@@ -553,28 +553,28 @@
             this.txtCdv.Size = new System.Drawing.Size(305, 22);
             this.txtCdv.TabIndex = 17;
             // 
-            // txtModal
+            // cboModal
             // 
-            this.txtModal._LabelText = "Modalidade de transporte";
-            this.txtModal._Multiline = false;
-            this.txtModal._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
-            this.txtModal._Password = false;
-            this.txtModal._Regex = Expressoes.Não_Aplica;
-            this.txtModal._Regex_Expressao = null;
-            this.txtModal._TamanhoMaiorLabel = 220;
-            this.txtModal._TamanhoTextBox = 255;
-            this.txtModal._Visible = true;
-            this.txtModal.AutoSize = true;
-            this.txtModal.BackColor = System.Drawing.Color.Transparent;
-            this.txtModal.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtModal.Color = System.Drawing.Color.White;
-            this.txtModal.Location = new System.Drawing.Point(61, 263);
-            this.txtModal.Margin = new System.Windows.Forms.Padding(61, 3, 15, 3);
-            this.txtModal.MaxLength = 32767;
-            this.txtModal.Name = "txtModal";
-            this.txtModal.ReadOnly = false;
-            this.txtModal.Size = new System.Drawing.Size(417, 25);
-            this.txtModal.TabIndex = 18;
+            this.cboModal._Itens = ((System.Collections.Generic.List<string>)(resources.GetObject("cboModal._Itens")));
+            this.cboModal._LabelText = "Modalidade de transporte";
+            this.cboModal._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.NÃO;
+            this.cboModal._situacao = false;
+            this.cboModal._TamanhoComboBox = 173;
+            this.cboModal._TamanhoMaiorLabel = 220;
+            this.cboModal._Visible = true;
+            this.cboModal.AutoSize = true;
+            this.cboModal.BackColor = System.Drawing.Color.Transparent;
+            this.cboModal.Color = System.Drawing.Color.White;
+            this.cboModal.DataSource = null;
+            this.cboModal.DisplayMember = "DisplayMember";
+            this.cboModal.Location = new System.Drawing.Point(61, 263);
+            this.cboModal.Margin = new System.Windows.Forms.Padding(61, 3, 15, 3);
+            this.cboModal.Name = "cboModal";
+            this.cboModal.SelectedIndex = -1;
+            this.cboModal.SelectedValue = 0;
+            this.cboModal.Size = new System.Drawing.Size(335, 23);
+            this.cboModal.TabIndex = 26;
+            this.cboModal.ValueMember = "ValueMember";
             // 
             // txtDhEmi
             // 
@@ -591,7 +591,7 @@
             this.txtDhEmi.BackColor = System.Drawing.Color.Transparent;
             this.txtDhEmi.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtDhEmi.Color = System.Drawing.Color.White;
-            this.txtDhEmi.Location = new System.Drawing.Point(76, 294);
+            this.txtDhEmi.Location = new System.Drawing.Point(76, 292);
             this.txtDhEmi.Margin = new System.Windows.Forms.Padding(76, 3, 15, 3);
             this.txtDhEmi.MaxLength = 32767;
             this.txtDhEmi.Name = "txtDhEmi";
@@ -613,7 +613,7 @@
             this.cboTpEmis.Color = System.Drawing.Color.White;
             this.cboTpEmis.DataSource = null;
             this.cboTpEmis.DisplayMember = "DisplayMember";
-            this.cboTpEmis.Location = new System.Drawing.Point(108, 320);
+            this.cboTpEmis.Location = new System.Drawing.Point(108, 318);
             this.cboTpEmis.Margin = new System.Windows.Forms.Padding(108, 3, 15, 3);
             this.cboTpEmis.Name = "cboTpEmis";
             this.cboTpEmis.SelectedIndex = -1;
@@ -791,6 +791,22 @@
             this.dgvProd.RowHeadersWidth = 25;
             this.dgvProd.Size = new System.Drawing.Size(1114, 98);
             this.dgvProd.TabIndex = 119;
+            // 
+            // cMunCarregaDataGridViewTextBoxColumn
+            // 
+            this.cMunCarregaDataGridViewTextBoxColumn.DataPropertyName = "cMunCarrega";
+            this.cMunCarregaDataGridViewTextBoxColumn.HeaderText = "Cód. Município de Carregamento";
+            this.cMunCarregaDataGridViewTextBoxColumn.Name = "cMunCarregaDataGridViewTextBoxColumn";
+            this.cMunCarregaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cMunCarregaDataGridViewTextBoxColumn.Width = 250;
+            // 
+            // xMunCarregaDataGridViewTextBoxColumn
+            // 
+            this.xMunCarregaDataGridViewTextBoxColumn.DataPropertyName = "xMunCarrega";
+            this.xMunCarregaDataGridViewTextBoxColumn.HeaderText = "Nome Município de Carregamento";
+            this.xMunCarregaDataGridViewTextBoxColumn.Name = "xMunCarregaDataGridViewTextBoxColumn";
+            this.xMunCarregaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.xMunCarregaDataGridViewTextBoxColumn.Width = 250;
             // 
             // bsInfMunicipios
             // 
@@ -1809,11 +1825,11 @@
             this.kryptonDataGridView5.AutoGenerateColumns = false;
             this.kryptonDataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cIntDataGridViewTextBoxColumn,
+            this.xTpCar,
             this.placaDataGridViewTextBoxColumn,
             this.taraDataGridViewTextBoxColumn,
             this.capKGDataGridViewTextBoxColumn,
             this.capM3DataGridViewTextBoxColumn,
-            this.tpCarDataGridViewTextBoxColumn,
             this.uFDataGridViewTextBoxColumn1});
             this.kryptonDataGridView5.DataSource = this.bsVeicReboc;
             this.kryptonDataGridView5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1829,42 +1845,49 @@
             this.cIntDataGridViewTextBoxColumn.DataPropertyName = "cInt";
             this.cIntDataGridViewTextBoxColumn.HeaderText = "Cód. Interno";
             this.cIntDataGridViewTextBoxColumn.Name = "cIntDataGridViewTextBoxColumn";
+            this.cIntDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // xTpCar
+            // 
+            this.xTpCar.DataPropertyName = "xTpCar";
+            this.xTpCar.HeaderText = "Tipo de Carroceria";
+            this.xTpCar.Name = "xTpCar";
+            this.xTpCar.ReadOnly = true;
             // 
             // placaDataGridViewTextBoxColumn
             // 
             this.placaDataGridViewTextBoxColumn.DataPropertyName = "placa";
             this.placaDataGridViewTextBoxColumn.HeaderText = "Placa";
             this.placaDataGridViewTextBoxColumn.Name = "placaDataGridViewTextBoxColumn";
+            this.placaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // taraDataGridViewTextBoxColumn
             // 
             this.taraDataGridViewTextBoxColumn.DataPropertyName = "tara";
             this.taraDataGridViewTextBoxColumn.HeaderText = "Tara";
             this.taraDataGridViewTextBoxColumn.Name = "taraDataGridViewTextBoxColumn";
+            this.taraDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // capKGDataGridViewTextBoxColumn
             // 
             this.capKGDataGridViewTextBoxColumn.DataPropertyName = "capKG";
             this.capKGDataGridViewTextBoxColumn.HeaderText = "Capac. em KG";
             this.capKGDataGridViewTextBoxColumn.Name = "capKGDataGridViewTextBoxColumn";
+            this.capKGDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // capM3DataGridViewTextBoxColumn
             // 
             this.capM3DataGridViewTextBoxColumn.DataPropertyName = "capM3";
             this.capM3DataGridViewTextBoxColumn.HeaderText = "Capac. em M3";
             this.capM3DataGridViewTextBoxColumn.Name = "capM3DataGridViewTextBoxColumn";
-            // 
-            // tpCarDataGridViewTextBoxColumn
-            // 
-            this.tpCarDataGridViewTextBoxColumn.DataPropertyName = "tpCar";
-            this.tpCarDataGridViewTextBoxColumn.HeaderText = "Tipo de Carroceria";
-            this.tpCarDataGridViewTextBoxColumn.Name = "tpCarDataGridViewTextBoxColumn";
+            this.capM3DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // uFDataGridViewTextBoxColumn1
             // 
             this.uFDataGridViewTextBoxColumn1.DataPropertyName = "UF";
             this.uFDataGridViewTextBoxColumn1.HeaderText = "UF";
             this.uFDataGridViewTextBoxColumn1.Name = "uFDataGridViewTextBoxColumn1";
+            this.uFDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // bsVeicReboc
             // 
@@ -2093,7 +2116,7 @@
             this.cboTpPropReboc._LabelText = "Tipo Proprietário";
             this.cboTpPropReboc._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.NÃO;
             this.cboTpPropReboc._situacao = false;
-            this.cboTpPropReboc._TamanhoComboBox = 57;
+            this.cboTpPropReboc._TamanhoComboBox = 168;
             this.cboTpPropReboc._TamanhoMaiorLabel = 120;
             this.cboTpPropReboc._Visible = true;
             this.cboTpPropReboc.AutoSize = true;
@@ -2106,7 +2129,7 @@
             this.cboTpPropReboc.Name = "cboTpPropReboc";
             this.cboTpPropReboc.SelectedIndex = -1;
             this.cboTpPropReboc.SelectedValue = 0;
-            this.cboTpPropReboc.Size = new System.Drawing.Size(167, 22);
+            this.cboTpPropReboc.Size = new System.Drawing.Size(278, 22);
             this.cboTpPropReboc.TabIndex = 20;
             this.cboTpPropReboc.ValueMember = "ValueMember";
             // 
@@ -2293,6 +2316,7 @@
             this.kryptonDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView1.Location = new System.Drawing.Point(0, 0);
             this.kryptonDataGridView1.Name = "kryptonDataGridView1";
+            this.kryptonDataGridView1.ReadOnly = true;
             this.kryptonDataGridView1.RowHeadersWidth = 25;
             this.kryptonDataGridView1.Size = new System.Drawing.Size(1106, 350);
             this.kryptonDataGridView1.TabIndex = 120;
@@ -2302,12 +2326,16 @@
             this.chCTeDataGridViewTextBoxColumn.DataPropertyName = "chCTe";
             this.chCTeDataGridViewTextBoxColumn.HeaderText = "Chave de Acesso Cte";
             this.chCTeDataGridViewTextBoxColumn.Name = "chCTeDataGridViewTextBoxColumn";
+            this.chCTeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.chCTeDataGridViewTextBoxColumn.Width = 300;
             // 
             // segCodBarraDataGridViewTextBoxColumn
             // 
             this.segCodBarraDataGridViewTextBoxColumn.DataPropertyName = "SegCodBarra";
             this.segCodBarraDataGridViewTextBoxColumn.HeaderText = "Segundo Cód. de Barras";
             this.segCodBarraDataGridViewTextBoxColumn.Name = "segCodBarraDataGridViewTextBoxColumn";
+            this.segCodBarraDataGridViewTextBoxColumn.ReadOnly = true;
+            this.segCodBarraDataGridViewTextBoxColumn.Width = 200;
             // 
             // bsInfCte
             // 
@@ -2350,6 +2378,7 @@
             this.kryptonDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView2.Location = new System.Drawing.Point(0, 0);
             this.kryptonDataGridView2.Name = "kryptonDataGridView2";
+            this.kryptonDataGridView2.ReadOnly = true;
             this.kryptonDataGridView2.RowHeadersWidth = 25;
             this.kryptonDataGridView2.Size = new System.Drawing.Size(1106, 350);
             this.kryptonDataGridView2.TabIndex = 121;
@@ -2359,30 +2388,37 @@
             this.nCTDataGridViewTextBoxColumn.DataPropertyName = "nCT";
             this.nCTDataGridViewTextBoxColumn.HeaderText = "Número";
             this.nCTDataGridViewTextBoxColumn.Name = "nCTDataGridViewTextBoxColumn";
+            this.nCTDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nCTDataGridViewTextBoxColumn.Width = 200;
             // 
             // serieDataGridViewTextBoxColumn
             // 
             this.serieDataGridViewTextBoxColumn.DataPropertyName = "serie";
             this.serieDataGridViewTextBoxColumn.HeaderText = "Série";
             this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
+            this.serieDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // subserDataGridViewTextBoxColumn
             // 
             this.subserDataGridViewTextBoxColumn.DataPropertyName = "subser";
             this.subserDataGridViewTextBoxColumn.HeaderText = "Subsérie";
             this.subserDataGridViewTextBoxColumn.Name = "subserDataGridViewTextBoxColumn";
+            this.subserDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dEmiDataGridViewTextBoxColumn
             // 
             this.dEmiDataGridViewTextBoxColumn.DataPropertyName = "dEmi";
             this.dEmiDataGridViewTextBoxColumn.HeaderText = "Data de Emissão";
             this.dEmiDataGridViewTextBoxColumn.Name = "dEmiDataGridViewTextBoxColumn";
+            this.dEmiDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // vCargaDataGridViewTextBoxColumn
             // 
             this.vCargaDataGridViewTextBoxColumn.DataPropertyName = "vCarga";
             this.vCargaDataGridViewTextBoxColumn.HeaderText = "Valor total da Carga";
             this.vCargaDataGridViewTextBoxColumn.Name = "vCargaDataGridViewTextBoxColumn";
+            this.vCargaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.vCargaDataGridViewTextBoxColumn.Width = 150;
             // 
             // bsInfCt
             // 
@@ -2421,6 +2457,7 @@
             this.kryptonDataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView3.Location = new System.Drawing.Point(0, 0);
             this.kryptonDataGridView3.Name = "kryptonDataGridView3";
+            this.kryptonDataGridView3.ReadOnly = true;
             this.kryptonDataGridView3.RowHeadersWidth = 25;
             this.kryptonDataGridView3.Size = new System.Drawing.Size(1106, 350);
             this.kryptonDataGridView3.TabIndex = 121;
@@ -2430,12 +2467,16 @@
             this.chNFeDataGridViewTextBoxColumn.DataPropertyName = "chNFe";
             this.chNFeDataGridViewTextBoxColumn.HeaderText = "Nfe";
             this.chNFeDataGridViewTextBoxColumn.Name = "chNFeDataGridViewTextBoxColumn";
+            this.chNFeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.chNFeDataGridViewTextBoxColumn.Width = 250;
             // 
             // segCodBarraDataGridViewTextBoxColumn1
             // 
             this.segCodBarraDataGridViewTextBoxColumn1.DataPropertyName = "SegCodBarra";
             this.segCodBarraDataGridViewTextBoxColumn1.HeaderText = "Segundo Cód. de Barras";
             this.segCodBarraDataGridViewTextBoxColumn1.Name = "segCodBarraDataGridViewTextBoxColumn1";
+            this.segCodBarraDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.segCodBarraDataGridViewTextBoxColumn1.Width = 200;
             // 
             // bsInfNfe
             // 
@@ -2471,6 +2512,7 @@
             this.kryptonDataGridView4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonDataGridView4.Location = new System.Drawing.Point(0, 0);
             this.kryptonDataGridView4.Name = "kryptonDataGridView4";
+            this.kryptonDataGridView4.ReadOnly = true;
             this.kryptonDataGridView4.RowHeadersWidth = 25;
             this.kryptonDataGridView4.Size = new System.Drawing.Size(1106, 350);
             this.kryptonDataGridView4.TabIndex = 121;
@@ -2480,42 +2522,49 @@
             this.cNPJDataGridViewTextBoxColumn.DataPropertyName = "CNPJ";
             this.cNPJDataGridViewTextBoxColumn.HeaderText = "CNPJ";
             this.cNPJDataGridViewTextBoxColumn.Name = "cNPJDataGridViewTextBoxColumn";
+            this.cNPJDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // uFDataGridViewTextBoxColumn
             // 
             this.uFDataGridViewTextBoxColumn.DataPropertyName = "UF";
             this.uFDataGridViewTextBoxColumn.HeaderText = "UF";
             this.uFDataGridViewTextBoxColumn.Name = "uFDataGridViewTextBoxColumn";
+            this.uFDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nNFDataGridViewTextBoxColumn
             // 
             this.nNFDataGridViewTextBoxColumn.DataPropertyName = "nNF";
             this.nNFDataGridViewTextBoxColumn.HeaderText = "Número";
             this.nNFDataGridViewTextBoxColumn.Name = "nNFDataGridViewTextBoxColumn";
+            this.nNFDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // serieDataGridViewTextBoxColumn1
             // 
             this.serieDataGridViewTextBoxColumn1.DataPropertyName = "serie";
             this.serieDataGridViewTextBoxColumn1.HeaderText = "Série";
             this.serieDataGridViewTextBoxColumn1.Name = "serieDataGridViewTextBoxColumn1";
+            this.serieDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dEmiDataGridViewTextBoxColumn1
             // 
             this.dEmiDataGridViewTextBoxColumn1.DataPropertyName = "dEmi";
             this.dEmiDataGridViewTextBoxColumn1.HeaderText = "Data de Emissão";
             this.dEmiDataGridViewTextBoxColumn1.Name = "dEmiDataGridViewTextBoxColumn1";
+            this.dEmiDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // vNFDataGridViewTextBoxColumn
             // 
             this.vNFDataGridViewTextBoxColumn.DataPropertyName = "vNF";
             this.vNFDataGridViewTextBoxColumn.HeaderText = "Valor Total";
             this.vNFDataGridViewTextBoxColumn.Name = "vNFDataGridViewTextBoxColumn";
+            this.vNFDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // pINDataGridViewTextBoxColumn
             // 
             this.pINDataGridViewTextBoxColumn.DataPropertyName = "PIN";
             this.pINDataGridViewTextBoxColumn.HeaderText = "PIN SUFRAMA";
             this.pINDataGridViewTextBoxColumn.Name = "pINDataGridViewTextBoxColumn";
+            this.pINDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bsInfNf
             // 
@@ -2605,7 +2654,7 @@
             this.flowLayoutPanel5.Controls.Add(this.txtQNfe);
             this.flowLayoutPanel5.Controls.Add(this.txtQNf);
             this.flowLayoutPanel5.Controls.Add(this.txtVCarga);
-            this.flowLayoutPanel5.Controls.Add(this.txtCUnid);
+            this.flowLayoutPanel5.Controls.Add(this.cboCUnid);
             this.flowLayoutPanel5.Controls.Add(this.txtQCarga);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -2729,28 +2778,28 @@
             this.txtVCarga.Size = new System.Drawing.Size(435, 21);
             this.txtVCarga.TabIndex = 17;
             // 
-            // txtCUnid
+            // cboCUnid
             // 
-            this.txtCUnid._LabelText = "Cód. Un. Medida Peso Bruto da Carga/Mercadorias Transportadas";
-            this.txtCUnid._Multiline = false;
-            this.txtCUnid._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.SIM;
-            this.txtCUnid._Password = false;
-            this.txtCUnid._Regex = Expressoes.Não_Aplica;
-            this.txtCUnid._Regex_Expressao = null;
-            this.txtCUnid._TamanhoMaiorLabel = 400;
-            this.txtCUnid._TamanhoTextBox = 194;
-            this.txtCUnid._Visible = true;
-            this.txtCUnid.AutoSize = true;
-            this.txtCUnid.BackColor = System.Drawing.Color.Transparent;
-            this.txtCUnid.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtCUnid.Color = System.Drawing.Color.White;
-            this.txtCUnid.Location = new System.Drawing.Point(10, 141);
-            this.txtCUnid.Margin = new System.Windows.Forms.Padding(10, 3, 15, 3);
-            this.txtCUnid.MaxLength = 32767;
-            this.txtCUnid.Name = "txtCUnid";
-            this.txtCUnid.ReadOnly = false;
-            this.txtCUnid.Size = new System.Drawing.Size(587, 24);
-            this.txtCUnid.TabIndex = 18;
+            this.cboCUnid._Itens = ((System.Collections.Generic.List<string>)(resources.GetObject("cboCUnid._Itens")));
+            this.cboCUnid._LabelText = "Cód. Un. Medida Peso Bruto da Carga/Mercadorias Transportadas";
+            this.cboCUnid._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_ComboBox.CampoObrigatorio.NÃO;
+            this.cboCUnid._situacao = false;
+            this.cboCUnid._TamanhoComboBox = 175;
+            this.cboCUnid._TamanhoMaiorLabel = 400;
+            this.cboCUnid._Visible = true;
+            this.cboCUnid.AutoSize = true;
+            this.cboCUnid.BackColor = System.Drawing.Color.Transparent;
+            this.cboCUnid.Color = System.Drawing.Color.White;
+            this.cboCUnid.DataSource = null;
+            this.cboCUnid.DisplayMember = "DisplayMember";
+            this.cboCUnid.Location = new System.Drawing.Point(10, 141);
+            this.cboCUnid.Margin = new System.Windows.Forms.Padding(10, 3, 15, 3);
+            this.cboCUnid.Name = "cboCUnid";
+            this.cboCUnid.SelectedIndex = -1;
+            this.cboCUnid.SelectedValue = 0;
+            this.cboCUnid.Size = new System.Drawing.Size(568, 21);
+            this.cboCUnid.TabIndex = 20;
+            this.cboCUnid.ValueMember = "ValueMember";
             // 
             // txtQCarga
             // 
@@ -2767,7 +2816,7 @@
             this.txtQCarga.BackColor = System.Drawing.Color.Transparent;
             this.txtQCarga.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtQCarga.Color = System.Drawing.Color.White;
-            this.txtQCarga.Location = new System.Drawing.Point(95, 171);
+            this.txtQCarga.Location = new System.Drawing.Point(95, 168);
             this.txtQCarga.Margin = new System.Windows.Forms.Padding(95, 3, 15, 3);
             this.txtQCarga.MaxLength = 32767;
             this.txtQCarga.Name = "txtQCarga";
@@ -2799,10 +2848,6 @@
             this.kryptonDataGridView7.Size = new System.Drawing.Size(1122, 477);
             this.kryptonDataGridView7.TabIndex = 236;
             // 
-            // bsInformacaoPercurso
-            // 
-            this.bsInformacaoPercurso.DataSource = typeof(HLP.GeraXml.bel.MDFe.TMDFeInfMDFeIdeInfPercurso);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "SegCodBarra";
@@ -2815,21 +2860,9 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Segundo Cód. de Barras";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // cMunCarregaDataGridViewTextBoxColumn
+            // bsInformacaoPercurso
             // 
-            this.cMunCarregaDataGridViewTextBoxColumn.DataPropertyName = "cMunCarrega";
-            this.cMunCarregaDataGridViewTextBoxColumn.HeaderText = "Cód. Município de Carregamento";
-            this.cMunCarregaDataGridViewTextBoxColumn.Name = "cMunCarregaDataGridViewTextBoxColumn";
-            this.cMunCarregaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cMunCarregaDataGridViewTextBoxColumn.Width = 250;
-            // 
-            // xMunCarregaDataGridViewTextBoxColumn
-            // 
-            this.xMunCarregaDataGridViewTextBoxColumn.DataPropertyName = "xMunCarrega";
-            this.xMunCarregaDataGridViewTextBoxColumn.HeaderText = "Nome Município de Carregamento";
-            this.xMunCarregaDataGridViewTextBoxColumn.Name = "xMunCarregaDataGridViewTextBoxColumn";
-            this.xMunCarregaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.xMunCarregaDataGridViewTextBoxColumn.Width = 250;
+            this.bsInformacaoPercurso.DataSource = typeof(HLP.GeraXml.bel.MDFe.TMDFeInfMDFeIdeInfPercurso);
             // 
             // frmVisualizaMDFe
             // 
@@ -2954,7 +2987,6 @@
         private Comum.Componentes.HLP_TextBox txtNmdf;
         private Comum.Componentes.HLP_TextBox txtCmdf;
         private Comum.Componentes.HLP_TextBox txtCdv;
-        private Comum.Componentes.HLP_TextBox txtModal;
         private Comum.Componentes.HLP_TextBox txtDhEmi;
         private Comum.Componentes.HLP_ComboBox cboTpEmis;
         private Comum.Componentes.HLP_TextBox txtProcEmi;
@@ -2995,7 +3027,6 @@
         private Comum.Componentes.HLP_TextBox txtQNfe;
         private Comum.Componentes.HLP_TextBox txtQNf;
         private Comum.Componentes.HLP_TextBox txtVCarga;
-        private Comum.Componentes.HLP_TextBox txtCUnid;
         private Comum.Componentes.HLP_TextBox txtQCarga;
         private AC.ExtendedRenderer.Navigator.KryptonTabControl kryptonTabControl5;
         private System.Windows.Forms.TabPage tabPage12;
@@ -3046,31 +3077,15 @@
         private Comum.Componentes.HLP_ComboBox hlP_ComboBox1;
         private Comum.Componentes.HLP_ComboBox cboTpPropReboc;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cIntDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn placaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taraDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn capKGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn capM3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tpCarDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uFDataGridViewTextBoxColumn1;
         private AC.ExtendedRenderer.Navigator.KryptonTabControl kryptonTabControl4;
         private System.Windows.Forms.TabPage tabPage9;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn chCTeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn segCodBarraDataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kp9;
         private System.Windows.Forms.TabPage tabPage10;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nCTDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serieDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subserDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dEmiDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vCargaDataGridViewTextBoxColumn;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kp10;
         private System.Windows.Forms.TabPage infNFe;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn chNFeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn segCodBarraDataGridViewTextBoxColumn1;
         private System.Windows.Forms.TabPage infNF;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridView kryptonDataGridView4;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNPJDataGridViewTextBoxColumn;
@@ -3085,5 +3100,23 @@
         private Comum.Componentes.HLP_TextBox txtXMumDescarga;
         private System.Windows.Forms.DataGridViewTextBoxColumn cMunCarregaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xMunCarregaDataGridViewTextBoxColumn;
+        private Comum.Componentes.HLP_ComboBox cboModal;
+        private Comum.Componentes.HLP_ComboBox cboCUnid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cIntDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xTpCar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn placaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn capKGDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn capM3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uFDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chCTeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn segCodBarraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nCTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serieDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subserDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dEmiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vCargaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chNFeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn segCodBarraDataGridViewTextBoxColumn1;
     }
 }

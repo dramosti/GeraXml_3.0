@@ -727,6 +727,9 @@ namespace HLP.GeraXml.bel.MDFe
     public enum TMDFeInfMDFeIdeTpEmis
     {
 
+//        Prestador de Serviço de Transporte
+//Não prestador de Serviço de Transporte
+
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("1")]
         Item1,

@@ -25,35 +25,48 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
 
         public List<belDadosManifesto> manifestos { get; set; }
         public frmVisualizaMDFe(List<belDadosManifesto> manifestos)
-        {
+        {           
 
             this.manifestos = manifestos;
             InitializeComponent();
+            this.bsNotas.CurrentItemChanged += bsNotas_CurrentItemChanged;  
 
-            this.bsNotas.DataSource = manifestos;
+            this.bsNotas.DataSource = manifestos;            
+            
+            this.Load += frmVisualizaMDFe_Load;
+        }
 
+        void frmVisualizaMDFe_Load(object sender, EventArgs e)
+        {
+            this.CarregaSelectedItem();
+        }
+
+        void bsNotas_CurrentItemChanged(object sender, EventArgs e)
+        {            
             this.CarregaSelectedItem();
         }
 
         private void CarregaSelectedItem()
         {
+            base.btnSalvar.Enabled = base.btnCancelar.Enabled =
+                base.btnAtualizar.Enabled = false;
             //infMDFE
             txtId.Text =
                 (this.bsNotas.Current as belDadosManifesto).enviMDFe.idLote;
 
             //ide
             txtcUF.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.cUF;
-            cbotpAmb.SelectedValue = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.tpAmb;
-            cboTpEmit.SelectedValue = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.tpEmis;
+            cbotpAmb.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.tpAmb;
+            cboTpEmit.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.tpEmis;
             txtMod.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.mod.ToString(); //TODO: CAMPO ST
             txtSerie.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.serie;
             txtNmdf.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.nMDF;
             txtCmdf.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.cMDF;
             txtCdv.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.cDV;
-            txtModal.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.modal.ToString(); //TODO: CAMPO ST
+            cboModal.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.modal;
             txtDhEmi.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.dhEmi;
-            cboTpEmis.SelectedValue = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.tpEmis;
-            txtProcEmi.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.procEmi.ToString(); //TODO: CAMPO ST
+            cboTpEmis.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.tpEmis;
+            cboTpEmis.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.procEmi;
             txtVerPro.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.verProc;
             txtUfIni.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.UFIni;
             txtUfFim.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.ide.UFFim;
@@ -92,10 +105,11 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
             this.txtQNfe.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.tot.qNFe;
             this.txtQNf.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.tot.qNF;
             this.txtVCarga.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.tot.vCarga;
-            this.txtCUnid.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.tot.cUnid.ToString(); //TODO: CAMPO ST;
+            cboCUnid.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.tot.cUnid;
             this.txtQCarga.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.tot.qCarga;
 
-            this.txtInfCpl.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.infAdic.infCpl;
+            if ((this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.infAdic != null)
+                this.txtInfCpl.Text = (this.bsNotas.Current as belDadosManifesto).enviMDFe.MDFe.infMDFe.infAdic.infCpl;
 
             //rodo
             this.txtXRntrc.Text = (this.bsNotas.Current as belDadosManifesto).objRodo.RNTRC;
@@ -121,9 +135,9 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
             this.txtPropXNome.Text = (this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.prop.xNome;
             this.txtIe.Text = (this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.prop.IE;
             this.txtUf.Text = (this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.prop.UF;
-            this.cboTpProp.SelectedValue = (this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.prop.tpProp;
-            this.cboTpRod.SelectedValue = (this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.tpRod;
-            this.cboTpCar.SelectedValue = (this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.tpCar;
+            this.cboTpProp.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.prop.tpProp;
+            this.cboTpRod.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.tpRod;
+            this.cboTpCar.SelectedIndex = (byte)(this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.tpCar;
             this.txtPropUf.Text = (this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.UF.ToString();
 
             this.bsCondutorVeiculo.DataSource = (this.bsNotas.Current as belDadosManifesto).objRodo.veicTracao.condutor;
@@ -164,7 +178,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                     this.txtPropRebocXNome.Text = (this.bsVeicReboc.Current as rodoVeicReboque).prop.xNome;
                     this.txtPropRebocIe.Text = (this.bsVeicReboc.Current as rodoVeicReboque).prop.IE;
                     this.txtPropRebocUf.Text = (this.bsVeicReboc.Current as rodoVeicReboque).prop.UF;
-                    this.cboTpPropReboc.SelectedValue = (this.bsVeicReboc.Current as rodoVeicReboque).prop.tpProp;
+                    this.cboTpPropReboc.SelectedIndex = (byte)(this.bsVeicReboc.Current as rodoVeicReboque).prop.tpProp;
                 }
             }
         }

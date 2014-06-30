@@ -7500,7 +7500,7 @@
             this.Text = "Visulização de Notas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();            
             this.kryptonPanel.ResumeLayout(false);
             this.kryptonPanel.PerformLayout();
             this.statusErro.ResumeLayout(false);
