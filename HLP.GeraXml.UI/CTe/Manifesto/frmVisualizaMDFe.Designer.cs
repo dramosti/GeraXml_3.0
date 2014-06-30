@@ -54,6 +54,8 @@
             this.kryptonTabControl8 = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
             this.tabPage16 = new System.Windows.Forms.TabPage();
             this.dgvProd = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.cMunCarregaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xMunCarregaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsInfMunicipios = new System.Windows.Forms.BindingSource(this.components);
             this.kp14 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kp2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -188,8 +190,6 @@
             this.bsInformacaoPercurso = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cMunCarregaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xMunCarregaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(base.kryptonPanel)).BeginInit();
             base.kryptonPanel.SuspendLayout();
@@ -791,6 +791,22 @@
             this.dgvProd.RowHeadersWidth = 25;
             this.dgvProd.Size = new System.Drawing.Size(1114, 98);
             this.dgvProd.TabIndex = 119;
+            // 
+            // cMunCarregaDataGridViewTextBoxColumn
+            // 
+            this.cMunCarregaDataGridViewTextBoxColumn.DataPropertyName = "cMunCarrega";
+            this.cMunCarregaDataGridViewTextBoxColumn.HeaderText = "Cód. Município de Carregamento";
+            this.cMunCarregaDataGridViewTextBoxColumn.Name = "cMunCarregaDataGridViewTextBoxColumn";
+            this.cMunCarregaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cMunCarregaDataGridViewTextBoxColumn.Width = 250;
+            // 
+            // xMunCarregaDataGridViewTextBoxColumn
+            // 
+            this.xMunCarregaDataGridViewTextBoxColumn.DataPropertyName = "xMunCarrega";
+            this.xMunCarregaDataGridViewTextBoxColumn.HeaderText = "Nome Município de Carregamento";
+            this.xMunCarregaDataGridViewTextBoxColumn.Name = "xMunCarregaDataGridViewTextBoxColumn";
+            this.xMunCarregaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.xMunCarregaDataGridViewTextBoxColumn.Width = 250;
             // 
             // bsInfMunicipios
             // 
@@ -1829,42 +1845,49 @@
             this.cIntDataGridViewTextBoxColumn.DataPropertyName = "cInt";
             this.cIntDataGridViewTextBoxColumn.HeaderText = "Cód. Interno";
             this.cIntDataGridViewTextBoxColumn.Name = "cIntDataGridViewTextBoxColumn";
+            this.cIntDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // placaDataGridViewTextBoxColumn
             // 
             this.placaDataGridViewTextBoxColumn.DataPropertyName = "placa";
             this.placaDataGridViewTextBoxColumn.HeaderText = "Placa";
             this.placaDataGridViewTextBoxColumn.Name = "placaDataGridViewTextBoxColumn";
+            this.placaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // taraDataGridViewTextBoxColumn
             // 
             this.taraDataGridViewTextBoxColumn.DataPropertyName = "tara";
             this.taraDataGridViewTextBoxColumn.HeaderText = "Tara";
             this.taraDataGridViewTextBoxColumn.Name = "taraDataGridViewTextBoxColumn";
+            this.taraDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // capKGDataGridViewTextBoxColumn
             // 
             this.capKGDataGridViewTextBoxColumn.DataPropertyName = "capKG";
             this.capKGDataGridViewTextBoxColumn.HeaderText = "Capac. em KG";
             this.capKGDataGridViewTextBoxColumn.Name = "capKGDataGridViewTextBoxColumn";
+            this.capKGDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // capM3DataGridViewTextBoxColumn
             // 
             this.capM3DataGridViewTextBoxColumn.DataPropertyName = "capM3";
             this.capM3DataGridViewTextBoxColumn.HeaderText = "Capac. em M3";
             this.capM3DataGridViewTextBoxColumn.Name = "capM3DataGridViewTextBoxColumn";
+            this.capM3DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tpCarDataGridViewTextBoxColumn
             // 
             this.tpCarDataGridViewTextBoxColumn.DataPropertyName = "tpCar";
             this.tpCarDataGridViewTextBoxColumn.HeaderText = "Tipo de Carroceria";
             this.tpCarDataGridViewTextBoxColumn.Name = "tpCarDataGridViewTextBoxColumn";
+            this.tpCarDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // uFDataGridViewTextBoxColumn1
             // 
             this.uFDataGridViewTextBoxColumn1.DataPropertyName = "UF";
             this.uFDataGridViewTextBoxColumn1.HeaderText = "UF";
             this.uFDataGridViewTextBoxColumn1.Name = "uFDataGridViewTextBoxColumn1";
+            this.uFDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // bsVeicReboc
             // 
@@ -2814,22 +2837,6 @@
             this.dataGridViewTextBoxColumn2.DataPropertyName = "SegCodBarra";
             this.dataGridViewTextBoxColumn2.HeaderText = "Segundo Cód. de Barras";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // cMunCarregaDataGridViewTextBoxColumn
-            // 
-            this.cMunCarregaDataGridViewTextBoxColumn.DataPropertyName = "cMunCarrega";
-            this.cMunCarregaDataGridViewTextBoxColumn.HeaderText = "Cód. Município de Carregamento";
-            this.cMunCarregaDataGridViewTextBoxColumn.Name = "cMunCarregaDataGridViewTextBoxColumn";
-            this.cMunCarregaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cMunCarregaDataGridViewTextBoxColumn.Width = 250;
-            // 
-            // xMunCarregaDataGridViewTextBoxColumn
-            // 
-            this.xMunCarregaDataGridViewTextBoxColumn.DataPropertyName = "xMunCarrega";
-            this.xMunCarregaDataGridViewTextBoxColumn.HeaderText = "Nome Município de Carregamento";
-            this.xMunCarregaDataGridViewTextBoxColumn.Name = "xMunCarregaDataGridViewTextBoxColumn";
-            this.xMunCarregaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.xMunCarregaDataGridViewTextBoxColumn.Width = 250;
             // 
             // frmVisualizaMDFe
             // 
