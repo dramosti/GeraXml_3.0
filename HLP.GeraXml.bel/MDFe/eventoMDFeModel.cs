@@ -83,7 +83,7 @@ namespace HLP.GeraXml.bel.MDFe
     public partial class TEventoInfEvento
     {
 
-        private TCOrgaoIBGE cOrgaoField;
+        private string cOrgaoField;
 
         private TAmb tpAmbField;
 
@@ -102,7 +102,7 @@ namespace HLP.GeraXml.bel.MDFe
         private string idField;
 
         /// <remarks/>
-        public TCOrgaoIBGE cOrgao
+        public string cOrgao
         {
             get
             {

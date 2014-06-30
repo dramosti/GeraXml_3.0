@@ -10,6 +10,27 @@ namespace HLP.GeraXml.dao.CTe.MDFe
 {
     public class daoManifesto
     {
+
+        public static void GravarReciboCancelamento(string sequencia, string sReciboCancelamento, string sJustificativa)
+        {
+            try
+            {
+                StringBuilder sQuery = new StringBuilder();
+                sQuery.Append("Update manifest ");
+                sQuery.Append("set manifest.cd_recibocanc ='" + sReciboCancelamento + "', ");
+                sQuery.Append("manifest.ds_cancelamento='" + sJustificativa + "' ");
+                sQuery.Append("where manifest.cd_manifest='" + sequencia + "' ");
+                sQuery.Append("and manifest.cd_empresa ='" + Acesso.CD_EMPRESA + "'");
+                HlpDbFuncoes.qrySeekUpdate(sQuery.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
         public static void gravaChave(string sChave, string sequencia)
         {
             try

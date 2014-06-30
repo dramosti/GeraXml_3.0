@@ -40,6 +40,7 @@ namespace HLP.GeraXml.bel.MDFe
         public string sequencia { get; set; }
         public string numero { get; set; }
         public string chaveMDFe { get; set; }
+        public string protocolo { get; set; } // criar
         public string recibo { get; set; }
         public string dt_manife { get; set; }
         public bool bEnviado { get; set; }

@@ -15,6 +15,7 @@ namespace HLP.GeraXml.dao.CTe.MDFe
             StringBuilder sQuery = new StringBuilder();
             sQuery.Append("Select ");
             sQuery.Append("m.cd_empresa, ");
+            sQuery.Append("coalesce(m.CD_PROTMDFE, '')protocolo, ");
             sQuery.Append("m.cd_manifest sequencia, ");
             sQuery.Append("m.cd_manifisc numero, ");
             sQuery.Append("coalesce(m.CD_CHAVEMDFE,'') chave, ");

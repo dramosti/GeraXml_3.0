@@ -39,6 +39,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                      sequencia = c["sequencia"].ToString(),
                      dt_manife = (c["dt_cad"].ToString() != "" ? Convert.ToDateTime(c["dt_cad"].ToString()).ToString("dd/MM/yyyy") : ""),
                      descricao = c["descricao"].ToString(),
+                     protocolo = c["protocolo"].ToString(),
                      cd_empresa = c["cd_empresa"].ToString(),
                      chaveMDFe = c["chave"].ToString(),
                      recibo = c["recibo"].ToString(),

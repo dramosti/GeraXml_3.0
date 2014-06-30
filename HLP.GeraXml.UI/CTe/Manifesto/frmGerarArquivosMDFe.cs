@@ -169,6 +169,35 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
             }
         }
 
+        private void btnCancelamento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<PesquisaManifestosModel> objSelect = this.objPesquisa.resultado.Where(c =>
+                                       c.bCancelado == false &&
+                                       c.bEnviado == true &&
+                                       c.protocolo != "" && c.bSeleciona
+                                       ).ToList();
+
+                if (objSelect.Count() > 1)
+                {
+                    MessageBox.Show("Selecione apenas um manifesto por vez.", "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (objSelect.Count() == 1)
+                {
+                    //belCancelamentoMDFe canc = new belCancelamentoMDFe(objSelect.FirstOrDefault())
+
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
     }
 }

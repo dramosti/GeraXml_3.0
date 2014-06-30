@@ -257,6 +257,7 @@
             this.btnCancelamento.Name = "btnCancelamento";
             this.btnCancelamento.Size = new System.Drawing.Size(74, 20);
             this.btnCancelamento.Text = "Cancelar";
+            this.btnCancelamento.Click += new System.EventHandler(this.btnCancelamento_Click);
             // 
             // toolStripSeparator1
             // 

@@ -166,7 +166,9 @@
     <Compile Include="Escrita\belEscrituracao.cs" />
     <Compile Include="InternetCS.cs" />
     <Compile Include="MDFe\Acoes\belBuscaRetornoMDFe.cs" />
+    <Compile Include="MDFe\Acoes\belCancelamentoMDFe.cs" />
     <Compile Include="MDFe\Acoes\belDadosManifesto.cs" />
+    <Compile Include="MDFe\Acoes\belEventoMDFe.cs" />
     <Compile Include="MDFe\Acoes\belNumeroManifesto.cs" />
     <Compile Include="MDFe\Acoes\belConsultaStatusWebService.cs" />
     <Compile Include="MDFe\Acoes\belPesquisaManifestros.cs" />
