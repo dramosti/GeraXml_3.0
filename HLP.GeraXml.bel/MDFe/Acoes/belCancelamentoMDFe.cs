@@ -34,6 +34,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
 
         public string ExecuteCancelamento()
         {
+            
             bool bRet = objEvento.ExecuteEvento();
 
             if (bRet)

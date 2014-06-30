@@ -42,6 +42,7 @@ namespace HLP.GeraXml.bel.MDFe
         public string chaveMDFe { get; set; }
         public string protocolo { get; set; } // criar
         public string recibo { get; set; }
+        public string status { get; set; }
         public string dt_manife { get; set; }
         public bool bEnviado { get; set; }
         public bool bCancelado { get; set; }

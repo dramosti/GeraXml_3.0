@@ -43,6 +43,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                      cd_empresa = c["cd_empresa"].ToString(),
                      chaveMDFe = c["chave"].ToString(),
                      recibo = c["recibo"].ToString(),
+                     status = c["status"].ToString(),
                      bEnviado = c["bEnviado"].ToString() == "0" ? false : true,
                      bCancelado = c["bCancelado"].ToString() == "0" ? false : true,
                  }).ToList();

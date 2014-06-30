@@ -142,13 +142,13 @@ namespace HLP.GeraXml.dao.CTe.MDFe
 
         }
 
-        public static void AlteraStatusMDFe(string sequencia)
+        public static void AlteraStatusMDFe(string sequencia, string status)
         {
             try
             {
                 StringBuilder sSql = new StringBuilder();
                 sSql.Append("update MANIFEST ");
-                sSql.Append("set ST_MDFE ='S' ");
+                sSql.Append("set ST_MDFE ='" + status + "' ");
                 sSql.Append("where ");
                 sSql.Append("cd_empresa ='");
                 sSql.Append(Acesso.CD_EMPRESA);

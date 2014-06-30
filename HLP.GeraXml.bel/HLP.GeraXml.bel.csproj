@@ -168,11 +168,13 @@
     <Compile Include="MDFe\Acoes\belBuscaRetornoMDFe.cs" />
     <Compile Include="MDFe\Acoes\belCancelamentoMDFe.cs" />
     <Compile Include="MDFe\Acoes\belDadosManifesto.cs" />
+    <Compile Include="MDFe\Acoes\belEncerramentoMDFe.cs" />
     <Compile Include="MDFe\Acoes\belEventoMDFe.cs" />
     <Compile Include="MDFe\Acoes\belNumeroManifesto.cs" />
     <Compile Include="MDFe\Acoes\belConsultaStatusWebService.cs" />
     <Compile Include="MDFe\Acoes\belPesquisaManifestros.cs" />
     <Compile Include="MDFe\Acoes\belTransmiteMDFe.cs" />
+    <Compile Include="MDFe\belMunicipios.cs" />
     <Compile Include="MDFe\consStatServModel.cs" />
     <Compile Include="MDFe\consultaReciboModel.cs" />
     <Compile Include="MDFe\consultaSitMDFeModel.cs" />

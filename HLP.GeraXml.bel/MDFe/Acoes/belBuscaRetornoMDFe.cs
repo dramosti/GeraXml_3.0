@@ -20,7 +20,6 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
         public belBuscaRetornoMDFe(PesquisaManifestosModel objPesquisa)
         {
             this.objPesquisa = objPesquisa;
-
             TConsReciMDFe objconsulta = new TConsReciMDFe();
             objconsulta.versao = Acesso.versaoMDFe;
             objconsulta.tpAmb = Acesso.TP_AMB == 1 ? TAmb.Item1 : TAmb.Item2;
@@ -72,10 +71,10 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 x.Save(sPath);
                 TRetConsReciMDFe recepacao = SerializeClassToXml.DeserializeClasse<TRetConsReciMDFe>(sPath);
 
-                sMessage = string.Format("Sequencia: {0}{4}Numero: {1}{4}Motivo: {2}{4}Status: {3}{4}", 
-                        objPesquisa.sequencia, 
-                        objPesquisa.numero, 
-                        recepacao.protMDFe != null ? recepacao.protMDFe.infProt.xMotivo : recepacao.xMotivo, 
+                sMessage = string.Format("Sequencia: {0}{4}Numero: {1}{4}Motivo: {2}{4}Status: {3}{4}",
+                        objPesquisa.sequencia,
+                        objPesquisa.numero,
+                        recepacao.protMDFe != null ? recepacao.protMDFe.infProt.xMotivo : recepacao.xMotivo,
                         recepacao.cStat,
                         Environment.NewLine);
 
@@ -91,7 +90,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                         if (recepacao.protMDFe.infProt.cStat == "100")
                         {
                             daoManifesto.gravaProtocolo(recepacao.protMDFe.infProt.nProt, objPesquisa.sequencia);
-                            daoManifesto.AlteraStatusMDFe(objPesquisa.sequencia);
+                            daoManifesto.AlteraStatusMDFe(objPesquisa.sequencia, "S");
                             IncluiTagInfProc();
                         }
                     }

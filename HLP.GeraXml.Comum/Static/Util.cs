@@ -16,6 +16,12 @@ namespace HLP.GeraXml.Comum.Static
 {
     public static class Util
     {
+
+
+        
+
+
+
         /// <summary>
         /// 
         /// </summary>

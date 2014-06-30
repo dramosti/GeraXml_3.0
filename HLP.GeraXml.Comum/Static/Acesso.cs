@@ -100,7 +100,13 @@ namespace HLP.GeraXml.Comum.Static
             }
         }
         public static string CNPJ_EMPRESA { get; set; }
-        public static int cUF { get; set; }
+        private static int _cUF;
+        public static int cUF
+        {
+            get { return _cUF; }
+            set { _cUF = value; }
+        }
+        
         public static string xUF { get; set; }
         private static string _NM_USER = "";
         public static string NM_USER

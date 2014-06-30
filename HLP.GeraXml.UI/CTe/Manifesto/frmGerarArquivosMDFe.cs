@@ -60,13 +60,17 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                     {
                         dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.Khaki;
                     }
-                    else if (Convert.ToBoolean(dgvArquivos["bEnviado", i].Value) == true)
+                    else if (Convert.ToBoolean(dgvArquivos["bEnviado", i].Value) == true && dgvArquivos["status", i].Value.ToString() != "S")
                     {
-                        dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
+                        dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.DeepSkyBlue;
                     }
                     else if (Convert.ToBoolean(dgvArquivos["bEnviado", i].Value) == false && dgvArquivos["recibo", i].Value.ToString() != "")
                     {
                         dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.LightCyan;
+                    }
+                    else if (Convert.ToBoolean(dgvArquivos["bEnviado", i].Value) == true && dgvArquivos["status", i].Value.ToString() != "E") // ENCERRADO
+                    {
+                        dgvArquivos.Rows[i].DefaultCellStyle.BackColor = Color.LightGreen;
                     }
                 }
                 dgvArquivos.Refresh();
@@ -176,6 +180,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                 List<PesquisaManifestosModel> objSelect = this.objPesquisa.resultado.Where(c =>
                                        c.bCancelado == false &&
                                        c.bEnviado == true &&
+                                       c.status == "S" &&
                                        c.protocolo != "" && c.bSeleciona
                                        ).ToList();
 
@@ -186,10 +191,9 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                 else if (objSelect.Count() == 1)
                 {
                     //belCancelamentoMDFe canc = new belCancelamentoMDFe(objSelect.FirstOrDefault())
-
-
+                    frmCancelarMDFe objfrm = new frmCancelarMDFe(objSelect.FirstOrDefault());
+                    objfrm.ShowDialog();
                 }
-
             }
             catch (Exception)
             {

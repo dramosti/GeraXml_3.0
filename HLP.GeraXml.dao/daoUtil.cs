@@ -12,6 +12,14 @@ namespace HLP.GeraXml.dao
 {
     public class daoUtil
     {
+
+        public static DataTable GetMunicipios()
+        {
+            string Squery = "select c.nm_cidnor xMun, c.cd_municipio cMun, c.cd_ufnor xUF from cidades c " +
+                "where c.nm_cidnor is not null and c.cd_municipio is not null     and c.cd_ufnor  is not null";
+            return HlpDbFuncoes.qrySeekRet(Squery);
+        }
+
         public static DateTime GetDateServidor()
         {
 
