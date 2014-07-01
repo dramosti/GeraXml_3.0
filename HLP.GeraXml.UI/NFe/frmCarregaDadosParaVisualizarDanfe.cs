@@ -338,7 +338,6 @@ namespace HLP.GeraXml.UI.NFe
                     }
                     objNFe.Produtos.Add(prod);
                 }
-
                 Byte[] bimagem = SalvaCodBarras(objNFe.Id);
                 rowImg.cod_barras = bimagem;
                 rowImg.LogoTipo = Util.CarregaLogoEmpresa();

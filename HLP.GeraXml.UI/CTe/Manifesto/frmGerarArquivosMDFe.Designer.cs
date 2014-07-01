@@ -39,35 +39,22 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dgvArquivos = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblMinutos = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.btnPesquisa = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEnvio = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnEncerramento = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCancelamento = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSair = new System.Windows.Forms.ToolStripButton();
             this.btnImpressao = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBuscaRetorno = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnConsultaNFe = new System.Windows.Forms.ToolStripButton();
-            this.btnEncerramento = new System.Windows.Forms.ToolStripButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.recibo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboStatus = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
-            this.dtpIni = new HLP.GeraXml.Comum.Componentes.HLP_DateTimePicker();
-            this.dtpFim = new HLP.GeraXml.Comum.Componentes.HLP_DateTimePicker();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dgvArquivos = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.bSelecionaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cdempresaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sequenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,17 +62,30 @@
             this.dtmanifeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bEnviado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.recibo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsGrid = new System.Windows.Forms.BindingSource(this.components);
+            this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblMinutos = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cboStatus = new HLP.GeraXml.Comum.Componentes.HLP_ComboBox();
+            this.dtpIni = new HLP.GeraXml.Comum.Componentes.HLP_DateTimePicker();
+            this.dtpFim = new HLP.GeraXml.Comum.Componentes.HLP_DateTimePicker();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArquivos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // panel5
@@ -184,35 +184,118 @@
             this.menuStrip1.TabIndex = 104;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // btnPesquisa
+            // 
+            this.btnPesquisa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPesquisa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPesquisa.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnPesquisa.Image = global::HLP.GeraXml.UI.Properties.Resources.pesquisar;
+            this.btnPesquisa.ImageTransparentColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(79, 20);
+            this.btnPesquisa.Text = "Pesquisar";
+            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 23);
+            // 
+            // btnEnvio
+            // 
+            this.btnEnvio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEnvio.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEnvio.Image = global::HLP.GeraXml.UI.Properties.Resources.send;
+            this.btnEnvio.Name = "btnEnvio";
+            this.btnEnvio.Size = new System.Drawing.Size(61, 20);
+            this.btnEnvio.Text = "Enviar";
+            this.btnEnvio.Click += new System.EventHandler(this.btnEnvio_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
             // 
-            // toolStripSeparator1
+            // btnEncerramento
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 23);
+            this.btnEncerramento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEncerramento.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEncerramento.Image = global::HLP.GeraXml.UI.Properties.Resources.confirmar;
+            this.btnEncerramento.Name = "btnEncerramento";
+            this.btnEncerramento.Size = new System.Drawing.Size(106, 20);
+            this.btnEncerramento.Text = "Encerramento";
+            this.btnEncerramento.Click += new System.EventHandler(this.btnEncerramento_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 23);
             // 
+            // btnCancelamento
+            // 
+            this.btnCancelamento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCancelamento.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCancelamento.Image = global::HLP.GeraXml.UI.Properties.Resources.cancel__3_;
+            this.btnCancelamento.Name = "btnCancelamento";
+            this.btnCancelamento.Size = new System.Drawing.Size(74, 20);
+            this.btnCancelamento.Text = "Cancelar";
+            this.btnCancelamento.Click += new System.EventHandler(this.btnCancelamento_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
+            // 
+            // btnSair
+            // 
+            this.btnSair.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Image = global::HLP.GeraXml.UI.Properties.Resources.sair;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(48, 20);
+            this.btnSair.Text = "Sair";
+            // 
+            // btnImpressao
+            // 
+            this.btnImpressao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImpressao.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnImpressao.Image = global::HLP.GeraXml.UI.Properties.Resources.print;
+            this.btnImpressao.Name = "btnImpressao";
+            this.btnImpressao.Size = new System.Drawing.Size(77, 20);
+            this.btnImpressao.Text = "Damdf-e";
+            this.btnImpressao.Click += new System.EventHandler(this.btnImpressao_Click);
+            // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 23);
+            // 
+            // btnBuscaRetorno
+            // 
+            this.btnBuscaRetorno.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBuscaRetorno.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnBuscaRetorno.Image = global::HLP.GeraXml.UI.Properties.Resources.retorno;
+            this.btnBuscaRetorno.Name = "btnBuscaRetorno";
+            this.btnBuscaRetorno.Size = new System.Drawing.Size(73, 20);
+            this.btnBuscaRetorno.Text = "Retorno";
+            this.btnBuscaRetorno.Click += new System.EventHandler(this.btnBuscaRetorno_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 23);
+            // 
+            // btnConsultaNFe
+            // 
+            this.btnConsultaNFe.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnConsultaNFe.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnConsultaNFe.Image = global::HLP.GeraXml.UI.Properties.Resources.situacao;
+            this.btnConsultaNFe.Name = "btnConsultaNFe";
+            this.btnConsultaNFe.Size = new System.Drawing.Size(115, 20);
+            this.btnConsultaNFe.Text = "Consulta MDF-e";
+            this.btnConsultaNFe.Visible = false;
             // 
             // dgvArquivos
             // 
@@ -238,6 +321,78 @@
             this.dgvArquivos.Size = new System.Drawing.Size(1150, 437);
             this.dgvArquivos.TabIndex = 232;
             this.dgvArquivos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArquivos_CellClick);
+            this.dgvArquivos.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvArquivos_ColumnHeaderMouseClick);
+            // 
+            // bSelecionaDataGridViewCheckBoxColumn
+            // 
+            this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
+            this.bSelecionaDataGridViewCheckBoxColumn.HeaderText = "Selecionar";
+            this.bSelecionaDataGridViewCheckBoxColumn.Name = "bSelecionaDataGridViewCheckBoxColumn";
+            this.bSelecionaDataGridViewCheckBoxColumn.Width = 70;
+            // 
+            // cdempresaDataGridViewTextBoxColumn
+            // 
+            this.cdempresaDataGridViewTextBoxColumn.DataPropertyName = "cd_empresa";
+            this.cdempresaDataGridViewTextBoxColumn.HeaderText = "cd_empresa";
+            this.cdempresaDataGridViewTextBoxColumn.Name = "cdempresaDataGridViewTextBoxColumn";
+            this.cdempresaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // sequenciaDataGridViewTextBoxColumn
+            // 
+            this.sequenciaDataGridViewTextBoxColumn.DataPropertyName = "sequencia";
+            this.sequenciaDataGridViewTextBoxColumn.HeaderText = "Sequencia";
+            this.sequenciaDataGridViewTextBoxColumn.Name = "sequenciaDataGridViewTextBoxColumn";
+            // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
+            this.numeroDataGridViewTextBoxColumn.HeaderText = "Número";
+            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            // 
+            // dtmanifeDataGridViewTextBoxColumn
+            // 
+            this.dtmanifeDataGridViewTextBoxColumn.DataPropertyName = "dt_manife";
+            this.dtmanifeDataGridViewTextBoxColumn.HeaderText = "Data Emissão";
+            this.dtmanifeDataGridViewTextBoxColumn.Name = "dtmanifeDataGridViewTextBoxColumn";
+            // 
+            // bEnviado
+            // 
+            this.bEnviado.DataPropertyName = "bEnviado";
+            this.bEnviado.HeaderText = "bEnviado";
+            this.bEnviado.Name = "bEnviado";
+            this.bEnviado.Visible = false;
+            // 
+            // bCancelado
+            // 
+            this.bCancelado.DataPropertyName = "bCancelado";
+            this.bCancelado.HeaderText = "bCancelado";
+            this.bCancelado.Name = "bCancelado";
+            this.bCancelado.Visible = false;
+            // 
+            // recibo
+            // 
+            this.recibo.DataPropertyName = "recibo";
+            this.recibo.HeaderText = "recibo";
+            this.recibo.Name = "recibo";
+            this.recibo.Visible = false;
+            // 
+            // descricaoDataGridViewTextBoxColumn
+            // 
+            this.descricaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricaoDataGridViewTextBoxColumn.DataPropertyName = "descricao";
+            this.descricaoDataGridViewTextBoxColumn.HeaderText = "Placa";
+            this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "status";
+            this.status.Name = "status";
+            this.status.Visible = false;
+            // 
+            // bsGrid
+            // 
+            this.bsGrid.DataSource = typeof(HLP.GeraXml.bel.MDFe.PesquisaManifestosModel);
             // 
             // kryptonPanel
             // 
@@ -290,102 +445,6 @@
             this.lblMinutos.TabIndex = 233;
             this.lblMinutos.Values.Text = "";
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.cboStatus);
-            this.flowLayoutPanel1.Controls.Add(this.dtpIni);
-            this.flowLayoutPanel1.Controls.Add(this.dtpFim);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 27);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1150, 29);
-            this.flowLayoutPanel1.TabIndex = 229;
-            // 
-            // btnPesquisa
-            // 
-            this.btnPesquisa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPesquisa.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPesquisa.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnPesquisa.Image = global::HLP.GeraXml.UI.Properties.Resources.pesquisar;
-            this.btnPesquisa.ImageTransparentColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnPesquisa.Name = "btnPesquisa";
-            this.btnPesquisa.Size = new System.Drawing.Size(79, 20);
-            this.btnPesquisa.Text = "Pesquisar";
-            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
-            // 
-            // btnEnvio
-            // 
-            this.btnEnvio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnEnvio.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnEnvio.Image = global::HLP.GeraXml.UI.Properties.Resources.send;
-            this.btnEnvio.Name = "btnEnvio";
-            this.btnEnvio.Size = new System.Drawing.Size(61, 20);
-            this.btnEnvio.Text = "Enviar";
-            this.btnEnvio.Click += new System.EventHandler(this.btnEnvio_Click);
-            // 
-            // btnCancelamento
-            // 
-            this.btnCancelamento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnCancelamento.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancelamento.Image = global::HLP.GeraXml.UI.Properties.Resources.cancel__3_;
-            this.btnCancelamento.Name = "btnCancelamento";
-            this.btnCancelamento.Size = new System.Drawing.Size(74, 20);
-            this.btnCancelamento.Text = "Cancelar";
-            this.btnCancelamento.Click += new System.EventHandler(this.btnCancelamento_Click);
-            // 
-            // btnSair
-            // 
-            this.btnSair.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Image = global::HLP.GeraXml.UI.Properties.Resources.sair;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(48, 20);
-            this.btnSair.Text = "Sair";
-            // 
-            // btnImpressao
-            // 
-            this.btnImpressao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnImpressao.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnImpressao.Image = global::HLP.GeraXml.UI.Properties.Resources.print;
-            this.btnImpressao.Name = "btnImpressao";
-            this.btnImpressao.Size = new System.Drawing.Size(77, 20);
-            this.btnImpressao.Text = "Damdf-e";
-            this.btnImpressao.Click += new System.EventHandler(this.btnImpressao_Click);
-            // 
-            // btnBuscaRetorno
-            // 
-            this.btnBuscaRetorno.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnBuscaRetorno.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnBuscaRetorno.Image = global::HLP.GeraXml.UI.Properties.Resources.retorno;
-            this.btnBuscaRetorno.Name = "btnBuscaRetorno";
-            this.btnBuscaRetorno.Size = new System.Drawing.Size(73, 20);
-            this.btnBuscaRetorno.Text = "Retorno";
-            this.btnBuscaRetorno.Click += new System.EventHandler(this.btnBuscaRetorno_Click);
-            // 
-            // btnConsultaNFe
-            // 
-            this.btnConsultaNFe.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnConsultaNFe.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnConsultaNFe.Image = global::HLP.GeraXml.UI.Properties.Resources.situacao;
-            this.btnConsultaNFe.Name = "btnConsultaNFe";
-            this.btnConsultaNFe.Size = new System.Drawing.Size(99, 20);
-            this.btnConsultaNFe.Text = "Consulta NFe";
-            // 
-            // btnEncerramento
-            // 
-            this.btnEncerramento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnEncerramento.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnEncerramento.Image = global::HLP.GeraXml.UI.Properties.Resources.confirmar;
-            this.btnEncerramento.Name = "btnEncerramento";
-            this.btnEncerramento.Size = new System.Drawing.Size(106, 20);
-            this.btnEncerramento.Text = "Encerramento";
-            this.btnEncerramento.Click += new System.EventHandler(this.btnEncerramento_Click);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.LightCyan;
@@ -404,19 +463,19 @@
             this.kryptonLabel4.TabIndex = 235;
             this.kryptonLabel4.Values.Text = "Buscar Retorno";
             // 
-            // recibo
+            // flowLayoutPanel1
             // 
-            this.recibo.DataPropertyName = "recibo";
-            this.recibo.HeaderText = "recibo";
-            this.recibo.Name = "recibo";
-            this.recibo.Visible = false;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "status";
-            this.status.Name = "status";
-            this.status.Visible = false;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Controls.Add(this.cboStatus);
+            this.flowLayoutPanel1.Controls.Add(this.dtpIni);
+            this.flowLayoutPanel1.Controls.Add(this.dtpFim);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 27);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1150, 29);
+            this.flowLayoutPanel1.TabIndex = 229;
             // 
             // cboStatus
             // 
@@ -477,63 +536,6 @@
             this.dtpFim.TabIndex = 11;
             this.dtpFim.Value = new System.DateTime(2012, 5, 7, 14, 58, 27, 875);
             // 
-            // bSelecionaDataGridViewCheckBoxColumn
-            // 
-            this.bSelecionaDataGridViewCheckBoxColumn.DataPropertyName = "bSeleciona";
-            this.bSelecionaDataGridViewCheckBoxColumn.HeaderText = "Selecionar";
-            this.bSelecionaDataGridViewCheckBoxColumn.Name = "bSelecionaDataGridViewCheckBoxColumn";
-            this.bSelecionaDataGridViewCheckBoxColumn.Width = 70;
-            // 
-            // cdempresaDataGridViewTextBoxColumn
-            // 
-            this.cdempresaDataGridViewTextBoxColumn.DataPropertyName = "cd_empresa";
-            this.cdempresaDataGridViewTextBoxColumn.HeaderText = "cd_empresa";
-            this.cdempresaDataGridViewTextBoxColumn.Name = "cdempresaDataGridViewTextBoxColumn";
-            this.cdempresaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // sequenciaDataGridViewTextBoxColumn
-            // 
-            this.sequenciaDataGridViewTextBoxColumn.DataPropertyName = "sequencia";
-            this.sequenciaDataGridViewTextBoxColumn.HeaderText = "Sequencia";
-            this.sequenciaDataGridViewTextBoxColumn.Name = "sequenciaDataGridViewTextBoxColumn";
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "Número";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            // 
-            // dtmanifeDataGridViewTextBoxColumn
-            // 
-            this.dtmanifeDataGridViewTextBoxColumn.DataPropertyName = "dt_manife";
-            this.dtmanifeDataGridViewTextBoxColumn.HeaderText = "Data Emissão";
-            this.dtmanifeDataGridViewTextBoxColumn.Name = "dtmanifeDataGridViewTextBoxColumn";
-            // 
-            // bEnviado
-            // 
-            this.bEnviado.DataPropertyName = "bEnviado";
-            this.bEnviado.HeaderText = "bEnviado";
-            this.bEnviado.Name = "bEnviado";
-            this.bEnviado.Visible = false;
-            // 
-            // bCancelado
-            // 
-            this.bCancelado.DataPropertyName = "bCancelado";
-            this.bCancelado.HeaderText = "bCancelado";
-            this.bCancelado.Name = "bCancelado";
-            this.bCancelado.Visible = false;
-            // 
-            // descricaoDataGridViewTextBoxColumn
-            // 
-            this.descricaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricaoDataGridViewTextBoxColumn.DataPropertyName = "descricao";
-            this.descricaoDataGridViewTextBoxColumn.HeaderText = "Placa";
-            this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
-            // 
-            // bsGrid
-            // 
-            this.bsGrid.DataSource = typeof(HLP.GeraXml.bel.MDFe.PesquisaManifestosModel);
-            // 
             // frmGerarArquivosMDFe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -545,6 +547,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArquivos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
             this.kryptonPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -554,7 +557,6 @@
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsGrid)).EndInit();
             this.ResumeLayout(false);
 
         }

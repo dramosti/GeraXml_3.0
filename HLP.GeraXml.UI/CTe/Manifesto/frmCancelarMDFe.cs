@@ -42,6 +42,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                     string sMessage = objcanc.ExecuteCancelamento();
                     MessageBox.Show(sMessage, "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                this.Close();
             }
             catch (Exception ex)
             {

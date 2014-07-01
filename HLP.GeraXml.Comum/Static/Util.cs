@@ -18,7 +18,7 @@ namespace HLP.GeraXml.Comum.Static
     {
 
 
-        
+
 
 
 
@@ -588,7 +588,7 @@ namespace HLP.GeraXml.Comum.Static
         /// <param name="sChaveNFe">Chave NFe</param>
         /// <param name="iTipo">1 - Envio / 2 - Enviados / 3 - Contingencia</param>
         /// <returns></returns>
-        public static string BuscaCaminhoArquivoXml(string sChaveNFe, int iTipo)
+        public static string BuscaCaminhoArquivoXml(string sChaveNFe, int iTipo, bool bcanc = false)
         {
             try
             {
@@ -605,13 +605,20 @@ namespace HLP.GeraXml.Comum.Static
                     }
                     if (Acesso.NM_RAMO == Acesso.BancoDados.TRANSPORTE)
                     {
-                        sCaminho = (iTipo == 2 ? Pastas.ENVIADOS : Pastas.ENVIO) + sChaveNFe.Substring(2, 4) + "\\" + sChaveNFe + "-mdfe.xml";
+                        if (bcanc)
+                        {
+                            sCaminho = (iTipo == 2 ? Pastas.CANCELADOS : Pastas.ENVIO) + sChaveNFe.Substring(2, 4) + "\\" + sChaveNFe + "-can.xml.xml";
+                        }
+                        else
+                        {
+                            sCaminho = (iTipo == 2 ? Pastas.ENVIADOS : Pastas.ENVIO) + sChaveNFe.Substring(2, 4) + "\\" + sChaveNFe + "-mdfe.xml";
+                        }
                     }
                     else
                     {
                         sCaminho = (iTipo == 2 ? Pastas.ENVIADOS : Pastas.ENVIO) + sChaveNFe.Substring(2, 4) + "\\" + sChaveNFe + "-nfe.xml";
                     }
-                    
+
                 }
                 return sCaminho;
             }

@@ -126,26 +126,35 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
 
         private void IncluiTagInfProc()
         {
-            XNamespace pf = "http://www.portalfiscal.inf.br/mdfe";
-            //Geração do Xml da nfe Autorizado, incluindo a TAG infProc onde consta as informaçoes de retorno da nfe.
-
-            string sCodificacao = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
-            string sRetProc = "<mdfeProc versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/mdfe\">";
-            XmlDocument xmldoc = new XmlDocument();
-            xmldoc.Load(Pastas.ENVIO + this.objPesquisa.chaveMDFe.Substring(2, 4) + "\\Lote_" + Convert.ToInt32(this.objPesquisa.numero).ToString() + ".xml");
-
-            XmlNode xret = xmlRetorno.GetElementsByTagName("protMDFe")[0];
-            StreamWriter sw = new StreamWriter(Util.BuscaCaminhoArquivoXml(this.objPesquisa.chaveMDFe, 2));
-
-            if (xmldoc.FirstChild.Name.Equals("xml"))
+            try
             {
-                sw.Write(@sRetProc + xmldoc.OuterXml.Remove(0, 38) + @xret.OuterXml.ToString() + @"</mdfeProc>");
+
+                XNamespace pf = "http://www.portalfiscal.inf.br/mdfe";
+                //Geração do Xml da nfe Autorizado, incluindo a TAG infProc onde consta as informaçoes de retorno da nfe.
+
+                string sCodificacao = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+                string sRetProc = "<mdfeProc versao=\"1.00\" xmlns=\"http://www.portalfiscal.inf.br/mdfe\">";
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.Load(Pastas.ENVIO + this.objPesquisa.chaveMDFe.Substring(2, 4) + "\\Lote_" + Convert.ToInt32(this.objPesquisa.numero).ToString() + ".xml");
+
+                XmlNode xret = xmlRetorno.GetElementsByTagName("protMDFe")[0];
+                StreamWriter sw = new StreamWriter(Util.BuscaCaminhoArquivoXml(this.objPesquisa.chaveMDFe, 2));
+
+                if (xmldoc.FirstChild.Name.Equals("xml"))
+                {
+                    sw.Write(@sRetProc + xmldoc.OuterXml.Remove(0, 38) + @xret.OuterXml.ToString() + @"</mdfeProc>");
+                }
+                else
+                {
+                    sw.Write(@sCodificacao + @sRetProc + xmldoc.OuterXml + @xret.OuterXml.ToString() + @"</mdfeProc>");
+                }
+                sw.Close();
+
             }
-            else
+            catch (Exception ex)
             {
-                sw.Write(@sCodificacao + @sRetProc + xmldoc.OuterXml + @xret.OuterXml.ToString() + @"</mdfeProc>");
+                throw ex;
             }
-            sw.Close();
         }
 
 

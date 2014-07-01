@@ -29,12 +29,11 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
 
             objEvento = new belEventoMDFe(xmlCanc.DocumentElement, objPesquisa, "110111");
 
-            ExecuteCancelamento();
+           // ExecuteCancelamento();
         }
 
         public string ExecuteCancelamento()
-        {
-            
+        {            
             bool bRet = objEvento.ExecuteEvento();
 
             if (bRet)

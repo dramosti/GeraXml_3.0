@@ -175,7 +175,6 @@
     <Compile Include="MDFe\Acoes\belPesquisaManifestros.cs" />
     <Compile Include="MDFe\Acoes\belTransmiteMDFe.cs" />
     <Compile Include="MDFe\belMunicipios.cs" />
-    <Compile Include="MDFe\belPrintMDFe.cs" />
     <Compile Include="MDFe\consStatServModel.cs" />
     <Compile Include="MDFe\consultaReciboModel.cs" />
     <Compile Include="MDFe\consultaSitMDFeModel.cs" />

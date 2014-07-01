@@ -2,8 +2,55 @@
 using HLP.GeraXml.bel;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using HLP.GeraXml.bel.MDFe.Generic;
 namespace HLP.GeraXml.bel.MDFe
 {
+
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.portalfiscal.inf.br/mdfe")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.portalfiscal.inf.br/mdfe", IsNullable = false)]
+    public partial class mdfeProc
+    {
+
+        private TEnviMDFe _envimdfeField;
+        /// <remarks/>
+        public TEnviMDFe enviMDFe
+        {
+            get
+            {
+                return this._envimdfeField;
+            }
+            set
+            {
+                this._envimdfeField = value;
+            }
+        }
+        private string versaoField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string versao
+        {
+            get
+            {
+                return this.versaoField;
+            }
+            set
+            {
+                this.versaoField = value;
+            }
+        }
+    }
+
+   
+
+
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.18020")]
     [System.SerializableAttribute()]
@@ -727,8 +774,8 @@ namespace HLP.GeraXml.bel.MDFe
     public enum TMDFeInfMDFeIdeTpEmis
     {
 
-//        Prestador de Serviço de Transporte
-//Não prestador de Serviço de Transporte
+        //        Prestador de Serviço de Transporte
+        //Não prestador de Serviço de Transporte
 
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("1")]

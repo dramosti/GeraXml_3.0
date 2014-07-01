@@ -15,8 +15,8 @@ namespace HLP.GeraXml.dao
 
         public static DataTable GetMunicipios()
         {
-            string Squery = "select c.nm_cidnor xMun, c.cd_municipio cMun, c.cd_ufnor xUF from cidades c " +
-                "where c.nm_cidnor is not null and c.cd_municipio is not null     and c.cd_ufnor  is not null";
+            string Squery = "select (c.nm_cidnor || ' - ' || c.cd_ufnor) xMun, c.cd_municipio cMun, c.cd_ufnor xUF from cidades c " +
+                "where c.nm_cidnor is not null and c.cd_municipio is not null     and c.cd_ufnor  is not null order by c.nm_cidnor ";
             return HlpDbFuncoes.qrySeekRet(Squery);
         }
 

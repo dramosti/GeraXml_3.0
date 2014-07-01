@@ -23,7 +23,7 @@ namespace HLP.GeraXml.dao.CTe.MDFe
             sQuery.Append("coalesce(m.cd_recibomdfe,'') recibo, ");
             sQuery.Append("coalesce(m.st_mdfe,'') status, ");
             sQuery.Append("cast(case when m.st_mdfe <> '' then '1' else '0' end as smallint) bEnviado, ");
-            sQuery.Append("(case when coalesce(m.cd_recibocancmdfe, '') = '' then '0' else '1' end) bCancelado , ");
+            sQuery.Append("(case when coalesce(m.cd_recibocanc, '') = '' then '0' else '1' end) bCancelado , ");
             sQuery.Append("v.cd_placa descricao ");
             sQuery.Append("from manifest m inner join veiculo v on m.cd_veiculo = v.cd_veiculo where {0}");
 

@@ -368,9 +368,8 @@ namespace HLP.GeraXml.dao.CTe.MDFe
         {
             try
             {
-                string sobs = HlpDbFuncoes.qrySeekValue("MANIFEST",
-                    "cd_obscontrib",
-                    string.Format("cd_manifest = '{0}' and cd_empresa = '{1}'", sequencia, Acesso.CD_EMPRESA));
+                string sobs = daoUtil.RetornaBlob(string.Format("SELECT cd_obscontrib FROM MANIFEST WHERE cd_manifest = '{0}' and cd_empresa = '{1}'",
+                    sequencia, Acesso.CD_EMPRESA));
                 if (sobs != "")
                     return Util.TiraCaracterEstranho(sobs);
                 else
@@ -476,7 +475,7 @@ namespace HLP.GeraXml.dao.CTe.MDFe
                 sQuery.Append("rm.cd_reboque cInt, ");
                 sQuery.Append("rm.cd_placareb_ma placa, ");
                 sQuery.Append("r.cd_tarareb tara, ");
-                sQuery.Append("r.cd_uf uf, ");
+                sQuery.Append("r.cd_ufreb uf, ");
                 sQuery.Append("r.cd_TPCARROCERIA tpCar, ");
                 sQuery.Append("r.cd_capacidadereb capKG, ");
                 sQuery.Append("r.cd_capamcreb capM3, ");
@@ -509,7 +508,7 @@ namespace HLP.GeraXml.dao.CTe.MDFe
                 sQuery.Append("m.cd_cgcfornec CNPJForn, ");
                 sQuery.Append("m.cd_cgcpagante CNPJPg, ");
                 sQuery.Append("m.cd_comprovavale nCompra ");
-                sQuery.Append("from manifest m where m.cd_manifest = '{0}' and m.cd_empresa = '{1}'");
+                sQuery.Append("from manifest m where m.cd_manifest = '{0}' and m.cd_empresa = '{1}' and m.cd_cgcfornec is not null and m.cd_comprovavale is not null");
                 return HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), sequencia, Acesso.CD_EMPRESA));
 
             }

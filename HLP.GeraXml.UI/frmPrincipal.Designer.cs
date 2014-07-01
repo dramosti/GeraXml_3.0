@@ -259,6 +259,8 @@ namespace HLP.GeraXml.UI
             treeNode10.Text = "Enviar CT-e (Ctrl + T)";
             treeNode11.ImageIndex = 2;
             treeNode11.Name = "nodEnvMDFe";
+            treeNode11.SelectedImageKey = "Form_Win32.png";
+            treeNode11.Tag = "frmGerarArquivosMDFe";
             treeNode11.Text = "Enviar MDF-e (Ctrl + M)";
             treeNode12.ImageIndex = 2;
             treeNode12.Name = "nodeInutCte";

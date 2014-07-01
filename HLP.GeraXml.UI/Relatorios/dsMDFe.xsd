@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsMDFe" targetNamespace="http://tempuri.org/dsMDFe.xsd" xmlns:mstns="http://tempuri.org/dsMDFe.xsd" xmlns="http://tempuri.org/dsMDFe.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsMDFe" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsMDFe" msprop:Generator_UserDSName="dsMDFe">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MDFe" msprop:Generator_TableClassName="MDFeDataTable" msprop:Generator_TableVarName="tableMDFe" msprop:Generator_TablePropName="MDFe" msprop:Generator_RowDeletingName="MDFeRowDeleting" msprop:Generator_RowChangingName="MDFeRowChanging" msprop:Generator_RowEvHandlerName="MDFeRowChangeEventHandler" msprop:Generator_RowDeletedName="MDFeRowDeleted" msprop:Generator_UserTableName="MDFe" msprop:Generator_RowChangedName="MDFeRowChanged" msprop:Generator_RowEvArgName="MDFeRowChangeEvent" msprop:Generator_RowClassName="MDFeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="xEmpresa" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnxEmpresa" msprop:Generator_ColumnPropNameInRow="xEmpresa" msprop:Generator_ColumnPropNameInTable="xEmpresaColumn" msprop:Generator_UserColumnName="xEmpresa" type="xs:string" minOccurs="0" />
+              <xs:element name="serie" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnserie" msprop:Generator_ColumnPropNameInRow="serie" msprop:Generator_ColumnPropNameInTable="serieColumn" msprop:Generator_UserColumnName="serie" type="xs:string" minOccurs="0" />
+              <xs:element name="numero" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnnumero" msprop:Generator_ColumnPropNameInRow="numero" msprop:Generator_ColumnPropNameInTable="numeroColumn" msprop:Generator_UserColumnName="numero" type="xs:string" minOccurs="0" />
+              <xs:element name="fl" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnfl" msprop:Generator_ColumnPropNameInRow="fl" msprop:Generator_ColumnPropNameInTable="flColumn" msprop:Generator_UserColumnName="fl" type="xs:string" minOccurs="0" />
+              <xs:element name="dataEmissao" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columndataEmissao" msprop:Generator_ColumnPropNameInRow="dataEmissao" msprop:Generator_ColumnPropNameInTable="dataEmissaoColumn" msprop:Generator_UserColumnName="dataEmissao" type="xs:string" minOccurs="0" />
+              <xs:element name="ufCarreg" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnufCarreg" msprop:Generator_ColumnPropNameInRow="ufCarreg" msprop:Generator_ColumnPropNameInTable="ufCarregColumn" msprop:Generator_UserColumnName="ufCarreg" type="xs:string" minOccurs="0" />
+              <xs:element name="chave" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnchave" msprop:Generator_ColumnPropNameInRow="chave" msprop:Generator_ColumnPropNameInTable="chaveColumn" msprop:Generator_UserColumnName="chave" type="xs:string" minOccurs="0" />
+              <xs:element name="protocolo" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="protocolo" msprop:Generator_ColumnVarNameInTable="columnprotocolo" msprop:Generator_ColumnPropNameInTable="protocoloColumn" msprop:Generator_UserColumnName="protocolo" type="xs:string" minOccurs="0" />
+              <xs:element name="CIOT" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="CIOT" msprop:Generator_ColumnVarNameInTable="columnCIOT" msprop:Generator_ColumnPropNameInTable="CIOTColumn" msprop:Generator_UserColumnName="CIOT" type="xs:string" minOccurs="0" />
+              <xs:element name="qtdeCTE" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="qtdeCTE" msprop:Generator_ColumnVarNameInTable="columnqtdeCTE" msprop:Generator_ColumnPropNameInTable="qtdeCTEColumn" msprop:Generator_UserColumnName="qtdeCTE" type="xs:string" minOccurs="0" />
+              <xs:element name="qtdeCT" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="qtdeCT" msprop:Generator_ColumnVarNameInTable="columnqtdeCT" msprop:Generator_ColumnPropNameInTable="qtdeCTColumn" msprop:Generator_UserColumnName="qtdeCT" type="xs:string" minOccurs="0" />
+              <xs:element name="qtdeNFe" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="qtdeNFe" msprop:Generator_ColumnVarNameInTable="columnqtdeNFe" msprop:Generator_ColumnPropNameInTable="qtdeNFeColumn" msprop:Generator_UserColumnName="qtdeNFe" type="xs:string" minOccurs="0" />
+              <xs:element name="qtdeNF" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="qtdeNF" msprop:Generator_ColumnVarNameInTable="columnqtdeNF" msprop:Generator_ColumnPropNameInTable="qtdeNFColumn" msprop:Generator_UserColumnName="qtdeNF" type="xs:string" minOccurs="0" />
+              <xs:element name="pesoTotal" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="pesoTotal" msprop:Generator_ColumnVarNameInTable="columnpesoTotal" msprop:Generator_ColumnPropNameInTable="pesoTotalColumn" msprop:Generator_UserColumnName="pesoTotal" type="xs:string" minOccurs="0" />
+              <xs:element name="veicPlaca" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="veicPlaca" msprop:Generator_ColumnVarNameInTable="columnveicPlaca" msprop:Generator_ColumnPropNameInTable="veicPlacaColumn" msprop:Generator_UserColumnName="veicPlaca" type="xs:string" minOccurs="0" />
+              <xs:element name="veicRNTRC" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="veicRNTRC" msprop:Generator_ColumnVarNameInTable="columnveicRNTRC" msprop:Generator_ColumnPropNameInTable="veicRNTRCColumn" msprop:Generator_UserColumnName="veicRNTRC" type="xs:string" minOccurs="0" />
+              <xs:element name="Pedagio_Resp_cnp" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Pedagio_Resp_cnp" msprop:Generator_ColumnVarNameInTable="columnPedagio_Resp_cnp" msprop:Generator_ColumnPropNameInTable="Pedagio_Resp_cnpColumn" msprop:Generator_UserColumnName="Pedagio_Resp_cnp" type="xs:string" minOccurs="0" />
+              <xs:element name="Pedagio_Forn_cnpj" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Pedagio_Forn_cnpj" msprop:Generator_ColumnVarNameInTable="columnPedagio_Forn_cnpj" msprop:Generator_ColumnPropNameInTable="Pedagio_Forn_cnpjColumn" msprop:Generator_UserColumnName="Pedagio_Forn_cnpj" type="xs:string" minOccurs="0" />
+              <xs:element name="Pedagio_comprovante" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Pedagio_comprovante" msprop:Generator_ColumnVarNameInTable="columnPedagio_comprovante" msprop:Generator_ColumnPropNameInTable="Pedagio_comprovanteColumn" msprop:Generator_UserColumnName="Pedagio_comprovante" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Condutor_cpf" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Condutor_cpf" msprop:Generator_ColumnVarNameInTable="columnCondutor_cpf" msprop:Generator_ColumnPropNameInTable="Condutor_cpfColumn" msprop:Generator_UserColumnName="Condutor_cpf" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="Condutor_Nome" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Condutor_Nome" msprop:Generator_ColumnVarNameInTable="columnCondutor_Nome" msprop:Generator_ColumnPropNameInTable="Condutor_NomeColumn" msprop:Generator_UserColumnName="Condutor_Nome" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="documentos_Fiscais" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="documentos_Fiscais" msprop:Generator_ColumnVarNameInTable="columndocumentos_Fiscais" msprop:Generator_ColumnPropNameInTable="documentos_FiscaisColumn" msprop:Generator_UserColumnName="documentos_Fiscais" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="observacao" msdata:Caption="DataColumn1" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="observacao" msprop:Generator_ColumnVarNameInTable="columnobservacao" msprop:Generator_ColumnPropNameInTable="observacaoColumn" msprop:Generator_UserColumnName="observacao" type="xs:string" default="" minOccurs="0" />
+              <xs:element name="logotipo" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnlogotipo" msprop:Generator_ColumnPropNameInRow="logotipo" msprop:Generator_ColumnPropNameInTable="logotipoColumn" msprop:Generator_UserColumnName="logotipo" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="barras" msprop:Generator_ColumnVarNameInTable="columnbarras" msprop:Generator_ColumnPropNameInRow="barras" msprop:Generator_ColumnPropNameInTable="barrasColumn" msprop:Generator_UserColumnName="barras" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:MDFe" />
+      <xs:field xpath="mstns:numero" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

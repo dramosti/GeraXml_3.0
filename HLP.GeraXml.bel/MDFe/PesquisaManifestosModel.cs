@@ -14,28 +14,9 @@ namespace HLP.GeraXml.bel.MDFe
             get { return _bSeleciona; }
             set
             {
-                _bSeleciona = value;
-                if (value == true)
-                {
-                    if (this.recibo != "")
-                    {
-                        DateTime? d = HLP.GeraXml.dao.CTe.MDFe.daoManifesto.GetUltimoRetorno(this.sequencia);
-
-                        if (d != null)
-                        {
-                            if (((DateTime)d).AddMinutes(2) < dao.daoUtil.GetDateServidor())
-                                _bSeleciona = value;
-                            else
-                            {
-                                _bSeleciona = false;
-                                MessageBox.Show(string.Format("Último retorno foi a menos de 2 minutos ({0}), aguarde mais um pouco.", d.ToString()), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                    }
-                }
+                _bSeleciona = value;               
             }
         }
-
         public string cd_empresa { get; set; }
         public string sequencia { get; set; }
         public string numero { get; set; }

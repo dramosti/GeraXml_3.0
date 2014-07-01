@@ -11,6 +11,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace HLP.GeraXml.bel.MDFe.Acoes
 {
@@ -122,6 +123,10 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
             {
                 if (this.enviMDFe.MDFe.infMDFe.ide.UFFim.Equals(uf) || this.enviMDFe.MDFe.infMDFe.ide.UFIni.Equals(uf))
                 {
+                    this.enviMDFe.MDFe.infMDFe.ide.infPercurso = null;
+                }
+                else
+                {
                     if (this.enviMDFe.MDFe.infMDFe.ide.infPercurso == null)
                     {
                         this.enviMDFe.MDFe.infMDFe.ide.infPercurso = new List<TMDFeInfMDFeIdeInfPercurso>();
@@ -169,12 +174,27 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
             {
                 infDoc = daoManifesto.GetInfDoc(objManifesto.sequencia).AsEnumerable();
 
-                this.enviMDFe.MDFe.infMDFe.infDoc = infDoc.Select(c => new TMDFeInfMDFeInfMunDescarga
+                foreach (DataRow row in infDoc)
                 {
-                    cMunDescarga = c["cMunDescarga"].ToString(),
-                    xMunDescarga = c["xMunDescarga"].ToString()
+                    if (this.enviMDFe.MDFe.infMDFe.infDoc == null)
+                        this.enviMDFe.MDFe.infMDFe.infDoc = new List<TMDFeInfMDFeInfMunDescarga>();
+
+                    if (this.enviMDFe.MDFe.infMDFe.infDoc.Where(C => C.cMunDescarga == row["cMunDescarga"].ToString()).Count() == 0)
+                    {
+                        this.enviMDFe.MDFe.infMDFe.infDoc.Add(new TMDFeInfMDFeInfMunDescarga
+                            {
+                                cMunDescarga = row["cMunDescarga"].ToString(),
+                                xMunDescarga = row["xMunDescarga"].ToString()
+                            });
+                    }
                 }
-                ).Distinct().ToList();
+
+                //this.enviMDFe.MDFe.infMDFe.infDoc = infDoc.Select(c => new TMDFeInfMDFeInfMunDescarga
+                //{
+                //    cMunDescarga = c["cMunDescarga"].ToString(),
+                //    xMunDescarga = c["xMunDescarga"].ToString()
+                //}
+                //).ToList().Distinct().ToList();
 
                 foreach (TMDFeInfMDFeInfMunDescarga doc in enviMDFe.MDFe.infMDFe.infDoc)
                 {
@@ -331,13 +351,18 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 }
 
 
-
-                objRodo.valePed = daoManifesto.GetValePed(objManifesto.sequencia).AsEnumerable().Select(c => new rodoDisp
+                foreach (DataRow c in daoManifesto.GetValePed(objManifesto.sequencia).Rows)
                 {
-                    CNPJForn = Util.RetiraCaracterCNPJ(c["CNPJForn"].ToString()),
-                    CNPJPg = Util.RetiraCaracterCNPJ(c["CNPJPg"].ToString()),
-                    nCompra = c["nCompra"].ToString()
-                }).ToArray();
+                    if (objRodo.valePed == null) objRodo.valePed = new List<rodoDisp>();
+                    objRodo.valePed.Add(new rodoDisp
+                    {
+                        CNPJForn = Util.RetiraCaracterCNPJ(c["CNPJForn"].ToString()),
+                        CNPJPg = Util.RetiraCaracterCNPJ(c["CNPJPg"].ToString()),
+                        nCompra = c["nCompra"].ToString()
+                    }); ;
+                }
+
+
 
             }
             catch (Exception ex)
@@ -345,6 +370,8 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 throw ex;
             }
         }
+
+
 
 
         #endregion
@@ -359,7 +386,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
             string cUF, AAMM, CNPJ, mod, serie, nMDFe, tpEmis, cMDFe = "";
 
             cUF = Acesso.cUF.ToString();
-            AAMM = DateTime.Today.ToString("yyMM");
+            AAMM = daoUtil.GetDateServidor().ToString("yyMM");
             CNPJ = this.enviMDFe.MDFe.infMDFe.emit.CNPJ.PadLeft(14, '0');
             mod = this.enviMDFe.MDFe.infMDFe.ide.mod.ToString().Replace("Item", "");
             serie = this.enviMDFe.MDFe.infMDFe.ide.serie;

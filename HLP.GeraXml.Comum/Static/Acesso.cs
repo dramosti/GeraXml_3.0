@@ -47,7 +47,7 @@ namespace HLP.GeraXml.Comum.Static
             set
             {
                 Acesso._TP_AMB = value;
-                Acesso._TP_AMB = 2;
+                //Acesso._TP_AMB = 2;
             }
         }
 

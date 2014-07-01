@@ -439,6 +439,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Relatorios\dsMDFe.cs">
+      <DependentUpon>dsMDFe.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\dsMDFe.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMDFe.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\RelDamdfe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RelDamdfe.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Relatorios\RelDanfeSimplificada2013.cs">
       <DependentUpon>RelDanfeSimplificada2013.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -626,6 +642,11 @@
       <LastGenOutput>RelDanfe2013.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Relatorios\RelDamdfe.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RelDamdfe.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="HLP.GeraXml.UI_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.belEmail.datasource" />
@@ -682,6 +703,17 @@
     <Content Include="Relatorios\rptCtePadraoCancelado.rpt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Relatorios\dsMDFe.xsc">
+      <DependentUpon>dsMDFe.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\dsMDFe.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMDFe.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\dsMDFe.xss">
+      <DependentUpon>dsMDFe.xsd</DependentUpon>
+    </None>
     <None Include="Resources\cancel %283%29.png" />
     <None Include="Resources\confirmar1.png" />
     <None Include="Resources\pesquisar.png" />

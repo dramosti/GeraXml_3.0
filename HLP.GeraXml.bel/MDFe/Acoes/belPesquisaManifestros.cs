@@ -28,10 +28,15 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
         {
             try
             {
-                string sWhere = string.Format(" m.dt_cad between '{0}' and '{1}' and m.cd_empresa = '{2}'",
+                string sWhere = string.Format(" m.dt_cad between '{0}' and '{1}' and m.cd_empresa = '{2}' ",
                     dtIni.ToString("dd.MM.yyyy"),
                     dtFim.ToString("dd.MM.yyyy"),
                     Acesso.CD_EMPRESA);
+
+                if (st != status.Ambos)
+                {
+                    sWhere += (st == status.NaoEnviados ? "and (m.st_mdfe = 'N' or m.st_mdfe is null or m.st_mdfe = '') " : "and m.st_mdfe = 'S'  ");
+                }
 
                 this.resultado = base.Execute(sWhere).AsEnumerable().Select(c => new PesquisaManifestosModel
                  {

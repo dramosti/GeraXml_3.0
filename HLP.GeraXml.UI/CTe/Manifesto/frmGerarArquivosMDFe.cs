@@ -13,11 +13,17 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
+using HLP.GeraXml.UI.Relatorios;
+using System.IO;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace HLP.GeraXml.UI.CTe.Manifesto
 {
     public partial class frmGerarArquivosMDFe : ComponentFactory.Krypton.Toolkit.KryptonForm
     {
+        public bool bMarcar { get; set; }
+        private dsMDFe dsMdfe;
+        dsMDFe.MDFeRow rowMdfe;
         belPesquisaManifestros objPesquisa = new belPesquisaManifestros();
         public frmGerarArquivosMDFe()
         {
@@ -95,19 +101,38 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
         private void BuscarRetorno()
         {
             List<PesquisaManifestosModel> objSelect = this.objPesquisa.resultado.Where(c =>
-                                  c.recibo != "" && c.bSeleciona
+                                  c.recibo != "" && c.bSeleciona && (c.status == "S" || c.status == "")
                                   ).ToList();
             if (objSelect.Count() > 0)
             {
-                belBuscaRetornoMDFe objBuscaRet;
-                string sMessage = "";
-                foreach (PesquisaManifestosModel item in objSelect)
+                bool bValida = false;
+                if (objSelect.FirstOrDefault().recibo != "")
                 {
-                    objBuscaRet = new belBuscaRetornoMDFe(item);
-                    objBuscaRet.BuscarRetorno();
-                    sMessage += objBuscaRet.sMessage;
+                    DateTime? d = HLP.GeraXml.dao.CTe.MDFe.daoManifesto.GetUltimoRetorno(objSelect.FirstOrDefault().sequencia);
+                    if (d != null)
+                    {
+                        if (((DateTime)d).AddMinutes(2) < dao.daoUtil.GetDateServidor())
+                            bValida = true;
+                        else
+                        {
+                            bValida = false;
+                            MessageBox.Show(string.Format("Último retorno foi a menos de 2 minutos ({0}), aguarde mais um pouco.", d.ToString()), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
                 }
-                MessageBox.Show(sMessage, "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (bValida)
+                {
+
+                    belBuscaRetornoMDFe objBuscaRet;
+                    string sMessage = "";
+                    foreach (PesquisaManifestosModel item in objSelect)
+                    {
+                        objBuscaRet = new belBuscaRetornoMDFe(item);
+                        objBuscaRet.BuscarRetorno();
+                        sMessage += objBuscaRet.sMessage;
+                    }
+                    MessageBox.Show(sMessage, "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             Pesquisar();
         }
@@ -134,6 +159,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                     foreach (var m in objSelect)
                     {
                         objManifesto = new belDadosManifesto(m);
+                        m.chaveMDFe = objManifesto.enviMDFe.MDFe.infMDFe.Id.Replace("MDFe", "");
                         manifestos.Add(objManifesto);
                     }
 
@@ -193,15 +219,17 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                 }
                 else if (objSelect.Count() == 1)
                 {
+
                     //belCancelamentoMDFe canc = new belCancelamentoMDFe(objSelect.FirstOrDefault())
                     frmCancelarMDFe objfrm = new frmCancelarMDFe(objSelect.FirstOrDefault());
                     objfrm.ShowDialog();
+                    Pesquisar();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw new HLPexception(ex);
             }
         }
 
@@ -224,16 +252,29 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                 {
                     frmEncerramentoMDFe objfrm = new frmEncerramentoMDFe(objSelect.FirstOrDefault());
                     objfrm.ShowDialog();
+                    Pesquisar();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw new HLPexception(ex);
             }
 
         }
 
+
+        public static Byte[] SalvaCodBarras(string sValor)
+        {
+            BarcodeLib.Barcode barcod = new BarcodeLib.Barcode(sValor, BarcodeLib.TYPE.CODE128C);
+            barcod.Encode(BarcodeLib.TYPE.CODE128, sValor, 300, 150);
+
+            string sCaminho = "";
+            sCaminho = Pastas.CBARRAS + "\\Barras_" + sValor + ".JPG";
+            barcod.SaveImage(@sCaminho, BarcodeLib.SaveTypes.JPG);
+
+            return Util.CarregaImagem(sCaminho);
+        }
         private void btnImpressao_Click(object sender, EventArgs e)
         {
             try
@@ -244,65 +285,71 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                                        c.recibo != "" && c.bSeleciona && c.protocolo != ""
                                        ).ToList();
 
-                objSelect = objPesquisa.resultado.ToList(); // PARA TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-
-                List<belPrintMDFe> lResult = new List<belPrintMDFe>();
-                belPrintMDFe obj;
-
+                dsMdfe = new dsMDFe();
                 foreach (PesquisaManifestosModel item in objSelect)
                 {
-                    obj = new belPrintMDFe();
-                    string sPath = Util.BuscaCaminhoArquivoXml(item.chaveMDFe, 2);
+                    rowMdfe = dsMdfe.MDFe.NewMDFeRow();
+                    Byte[] bimagem = SalvaCodBarras(item.chaveMDFe);
+                    rowMdfe.barras = bimagem;
+                    rowMdfe.logotipo = Util.CarregaLogoEmpresa();
+
+                    string sPath = "";
+
+                    if (item.bCancelado)
+                        sPath = Util.BuscaCaminhoArquivoXml(item.chaveMDFe, 2, true);
+                    else
+                        sPath = Util.BuscaCaminhoArquivoXml(item.chaveMDFe, 2);
                     XmlDocument xml = new XmlDocument();
                     xml.Load(sPath);
                     XmlNodeList node = xml.GetElementsByTagName("infModal");
 
-                    TEnviMDFe objEnvi = SerializeClassToXml.DeserializeClasse<TEnviMDFe>(sPath);
+                    mdfeProc objEnvi = SerializeClassToXml.DeserializeClasse<mdfeProc>(sPath);
                     rodo objRodo = SerializeClassToXml.DeserializeClasseString<rodo>(node[0].InnerXml.ToString());
-
-                    obj.xEmpresa = string.Format("CNPJ:{0} IE:{1} RNTRC:{2} Razão Social:{3} Logradouro:{4} nº {5} Bairro:{6} UF:{7} Município:{8} Cep:{9}",
-                        objEnvi.MDFe.infMDFe.emit.CNPJ,
-                        objEnvi.MDFe.infMDFe.emit.IE,
+                    rowMdfe.xEmpresa = string.Format("{0}{10}CNPJ:{1} - IE:{2}, RNTRC:{3} - Logradouro:{4}, nº{5} - Bairro:{6}, {7}/{8} Cep:{9}",
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.xNome,
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.CNPJ,
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.IE,
                         objRodo.RNTRC,
-                        objEnvi.MDFe.infMDFe.emit.xNome,
-                        objEnvi.MDFe.infMDFe.emit.enderEmit.xLgr,
-                        objEnvi.MDFe.infMDFe.emit.enderEmit.nro,
-                        objEnvi.MDFe.infMDFe.emit.enderEmit.xBairro,
-                        objEnvi.MDFe.infMDFe.emit.enderEmit.UF,
-                        objEnvi.MDFe.infMDFe.emit.enderEmit.xMun,
-                        objEnvi.MDFe.infMDFe.emit.enderEmit.CEP);
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.enderEmit.xLgr,
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.enderEmit.nro,
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.enderEmit.xBairro,
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.enderEmit.UF,
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.enderEmit.xMun,
+                        objEnvi.enviMDFe.MDFe.infMDFe.emit.enderEmit.CEP, Environment.NewLine);
 
-                    obj.chave = item.chaveMDFe;
-                    obj.chave = item.protocolo;
-                    obj.serie = objEnvi.MDFe.infMDFe.ide.serie;
-                    obj.dataEmissao = Convert.ToDateTime(objEnvi.MDFe.infMDFe.ide.dhEmi).ToShortDateString();
-                    obj.CIOT = objRodo.CIOT;
-                    obj.qtdeCT = objEnvi.MDFe.infMDFe.tot.qCT == null ? "0" : objEnvi.MDFe.infMDFe.tot.qCT.ToString();
-                    obj.qtdeCTe = objEnvi.MDFe.infMDFe.tot.qCTe == null ? "0" : objEnvi.MDFe.infMDFe.tot.qCTe;
-                    obj.qtdeNF = objEnvi.MDFe.infMDFe.tot.qNF == null ? "0" : objEnvi.MDFe.infMDFe.tot.qNF;
-                    obj.qtdeNFe = objEnvi.MDFe.infMDFe.tot.qNFe == null ? "0" : objEnvi.MDFe.infMDFe.tot.qNFe;
-                    obj.pesoTotal = objEnvi.MDFe.infMDFe.tot.qCarga;
+                    rowMdfe.ufCarreg = objEnvi.enviMDFe.MDFe.infMDFe.ide.UFIni;
+                    rowMdfe.numero = item.numero;
+                    rowMdfe.chave = item.chaveMDFe;
+                    rowMdfe.protocolo = item.protocolo;
+                    rowMdfe.serie = objEnvi.enviMDFe.MDFe.infMDFe.ide.serie;
+                    rowMdfe.dataEmissao = Convert.ToDateTime(objEnvi.enviMDFe.MDFe.infMDFe.ide.dhEmi).ToShortDateString();
+                    rowMdfe.CIOT = objRodo.CIOT;
+                    rowMdfe.qtdeCT = objEnvi.enviMDFe.MDFe.infMDFe.tot.qCT == null ? "0" : objEnvi.enviMDFe.MDFe.infMDFe.tot.qCT.ToString();
+                    rowMdfe.qtdeCTE = objEnvi.enviMDFe.MDFe.infMDFe.tot.qCTe == null ? "0" : objEnvi.enviMDFe.MDFe.infMDFe.tot.qCTe;
+                    rowMdfe.qtdeNF = objEnvi.enviMDFe.MDFe.infMDFe.tot.qNF == null ? "0" : objEnvi.enviMDFe.MDFe.infMDFe.tot.qNF;
+                    rowMdfe.qtdeNFe = objEnvi.enviMDFe.MDFe.infMDFe.tot.qNFe == null ? "0" : objEnvi.enviMDFe.MDFe.infMDFe.tot.qNFe;
+                    rowMdfe.pesoTotal = objEnvi.enviMDFe.MDFe.infMDFe.tot.qCarga;
 
-                    obj.veicPlaca = objRodo.veicTracao.placa + Environment.NewLine;
+                    rowMdfe.veicPlaca = objRodo.veicTracao.placa + Environment.NewLine;
                     foreach (var v in objRodo.veicReboque)
                     {
-                        obj.veicPlaca += v.placa + Environment.NewLine;
+                        rowMdfe.veicPlaca += v.placa + Environment.NewLine;
                     }
 
                     if (objRodo.veicTracao.prop != null)
-                        obj.veicRNTRC = objRodo.veicTracao.prop.RNTRC + Environment.NewLine;
+                        rowMdfe.veicRNTRC = objRodo.veicTracao.prop.RNTRC + Environment.NewLine;
 
                     foreach (var v in objRodo.veicReboque)
                     {
                         if (v.prop != null)
-                            obj.veicRNTRC += v.prop.RNTRC + Environment.NewLine;
+                            rowMdfe.veicRNTRC += v.prop.RNTRC + Environment.NewLine;
                     }
                     if (objRodo.veicTracao.condutor != null)
                     {
                         foreach (var cond in objRodo.veicTracao.condutor)
                         {
-                            obj.Condutor_cpf += cond.CPF + Environment.NewLine;
-                            obj.Condutor_Nome += cond.xNome + Environment.NewLine;
+                            rowMdfe.Condutor_cpf += cond.CPF + Environment.NewLine;
+                            rowMdfe.Condutor_Nome += cond.xNome + Environment.NewLine;
                         }
                     }
 
@@ -310,45 +357,96 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                     {
                         foreach (var vale in objRodo.valePed)
                         {
-                            obj.Pedagio_Resp_cnp += vale.CNPJPg + Environment.NewLine;
-                            obj.Pedagio_Forn_cnpj += vale.CNPJForn + Environment.NewLine;
-                            obj.Pedagio_comprovante += vale.nCompra + Environment.NewLine;
+                            rowMdfe.Pedagio_Resp_cnp += vale.CNPJPg + Environment.NewLine;
+                            rowMdfe.Pedagio_Forn_cnpj += vale.CNPJForn + Environment.NewLine;
+                            rowMdfe.Pedagio_comprovante += vale.nCompra + Environment.NewLine;
                         }
                     }
 
                     string sDocEletronico = "{0} - Chave: {1}{2}";
-                    foreach (var doc in objEnvi.MDFe.infMDFe.infDoc)
+                    rowMdfe.documentos_Fiscais = "";
+                    foreach (var doc in objEnvi.enviMDFe.MDFe.infMDFe.infDoc)
                     {
                         if (doc.infCTe != null)
                             foreach (var cte in doc.infCTe)
                             {
-                                obj.documentos_Fiscais = string.Format(sDocEletronico, "CTe", cte.chCTe, Environment.NewLine);
+                                rowMdfe.documentos_Fiscais += string.Format(sDocEletronico, "CTe", cte.chCTe, Environment.NewLine);
                             }
                         if (doc.infNFe != null)
                             foreach (var nfe in doc.infNFe)
                             {
-                                obj.documentos_Fiscais = string.Format(sDocEletronico, "NFe", nfe.chNFe, Environment.NewLine);
+                                rowMdfe.documentos_Fiscais += string.Format(sDocEletronico, "NFe", nfe.chNFe, Environment.NewLine);
                             }
                         if (doc.infNF != null)
                             foreach (var nf in doc.infNF)
                             {
-                                obj.documentos_Fiscais = string.Format("{0} - CNPJ{1} - Serie:{2} - Nº {3}{4}", "NF", nf.CNPJ, nf.serie, nf.nNF, Environment.NewLine);
+                                rowMdfe.documentos_Fiscais += string.Format("{0} - CNPJ{1} - Serie:{2} - Nº {3}{4}", "NF", nf.CNPJ, nf.serie, nf.nNF, Environment.NewLine);
                             }
                         if (doc.infCT != null)
                             foreach (var ct in doc.infCT)
                             {
-                                obj.documentos_Fiscais = string.Format("{0} - Serie:{1} - Nº {2}{3}", "CT", ct.serie, ct.nCT, Environment.NewLine);
+                                rowMdfe.documentos_Fiscais += string.Format("{0} - Serie:{1} - Nº {2}{3}", "CT", ct.serie, ct.nCT, Environment.NewLine);
                             }
                     }
-                    if (objEnvi.MDFe.infMDFe.infAdic != null)
-                        obj.observacao = objEnvi.MDFe.infMDFe.infAdic.infCpl;
+                    if (objEnvi.enviMDFe.MDFe.infMDFe.infAdic != null)
+                        rowMdfe.observacao = objEnvi.enviMDFe.MDFe.infMDFe.infAdic.infCpl;
+
+                    if (item.bCancelado)
+                        rowMdfe.observacao = "***** CONHECIMENTO CANCELADO *****" + Environment.NewLine + rowMdfe.observacao;
+
+                    // objPrint.ldados.Add(obj);
+                    dsMdfe.MDFe.Rows.Add(rowMdfe);
+                }
+                Print();
+
+            }
+            catch (Exception ex)
+            {
+                throw new HLPexception(ex);
+            }
+
+        }
+
+        private void Print()
+        {
+            ReportDocument rpt = new ReportDocument();
+            rpt.Load(Util.GetPathRelatorio("RelDamdfe.rpt"));
+            rpt.SetDataSource(dsMdfe);
+            frmRelatorio objfrmDanfe = new frmRelatorio(rpt, "Impressão de DAMDFE");
+            objfrmDanfe.ShowDialog();
+        }
+
+        private void dgvArquivos_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                if (dgvArquivos.Rows.Count > 0)
+                {
+                    if (e.ColumnIndex == 0 && bsGrid.DataSource != null)
+                    {
+
+                        bMarcar = !bMarcar;
+                        foreach (PesquisaManifestosModel nota in bsGrid.List)
+                        {
+                            nota.bSeleciona = bMarcar;
+                        }
+
+                        dgvArquivos.Refresh();
+                        if (dgvArquivos.CurrentCell != null)
+                        {
+                            if (dgvArquivos.CurrentCell.ColumnIndex == 0)
+                            {
+                                SendKeys.Send("{right}");
+                                SendKeys.Send("{left}");
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new HLPexception(ex);
             }
-
         }
 
 

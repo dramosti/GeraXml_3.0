@@ -24,7 +24,7 @@ namespace HLP.GeraXml.bel.MDFe
 
         private List<rodoVeicReboque> veicReboqueField;
 
-        private rodoDisp[] valePedField;
+        private List<rodoDisp> valePedField;
 
         /// <remarks/>
         public string RNTRC
@@ -81,7 +81,7 @@ namespace HLP.GeraXml.bel.MDFe
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("disp", IsNullable = false)]
-        public rodoDisp[] valePed
+        public List<rodoDisp> valePed
         {
             get
             {
