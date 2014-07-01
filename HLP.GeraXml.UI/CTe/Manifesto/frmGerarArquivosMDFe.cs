@@ -119,6 +119,10 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
                             MessageBox.Show(string.Format("Último retorno foi a menos de 2 minutos ({0}), aguarde mais um pouco.", d.ToString()), "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
+                    else
+                    {
+                        bValida = true;
+                    }
                 }
                 if (bValida)
                 {

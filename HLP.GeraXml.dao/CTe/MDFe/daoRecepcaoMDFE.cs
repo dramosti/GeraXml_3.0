@@ -364,6 +364,25 @@ namespace HLP.GeraXml.dao.CTe.MDFe
 
         }
 
+        public static DataTable GetTotTemporario(string nrLanc)
+        {
+            try
+            {
+                StringBuilder sQuery = new StringBuilder();
+                sQuery.Append("SELECT ");
+                sQuery.Append("sum(nfconhec.vl_nf) vl_nf, sum(nfconhec.vl_peso) vl_peso ");
+                sQuery.Append("FROM nfconhec ");
+                sQuery.Append("where nfconhec.nr_lancconhecim = '{0}' and nfconhec.cd_empresa = '{1}'");
+
+                return HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), nrLanc, Acesso.CD_EMPRESA));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public static string GetObs(string sequencia)
         {
             try

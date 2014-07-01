@@ -261,14 +261,26 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 decimal vCarga = 0;
                 decimal qCarga = 0;
 
+                //foreach (string nr_lanc in infDoc.Select(c => c["nr_lanc"].ToString()).ToList())
+                //{
+                //    foreach (DataRow row in daoManifesto.GetTot(nrLanc: nr_lanc).Rows)
+                //    {
+                //        vCarga += Convert.ToDecimal(row["vCarga"].ToString());
+                //        qCarga += Convert.ToDecimal(row["qCarga"].ToString());
+                //    }
+                //}
+
                 foreach (string nr_lanc in infDoc.Select(c => c["nr_lanc"].ToString()).ToList())
                 {
-                    foreach (DataRow row in daoManifesto.GetTot(nrLanc: nr_lanc).Rows)
+                    foreach (DataRow row in daoManifesto.GetTotTemporario(nrLanc: nr_lanc).Rows)
                     {
-                        vCarga += Convert.ToDecimal(row["vCarga"].ToString());
-                        qCarga += Convert.ToDecimal(row["qCarga"].ToString());
+                        vCarga += Convert.ToDecimal(row["vl_nf"].ToString());
+                        qCarga += Convert.ToDecimal(row["vl_peso"].ToString());
                     }
                 }
+
+
+
                 this.enviMDFe.MDFe.infMDFe.tot.vCarga = vCarga.ToString("#0.00").Replace(",", ".");
                 this.enviMDFe.MDFe.infMDFe.tot.qCarga = qCarga.ToString("#0.0000").Replace(",", ".");
             }
@@ -291,6 +303,8 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 {
                     objRodo.RNTRC = row["RNTRC"].ToString();
                     objRodo.CIOT = row["CIOT"].ToString();
+                    if (objRodo.CIOT == "")
+                        objRodo.CIOT = null;
 
                     objRodo.veicTracao = new rodoVeicTracao();
                     objRodo.veicTracao.cInt = row["cInt"].ToString();
