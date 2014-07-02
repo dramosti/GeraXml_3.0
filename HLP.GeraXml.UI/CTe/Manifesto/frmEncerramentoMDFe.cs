@@ -28,6 +28,7 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
