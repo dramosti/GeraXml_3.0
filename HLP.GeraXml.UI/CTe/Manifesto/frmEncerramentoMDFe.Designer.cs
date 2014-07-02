@@ -39,7 +39,6 @@
             // 
             this.btnSair.Location = new System.Drawing.Point(167, 73);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(90, 25);
             this.btnSair.TabIndex = 5;
             this.btnSair.Values.Text = "Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -107,6 +106,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Encerramento.";
+            this.Load += new System.EventHandler(this.frmEncerramentoMDFe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cbxCidades)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -117,8 +117,8 @@
 
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCancelar;
-        public ComponentFactory.Krypton.Toolkit.KryptonLabel lblDescricao;
-        public ComponentFactory.Krypton.Toolkit.KryptonComboBox cbxCidades;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblDescricao;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cbxCidades;
 
     }
 }

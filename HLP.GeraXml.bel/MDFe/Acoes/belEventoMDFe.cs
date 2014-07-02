@@ -131,7 +131,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                     HLP.GeraXml.WebService.MDFe_Producao_RecepcaoEvento.mdfeCabecMsg cabec = new HLP.GeraXml.WebService.MDFe_Producao_RecepcaoEvento.mdfeCabecMsg();
                     HLP.GeraXml.WebService.MDFe_Producao_RecepcaoEvento.MDFeRecepcaoEvento ws = new WebService.MDFe_Producao_RecepcaoEvento.MDFeRecepcaoEvento();
                     cabec.cUF = Acesso.cUF.ToString();
-                    cabec.versaoDados = Acesso.versaoCTe;
+                    cabec.versaoDados = Acesso.versaoMDFe;
                     ws.mdfeCabecMsgValue = cabec;
                     ws.ClientCertificates.Add(Acesso.cert_CTe);
                     sRetorno = ws.mdfeRecepcaoEvento(doc).OuterXml;

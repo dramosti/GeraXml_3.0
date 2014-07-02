@@ -49,5 +49,10 @@ namespace HLP.GeraXml.UI.CTe.Manifesto
             }
 
         }
+
+        private void frmEncerramentoMDFe_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
