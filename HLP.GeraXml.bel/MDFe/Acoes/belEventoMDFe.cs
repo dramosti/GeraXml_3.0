@@ -123,6 +123,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                     ws.mdfeCabecMsgValue = cabec;
                     ws.ClientCertificates.Add(Acesso.cert_CTe);
                     sRetorno = ws.mdfeRecepcaoEvento(doc).OuterXml;
+
                 }
                 //Produção
                 else if (Acesso.TP_AMB == 1)
