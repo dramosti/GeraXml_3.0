@@ -105,7 +105,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     rps.NumeroNFSeSubstituida = Convert.ToByte(row["NumeroNFSeSubstituida"].ToString());
                     rps.DataEmissaoNFSeSubstituida = Convert.ToDateTime(row["DataEmissaoNFSeSubstituida"].ToString());
                     rps.SeriePrestacao = Convert.ToByte(row["SeriePrestacao"].ToString());
-                    rps.InscricaoMunicipalTomador = row["InscricaoMunicipalTomador"].ToString();
+                    rps.InscricaoMunicipalTomador = row["InscricaoMunicipalTomador"].ToString().PadLeft(9,'0');
                     rps.CPFCNPJTomador = Util.TiraSimbolo(row["CNPJ_Tomador"].ToString() == "" ? row["CPF_Tomador"].ToString() : row["CNPJ_Tomador"].ToString());
                     rps.RazaoSocialTomador = row["RazaoSocialTomador"].ToString().Trim();
                     rps.DocTomadorEstrangeiro = row["DocTomadorEstrangeiro"].ToString();

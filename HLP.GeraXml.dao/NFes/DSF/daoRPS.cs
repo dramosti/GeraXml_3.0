@@ -40,7 +40,7 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("coalesce(clifor.st_substituto,'N') TipoRecolhimento, {0}");
 
                 sQuery.Append("nf.ds_anota DescricaoRPS, {0}");
-                sQuery.Append("coalesce(clifor.cd_inscrmu,'') InscricaoMunicipalTomador, {0}");
+                sQuery.Append("coalesce(clifor.cd_inscrmu,'0') InscricaoMunicipalTomador, {0}");
                 sQuery.Append("coalesce(clifor.cd_cgc,'0') CNPJ_Tomador, {0}");
                 sQuery.Append("coalesce(clifor.cd_cpf,'0') CPF_Tomador, {0}");
                 sQuery.Append("clifor.nm_clifor  RazaoSocialTomador, {0}");

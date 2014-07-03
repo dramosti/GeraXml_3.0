@@ -505,15 +505,21 @@ namespace HLP.GeraXml.UI.NFe
                 rpt.Database.Tables["Imagens"].SetDataSource(dsImg);
                 DataSet dsTemp = null;
                 int i = 0;
-                bool brecriapdf = false;
-                if (MessageBox.Show("Deseja recriar o pdf do DANFE ?", "PERGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                    brecriapdf = true;
+                bool? brecriapdf = null;                
                 foreach (HLP.GeraXml.bel.NFe.ClassesSerializadas.NFe_HLP nf in objNFeToReport)
                 {
                     HLP.GeraXml.UI.NFe.frmGeraArquivoNFe.DadosImpressao dadosImp = objDadosImp.FirstOrDefault(c => c.sCD_NOTAFIS == nf.ide_nNF);
-                    if (brecriapdf)
-                        if (File.Exists(dadosImp.sCaminhoPDF))
+
+                    if (File.Exists(dadosImp.sCaminhoPDF))
+                    {
+                        if (brecriapdf == null)
+                            if (MessageBox.Show("Deseja recriar o pdf do DANFE ?", "PERGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                                brecriapdf = true;
+                            else
+                                brecriapdf = false;
+                        if (Convert.ToBoolean(brecriapdf))
                             File.Delete(dadosImp.sCaminhoPDF);
+                    }
 
                     if (!File.Exists(dadosImp.sCaminhoPDF))
                     {

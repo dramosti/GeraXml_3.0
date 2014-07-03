@@ -20,7 +20,7 @@ namespace HLP.GeraXml.UI
         [STAThread]
         static void Main()
         {
-            if (MessageBox.Show("Deseja continuar ?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //   if (MessageBox.Show("Deseja continuar ?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
 
                 Application.EnableVisualStyles();
