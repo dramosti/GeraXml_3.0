@@ -161,9 +161,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                     }
                 }
             }
-
             sRetornoLote = _lt.consultarLote(sXmlConsulta);
-
             string sPathRetConsultaLote = Pastas.PROTOCOLOS + "\\Ret_Consulta_Lote_" + num_lote + ".xml";
             try
             {
@@ -176,10 +174,7 @@ namespace HLP.GeraXml.bel.NFes.DSF
                 throw new Exception("Falha ao converter o retorno do webservice do método consultarLote" + Environment.NewLine + "MSG:" + sRetornoLote.ToString() + Environment.NewLine + ex.Message);
             }
             objretorno = SerializeClassToXml.DeserializeClasse<RetornoConsultaLote>(sPathRetConsultaLote);
-
         }
-
-
 
         private string TrataRetornoConsultaLote(RetornoConsultaLote objRetoConsultaLote)
         {

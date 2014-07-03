@@ -147,6 +147,7 @@ namespace HLP.GeraXml.UI.Configuracao
                                          "cd_empresa = '" + Acesso.CD_EMPRESA + "'");
             }
             if (Util.VerificaSeEstaNaHLP())
+            //if(false)
             {
                 Acesso.TP_AMB = 2;
                 Acesso.TP_AMB_SERV = 2;

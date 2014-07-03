@@ -101,6 +101,10 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                         }
                         else if (recepacao.protMDFe.infProt.cStat == "204") //DUPLICADO.
                         {
+                            string sRec = recepacao.protMDFe.infProt.xMotivo.Substring(recepacao.protMDFe.infProt.xMotivo.IndexOf("nRec:"), 20).Replace("nRec:", "");
+                            daoManifesto.gravaRecibo(sRec, objPesquisa.sequencia);
+                            daoManifesto.AlteraStatusMDFe(objPesquisa.sequencia, "S");
+                            IncluiTagInfProc();
 
                         }
                         else if (recepacao.protMDFe.infProt.cStat == "110") //LOTE EM PROCESSAMENTO.

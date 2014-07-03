@@ -185,7 +185,7 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
         public string transp_CFP_CNPJ { get; set; }
         public string transp_xEnder { get; set; }
         public string transp_xMun { get; set; }
-        public string transp_UF { get; set; }        
+        public string transp_UF { get; set; }
         public string transp_qVol { get; set; }
         public string transp_esp { get; set; }
         public string transp_marca { get; set; }
@@ -336,7 +336,21 @@ namespace HLP.GeraXml.bel.NFe.ClassesSerializadas
 
         public List<Produto> Produtos { get; set; }
 
-        public string xDuplicatas { get; set; }
+        private string _xDuplicatas = "";
+
+        public string xDuplicatas
+        {
+            get { return _xDuplicatas; }
+            set { _xDuplicatas = value; }
+        }
+        private string _xDupli = "";
+
+        public string xDupli
+        {
+            get { return _xDupli; }
+            set { _xDupli = value; }
+        }
+
     }
 
     /// <summary>

@@ -72,6 +72,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 File.Delete(sPathRodo);
             xml.Save(sPathRodo);
 
+
             try
             {
                 belValidaXml.ValidarXml("http://www.portalfiscal.inf.br/mdfe", Pastas.SCHEMA_MDFe + "\\mdfeModalRodoviario_v1.00.xsd", sPathRodo);
@@ -172,6 +173,7 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
         {
             try
             {
+                daoManifesto.ValidaInfDoc(objManifesto.sequencia);
                 infDoc = daoManifesto.GetInfDoc(objManifesto.sequencia).AsEnumerable();
 
                 foreach (DataRow row in infDoc)

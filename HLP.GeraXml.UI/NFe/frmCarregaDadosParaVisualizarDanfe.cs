@@ -78,7 +78,9 @@ namespace HLP.GeraXml.UI.NFe
                     try
                     {
                         if (File.Exists(sFilePath))
+                        {
                             File.Delete(sFilePath);
+                        }
 
                         objnfReport = new NFe_Report();
                         objnfReport.Notas.Add(nf);
@@ -240,7 +242,7 @@ namespace HLP.GeraXml.UI.NFe
                     objNFe.ISSQNtot_vISS = nfe.totalField.ISSQNtot.vISS.Replace('.', ',');
                 }
                 int iCount = 1;
-                if (Acesso.IMPRIMI_FATURA)
+                //  if (Acesso.IMPRIMI_FATURA)
                 {
                     if (nfe.cobrField != null)
                     {
@@ -255,8 +257,8 @@ namespace HLP.GeraXml.UI.NFe
                             else
                                 sDup = dupli.nDup.ToString().Insert(dupli.nDup.Count() - 1, "-");
 
-                                objNFe.xDuplicatas += string.Format(sDupl, sDup, Convert.ToDateTime(dupli.dVenc).ToString("dd/MM/yy"),
-                                    Convert.ToDecimal(dupli.vDup.Replace(".", ",")).ToString("#0.00").Replace(".", ",")).PadRight(33, ' ') + "|";
+                            objNFe.xDuplicatas += string.Format(sDupl, sDup, Convert.ToDateTime(dupli.dVenc).ToString("dd/MM/yy"),
+                                Convert.ToDecimal(dupli.vDup.Replace(".", ",")).ToString("#0.00").Replace(".", ",")).PadRight(33, ' ') + "|";
                             if (iCount == 3)
                                 objNFe.xDuplicatas += Environment.NewLine;
 
@@ -266,6 +268,8 @@ namespace HLP.GeraXml.UI.NFe
                         }
                     }
                 }
+
+                objNFe.xDupli = objNFe.xDuplicatas;
                 objNFe.Produtos = new List<Produto>();
                 Produto prod = null;
                 iCount = 1;
@@ -426,7 +430,6 @@ namespace HLP.GeraXml.UI.NFe
         }
 
 
-
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             NFe_HLP objNFe = null;
@@ -502,9 +505,16 @@ namespace HLP.GeraXml.UI.NFe
                 rpt.Database.Tables["Imagens"].SetDataSource(dsImg);
                 DataSet dsTemp = null;
                 int i = 0;
+                bool brecriapdf = false;
+                if (MessageBox.Show("Deseja recriar o pdf do DANFE ?", "PERGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+                    brecriapdf = true;
                 foreach (HLP.GeraXml.bel.NFe.ClassesSerializadas.NFe_HLP nf in objNFeToReport)
                 {
                     HLP.GeraXml.UI.NFe.frmGeraArquivoNFe.DadosImpressao dadosImp = objDadosImp.FirstOrDefault(c => c.sCD_NOTAFIS == nf.ide_nNF);
+                    if (brecriapdf)
+                        if (File.Exists(dadosImp.sCaminhoPDF))
+                            File.Delete(dadosImp.sCaminhoPDF);
+
                     if (!File.Exists(dadosImp.sCaminhoPDF))
                     {
                         sFilePath = string.Format((Pastas.Temp + "NFeToReportPDF_{0}.xml"), nf.ide_nNF);

@@ -320,6 +320,33 @@ namespace HLP.GeraXml.dao.CTe.MDFe
             }
         }
 
+
+        public static void ValidaInfDoc(string sequencia)
+        {
+            string sMessage = "";
+            try
+            {
+                StringBuilder sQuery = new StringBuilder();
+                sQuery.Append("Select ");
+                sQuery.Append("c.cd_conheci, c.cd_cidnorate ");
+                sQuery.Append("from maniftab m inner join conhecim c on m.nr_lancconhecim = c.nr_lanc and m.cd_empresa = c.cd_empresa ");
+                sQuery.Append("where m.cd_manifest = '{0}'  and m.cd_empresa = '{1}'");
+
+                foreach (DataRow row in HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), sequencia, Acesso.CD_EMPRESA)).Rows)
+                {
+                    sMessage += string.Format("Conhecimento: {0}, não contem município de (calculado até){1}", row["cd_conheci"].ToString(), Environment.NewLine);
+                }
+                if (sMessage != "")
+                {
+                    throw new Exception(sMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static DataTable GetInfNF(string nrlanc)
         {
             try
