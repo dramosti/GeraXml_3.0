@@ -307,99 +307,10 @@ namespace HLP.GeraXml.bel.CTe
                     dsToma03.pk_ide = iChave;
 
                     dsCte.toma03.Addtoma03Row(dsToma03);
-                    dsToma03 = dsCte.toma03.Newtoma03Row();
+                   // dsToma03 = dsCte.toma03.Newtoma03Row();
                 }
-                else if (toma4.Count > 0)
-                {
-                    dsToma4 = dsCte.toma4.Newtoma4Row();
-                    dsEnderToma = dsCte.enderToma.NewenderTomaRow();
 
-                    #region Dados Tomador
-                    for (int i = 0; i < toma4.Count; i++)
-                    {
-                        for (int j = 0; j < toma4[i].ChildNodes.Count; j++)
-                        {
-                            switch (toma4[i].ChildNodes[j].LocalName)
-                            {
-                                case "toma": dsToma4.toma = toma4[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "CNPJ": dsToma4.CNPJ = toma4[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "CPF": dsToma4.CPF = toma4[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "IE": dsToma4.IE = toma4[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "xNome": dsToma4.xNome = toma4[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "xFant": dsToma4.xFant = toma4[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "fone": dsToma4.fone = toma4[i].ChildNodes[j].InnerText;
-                                    break;
-
-                            }
-                        }
-                    }
-
-                    dsToma4.pk_toma4 = iChave;
-                    dsToma4.pk_ide = iChave;
-
-                    dsCte.toma4.Addtoma4Row(dsToma4);
-                    dsToma4 = dsCte.toma4.Newtoma4Row();
-                    #endregion
-
-                    #region EnderecoToma
-
-                    for (int i = 0; i < enderToma.Count; i++)
-                    {
-                        for (int j = 0; j < enderToma[i].ChildNodes.Count; j++)
-                        {
-                            switch (enderToma[i].ChildNodes[j].LocalName)
-                            {
-                                case "xLgr": dsEnderToma.xLgr = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "nro": dsEnderToma.nro = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "xCpl": dsEnderToma.xCpl = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "xBairro": dsEnderToma.xBairro = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "cMun": dsEnderToma.cMun = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "xMun": dsEnderToma.xMun = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "CEP": dsEnderToma.CEP = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "UF": dsEnderToma.UF = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "cPais": dsEnderToma.cPais = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                                case "xPais": dsEnderToma.xPais = enderToma[i].ChildNodes[j].InnerText;
-                                    break;
-
-                            }
-                        }
-                    }
-                    dsEnderToma.pk_toma4 = iChave;
-                    dsEnderToma.pk_enderToma = iChave;
-                    dsCte.enderToma.AddenderTomaRow(dsEnderToma);
-                    dsEnderToma = dsCte.enderToma.NewenderTomaRow();
-                    #endregion
-                }
+               
 
                 #endregion
 
@@ -535,7 +446,7 @@ namespace HLP.GeraXml.bel.CTe
                 dsRem.pk_infCte = iChave;
                 dsRem.pk_rem = iChave;
                 dsCte.rem.AddremRow(dsRem);
-                dsRem = dsCte.rem.NewremRow();
+             //   dsRem = dsCte.rem.NewremRow();
 
 
 
@@ -592,7 +503,7 @@ namespace HLP.GeraXml.bel.CTe
                 dsEnderReme.pk_rem = iChave;
 
                 dsCte.enderReme.AddenderRemeRow(dsEnderReme);
-                dsEnderReme = dsCte.enderReme.NewenderRemeRow();
+               // dsEnderReme = dsCte.enderReme.NewenderRemeRow();
 
                 #endregion
 
@@ -942,7 +853,7 @@ namespace HLP.GeraXml.bel.CTe
                 dsDest.pk_infCte = iChave;
 
                 dsCte.dest.AdddestRow(dsDest);
-                dsDest = dsCte.dest.NewdestRow();
+                //dsDest = dsCte.dest.NewdestRow();
 
                 #endregion
 
@@ -995,7 +906,7 @@ namespace HLP.GeraXml.bel.CTe
                 dsEnderDest.pk_enderDest = iChave;
 
                 dsCte.enderDest.AddenderDestRow(dsEnderDest);
-                dsEnderDest = dsCte.enderDest.NewenderDestRow();
+               // dsEnderDest = dsCte.enderDest.NewenderDestRow();
 
                 #endregion
 
@@ -1527,6 +1438,172 @@ namespace HLP.GeraXml.bel.CTe
                 dsInfCTeNorm = dsCte.infCTeNorm.NewinfCTeNormRow();
 
                 #endregion
+
+
+                if (dsToma03.toma == "0")  // remetente
+                {
+                    dsToma4 = dsCte.toma4.Newtoma4Row();
+                    dsEnderToma = dsCte.enderToma.NewenderTomaRow();
+                    dsToma4.CNPJ = dsRem.CNPJ;
+                    //dsToma4.CPF = dsRem.CPF;
+                    dsToma4.xNome = dsRem.xNome;
+                    dsToma4.xFant = dsRem.xFant;
+                    try
+                    {
+                        dsToma4.fone = dsRem.fone;
+                    }
+                    catch (Exception){}
+                    dsToma4.pk_toma4 = iChave;
+                    dsToma4.pk_ide = iChave;
+                    dsCte.toma4.Addtoma4Row(dsToma4);
+
+                    dsEnderToma.xLgr = dsEnderReme.xLgr;
+                    dsEnderToma.nro = dsEnderReme.nro;
+                    try
+                    {
+                        dsEnderToma.xCpl = dsEnderReme.xCpl;
+                    }
+                    catch (Exception)
+                    {}
+                    dsEnderToma.xBairro = dsEnderReme.xBairro;
+                    dsEnderToma.cMun = dsEnderReme.cMun;
+                    dsEnderToma.xMun = dsEnderReme.xMun;
+                    dsEnderToma.CEP = dsEnderReme.CEP;
+                    dsEnderToma.UF = dsEnderReme.UF;
+                    dsEnderToma.cPais = dsEnderReme.cPais;
+                    dsEnderToma.xPais = dsEnderReme.xPais;
+                    dsEnderToma.pk_toma4 = iChave;
+                    dsEnderToma.pk_enderToma = iChave;
+
+                    dsCte.enderToma.AddenderTomaRow(dsEnderToma);
+                }
+                else if (dsToma03.toma == "3") // destinatario
+                {
+                    dsToma4 = dsCte.toma4.Newtoma4Row();
+                    dsEnderToma = dsCte.enderToma.NewenderTomaRow();
+                    dsToma4.CNPJ = dsDest.CNPJ;
+                    try { dsToma4.CPF = dsDest.CPF; }
+                    catch (Exception) { }                    
+                    dsToma4.xNome = dsDest.xNome;
+                    dsToma4.xFant = dsDest.xNome;
+                    try { dsToma4.fone = dsDest.fone; }
+                    catch (Exception) { }
+                    
+                    dsToma4.pk_toma4 = iChave;
+                    dsToma4.pk_ide = iChave;
+                    dsCte.toma4.Addtoma4Row(dsToma4);
+
+                    dsEnderToma.xLgr = dsEnderDest.xLgr;
+                    dsEnderToma.nro = dsEnderDest.nro;
+                    try { dsEnderToma.xCpl = dsEnderDest.xCpl; }
+                    catch (Exception) { }                    
+                    dsEnderToma.xBairro = dsEnderDest.xBairro;
+                    dsEnderToma.cMun = dsEnderDest.cMun;
+                    dsEnderToma.xMun = dsEnderDest.xMun;
+                    dsEnderToma.CEP = dsEnderDest.CEP;
+                    dsEnderToma.UF = dsEnderDest.UF;
+                    dsEnderToma.cPais = dsEnderDest.cPais;
+                    dsEnderToma.xPais = dsEnderDest.xPais;
+                    dsEnderToma.pk_toma4 = iChave;
+                    dsEnderToma.pk_enderToma = iChave;
+
+                    dsCte.enderToma.AddenderTomaRow(dsEnderToma);
+
+                }
+
+                //if (toma4.Count > 0)
+                //{
+                //    dsToma4 = dsCte.toma4.Newtoma4Row();
+                //    dsEnderToma = dsCte.enderToma.NewenderTomaRow();
+
+                //    #region Dados Tomador
+                //    for (int i = 0; i < toma4.Count; i++)
+                //    {
+                //        for (int j = 0; j < toma4[i].ChildNodes.Count; j++)
+                //        {
+                //            switch (toma4[i].ChildNodes[j].LocalName)
+                //            {
+                //                case "toma": dsToma4.toma = toma4[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "CNPJ": dsToma4.CNPJ = toma4[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "CPF": dsToma4.CPF = toma4[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "IE": dsToma4.IE = toma4[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "xNome": dsToma4.xNome = toma4[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "xFant": dsToma4.xFant = toma4[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "fone": dsToma4.fone = toma4[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //            }
+                //        }
+                //    }
+
+                //    dsToma4.pk_toma4 = iChave;
+                //    dsToma4.pk_ide = iChave;
+
+                //    dsCte.toma4.Addtoma4Row(dsToma4);
+                //    dsToma4 = dsCte.toma4.Newtoma4Row();
+                //    #endregion
+
+                //    #region EnderecoToma
+
+                //    for (int i = 0; i < enderToma.Count; i++)
+                //    {
+                //        for (int j = 0; j < enderToma[i].ChildNodes.Count; j++)
+                //        {
+                //            switch (enderToma[i].ChildNodes[j].LocalName)
+                //            {
+                //                case "xLgr": dsEnderToma.xLgr = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "nro": dsEnderToma.nro = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "xCpl": dsEnderToma.xCpl = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "xBairro": dsEnderToma.xBairro = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "cMun": dsEnderToma.cMun = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "xMun": dsEnderToma.xMun = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "CEP": dsEnderToma.CEP = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "UF": dsEnderToma.UF = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "cPais": dsEnderToma.cPais = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //                case "xPais": dsEnderToma.xPais = enderToma[i].ChildNodes[j].InnerText;
+                //                    break;
+
+                //            }
+                //        }
+                //    }
+                //    dsEnderToma.pk_toma4 = iChave;
+                //    dsEnderToma.pk_enderToma = iChave;
+                //    dsCte.enderToma.AddenderTomaRow(dsEnderToma);
+                //    dsEnderToma = dsCte.enderToma.NewenderTomaRow();
+                //    #endregion
+                //}
+
+
             }
             catch (Exception ex)
             {

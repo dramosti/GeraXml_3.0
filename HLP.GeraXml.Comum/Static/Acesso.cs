@@ -152,6 +152,7 @@ namespace HLP.GeraXml.Comum.Static
         public static string USA_DANFE_SIMPLIFICADA { get; set; }
         public static string CAMINHO_PADRAO { get; set; }
         public static string CAMINHO_RELATORIO_ESPECIFICO { get; set; }
+        public static string CAMINHO_ESPECIFICO_ENVIADOS { get; set; }
         public static string CAMINHO_BANCO_DADOS { get; set; }
         public static string NM_SERVIDOR { get; set; }
         public static string PORTA { get; set; }
@@ -274,6 +275,7 @@ namespace HLP.GeraXml.Comum.Static
                     Acesso.CAMINHO_PADRAO = obj.CAMINHO_PADRAO;
                     Acesso.USA_DANFE_SIMPLIFICADA = obj.USA_DANFE_SIMPLIFICADA;
                     Acesso.CAMINHO_RELATORIO_ESPECIFICO = obj.CAMINHO_RELATORIO_ESPECIFICO;
+                    Acesso.CAMINHO_ESPECIFICO_ENVIADOS = obj.CAMINHO_ESPECIFICO_ENVIADOS;
                     Acesso.CAMINHO_BANCO_DADOS = obj.CAMINHO_BANCO_DADOS;
                     Acesso.NM_SERVIDOR = obj.NM_SERVIDOR;
                     Acesso.PORTA = obj.PORTA;

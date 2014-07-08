@@ -28,6 +28,10 @@ namespace HLP.GeraXml.UI.Configuracao
         public frmConfiguracao()
         {
             InitializeComponent();
+            if (Acesso.NM_RAMO != Acesso.BancoDados.TRANSPORTE)
+            {
+                txtPastaEnviados.Visible = false;
+            }
         }
         private void frmConfiguracao_Load(object sender, EventArgs e)
         {
@@ -53,9 +57,17 @@ namespace HLP.GeraXml.UI.Configuracao
                 btnCaminhoBanco.Image = HLP.GeraXml.UI.Properties.Resources.Pasta;
                 btnCaminhoBanco.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.InputControl;
                 btnCaminhoBanco.Click += new System.EventHandler(btnPastas_Click);
+                ButtonSpecAny btnPastaPesquisar = new ButtonSpecAny();
+                btnPastaPadrao.UniqueName = "btnPastaPesquisar";
+                btnPastaPadrao.Image = HLP.GeraXml.UI.Properties.Resources.Pasta;
+                btnPastaPadrao.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.InputControl;
+                btnPastaPadrao.Click += new System.EventHandler(btnPastas_Click);
+
 
                 // txtCaminhoPadrao.txt.ReadOnly = true;
                 txtCaminhoPadrao.txt.ButtonSpecs.Add(btnPastaPadrao);
+
+                txtPastaEnviados.txt.ButtonSpecs.Add(btnPastaPadrao);
 
                 //txtCaminhoPastaRelatorio.txt.ReadOnly = true;
                 txtCaminhoPastaRelatorio.txt.ButtonSpecs.Add(btnPastaRelatorio);
@@ -80,7 +92,8 @@ namespace HLP.GeraXml.UI.Configuracao
 
             if (
                 (btn.UniqueName.Equals("btnPastaPadrao")) ||
-                (btn.UniqueName.Equals("btnPastaRelatorio")))
+                (btn.UniqueName.Equals("btnPastaRelatorio"))||
+                (btn.UniqueName.Equals("btnPastaPesquisar")))
             {
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -89,6 +102,8 @@ namespace HLP.GeraXml.UI.Configuracao
                         case "btnPastaPadrao": txtCaminhoPadrao.Text = folderBrowserDialog1.SelectedPath;
                             break;
                         case "btnPastaRelatorio": txtCaminhoPastaRelatorio.Text = folderBrowserDialog1.SelectedPath;
+                            break;
+                        case "btnPastaPesquisar": txtPastaEnviados.Text = folderBrowserDialog1.SelectedPath;
                             break;
                     }
                 }
@@ -189,6 +204,7 @@ namespace HLP.GeraXml.UI.Configuracao
 
                 this.txtCaminhoPadrao.Text = objbelConfiguracao.CAMINHO_PADRAO;
                 this.txtCaminhoPastaRelatorio.Text = objbelConfiguracao.CAMINHO_RELATORIO_ESPECIFICO;
+                this.txtPastaEnviados.Text = objbelConfiguracao.CAMINHO_ESPECIFICO_ENVIADOS;
                 this.txtBancoDados.Text = objbelConfiguracao.CAMINHO_BANCO_DADOS;
                 this.txtCaminhoLogo.Text = objbelConfiguracao.LOGOTIPO;
                 this.nupCasasQtdeProd.Value = Convert.ToDecimal(objbelConfiguracao.QTDE_CASAS_PRODUTOS);
@@ -249,6 +265,7 @@ namespace HLP.GeraXml.UI.Configuracao
                 objbelConfiguracao = new belConfiguracao();
                 objbelConfiguracao.CAMINHO_PADRAO = this.txtCaminhoPadrao.Text.ToString().Trim();
                 objbelConfiguracao.CAMINHO_RELATORIO_ESPECIFICO = this.txtCaminhoPastaRelatorio.Text;
+                objbelConfiguracao.CAMINHO_ESPECIFICO_ENVIADOS = this.txtPastaEnviados.Text;
                 objbelConfiguracao.CAMINHO_BANCO_DADOS = this.txtBancoDados.Text;
                 objbelConfiguracao.LOGOTIPO = this.txtCaminhoLogo.Text;
                 objbelConfiguracao.QTDE_CASAS_PRODUTOS = this.nupCasasQtdeProd.Value.ToString();

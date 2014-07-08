@@ -80,13 +80,15 @@ namespace HLP.GeraXml.bel.NFe
                             {
                                 if (objInfNFe.cobr.Fat.belDup != null)
                                 {
-                                    if (objInfNFe.cobr.Fat.belDup.Count() > 0)
-                                        objInfNFe.infAdic.Infcpl = "PARCELA(S): ";
+                                    
+                                    string sparecelas = string.Empty;
                                     foreach (var item in objInfNFe.cobr.Fat.belDup)
                                     {
-                                        objInfNFe.infAdic.Infcpl = string.Format("{0} - VALOR R${1}", item.Dvenc.ToShortDateString()
+                                        sparecelas += string.Format("{0}{1} VALOR R$ {2} | ", item.Dvenc.ToShortDateString(), (sparecelas == "" ? "" : " -")
                                             , item.Vdup.ToString());
                                     }
+                                    if (objInfNFe.cobr.Fat.belDup.Count() > 0)
+                                        objInfNFe.infAdic.Infcpl = "PARCELA(S): " + sparecelas;
                                 }
                             }
                         }

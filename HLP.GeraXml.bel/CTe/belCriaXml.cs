@@ -1420,6 +1420,13 @@ namespace HLP.GeraXml.bel.CTe
                 DirectoryInfo dPastaEnviadosMesAtual = new DirectoryInfo(dPastaEnviados + @"\\" + sData.Substring(3, 2) + "-" + sData.Substring(8, 2));
                 if (!dPastaEnviadosMesAtual.Exists) { dPastaEnviadosMesAtual.Create(); }
 
+                DirectoryInfo dPastaEnviadosEspecifico = null;
+                if (Acesso.CAMINHO_ESPECIFICO_ENVIADOS != "")
+                {
+                    dPastaEnviadosEspecifico = new DirectoryInfo(Acesso.CAMINHO_ESPECIFICO_ENVIADOS);
+                    if (!dPastaEnviadosEspecifico.Exists) { dPastaEnviadosEspecifico.Create(); }
+                }
+
 
                 DirectoryInfo dPastaEnvio = new DirectoryInfo(Pastas.ENVIO);
                 if (dPastaEnvio.Exists)
@@ -1442,6 +1449,12 @@ namespace HLP.GeraXml.bel.CTe
                         StreamWriter sw = new StreamWriter(dPastaEnviadosMesAtual + "\\Cte_" + sChaveCte + ".xml");
                         sw.Write(sX);
                         sw.Close();
+                        if (dPastaEnviadosEspecifico != null)
+                        {
+                            sw = new StreamWriter(dPastaEnviadosEspecifico.FullName + "\\Cte_" + sChaveCte + ".xml");
+                            sw.Write(sX);
+                            sw.Close();
+                        }
                     }
                 }
             }

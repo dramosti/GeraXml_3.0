@@ -42,6 +42,7 @@
             this.txtServerDados = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.nudPorta = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             this.txtCodEmpresa = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
+            this.txtPastaEnviados = new HLP.GeraXml.Comum.Componentes.HLP_TextBox();
             this.tbParametros = new System.Windows.Forms.TabPage();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonTabControl1 = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
@@ -223,6 +224,7 @@
             this.flowLayoutPanel2.Controls.Add(this.txtServerDados);
             this.flowLayoutPanel2.Controls.Add(this.nudPorta);
             this.flowLayoutPanel2.Controls.Add(this.txtCodEmpresa);
+            this.flowLayoutPanel2.Controls.Add(this.txtPastaEnviados);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -401,6 +403,29 @@
             this.txtCodEmpresa.ReadOnly = false;
             this.txtCodEmpresa.Size = new System.Drawing.Size(223, 23);
             this.txtCodEmpresa.TabIndex = 6;
+            // 
+            // txtPastaEnviados
+            // 
+            this.txtPastaEnviados._LabelText = "Pasta de enviados ( transporte )";
+            this.txtPastaEnviados._Multiline = false;
+            this.txtPastaEnviados._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_TextBox.CampoObrigatorio.NÃO;
+            this.txtPastaEnviados._Password = false;
+            this.txtPastaEnviados._Regex = Expressoes.Não_Aplica;
+            this.txtPastaEnviados._Regex_Expressao = "";
+            this.txtPastaEnviados._TamanhoMaiorLabel = 215;
+            this.txtPastaEnviados._TamanhoTextBox = 421;
+            this.txtPastaEnviados._Visible = true;
+            this.txtPastaEnviados.AutoSize = true;
+            this.txtPastaEnviados.BackColor = System.Drawing.Color.Transparent;
+            this.txtPastaEnviados.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtPastaEnviados.Color = System.Drawing.Color.White;
+            this.txtPastaEnviados.Location = new System.Drawing.Point(23, 206);
+            this.txtPastaEnviados.Margin = new System.Windows.Forms.Padding(23, 3, 15, 3);
+            this.txtPastaEnviados.MaxLength = 32767;
+            this.txtPastaEnviados.Name = "txtPastaEnviados";
+            this.txtPastaEnviados.ReadOnly = false;
+            this.txtPastaEnviados.Size = new System.Drawing.Size(616, 27);
+            this.txtPastaEnviados.TabIndex = 7;
             // 
             // tbParametros
             // 
@@ -1581,6 +1606,7 @@
         private Comum.Componentes.HLP_CheckBox hlP_CheckBox1;
         private Comum.Componentes.HLP_CheckBox ckbDataSaidaDanfe;
         private Comum.Componentes.HLP_CheckBox ckbImprimiFaturaDanfe;
+        private Comum.Componentes.HLP_TextBox txtPastaEnviados;
 
     }
 }

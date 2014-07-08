@@ -76,7 +76,7 @@ namespace HLP.GeraXml.dao.CTe.MDFe
                 sSql.Append("cd_manifest ='");
                 sSql.Append(sequencia);
                 sSql.Append("'");
-                sSql.Append(" and coalesce(CD_RECIBOMDFE, '') = ''");
+                //sSql.Append(" and coalesce(CD_RECIBOMDFE, '') = ''");
 
                 HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
 
@@ -86,7 +86,7 @@ namespace HLP.GeraXml.dao.CTe.MDFe
                 throw;
             }
 
-        }
+        }      
 
         public static void LimpaRecibo(string sequencia)
         {
@@ -191,6 +191,33 @@ namespace HLP.GeraXml.dao.CTe.MDFe
             }
 
         }
+
+        public static void AlteraUltimoRetornoNULL(string sequencia)
+        {
+            try
+            {
+                StringBuilder sSql = new StringBuilder();
+                sSql.Append("update MANIFEST ");
+                sSql.Append("set DS_ULTIMORET = NULL ");
+                sSql.Append("where ");
+                sSql.Append("cd_empresa ='");
+                sSql.Append(Acesso.CD_EMPRESA);
+                sSql.Append("' ");
+                sSql.Append("and ");
+                sSql.Append("cd_manifest ='");
+                sSql.Append(sequencia);
+                sSql.Append("'");
+                HLP.GeraXml.dao.ADO.HlpDbFuncoes.qrySeekUpdate(sSql.ToString());
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+
         public static DateTime? GetUltimoRetorno(string sequencia)
         {
             try
@@ -222,11 +249,11 @@ namespace HLP.GeraXml.dao.CTe.MDFe
                 StringBuilder sQuery = new StringBuilder();
                 sQuery.Append("Select ");
                 sQuery.Append("e.cd_tpemitente tpEmit, ");
-                sQuery.Append("m.cd_seriemanifest serie, ");
-                sQuery.Append("m.cd_ufini UFIni , ");
-                sQuery.Append("m.cd_uffim UFFim ");
+                sQuery.Append("coalesce(m.cd_seriemanifest,'0') serie, ");
+                sQuery.Append("coalesce(m.cd_ufini,'') UFIni , ");
+                sQuery.Append("coalesce(m.cd_uffim,'') UFFim ");
                 sQuery.Append("from manifest m inner join Empresa e on m.cd_empresa = e.cd_empresa ");
-                sQuery.Append("where m.cd_manifest = '{0}' and m.cd_empresa = '{1}'");
+                sQuery.Append("where m.cd_manifest = '{0}' and m.cd_empresa = '{1}' ");
 
 
                 return HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), sequencia, Acesso.CD_EMPRESA));
@@ -330,7 +357,7 @@ namespace HLP.GeraXml.dao.CTe.MDFe
                 sQuery.Append("Select ");
                 sQuery.Append("c.cd_conheci, c.cd_cidnorate ");
                 sQuery.Append("from maniftab m inner join conhecim c on m.nr_lancconhecim = c.nr_lanc and m.cd_empresa = c.cd_empresa ");
-                sQuery.Append("where m.cd_manifest = '{0}'  and m.cd_empresa = '{1}'");
+                sQuery.Append("where m.cd_manifest = '{0}'  and m.cd_empresa = '{1}' and c.cd_cidnorate is null");
 
                 foreach (DataRow row in HlpDbFuncoes.qrySeekRet(string.Format(sQuery.ToString(), sequencia, Acesso.CD_EMPRESA)).Rows)
                 {

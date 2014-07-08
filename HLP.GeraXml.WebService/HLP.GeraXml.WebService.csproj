@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -202,6 +202,11 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\v2_Producao_NfeConsultaCadastro_MG\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\v2_Producao_NFeConsultaCadastro_RS1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -1785,6 +1790,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>HLP_GeraXml_WebService_riodasostras_Producao_Nfse</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="https://svp-ws.sefazvirtual.rs.gov.br/ws/CadConsultaCadastro/CadConsultaCadastro2.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\v2_Producao_NFeConsultaCadastro_RS1\</RelPath>
+      <UpdateFromURL>https://svp-ws.sefazvirtual.rs.gov.br/ws/CadConsultaCadastro/CadConsultaCadastro2.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_RS1_CadConsultaCadastro2</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="https://www.scan.fazenda.gov.br/NfeCancelamento2/NfeCancelamento2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\v2_SCAN_Producao_NFeCancelamento\</RelPath>
@@ -2013,6 +2029,11 @@
     </None>
     <None Include="Web References\v2_Producao_NfeConsultaCadastro_MG\CadConsultaCadastro2.wsdl" />
     <None Include="Web References\v2_Producao_NfeConsultaCadastro_MG\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_RS1\CadConsultaCadastro2.wsdl" />
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_RS1\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2605,6 +2626,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\MDFe_Producao_StatusServico\MDFeStatusServico.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_RS1\CadConsultaCadastro2.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

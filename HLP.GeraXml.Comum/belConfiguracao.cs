@@ -11,6 +11,7 @@ namespace HLP.GeraXml.Comum
         public string CAMINHO_PADRAO { get; set; }
         public string USA_DANFE_SIMPLIFICADA { get; set; }
         public string CAMINHO_RELATORIO_ESPECIFICO { get; set; }
+        public string CAMINHO_ESPECIFICO_ENVIADOS { get; set; }
         public string CAMINHO_BANCO_DADOS { get; set; }
         public string NM_SERVIDOR { get; set; }
         public string PORTA { get; set; }

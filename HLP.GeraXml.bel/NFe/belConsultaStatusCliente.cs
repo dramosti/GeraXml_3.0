@@ -82,23 +82,22 @@ namespace HLP.GeraXml.bel.NFe
                             string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
                             xRetorno.LoadXml(sretorno);
                         }
-                        break;         
-                    //case "RS":
-                    //    {
-                    //        HLP.WebService.v2_Producao_NFeConsultaCadastro_RS.CadConsultaCadastro2 ws2 = new HLP.WebService.v2_Producao_NFeConsultaCadastro_RS.CadConsultaCadastro2();
-                    //        HLP.WebService.v2_Producao_NFeConsultaCadastro_RS.nfeCabecMsg cabec = new HLP.WebService.v2_Producao_NFeConsultaCadastro_RS.nfeCabecMsg();
-                    //        belUF objbelUF = new belUF();
-                    //        cabec.cUF = objbelUF.RetornaCUF(sUF);
-                    //        cabec.versaoDados = "2.00";
-                    //        ws2.nfeCabecMsgValue = cabec;
-                    //        ws2.ClientCertificates.Add(cert);
-                    //        XmlNode xDados = MontaMsg();
-                    //        string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
-                    //        XmlDocument xRetorno = new XmlDocument();
-                    //        xRetorno.LoadXml(sretorno);
-                    //        MontaMsgRetorno(sMsgRetorno, xRetorno);
-                    //    }
-                    //    break;
+                        break;
+                    case "RJ":
+                        {
+                            
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS1.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS1.CadConsultaCadastro2();
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS1.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS1.nfeCabecMsg();
+                            belUF objbelUF = new belUF();
+                            cabec.cUF = objbelUF.RetornaCUF(sUF);
+                            cabec.versaoDados = "2.00";
+                            ws2.nfeCabecMsgValue = cabec;
+                            ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                            XmlNode xDados = MontaMsg();
+                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
+                        }
+                        break;
                     //case "MS":
                     //    {
                     //        HLP.WebService.v2_Producao_NFeConsultaCadastro_MS.CadConsultaCadastro2 ws2 = new HLP.WebService.v2_Producao_NFeConsultaCadastro_MS.CadConsultaCadastro2();

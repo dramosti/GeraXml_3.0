@@ -1151,5 +1151,16 @@ namespace HLP.GeraXml.WebService.Properties {
                 return ((string)(this["HLP_GeraXml_WebService_MDFe_Producao_StatusServico_MDFeStatusServico"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://svp-ws.sefazvirtual.rs.gov.br/ws/CadConsultaCadastro/CadConsultaCadastro2" +
+            ".asmx")]
+        public string HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_RS1_CadConsultaCadastro2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_RS1_CadConsultaCadastro2"]));
+            }
+        }
     }
 }

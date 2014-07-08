@@ -668,9 +668,9 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                         sreturn += ";COMPRADOR: " + row["COMPRADOR"].ToString().ToUpper() + ";";
 
                     if (row["PEDCLI"].ToString() != "")
-                        sreturn += ";NUMERO DO PEDIDO: " + row["PEDCLI"].ToString().ToUpper() + ";";
+                        sreturn += "NUMERO DO PEDIDO: " + row["PEDCLI"].ToString().ToUpper() + ";";
                     else
-                        sreturn += ";NUMERO DO PEDIDO: " + "(EM BRANCO);";
+                        sreturn += "NUMERO DO PEDIDO: " + "(EM BRANCO);";
                 }
 
                 return sreturn;

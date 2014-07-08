@@ -372,6 +372,9 @@ namespace HLP.GeraXml.UI.NFe
                     }
                     else
                     {
+
+                        objSelect = ConsultaClienteBeforeEnvio(objSelect);
+
                         objfrmLotes = new frmEnviaLotes(objSelect);
                         objfrmLotes.ShowDialog();
 
@@ -640,6 +643,46 @@ namespace HLP.GeraXml.UI.NFe
                 new HLPexception(ex);
             }
 
+        }
+
+        public List<belPesquisaNotas> ConsultaClienteBeforeEnvio(List<belPesquisaNotas> objSelect)
+        {
+            try
+            {
+
+                List<belPesquisaNotas> lret = new List<belPesquisaNotas>();
+                belConsultaStatusCliente objbelConsulta;
+                string sMessage = string.Empty;
+                foreach (var item in objSelect)
+                {
+                    objbelConsulta = new belConsultaStatusCliente(item);
+                    HLP.GeraXml.bel.NFe.belConsultaStatusCliente.DadosRetorno o = objbelConsulta.ConsultaCadastro();
+
+                    if (o.cStat == "111")
+                    {
+                        if (o.xMotivo.ToString().ToUpper().Contains("HABILITADO"))
+                        {
+                            lret.Add(item);
+                        }
+                        else
+                        {
+                            sMessage += string.Format("Sequencia: {0} - Cliente:{1}, status{2} - Motivo:{3}{4}", item.sCD_NFSEQ,
+                                item.sNM_GUERRA,
+                                o.cStat,
+                                o.xMotivo);
+                        }
+                    }
+                    else
+                    {
+                        lret.Add(item);
+                    }
+                }
+                return lret;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         #endregion

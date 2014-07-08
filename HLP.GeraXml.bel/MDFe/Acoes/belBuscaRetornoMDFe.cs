@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -88,6 +89,15 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                 {
                     if (recepacao.protMDFe != null)
                     {
+                        //if (recepacao.cStat == "104")
+                        //{
+                        //    string sRec = recepacao.protMDFe.infProt.xMotivo.Substring(recepacao.protMDFe.infProt.xMotivo.IndexOf("nRec:"), 20).Replace("nRec:", "");
+                        //    daoManifesto.gravaRecibo(sRec, objPesquisa.sequencia);
+                        //    daoManifesto.AlteraStatusMDFe(objPesquisa.sequencia, "S");
+                        //    daoManifesto.AlteraUltimoRetornoNULL(objPesquisa.sequencia);
+                        //    //IncluiTagInfProc();
+                        //}
+                        //else
                         if (recepacao.protMDFe.infProt.cStat == "100")
                         {
                             daoManifesto.gravaProtocolo(recepacao.protMDFe.infProt.nProt, objPesquisa.sequencia);
@@ -104,12 +114,14 @@ namespace HLP.GeraXml.bel.MDFe.Acoes
                             string sRec = recepacao.protMDFe.infProt.xMotivo.Substring(recepacao.protMDFe.infProt.xMotivo.IndexOf("nRec:"), 20).Replace("nRec:", "");
                             daoManifesto.gravaRecibo(sRec, objPesquisa.sequencia);
                             daoManifesto.AlteraStatusMDFe(objPesquisa.sequencia, "S");
-                            IncluiTagInfProc();
+                            //IncluiTagInfProc();
+                            daoManifesto.AlteraUltimoRetornoNULL(objPesquisa.sequencia);
+                            // BuscarRetorno();
 
                         }
-                        else if (recepacao.protMDFe.infProt.cStat == "110") //LOTE EM PROCESSAMENTO.
+                        else if (recepacao.protMDFe.infProt.cStat == "105") //LOTE EM PROCESSAMENTO.
                         {
-
+                            daoManifesto.gravaProtocolo(recepacao.nRec, objPesquisa.sequencia);
                         }
                         else
                         {
