@@ -1162,5 +1162,65 @@ namespace HLP.GeraXml.WebService.Properties {
                 return ((string)(this["HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_RS1_CadConsultaCadastro2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://nfe.sefaz.ba.gov.br/webservices/nfenw/CadConsultaCadastro2.asmx")]
+        public string HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_BA_CadConsultaCadastro2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_BA_CadConsultaCadastro2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://nfe.sefaz.ce.gov.br/nfe2/services/CadConsultaCadastro2")]
+        public string HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_CE_CadConsultaCadastro2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_CE_CadConsultaCadastro2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://nfe.sefaz.go.gov.br/nfe/services/v2/CadConsultaCadastro2")]
+        public string HLP_GeraXml_WebService_br_gov_go_sefaz_nfe_CadConsultaCadastro2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_br_gov_go_sefaz_nfe_CadConsultaCadastro2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://nfe.sefaz.mt.gov.br/nfews/v2/services/CadConsultaCadastro2")]
+        public string HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_MT_CadConsultaCadastro2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_MT_CadConsultaCadastro2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://nfe.sefaz.pe.gov.br/nfe-service/services/CadConsultaCadastro2")]
+        public string HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_PE_CadConsultaCadastro2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_PE_CadConsultaCadastro2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://nfe2.fazenda.pr.gov.br/nfe/CadConsultaCadastro2")]
+        public string HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_PR_CadConsultaCadastro2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_PR_CadConsultaCadastro2"]));
+            }
+        }
     }
 }

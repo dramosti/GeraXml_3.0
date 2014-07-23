@@ -85,7 +85,7 @@ namespace HLP.GeraXml.bel.NFe
                                     foreach (var item in objInfNFe.cobr.Fat.belDup)
                                     {
                                         sparecelas += string.Format("{0}{1} VALOR R$ {2} | ", item.Dvenc.ToShortDateString(), (sparecelas == "" ? "" : " -")
-                                            , item.Vdup.ToString());
+                                            , item.Vdup.ToString("#0.00"));
                                     }
                                     if (objInfNFe.cobr.Fat.belDup.Count() > 0)
                                         objInfNFe.infAdic.Infcpl = "PARCELA(S): " + sparecelas;

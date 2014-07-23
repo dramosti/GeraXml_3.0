@@ -1443,7 +1443,7 @@ namespace HLP.GeraXml.bel.CTe
 
 
                         string sX = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-                                    "<cteProc versao=\"1.04\" xmlns=\"http://www.portalfiscal.inf.br/cte\">" +
+                                    "<cteProc versao=\"2.00\" xmlns=\"http://www.portalfiscal.inf.br/cte\">" +
                              XmlCte.ToString() + sRetorno + "</cteProc>";
 
                         StreamWriter sw = new StreamWriter(dPastaEnviadosMesAtual + "\\Cte_" + sChaveCte + ".xml");

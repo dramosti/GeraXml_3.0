@@ -375,46 +375,58 @@ namespace HLP.GeraXml.UI.NFe
 
                         objSelect = ConsultaClienteBeforeEnvio(objSelect);
 
-                        objfrmLotes = new frmEnviaLotes(objSelect);
-                        objfrmLotes.ShowDialog();
+                        if (objSelect.Count() > 0)
+                        {
+                            objfrmLotes = new frmEnviaLotes(objSelect);
+                            objfrmLotes.ShowDialog();
 
-                        //objbelCarregaDados = new belCarregaDados(objSelect);
-                        //frmVisualizaNFe objfrmVisualizaNFe = new frmVisualizaNFe(objbelCarregaDados);
-                        //objfrmVisualizaNFe.ShowDialog();
-                        //if (objfrmVisualizaNFe.Cancelado)
-                        //{
-                        //    throw new Exception("Envio da(s) Nota(s) Cancelado");
-                        //}
-                        //objbelCarregaDados.objbelCriaXml.GeraLoteXmlEnvio();
+                            //objbelCarregaDados = new belCarregaDados(objSelect);
+                            //frmVisualizaNFe objfrmVisualizaNFe = new frmVisualizaNFe(objbelCarregaDados);
+                            //objfrmVisualizaNFe.ShowDialog();
+                            //if (objfrmVisualizaNFe.Cancelado)
+                            //{
+                            //    throw new Exception("Envio da(s) Nota(s) Cancelado");
+                            //}
+                            //objbelCarregaDados.objbelCriaXml.GeraLoteXmlEnvio();
 
-                        //objbelCarregaDados.objbelRecepcao.TransmitirLote(objbelCarregaDados.objbelCriaXml.sPathLote, objSelect);
+                            //objbelCarregaDados.objbelRecepcao.TransmitirLote(objbelCarregaDados.objbelCriaXml.sPathLote, objSelect);
+                            if (objfrmLotes.bCancelado == true)
+                            {
+                                throw new Exception("Envio da(s) Nota(s) Cancelado.");
+                            }
+                        }
                     }
 
                     if (objfrmLotes == null)
                     {
-                        belBusRetFazenda objbelRetFazenda = new belBusRetFazenda(objSelect);
-                        frmBuscaRetorno objFrmBuscaRet = new frmBuscaRetorno(objbelRetFazenda);
-                        objFrmBuscaRet.ShowDialog();
-                        KryptonMessageBox.Show(belTrataMensagemNFe.RetornaMensagem(objbelRetFazenda.lDadosRetorno, belTrataMensagemNFe.Tipo.Envio), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        cboStatus.cbx.SelectedIndex = 2;
-                        //PesquisaNotas();
+                        if (objSelect.Count() > 0)
+                        {
+                            belBusRetFazenda objbelRetFazenda = new belBusRetFazenda(objSelect);
+                            frmBuscaRetorno objFrmBuscaRet = new frmBuscaRetorno(objbelRetFazenda);
+                            objFrmBuscaRet.ShowDialog();
+                            KryptonMessageBox.Show(belTrataMensagemNFe.RetornaMensagem(objbelRetFazenda.lDadosRetorno, belTrataMensagemNFe.Tipo.Envio), Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cboStatus.cbx.SelectedIndex = 2;
+                            PesquisaNotas();
 
-                        List<string> lsNotas = objbelRetFazenda.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
-                        List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
-                                                        where lsNotas.Contains(c.sCD_NFSEQ)
-                                                        select c).ToList();
-
-                        bsNotas.DataSource = dados;
+                            List<string> lsNotas = objbelRetFazenda.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
+                            List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
+                                                            where lsNotas.Contains(c.sCD_NFSEQ)
+                                                            select c).ToList();
+                            bsNotas.DataSource = dados;
+                        }
                     }
                     else
                     {
                         cboStatus.cbx.SelectedIndex = 2;
                         PesquisaNotas();
-                        List<string> lsNotas = objfrmLotes.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
-                        List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
-                                                        where lsNotas.Contains(c.sCD_NFSEQ)
-                                                        select c).ToList();
-                        bsNotas.DataSource = dados;
+                        if (objfrmLotes != null)
+                        {
+                            List<string> lsNotas = objfrmLotes.lDadosRetorno.Select(c => c.seqNota).ToList<string>();
+                            List<belPesquisaNotas> dados = (from c in ((List<belPesquisaNotas>)bsNotas.DataSource)
+                                                            where lsNotas.Contains(c.sCD_NFSEQ)
+                                                            select c).ToList();
+                            bsNotas.DataSource = dados;
+                        }
 
                     }
                     cboStatus.cbx.SelectedIndex = 1;
@@ -655,27 +667,43 @@ namespace HLP.GeraXml.UI.NFe
                 string sMessage = string.Empty;
                 foreach (var item in objSelect)
                 {
-                    objbelConsulta = new belConsultaStatusCliente(item);
-                    HLP.GeraXml.bel.NFe.belConsultaStatusCliente.DadosRetorno o = objbelConsulta.ConsultaCadastro();
-
-                    if (o.cStat == "111")
+                    try
                     {
-                        if (o.xMotivo.ToString().ToUpper().Contains("HABILITADO"))
+                        objbelConsulta = new belConsultaStatusCliente(item);
+                        HLP.GeraXml.bel.NFe.belConsultaStatusCliente.DadosRetorno o = objbelConsulta.ConsultaCadastro();
+
+                        if (o.cStat == "111")
                         {
-                            lret.Add(item);
+                            if (!o.cSit.ToString().ToUpper().Contains("NÃO"))
+                            {
+                                lret.Add(item);
+                            }
+                            else
+                            {
+                                sMessage += string.Format("Sequencia: {0} - Cliente:{1}, status{2} - Motivo:{3}{4}", item.sCD_NFSEQ,
+                                    item.sNM_CLIFOR,
+                                    o.cStat,
+                                    o.cSit, Environment.NewLine);
+                            }
                         }
                         else
                         {
-                            sMessage += string.Format("Sequencia: {0} - Cliente:{1}, status{2} - Motivo:{3}{4}", item.sCD_NFSEQ,
-                                item.sNM_GUERRA,
-                                o.cStat,
-                                o.xMotivo);
+                            lret.Add(item);
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        lret.Add(item);
+                        throw ex;
                     }
+                }
+                if (sMessage != "")
+                {
+                    sMessage = "Consulta realizada no sefaz aponta que o(s) cliente(s) listado(s) abaixo não possuem situação cadastral habilitada." + Environment.NewLine +
+                        "Impossível emissão de NF-e para o(s) mesmo(s), até sua regularização!"
+                        + Environment.NewLine + Environment.NewLine
+                        + sMessage;
+
+                    MessageBox.Show(sMessage, "A V I S O", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 return lret;
             }

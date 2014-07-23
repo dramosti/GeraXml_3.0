@@ -19,6 +19,7 @@ namespace HLP.GeraXml.UI.NFe
     {
         List<List<belPesquisaNotas>> lotesSep;
         List<lotes> lLotes;
+        public bool bCancelado = false;
         public List<HLP.GeraXml.bel.NFe.belBusRetFazenda.DadosRetorno> lDadosRetorno;
 
         public frmEnviaLotes(List<belPesquisaNotas> lNotas)
@@ -162,7 +163,7 @@ namespace HLP.GeraXml.UI.NFe
                           objFrmVisualizaDados.ShowDialog();
                           if (objFrmVisualizaDados.Cancelado)
                           {
-                              throw new Exception("Envio da(s) Nota(s) Cancelado");
+                              throw new Exception("cancelado.");
                           }
 
 
@@ -184,7 +185,8 @@ namespace HLP.GeraXml.UI.NFe
             }
             catch (Exception ex)
             {
-                new HLPexception(ex);
+//                new HLPexception(ex);
+                bCancelado = true;
                 //async_work.CancelAsync();
                 //timer1.Start();
                 this.Invoke(new MethodInvoker(delegate()

@@ -51,6 +51,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Web References\v2_Producao_NFeConsultaCadastro_GO\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\CTe_Producao_cteCancelamento\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,7 +206,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\v2_Producao_NFeConsultaCadastro_BA\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\v2_Producao_NFeConsultaCadastro_CE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\v2_Producao_NfeConsultaCadastro_MG\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\v2_Producao_NFeConsultaCadastro_MT\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\v2_Producao_NFeConsultaCadastro_PE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\v2_Producao_NFeConsultaCadastro_PR\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -1603,6 +1633,61 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>HLP_GeraXml_WebService_v2_Producao_NFeStatusServico_SP_NfeStatusServico2</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="https://nfe.sefaz.ba.gov.br/webservices/nfenw/CadConsultaCadastro2.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\v2_Producao_NFeConsultaCadastro_BA\</RelPath>
+      <UpdateFromURL>https://nfe.sefaz.ba.gov.br/webservices/nfenw/CadConsultaCadastro2.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_BA_CadConsultaCadastro2</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://nfe.sefaz.ce.gov.br/nfe2/services/CadConsultaCadastro2%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\v2_Producao_NFeConsultaCadastro_CE\</RelPath>
+      <UpdateFromURL>https://nfe.sefaz.ce.gov.br/nfe2/services/CadConsultaCadastro2%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_CE_CadConsultaCadastro2</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://nfe.sefaz.go.gov.br/nfe/services/v2/CadConsultaCadastro2%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\v2_Producao_NFeConsultaCadastro_GO\</RelPath>
+      <UpdateFromURL>https://nfe.sefaz.go.gov.br/nfe/services/v2/CadConsultaCadastro2%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_br_gov_go_sefaz_nfe_CadConsultaCadastro2</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://nfe.sefaz.mt.gov.br/nfews/v2/services/CadConsultaCadastro2%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\v2_Producao_NFeConsultaCadastro_MT\</RelPath>
+      <UpdateFromURL>https://nfe.sefaz.mt.gov.br/nfews/v2/services/CadConsultaCadastro2%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_MT_CadConsultaCadastro2</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://nfe.sefaz.pe.gov.br/nfe-service/services/CadConsultaCadastro2%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\v2_Producao_NFeConsultaCadastro_PE\</RelPath>
+      <UpdateFromURL>https://nfe.sefaz.pe.gov.br/nfe-service/services/CadConsultaCadastro2%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_PE_CadConsultaCadastro2</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="https://nfe.sefaz.rs.gov.br/ws/NfeCancelamento/NfeCancelamento2.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\v2_Producao_NFeCancelamento_RS\</RelPath>
@@ -1757,6 +1842,17 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>HLP_GeraXml_WebService_V2_Producao_RecepcaoEvento_SVRS_RecepcaoEvento</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="https://nfe2.fazenda.pr.gov.br/nfe/CadConsultaCadastro2%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\v2_Producao_NFeConsultaCadastro_PR\</RelPath>
+      <UpdateFromURL>https://nfe2.fazenda.pr.gov.br/nfe/CadConsultaCadastro2%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_PR_CadConsultaCadastro2</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="https://producao.ginfes.com.br/ServiceGinfesImpl%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Itu_servicos_Producao\</RelPath>
@@ -1876,6 +1972,11 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_GO\CadConsultaCadastro2.wsdl" />
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_GO\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\CTe_Producao_cteCancelamento\CteCancelamento.wsdl" />
     <None Include="Web References\CTe_Producao_cteCancelamento\Reference.map">
@@ -2027,8 +2128,33 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_BA\CadConsultaCadastro2.wsdl" />
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_BA\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_CE\CadConsultaCadastro2.wsdl" />
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_CE\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\v2_Producao_NfeConsultaCadastro_MG\CadConsultaCadastro2.wsdl" />
     <None Include="Web References\v2_Producao_NfeConsultaCadastro_MG\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_MT\CadConsultaCadastro2.wsdl" />
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_MT\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_PE\CadConsultaCadastro2.wsdl" />
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_PE\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_PR\CadConsultaCadastro2.wsdl" />
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_PR\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -2629,6 +2755,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\v2_Producao_NFeConsultaCadastro_RS1\CadConsultaCadastro2.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\v2_Producao_NFeConsultaCadastro_BA\CadConsultaCadastro2.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

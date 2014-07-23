@@ -50,10 +50,19 @@ namespace HLP.GeraXml.bel.NFe
                     break;
                 }
 
+                if (sUF == "EX")
+                {
+                    return new DadosRetorno { cStat = "200" };
+                }
+                if (sIE == "")
+                {
+                    return new DadosRetorno { cStat = "200" };
+                }
+
                 StringBuilder sMsgRetorno = new StringBuilder();
                 XmlDocument xRetorno = new XmlDocument();
 
-                switch (Acesso.xUF)
+                switch (sUF)
                 {
                     case "SP":
                         {
@@ -65,8 +74,8 @@ namespace HLP.GeraXml.bel.NFe
                             ws2.nfeCabecMsgValue = cabec;
                             ws2.ClientCertificates.Add(Acesso.cert_NFe);
                             XmlNode xDados = MontaMsg();
-                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;                           
-                            xRetorno.LoadXml(sretorno);                           
+                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
                         }
                         break;
                     case "MG":
@@ -83,9 +92,24 @@ namespace HLP.GeraXml.bel.NFe
                             xRetorno.LoadXml(sretorno);
                         }
                         break;
+                    case "RS":
+                        {
+
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS.CadConsultaCadastro2();
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS.nfeCabecMsg();
+                            belUF objbelUF = new belUF();
+                            cabec.cUF = objbelUF.RetornaCUF(sUF);
+                            cabec.versaoDados = "2.00";
+                            ws2.nfeCabecMsgValue = cabec;
+                            ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                            XmlNode xDados = MontaMsg();
+                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
+                        }
+                        break;
                     case "RJ":
                         {
-                            
+
                             HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS1.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS1.CadConsultaCadastro2();
                             HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS1.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_RS1.nfeCabecMsg();
                             belUF objbelUF = new belUF();
@@ -98,28 +122,104 @@ namespace HLP.GeraXml.bel.NFe
                             xRetorno.LoadXml(sretorno);
                         }
                         break;
-                    //case "MS":
-                    //    {
-                    //        HLP.WebService.v2_Producao_NFeConsultaCadastro_MS.CadConsultaCadastro2 ws2 = new HLP.WebService.v2_Producao_NFeConsultaCadastro_MS.CadConsultaCadastro2();
-                    //        HLP.WebService.v2_Producao_NFeConsultaCadastro_MS.nfeCabecMsg cabec = new HLP.WebService.v2_Producao_NFeConsultaCadastro_MS.nfeCabecMsg();
-                    //        belUF objbelUF = new belUF();
-                    //        cabec.cUF = objbelUF.RetornaCUF(sUF);
-                    //        cabec.versaoDados = "2.00";
-                    //        ws2.nfeCabecMsgValue = cabec;
-                    //        ws2.ClientCertificates.Add(cert);
-                    //        XmlNode xDados = MontaMsg();
-                    //        string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
-                    //        XmlDocument xRetorno = new XmlDocument();
-                    //        xRetorno.LoadXml(sretorno);
-                    //        MontaMsgRetorno(sMsgRetorno, xRetorno);
-                    //    }
-                    //    break;
+                    case "BA":
+                        {
+
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_BA.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_BA.CadConsultaCadastro2();
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_BA.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_BA.nfeCabecMsg();
+                            belUF objbelUF = new belUF();
+                            cabec.cUF = objbelUF.RetornaCUF(sUF);
+                            cabec.versaoDados = "2.00";
+                            ws2.nfeCabecMsgValue = cabec;
+                            ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                            XmlNode xDados = MontaMsg();
+                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
+                        }
+                        break;
+                    case "CE":
+                        {
+
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_CE.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_CE.CadConsultaCadastro2();
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_CE.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_CE.nfeCabecMsg();
+                            belUF objbelUF = new belUF();
+                            cabec.cUF = objbelUF.RetornaCUF(sUF);
+                            cabec.versaoDados = "2.00";
+                            ws2.nfeCabecMsgValue = cabec;
+                            ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                            XmlNode xDados = MontaMsg();
+                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
+                        }
+                        break;
+                    case "GO":
+                        {
+
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_GO.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_GO.CadConsultaCadastro2();
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_GO.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_GO.nfeCabecMsg();
+                            belUF objbelUF = new belUF();
+                            cabec.cUF = objbelUF.RetornaCUF(sUF);
+                            cabec.versaoDados = "2.00";
+                            ws2.nfeCabecMsgValue = cabec;
+                            ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                            XmlNode xDados = MontaMsg();
+                            string sretorno = ws2.cadConsultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
+                        }
+                        break;
+                    case "MT":
+                        {
+
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_MT.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_MT.CadConsultaCadastro2();
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_MT.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_MT.nfeCabecMsg();
+                            belUF objbelUF = new belUF();
+                            cabec.cUF = objbelUF.RetornaCUF(sUF);
+                            cabec.versaoDados = "2.00";
+                            ws2.nfeCabecMsgValue = cabec;
+                            ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                            XmlNode xDados = MontaMsg();
+                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
+                        }
+                        break;
+                    case "PE":
+                        {
+
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_PE.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_PE.CadConsultaCadastro2();
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_PE.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_PE.nfeCabecMsg();
+                            belUF objbelUF = new belUF();
+                            cabec.cUF = objbelUF.RetornaCUF(sUF);
+                            cabec.versaoDados = "2.00";
+                            ws2.nfeCabecMsgValue = cabec;
+                            ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                            XmlNode xDados = MontaMsg();
+                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
+                        }
+                        break;
+                    case "PR":
+                        {
+
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_PR.CadConsultaCadastro2 ws2 = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_PR.CadConsultaCadastro2();
+                            HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_PR.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Producao_NFeConsultaCadastro_PR.nfeCabecMsg();
+                            belUF objbelUF = new belUF();
+                            cabec.cUF = objbelUF.RetornaCUF(sUF);
+                            cabec.versaoDados = "2.00";
+                            ws2.nfeCabecMsgValue = cabec;
+                            ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                            XmlNode xDados = MontaMsg();
+                            string sretorno = ws2.consultaCadastro2(xDados).OuterXml;
+                            xRetorno.LoadXml(sretorno);
+                        }
+                        break;
+                    default:
+                        { return new DadosRetorno { cStat = "200" }; }
                 }
                 return MontaMsgRetorno(xRetorno);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                return new DadosRetorno { cStat = "200" };
             }
         }
 
@@ -136,9 +236,10 @@ namespace HLP.GeraXml.bel.NFe
                                                     new XElement(pf + "infCons",
                                                                new XElement(pf + "xServ", "CONS-CAD"),
                                                                new XElement(pf + "UF", sUF),
-                                                               (sIE != "" ? new XElement(pf + "IE", Util.TiraSimbolo(sIE, "")) : null),
+                                                               (sIE != "" ? new XElement(pf + "IE", (sIE != "" ? Util.TiraSimbolo(sIE, "") : "ISENTO")) : null),
                                                                ((sCNPJ != "" && sIE == "") ? new XElement(pf + "CNPJ", Util.TiraSimbolo(sCNPJ, "")) : null),
                                                                ((sCPF != "" && sIE == "" && sCNPJ == "") ? new XElement(pf + "CPF", Util.TiraSimbolo(sCPF, "")) : null))));
+
 
 
 
