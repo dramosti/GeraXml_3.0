@@ -29,7 +29,7 @@ namespace HLP.GeraXml.dao.NFes
                 sQuery.Append("clifor.cd_fonenor Telefone, ");
                 sQuery.Append("clifor.cd_email Email ");
                 sQuery.Append(" from  nf inner join clifor on nf.cd_clifor = clifor.cd_clifor");
-                sQuery.Append(" left join cidades on (cidades.nm_cidnor = clifor.nm_cidnor) ");
+                sQuery.Append(" left join cidades on (cidades.cd_municipio = clifor.cd_municipio) ");
                 sQuery.Append(" where nf.cd_nfseq = '" + sNota + "' and ");
                 sQuery.Append(" nf.cd_empresa = '" + Acesso.CD_EMPRESA + "'");
 

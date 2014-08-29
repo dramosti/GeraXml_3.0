@@ -244,6 +244,43 @@ namespace HLP.GeraXml.bel.NFe
                 }
                 #endregion
             }
+            else if (Acesso.TP_EMIS == 6)
+            {
+                #region SCAN
+                if (Acesso.TP_AMB == 1)
+                {
+                    HLP.GeraXml.WebService.v2_SVC_Producao_RecepcaoEvento.RecepcaoEvento ws2 = new WebService.v2_SVC_Producao_RecepcaoEvento.RecepcaoEvento();
+                    HLP.GeraXml.WebService.v2_SVC_Producao_RecepcaoEvento.nfeCabecMsg cabec = new WebService.v2_SVC_Producao_RecepcaoEvento.nfeCabecMsg();
+
+                    cabec.versaoDados = "1.00";
+                    cabec.cUF = Acesso.cUF.ToString();
+                    ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                    ws2.nfeCabecMsgValue = cabec;
+                    XmlDocument xmlCanc = new XmlDocument();
+                    xmlCanc.LoadXml(sDados);
+                    XmlNode xNodeCanc = xmlCanc.DocumentElement;
+                    string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                    xRet.LoadXml(sRet);
+
+                }
+                if (Acesso.TP_AMB == 2)
+                {
+                    HLP.GeraXml.WebService.v2_SVC_Homologacao_RecepcaoEvento.RecepcaoEvento ws2 = new WebService.v2_SVC_Homologacao_RecepcaoEvento.RecepcaoEvento();
+                    HLP.GeraXml.WebService.v2_SVC_Homologacao_RecepcaoEvento.nfeCabecMsg cabec = new WebService.v2_SVC_Homologacao_RecepcaoEvento.nfeCabecMsg();
+
+                    cabec.versaoDados = "1.00";
+                    cabec.cUF = Acesso.cUF.ToString();
+                    ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                    ws2.nfeCabecMsgValue = cabec;
+                    XmlDocument xmlCanc = new XmlDocument();
+                    xmlCanc.LoadXml(sDados);
+                    XmlNode xNodeCanc = xmlCanc.DocumentElement;
+                    string sRet = ws2.nfeRecepcaoEvento(xNodeCanc).OuterXml;
+                    xRet.LoadXml(sRet);
+                }
+                #endregion
+            }
+
 
             string sPath = Pastas.PROTOCOLOS + "\\" + objPesquisa.sCD_NFSEQ + "_Ret_Pedcan" + DateTime.Now.ToString("ddMMyyHHmmss") + ".xml";
             xRet.Save(sPath);

@@ -256,6 +256,43 @@ namespace HLP.GeraXml.bel.NFe
                     }
                     #endregion
                 }
+                else if (Acesso.TP_EMIS == 6)
+                {
+                    #region SCAN
+                    if (Acesso.TP_AMB == 2)
+                    {
+                        HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeRecepcao.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeRecepcao.nfeCabecMsg();
+                        HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeRecepcao.NfeRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeRecepcao.NfeRecepcao2();
+                        belUF objbelUf = new belUF();
+                        cabec.cUF = Acesso.cUF.ToString();
+                        cabec.versaoDados = Acesso.versaoNFe;
+                        ws2.nfeCabecMsgValue = cabec;
+                        ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                        XmlDocument _xmlxelem = new XmlDocument();
+                        _xmlxelem.PreserveWhitespace = true;
+                        _xmlxelem.Load(sPathLote);
+                        XmlNode xNelem = null;
+                        xNelem = _xmlxelem.DocumentElement;
+                        sRet = ws2.nfeRecepcaoLote2(xNelem).OuterXml;
+                    }
+                    else
+                    {
+                        HLP.GeraXml.WebService.v2_SVC_Producao_NfeRecepcao.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_SVC_Producao_NfeRecepcao.nfeCabecMsg();
+                        HLP.GeraXml.WebService.v2_SVC_Producao_NfeRecepcao.NfeRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_SVC_Producao_NfeRecepcao.NfeRecepcao2();
+                        belUF objbelUf = new belUF();
+                        cabec.cUF = Acesso.cUF.ToString();
+                        cabec.versaoDados = Acesso.versaoNFe;
+                        ws2.nfeCabecMsgValue = cabec;
+                        ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                        XmlDocument _xmlxelem = new XmlDocument();
+                        _xmlxelem.PreserveWhitespace = true;
+                        _xmlxelem.Load(sPathLote);
+                        XmlNode xNelem = null;
+                        xNelem = _xmlxelem.DocumentElement;
+                        sRet = ws2.nfeRecepcaoLote2(xNelem).OuterXml;
+                    }
+                    #endregion
+                }
 
                 if (sRet != null)
                 {

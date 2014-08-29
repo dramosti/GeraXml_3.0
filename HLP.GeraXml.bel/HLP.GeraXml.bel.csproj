@@ -350,6 +350,10 @@
     <Compile Include="NFe\Estrutura\IbelNumeroNF.cs" />
     <Compile Include="NFe\Estrutura\NFe.cs" />
     <Compile Include="NFe\Estrutura\retirada.cs" />
+    <Compile Include="NFe\Eventos\belEnvEvento.cs" />
+    <Compile Include="NFe\Eventos\belEventosNFe.cs" />
+    <Compile Include="NFe\Eventos\belRetEventoManifestacao.cs" />
+    <Compile Include="NFe\Manifestacao\belManifestacaoPesquisa.cs" />
     <Compile Include="NFe\PopulaDs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializeClassToXml.cs" />

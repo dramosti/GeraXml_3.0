@@ -9,6 +9,8 @@ using ComponentFactory.Krypton.Toolkit;
 using HLP.GeraXml.Comum.Static;
 using HLP.GeraXml.Comum;
 using HLP.GeraXml.bel;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace HLP.GeraXml.UI
 {
@@ -22,6 +24,14 @@ namespace HLP.GeraXml.UI
         {
             //   if (MessageBox.Show("Deseja continuar ?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                //XmlDocument XmlCte = new XmlDocument();
+                //XmlCte.Load(@"C:\GeraXml\Arquivos\002-SICUPIRA\Envio\06-14\Cte_017402.xml");
+                //XmlCte.PreserveWhitespace = false;
+
+                //string svalue = XmlCte.InnerXml;
+
+                //XDocument XmlCte2 = XDocument.Load(@"C:\GeraXml\Arquivos\002-SICUPIRA\Envio\06-14\Cte_017402.xml");
+                //string svalue2 = XmlCte2.ToString();
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

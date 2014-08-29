@@ -48,7 +48,9 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
 
                 //Relacionamentos
                 sSql.Append("inner join clifor on (clifor.cd_clifor = nf.cd_clifor) ");
-                sSql.Append("left join cidades on (cidades.nm_cidnor = clifor.nm_cidnor) ");
+                //sSql.Append("left join cidades on (cidades.nm_cidnor = clifor.nm_cidnor) ");
+                sSql.Append("left join cidades on (cidades.cd_municipio = clifor.cd_municipio) ");
+                //cidades.cd_municipio = clifor.cd_municipio
                 sSql.Append(" and (cidades.cd_ufnor = clifor.cd_ufnor) ");
                 sSql.Append("left join pais on (pais.cd_pais = clifor.cd_pais) ");
 

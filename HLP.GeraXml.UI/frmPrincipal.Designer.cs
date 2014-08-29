@@ -34,31 +34,33 @@ namespace HLP.GeraXml.UI
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Inutilizar", 2, 2);
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Status Sefaz", 2, 2);
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Protocolos", 2, 2);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("NF-e", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Manifestacao de Eventos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("NF-e", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Enviar NF-e Serviço (Ctrl + S)", 2, 2);
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("NF-e Serviço", new System.Windows.Forms.TreeNode[] {
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Enviar CC-e", 2, 2);
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("CC-e", new System.Windows.Forms.TreeNode[] {
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Enviar CT-e (Ctrl + T)");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Enviar MDF-e (Ctrl + M)");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Inutilizar", 2, 2);
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Status Sefaz", 2, 2);
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("CT-e", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Enviar NF-e Serviço (Ctrl + S)", 2, 2);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("NF-e Serviço", new System.Windows.Forms.TreeNode[] {
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Enviar CC-e", 2, 2);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("CC-e", new System.Windows.Forms.TreeNode[] {
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Enviar CT-e (Ctrl + T)");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Enviar MDF-e (Ctrl + M)");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Inutilizar", 2, 2);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Status Sefaz", 2, 2);
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("CT-e", new System.Windows.Forms.TreeNode[] {
             treeNode11,
             treeNode12,
-            treeNode13});
+            treeNode13,
+            treeNode14});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("E-mail", 3, 3);
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Empresa", 5, 5);
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Configuração (Ctrl + F)", 4, 4);
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Consultar Disponibilidade ", 6, 6);
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("E-mail", 3, 3);
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Empresa", 5, 5);
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Configuração (Ctrl + F)", 4, 4);
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Consultar Disponibilidade ", 6, 6);
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
             this.kryptonPanel = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -236,49 +238,54 @@ namespace HLP.GeraXml.UI
             treeNode4.SelectedImageIndex = 2;
             treeNode4.Tag = "frmProtocolosNfe";
             treeNode4.Text = "Protocolos";
-            treeNode5.Name = "nodeNfe";
-            treeNode5.Text = "NF-e";
-            treeNode6.ImageIndex = 2;
-            treeNode6.Name = "Node5";
-            treeNode6.SelectedImageIndex = 2;
-            treeNode6.Tag = "frmGeraArquivoNFes";
-            treeNode6.Text = "Enviar NF-e Serviço (Ctrl + S)";
-            treeNode7.Name = "nodeNfes";
-            treeNode7.Text = "NF-e Serviço";
-            treeNode8.ImageIndex = 2;
-            treeNode8.Name = "Node4";
-            treeNode8.SelectedImageIndex = 2;
-            treeNode8.Tag = "frmGeraArquivoCCe";
-            treeNode8.Text = "Enviar CC-e";
-            treeNode9.Name = "nodeCce";
-            treeNode9.Text = "CC-e";
-            treeNode10.ImageIndex = 2;
-            treeNode10.Name = "nodeEnvCte";
-            treeNode10.SelectedImageKey = "Form_Win32.png";
-            treeNode10.Tag = "frmGerarArquivosCte";
-            treeNode10.Text = "Enviar CT-e (Ctrl + T)";
+            treeNode5.ImageIndex = 2;
+            treeNode5.Name = "Node0";
+            treeNode5.SelectedImageIndex = 2;
+            treeNode5.Tag = "frmManifestacaoEvento";
+            treeNode5.Text = "Manifestacao de Eventos";
+            treeNode6.Name = "nodeNfe";
+            treeNode6.Text = "NF-e";
+            treeNode7.ImageIndex = 2;
+            treeNode7.Name = "Node5";
+            treeNode7.SelectedImageIndex = 2;
+            treeNode7.Tag = "frmGeraArquivoNFes";
+            treeNode7.Text = "Enviar NF-e Serviço (Ctrl + S)";
+            treeNode8.Name = "nodeNfes";
+            treeNode8.Text = "NF-e Serviço";
+            treeNode9.ImageIndex = 2;
+            treeNode9.Name = "Node4";
+            treeNode9.SelectedImageIndex = 2;
+            treeNode9.Tag = "frmGeraArquivoCCe";
+            treeNode9.Text = "Enviar CC-e";
+            treeNode10.Name = "nodeCce";
+            treeNode10.Text = "CC-e";
             treeNode11.ImageIndex = 2;
-            treeNode11.Name = "nodEnvMDFe";
+            treeNode11.Name = "nodeEnvCte";
             treeNode11.SelectedImageKey = "Form_Win32.png";
-            treeNode11.Tag = "frmGerarArquivosMDFe";
-            treeNode11.Text = "Enviar MDF-e (Ctrl + M)";
+            treeNode11.Tag = "frmGerarArquivosCte";
+            treeNode11.Text = "Enviar CT-e (Ctrl + T)";
             treeNode12.ImageIndex = 2;
-            treeNode12.Name = "nodeInutCte";
-            treeNode12.SelectedImageIndex = 2;
-            treeNode12.Tag = "frmInutilizaFaixaCte";
-            treeNode12.Text = "Inutilizar";
+            treeNode12.Name = "nodEnvMDFe";
+            treeNode12.SelectedImageKey = "Form_Win32.png";
+            treeNode12.Tag = "frmGerarArquivosMDFe";
+            treeNode12.Text = "Enviar MDF-e (Ctrl + M)";
             treeNode13.ImageIndex = 2;
-            treeNode13.Name = "nodeSefazCte";
+            treeNode13.Name = "nodeInutCte";
             treeNode13.SelectedImageIndex = 2;
-            treeNode13.Tag = "Status Cte";
-            treeNode13.Text = "Status Sefaz";
-            treeNode14.Name = "nodeCte";
-            treeNode14.Text = "CT-e";
+            treeNode13.Tag = "frmInutilizaFaixaCte";
+            treeNode13.Text = "Inutilizar";
+            treeNode14.ImageIndex = 2;
+            treeNode14.Name = "nodeSefazCte";
+            treeNode14.SelectedImageIndex = 2;
+            treeNode14.Tag = "Status Cte";
+            treeNode14.Text = "Status Sefaz";
+            treeNode15.Name = "nodeCte";
+            treeNode15.Text = "CT-e";
             this.tvMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode7,
-            treeNode9,
-            treeNode14});
+            treeNode6,
+            treeNode8,
+            treeNode10,
+            treeNode15});
             this.tvMenu.SelectedImageIndex = 0;
             this.tvMenu.ShowLines = false;
             this.tvMenu.Size = new System.Drawing.Size(218, 193);
@@ -309,31 +316,31 @@ namespace HLP.GeraXml.UI
             this.tvFerramentas.ImageList = this.imageList1;
             this.tvFerramentas.Location = new System.Drawing.Point(2, 111);
             this.tvFerramentas.Name = "tvFerramentas";
-            treeNode15.ImageIndex = 3;
-            treeNode15.Name = "nodeEmail";
-            treeNode15.SelectedImageIndex = 3;
-            treeNode15.Tag = "frmEmailContador";
-            treeNode15.Text = "E-mail";
-            treeNode16.ImageIndex = 5;
-            treeNode16.Name = "nodeEmpresa";
-            treeNode16.SelectedImageIndex = 5;
-            treeNode16.Tag = "frmSelecionaConfigs";
-            treeNode16.Text = "Empresa";
-            treeNode17.ImageIndex = 4;
-            treeNode17.Name = "nodeConfig";
-            treeNode17.SelectedImageIndex = 4;
-            treeNode17.Tag = "frmLoginConfig";
-            treeNode17.Text = "Configuração (Ctrl + F)";
-            treeNode18.ImageIndex = 6;
-            treeNode18.Name = "nodeDisponibilidade";
-            treeNode18.SelectedImageIndex = 6;
-            treeNode18.Tag = "Disponibilidade";
-            treeNode18.Text = "Consultar Disponibilidade ";
+            treeNode16.ImageIndex = 3;
+            treeNode16.Name = "nodeEmail";
+            treeNode16.SelectedImageIndex = 3;
+            treeNode16.Tag = "frmEmailContador";
+            treeNode16.Text = "E-mail";
+            treeNode17.ImageIndex = 5;
+            treeNode17.Name = "nodeEmpresa";
+            treeNode17.SelectedImageIndex = 5;
+            treeNode17.Tag = "frmSelecionaConfigs";
+            treeNode17.Text = "Empresa";
+            treeNode18.ImageIndex = 4;
+            treeNode18.Name = "nodeConfig";
+            treeNode18.SelectedImageIndex = 4;
+            treeNode18.Tag = "frmLoginConfig";
+            treeNode18.Text = "Configuração (Ctrl + F)";
+            treeNode19.ImageIndex = 6;
+            treeNode19.Name = "nodeDisponibilidade";
+            treeNode19.SelectedImageIndex = 6;
+            treeNode19.Tag = "Disponibilidade";
+            treeNode19.Text = "Consultar Disponibilidade ";
             this.tvFerramentas.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15,
             treeNode16,
             treeNode17,
-            treeNode18});
+            treeNode18,
+            treeNode19});
             this.tvFerramentas.SelectedImageIndex = 0;
             this.tvFerramentas.ShowLines = false;
             this.tvFerramentas.Size = new System.Drawing.Size(218, 193);

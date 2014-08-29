@@ -17,7 +17,20 @@ namespace HLP.GeraXml.Comum.Static
     public static class Util
     {
 
+        public static string GetSerie(string sChaveNFe)
+        {
+            return sChaveNFe.Substring(22, 3);
+        }
+        public static string GetCNPJ(string sChaveNFe)
+        {
+            string sCNPJ = sChaveNFe.Substring(6, 14);
 
+            return String.Format(@"{0:00\.000\.000\/0000\-00}", Convert.ToInt64(sCNPJ));
+        }
+        public static string GetNumeroNFe(string sChaveNFe)
+        {
+            return sChaveNFe.Substring(25, 9);
+        }
 
 
 

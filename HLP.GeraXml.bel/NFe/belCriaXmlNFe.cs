@@ -89,9 +89,9 @@ namespace HLP.GeraXml.bel.NFe
                                                                     new XElement(pf + "procEmi", objide.Procemi.ToString()),
                                                                     new XElement(pf + "verProc", objide.Verproc.ToString()),
 
-                                                                    ((objide.Tpemis.Equals("2")) || (objide.Tpemis.Equals("3")) ?
+                                                                    ((objide.Tpemis.Equals("2")) || (objide.Tpemis.Equals("3")) || (objide.Tpemis.Equals("6")) ? // os_svc
                                                                                           new XElement(pf + "dhCont", daoUtil.GetDateServidor().ToString("yyyy-MM-ddTHH:mm:ss")) : null), // NFe_2.0
-                                                                    ((objide.Tpemis.Equals("2")) || (objide.Tpemis.Equals("3")) ?
+                                                                    ((objide.Tpemis.Equals("2")) || (objide.Tpemis.Equals("3")) || (objide.Tpemis.Equals("6")) ?
                                                                                           new XElement(pf + "xJust", (Acesso.TP_EMIS == 2 ? "FALHA DE CONEXÃO COM INTERNET" : "FALHA COM WEB SERVICE DO ESTADO")) : null)));// NFe_2.0
                         #endregion
                     }
@@ -192,6 +192,7 @@ namespace HLP.GeraXml.bel.NFe
                         lCfopNotTagII.Add("3211");
                         lCfopNotTagII.Add("3503");
                         lCfopNotTagII.Add("3553");
+
 
 
                         foreach (belDet det in objdet)

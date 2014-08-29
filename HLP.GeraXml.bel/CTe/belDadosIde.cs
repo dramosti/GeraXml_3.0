@@ -31,7 +31,7 @@ namespace HLP.GeraXml.bel.CTe
                     objbelinfCte.ide.natOp = dr["natOp"].ToString().Length > 60 ? dr["natOp"].ToString().Substring(0, 60) : dr["natOp"].ToString();
                     objbelinfCte.ide.forPag = Convert.ToInt32(dr["forPag"]);
                     objbelinfCte.ide.mod = "57";
-                    objbelinfCte.ide.serie = Acesso.TP_EMIS != 1 ? "900" : "1";
+                    objbelinfCte.ide.serie = Acesso.TP_EMIS == 3 ? "900" : "1";
                     objbelinfCte.ide.nCT = dr["nCT"].ToString();
                     objbelinfCte.ide.tpImp = "1";
                     objbelinfCte.ide.tpEmis = Acesso.TP_EMIS != 1 ? "5" : "1";

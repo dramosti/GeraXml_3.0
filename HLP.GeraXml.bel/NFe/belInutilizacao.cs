@@ -260,7 +260,10 @@ namespace HLP.GeraXml.bel.NFe
                         XmlNode xNodeInut = xmlInut.DocumentElement;
                         sRetorno = ws2.nfeInutilizacaoNF2(xNodeInut).OuterXml;
                     }
-
+                }
+                else if (Acesso.TP_EMIS == 6)
+                {
+                        throw new Exception("Homologação não permitida para o modo SVC-AN");
                 }
 
                 DadosRetorno ret = new DadosRetorno();

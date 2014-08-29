@@ -43,6 +43,7 @@ namespace HLP.GeraXml.UI
             nodeNfe = (TreeNode)tvMenu.Nodes["nodeNfe"].Clone();
             nodeNfes = (TreeNode)tvMenu.Nodes["nodeNfes"].Clone();
             nodeCCe = (TreeNode)tvMenu.Nodes["nodeCce"].Clone();
+
         }
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
@@ -352,6 +353,9 @@ namespace HLP.GeraXml.UI
                             case "frmGeraArquivoNFe":
                                 AbreFormNfe();
                                 break;
+                            case "frmManifestacaoEvento":
+                                AbreFormManifestacaoNfe();
+                                break;
                             #endregion
 
                             #region NFe Servico
@@ -540,6 +544,53 @@ namespace HLP.GeraXml.UI
                     objfrmNfe.Show();
                     objfrmNfe.BringToFront();
                     objfrmNfe.PesquisaNotas();
+                }
+            }
+            BuscaDtVencimentoCertificado();
+
+        }
+        private void AbreFormManifestacaoNfe()
+        {
+
+            bool ok = false;
+            foreach (Control crt in this.splitContainerTela.Panel2.Controls)
+            {
+                if (crt is frmManifestacaoEvento)
+                {
+                    crt.BringToFront();
+                    ((Form)crt).WindowState = FormWindowState.Normal;
+                    ok = true;
+                    break;
+                }
+            }
+            if (!ok)
+            {
+                if (Acesso.TP_EMIS != 2)
+                {
+                    timer1.Start();
+                    T = new Thread(belStatusServico.VerificaStatusServicoNFeTela);
+                    T.Start();
+                    frmStatusServico = new frmStatus();
+                    frmStatusServico.ShowDialog();
+                    KryptonMessageBox.Show(belStatusServico.Mensagem, Mensagens.CHeader, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    belStatusServico.ServicoOperando = true;
+                }
+
+
+                if (belStatusServico.ServicoOperando)
+                {
+                    frmManifestacaoEvento objfrmNfe = new frmManifestacaoEvento();
+                    this.AddOwnedForm(objfrmNfe);
+                    objfrmNfe.MdiParent = this;
+                    this.splitContainerTela.Panel2.Controls.Add(objfrmNfe);
+                    objfrmNfe.WindowState = FormWindowState.Normal;
+                    objfrmNfe.Dock = DockStyle.Fill;
+                    objfrmNfe.Show();
+                    objfrmNfe.BringToFront();
+                    objfrmNfe.Pesquisa();
                 }
             }
             BuscaDtVencimentoCertificado();

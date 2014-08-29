@@ -48,6 +48,7 @@ namespace HLP.GeraXml.dao
                 objLista.Add(new ComboBoxConfiguracao { ds_descvalor = "Normal", ds_valor = "1" });
                 objLista.Add(new ComboBoxConfiguracao { ds_descvalor = "Contingência FS", ds_valor = "2" });
                 objLista.Add(new ComboBoxConfiguracao { ds_descvalor = "Contingência SCAN", ds_valor = "3" });
+                objLista.Add(new ComboBoxConfiguracao { ds_descvalor = "Ambiente Nacional", ds_valor = "6" });
 
                 return objLista;
             }

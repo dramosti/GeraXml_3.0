@@ -111,6 +111,7 @@
     <Compile Include="NFe\Estrutura\daoTransp.cs" />
     <Compile Include="NFe\Estrutura\daoIde.cs" />
     <Compile Include="NFe\Estrutura\daoTotal.cs" />
+    <Compile Include="NFe\Manifestacao\daoManifestacaoPesquisa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

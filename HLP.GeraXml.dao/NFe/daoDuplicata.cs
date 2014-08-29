@@ -138,7 +138,7 @@ namespace HLP.GeraXml.dao.NFe
                                 iParcela++;
                                 objNFs.sNF = string.Format("{0}{1}",
                                                     cdnotafis.Trim(),
-                                                    Convert.ToChar((64 + iParcela)));
+                                                    dtEmit.Rows.Count > 1 ? Convert.ToChar((64 + iParcela)).ToString() : "");
                                 objNFs.sNrDoc = drEmit["NR_DOC"].ToString();
                             }
                             else
@@ -155,13 +155,14 @@ namespace HLP.GeraXml.dao.NFe
                     }
                 }
 
-                if (objListNfs.Count == 1)
-                {
-                    objNFs = objListNfs[0];
-                    objNFs.sNF = objListNfs[0].sNF.Replace("A", "").PadLeft(7, '0'); //Claudinei - o.s. 24103 - 05/02/2010
-                    objListNfs = new List<NotasDuplicatas>();
-                    objListNfs.Add(objNFs);
-                }
+                if (Acesso.NM_EMPRESA != "DARONYL")
+                    if (objListNfs.Count == 1)
+                    {
+                        objNFs = objListNfs[0];
+                        objNFs.sNF = objListNfs[0].sNF.Replace("-1", "").PadLeft(7, '0'); //Claudinei - o.s. 24103 - 05/02/2010
+                        objListNfs = new List<NotasDuplicatas>();
+                        objListNfs.Add(objNFs);
+                    }
 
                 for (int i = 0; i < objListNfs.Count; i++)
                 {

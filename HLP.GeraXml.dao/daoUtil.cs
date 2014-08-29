@@ -12,6 +12,42 @@ namespace HLP.GeraXml.dao
 {
     public class daoUtil
     {
+        public static string GetStatusManifestacao(string sChaveNFe)
+        {
+            try
+            {
+                return HlpDbFuncoes.qrySeekValue("MANIDEST", "coalesce(st_manifesto,'')st_manifesto", string.Format("CD_CHAVE_NFE = '{0}' and cd_empresa = '{1}'", sChaveNFe, Acesso.CD_EMPRESA));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static void SetStatusManifestacao(string xChaveNFe, string xStatus)
+        {
+            try
+            {
+                int icount = Convert.ToInt32(HlpDbFuncoes.qrySeekValue("manidest", "count(*) total", string.Format("CD_CHAVE_NFE = '{0}'", xChaveNFe)));
+                string sQuery = "";
+                if (icount == 0)
+                {
+                    sQuery = string.Format("INSERT INTO MANIDEST (CD_CHAVE_NFE, CD_EMPRESA, ST_MANIFESTO) VALUES ('{0}', '{1}', '{2}')", xChaveNFe, Acesso.CD_EMPRESA, xStatus);
+                    HlpDbFuncoes.qrySeekInsert(sQuery);
+                }
+                else
+                {
+                    sQuery = string.Format("UPDATE MANIDEST SET ST_MANIFESTO = '{0}' WHERE (CD_CHAVE_NFE = '{1}') AND (CD_EMPRESA = '{2}')", xStatus, xChaveNFe, Acesso.CD_EMPRESA);
+                    HlpDbFuncoes.qrySeekUpdate(sQuery);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
         public static DataTable GetMunicipios()
         {
@@ -139,6 +175,19 @@ namespace HLP.GeraXml.dao
             {
                 string sUF = "";
                 sUF = HlpDbFuncoes.qrySeekValue("CIDADES", "COALESCE(cd_ufnor,'')", "nm_cidnor = '" + sNmMunicipio + "'");
+                return sUF;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static string GetUfTomador(string cd_nfseq)
+        {
+            try
+            {
+                string sUF = "";
+                sUF = HlpDbFuncoes.qrySeekValue("nf inner join clifor on nf.cd_clifor = clifor.cd_clifor", "COALESCE(clifor.cd_ufnor,'')cd_ufnor ", string.Format("nf.cd_nfseq = '{0}' and nf.cd_empresa = '{1}'", cd_nfseq, Acesso.CD_EMPRESA));
                 return sUF;
             }
             catch (Exception ex)

@@ -886,7 +886,8 @@ namespace HLP.GeraXml.UI.NFse
             row.F_MUNICIPIO_PRESTADOR = Acesso.CIDADE_EMPRESA;
             row.F_UF_PRESTADOR = daoUtil.GetUfByNome(nota.CidadeTomadorDescricao);
             row.F_EMAIL_PRESTADOR = dadosEmpresa.EmailEmpresa;
-            row.F_UF_TOMADOR = daoUtil.GetUfByNome(nota.CidadeTomadorDescricao);
+            //row.F_UF_TOMADOR = daoUtil.GetUfByNome(nota.CidadeTomadorDescricao);
+            row.F_UF_TOMADOR = daoUtil.GetUfTomador(nota.CD_NFSEQ);
             row.F_MES_RECOLHIMENTO = nota.DataEmissaoRPS.ToString("MM/yyyy");
             if (nota.Deducoes.Deducao.Count() > 0)
             {

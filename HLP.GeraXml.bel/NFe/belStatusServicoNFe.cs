@@ -58,6 +58,10 @@ namespace HLP.GeraXml.bel.NFe
             {
                 dRetorno = ConsultaServico_SCAN();
             }
+            else if (Acesso.TP_EMIS == 6)
+            {
+                dRetorno = ConsultaServico_SVAN();
+            }
 
             return dRetorno;
         }
@@ -608,6 +612,200 @@ namespace HLP.GeraXml.bel.NFe
                     #region Homologação
                     HLP.GeraXml.WebService.v2_Homologacao_NFeStatusServico_RS.NfeStatusServico2 ws2 = new HLP.GeraXml.WebService.v2_Homologacao_NFeStatusServico_RS.NfeStatusServico2();
                     HLP.GeraXml.WebService.v2_Homologacao_NFeStatusServico_RS.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_Homologacao_NFeStatusServico_RS.nfeCabecMsg();
+                    cabec.cUF = Acesso.cUF.ToString();
+                    cabec.versaoDados = Acesso.versaoNFe.ToString();
+                    ws2.nfeCabecMsgValue = cabec;
+                    ws2.ClientCertificates.Add(Acesso.cert_NFe);
+
+                    XmlNode xmlDados = null;
+                    xmlDados = xdDadosMsg.DocumentElement;
+
+                    string resp = ws2.nfeStatusServicoNF2(xmlDados).OuterXml;
+
+                    XElement Elemento = XElement.Parse(resp);
+
+                    XNamespace xname = "http://www.portalfiscal.inf.br/nfe";
+
+                    // Busca do status da conexao
+                    var Status =
+                        from b in Elemento.Elements(xname + "cStat")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            Status = (string)b.Value
+                        };
+                    foreach (var Stat in Status)
+                    {
+                        dRetorno.cStat = Stat.Status;
+                    }
+                    //
+
+                    // Busca do Descricao do Motivo do status                
+                    var Motivo =
+                        from b in Elemento.Elements(xname + "xMotivo")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            Motivo = (string)b.Value
+                        };
+                    foreach (var xMotivo in Motivo)
+                    {
+                        dRetorno.xMotivo = xMotivo.Motivo;
+                    }
+                    //
+
+                    //Mostra o tempo medio de resposta do site.                
+                    var tMed =
+                        from b in Elemento.Elements(xname + "tMed")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            TempoMedio = (string)b.Value
+                        };
+                    foreach (var TempoMedio in tMed)
+                    {
+                        dRetorno.Tmed = Convert.ToInt32(TempoMedio.TempoMedio);
+                    }
+                    //
+
+                    //Mostra o data e hora do recibo.                
+                    var dhRecibo =
+                        from b in Elemento.Elements(xname + "dhRecbto")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            datahoraRecibo = (string)b.Value
+                        };
+                    foreach (var dhrec in dhRecibo)
+                    {
+                        dRetorno.Dhrecibo = Convert.ToDateTime(dhrec.datahoraRecibo);
+                    }
+                    //
+
+                    //Mostra o data e hora do recibo.                
+                    var dhRetorno =
+                        from b in Elemento.Elements(xname + "dhRetorno")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            datahoraRetorno = (string)b.Value
+                        };
+                    foreach (var dhret in dhRetorno)
+                    {
+                        dRetorno.Dhretorno = Convert.ToDateTime(dhret.datahoraRetorno);
+                    }
+                    #endregion
+                }
+
+                return dRetorno;
+            }
+            catch (Exception x)
+            {
+                throw new Exception("Problema com os WebServices - " + x.Message);
+            }
+        }
+        private static DadosRetorno ConsultaServico_SVAN()
+        {
+            DadosRetorno dRetorno = new DadosRetorno();
+            string snfeCabecMsg = NfeCabecMsg();
+            XmlDocument xdDadosMsg = NfeDadosMsg();
+            try
+            {
+                if (Acesso.TP_AMB == 1)
+                {
+                    #region Produção
+                    HLP.GeraXml.WebService.v2_SVC_Producao_NfeStatusServico.NfeStatusServico2 ws2 = new HLP.GeraXml.WebService.v2_SVC_Producao_NfeStatusServico.NfeStatusServico2();
+                    HLP.GeraXml.WebService.v2_SVC_Producao_NfeStatusServico.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_SVC_Producao_NfeStatusServico.nfeCabecMsg();
+                    cabec.cUF = Acesso.cUF.ToString();
+                    cabec.versaoDados = Acesso.versaoNFe.ToString();
+                    ws2.nfeCabecMsgValue = cabec;
+                    ws2.ClientCertificates.Add(Acesso.cert_NFe);
+
+                    XmlNode xmlDados = null;
+                    xmlDados = xdDadosMsg.DocumentElement;
+
+                    string resp = ws2.nfeStatusServicoNF2(xmlDados).OuterXml;
+
+                    XElement Elemento = XElement.Parse(resp);
+
+                    XNamespace xname = "http://www.portalfiscal.inf.br/nfe";
+
+                    // Busca do status da conexao
+                    var Status =
+                        from b in Elemento.Elements(xname + "cStat")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            Status = (string)b.Value
+                        };
+                    foreach (var Stat in Status)
+                    {
+                        dRetorno.cStat = Stat.Status;
+                    }
+                    //
+
+                    // Busca do Descricao do Motivo do status                
+                    var Motivo =
+                        from b in Elemento.Elements(xname + "xMotivo")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            Motivo = (string)b.Value
+                        };
+                    foreach (var xMotivo in Motivo)
+                    {
+                        dRetorno.xMotivo = xMotivo.Motivo;
+                    }
+                    //
+
+                    //Mostra o tempo medio de resposta do site.                
+                    var tMed =
+                        from b in Elemento.Elements(xname + "tMed")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            TempoMedio = (string)b.Value
+                        };
+                    foreach (var TempoMedio in tMed)
+                    {
+                        dRetorno.Tmed = Convert.ToInt32(TempoMedio.TempoMedio);
+                    }
+                    //
+
+                    //Mostra o data e hora do recibo.                
+                    var dhRecibo =
+                        from b in Elemento.Elements(xname + "dhRecbto")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            datahoraRecibo = (string)b.Value
+                        };
+                    foreach (var dhrec in dhRecibo)
+                    {
+                        dRetorno.Dhrecibo = Convert.ToDateTime(dhrec.datahoraRecibo);
+                    }
+                    //
+
+                    //Mostra o data e hora do recibo.                
+                    var dhRetorno =
+                        from b in Elemento.Elements(xname + "dhRetorno")
+
+                        select new  // Depois da query adicionamos propriedades ao var Filme para estarem acessiveis no foreach
+                        {
+                            datahoraRetorno = (string)b.Value
+                        };
+                    foreach (var dhret in dhRetorno)
+                    {
+                        dRetorno.Dhretorno = Convert.ToDateTime(dhret.datahoraRetorno);
+                    }
+                    #endregion
+
+                }
+                else
+                {
+                    #region Homologação
+                    HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeStatusServico.NfeStatusServico2 ws2 = new HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeStatusServico.NfeStatusServico2();
+                    HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeStatusServico.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeStatusServico.nfeCabecMsg();
                     cabec.cUF = Acesso.cUF.ToString();
                     cabec.versaoDados = Acesso.versaoNFe.ToString();
                     ws2.nfeCabecMsgValue = cabec;

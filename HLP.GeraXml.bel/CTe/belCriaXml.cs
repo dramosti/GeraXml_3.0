@@ -630,7 +630,7 @@ namespace HLP.GeraXml.bel.CTe
 
                 #region Envia e Busca Recibo Lote WebService
 
-                if (Acesso.TP_EMIS == 1) // modo normal
+                if (Acesso.TP_EMIS == 1 || Acesso.TP_EMIS == 6) // modo normal  // os_svc
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.Load(dPastaEnvio.ToString() + "\\" + "Cte_Lote_" + iNumLote + "_" + sData + ".xml");
@@ -1413,11 +1413,14 @@ namespace HLP.GeraXml.bel.CTe
         {
             try
             {
-                string sData = daoUtil.GetDateServidor().Date.ToString("dd-MM-yyyy");
 
                 DirectoryInfo dPastaEnviados = new DirectoryInfo(Pastas.ENVIADOS);
                 if (!dPastaEnviados.Exists) { dPastaEnviados.Create(); }
-                DirectoryInfo dPastaEnviadosMesAtual = new DirectoryInfo(dPastaEnviados + @"\\" + sData.Substring(3, 2) + "-" + sData.Substring(8, 2));
+                // YYMM na chave 
+                string sPasta = sChaveCte.Substring(4, 2) + "-" + sChaveCte.Substring(2, 2);
+                //MM-YY na pasta
+
+                DirectoryInfo dPastaEnviadosMesAtual = new DirectoryInfo(dPastaEnviados + @"\\" + sPasta);
                 if (!dPastaEnviadosMesAtual.Exists) { dPastaEnviadosMesAtual.Create(); }
 
                 DirectoryInfo dPastaEnviadosEspecifico = null;
@@ -1431,20 +1434,29 @@ namespace HLP.GeraXml.bel.CTe
                 DirectoryInfo dPastaEnvio = new DirectoryInfo(Pastas.ENVIO);
                 if (dPastaEnvio.Exists)
                 {
-                    DirectoryInfo dPastaEnvioMesAtual = new DirectoryInfo(dPastaEnvio + @"\\" + sData.Substring(3, 2) + "-" + sData.Substring(8, 2));
-                    XDocument XmlCte = XDocument.Load(dPastaEnvioMesAtual.ToString() + "\\" + "Cte_" + sNumCte + ".xml");
+                    DirectoryInfo dPastaEnvioMesAtual = new DirectoryInfo(dPastaEnvio + @"\\" + sPasta);
+
+                    XmlDocument XmlCte = new XmlDocument();
+                    XmlCte.Load(dPastaEnvioMesAtual.ToString() + "\\" + "Cte_" + sNumCte + ".xml");
+                    XmlCte.PreserveWhitespace = false;
+
+                    //XDocument XmlCte = XDocument.Load(dPastaEnvioMesAtual.ToString() + "\\" + "Cte_" + sNumCte + ".xml");
 
                     if (XmlCte != null)
                     {
                         XmlDocument doc = MontaXmlConsultaSituacao(sChaveCte);
+
                         string sRetorno = ConsultarSituacao(doc, true, sChaveCte);
 
                         sRetorno = sRetorno.Substring(sRetorno.IndexOf("<protCTe"), sRetorno.IndexOf("</retConsSitCTe>") - sRetorno.IndexOf("<protCTe"));
 
 
+                        //string sX = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                        //            "<cteProc versao=\"2.00\" xmlns=\"http://www.portalfiscal.inf.br/cte\">" +
+                        //     XmlCte.ToString() + sRetorno + "</cteProc>";
                         string sX = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-                                    "<cteProc versao=\"2.00\" xmlns=\"http://www.portalfiscal.inf.br/cte\">" +
-                             XmlCte.ToString() + sRetorno + "</cteProc>";
+                                  "<cteProc versao=\"2.00\" xmlns=\"http://www.portalfiscal.inf.br/cte\">" +
+                           XmlCte.InnerXml.Replace("<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "") + sRetorno + "</cteProc>";
 
                         StreamWriter sw = new StreamWriter(dPastaEnviadosMesAtual + "\\Cte_" + sChaveCte + ".xml");
                         sw.Write(sX);
@@ -1452,6 +1464,7 @@ namespace HLP.GeraXml.bel.CTe
                         if (dPastaEnviadosEspecifico != null)
                         {
                             sw = new StreamWriter(dPastaEnviadosEspecifico.FullName + "\\Cte_" + sChaveCte + ".xml");
+
                             sw.Write(sX);
                             sw.Close();
                         }

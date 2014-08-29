@@ -212,7 +212,36 @@ namespace HLP.GeraXml.bel.NFe
                 string sRet = string.Empty;
                 string sXmlRetorno = string.Empty;
 
-                if (Acesso.TP_EMIS == 3)
+                if (Acesso.TP_EMIS == 6)
+                {
+                    if (Acesso.TP_AMB == 1)
+                    {
+                        HLP.GeraXml.WebService.v2_SVC_Producao_NfeRetRecepcao.NfeRetRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_SVC_Producao_NfeRetRecepcao.NfeRetRecepcao2();
+                        HLP.GeraXml.WebService.v2_SVC_Producao_NfeRetRecepcao.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_SVC_Producao_NfeRetRecepcao.nfeCabecMsg();
+                        cabec.cUF = Acesso.cUF.ToString();
+                        cabec.versaoDados = Acesso.versaoNFe;
+                        ws2.nfeCabecMsgValue = cabec;
+                        ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                        XmlDocument xmlNfeDadosMsg = new XmlDocument();
+                        xmlNfeDadosMsg.LoadXml(snfeDadosMsg);
+                        XmlNode xNodeRet = xmlNfeDadosMsg.DocumentElement;
+                        sXmlRetorno = ws2.nfeRetRecepcao2(xNodeRet).OuterXml;
+                    }
+                    else
+                    {
+                        HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeRetRecepcao.NfeRetRecepcao2 ws2 = new HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeRetRecepcao.NfeRetRecepcao2();
+                        HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeRetRecepcao.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeRetRecepcao.nfeCabecMsg();
+                        cabec.cUF = Acesso.cUF.ToString();
+                        cabec.versaoDados = Acesso.versaoNFe;
+                        ws2.nfeCabecMsgValue = cabec;
+                        ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                        XmlDocument xmlNfeDadosMsg = new XmlDocument();
+                        xmlNfeDadosMsg.LoadXml(snfeDadosMsg);
+                        XmlNode xNodeRet = xmlNfeDadosMsg.DocumentElement;
+                        sXmlRetorno = ws2.nfeRetRecepcao2(xNodeRet).OuterXml;
+                    }
+                }
+                else if (Acesso.TP_EMIS == 3)
                 {
                     #region SCAN
                     if (Acesso.TP_AMB == 1)

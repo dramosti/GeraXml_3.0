@@ -69,7 +69,9 @@ namespace HLP.GeraXml.dao.NFes.DSF
                 sQuery.Append("from nf inner join empresa emp {0}");
                 sQuery.Append("on (nf.cd_empresa = emp.cd_empresa) inner join clifor {0}");
                 sQuery.Append("on (clifor.cd_clifor = nf.cd_clifor) left join cidades {0}");
-                sQuery.Append("on (cidades.nm_cidnor = clifor.nm_cidnor) {0}");
+                //sQuery.Append("on (cidades.nm_cidnor = clifor.nm_cidnor) {0}");
+                sQuery.Append("on (cidades.cd_municipio = clifor.cd_municipio) {0}");
+                //cidades.cd_municipio = clifor.cd_municipio
                 sQuery.Append("where nf.cd_nfseq = '{1}' and nf.cd_empresa = '{2}'");
 
                 string sQueryFim = string.Format(sQuery.ToString(), Environment.NewLine, cd_nfseq, Acesso.CD_EMPRESA);

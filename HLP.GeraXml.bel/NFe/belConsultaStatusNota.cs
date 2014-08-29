@@ -271,6 +271,36 @@ namespace HLP.GeraXml.bel.NFe
                     }
 
                 }
+                else if (Acesso.TP_EMIS == 6)
+                {
+                    if (Acesso.TP_AMB == 2)
+                    {
+                        HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeConsultaProtocolo.NfeConsulta2 ws2 = new HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeConsultaProtocolo.NfeConsulta2();
+                        HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeConsultaProtocolo.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_SVC_Homologacao_NfeConsultaProtocolo.nfeCabecMsg();
+                        cabec.versaoDados = sversaoLayoutCons;
+                        belUF objUf = new belUF();
+                        cabec.cUF = objUf.RetornaCUF(Acesso.xUF);
+                        ws2.nfeCabecMsgValue = cabec;
+                        ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                        xmlConsulta.LoadXml(sDados);
+                        XmlNode xNodeConsulta = xmlConsulta.DocumentElement;
+                        xmlConsulta.LoadXml(ws2.nfeConsultaNF2(xNodeConsulta).OuterXml);
+                    }
+                    else
+                    {
+                        HLP.GeraXml.WebService.v2_SVC_Producao_NfeConsultaProtocolo.NfeConsulta2 ws2 = new HLP.GeraXml.WebService.v2_SVC_Producao_NfeConsultaProtocolo.NfeConsulta2();
+                        HLP.GeraXml.WebService.v2_SVC_Producao_NfeConsultaProtocolo.nfeCabecMsg cabec = new HLP.GeraXml.WebService.v2_SVC_Producao_NfeConsultaProtocolo.nfeCabecMsg();
+                        cabec.versaoDados = sversaoLayoutCons;
+                        belUF objUf = new belUF();
+                        cabec.cUF = objUf.RetornaCUF(Acesso.xUF);
+                        ws2.nfeCabecMsgValue = cabec;
+                        ws2.ClientCertificates.Add(Acesso.cert_NFe);
+                        xmlConsulta.LoadXml(sDados);
+                        XmlNode xNodeConsulta = xmlConsulta.DocumentElement;
+                        xmlConsulta.LoadXml(ws2.nfeConsultaNF2(xNodeConsulta).OuterXml);
+                    }
+
+                }
                 string sPathCons = Pastas.PROTOCOLOS + "\\ConsultaNFe_" + objPesquisa.sCD_NFSEQ + ".xml";
                 xmlConsulta.Save(sPathCons);
                 retConsSitNFe objConsulta = SerializeClassToXml.DeserializeClasse<retConsSitNFe>(sPathCons);

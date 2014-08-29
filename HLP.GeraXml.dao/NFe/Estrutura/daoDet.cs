@@ -474,7 +474,9 @@ namespace HLP.GeraXml.dao.NFe.Estrutura
                 sInnerJoin.Append("inner join clifor ");
                 sInnerJoin.Append("on (clifor.cd_clifor = nf.cd_clifor) ");
                 sInnerJoin.Append("left join cidades ");
-                sInnerJoin.Append("on (cidades.nm_cidnor = clifor.nm_cidnor) ");
+                //sInnerJoin.Append("on (cidades.nm_cidnor = clifor.nm_cidnor) ");
+                sInnerJoin.Append("on (cidades.cd_municipio = clifor.cd_municipio) ");
+                //cidades.cd_municipio = clifor.cd_municipio
                 sInnerJoin.Append("and ");
                 sInnerJoin.Append("(cidades.cd_ufnor = clifor.cd_ufnor) ");
                 sInnerJoin.Append("inner join uf on (clifor.cd_ufnor = uf.cd_uf) ");//25385

@@ -47,7 +47,9 @@ namespace HLP.GeraXml.dao.NFes.Susesu
             sQuery.Append("FROM nf {0}");
             sQuery.Append("inner join clifor on (nf.cd_clifor = clifor.cd_clifor) {0}");
             sQuery.Append("inner join empresa on (nf.cd_empresa = empresa.cd_empresa) {0}");
-            sQuery.Append("left join cidades on (cidades.nm_cidnor = clifor.nm_cidnor) {0}");
+            //sQuery.Append("left join cidades on (cidades.nm_cidnor = clifor.nm_cidnor) {0}");
+            sQuery.Append("left join cidades on (cidades.cd_municipio = clifor.cd_municipio) {0}");
+            //cidades.cd_municipio = clifor.cd_municipio
             sQuery.Append("left join cidades cityEmp on (cidades.nm_cidnor = empresa.nm_cidnor) {0}");
             sQuery.Append("where nf.cd_nfseq = '{1}' and nf.cd_empresa = '{2}'");
 

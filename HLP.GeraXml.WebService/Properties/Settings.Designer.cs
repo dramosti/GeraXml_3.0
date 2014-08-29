@@ -1222,5 +1222,256 @@ namespace HLP.GeraXml.WebService.Properties {
                 return ((string)(this["HLP_GeraXml_WebService_v2_Producao_NFeConsultaCadastro_PR_CadConsultaCadastro2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hom.nfe.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx")]
+        public string HLP_GeraXml_WebService_AN_HOMOLOGACAO_RecepcaoEvento_RecepcaoEvento {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_AN_HOMOLOGACAO_RecepcaoEvento_RecepcaoEvento"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.nfe.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx")]
+        public string HLP_GeraXml_WebService_AN_PRODUCAO_RecepcaoEvento_RecepcaoEvento {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_AN_PRODUCAO_RecepcaoEvento_RecepcaoEvento"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx")]
+        public string HLP_GeraXml_WebService_HLP_GeraXml_WebService_v2_SVAN_Producao_RecepcaoEvento_RecepcaoEvento {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_HLP_GeraXml_WebService_v2_SVAN_Producao_RecepcaoEvento_Rec" +
+                    "epcaoEvento"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVAN_Producao_NfeRecepcao_NfeRecepcao2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVAN_Producao_NfeRecepcao_NfeRecepcao2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/NfeRetRecepcao2/NfeRetRecepcao2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVAN_Producao_NfeRetRecepcao_NfeRetRecepcao2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVAN_Producao_NfeRetRecepcao_NfeRetRecepcao2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/NfeInutilizacao2/NfeInutilizacao2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVAN_Producao_NfeInutilizacao_NfeInutilizacao2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVAN_Producao_NfeInutilizacao_NfeInutilizacao2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/NfeConsulta2/NfeConsulta2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVAN_Producao_NfeConsultaProtocolo_NfeConsulta2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVAN_Producao_NfeConsultaProtocolo_NfeConsulta2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/NfeStatusServico2/NfeStatusServico2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVAN_Producao_NfeStatusServico_NfeStatusServico2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVAN_Producao_NfeStatusServico_NfeStatusServico2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/NfeDownloadNF/NfeDownloadNF.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVAN_Producao_NfeDownloadNF_NfeDownloadNF {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVAN_Producao_NfeDownloadNF_NfeDownloadNF"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/NfeAutorizacao/NfeAutorizacao.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVAN_Producao_NFeAutorizacao_NfeAutorizacao {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVAN_Producao_NFeAutorizacao_NfeAutorizacao"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.sefazvirtual.fazenda.gov.br/NfeRetAutorizacao/NfeRetAutorizacao.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVAN_Producao_NFeRetAutorizacao_NfeRetAutorizacao {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVAN_Producao_NFeRetAutorizacao_NfeRetAutorizacao"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.svc.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Producao_RecepcaoEvento_RecepcaoEvento {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Producao_RecepcaoEvento_RecepcaoEvento"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.svc.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Producao_NfeRecepcao_NfeRecepcao2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Producao_NfeRecepcao_NfeRecepcao2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.svc.fazenda.gov.br/NfeRetRecepcao2/NfeRetRecepcao2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Producao_NfeRetRecepcao_NfeRetRecepcao2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Producao_NfeRetRecepcao_NfeRetRecepcao2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.svc.fazenda.gov.br/NfeConsulta2/NfeConsulta2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Producao_NfeConsultaProtocolo_NfeConsulta2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Producao_NfeConsultaProtocolo_NfeConsulta2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.svc.fazenda.gov.br/NfeStatusServico2/NfeStatusServico2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Producao_NfeStatusServico_NfeStatusServico2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Producao_NfeStatusServico_NfeStatusServico2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.svc.fazenda.gov.br/NfeAutorizacao/NfeAutorizacao.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Producao_NFeAutorizacao_NfeAutorizacao {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Producao_NFeAutorizacao_NfeAutorizacao"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.svc.fazenda.gov.br/NfeRetAutorizacao/NfeRetAutorizacao.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Producao_NFeRetAutorizacao_NfeRetAutorizacao {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Producao_NFeRetAutorizacao_NfeRetAutorizacao"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hom.svc.fazenda.gov.br/RecepcaoEvento/RecepcaoEvento.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Homologacao_RecepcaoEvento_RecepcaoEvento {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Homologacao_RecepcaoEvento_RecepcaoEvento"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hom.svc.fazenda.gov.br/NfeRecepcao2/NfeRecepcao2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Homologacao_NfeRecepcao_NfeRecepcao2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Homologacao_NfeRecepcao_NfeRecepcao2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hom.svc.fazenda.gov.br/NfeRetRecepcao2/NfeRetRecepcao2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Homologacao_NfeRetRecepcao_NfeRetRecepcao2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Homologacao_NfeRetRecepcao_NfeRetRecepcao2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hom.svc.fazenda.gov.br/NfeConsulta2/NfeConsulta2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Homologacao_NfeConsultaProtocolo_NfeConsulta2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Homologacao_NfeConsultaProtocolo_NfeConsulta2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hom.svc.fazenda.gov.br/NfeStatusServico2/NfeStatusServico2.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Homologacao_NfeStatusServico_NfeStatusServico2 {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Homologacao_NfeStatusServico_NfeStatusServico2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hom.svc.fazenda.gov.br/NfeAutorizacao/NfeAutorizacao.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Homologacao_NFeAutorizacao_NfeAutorizacao {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Homologacao_NFeAutorizacao_NfeAutorizacao"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hom.svc.fazenda.gov.br/NfeRetAutorizacao/NfeRetAutorizacao.asmx")]
+        public string HLP_GeraXml_WebService_v2_SVC_Homologacao_NFeRetAutorizacao_NfeRetAutorizacao {
+            get {
+                return ((string)(this["HLP_GeraXml_WebService_v2_SVC_Homologacao_NFeRetAutorizacao_NfeRetAutorizacao"]));
+            }
+        }
     }
 }

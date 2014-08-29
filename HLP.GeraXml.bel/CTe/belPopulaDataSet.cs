@@ -307,10 +307,10 @@ namespace HLP.GeraXml.bel.CTe
                     dsToma03.pk_ide = iChave;
 
                     dsCte.toma03.Addtoma03Row(dsToma03);
-                   // dsToma03 = dsCte.toma03.Newtoma03Row();
+                    // dsToma03 = dsCte.toma03.Newtoma03Row();
                 }
 
-               
+
 
                 #endregion
 
@@ -446,7 +446,7 @@ namespace HLP.GeraXml.bel.CTe
                 dsRem.pk_infCte = iChave;
                 dsRem.pk_rem = iChave;
                 dsCte.rem.AddremRow(dsRem);
-             //   dsRem = dsCte.rem.NewremRow();
+                //   dsRem = dsCte.rem.NewremRow();
 
 
 
@@ -503,7 +503,7 @@ namespace HLP.GeraXml.bel.CTe
                 dsEnderReme.pk_rem = iChave;
 
                 dsCte.enderReme.AddenderRemeRow(dsEnderReme);
-               // dsEnderReme = dsCte.enderReme.NewenderRemeRow();
+                // dsEnderReme = dsCte.enderReme.NewenderRemeRow();
 
                 #endregion
 
@@ -695,7 +695,11 @@ namespace HLP.GeraXml.bel.CTe
                             case "xMun": dsEnderExped.xMun = enderExped[i].ChildNodes[j].InnerText;
                                 break;
 
-                            case "CEP": dsEnderExped.CEP = enderExped[i].ChildNodes[j].InnerText;
+                            case "CEP":
+                                {
+                                    dsEnderExped.CEP = "";
+                                    dsEnderExped.CEP = enderExped[i].ChildNodes[j].InnerText;
+                                }
                                 break;
 
                             case "UF": dsEnderExped.UF = enderExped[i].ChildNodes[j].InnerText;
@@ -906,7 +910,7 @@ namespace HLP.GeraXml.bel.CTe
                 dsEnderDest.pk_enderDest = iChave;
 
                 dsCte.enderDest.AddenderDestRow(dsEnderDest);
-               // dsEnderDest = dsCte.enderDest.NewenderDestRow();
+                // dsEnderDest = dsCte.enderDest.NewenderDestRow();
 
                 #endregion
 
@@ -1452,7 +1456,7 @@ namespace HLP.GeraXml.bel.CTe
                     {
                         dsToma4.fone = dsRem.fone;
                     }
-                    catch (Exception){}
+                    catch (Exception) { }
                     dsToma4.pk_toma4 = iChave;
                     dsToma4.pk_ide = iChave;
                     dsCte.toma4.Addtoma4Row(dsToma4);
@@ -1464,11 +1468,17 @@ namespace HLP.GeraXml.bel.CTe
                         dsEnderToma.xCpl = dsEnderReme.xCpl;
                     }
                     catch (Exception)
-                    {}
+                    { }
                     dsEnderToma.xBairro = dsEnderReme.xBairro;
                     dsEnderToma.cMun = dsEnderReme.cMun;
                     dsEnderToma.xMun = dsEnderReme.xMun;
-                    dsEnderToma.CEP = dsEnderReme.CEP;
+                    try
+                    {
+                        dsEnderToma.CEP = dsEnderReme.CEP;
+                    }
+                    catch (Exception)
+                    { }
+                    
                     dsEnderToma.UF = dsEnderReme.UF;
                     dsEnderToma.cPais = dsEnderReme.cPais;
                     dsEnderToma.xPais = dsEnderReme.xPais;
@@ -1483,12 +1493,12 @@ namespace HLP.GeraXml.bel.CTe
                     dsEnderToma = dsCte.enderToma.NewenderTomaRow();
                     dsToma4.CNPJ = dsDest.CNPJ;
                     try { dsToma4.CPF = dsDest.CPF; }
-                    catch (Exception) { }                    
+                    catch (Exception) { }
                     dsToma4.xNome = dsDest.xNome;
                     dsToma4.xFant = dsDest.xNome;
                     try { dsToma4.fone = dsDest.fone; }
                     catch (Exception) { }
-                    
+
                     dsToma4.pk_toma4 = iChave;
                     dsToma4.pk_ide = iChave;
                     dsCte.toma4.Addtoma4Row(dsToma4);
@@ -1496,11 +1506,16 @@ namespace HLP.GeraXml.bel.CTe
                     dsEnderToma.xLgr = dsEnderDest.xLgr;
                     dsEnderToma.nro = dsEnderDest.nro;
                     try { dsEnderToma.xCpl = dsEnderDest.xCpl; }
-                    catch (Exception) { }                    
+                    catch (Exception) { }
                     dsEnderToma.xBairro = dsEnderDest.xBairro;
                     dsEnderToma.cMun = dsEnderDest.cMun;
                     dsEnderToma.xMun = dsEnderDest.xMun;
-                    dsEnderToma.CEP = dsEnderDest.CEP;
+                    try
+                    {
+                        dsEnderToma.CEP = dsEnderDest.CEP;
+                    }
+                    catch (Exception) { }
+
                     dsEnderToma.UF = dsEnderDest.UF;
                     dsEnderToma.cPais = dsEnderDest.cPais;
                     dsEnderToma.xPais = dsEnderDest.xPais;
@@ -1611,7 +1626,7 @@ namespace HLP.GeraXml.bel.CTe
             }
         }
 
-      
+
 
 
         private void PopulaDadosNf(string sNumNf)
@@ -1650,7 +1665,7 @@ namespace HLP.GeraXml.bel.CTe
             {
                 throw ex;
             }
-            
+
         }
         public bool VerificaLotacao(string sCaminho)
         {

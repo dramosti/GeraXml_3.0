@@ -359,6 +359,18 @@
     <Compile Include="NFe\frmInutilizaFaixaNFe.Designer.cs">
       <DependentUpon>frmInutilizaFaixaNFe.cs</DependentUpon>
     </Compile>
+    <Compile Include="NFe\frmManifestacaoEvento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NFe\frmManifestacaoEvento.Designer.cs">
+      <DependentUpon>frmManifestacaoEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NFe\frmMotivoOperacaoNaoRealizada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NFe\frmMotivoOperacaoNaoRealizada.Designer.cs">
+      <DependentUpon>frmMotivoOperacaoNaoRealizada.cs</DependentUpon>
+    </Compile>
     <Compile Include="NFe\frmPesquisaNfe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -489,13 +501,6 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Relatorios\rptNFSeCamp.cs">
-      <DependentUpon>rptNFSeCamp.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Relatorios\RelDanfe2013.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -567,6 +572,12 @@
     <EmbeddedResource Include="NFe\frmInutilizaFaixaNFe.resx">
       <DependentUpon>frmInutilizaFaixaNFe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NFe\frmManifestacaoEvento.resx">
+      <DependentUpon>frmManifestacaoEvento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NFe\frmMotivoOperacaoNaoRealizada.resx">
+      <DependentUpon>frmMotivoOperacaoNaoRealizada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NFe\frmPesquisaNfe.resx">
       <DependentUpon>frmPesquisaNfe.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -634,10 +645,10 @@
       <LastGenOutput>rptNfesSusesu.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Relatorios\rptNFSeCamp.rpt">
+    <Content Include="J:\D6\Comercio\C0\AIR\DADOS\Relatorio\rptNFSeCamp.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptNFSeCamp.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>Relatorios\rptNFSeCamp.rpt</Link>
     </Content>
     <Content Include="Relatorios\RelDanfe2013.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -674,6 +685,7 @@
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.belDup.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.belNFref.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Estrutura.belProd.datasource" />
+    <None Include="Properties\DataSources\HLP.GeraXml.bel.NFe.Manifestacao.belManifestacaoPesquisa.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.belCancelamentoNFse.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.DSF.LoteNota.datasource" />
     <None Include="Properties\DataSources\HLP.GeraXml.bel.NFes.DSF.LoteRPSDeducoesDeducao.datasource" />
@@ -1413,6 +1425,50 @@
     <None Include="Schema\NFe-s\servico_cancelar_nfse_envio_v02.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Schema\NFe\Manifestacao\confRecebto_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\e210200_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\e210210_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\e210220_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\e210240_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\envConfRecebto_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\leiauteConfRecebto_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\procConfRecebtoNFe_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\retEnvConfRecebto_v1.00.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\tiposBasico_v1.03.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema\NFe\Manifestacao\xmldsig-core-schema_v1.01.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HLP.GeraXml.bel\HLP.GeraXml.bel.csproj">

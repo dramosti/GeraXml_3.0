@@ -18,6 +18,8 @@ namespace HLP.GeraXml.dao.CTe
 
                 sQuery.Append("Select ");
                 sQuery.Append("coalesce (conhecim.vl_total,'') vTPrest, ");
+                sQuery.Append("coalesce (conhecim.vl_gris,'0.00') vl_gris, ");
+                sQuery.Append("coalesce (conhecim.vl_vladic,'0.00') vl_vladic, ");
                 sQuery.Append("coalesce (conhecim.vl_frcubagem,'') FRETECUBAGEM, ");
                 sQuery.Append("coalesce (conhecim.vl_frpeso,'') FRETEPESO, ");
                 sQuery.Append("coalesce (conhecim.vl_cat,'') CAT, ");

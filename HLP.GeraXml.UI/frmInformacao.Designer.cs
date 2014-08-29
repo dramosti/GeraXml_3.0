@@ -39,9 +39,10 @@ namespace HLP.GeraXml.UI
             this.rbNormal = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.rbCont = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.rbScan = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.timerFechaTela = new System.Windows.Forms.Timer(this.components);
             this.timerLoad = new System.Windows.Forms.Timer(this.components);
-            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.rbNacional = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -54,7 +55,7 @@ namespace HLP.GeraXml.UI
             this.kryptonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel.Name = "kryptonPanel";
-            this.kryptonPanel.Size = new System.Drawing.Size(188, 195);
+            this.kryptonPanel.Size = new System.Drawing.Size(196, 239);
             this.kryptonPanel.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -69,7 +70,7 @@ namespace HLP.GeraXml.UI
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(188, 195);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(196, 239);
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             this.flowLayoutPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.control_MouseMove);
@@ -112,10 +113,11 @@ namespace HLP.GeraXml.UI
             this.flpTpEmiss.Controls.Add(this.rbNormal);
             this.flpTpEmiss.Controls.Add(this.rbCont);
             this.flpTpEmiss.Controls.Add(this.rbScan);
+            this.flpTpEmiss.Controls.Add(this.rbNacional);
             this.flpTpEmiss.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpTpEmiss.Location = new System.Drawing.Point(3, 81);
             this.flpTpEmiss.Name = "flpTpEmiss";
-            this.flpTpEmiss.Size = new System.Drawing.Size(182, 80);
+            this.flpTpEmiss.Size = new System.Drawing.Size(182, 118);
             this.flpTpEmiss.TabIndex = 5;
             this.flpTpEmiss.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             this.flpTpEmiss.MouseMove += new System.Windows.Forms.MouseEventHandler(this.control_MouseMove);
@@ -153,6 +155,16 @@ namespace HLP.GeraXml.UI
             this.rbScan.MouseLeave += new System.EventHandler(this.control_MouseLeave);
             this.rbScan.MouseMove += new System.Windows.Forms.MouseEventHandler(this.control_MouseMove);
             // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kryptonButton1.Location = new System.Drawing.Point(3, 205);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(182, 25);
+            this.kryptonButton1.TabIndex = 6;
+            this.kryptonButton1.Values.Text = "Fechar";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
+            // 
             // timerFechaTela
             // 
             this.timerFechaTela.Tick += new System.EventHandler(this.timerFechaTela_Tick);
@@ -162,21 +174,20 @@ namespace HLP.GeraXml.UI
             this.timerLoad.Interval = 1000;
             this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
             // 
-            // kryptonButton1
+            // rbNacional
             // 
-            this.kryptonButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.kryptonButton1.Location = new System.Drawing.Point(3, 167);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(182, 25);
-            this.kryptonButton1.TabIndex = 6;
-            this.kryptonButton1.Values.Text = "Fechar";
-            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
+            this.rbNacional.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldPanel;
+            this.rbNacional.Location = new System.Drawing.Point(3, 81);
+            this.rbNacional.Name = "rbNacional";
+            this.rbNacional.Size = new System.Drawing.Size(112, 20);
+            this.rbNacional.TabIndex = 3;
+            this.rbNacional.Values.Text = "Modo Nacional";
             // 
             // frmInformacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(188, 195);
+            this.ClientSize = new System.Drawing.Size(196, 239);
             this.Controls.Add(this.kryptonPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -215,6 +226,7 @@ namespace HLP.GeraXml.UI
         public ComponentFactory.Krypton.Toolkit.KryptonRadioButton rbCont;
         public System.Windows.Forms.FlowLayoutPanel flpTpEmiss;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonRadioButton rbNacional;
     }
 }
 

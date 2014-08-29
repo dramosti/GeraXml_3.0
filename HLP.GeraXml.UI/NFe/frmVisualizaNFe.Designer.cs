@@ -2410,7 +2410,7 @@
             this.tabProd.Location = new System.Drawing.Point(4, 25);
             this.tabProd.Margin = new System.Windows.Forms.Padding(0);
             this.tabProd.Name = "tabProd";
-            this.tabProd.Size = new System.Drawing.Size(936, 540);
+            this.tabProd.Size = new System.Drawing.Size(733, 247);
             this.tabProd.TabIndex = 5;
             this.tabProd.Tag = false;
             this.tabProd.Text = "Produtos";
@@ -2422,7 +2422,7 @@
             this.kryptonPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel5.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel5.Name = "kryptonPanel5";
-            this.kryptonPanel5.Size = new System.Drawing.Size(936, 540);
+            this.kryptonPanel5.Size = new System.Drawing.Size(733, 247);
             this.kryptonPanel5.TabIndex = 1;
             // 
             // dgvProd
@@ -2462,7 +2462,7 @@
             this.dgvProd.Location = new System.Drawing.Point(0, 0);
             this.dgvProd.Name = "dgvProd";
             this.dgvProd.RowHeadersWidth = 25;
-            this.dgvProd.Size = new System.Drawing.Size(936, 287);
+            this.dgvProd.Size = new System.Drawing.Size(733, 0);
             this.dgvProd.TabIndex = 118;
             this.dgvProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProd_CellContentClick);
             this.dgvProd.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvProd_ColumnHeaderMouseClick);
@@ -2692,9 +2692,9 @@
             this.panelItens.Controls.Add(this.kryptonTabControl6);
             this.panelItens.Controls.Add(this.menuStrip2);
             this.panelItens.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelItens.Location = new System.Drawing.Point(0, 287);
+            this.panelItens.Location = new System.Drawing.Point(0, -6);
             this.panelItens.Name = "panelItens";
-            this.panelItens.Size = new System.Drawing.Size(936, 253);
+            this.panelItens.Size = new System.Drawing.Size(733, 253);
             this.panelItens.TabIndex = 117;
             // 
             // kryptonTabControl6
@@ -2725,7 +2725,7 @@
             this.kryptonTabControl6.Name = "kryptonTabControl6";
             this.kryptonTabControl6.PreserveTabColor = false;
             this.kryptonTabControl6.SelectedIndex = 0;
-            this.kryptonTabControl6.Size = new System.Drawing.Size(936, 226);
+            this.kryptonTabControl6.Size = new System.Drawing.Size(733, 226);
             this.kryptonTabControl6.TabIndex = 116;
             this.kryptonTabControl6.UseExtendedLayout = false;
             // 
@@ -2735,7 +2735,7 @@
             this.tabPage24.Location = new System.Drawing.Point(4, 25);
             this.tabPage24.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage24.Name = "tabPage24";
-            this.tabPage24.Size = new System.Drawing.Size(928, 197);
+            this.tabPage24.Size = new System.Drawing.Size(725, 197);
             this.tabPage24.TabIndex = 0;
             this.tabPage24.Tag = false;
             this.tabPage24.Text = "ICMS";
@@ -2746,7 +2746,7 @@
             this.kryptonPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel26.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel26.Name = "kryptonPanel26";
-            this.kryptonPanel26.Size = new System.Drawing.Size(928, 197);
+            this.kryptonPanel26.Size = new System.Drawing.Size(725, 197);
             this.kryptonPanel26.TabIndex = 0;
             // 
             // flICMS
@@ -2776,7 +2776,7 @@
             this.flICMS.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flICMS.Location = new System.Drawing.Point(0, 0);
             this.flICMS.Name = "flICMS";
-            this.flICMS.Size = new System.Drawing.Size(928, 197);
+            this.flICMS.Size = new System.Drawing.Size(725, 197);
             this.flICMS.TabIndex = 1;
             this.flICMS.Tag = "Dados Emitente";
             // 
@@ -4465,7 +4465,7 @@
             this.btnSalvarItens});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(936, 27);
+            this.menuStrip2.Size = new System.Drawing.Size(733, 27);
             this.menuStrip2.TabIndex = 0;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -7500,7 +7500,7 @@
             this.Text = "Visulização de Notas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();            
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).EndInit();
             this.kryptonPanel.ResumeLayout(false);
             this.kryptonPanel.PerformLayout();
             this.statusErro.ResumeLayout(false);

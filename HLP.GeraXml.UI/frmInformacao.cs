@@ -74,6 +74,8 @@ namespace HLP.GeraXml.UI
 
                         case 3: rbScan.Checked = true;
                             break;
+                        case 6: rbNacional.Checked = true;
+                            break;
                     }
 
                 }

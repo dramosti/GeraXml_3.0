@@ -334,6 +334,8 @@
             this.Configuracoes = new AC.ExtendedRenderer.Navigator.KryptonTabControl();
             this.errErro = new System.Windows.Forms.ErrorProvider(this.components);
             this.bsVeiculos = new System.Windows.Forms.BindingSource(this.components);
+            this.nudGris = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
+            this.nudValoraAdic = new HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.bsNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel)).BeginInit();
             this.kryptonPanel.SuspendLayout();
@@ -564,7 +566,7 @@
             this.tabPage13.Location = new System.Drawing.Point(4, 25);
             this.tabPage13.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage13.Name = "tabPage13";
-            this.tabPage13.Size = new System.Drawing.Size(733, 271);
+            this.tabPage13.Size = new System.Drawing.Size(1112, 422);
             this.tabPage13.TabIndex = 12;
             this.tabPage13.Tag = false;
             this.tabPage13.Text = "Veículo";
@@ -576,7 +578,7 @@
             this.kryptonPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel13.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel13.Name = "kryptonPanel13";
-            this.kryptonPanel13.Size = new System.Drawing.Size(733, 271);
+            this.kryptonPanel13.Size = new System.Drawing.Size(1112, 422);
             this.kryptonPanel13.TabIndex = 1;
             // 
             // kryptonTabControl10
@@ -601,7 +603,7 @@
             this.kryptonTabControl10.Name = "kryptonTabControl10";
             this.kryptonTabControl10.PreserveTabColor = false;
             this.kryptonTabControl10.SelectedIndex = 0;
-            this.kryptonTabControl10.Size = new System.Drawing.Size(733, 246);
+            this.kryptonTabControl10.Size = new System.Drawing.Size(1112, 397);
             this.kryptonTabControl10.TabIndex = 232;
             this.kryptonTabControl10.UseExtendedLayout = false;
             // 
@@ -611,7 +613,7 @@
             this.tabPage33.Location = new System.Drawing.Point(4, 25);
             this.tabPage33.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage33.Name = "tabPage33";
-            this.tabPage33.Size = new System.Drawing.Size(725, 217);
+            this.tabPage33.Size = new System.Drawing.Size(1104, 368);
             this.tabPage33.TabIndex = 0;
             this.tabPage33.Tag = false;
             this.tabPage33.Text = "Informações do Veículo";
@@ -622,7 +624,7 @@
             this.kryptonPanel33.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel33.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel33.Name = "kryptonPanel33";
-            this.kryptonPanel33.Size = new System.Drawing.Size(725, 217);
+            this.kryptonPanel33.Size = new System.Drawing.Size(1104, 368);
             this.kryptonPanel33.TabIndex = 0;
             // 
             // flpVeiculo
@@ -644,7 +646,7 @@
             this.flpVeiculo.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpVeiculo.Location = new System.Drawing.Point(0, 0);
             this.flpVeiculo.Name = "flpVeiculo";
-            this.flpVeiculo.Size = new System.Drawing.Size(725, 217);
+            this.flpVeiculo.Size = new System.Drawing.Size(1104, 368);
             this.flpVeiculo.TabIndex = 0;
             this.flpVeiculo.Tag = "Informações do Veículo";
             // 
@@ -856,7 +858,7 @@
             this.cbotpRod.Color = System.Drawing.Color.White;
             this.cbotpRod.DataSource = null;
             this.cbotpRod.DisplayMember = "DisplayMember";
-            this.cbotpRod.Location = new System.Drawing.Point(302, 3);
+            this.cbotpRod.Location = new System.Drawing.Point(32, 206);
             this.cbotpRod.Margin = new System.Windows.Forms.Padding(32, 3, 15, 3);
             this.cbotpRod.Name = "cbotpRod";
             this.cbotpRod.SelectedIndex = -1;
@@ -879,7 +881,7 @@
             this.cbotpCar.Color = System.Drawing.Color.White;
             this.cbotpCar.DataSource = null;
             this.cbotpCar.DisplayMember = "DisplayMember";
-            this.cbotpCar.Location = new System.Drawing.Point(288, 32);
+            this.cbotpCar.Location = new System.Drawing.Point(18, 235);
             this.cbotpCar.Margin = new System.Windows.Forms.Padding(18, 3, 15, 3);
             this.cbotpCar.Name = "cbotpCar";
             this.cbotpCar.SelectedIndex = -1;
@@ -903,7 +905,7 @@
             this.txtUF.BackColor = System.Drawing.Color.Transparent;
             this.txtUF.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtUF.Color = System.Drawing.Color.White;
-            this.txtUF.Location = new System.Drawing.Point(273, 61);
+            this.txtUF.Location = new System.Drawing.Point(3, 264);
             this.txtUF.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
             this.txtUF.MaxLength = 2;
             this.txtUF.Name = "txtUF";
@@ -1182,7 +1184,7 @@
             this.toolStripSeparator8});
             this.tsVeiculo.Location = new System.Drawing.Point(0, 0);
             this.tsVeiculo.Name = "tsVeiculo";
-            this.tsVeiculo.Size = new System.Drawing.Size(733, 25);
+            this.tsVeiculo.Size = new System.Drawing.Size(1112, 25);
             this.tsVeiculo.TabIndex = 231;
             this.tsVeiculo.Text = "toolStrip3";
             // 
@@ -1391,7 +1393,7 @@
             this.tabPage11.Location = new System.Drawing.Point(4, 25);
             this.tabPage11.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(733, 271);
+            this.tabPage11.Size = new System.Drawing.Size(1112, 422);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Tag = false;
             this.tabPage11.Text = "Carga";
@@ -1402,7 +1404,7 @@
             this.kryptonPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel11.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel11.Name = "kryptonPanel11";
-            this.kryptonPanel11.Size = new System.Drawing.Size(733, 271);
+            this.kryptonPanel11.Size = new System.Drawing.Size(1112, 422);
             this.kryptonPanel11.TabIndex = 1;
             // 
             // kryptonTabControl9
@@ -1426,7 +1428,7 @@
             this.kryptonTabControl9.Name = "kryptonTabControl9";
             this.kryptonTabControl9.PreserveTabColor = false;
             this.kryptonTabControl9.SelectedIndex = 0;
-            this.kryptonTabControl9.Size = new System.Drawing.Size(733, 271);
+            this.kryptonTabControl9.Size = new System.Drawing.Size(1112, 422);
             this.kryptonTabControl9.TabIndex = 111;
             this.kryptonTabControl9.UseExtendedLayout = false;
             // 
@@ -1436,7 +1438,7 @@
             this.tabPage31.Location = new System.Drawing.Point(4, 25);
             this.tabPage31.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage31.Name = "tabPage31";
-            this.tabPage31.Size = new System.Drawing.Size(725, 242);
+            this.tabPage31.Size = new System.Drawing.Size(1104, 393);
             this.tabPage31.TabIndex = 0;
             this.tabPage31.Tag = false;
             this.tabPage31.Text = "Carga";
@@ -1447,7 +1449,7 @@
             this.kryptonPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel31.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel31.Name = "kryptonPanel31";
-            this.kryptonPanel31.Size = new System.Drawing.Size(725, 242);
+            this.kryptonPanel31.Size = new System.Drawing.Size(1104, 393);
             this.kryptonPanel31.TabIndex = 0;
             // 
             // flpInfCarga
@@ -1462,7 +1464,7 @@
             this.flpInfCarga.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpInfCarga.Location = new System.Drawing.Point(0, 0);
             this.flpInfCarga.Name = "flpInfCarga";
-            this.flpInfCarga.Size = new System.Drawing.Size(725, 242);
+            this.flpInfCarga.Size = new System.Drawing.Size(1104, 393);
             this.flpInfCarga.TabIndex = 0;
             this.flpInfCarga.Tag = "Carga";
             // 
@@ -1615,7 +1617,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 25);
             this.tabPage10.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(733, 271);
+            this.tabPage10.Size = new System.Drawing.Size(1112, 422);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Tag = false;
             this.tabPage10.Text = "Valores";
@@ -1626,7 +1628,7 @@
             this.kryptonPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel10.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel10.Name = "kryptonPanel10";
-            this.kryptonPanel10.Size = new System.Drawing.Size(733, 271);
+            this.kryptonPanel10.Size = new System.Drawing.Size(1112, 422);
             this.kryptonPanel10.TabIndex = 1;
             // 
             // kryptonTabControl8
@@ -1650,7 +1652,7 @@
             this.kryptonTabControl8.Name = "kryptonTabControl8";
             this.kryptonTabControl8.PreserveTabColor = false;
             this.kryptonTabControl8.SelectedIndex = 0;
-            this.kryptonTabControl8.Size = new System.Drawing.Size(733, 271);
+            this.kryptonTabControl8.Size = new System.Drawing.Size(1112, 422);
             this.kryptonTabControl8.TabIndex = 110;
             this.kryptonTabControl8.UseExtendedLayout = false;
             // 
@@ -1660,7 +1662,7 @@
             this.tabPage29.Location = new System.Drawing.Point(4, 25);
             this.tabPage29.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage29.Name = "tabPage29";
-            this.tabPage29.Size = new System.Drawing.Size(725, 242);
+            this.tabPage29.Size = new System.Drawing.Size(1104, 393);
             this.tabPage29.TabIndex = 0;
             this.tabPage29.Tag = false;
             this.tabPage29.Text = "Valores da Prestação de Serviço";
@@ -1671,7 +1673,7 @@
             this.kryptonPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel29.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel29.Name = "kryptonPanel29";
-            this.kryptonPanel29.Size = new System.Drawing.Size(725, 242);
+            this.kryptonPanel29.Size = new System.Drawing.Size(1104, 393);
             this.kryptonPanel29.TabIndex = 0;
             // 
             // flpValores
@@ -1690,11 +1692,13 @@
             this.flpValores.Controls.Add(this.nudEntrega);
             this.flpValores.Controls.Add(this.nudvTPrest);
             this.flpValores.Controls.Add(this.nudvRec);
+            this.flpValores.Controls.Add(this.nudGris);
+            this.flpValores.Controls.Add(this.nudValoraAdic);
             this.flpValores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpValores.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpValores.Location = new System.Drawing.Point(0, 0);
             this.flpValores.Name = "flpValores";
-            this.flpValores.Size = new System.Drawing.Size(725, 242);
+            this.flpValores.Size = new System.Drawing.Size(1104, 393);
             this.flpValores.TabIndex = 0;
             this.flpValores.Tag = "Valores da Prestação de Serviço";
             // 
@@ -1981,7 +1985,7 @@
             this.nudEntrega.BackColor = System.Drawing.Color.Transparent;
             this.nudEntrega.Color = System.Drawing.Color.White;
             this.nudEntrega.DecimalPlaces = 2;
-            this.nudEntrega.Location = new System.Drawing.Point(486, 3);
+            this.nudEntrega.Location = new System.Drawing.Point(121, 235);
             this.nudEntrega.Margin = new System.Windows.Forms.Padding(121, 3, 15, 3);
             this.nudEntrega.Maximum = new decimal(new int[] {
             1316134911,
@@ -2015,7 +2019,7 @@
             this.nudvTPrest.BackColor = System.Drawing.Color.Transparent;
             this.nudvTPrest.Color = System.Drawing.Color.White;
             this.nudvTPrest.DecimalPlaces = 2;
-            this.nudvTPrest.Location = new System.Drawing.Point(368, 32);
+            this.nudvTPrest.Location = new System.Drawing.Point(3, 264);
             this.nudvTPrest.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
             this.nudvTPrest.Maximum = new decimal(new int[] {
             1316134911,
@@ -2049,7 +2053,7 @@
             this.nudvRec.BackColor = System.Drawing.Color.Transparent;
             this.nudvRec.Color = System.Drawing.Color.White;
             this.nudvRec.DecimalPlaces = 2;
-            this.nudvRec.Location = new System.Drawing.Point(483, 61);
+            this.nudvRec.Location = new System.Drawing.Point(118, 293);
             this.nudvRec.Margin = new System.Windows.Forms.Padding(118, 3, 15, 3);
             this.nudvRec.Maximum = new decimal(new int[] {
             1316134911,
@@ -2275,7 +2279,7 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 25);
             this.tabPage9.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(733, 271);
+            this.tabPage9.Size = new System.Drawing.Size(1112, 422);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Tag = false;
             this.tabPage9.Text = "Outros Documentos";
@@ -2286,7 +2290,7 @@
             this.kryptonPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel9.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel9.Name = "kryptonPanel9";
-            this.kryptonPanel9.Size = new System.Drawing.Size(733, 271);
+            this.kryptonPanel9.Size = new System.Drawing.Size(1112, 422);
             this.kryptonPanel9.TabIndex = 1;
             // 
             // gridDocumentos
@@ -2304,7 +2308,7 @@
             this.gridDocumentos.Location = new System.Drawing.Point(0, 0);
             this.gridDocumentos.Name = "gridDocumentos";
             this.gridDocumentos.RowHeadersWidth = 15;
-            this.gridDocumentos.Size = new System.Drawing.Size(733, 271);
+            this.gridDocumentos.Size = new System.Drawing.Size(1112, 422);
             this.gridDocumentos.TabIndex = 10;
             // 
             // tpDoc
@@ -2382,7 +2386,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(733, 271);
+            this.tabPage8.Size = new System.Drawing.Size(1112, 422);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Tag = false;
             this.tabPage8.Text = "Notas Fiscais";
@@ -2393,7 +2397,7 @@
             this.kryptonPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel8.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel8.Name = "kryptonPanel8";
-            this.kryptonPanel8.Size = new System.Drawing.Size(733, 271);
+            this.kryptonPanel8.Size = new System.Drawing.Size(1112, 422);
             this.kryptonPanel8.TabIndex = 1;
             // 
             // kryptonTabControl7
@@ -2417,7 +2421,7 @@
             this.kryptonTabControl7.Name = "kryptonTabControl7";
             this.kryptonTabControl7.PreserveTabColor = false;
             this.kryptonTabControl7.SelectedIndex = 0;
-            this.kryptonTabControl7.Size = new System.Drawing.Size(733, 271);
+            this.kryptonTabControl7.Size = new System.Drawing.Size(1112, 422);
             this.kryptonTabControl7.TabIndex = 113;
             this.kryptonTabControl7.UseExtendedLayout = false;
             // 
@@ -2427,7 +2431,7 @@
             this.tabPage27.Location = new System.Drawing.Point(4, 25);
             this.tabPage27.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage27.Name = "tabPage27";
-            this.tabPage27.Size = new System.Drawing.Size(725, 242);
+            this.tabPage27.Size = new System.Drawing.Size(1104, 393);
             this.tabPage27.TabIndex = 0;
             this.tabPage27.Tag = false;
             this.tabPage27.Text = "NF Normal";
@@ -2438,7 +2442,7 @@
             this.kryptonPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel27.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel27.Name = "kryptonPanel27";
-            this.kryptonPanel27.Size = new System.Drawing.Size(725, 242);
+            this.kryptonPanel27.Size = new System.Drawing.Size(1104, 393);
             this.kryptonPanel27.TabIndex = 0;
             // 
             // gridNfNormal
@@ -2467,7 +2471,7 @@
             this.gridNfNormal.Location = new System.Drawing.Point(0, 0);
             this.gridNfNormal.Name = "gridNfNormal";
             this.gridNfNormal.RowHeadersWidth = 15;
-            this.gridNfNormal.Size = new System.Drawing.Size(725, 242);
+            this.gridNfNormal.Size = new System.Drawing.Size(1104, 393);
             this.gridNfNormal.TabIndex = 10;
             // 
             // nRomaDataGridViewTextBoxColumn
@@ -2662,7 +2666,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(733, 271);
+            this.tabPage7.Size = new System.Drawing.Size(1112, 422);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Tag = false;
             this.tabPage7.Text = "Destinatário";
@@ -2673,7 +2677,7 @@
             this.kryptonPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel7.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel7.Name = "kryptonPanel7";
-            this.kryptonPanel7.Size = new System.Drawing.Size(733, 271);
+            this.kryptonPanel7.Size = new System.Drawing.Size(1112, 422);
             this.kryptonPanel7.TabIndex = 1;
             // 
             // kryptonTabControl6
@@ -2697,7 +2701,7 @@
             this.kryptonTabControl6.Name = "kryptonTabControl6";
             this.kryptonTabControl6.PreserveTabColor = false;
             this.kryptonTabControl6.SelectedIndex = 0;
-            this.kryptonTabControl6.Size = new System.Drawing.Size(733, 271);
+            this.kryptonTabControl6.Size = new System.Drawing.Size(1112, 422);
             this.kryptonTabControl6.TabIndex = 112;
             this.kryptonTabControl6.UseExtendedLayout = false;
             // 
@@ -2707,7 +2711,7 @@
             this.tabPage25.Location = new System.Drawing.Point(4, 25);
             this.tabPage25.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage25.Name = "tabPage25";
-            this.tabPage25.Size = new System.Drawing.Size(725, 242);
+            this.tabPage25.Size = new System.Drawing.Size(1104, 393);
             this.tabPage25.TabIndex = 0;
             this.tabPage25.Tag = false;
             this.tabPage25.Text = "Dados Destinatário";
@@ -2718,7 +2722,7 @@
             this.kryptonPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel25.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel25.Name = "kryptonPanel25";
-            this.kryptonPanel25.Size = new System.Drawing.Size(725, 242);
+            this.kryptonPanel25.Size = new System.Drawing.Size(1104, 393);
             this.kryptonPanel25.TabIndex = 0;
             // 
             // flpDadosDest
@@ -2734,7 +2738,7 @@
             this.flpDadosDest.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpDadosDest.Location = new System.Drawing.Point(0, 0);
             this.flpDadosDest.Name = "flpDadosDest";
-            this.flpDadosDest.Size = new System.Drawing.Size(725, 242);
+            this.flpDadosDest.Size = new System.Drawing.Size(1104, 393);
             this.flpDadosDest.TabIndex = 0;
             this.flpDadosDest.Tag = "Dados Destinatário";
             // 
@@ -6086,6 +6090,74 @@
             // 
             this.errErro.ContainerControl = this;
             // 
+            // nudGris
+            // 
+            this.nudGris._LabelText = "GRIS";
+            this.nudGris._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.SIM;
+            this.nudGris._TamanhoMaiorLabel = 216;
+            this.nudGris._TamanhoNumericUpDown = 131;
+            this.nudGris._Visible = true;
+            this.nudGris.AutoSize = true;
+            this.nudGris.BackColor = System.Drawing.Color.Transparent;
+            this.nudGris.Color = System.Drawing.Color.White;
+            this.nudGris.DecimalPlaces = 2;
+            this.nudGris.Location = new System.Drawing.Point(181, 322);
+            this.nudGris.Margin = new System.Windows.Forms.Padding(181, 3, 15, 3);
+            this.nudGris.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.nudGris.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudGris.Name = "nudGris";
+            this.nudGris.ReadOnly = false;
+            this.nudGris.Size = new System.Drawing.Size(169, 27);
+            this.nudGris.TabIndex = 11;
+            this.nudGris.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.nudGris.ValueInt = 0;
+            // 
+            // nudValoraAdic
+            // 
+            this.nudValoraAdic._LabelText = "Valor adicional";
+            this.nudValoraAdic._Obrigatorio = HLP.GeraXml.Comum.Componentes.HLP_NumericUpDown.CampoObrigatorio.SIM;
+            this.nudValoraAdic._TamanhoMaiorLabel = 216;
+            this.nudValoraAdic._TamanhoNumericUpDown = 131;
+            this.nudValoraAdic._Visible = true;
+            this.nudValoraAdic.AutoSize = true;
+            this.nudValoraAdic.BackColor = System.Drawing.Color.Transparent;
+            this.nudValoraAdic.Color = System.Drawing.Color.White;
+            this.nudValoraAdic.DecimalPlaces = 2;
+            this.nudValoraAdic.Location = new System.Drawing.Point(122, 355);
+            this.nudValoraAdic.Margin = new System.Windows.Forms.Padding(122, 3, 15, 3);
+            this.nudValoraAdic.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.nudValoraAdic.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.nudValoraAdic.Name = "nudValoraAdic";
+            this.nudValoraAdic.ReadOnly = false;
+            this.nudValoraAdic.Size = new System.Drawing.Size(228, 27);
+            this.nudValoraAdic.TabIndex = 12;
+            this.nudValoraAdic.Value = new decimal(new int[] {
+            0,
+            0,
+            0,
+            131072});
+            this.nudValoraAdic.ValueInt = 0;
+            // 
             // frmVisualizaCte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6584,5 +6656,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nDocDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pINDataGridViewTextBoxColumn1;
         private Comum.Componentes.HLP_TextBox txtxTexto;
+        private Comum.Componentes.HLP_NumericUpDown nudGris;
+        private Comum.Componentes.HLP_NumericUpDown nudValoraAdic;
     }
 }

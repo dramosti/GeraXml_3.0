@@ -670,6 +670,7 @@ namespace HLP.GeraXml.UI.CTe
                     belPopulaDataSet objDataSet = new belPopulaDataSet();
 
                     dsCTe dsPadrao = new dsCTe();
+                    dsCTe dsPadraoPDF = new dsCTe();
                     dsCTe dsLotacao = new dsCTe();
                     dsCTe dsPadraoCancelado = new dsCTe();
                     dsCTe dsLotacaoCancelado = new dsCTe();
@@ -683,13 +684,20 @@ namespace HLP.GeraXml.UI.CTe
                                 if (!objListDados[i].Cancelado)
                                 {
                                     objDataSet.PopulaDataSet(dsLotacao, objListDados[i].sCaminhoXml, i + 1, objListDados[i].sProtocolo);
-                                    GeraPDF(dsLotacao, TipoPDF.LOTACAO, objListDados[i]);
+                                    dsPadraoPDF = new dsCTe();
+                                    objDataSet.PopulaDataSet(dsPadraoPDF, objListDados[i].sCaminhoXml, 1, objListDados[i].sProtocolo);
+                                    GeraPDF(dsPadraoPDF, TipoPDF.LOTACAO, objListDados[i]);
+                                    //GeraPDF(dsLotacao, TipoPDF.LOTACAO, objListDados[i]);
 
                                 }
                                 else
                                 {
                                     objDataSet.PopulaDataSet(dsLotacaoCancelado, objListDados[i].sCaminhoXml, i + 1, objListDados[i].sProtocolo);
-                                    GeraPDF(dsLotacaoCancelado, TipoPDF.LOTACAO_CANCELADO, objListDados[i]);
+                                    dsPadraoPDF = new dsCTe();
+                                    objDataSet.PopulaDataSet(dsPadraoPDF, objListDados[i].sCaminhoXml, 1, objListDados[i].sProtocolo);
+                                    GeraPDF(dsPadraoPDF, TipoPDF.LOTACAO_CANCELADO, objListDados[i]);
+
+                                    //GeraPDF(dsLotacaoCancelado, TipoPDF.LOTACAO_CANCELADO, objListDados[i]);
                                 }
                             }
                             else
@@ -697,12 +705,18 @@ namespace HLP.GeraXml.UI.CTe
                                 if (!objListDados[i].Cancelado)
                                 {
                                     objDataSet.PopulaDataSet(dsPadrao, objListDados[i].sCaminhoXml, i + 1, objListDados[i].sProtocolo);
-                                    GeraPDF(dsPadrao, TipoPDF.PADRAO, objListDados[i]);
+                                    dsPadraoPDF = new dsCTe();
+                                    objDataSet.PopulaDataSet(dsPadraoPDF, objListDados[i].sCaminhoXml,1, objListDados[i].sProtocolo);
+                                    GeraPDF(dsPadraoPDF, TipoPDF.PADRAO, objListDados[i]);
                                 }
                                 else
                                 {
                                     objDataSet.PopulaDataSet(dsPadraoCancelado, objListDados[i].sCaminhoXml, i + 1, objListDados[i].sProtocolo);
-                                    GeraPDF(dsPadraoCancelado, TipoPDF.PADRAO_CANCELADO, objListDados[i]);
+                                    dsPadraoPDF = new dsCTe();
+                                    objDataSet.PopulaDataSet(dsPadraoPDF, objListDados[i].sCaminhoXml, 1, objListDados[i].sProtocolo);
+                                    GeraPDF(dsPadraoPDF, TipoPDF.PADRAO_CANCELADO, objListDados[i]);
+
+                                    //GeraPDF(dsPadraoCancelado, TipoPDF.PADRAO_CANCELADO, objListDados[i]);
                                 }
                             }
                         }

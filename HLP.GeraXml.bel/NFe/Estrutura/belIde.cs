@@ -249,10 +249,10 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
             get { return _tpemis; }
             set
             {
-                if ((value == "1") || (value == "2") || (value == "3") || (value == "4") || (value == "5"))
+                if ((value == "1") || (value == "2") || (value == "3") || (value == "4") || (value == "5") || (value == "6") || (value == "7"))
                     _tpemis = value;
                 else
-                    throw new Exception("Numero " + value + "do Tpemis Inválido. Valores aceito 1, 2, 3, 4 ou 5");
+                    throw new Exception("Numero " + value + "do Tpemis Inválido. Valores aceito 1, 2, 3, 4, 5,6 e 7");
             }
         }
         /// <summary>
@@ -350,8 +350,8 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
 
         public belIde Carrega(string seqNF, string sDigVerif)
         {
-            DataTable dt = BuscaIde(seqNF);          
-            
+            DataTable dt = BuscaIde(seqNF);
+
 
             foreach (DataRow drIde in dt.Rows)
             {

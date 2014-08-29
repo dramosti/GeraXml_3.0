@@ -47,7 +47,7 @@ namespace HLP.GeraXml.Comum.Static
             set
             {
                 Acesso._TP_AMB = value;
-                //Acesso._TP_AMB = 2;
+               //Acesso._TP_AMB = 1;
             }
         }
 
@@ -185,6 +185,7 @@ namespace HLP.GeraXml.Comum.Static
         /// 1 - NORMAL
         /// 2 - CONTINGENCIA FS
         /// 3 - CONTIGENCIA SCAN
+        /// 6 - SVC-AN
         /// </summary>
         public static int TP_EMIS { get; set; }
         public static bool IMPRIMI_NUM_NOTA_ENTRADA { get; set; }

@@ -216,7 +216,14 @@ namespace HLP.GeraXml.UI.CTe
                     objbelinfCte.rem.enderReme.xBairro = obj.rem.enderReme.xBairro;
                     objbelinfCte.rem.enderReme.cMun = obj.rem.enderReme.cMun;
                     objbelinfCte.rem.enderReme.xMun = obj.rem.enderReme.xMun;
-                    objbelinfCte.rem.enderReme.CEP = obj.rem.enderReme.CEP;
+                    try
+                    {
+                        objbelinfCte.rem.enderReme.CEP = obj.rem.enderReme.CEP;
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    
                     objbelinfCte.rem.enderReme.UF = obj.rem.enderReme.UF;
                     objbelinfCte.rem.enderReme.xPais = obj.rem.enderReme.xPais;
                     objbelinfCte.rem.enderReme.cPais = obj.rem.enderReme.cPais;
@@ -898,6 +905,14 @@ namespace HLP.GeraXml.UI.CTe
                                 nudEntrega.Value = Convert.ToDecimal(objInfCte.vPrest.Comp[i].vComp.Replace(".", ","));
                                 break;
 
+
+                            case "GRIS":
+                                nudGris.Value = Convert.ToDecimal(objInfCte.vPrest.Comp[i].vComp.Replace(".", ","));
+                                break;
+                            case "VALOR ADICIONAL":
+                                nudValoraAdic.Value = Convert.ToDecimal(objInfCte.vPrest.Comp[i].vComp.Replace(".", ","));
+                                break;
+
                         }
                     }
                 }
@@ -1562,6 +1577,22 @@ namespace HLP.GeraXml.UI.CTe
                     Comp.vComp = nudEntrega.Text.Replace(",", ".");
                     objInfCte.vPrest.Comp.Add(Comp);
                 }
+
+                if (nudGris.Value > 0)
+                {
+                    Comp = new belComp();
+                    Comp.xNome = "GRIS";
+                    Comp.vComp = nudGris.Text.Replace(",", ".");
+                    objInfCte.vPrest.Comp.Add(Comp);
+                }
+
+                if (nudValoraAdic.Value > 0)
+                {
+                    Comp = new belComp();
+                    Comp.xNome = "VALOR ADICIONAL";
+                    Comp.vComp = nudValoraAdic.Text.Replace(",", ".");
+                    objInfCte.vPrest.Comp.Add(Comp);
+                }
                 #endregion
 
 
@@ -1687,7 +1718,7 @@ namespace HLP.GeraXml.UI.CTe
 
                 objInfCte.infCTeNorm.seg.respSeg = cborespSeg.SelectedIndex != -1 ? cborespSeg.SelectedIndex.ToString() : "";
 
-                objInfCte.infCTeNorm.rodo.dPrev = mskdPrev.Text.Replace(" ", "").Replace("/", "").Replace('_',' ').Trim() != "" ? Convert.ToDateTime(mskdPrev.Text).ToShortDateString() : "";
+                objInfCte.infCTeNorm.rodo.dPrev = mskdPrev.Text.Replace(" ", "").Replace("/", "").Replace('_', ' ').Trim() != "" ? Convert.ToDateTime(mskdPrev.Text).ToShortDateString() : "";
                 objInfCte.infCTeNorm.seg.nApol = txtnApol.Text;
                 objInfCte.infCTeNorm.rodo.RNTRC = txtRNTRC.Text;
                 objInfCte.infCTeNorm.rodo.lota = cbolota.SelectedIndex != -1 ? cbolota.SelectedIndex.ToString() : "";

@@ -26,6 +26,23 @@ namespace HLP.GeraXml.bel.CTe
                     objbelinfCte.vPrest.vRec = dr["vTPrest"].ToString();
 
                     belComp Comp = new belComp();
+
+                    if (dr["vl_gris"].ToString() != "0.00")
+                    {
+                        Comp = new belComp();
+                        Comp.xNome = "GRIS";
+                        Comp.vComp = dr["vl_gris"].ToString();
+                        objbelinfCte.vPrest.Comp.Add(Comp);
+                    }
+                    if (dr["vl_vladic"].ToString() != "0.00")
+                    {
+                        Comp = new belComp();
+                        Comp.xNome = "VALOR ADICIONAL";
+                        Comp.vComp = dr["vl_vladic"].ToString();
+                        objbelinfCte.vPrest.Comp.Add(Comp);
+                    }
+
+
                     if (dr["FRETEVALOR"].ToString() != "0.00")
                     {
                         Comp = new belComp();
@@ -89,7 +106,6 @@ namespace HLP.GeraXml.bel.CTe
                         Comp.vComp = dr["ENTREGA"].ToString();
                         objbelinfCte.vPrest.Comp.Add(Comp);
                     }
-
                 }
             }
             catch (Exception ex)
