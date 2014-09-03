@@ -340,10 +340,12 @@ namespace HLP.GeraXml.bel.CTe
 
                     for (int j = 0; j < obj.vPrest.Comp.Count; j++)
                     {
-                        Comp = new XElement(pf + "Comp", new XElement(pf + "xNome", obj.vPrest.Comp[j].xNome),
-                                                         new XElement(pf + "vComp", obj.vPrest.Comp[j].vComp.Replace(",", ".")));
-
-                        vPrest.Add(Comp);
+                        if (Convert.ToDecimal(obj.vPrest.Comp[j].vComp.Replace(".", ",")) > 0)
+                        {
+                            Comp = new XElement(pf + "Comp", new XElement(pf + "xNome", obj.vPrest.Comp[j].xNome),
+                                                             new XElement(pf + "vComp", Convert.ToDecimal(obj.vPrest.Comp[j].vComp.Replace(".", ",")).ToString("#0.00").Replace(",", ".")));
+                            vPrest.Add(Comp);
+                        }
                     }
 
                     #endregion

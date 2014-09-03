@@ -29,17 +29,23 @@ namespace HLP.GeraXml.bel.CTe
 
                     if (dr["vl_gris"].ToString() != "0.00")
                     {
-                        Comp = new belComp();
-                        Comp.xNome = "GRIS";
-                        Comp.vComp = dr["vl_gris"].ToString();
-                        objbelinfCte.vPrest.Comp.Add(Comp);
+                        if (Convert.ToDecimal(dr["vl_gris"].ToString()) > 0)
+                        {
+                            Comp = new belComp();
+                            Comp.xNome = "GRIS";
+                            Comp.vComp = dr["vl_gris"].ToString();
+                            objbelinfCte.vPrest.Comp.Add(Comp);
+                        }
                     }
                     if (dr["vl_vladic"].ToString() != "0.00")
                     {
-                        Comp = new belComp();
-                        Comp.xNome = "VALOR ADICIONAL";
-                        Comp.vComp = dr["vl_vladic"].ToString();
-                        objbelinfCte.vPrest.Comp.Add(Comp);
+                        if (Convert.ToDecimal(dr["vl_vladic"].ToString()) > 0)
+                        {
+                            Comp = new belComp();
+                            Comp.xNome = "VALOR ADICIONAL";
+                            Comp.vComp = dr["vl_vladic"].ToString();
+                            objbelinfCte.vPrest.Comp.Add(Comp);
+                        }
                     }
 
 
