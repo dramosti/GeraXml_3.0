@@ -308,6 +308,8 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                 dvBCProp = Math.Round(Convert.ToDecimal(drIItem["vBCProp"].ToString().Replace(".", ",")), 2); //25278
                             }
                         }
+
+
                         bool bPauta = drIItem["st_pauta"].ToString().Equals("N") ? false : true; //OS_25969
                         decimal dvICMS = (bPauta == false ? (drIItem["vICMS"].ToString() != "" ? Math.Round(Convert.ToDecimal(drIItem["vICMS"].ToString()), 2) : 0) : Math.Round(Convert.ToDecimal(drIItem["vl_icms_Pauta"].ToString()), 2)); //o.s. 24248 - 26/03/2010  - //OS_25969
                         decimal dvBC_pauta = Convert.ToDecimal(drIItem["vBC_Pauta"].ToString()); //OS_25969
@@ -401,6 +403,9 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                         obj900.CSOSN = sCST.ToString();
                                         obj900.modBC = 3;
                                         obj900.vBC = (bPauta ? dvBC_pauta : dvBC);
+                                        decimal dpICMS = Math.Round(Convert.ToDecimal(drIItem["pICMS"].ToString()), 2); //o.s. 24248 - 26/03/2010
+                                        obj900.pICMS = dpICMS;
+                                        obj900.vICMS = dvICMS;
                                         decimal dpRedBC = Math.Round(Convert.ToDecimal(drIItem["pRedBC"].ToString()), 2);
                                         if (dpRedBC != 0)
                                         {
@@ -422,24 +427,28 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                         obj900.pCredSN = Math.Round(Convert.ToDecimal(drIItem["pCredSN"].ToString()), 2);//NFe_2.0
                                         obj900.vCredICMSSN = Math.Round(Convert.ToDecimal(drIItem["vCredICMSSN"].ToString()), 2); //NFe_2.0                                    
 
+                                        if (Acesso.NM_EMPRESA == "ELETROAZUL" || Acesso.NM_EMPRESA == "ARTONI")
+                                        {
+                                            dvBC = Math.Round(Convert.ToDecimal(drIItem["vBC"].ToString()), 2);
+                                        }
+                                        obj900.vBC = dvBC;
+
                                         // Alteração feita por motivo de NFe para a Lorenzon
-
-
-                                        obj900.modBC = null;
-                                        obj900.vBC = null;
-                                        obj900.pRedBC = null;
-                                        obj900.pICMS = null;
-                                        obj900.vICMS = null;
-                                        obj900.modBCST = null;
-                                        obj900.pMVAST = null;
-                                        obj900.pRedBCST = null;
-                                        obj900.vBCST = null;
-                                        obj900.pICMSST = null;
-                                        obj900.vICMSST = null;
-                                        obj900.vBCSTRet = null;
-                                        obj900.vICMSSTRet = null;
-                                        obj900.pCredSN = null;//NFe_2.0
-                                        obj900.vCredICMSSN = null; //NFe_2.0                                    
+                                        //obj900.modBC = null;
+                                        //obj900.vBC = null;
+                                        //obj900.pRedBC = null;
+                                        //obj900.pICMS = null;
+                                        //obj900.vICMS = null;
+                                        //obj900.modBCST = null;
+                                        //obj900.pMVAST = null;
+                                        //obj900.pRedBCST = null;
+                                        //obj900.vBCST = null;
+                                        //obj900.pICMSST = null;
+                                        //obj900.vICMSST = null;
+                                        //obj900.vBCSTRet = null;
+                                        //obj900.vICMSSTRet = null;
+                                        //obj900.pCredSN = null;//NFe_2.0
+                                        //obj900.vCredICMSSN = null; //NFe_2.0                                    
 
                                         objicms.belICMSSN900 = obj900;
                                         #endregion
@@ -1061,7 +1070,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                                               );
                                     sTransportadora += ";";
                                     sObsItem = sTransportadora + sObsItem;
-                                }                                
+                                }
 
                                 if (drIItem["xLgr"].ToString().Trim() != "")
                                 {
@@ -1073,7 +1082,7 @@ namespace HLP.GeraXml.bel.NFe.Estrutura
                                                                  drIItem["UF"].ToString().Trim());
                                 }
                             }
-                            
+
                             if (sObsItem != "")
                             {
                                 objinf.Infadprid += Util.TiraSimbolo(sObsItem.Trim(), "");

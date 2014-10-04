@@ -255,7 +255,7 @@ namespace HLP.GeraXml.UI.NFe
                             if (Acesso.NM_EMPRESA.Equals("GIWA"))
                                 sDup = dupli.nDup.ToString().Insert(dupli.nDup.Count() - 1, "-");
                             else
-                                sDup = dupli.nDup.ToString().Insert(dupli.nDup.Count() - 1, "-");
+                                sDup = dupli.nDup.ToString();
 
                             objNFe.xDuplicatas += string.Format(sDupl, sDup, Convert.ToDateTime(dupli.dVenc).ToString("dd/MM/yy"),
                                 Convert.ToDecimal(dupli.vDup.Replace(".", ",")).ToString("#0.00").Replace(".", ",")).PadRight(33, ' ') + "|";

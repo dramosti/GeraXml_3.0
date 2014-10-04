@@ -33,9 +33,8 @@ namespace HLP.GeraXml.UI
         public frmPrincipal()
         {
 
-            //            HLP.GeraXml.bel.MDFe.retEnviMDFe recibo = SerializeClassToXml.DeserializeClasse<HLP.GeraXml.bel.MDFe.retEnviMDFe>(@"C:\GeraXml\Arquivos\002-SICUPIRA\Protocolos\reciiboMDFe_1.xml");
-
-
+            //HLP.GeraXml.bel.MDFe.retEnviMDFe recibo = SerializeClassToXml.DeserializeClasse<HLP.GeraXml.bel.MDFe.retEnviMDFe>(@"C:\GeraXml\Arquivos\002-SICUPIRA\Protocolos\reciiboMDFe_1.xml");
+            
             InitializeComponent();
 
             SetVisualandBackColor(belRegedit.BuscaNomeSkin());

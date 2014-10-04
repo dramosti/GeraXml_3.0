@@ -438,10 +438,10 @@ namespace HLP.GeraXml.bel.NFe
                                                                (det.imposto.belIcms.belICMSSN500.vICMSSTRet != null ? new XElement(pf + "vICMSSTRet", det.imposto.belIcms.belICMSSN500.vICMSSTRet.ToString("#0.00").Replace(",", ".")) : null)) : null),
 
                                                       //-------------ICMSSN900--------------//
-                                                       (det.imposto.belIcms.belICMSSN900 != null ?
-                                                            new XElement(pf + "ICMSSN900",
-                                                               (det.imposto.belIcms.belICMSSN900.orig != null ? new XElement(pf + "orig", det.imposto.belIcms.belICMSSN900.orig.ToString()) : null),
-                                                               new XElement(pf + "CSOSN", det.imposto.belIcms.belICMSSN900.CSOSN.ToString())) : null)),
+                                //(det.imposto.belIcms.belICMSSN900 != null ?
+                                //     new XElement(pf + "ICMSSN900",
+                                //        (det.imposto.belIcms.belICMSSN900.orig != null ? new XElement(pf + "orig", det.imposto.belIcms.belICMSSN900.orig.ToString()) : null),
+                                //        new XElement(pf + "CSOSN", det.imposto.belIcms.belICMSSN900.CSOSN.ToString())) : null)),
                                 //(det.imposto.belIcms.belICMSSN900.modBC != null ? new XElement(pf + "modBC", det.imposto.belIcms.belICMSSN900.modBC.ToString()) : null),
                                 //(det.imposto.belIcms.belICMSSN900.vBC != null ? new XElement(pf + "vBC", det.imposto.belIcms.belICMSSN900.vBC.ToString("#0.00").Replace(",", ".")) : null),
                                 //(det.imposto.belIcms.belICMSSN900.pRedBC != null ? new XElement(pf + "pRedBC", det.imposto.belIcms.belICMSSN900.pRedBC.ToString("#0.00").Replace(",", ".")) : null),
@@ -457,6 +457,26 @@ namespace HLP.GeraXml.bel.NFe
                                 //(det.imposto.belIcms.belICMSSN900.vICMSSTRet != null ? new XElement(pf + "vICMSSTRet", det.imposto.belIcms.belICMSSN900.vICMSSTRet.ToString("#0.00").Replace(",", ".")) : null),
                                 //(det.imposto.belIcms.belICMSSN900.pCredSN != null ? new XElement(pf + "pCredSN", det.imposto.belIcms.belICMSSN900.pCredSN.ToString("#0.00").Replace(",", ".")) : null),
                                 //(det.imposto.belIcms.belICMSSN900.vCredICMSSN != null ? new XElement(pf + "vCredICMSSN", det.imposto.belIcms.belICMSSN900.vCredICMSSN.ToString("#0.00").Replace(",", ".")) : null)) : null)),
+
+                                (det.imposto.belIcms.belICMSSN900 != null ?
+                                                            new XElement(pf + "ICMSSN900",
+                                                               (det.imposto.belIcms.belICMSSN900.orig != null ? new XElement(pf + "orig", det.imposto.belIcms.belICMSSN900.orig.ToString()) : null),
+                                                               new XElement(pf + "CSOSN", det.imposto.belIcms.belICMSSN900.CSOSN.ToString()),
+                                                                    (det.imposto.belIcms.belICMSSN900.modBC != null ? new XElement(pf + "modBC", det.imposto.belIcms.belICMSSN900.modBC.ToString()) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.vBC != null ? new XElement(pf + "vBC", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.vBC).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.pRedBC > 0 ? new XElement(pf + "pRedBC", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.pRedBC).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.pICMS != null ? new XElement(pf + "pICMS", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.pICMS).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.vICMS != null ? new XElement(pf + "vICMS", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.vICMS).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.modBCST != null ? new XElement(pf + "modBCST", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.modBCST).ToString()) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.pMVAST > 0 ? new XElement(pf + "pMVAST", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.pMVAST).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.pRedBCST > 0 ? new XElement(pf + "pRedBCST", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.pRedBCST).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.vBCST != null ? new XElement(pf + "vBCST", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.vBCST).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.pICMSST != null ? new XElement(pf + "pICMSST", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.pICMSST).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.vICMSST != null ? new XElement(pf + "vICMSST", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.vICMSST).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    //(det.imposto.belIcms.belICMSSN900.vBCSTRet != null ? new XElement(pf + "vBCSTRet", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.vBCSTRet).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    //(det.imposto.belIcms.belICMSSN900.vICMSSTRet != null ? new XElement(pf + "vICMSSTRet", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.vICMSSTRet).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.pCredSN != null ? new XElement(pf + "pCredSN", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.pCredSN).ToString("#0.00").Replace(",", ".")) : null),
+                                                                    (det.imposto.belIcms.belICMSSN900.vCredICMSSN != null ? new XElement(pf + "vCredICMSSN", Convert.ToDecimal(det.imposto.belIcms.belICMSSN900.vCredICMSSN).ToString("#0.00").Replace(",", ".")) : null)) : null)),
 
                                         //---------------IPI-------------//
                                             (det.imposto.belIpi != null ?

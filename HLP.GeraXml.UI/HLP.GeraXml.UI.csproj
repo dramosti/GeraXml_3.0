@@ -508,6 +508,13 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Relatorios\rptNFSeCamp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptNFSeCamp.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
     <Content Include="globe_glass.ico" />
     <EmbeddedResource Include="Configuracao\frmSelecionaConfigs.resx">
       <DependentUpon>frmSelecionaConfigs.cs</DependentUpon>
@@ -645,11 +652,6 @@
       <LastGenOutput>rptNfesSusesu.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="J:\D6\Comercio\C0\AIR\DADOS\Relatorio\rptNFSeCamp.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>Relatorios\rptNFSeCamp.rpt</Link>
-    </Content>
     <Content Include="Relatorios\RelDanfe2013.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RelDanfe2013.cs</LastGenOutput>
@@ -658,6 +660,11 @@
     <Content Include="Relatorios\RelDamdfe.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RelDamdfe.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Relatorios\rptNFSeCamp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptNFSeCamp.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="HLP.GeraXml.UI_TemporaryKey.pfx" />
