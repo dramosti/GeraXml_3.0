@@ -11,6 +11,7 @@ namespace HLP.GeraXml.bel
 {
     public class belAssinaXml
     {
+
         private string msgResultado;
         private XmlDocument XMLDoc;
 
